@@ -1,0 +1,44 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonBlack.otf') format('truetype');
+} */
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonBold.otf') format('truetype');
+} */
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonLight.otf') format('truetype');
+} */
+@font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonBook.otf') format('truetype');
+}
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonMedium.otf') format('truetype');
+} */
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonLight.otf') format('truetype');
+} */
+/* @font-face {
+  font-family: 'Campton';
+  src: url('./components/fonts/CamptonSemiBold.otf') format('truetype');
+} */
