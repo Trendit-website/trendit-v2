@@ -5,7 +5,7 @@ import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 
-export default function Login() {
+export default function VerifyEmail() {
   const {
     // register,
     handleSubmit,
@@ -40,10 +40,10 @@ export default function Login() {
 
           <div className=' w-[20rem] my-8 md:w-[23rem] mx-auto  flex-col  items-center gap-6 '>
             <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-              <div className="w-80 text-center text-white text-[64px] font-semibold font-['Campton'] leading-[53.76px]">
-                Welcome Back
+              <div className="w-80 text-center text-white text-[40px] md:text-[64px] font-semibold font-['Campton'] leading-10 md:leading-[53.76px]">
+                Welcome to Trendit
               </div>
-              <div className="w-[273px] text-center text-zinc-400 text-base font-normal font-['Campton']">
+              <div className="w-[18rem] py-2 text-center text-zinc-400 text-base font-normal font-['Campton']">
                 Earn money by connecting businesses to their potential
                 customers.
               </div>
@@ -84,11 +84,6 @@ export default function Login() {
                 placeholder='Referral code/username (Optional)'
                 className="grow shrink bg-white rounded basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
               /> */}
-              <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
-                <div className="text-center cursor-pointer text-white text-[12.83px] font-bold font-['Campton']">
-                  Forgot password
-                </div>
-              </div>
               <Button
                 type='submit'
                 onClick={() => {
@@ -209,16 +204,16 @@ export default function Login() {
 
           <div className=' w-[18rem] flex justify-center mx-auto  items-center mt-24'>
             <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
-              You don’t have an account?
+              Already have an account?
             </div>
             <div className='p-2 justify-center items-center gap-1 flex'>
               <div
                 onClick={() => {
-                  window.location.href = '/signup'
+                  window.location.href = '/login'
                 }}
                 className="text-center cursor-pointer text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
               >
-                Sign Up
+                Sign in
               </div>
             </div>
           </div>

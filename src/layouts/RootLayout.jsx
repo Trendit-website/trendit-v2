@@ -1,26 +1,34 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { dashboardContext } from '../context/Dashboard'
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import RightSidebar from './components/rightSidebar/RightSideBar'
+import { AnimatePresence, motion } from 'framer-motion'
 // import useCurrentUser from "../hooks/useCurrentUser";
 
 function RootLayout() {
   const { sidebarOpen, sidebarMinimized, isTablet } =
     useContext(dashboardContext)
   const { pathname } = useLocation()
+  const [showRightSidebar, setShowRightSidebar] = useState(false)
+
+  const toggleRightSidebar = () => {
+    setShowRightSidebar(!showRightSidebar)
+  }
 
   return (
-    <div className='dark:text-gray-100 dark:bg-slate-700 bg-lighten duration-200 ease-in-out z-1 overflow-visible'>
-      {pathname.includes('/message_rooms') ||
+    <div className='dark:text-gray-100 dark:bg-slate-700 bg-lighten duration-200 ease-in-out z-1 overflow-clip'>
+      {/* {pathname.includes('/message_rooms') ||
       pathname === '/engage/memos' ? null : (
-        <Navbar />
-      )}
+        <Navbar onNotificationClick={toggleRightSidebar} />
+      )} */}
       <div className='flex w-full '>
         <Sidebar />
-        <div
+        <motion.div
+          layout
           className={`w-full min-h-[93vh] ${
             sidebarMinimized
               ? 'lg:ml-[7.5rem]'
@@ -29,6 +37,7 @@ function RootLayout() {
               : !sidebarMinimized && !sidebarOpen && 'lg:ml-0'
           }`}
         >
+          <Navbar onNotificationClick={toggleRightSidebar} />
           {
             //  ${  (!sidebarMinimized &&!sidebarOpen) &&'lg:mx-auto' }
             pathname.includes('/home') ? (
@@ -70,7 +79,24 @@ function RootLayout() {
               </main>
             )
           }
-        </div>
+        </motion.div>
+        <AnimatePresence mode='wait'>
+          {showRightSidebar && (
+            <motion.div
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+            >
+              <RightSidebar
+                onNotificationClick={() => setShowRightSidebar(false)}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* <RightSidebar isOpen={showRightSidebar} /> */}
       </div>
     </div>
   )

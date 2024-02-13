@@ -54,7 +54,12 @@ export default function AuthModal({ isOpen, onClose }) {
                   </div>
                 </div>
               </div>
-              <Button className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex">
+              <Button
+                onClick={() => {
+                  window.location.href = '/home'
+                }}
+                className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+              >
                 Continue
               </Button>
             </div>

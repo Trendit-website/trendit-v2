@@ -135,7 +135,7 @@ const Sidebar = () => {
         {/* top bar */}
 
         <div className='flex flex-col  h-full '>
-          <ul className='whitespace-pre text-[0.9rem] flex flex-col overflow-x-hidden font-medium  scrollbar-thin scrollbar-thumb-transparent  group-hover:scrollbar-thumb-scrollbarColor scrollbar-track-transparent menuScrollBar  h-full  px-0  pb-20'>
+          <ul className='whitespace-pre text-[0.9rem] flex flex-col overflow-x-hidden font-medium  scrollbar-thin scrollbar-thumb-transparent  group-hover:scrollbar-thumb-[#7D8084] scrollbar-track-transparent menuScrollBar  h-full  px-0  pb-20'>
             {/* logo */}
             <div
               className={`flex flex-col bg-sidebarBg  ${
