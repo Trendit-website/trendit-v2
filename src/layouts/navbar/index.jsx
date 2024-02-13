@@ -87,11 +87,11 @@ const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
               <div
                 className={`w[181px] h-6 justify-start items-center gap-6 inline-flex`}
               >
-                <div className='w-6 h-6 relative'>
+                <div className='w-6 h-6 relative cursor-pointer'>
                   {/* <MdModeNight /> */}
                   <MdLightMode className='text-[#B0B0B0]' size={30} />
                 </div>
-                <div className='w-6 h-6 relative'>
+                <div className='w-6 h-6 relative cursor-pointer'>
                   <MdNotifications
                     onClick={onNotificationClick}
                     className='text-[#B0B0B0]'
@@ -99,7 +99,7 @@ const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
                   />{' '}
                 </div>
 
-                <div className='justify-start w-full items-center gap-[7px] flex'>
+                <div className='justify-start w-full items-center gap-[7px] cursor-pointer flex'>
                   <CiLogout
                     size={30}
                     className='w-6 h-6 relative text-[#B0B0B0]'

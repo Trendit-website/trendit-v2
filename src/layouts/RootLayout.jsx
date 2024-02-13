@@ -20,7 +20,7 @@ function RootLayout() {
   }
 
   return (
-    <div className='dark:text-gray-100 dark:bg-slate-700 bg-lighten duration-200 ease-in-out z-1 overflow-visible'>
+    <div className='dark:text-gray-100 dark:bg-slate-700 bg-lighten duration-200 ease-in-out z-1 overflow-clip'>
       {/* {pathname.includes('/message_rooms') ||
       pathname === '/engage/memos' ? null : (
         <Navbar onNotificationClick={toggleRightSidebar} />
@@ -82,7 +82,14 @@ function RootLayout() {
         </motion.div>
         <AnimatePresence mode='wait'>
           {showRightSidebar && (
-            <motion.div initial={{ x: 100 }} animate={{ x: 0 }}>
+            <motion.div
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+            >
               <RightSidebar
                 onNotificationClick={() => setShowRightSidebar(false)}
               />
