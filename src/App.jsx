@@ -7,13 +7,15 @@ import Signup from './components/auth/Signup'
 import OnBoard from './components/auth/OnBoard'
 import Home from './components/layout/center/Home'
 import RootLayout from './layouts/RootLayout'
+import VerifyEmail from './components/auth/VerifyEmail'
 
 function App() {
   return (
     <>
       <Animation>
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/' element={<VerifyEmail />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/confirm-otp' element={<ConfirmOtp />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/onboard' element={<OnBoard />} />

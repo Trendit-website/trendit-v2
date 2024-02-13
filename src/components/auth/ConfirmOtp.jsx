@@ -72,7 +72,12 @@ export default function ConfirmOtp() {
                 Didn’t receive a code?
               </div>
               <div className='p-2 justify-center items-center gap-1 flex'>
-                <div className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
+                <div
+                  onClick={() => {
+                    window.location.href = '/onboard'
+                  }}
+                  className="text-center cursor-pointer text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                >
                   Send new code
                 </div>
               </div>

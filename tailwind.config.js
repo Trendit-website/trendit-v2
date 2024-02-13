@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import { nextui } from '@nextui-org/react'
 // import tailwindCssAnimated from 'tailwindcss-animated'
+import scrollbar from 'tailwind-scrollbar'
 
 export default {
   content: [
@@ -14,5 +15,5 @@ export default {
   },
   darkMode: 'class',
 
-  plugins: [nextui()],
+  plugins: [scrollbar, nextui()],
 }
