@@ -1,14 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useContext } from 'react'
 
-import { MdMenu } from 'react-icons/md'
+import {
+  MdLightMode,
+  MdMenu,
+  // MdModeNight,
+  MdNotifications,
+} from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
 
 import UserDropdown from '../components/UserDropdown'
 import { Search } from 'lucide-react'
 import { useLocation } from 'react-router-dom'
 import Logo from '../../components/Logo'
+import { CiLogout } from 'react-icons/ci'
 
-const Navbar = () => {
+const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
   const { pathname } = useLocation()
@@ -38,17 +45,14 @@ const Navbar = () => {
               >
                 <MdMenu size={25} />
               </div>
-              {/* logo */}
-              <div className='hidden w-32 lg:flex'>
-                <Logo />
-              </div>
+
               <div
                 className={`hidden lg:flex  items-center gap-2  
             ${
               sidebarMinimized
                 ? 'lg:ml-[1.5rem]'
                 : sidebarOpen
-                ? 'lg:ml-32'
+                ? 'lg:ml2'
                 : !sidebarMinimized && !sidebarOpen && 'lg:ml-0'
             }
             
@@ -80,53 +84,28 @@ const Navbar = () => {
             
             `}
             >
-              <div className='h[31px] justify-start items-start gap-6 flex'>
-                <div className='flex-col justify-start items-start gap-1.5 inline-flex'>
-                  <div className='justify-start items-start gap-2 inline-flex'>
-                    <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
-                      91
-                    </div>
-                    <div className='justify-start items-start flex'>
-                      <div className='w-[11px] h-[11px] relative' />
-                      <div className="text-center text-green-500 text-[10px] font-normal font-['Campton']">
-                        53.3%
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
-                    Tasked Done
-                  </div>
+              <div
+                className={`w[181px] h-6 justify-start items-center gap-6 inline-flex`}
+              >
+                <div className='w-6 h-6 relative cursor-pointer'>
+                  {/* <MdModeNight /> */}
+                  <MdLightMode className='text-[#B0B0B0]' size={30} />
                 </div>
-                <div className='flex-col justify-start items-start gap-1.5 inline-flex'>
-                  <div className='justify-start items-start gap-2 inline-flex'>
-                    <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
-                      3
-                    </div>
-                    <div className='justify-start items-start flex'>
-                      <div className='w-[11px] h-[11px] relative' />
-                      <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
-                        53.3%
-                      </div>
-                    </div>
-                  </div>
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
-                    Task created
-                  </div>
+                <div className='w-6 h-6 relative cursor-pointer'>
+                  <MdNotifications
+                    onClick={onNotificationClick}
+                    className='text-[#B0B0B0]'
+                    size={30}
+                  />{' '}
                 </div>
-                <div className='flex-col justify-start items-start gap-1.5 inline-flex'>
-                  <div className='justify-start items-start gap-2 inline-flex'>
-                    <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
-                      1,456
-                    </div>
-                    <div className='justify-start items-start flex'>
-                      <div className='w-[11px] h-[11px] relative' />
-                      <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
-                        53.3%
-                      </div>
-                    </div>
-                  </div>
+
+                <div className='justify-start w-full items-center gap-[7px] cursor-pointer flex'>
+                  <CiLogout
+                    size={30}
+                    className='w-6 h-6 relative text-[#B0B0B0]'
+                  />
                   <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
-                    Followers
+                    Sign Out
                   </div>
                 </div>
               </div>

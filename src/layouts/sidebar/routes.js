@@ -1,14 +1,19 @@
+import { MdContactSupport } from 'react-icons/md'
 import {
-  MdContactSupport,
-  MdHomeRepairService,
-  MdSupportAgent,
-} from 'react-icons/md'
-import { BsChatTextFill } from 'react-icons/bs'
-import { GiLoveHowl, GiRamProfile, GiTrade } from 'react-icons/gi'
-import { LuNewspaper } from 'react-icons/lu'
-import { LogOutIcon, SettingsIcon } from 'lucide-react'
+  CassetteTape,
+  HomeIcon,
+  LogOutIcon,
+  MousePointerClick,
+  SettingsIcon,
+} from 'lucide-react'
 import { FaQq } from 'react-icons/fa'
 // import { app_routes } from '../../utilities/app_routes'
+import { TbSpeakerphone } from 'react-icons/tb'
+import { BiShare } from 'react-icons/bi'
+import { RiMenuSearchLine } from 'react-icons/ri'
+import { FaArrowTrendUp } from 'react-icons/fa6'
+import { IoStatsChart } from 'react-icons/io5'
+import { RiHeartsLine } from 'react-icons/ri'
 
 export const defaultMenu = [
   // latest routes
@@ -20,28 +25,28 @@ export const defaultMenu = [
     title: '',
     name: 'Home',
     route: '/home',
-    icon: LuNewspaper,
+    icon: HomeIcon,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Earn',
     route: '/earn',
-    icon: LuNewspaper,
+    icon: CassetteTape,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Advertise',
     route: '/advertise',
-    icon: LuNewspaper,
+    icon: TbSpeakerphone,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Resell',
     route: '/resell',
-    icon: LuNewspaper,
+    icon: BiShare,
     withSubMenu: false,
   },
 
@@ -49,7 +54,7 @@ export const defaultMenu = [
     title: 'Market place',
     name: 'Orders',
     // routeMerge: true,
-    icon: GiRamProfile,
+    icon: RiMenuSearchLine,
     withSubMenu: false,
     route: '/orders',
   },
@@ -57,7 +62,7 @@ export const defaultMenu = [
     title: '',
     name: 'Grow',
     // routeMerge: true,
-    icon: GiRamProfile,
+    icon: FaArrowTrendUp,
     withSubMenu: false,
     route: '/grow',
   },
@@ -65,24 +70,24 @@ export const defaultMenu = [
     title: '',
     name: 'Giveaways',
     // routeMerge: true,
-    icon: GiRamProfile,
+    icon: MousePointerClick,
     withSubMenu: false,
     route: '/giveaways',
   },
 
   {
     title: 'Quick Actions',
-    name: 'Profile',
+    name: 'Transactions',
     // routeMerge: true,
-    icon: GiRamProfile,
+    icon: IoStatsChart,
     withSubMenu: false,
-    route: '/profile',
+    route: '/transactions',
   },
   {
     title: '',
     name: 'Refer Link',
     // routeMerge: true,
-    icon: GiLoveHowl,
+    icon: RiHeartsLine,
     withSubMenu: false,
     route: '/refer-link',
   },
