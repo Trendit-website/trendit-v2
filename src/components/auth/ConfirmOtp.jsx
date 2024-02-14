@@ -1,8 +1,11 @@
 import { Button, Input } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 export default function ConfirmOtp() {
+  const navigate = useNavigate()
+
   return (
     <div>
       <div className=' h-screen md:h-[1024px] relative bg-black overflow-x-clip'>
@@ -74,7 +77,7 @@ export default function ConfirmOtp() {
               <div className='p-2 justify-center items-center gap-1 flex'>
                 <div
                   onClick={() => {
-                    window.location.href = '/onboard'
+                    navigate('/onboard')
                   }}
                   className="text-center cursor-pointer text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
                 >

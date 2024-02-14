@@ -3,9 +3,11 @@ import { Modal, ModalContent, Button, Checkbox, Image } from '@nextui-org/react'
 import { useState } from 'react'
 import modalImage from '../../assets/composition14.svg'
 import { AiOutlineClose } from 'react-icons/ai'
+import { useNavigate } from 'react-router'
 
 export default function AuthModal({ isOpen, onClose }) {
   const [isChecked, setIsChecked] = useState(false)
+  const navigate = useNavigate()
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked)
@@ -56,7 +58,7 @@ export default function AuthModal({ isOpen, onClose }) {
               </div>
               <Button
                 onClick={() => {
-                  window.location.href = '/home'
+                  navigate('/dashboard')
                 }}
                 className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
