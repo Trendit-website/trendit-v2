@@ -10,6 +10,7 @@ import RootLayout from './layouts/RootLayout'
 import VerifyEmail from './components/auth/VerifyEmail'
 import Welcome from './pages/home'
 import Earn from './pages/earn/Earn'
+import Advertise from './pages/advertise/Advertise'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/dashboard' element={<RootLayout />}>
             <Route path='' element={<Welcome />} />
             <Route path='earn' element={<Earn />} />
+            <Route path='advertise' element={<Advertise />} />
           </Route>
         </Routes>
         {/* <Login /> */}

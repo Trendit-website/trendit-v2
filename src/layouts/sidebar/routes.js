@@ -38,7 +38,7 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Advertise',
-    route: '/advertise',
+    route: 'advertise',
     icon: TbSpeakerphone,
     withSubMenu: false,
   },

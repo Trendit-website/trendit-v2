@@ -1,41 +1,18 @@
 import { Button } from '@nextui-org/button'
 import { ChevronRight } from 'lucide-react'
-import EngagementTasksCard from './EngagementTasksCard'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
-import { Chip } from '@nextui-org/chip'
+// import { Chip } from '@nextui-org/chip'
+import AdvertiseTaskCard from './AdvertiseTaskCard'
 
-export default function Earn() {
-  const [selected, setSelected] = useState('post advert')
+export default function Advertise() {
+  const [selected, setSelected] = useState('advert task')
 
   return (
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch  pb-6 flex-col justify-start items-center gap-6 flex'>
-          <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
-            <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-              <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
-                You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
-                like and followed the page. Your Trendit account will be
-                suspended once you UNLIKE or UNFOLLOW the Facebook Page.
-              </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='20'
-                height='20'
-                viewBox='0 0 20 20'
-                fill='none'
-              >
-                <path
-                  d='M10 13.3415V9.17482M10 6.67482V6.66649M3.61654 5.35202L9.16675 2.14761C9.68242 1.84989 10.3177 1.84989 10.8334 2.14761L16.3836 5.35202C16.8993 5.64974 17.217 6.19996 17.217 6.7954V13.2042C17.217 13.7997 16.8993 14.3499 16.3836 14.6476L10.8334 17.852C10.3177 18.1497 9.68242 18.1497 9.16675 17.852L3.61654 14.6476C3.10087 14.3499 2.7832 13.7997 2.7832 13.2042V6.7954C2.7832 6.19996 3.10087 5.64974 3.61654 5.35202Z'
-                  stroke='#FF3D00'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                />
-              </svg>
-            </div>
-          </div>
           <div className=' justify-center items-center inline-flex'>
             <svg
               width='243'
@@ -189,30 +166,11 @@ export default function Earn() {
               media accounts. Select the type of task you want people to perform
               below:
             </div>
-
-            <Button className=' px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='17'
-                height='17'
-                viewBox='0 0 17 17'
-                fill='none'
-              >
-                <path
-                  d='M11.1666 6.58984V5.25651C11.1666 3.78375 9.97274 2.58984 8.49998 2.58984C7.82368 2.58984 7.20618 2.8416 6.73609 3.25651M5.96668 14.5898H11.0333C11.7801 14.5898 12.1534 14.5898 12.4387 14.4445C12.6895 14.3167 12.8935 14.1127 13.0214 13.8618C13.1667 13.5766 13.1667 13.2032 13.1667 12.4565V8.72318C13.1667 7.97644 13.1667 7.60307 13.0214 7.31786C12.8935 7.06697 12.6895 6.863 12.4387 6.73517C12.1534 6.58984 11.7801 6.58984 11.0333 6.58984H5.96668C5.21994 6.58984 4.84657 6.58984 4.56136 6.73517C4.31047 6.863 4.1065 7.06697 3.97867 7.31786C3.83334 7.60307 3.83334 7.97644 3.83334 8.72318V12.4565C3.83334 13.2032 3.83334 13.5766 3.97867 13.8618C4.1065 14.1127 4.31047 14.3167 4.56136 14.4445C4.84657 14.5898 5.21994 14.5898 5.96668 14.5898Z'
-                  stroke='#1877F2'
-                  strokeLinecap='round'
-                />
-              </svg>
-              <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
-                Pay N1,000 for activation
-              </div>
-            </Button>
           </div>
         </div>
         <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
           <div className="text-white text-2xl font-medium font-['Campton']">
-            Earn
+            Advertise
           </div>
         </div>
         <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
@@ -238,22 +196,22 @@ export default function Earn() {
                     color='secondary'
                   >
                     <Tab
-                      key='post advert'
+                      key='advert task'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
-                      title='Post Advert'
+                      title='Advert Task'
                     ></Tab>
                     <Tab
                       key='engagement tasks'
                       title={
                         <div>
                           Engagement Tasks
-                          <Chip
+                          {/* <Chip
                             size='sm'
                             className='text-white'
                             variant='light'
                           >
                             23+
-                          </Chip>
+                          </Chip> */}
                         </div>
                       }
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
@@ -271,7 +229,7 @@ export default function Earn() {
             </Button>
           </div>
         </div>
-        {selected === 'post advert' && (
+        {selected === 'advert task' && (
           <motion.div
             initial={{ x: 100 }}
             animate={{ x: 0 }}
@@ -281,7 +239,7 @@ export default function Earn() {
               scale: { duration: 0.4 },
             }}
           >
-            <EngagementTasksCard />
+            <AdvertiseTaskCard />
           </motion.div>
         )}
         {selected === 'engagement tasks' && (
@@ -294,7 +252,7 @@ export default function Earn() {
               scale: { duration: 0.4 },
             }}
           >
-            <EngagementTasksCard />
+            <AdvertiseTaskCard />
           </motion.div>
         )}
       </div>
