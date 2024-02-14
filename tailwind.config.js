@@ -11,7 +11,12 @@ export default {
   ],
   theme: {
     fontFamily: { Campton: ['Campton', 'sans-serif'] },
-    extend: {},
+    extend: {
+      colors: {
+        bgDarkColor: '#161616',
+        lighten: '#F5F7FA',
+      },
+    },
   },
   darkMode: 'class',
 

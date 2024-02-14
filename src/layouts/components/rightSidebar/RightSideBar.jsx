@@ -10,6 +10,7 @@ import MessageCard from './MessageCard'
 import NotificationCard from './NotificationCard'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon } from 'lucide-react'
+import { Chip } from '@nextui-org/chip'
 
 export default function RightSidebar() {
   const [selected, setSelected] = useState('activities')
@@ -53,33 +54,6 @@ export default function RightSidebar() {
             </div>
           </div>
 
-          <div className='self-stretch border-b border-stone-900 justify-start items-center inline-flex'>
-            <div className='grow shrink basis-0 h-[39px] px-2 py-3 border-b border-fuchsia-400 justify-center items-center gap-1 flex'>
-              <div className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
-                Activities
-              </div>
-            </div>
-            <div className='grow shrink basis-0 h-[39px] px-2 py-3 justify-center items-center gap-1 flex'>
-              <div className="text-center text-zinc-400 text-[12.83px] font-bold font-['Campton']">
-                Messages
-              </div>
-              <div className='justify-center items-center gap-2 flex'>
-                <div className="text-center text-white text-[10px] font-bold font-['Campton']">
-                  20+
-                </div>
-              </div>
-            </div>
-            <div className='grow shrink basis-0 h-[39px] px-2 py-3 justify-center items-center gap-1 flex'>
-              <div className="text-center text-zinc-400 text-[12.83px] font-bold font-['Campton']">
-                Notifications
-              </div>
-              <div className='justify-center items-center gap-2 flex'>
-                <div className="text-center text-white text-[10px] font-bold font-['Campton']">
-                  5
-                </div>
-              </div>
-            </div>
-          </div>
           <div className='self-stretch h[557px] flex-col justify-start items-center gap-2 flex'></div>
           <AnimatePresence mode='wait'>
             <div className='flex flex-col w-full'>
@@ -91,44 +65,99 @@ export default function RightSidebar() {
                 onSelectionChange={setSelected}
                 variant='underlined'
                 classNames={{
-                  tabList: '  borderb  py-2',
+                  tabList: '  bordered  py-2',
                   cursor: ' bg-fuchsia-400',
                   //   selectedKey: 'text-fuchsia-400',
+                  selectedKey: 'text-green-400',
+                  tabContent: 'group-data-[selected=true]:text-fuchsia-400 ',
                 }}
+                className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
                 // color={selected ? 'text-fuchsia-400' : ''}
                 color='secondary'
+                // className='text-fuchsia-400'
+                // className={`tab ${selected ===  'text-fuchsia-400'}`}
+                // color='#FF6DFB'
               >
                 <Tab key='activities' title='Activities'>
                   <motion.div
                     initial={{ x: 100 }}
                     animate={{ x: 0 }}
                     className='flex flex-col gap-2'
+                    transition={{
+                      rotate: { duration: 2 },
+                      scale: { duration: 0.4 },
+                    }}
                   >
                     {[1, 2, 3, 4, 5, 6, 7].map((a) => (
                       <ActivitiesCard key={a} />
                     ))}
-                    <Button className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
+                    <Button
+                      variant='light'
+                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    >
                       View more
                     </Button>
                   </motion.div>
                 </Tab>
-                <Tab key='notifications' title='Notifications'>
-                  <motion.div className='flex flex-col gap-2'>
+                <Tab
+                  key='notifications'
+                  title={
+                    <div>
+                      Notifications
+                      <Chip size='sm' className='text-white' variant='light'>
+                        20+
+                      </Chip>
+                    </div>
+                  }
+                >
+                  <motion.div
+                    initial={{ x: 100 }}
+                    animate={{ x: 0 }}
+                    className='flex flex-col gap-2'
+                    transition={{
+                      rotate: { duration: 2 },
+                      scale: { duration: 0.4 },
+                    }}
+                  >
                     {[1, 2, 3, 4, 5, 6, 7].map((a) => (
                       <NotificationCard key={a} />
                     ))}
 
-                    <Button className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
+                    <Button
+                      variant='light'
+                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    >
                       View more
                     </Button>
                   </motion.div>
                 </Tab>
-                <Tab key='messages' title='Messages'>
-                  <motion.div className='flex flex-col gap-2'>
+                <Tab
+                  key='messages'
+                  title={
+                    <div>
+                      Messages
+                      <Chip size='sm' className='text-white' variant='light'>
+                        5
+                      </Chip>
+                    </div>
+                  }
+                >
+                  <motion.div
+                    initial={{ x: 100 }}
+                    animate={{ x: 0 }}
+                    className='flex flex-col gap-2'
+                    transition={{
+                      rotate: { duration: 2 },
+                      scale: { duration: 0.4 },
+                    }}
+                  >
                     {[1, 2, 3, 4, 5, 6, 7].map((a) => (
                       <MessageCard key={a} />
                     ))}
-                    <Button className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
+                    <Button
+                      variant='light'
+                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    >
                       View more
                     </Button>
                   </motion.div>

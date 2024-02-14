@@ -11,13 +11,13 @@ import { dashboardContext } from '../../context/Dashboard'
 
 import SubMenuSidebar from '../submenuSidebar'
 // import UserDropDownSidebar from "../components/UserDropDownSidebar";
-import { Search } from 'lucide-react'
+// import { Search } from 'lucide-react'
 
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import Logo from '../../components/Logo'
 
 const Sidebar = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const {
     sidebarOpen,
     setSidebarOpen,
@@ -208,13 +208,22 @@ const Sidebar = () => {
                            
                             
                             ${
-                              pathname.includes(route.route)
-                                ? 'text-white'
+                              pathname.includes(route.name?.toLocaleLowerCase())
+                                ? 'text-fuchsia-400'
                                 : 'text-menuItemIcon'
                             }`}
                           />
 
-                          {route.name}
+                          <span
+                            className={`
+                            ${
+                              pathname.includes(route.name?.toLocaleLowerCase())
+                                ? 'text-fuchsia-400'
+                                : 'text-menuItemIcon'
+                            }`}
+                          >
+                            {route.name}
+                          </span>
                         </NavLink>
                       </li>
                     </>

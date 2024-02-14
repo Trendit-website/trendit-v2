@@ -24,14 +24,14 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Home',
-    route: '/home',
+    route: '/dashboard',
     icon: HomeIcon,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Earn',
-    route: '/earn',
+    route: 'earn',
     icon: CassetteTape,
     withSubMenu: false,
   },
