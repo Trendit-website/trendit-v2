@@ -8,6 +8,8 @@ import OnBoard from './components/auth/OnBoard'
 import Home from './components/layout/center/Home'
 import RootLayout from './layouts/RootLayout'
 import VerifyEmail from './components/auth/VerifyEmail'
+import Welcome from './pages/home'
+import Earn from './pages/earn/Earn'
 
 function App() {
   return (
@@ -20,7 +22,10 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/onboard' element={<OnBoard />} />
           <Route path='/home2' element={<Home />} />
-          <Route path='/home' element={<RootLayout />}></Route>
+          <Route path='/dashboard' element={<RootLayout />}>
+            <Route path='' element={<Welcome />} />
+            <Route path='earn' element={<Earn />} />
+          </Route>
         </Routes>
         {/* <Login /> */}
       </Animation>

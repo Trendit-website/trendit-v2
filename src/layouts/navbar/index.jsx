@@ -11,19 +11,21 @@ import { dashboardContext } from '../../context/Dashboard'
 
 import UserDropdown from '../components/UserDropdown'
 import { Search } from 'lucide-react'
-import { useLocation } from 'react-router-dom'
-import Logo from '../../components/Logo'
+// import { useLocation } from 'react-router-dom'
+// import Logo from '../../components/Logo'
 import { CiLogout } from 'react-icons/ci'
+import useColorMode from '../../hooks/useColorMode'
 
-const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
+const Navbar = ({ onNotificationClick }) => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
-  const { pathname } = useLocation()
+  // const { pathname } = useLocation()
   // minimized sidebar was omitted for now!
-
+  const { colorMode, setColorMode } = useColorMode()
+  console.log(colorMode, 'ghh', setColorMode)
   return (
     <div
-      className={`right-0 left-0 p-2 shadow-md  sticky top-0 dark:shadow-md  bg-black`}
+      className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0 dark:shadow-md  bg-black`}
     >
       <div className='px-3 py-1 '>
         <div className='flex items-center justify-between'>
@@ -87,7 +89,12 @@ const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
               <div
                 className={`w[181px] h-6 justify-start items-center gap-6 inline-flex`}
               >
-                <div className='w-6 h-6 relative cursor-pointer'>
+                <div
+                  onClick={() =>
+                    setColorMode(colorMode === 'dark' ? 'light' : 'dark')
+                  }
+                  className='w-6 h-6 relative cursor-pointer'
+                >
                   {/* <MdModeNight /> */}
                   <MdLightMode className='text-[#B0B0B0]' size={30} />
                 </div>

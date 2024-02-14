@@ -14,6 +14,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    @apply dark:!text-gray-100 dark:bg-slate-800;
+  }
+
+  body {
+    @apply dark:!text-gray-100 dark:!bg-slate-800;
+  }
+}
+
 /* @font-face {
   font-family: 'Campton';
   src: url('./components/fonts/CamptonBlack.otf') format('truetype');
