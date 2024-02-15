@@ -1,50 +1,20 @@
 import { Button } from '@nextui-org/button'
-import { ChevronRight } from 'lucide-react'
-import EngagementTasksCard from './EngagementTasksCard'
+import { ChevronRight, Search } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
-import { Chip } from '@nextui-org/chip'
-import PostAdvertTasksCard from './PostAdvertTasksCard'
+// import { Chip } from '@nextui-org/chip'
+import AdvertiseTaskCard from './AdvertiseTaskCard'
+// import EngagementTaskCard from './EngagementTaskCard'
+import { Input } from '@nextui-org/input'
 
-export default function Earn() {
-  const [selected, setSelected] = useState('post advert')
-  const [showwarning, setShowWarning] = useState(true)
+export default function Resell() {
+  const [selected, setSelected] = useState('advert task')
 
   return (
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch  pb-6 flex-col justify-start items-center gap-6 flex'>
-          {showwarning && (
-            <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
-              <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-                <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
-                  You must NOT UNLIKE or UNFOLLOW the Facebook page after you
-                  have like and followed the page. Your Trendit account will be
-                  suspended once you UNLIKE or UNFOLLOW the Facebook Page.
-                </div>
-                <div
-                  className='cursor-pointer'
-                  onClick={() => setShowWarning(false)}
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                  >
-                    <path
-                      d='M10 13.3415V9.17482M10 6.67482V6.66649M3.61654 5.35202L9.16675 2.14761C9.68242 1.84989 10.3177 1.84989 10.8334 2.14761L16.3836 5.35202C16.8993 5.64974 17.217 6.19996 17.217 6.7954V13.2042C17.217 13.7997 16.8993 14.3499 16.3836 14.6476L10.8334 17.852C10.3177 18.1497 9.68242 18.1497 9.16675 17.852L3.61654 14.6476C3.10087 14.3499 2.7832 13.7997 2.7832 13.2042V6.7954C2.7832 6.19996 3.10087 5.64974 3.61654 5.35202Z'
-                      stroke='#FF3D00'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          )}
           <div className=' justify-center items-center inline-flex'>
             <svg
               width='243'
@@ -190,7 +160,7 @@ export default function Earn() {
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
             <div className="text-white text-sm font-bold font-['Campton']">
-              Earn on Trendit just got easier
+              Sell anything on Trendit
             </div>
             <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
               Get people with atleast 1000 active followers to repost your
@@ -198,8 +168,7 @@ export default function Earn() {
               media accounts. Select the type of task you want people to perform
               below:
             </div>
-
-            <Button className=' px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
+            <Button className='w-[290px] h-11 px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='17'
@@ -208,21 +177,58 @@ export default function Earn() {
                 fill='none'
               >
                 <path
-                  d='M11.1666 6.58984V5.25651C11.1666 3.78375 9.97274 2.58984 8.49998 2.58984C7.82368 2.58984 7.20618 2.8416 6.73609 3.25651M5.96668 14.5898H11.0333C11.7801 14.5898 12.1534 14.5898 12.4387 14.4445C12.6895 14.3167 12.8935 14.1127 13.0214 13.8618C13.1667 13.5766 13.1667 13.2032 13.1667 12.4565V8.72318C13.1667 7.97644 13.1667 7.60307 13.0214 7.31786C12.8935 7.06697 12.6895 6.863 12.4387 6.73517C12.1534 6.58984 11.7801 6.58984 11.0333 6.58984H5.96668C5.21994 6.58984 4.84657 6.58984 4.56136 6.73517C4.31047 6.863 4.1065 7.06697 3.97867 7.31786C3.83334 7.60307 3.83334 7.97644 3.83334 8.72318V12.4565C3.83334 13.2032 3.83334 13.5766 3.97867 13.8618C4.1065 14.1127 4.31047 14.3167 4.56136 14.4445C4.84657 14.5898 5.21994 14.5898 5.96668 14.5898Z'
+                  d='M3.16666 13.6285L4.49999 12.2951M5.83332 8.29512L6.49999 8.96179M7.83332 6.29512L8.49999 6.96179M9.83332 4.29512L10.5 4.96179M10.5 3.62846L4.59089 9.53755C4.53268 9.59576 4.49998 9.6747 4.49998 9.75702L4.49998 11.9618C4.49998 12.1459 4.64922 12.2951 4.83332 12.2951H7.03809C7.1204 12.2951 7.19935 12.2624 7.25756 12.2042L13.1667 6.29512C13.903 5.55874 13.903 4.36484 13.1667 3.62846C12.4303 2.89208 11.2364 2.89208 10.5 3.62846Z'
                   stroke='#1877F2'
                   strokeLinecap='round'
                 />
               </svg>
               <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
-                Pay N1,000 for activation
+                Post an Advert
               </div>
             </Button>
           </div>
         </div>
         <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
           <div className="text-white text-2xl font-medium font-['Campton']">
-            Earn
+            Market Place
           </div>
+        </div>
+        <div className=' w-full gap-4 justify-between items-center flex'>
+          <Input
+            startContent={<Search />}
+            placeholder='Search'
+            className="text-center max-w-md bg-zinc-900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
+            // color='success'
+            classNames={{
+              // inputWrapper: ' bg-zinc-800',
+              dataFocused: 'bg-black',
+              input: [
+                'bg-transparent',
+                'text-black/90 dark:text-white/90',
+                'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+              ],
+              innerWrapper: 'bg-transparent',
+              inputWrapper: [
+                'shadow-xl',
+                'bg-zinc-800',
+                'dark:bg-black',
+                'backdrop-blur-xl',
+                'backdrop-saturate-200',
+                'hover:bg-zinc-900',
+                'dark:hover:bg-zinc-800',
+                'group-data-[focused=true]:bg-zinc-800',
+                'dark:group-data-[focused=true]:bg-zinc-800',
+                '!cursor-text',
+              ],
+            }}
+          />
+          <Button
+            endContent={<ChevronRight />}
+            variant='light'
+            className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
+          >
+            History{' '}
+          </Button>
         </div>
         <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
           <div className='border-b border-stone-900 justify-between w-full items-center flex'>
@@ -247,22 +253,22 @@ export default function Earn() {
                     color='secondary'
                   >
                     <Tab
-                      key='post advert'
+                      key='advert task'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
-                      title='Post Advert'
+                      title='Advert Task'
                     ></Tab>
                     <Tab
                       key='engagement tasks'
                       title={
                         <div>
                           Engagement Tasks
-                          <Chip
+                          {/* <Chip
                             size='sm'
                             className='text-white'
                             variant='light'
                           >
                             23+
-                          </Chip>
+                          </Chip> */}
                         </div>
                       }
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
@@ -271,16 +277,49 @@ export default function Earn() {
                 </div>
               </AnimatePresence>
             </div>
-            <Button
-              endContent={<ChevronRight />}
-              variant='light'
-              className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
-            >
-              History{' '}
-            </Button>
+            <div className=' flex gap-2'>
+              <div className='cursor-pointer justify-start items-center gap-[7px] inline-flex'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='25'
+                  viewBox='0 0 24 25'
+                  fill='none'
+                >
+                  <path
+                    d='M19.5858 3.5H4.41421C3.63316 3.5 3 4.13317 3 4.91421C3 5.28929 3.149 5.649 3.41421 5.91421L8.41421 10.9142C8.78929 11.2893 9 11.798 9 12.3284V17.2639C9 18.0215 9.428 18.714 10.1056 19.0528L14.2764 21.1382C14.6088 21.3044 15 21.0627 15 20.691V12.3284C15 11.798 15.2107 11.2893 15.5858 10.9142L20.5858 5.91421C20.851 5.649 21 5.28929 21 4.91421C21 4.13317 20.3668 3.5 19.5858 3.5Z'
+                    stroke='#B1B1B1'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                  />
+                </svg>
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  Filter
+                </div>
+              </div>
+              <div className='cursor-pointer justify-start items-center gap-[7px] inline-flex'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='25'
+                  viewBox='0 0 24 25'
+                  fill='none'
+                >
+                  <path
+                    d='M5 17.5L5 7.5M7 16.5L5.35355 18.1464C5.15829 18.3417 4.84171 18.3417 4.64645 18.1464L3 16.5M12 4.5H21M12 12.5H18M12 20.5H14M12 8.5H20M12 16.5H16'
+                    stroke='#B1B1B1'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                  />
+                </svg>
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  Sort
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {selected === 'post advert' && (
+        {selected === 'advert task' && (
           <motion.div
             initial={{ x: 100 }}
             animate={{ x: 0 }}
@@ -290,7 +329,11 @@ export default function Earn() {
               scale: { duration: 0.4 },
             }}
           >
-            <PostAdvertTasksCard />
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              {[1, 2, 3, 4, 5, 6].map((key) => (
+                <AdvertiseTaskCard key={key} />
+              ))}
+            </div>
           </motion.div>
         )}
         {selected === 'engagement tasks' && (
@@ -303,7 +346,11 @@ export default function Earn() {
               scale: { duration: 0.4 },
             }}
           >
-            <EngagementTasksCard />
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              {[1, 2, 3, 4, 5, 6].map((key) => (
+                <AdvertiseTaskCard key={key} />
+              ))}
+            </div>
           </motion.div>
         )}
       </div>

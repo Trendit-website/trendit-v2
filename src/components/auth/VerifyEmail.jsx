@@ -4,6 +4,7 @@ import { Button, Input } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
 
 export default function VerifyEmail() {
   const {
@@ -12,6 +13,7 @@ export default function VerifyEmail() {
     control,
     // formState: { errors },
   } = useForm()
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     console.log(data)
@@ -87,7 +89,7 @@ export default function VerifyEmail() {
               <Button
                 type='submit'
                 onClick={() => {
-                  window.location.href = '/confirm-otp'
+                  navigate('/confirm-otp')
                 }}
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
@@ -209,7 +211,7 @@ export default function VerifyEmail() {
             <div className='p-2 justify-center items-center gap-1 flex'>
               <div
                 onClick={() => {
-                  window.location.href = '/login'
+                  navigate('/login')
                 }}
                 className="text-center cursor-pointer text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
               >

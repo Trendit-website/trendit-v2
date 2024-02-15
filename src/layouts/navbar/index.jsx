@@ -21,11 +21,10 @@ const Navbar = ({ onNotificationClick }) => {
     useContext(dashboardContext)
   // const { pathname } = useLocation()
   // minimized sidebar was omitted for now!
-  const { colorMode, setColorMode } = useColorMode()
-  console.log(colorMode, 'ghh', setColorMode)
+  const [colorMode, setColorMode] = useColorMode()
   return (
     <div
-      className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0 dark:shadow-md  bg-black`}
+      className={`right-0 left-0 p-2 shadow-md z-20 sticky light:bglighten top-0 dark:shadow-md  bg-black dark:bg-bgDarkColor`}
     >
       <div className='px-3 py-1 '>
         <div className='flex items-center justify-between'>
