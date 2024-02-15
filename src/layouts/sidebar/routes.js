@@ -89,7 +89,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: RiHeartsLine,
     withSubMenu: false,
-    route: '/refer-link',
+    route: 'refer-link',
   },
   {
     title: '',
@@ -114,11 +114,11 @@ export const defaultMenu = [
   },
   {
     title: '',
-    name: 'Chat with Support',
+    name: 'Support',
     // routeMerge: true,
     icon: MdContactSupport,
     withSubMenu: false,
-    route: '/chat-with-support',
+    route: 'support',
   },
   {
     title: '',

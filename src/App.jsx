@@ -13,6 +13,8 @@ import Earn from './pages/earn/Earn'
 import Advertise from './pages/advertise/Advertise'
 import Resell from './pages/resell/Resell'
 import Transactions from './pages/transaction/Transactions'
+import Referal from './pages/referal/Referal'
+import Support from './pages/support/Support'
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             <Route path='advertise' element={<Advertise />} />
             <Route path='resell' element={<Resell />} />
             <Route path='transactions' element={<Transactions />} />
+            <Route path='refer-link' element={<Referal />} />
+            <Route path='support' element={<Support />} />
           </Route>
         </Routes>
         {/* <Login /> */}
