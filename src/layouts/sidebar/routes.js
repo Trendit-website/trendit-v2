@@ -81,7 +81,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: IoStatsChart,
     withSubMenu: false,
-    route: '/transactions',
+    route: 'transactions',
   },
   {
     title: '',

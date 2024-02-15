@@ -12,6 +12,7 @@ import Welcome from './pages/home'
 import Earn from './pages/earn/Earn'
 import Advertise from './pages/advertise/Advertise'
 import Resell from './pages/resell/Resell'
+import Transactions from './pages/transaction/Transactions'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='earn' element={<Earn />} />
             <Route path='advertise' element={<Advertise />} />
             <Route path='resell' element={<Resell />} />
+            <Route path='transactions' element={<Transactions />} />
           </Route>
         </Routes>
         {/* <Login /> */}
