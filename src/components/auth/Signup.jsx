@@ -3,9 +3,11 @@ import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
 import { useState } from 'react'
 import { FaRegEyeSlash } from 'react-icons/fa'
+import { useNavigate } from 'react-router'
 
 export default function Signup() {
   const [isVisible, setIsVisible] = useState(false)
+  const navigate = useNavigate()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
   return (
@@ -80,7 +82,7 @@ export default function Signup() {
             </div>
             <Button
               onClick={() => {
-                window.location.href = '/onboard'
+                navigate('/onboard')
               }}
               className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
             >

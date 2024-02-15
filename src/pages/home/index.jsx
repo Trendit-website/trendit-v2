@@ -86,7 +86,7 @@ export default function Welcome() {
                 className="text-black hover:bg-green-50 text-sm font-medium font-['Campton']"
               />
             </div>
-            <div className=' grid items-center mt-10 gap-4 grid-cols-2  '>
+            <div className=' grid items-center md:mt-10 gap-4 md:grid-cols-2  '>
               <div className=' flex-col justify-start items-start gap-3 inline-flex'>
                 <div className="text-black text-sm font-bold font-['Campton']">
                   Create an Advert
@@ -96,8 +96,9 @@ export default function Welcome() {
                   account.
                 </div>
               </div>
-
-              <Image src={selfieImage} />
+              <div className='hidden md:inline-flex'>
+                <Image src={selfieImage} />
+              </div>
             </div>
           </Card>
           <Card className='bg-rose-50 rounded px-4'>
@@ -109,7 +110,7 @@ export default function Welcome() {
                 className="text-black hover:bg-rose-50 text-sm font-medium font-['Campton']"
               />
             </div>
-            <div className=' grid items-center mt-8  gap-4 grid-cols-2'>
+            <div className=' grid items-center md:mt-8  gap-4 md:grid-cols-2'>
               <div className=' flex-col justify-start items-start gap-3 inline-flex'>
                 <div className="text-black text-sm font-bold font-['Campton']">
                   Engage a task
@@ -119,8 +120,9 @@ export default function Welcome() {
                   Media.
                 </div>
               </div>
-
-              <Image src={readingImage} />
+              <div className='hidden md:inline-flex'>
+                <Image src={readingImage} />
+              </div>
             </div>
           </Card>
         </div>

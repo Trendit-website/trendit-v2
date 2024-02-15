@@ -38,14 +38,14 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Advertise',
-    route: '/advertise',
+    route: 'advertise',
     icon: TbSpeakerphone,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Resell',
-    route: '/resell',
+    route: 'resell',
     icon: BiShare,
     withSubMenu: false,
   },
