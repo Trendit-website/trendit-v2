@@ -45,7 +45,7 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Resell',
-    route: '/resell',
+    route: 'resell',
     icon: BiShare,
     withSubMenu: false,
   },

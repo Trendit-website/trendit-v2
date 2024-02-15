@@ -5,37 +5,46 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
 import { Chip } from '@nextui-org/chip'
+import PostAdvertTasksCard from './PostAdvertTasksCard'
 
 export default function Earn() {
   const [selected, setSelected] = useState('post advert')
+  const [showwarning, setShowWarning] = useState(true)
 
   return (
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch  pb-6 flex-col justify-start items-center gap-6 flex'>
-          <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
-            <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-              <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
-                You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
-                like and followed the page. Your Trendit account will be
-                suspended once you UNLIKE or UNFOLLOW the Facebook Page.
+          {showwarning && (
+            <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
+              <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
+                <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
+                  You must NOT UNLIKE or UNFOLLOW the Facebook page after you
+                  have like and followed the page. Your Trendit account will be
+                  suspended once you UNLIKE or UNFOLLOW the Facebook Page.
+                </div>
+                <div
+                  className='cursor-pointer'
+                  onClick={() => setShowWarning(false)}
+                >
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='20'
+                    height='20'
+                    viewBox='0 0 20 20'
+                    fill='none'
+                  >
+                    <path
+                      d='M10 13.3415V9.17482M10 6.67482V6.66649M3.61654 5.35202L9.16675 2.14761C9.68242 1.84989 10.3177 1.84989 10.8334 2.14761L16.3836 5.35202C16.8993 5.64974 17.217 6.19996 17.217 6.7954V13.2042C17.217 13.7997 16.8993 14.3499 16.3836 14.6476L10.8334 17.852C10.3177 18.1497 9.68242 18.1497 9.16675 17.852L3.61654 14.6476C3.10087 14.3499 2.7832 13.7997 2.7832 13.2042V6.7954C2.7832 6.19996 3.10087 5.64974 3.61654 5.35202Z'
+                      stroke='#FF3D00'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                </div>
               </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='20'
-                height='20'
-                viewBox='0 0 20 20'
-                fill='none'
-              >
-                <path
-                  d='M10 13.3415V9.17482M10 6.67482V6.66649M3.61654 5.35202L9.16675 2.14761C9.68242 1.84989 10.3177 1.84989 10.8334 2.14761L16.3836 5.35202C16.8993 5.64974 17.217 6.19996 17.217 6.7954V13.2042C17.217 13.7997 16.8993 14.3499 16.3836 14.6476L10.8334 17.852C10.3177 18.1497 9.68242 18.1497 9.16675 17.852L3.61654 14.6476C3.10087 14.3499 2.7832 13.7997 2.7832 13.2042V6.7954C2.7832 6.19996 3.10087 5.64974 3.61654 5.35202Z'
-                  stroke='#FF3D00'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                />
-              </svg>
             </div>
-          </div>
+          )}
           <div className=' justify-center items-center inline-flex'>
             <svg
               width='243'
@@ -281,7 +290,7 @@ export default function Earn() {
               scale: { duration: 0.4 },
             }}
           >
-            <EngagementTasksCard />
+            <PostAdvertTasksCard />
           </motion.div>
         )}
         {selected === 'engagement tasks' && (

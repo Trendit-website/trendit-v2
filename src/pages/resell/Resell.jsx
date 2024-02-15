@@ -1,13 +1,14 @@
 import { Button } from '@nextui-org/button'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Search } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
 // import { Chip } from '@nextui-org/chip'
 import AdvertiseTaskCard from './AdvertiseTaskCard'
-import EngagementTaskCard from './EngagementTaskCard'
+// import EngagementTaskCard from './EngagementTaskCard'
+import { Input } from '@nextui-org/input'
 
-export default function Advertise() {
+export default function Resell() {
   const [selected, setSelected] = useState('advert task')
 
   return (
@@ -159,7 +160,7 @@ export default function Advertise() {
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
             <div className="text-white text-sm font-bold font-['Campton']">
-              Earn on Trendit just got easier
+              Sell anything on Trendit
             </div>
             <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
               Get people with atleast 1000 active followers to repost your
@@ -167,12 +168,67 @@ export default function Advertise() {
               media accounts. Select the type of task you want people to perform
               below:
             </div>
+            <Button className='w-[290px] h-11 px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='17'
+                height='17'
+                viewBox='0 0 17 17'
+                fill='none'
+              >
+                <path
+                  d='M3.16666 13.6285L4.49999 12.2951M5.83332 8.29512L6.49999 8.96179M7.83332 6.29512L8.49999 6.96179M9.83332 4.29512L10.5 4.96179M10.5 3.62846L4.59089 9.53755C4.53268 9.59576 4.49998 9.6747 4.49998 9.75702L4.49998 11.9618C4.49998 12.1459 4.64922 12.2951 4.83332 12.2951H7.03809C7.1204 12.2951 7.19935 12.2624 7.25756 12.2042L13.1667 6.29512C13.903 5.55874 13.903 4.36484 13.1667 3.62846C12.4303 2.89208 11.2364 2.89208 10.5 3.62846Z'
+                  stroke='#1877F2'
+                  strokeLinecap='round'
+                />
+              </svg>
+              <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+                Post an Advert
+              </div>
+            </Button>
           </div>
         </div>
         <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
           <div className="text-white text-2xl font-medium font-['Campton']">
-            Advertise
+            Market Place
           </div>
+        </div>
+        <div className=' w-full gap-4 justify-between items-center flex'>
+          <Input
+            startContent={<Search />}
+            placeholder='Search'
+            className="text-center max-w-md bg-zinc-900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
+            // color='success'
+            classNames={{
+              // inputWrapper: ' bg-zinc-800',
+              dataFocused: 'bg-black',
+              input: [
+                'bg-transparent',
+                'text-black/90 dark:text-white/90',
+                'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+              ],
+              innerWrapper: 'bg-transparent',
+              inputWrapper: [
+                'shadow-xl',
+                'bg-zinc-800',
+                'dark:bg-black',
+                'backdrop-blur-xl',
+                'backdrop-saturate-200',
+                'hover:bg-zinc-900',
+                'dark:hover:bg-zinc-800',
+                'group-data-[focused=true]:bg-zinc-800',
+                'dark:group-data-[focused=true]:bg-zinc-800',
+                '!cursor-text',
+              ],
+            }}
+          />
+          <Button
+            endContent={<ChevronRight />}
+            variant='light'
+            className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
+          >
+            History{' '}
+          </Button>
         </div>
         <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
           <div className='border-b border-stone-900 justify-between w-full items-center flex'>
@@ -221,13 +277,46 @@ export default function Advertise() {
                 </div>
               </AnimatePresence>
             </div>
-            <Button
-              endContent={<ChevronRight />}
-              variant='light'
-              className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
-            >
-              History{' '}
-            </Button>
+            <div className=' flex gap-2'>
+              <div className='cursor-pointer justify-start items-center gap-[7px] inline-flex'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='25'
+                  viewBox='0 0 24 25'
+                  fill='none'
+                >
+                  <path
+                    d='M19.5858 3.5H4.41421C3.63316 3.5 3 4.13317 3 4.91421C3 5.28929 3.149 5.649 3.41421 5.91421L8.41421 10.9142C8.78929 11.2893 9 11.798 9 12.3284V17.2639C9 18.0215 9.428 18.714 10.1056 19.0528L14.2764 21.1382C14.6088 21.3044 15 21.0627 15 20.691V12.3284C15 11.798 15.2107 11.2893 15.5858 10.9142L20.5858 5.91421C20.851 5.649 21 5.28929 21 4.91421C21 4.13317 20.3668 3.5 19.5858 3.5Z'
+                    stroke='#B1B1B1'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                  />
+                </svg>
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  Filter
+                </div>
+              </div>
+              <div className='cursor-pointer justify-start items-center gap-[7px] inline-flex'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='25'
+                  viewBox='0 0 24 25'
+                  fill='none'
+                >
+                  <path
+                    d='M5 17.5L5 7.5M7 16.5L5.35355 18.1464C5.15829 18.3417 4.84171 18.3417 4.64645 18.1464L3 16.5M12 4.5H21M12 12.5H18M12 20.5H14M12 8.5H20M12 16.5H16'
+                    stroke='#B1B1B1'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                  />
+                </svg>
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  Sort
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         {selected === 'advert task' && (
@@ -240,7 +329,11 @@ export default function Advertise() {
               scale: { duration: 0.4 },
             }}
           >
-            <AdvertiseTaskCard />
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              {[1, 2, 3, 4, 5, 6].map((key) => (
+                <AdvertiseTaskCard key={key} />
+              ))}
+            </div>
           </motion.div>
         )}
         {selected === 'engagement tasks' && (
@@ -253,7 +346,11 @@ export default function Advertise() {
               scale: { duration: 0.4 },
             }}
           >
-            <EngagementTaskCard />
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              {[1, 2, 3, 4, 5, 6].map((key) => (
+                <AdvertiseTaskCard key={key} />
+              ))}
+            </div>
           </motion.div>
         )}
       </div>
