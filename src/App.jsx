@@ -12,6 +12,11 @@ import Welcome from './pages/home'
 import Earn from './pages/earn/Earn'
 import Advertise from './pages/advertise/Advertise'
 import Resell from './pages/resell/Resell'
+import Transactions from './pages/transaction/Transactions'
+import Referal from './pages/referal/Referal'
+import Support from './pages/support/Support'
+import PageNotFound from './pages/PageNotFound'
+import Settings from './pages/setting/Settings'
 
 function App() {
   return (
@@ -29,7 +34,13 @@ function App() {
             <Route path='earn' element={<Earn />} />
             <Route path='advertise' element={<Advertise />} />
             <Route path='resell' element={<Resell />} />
+            <Route path='transactions' element={<Transactions />} />
+            <Route path='refer-link' element={<Referal />} />
+            <Route path='support' element={<Support />} />
+            <Route path='settings' element={<Settings />} />
+            <Route path='*' element={<PageNotFound />} />
           </Route>
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
         {/* <Login /> */}
       </Animation>

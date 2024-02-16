@@ -198,9 +198,7 @@ export default function Resell() {
             startContent={<Search />}
             placeholder='Search'
             className="text-center max-w-md bg-zinc-900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
-            // color='success'
             classNames={{
-              // inputWrapper: ' bg-zinc-800',
               dataFocused: 'bg-black',
               input: [
                 'bg-transparent',
