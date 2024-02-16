@@ -4,24 +4,23 @@ import frameImage from '../../assets/Frame237892.svg'
 import { Snippet } from '@nextui-org/snippet'
 
 export default function Referal() {
-  // const [profile, setProfile] = useState(true)
-  // const [linkIg, setLinkIg] = useState(true)
   return (
     <div>
-      <div className='w[1131px] w[100%] min-h-[1136px] p-3 flex-col justify-start items-start gap-12 inline-flex'>
+      <div className='w-full p-3 flex-col justify-start items-start gap-12 inline-flex'>
         <div
-          className='w-[1107px] wfull h-[315px]  bg-cyan-50 rounded'
+          className='w-full h-[350px] opacity60 relative opacity-85  bg-cyan-50 rounded'
           style={{
             backgroundImage: `url(${frameImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
           }}
         >
-          <div className='left[72px] top[79px] absolte flex-col justify-start items-center gap-[18px] inline-flex'>
-            <div className="w-[471px] text-black text-7xl font-bold font-['Campton'] leading-[54.72px]">
+          <div className='absolute  bg-cyan-50 w-full h-full opacity-40'></div>
+          <div className='px-4 md:px-20 flex-col justify-start items-center gap-[18px] inline-flex'>
+            <div className="w-[471px] md:pt-16 z-10 text-black text-7xl font-extrabold font-['Campton'] leading-[54.72px]">
               Invite and Get N1000
             </div>
-            <div className='self-stretch flex-col justify-start items-center gap-2 flex'>
+            <div className='self-stretch z-10 flex-col justify-start items-center gap-2 flex'>
               <div className="self-stretch text-black text-sm font-medium font-['Campton']">
                 Share your link
               </div>
@@ -124,7 +123,7 @@ export default function Referal() {
             </div>
           </div>
         </div>
-        <div className='self-stretch h[467px] flex-col justify-start items-start gap-4 flex'>
+        <div className='self-stretch flex-col justify-start items-start gap-4 flex'>
           <div className="text-white py-3 text-2xl font-medium font-['Campton']">
             Invited friends
           </div>

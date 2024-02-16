@@ -2,12 +2,9 @@ import { MdContactSupport } from 'react-icons/md'
 import {
   CassetteTape,
   HomeIcon,
-  LogOutIcon,
   MousePointerClick,
   SettingsIcon,
 } from 'lucide-react'
-import { FaQq } from 'react-icons/fa'
-// import { app_routes } from '../../utilities/app_routes'
 import { TbSpeakerphone } from 'react-icons/tb'
 import { BiShare } from 'react-icons/bi'
 import { RiMenuSearchLine } from 'react-icons/ri'
@@ -16,11 +13,6 @@ import { IoStatsChart } from 'react-icons/io5'
 import { RiHeartsLine } from 'react-icons/ri'
 
 export const defaultMenu = [
-  // latest routes
-
-  // application 3 sub end
-
-  // home 2 sub
   {
     title: '',
     name: 'Home',
@@ -97,20 +89,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: SettingsIcon,
     withSubMenu: false,
-    route: '/settings',
-  },
-
-  // home 2 sub end
-
-  // applications sub 2
-
-  {
-    title: 'Others',
-    name: 'FAQa',
-    // routeMerge: true,
-    icon: FaQq,
-    withSubMenu: false,
-    route: '/faqa',
+    route: 'settings',
   },
   {
     title: '',
@@ -119,13 +98,5 @@ export const defaultMenu = [
     icon: MdContactSupport,
     withSubMenu: false,
     route: 'support',
-  },
-  {
-    title: '',
-    name: 'Sign Out',
-    // routeMerge: true,
-    icon: LogOutIcon,
-    withSubMenu: false,
-    route: '/sign-out',
   },
 ]

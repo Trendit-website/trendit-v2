@@ -1,20 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
-import OverViewCard from './OverViewCard'
-import TransactionCard from './TransactionCard'
-import EarnViewCard from './EarnViewCard'
-import OrdersViewCard from './OrdersViewCard'
 import { Input } from '@nextui-org/input'
 import { SearchIcon } from 'lucide-react'
 import FaqCard from './FaqCard'
+import { Button } from '@nextui-org/button'
 
 export default function Support() {
   const [selected, setSelected] = useState('all')
 
   return (
     <div>
-      <div className=' p-3 flex-col justify-start items-start gap-3 inline-flex'>
+      <div className=' w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch  flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch border-b border-stone-900 justify-center items-center inline-flex'>
@@ -23,7 +20,7 @@ export default function Support() {
                   Hi Adedamola, How can we help?
                 </div>
                 <div className='self-stretch w-full justify-between items-start gap-4 inline-flex'>
-                  <div className='grow shrink basis-0  px-3 py-[71px] bg-white bg-opacity-5 border border-stone-900 justify-center items-center gap-3 flex'>
+                  <Button className='grow shrink rounded-sm basis-0  px-3 py-[71px] bg-white bg-opacity-5 border border-stone-900 justify-center items-center gap-3 flex'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='25'
@@ -40,8 +37,8 @@ export default function Support() {
                     <div className="text-center text-white text-sm font-medium font-['Campton']">
                       Send an email
                     </div>
-                  </div>
-                  <div className='grow shrink basis-0  px-3 py-[71px] bg-white bg-opacity-5 border border-stone-900 justify-center items-center gap-3 flex'>
+                  </Button>
+                  <Button className='grow shrink basis-0 rounded-sm  px-3 py-[71px] bg-white bg-opacity-5 border border-stone-900 justify-center items-center gap-3 flex'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='25'
@@ -59,7 +56,7 @@ export default function Support() {
                     <div className="text-center text-white text-sm font-medium font-['Campton']">
                       Start a chat
                     </div>
-                  </div>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -144,7 +141,7 @@ export default function Support() {
             </div>
           </div>
 
-          <div className='w'>
+          <div className='w-full'>
             {selected === 'all' &&
               [1, 2, 3].map((key) => {
                 return (
@@ -175,7 +172,7 @@ export default function Support() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    <TransactionCard />
+                    <FaqCard />
                   </motion.div>
                 )
               })}
@@ -192,7 +189,7 @@ export default function Support() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    <TransactionCard />
+                    <FaqCard />
                   </motion.div>
                 )
               })}
@@ -209,7 +206,7 @@ export default function Support() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    <TransactionCard />
+                    <FaqCard />
                   </motion.div>
                 )
               })}
