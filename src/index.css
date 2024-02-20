@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/campton');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,39 +18,15 @@
 
 @layer base {
   html {
-    @apply dark:!text-gray-100 dark:bg-slate-800;
+    @apply font-Campton dark:!text-gray-100 dark:bg-slate-800;
   }
 
   body {
-    @apply dark:!text-gray-100 dark:!bg-slate-800;
+    @apply font-Campton dark:!text-gray-100 dark:!bg-slate-800;
   }
 }
 
 /* @font-face {
   font-family: 'Campton';
-  src: url('./components/fonts/CamptonBlack.otf') format('truetype');
-} */
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonBold.otf') format('truetype');
-} */
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonLight.otf') format('truetype');
-} */
-@font-face {
-  font-family: 'Campton';
   src: url('./components/fonts/CamptonBook.otf') format('truetype');
-}
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonMedium.otf') format('truetype');
-} */
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonLight.otf') format('truetype');
-} */
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonSemiBold.otf') format('truetype');
 } */
