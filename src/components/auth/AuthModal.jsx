@@ -43,7 +43,8 @@ export default function AuthModal({ isOpen, onClose }) {
                   <Checkbox
                     checked={isChecked}
                     onChange={handleCheckboxChange}
-                    color={isChecked ? 'warning' : 'success'}
+                    color='secondary'
+                    className='text-white'
                   />
                   <div className="text-center text-white text-sm font-medium font-['Campton']">
                     I came to Advertise

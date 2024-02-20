@@ -13,10 +13,81 @@ import { useState } from 'react'
 export default function Welcome() {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
+  const [showUp, setShowUp] = useState(true)
   return (
     <div>
       <div className='p-3 flex-col justify-start items-start gap-3 inline-flex relative'>
-        <Card className='w[798px] w-full h-[315px] relative bg-cyan-50 rounded'>
+        {showUp && (
+          <div className=' w-full lg:-mt-20  h-[73px] px-[25px] py-[13px] bg-blue-500 justify-start items-start gap-[29px] inline-flex'>
+            <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+              <div className="text-center text-white text-base font-bold font-['Campton']">
+                Not sure where to start?
+              </div>
+              <div className='justify-start items-center gap-[59px] cursor-pointer inline-flex'>
+                <div className='justify-start items-center gap-2 flex'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='18'
+                    height='18'
+                    viewBox='0 0 18 18'
+                    fill='none'
+                  >
+                    <path
+                      fillRule='evenodd'
+                      clipRule='evenodd'
+                      d='M6.3 3H11.7C13.3802 3 14.2202 3 14.862 3.32698C15.4265 3.6146 15.8854 4.07354 16.173 4.63803C16.5 5.27976 16.5 6.11984 16.5 7.8V10.2C16.5 11.8802 16.5 12.7202 16.173 13.362C15.8854 13.9265 15.4265 14.3854 14.862 14.673C14.2202 15 13.3802 15 11.7 15H6.3C4.61984 15 3.77976 15 3.13803 14.673C2.57354 14.3854 2.1146 13.9265 1.82698 13.362C1.5 12.7202 1.5 11.8802 1.5 10.2V7.8C1.5 6.11984 1.5 5.27976 1.82698 4.63803C2.1146 4.07354 2.57354 3.6146 3.13803 3.32698C3.77976 3 4.61984 3 6.3 3ZM7.125 11.2431V6.75686C7.125 6.13006 7.85614 5.77588 8.36115 6.15805L11.3253 8.40117C11.7249 8.70359 11.7249 9.29638 11.3253 9.5988L8.36115 11.8419C7.85614 12.2241 7.125 11.8699 7.125 11.2431Z'
+                      stroke='#E1EEFF'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                  <div className="text-sky-100 text-sm font-normal font-['Campton']">
+                    Watch tutorial
+                  </div>
+                </div>
+                <div className='justify-start items-center gap-2 flex'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='18'
+                    height='18'
+                    viewBox='0 0 18 18'
+                    fill='none'
+                  >
+                    <path
+                      d='M13.5 12H5.25C4.00736 12 3 13.0074 3 14.25V14.25M13.5 12V16.5M13.5 12C14.3284 12 15 11.3284 15 10.5V3C15 2.17157 14.3284 1.5 13.5 1.5H5.25C4.00736 1.5 3 2.50736 3 3.75V14.25M15 16.5H13.5M13.5 16.5H5.25C4.00736 16.5 3 15.4926 3 14.25V14.25'
+                      stroke='#E1EEFF'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                  <div className="text-sky-100 text-sm font-normal font-['Campton']">
+                    Read FAQ
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className='cursor-pointer'
+              onClick={() => {
+                setShowUp(false)
+              }}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+              >
+                <path
+                  d='M18 6L6 18M18 18L6 6.00001'
+                  stroke='white'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                />
+              </svg>
+            </div>
+          </div>
+        )}
+        <Card className=' w-full h-[315px] relative bg-cyan-50 rounded'>
           <div className='left[660px] cursor-pointer top[18px] absolut justify-end items-center inline-flex'>
             <Button
               variant='light'
