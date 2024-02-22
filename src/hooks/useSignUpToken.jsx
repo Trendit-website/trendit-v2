@@ -2,18 +2,18 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-const useCurrentUser = create(
+const useSignUpToken = create(
   persist(
     (set) => ({
-      userData: null,
-      setCurrentUser: (data = {}) => set({ userData: data }),
-      removeCurrentUser: () => set({ userData: null }),
+      token: null,
+      setSignUpToken: (data = {}) => set({ token: data }),
+      removeSignUpToken: () => set({ token: null }),
     }),
     {
-      name: 'user_data',
+      name: 'signup_token',
       storage: createJSONStorage(() => localStorage),
     }
   )
 )
 
-export default useCurrentUser
+export default useSignUpToken

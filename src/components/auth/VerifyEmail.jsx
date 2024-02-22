@@ -5,18 +5,38 @@ import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
+import { useVerifyEmail } from '../../api/auth'
+import toast from 'react-hot-toast'
+import useSignUpToken from '../../hooks/useSignUpToken'
 
 export default function VerifyEmail() {
   const {
-    // register,
+    register,
     handleSubmit,
     control,
-    // formState: { errors },
+    reset,
+    formState: { errors },
   } = useForm()
+  const { mutateAsync: verifyUserEmail, isLoading: isVerifed } =
+    useVerifyEmail()
   const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const { setSignUpToken } = useSignUpToken()
+
+  const onSubmit = async (data, e) => {
+    e.preventDefault()
+    try {
+      const res = await verifyUserEmail({ data })
+      console.log(res, 'res')
+      if (res.data.status) {
+        setSignUpToken(res.data.signup_token)
+        toast.success(res.data.message)
+        navigate('/confirm-otp')
+        reset()
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message ?? error.message)
+    }
   }
 
   return (
@@ -51,11 +71,7 @@ export default function VerifyEmail() {
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3 flex'>
-              {/* <Input
-                size='sm'
-                placeholder='Enter a valid email'
-                className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-              /> */}
+             
               <Controller
                 name='email'
                 control={control}
@@ -67,6 +83,8 @@ export default function VerifyEmail() {
                     className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   />
                 )}
+                {...register('email', {})}
+                error={errors?.email?.message}
               />
               <Controller
                 name='username'
@@ -79,21 +97,38 @@ export default function VerifyEmail() {
                     className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   />
                 )}
+                {...register('username', {})}
               />
 
-              {/* <Input
-                size='sm'
-                placeholder='Referral code/username (Optional)'
-                className="grow shrink bg-white rounded basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-              /> */}
+             
               <Button
                 type='submit'
-                onClick={() => {
-                  navigate('/confirm-otp')
-                }}
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
-                Continue
+                {isVerifed ? (
+                  <svg
+                    className='animate-spin h-5 w-5 text-current'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    xmlns='http://www.w3.org/2000/svg'
+                  >
+                    <circle
+                      className='opacity-25'
+                      cx='12'
+                      cy='12'
+                      r='10'
+                      stroke='currentColor'
+                      strokeWidth='4'
+                    />
+                    <path
+                      className='opacity-75'
+                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                      fill='currentColor'
+                    />
+                  </svg>
+                ) : (
+                  'Continue'
+                )}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>
