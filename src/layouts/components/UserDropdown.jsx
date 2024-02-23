@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import { Avatar } from '@nextui-org/react'
 import { ChevronDown } from 'lucide-react'
+import userImage1 from '../../assets/RectangleUser.svg'
 
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -48,29 +49,23 @@ const UserDropdown = () => {
     <div className='relative '>
       <Link
         ref={trigger}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        // onClick={() => setDropdownOpen(!dropdownOpen)}
         className='flex items-center gap-4  hover:no-underline text-inherit'
         to='#'
       >
         <span className='rounded-full flex items-center'>
-          {/* <img
-            src={UserOne}
-            alt="User"
-            className="rounded-full w-[2rem] h-[2rem]"
-          /> */}
           {userData?.data?.FILE_NAME?.includes('http') ? (
             <Avatar
               className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-              src={
-                userData?.data?.FILE_NAME || 'https://via.placeholder.com/42x42'
-              }
+              src={userData?.data?.FILE_NAME || userImage1}
               title={
                 userData?.data?.LAST_NAME + ' ' + userData?.data?.FIRST_NAME
               }
             />
           ) : (
             <Avatar
-              name={userData?.data?.FIRST_NAME?.trim()[0]}
+              // name={userData?.data?.FIRST_NAME?.trim()[0]}
+              src={userImage1}
               className=' cursor-pointer w-[42px] h-[42px] rounded-md border border-fuchsia-600'
               title={
                 userData?.data?.LAST_NAME + ' ' + userData?.data?.FIRST_NAME
@@ -89,7 +84,22 @@ const UserDropdown = () => {
               </div>
             </div>
 
-            <ChevronDown className='text-gray-300 hidden lg:block' />
+            {/* <ChevronDown className='text-gray-300 hidden lg:block' /> */}
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='14'
+              height='15'
+              viewBox='0 0 14 15'
+              fill='none'
+            >
+              <path
+                d='M10.5 5.75L7 9.25L3.5 5.75'
+                stroke='#B1B1B1'
+                strokeWidth='1.16667'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
           </div>
         </span>
       </Link>
@@ -98,8 +108,8 @@ const UserDropdown = () => {
 
       <div
         ref={dropdown}
-        onFocus={() => setDropdownOpen(true)}
-        onBlur={() => setDropdownOpen(false)}
+        // onFocus={() => setDropdownOpen(true)}
+        // onBlur={() => setDropdownOpen(false)}
         className='relative'
       >
         <div className={dropdownOpen === true ? 'block' : 'hidden'}>

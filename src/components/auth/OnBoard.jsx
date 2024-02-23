@@ -11,9 +11,12 @@ import {
 import Logo from '../Logo'
 import { animals } from '../../utilities/data'
 import AuthModal from './AuthModal'
+import { useNavigate } from 'react-router-dom'
+// import { Navigate } from 'react-router-dom'
 
 export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -143,7 +146,12 @@ export default function OnBoard() {
                   I will do this later
                 </div>
 
-                <div className="text-center cursor-pointer p-2 text-fuchsia-400 text-[12.83px] font-bold font-['Campton']">
+                <div
+                  onClick={() => {
+                    navigate(`/dashboard`)
+                  }}
+                  className="text-center cursor-pointer p-2 text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                >
                   Skip
                 </div>
               </div>

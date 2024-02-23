@@ -117,6 +117,7 @@ export default function ConfirmOtp() {
                         className="grow shrink basis-0 text-center rounded-lg w-3 h-3 bg-white text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton'] tracking-[10.39px]"
                         onChange={(e) => handleOtpChange(index, e.target.value)}
                         maxLength={1}
+                        inputMode='numeric'
                       />
                     )}
                     {...register(`entered_code_${index}`, {})}
