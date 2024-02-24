@@ -15,15 +15,38 @@ export default function Welcome() {
   const [showUp, setShowUp] = useState(true)
   return (
     <div>
-      <div className='p-3 flex-col justify-start items-start gap-3 inline-flex relative'>
+      <div className='p-3  flex-col justify-start items-start gap-3 inline-flex relative'>
         {showUp && (
-          <div className=' w-full lg:-mt-20  h-[73px] px-[25px] py-[13px] bg-blue-500 justify-start items-start gap-[29px] inline-flex'>
-            <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-              <div className="text-center text-white text-base font-bold font-['Campton']">
-                Not sure where to start?
+          <div className=' w-full lg:-mt-20 px-[25px] py-[13px] bg-blue-500 justify-start items-start gap-[29px] inline-flex'>
+            <div className='grow shrink w-full basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+              <div className='flex justify-between w-full'>
+                <div className="text-center text-white text-base font-bold font-['Campton']">
+                  Not sure where to start?
+                </div>
+                <div
+                  className='cursor-pointer'
+                  onClick={() => {
+                    setShowUp(false)
+                  }}
+                >
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='24'
+                    height='24'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                  >
+                    <path
+                      d='M18 6L6 18M18 18L6 6.00001'
+                      stroke='white'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                </div>
               </div>
-              <div className='justify-start items-center gap-[59px] cursor-pointer inline-flex'>
-                <div className='justify-start items-center gap-2 flex'>
+              <div className='justify-start w-[300px] lg:w-[400px] items-center gap-2 lg:gap-[59px] cursor-pointer inline-flex'>
+                <div className='justify-start w-full items-center gap-2 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -43,7 +66,7 @@ export default function Welcome() {
                     Watch tutorial
                   </div>
                 </div>
-                <div className='justify-start items-center gap-2 flex'>
+                <div className='justify-start w-full items-center gap-2 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -62,27 +85,6 @@ export default function Welcome() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              className='cursor-pointer'
-              onClick={() => {
-                setShowUp(false)
-              }}
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <path
-                  d='M18 6L6 18M18 18L6 6.00001'
-                  stroke='white'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                />
-              </svg>
             </div>
           </div>
         )}
@@ -171,7 +173,7 @@ export default function Welcome() {
 
         <div className='selfstretch justify-start items-start gap-4 inline-flex'>
           <Card className=' bg-green-50 rounded px-4'>
-            <div className=' inline-flex mb-8 items-center justify-end'>
+            <div className=' inline-flex lg:mb-8 items-center justify-end'>
               <Button
                 variant='light'
                 isIconOnly
@@ -179,7 +181,7 @@ export default function Welcome() {
                 className="text-black hover:bg-green-50 text-sm font-medium font-['Campton']"
               />
             </div>
-            <div className=' grid items-center md:mt-10 gap-4 md:grid-cols-2  '>
+            <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
               <div className=' flex-col justify-start items-start gap-3 inline-flex'>
                 <div className="text-black text-sm font-bold font-['Campton']">
                   Create an Advert
@@ -189,13 +191,13 @@ export default function Welcome() {
                   account.
                 </div>
               </div>
-              <div className='hidden md:inline-flex'>
+              <div className=' w-20 relative  -right-24 md:w-full md:inline-flex'>
                 <Image src={selfieImage} />
               </div>
             </div>
           </Card>
           <Card className='bg-rose-50 rounded px-4'>
-            <div className=' inline-flex mb-8 items-center justify-end  '>
+            <div className=' inline-flex md:mb-8 items-center justify-end  '>
               <Button
                 variant='light'
                 isIconOnly
@@ -203,7 +205,7 @@ export default function Welcome() {
                 className="text-black hover:bg-rose-50 text-sm font-medium font-['Campton']"
               />
             </div>
-            <div className=' grid items-center md:mt-8  gap-4 md:grid-cols-2'>
+            <div className=' grid items-center md:mt-8  md:gap-4 md:grid-cols-2'>
               <div className=' flex-col justify-start items-start gap-3 inline-flex'>
                 <div className="text-black text-sm font-bold font-['Campton']">
                   Engage a task
@@ -213,7 +215,7 @@ export default function Welcome() {
                   Media.
                 </div>
               </div>
-              <div className='hidden md:inline-flex'>
+              <div className='w-20 relative  -right-24 md:w-full md:inline-flex'>
                 <Image src={readingImage} />
               </div>
             </div>
@@ -227,7 +229,7 @@ export default function Welcome() {
           </div>
           <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
             {profile && (
-              <Card className='self-stretch p-6 bg-neutral-900 justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center text-white text-base font-bold font-['Campton']">
                     Complete your profile set up
@@ -283,7 +285,7 @@ export default function Welcome() {
               </Card>
             )}
             {linkIg && (
-              <Card className='self-stretch p-6 bg-neutral-900 justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center text-white text-base font-bold font-['Campton']">
                     Link your Instagram Account
