@@ -6,8 +6,8 @@ import { Button } from '@nextui-org/button'
 export default function GeneralForm() {
   return (
     <div>
-      <div className='self-stretch grow shrink basis-0 px-16 py-6 flex-col justify-start items-start gap-12 flex'>
-        <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
+      <div className='self-stretch grow shrink w-full  basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
+        <div className='self-stretch flex-col w-full justify-start items-start gap-6 flex'>
           <div className="text-white text-sm font-bold font-['Campton']">
             Profile
           </div>
@@ -52,7 +52,7 @@ export default function GeneralForm() {
               </div>
             </div>
           </div>
-          <div className='self-stretch h[302px] flex-col justify-start items-center gap-3.5 flex'>
+          <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
             <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
