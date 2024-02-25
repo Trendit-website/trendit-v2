@@ -61,7 +61,7 @@ export default function Support() {
               </div>
             </div>
           </div>
-          <div className='self-stretch mt-40 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
+          <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-white text-2xl font-medium font-['Campton']">
               Frequently asked questions
             </div>

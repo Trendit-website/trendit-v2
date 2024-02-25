@@ -13,13 +13,13 @@ export default function Settings() {
   return (
     <div>
       <div className=' w-full p-3 bg-neutral-900 flex-col justify-start items-start gap-3 inline-flex'>
-        <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
+        <div className='self-stretch px-4 md:px-0 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-white text-2xl font-medium font-['Campton']">
               Profile Settings
             </div>
           </div>
-          <div className='self-stretch border-b border-stone-900 justify-between items-center inline-flex'>
+          <div className='self-stretch overflow-auto border-b border-stone-900 justify-between items-center inline-flex'>
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
@@ -36,7 +36,7 @@ export default function Settings() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Campton']"
+                    className="text-center overflow-auto text-fuchsia-400 text-xs font-bold font-['Campton']"
                     color='secondary'
                   >
                     <Tab

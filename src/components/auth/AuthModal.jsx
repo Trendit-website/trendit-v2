@@ -14,7 +14,13 @@ export default function AuthModal({ isOpen, onClose }) {
   }
   return (
     <>
-      <Modal size='md' backdrop='blur' isOpen={isOpen} onClose={onClose}>
+      <Modal
+        placement='center'
+        size='md'
+        backdrop='blur'
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalContent className='w[20rem] md:w-[28rem] '>
           <div className='w[18rem] md:w-[28rem] border border-fuchsia-400 flex-col justify-start items-center inline-flex'>
             <div
