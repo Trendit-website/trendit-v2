@@ -14,7 +14,7 @@ export default function AdvertiseTaskCard() {
           className='w-[365px] rounded-none h[149px] wfull left0 top0 bsolute opacity-50'
           src={imgplaceholder}
         />
-        <div className=' w-full flex p-3 z-10 right[11px] top-20 lg:top20 2xl:top-[120px] absolute justify-between items-center inlineflex'>
+        <div className=' w-full flex p-3 z-10 right[11px] top-[6.5rem] lg:top-20 2xl:top-32 absolute justify-between items-center inlineflex'>
           <div className='justify-start items-start gap-0.5 flex'>
             <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
               <div className='justify-start items-center gap-2.5 flex'>

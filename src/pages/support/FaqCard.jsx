@@ -12,7 +12,7 @@ const FaqCard = ({ question, answer }) => {
 
   return (
     <>
-      <div className='self-stretch w-full flex-col p-3  bg-white bg-opacity-10 border border-stone-900 justify-start gap-6 inline-flex'>
+      <div className='self-stretch w-full flex-col p-3  bg-[#1E1E1E]  border border-stone-900 justify-start gap-6 inline-flex'>
         <div
           onClick={toggleAccordion}
           className='flex gap-2 cursor-pointer items-center '

@@ -3,7 +3,7 @@ import { Checkbox } from '@nextui-org/react'
 export default function NotificationForm() {
   return (
     <div>
-      <div className='w-full px-16 py-6 flex-col justify-start items-start gap-12 inline-flex'>
+      <div className='w-full md:px-16 py-6 flex-col justify-start items-start gap-12 inline-flex'>
         <div className='self-stretch h-[182px] flex-col justify-start items-start gap-6 flex'>
           <div className="text-white text-sm font-bold font-['Campton']">
             Email Alert

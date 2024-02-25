@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/input'
 export default function BankDetailsForm() {
   return (
     <div>
-      <div className='self-stretch grow shrink min-h-screen basis-0 px-16 py-6 flex-col justify-start items-start gap-12 flex'>
+      <div className='self-stretch grow shrink min-h-screen basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
         <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
           <div className="text-white text-sm font-bold font-['Campton']">
             Email Alert
