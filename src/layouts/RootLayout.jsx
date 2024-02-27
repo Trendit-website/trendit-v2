@@ -20,7 +20,7 @@ function RootLayout() {
   }
 
   return (
-    <div className='dark:text-gray-100 dark:bg-[#000000] dark:bgslate-700 bglighten duration-200 ease-in-out  overflow-clip'>
+    <div className='dark:text-gray-100  dark:bg-[#000000] dark:bgslate-700 bglighten duration-200 ease-in-out  overflow-clip'>
       <div className='flex w-full '>
         <Sidebar />
         <motion.div

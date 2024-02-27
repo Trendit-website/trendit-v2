@@ -4,8 +4,9 @@ import useLocalStorage from './useLocalStorage'
 const useColorMode = () => {
   // Retrieve color mode from local storage, default to 'light' if not present
   const [colorMode, setColorMode] = useLocalStorage('color-theme', 'light')
-  console.log(colorMode, 'kkk')
+
   useEffect(() => {
+    // console.log(colorMode)
     const className = 'dark'
     const bodyClass = window.document.body.classList
 

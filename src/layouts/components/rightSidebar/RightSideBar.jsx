@@ -17,12 +17,13 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col justify-start items-start inline-flex'>
-        <div className=' py-3 bg-neutral-900 border-l border-stone-900 flex-col justify-start items-start gap-2 flex'>
-          <div className='self-stretch h9 px-[11px] flex-col justify-start items-start gap-2 flex'>
-            <div className='self-stretch px-3 py-1.5 bg-zinc-900 rounded justify-start items-center gap-2 inline-flex'>
+      <div className='flex-col  justify-start items-start inline-flex'>
+        <div className=' py-3 bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
+          <div className='self-stretch  px-[11px] flex-col justify-start items-start gap-2 flex'>
+            <div className='self-stretch px-3 py-1.5  bg-lighten dark:bg-zinc-900 rounded justify-start items-center gap-2 inline-flex'>
               <Input
                 isClearable
+                size='sm'
                 radius='lg'
                 classNames={{
                   label: 'text-black/50 dark:text-white/90',
@@ -54,7 +55,7 @@ export default function RightSidebar() {
             </div>
           </div>
 
-          <div className='self-stretch h[557px] flex-col justify-start items-center gap-2 flex'></div>
+          <div className='self-stretch  flex-col justify-start items-center gap-2 flex'></div>
           <AnimatePresence mode='wait'>
             <div className='flex flex-col w-full'>
               <Tabs

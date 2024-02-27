@@ -20,14 +20,14 @@ export default function OnBoard() {
   return (
     <>
       <div>
-        <div className=' h-[1024px] relative bg-black'>
+        <div className=' h-[1024px] relative bg-white dark:bg-black'>
           <div className='left-0 top-0 absolute'>
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
           </div>
           <div className=' w-[20rem] md:w-[23rem] left-[10%] md:left-[40%] top-[189px] absolute flex-col justify-start items-center gap-6 inline-flex'>
             <div className='flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center text-white text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+              <div className="w-80 text-center  text-white darktext-white text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
                 Welcome onboard!
               </div>
               <div className="self-stretch text-center text-zinc-400 text-base font-normal font-['Campton']">
@@ -48,11 +48,11 @@ export default function OnBoard() {
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
               <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2 text-white text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                   Select Gender
                 </label>
                 <Select
-                  className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   placeholder='Select gender'
                 >
                   {animals.map((animal) => (
@@ -63,36 +63,36 @@ export default function OnBoard() {
                 </Select>
               </div>
               <div className='self-stretch flex-col justify-center items-start gap-3.5 inline-flex'>
-                <label className="text-center px-2 text-white text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                   Birthday
                 </label>
                 <div className=' flex gap-4'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <Input
                       placeholder='Day'
-                      className="grow bg-white rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                     />
                   </div>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <Input
                       placeholder='Mon'
-                      className="grow bg-white rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                     />
                   </div>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <Input
                       placeholder='Year'
-                      className="grow bg-white rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                     />
                   </div>
                 </div>
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2 text-white text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                   Select Country
                 </label>
                 <Select
-                  className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink basis-0 text-black dark:text-white  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   placeholder='Select  country'
                 >
                   {animals.map((animal) => (
@@ -104,11 +104,11 @@ export default function OnBoard() {
               </div>
               <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                  <label className="text-center px-2 text-white text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                     State
                   </label>
                   <Select
-                    className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                     placeholder='Select  state'
                   >
                     {animals.map((animal) => (
@@ -119,12 +119,12 @@ export default function OnBoard() {
                   </Select>
                 </div>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                  <labl className="text-center px-2  text-white text-[12.83px] font-medium font-['Campton']">
+                  <labl className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                     LGA
                   </labl>
 
                   <Select
-                    className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                     placeholder='Select lga'
                   >
                     {animals.map((animal) => (
@@ -150,7 +150,7 @@ export default function OnBoard() {
                   onClick={() => {
                     navigate(`/dashboard`)
                   }}
-                  className="text-center cursor-pointer p-2 text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                  className="text-center cursor-pointer p-2 text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
                 >
                   Skip
                 </div>

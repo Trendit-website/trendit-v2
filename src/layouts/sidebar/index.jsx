@@ -107,10 +107,10 @@ const Sidebar = () => {
   // };
 
   return (
-    <div className="relative bg-neutral-900 shadow-sidebar font-['Campton']">
+    <div className="relative bg-blue-500 bglighten dark:bg-neutral-900 z-40  shadowsidebar font-['Campton']">
       <div
         onClick={() => overlayClicked()}
-        className={`lg:hidden fixed inset-0 max-h-screen z-[90] bg-chatoverlay cursor-pointer   ${
+        className={`lg:hidden fixed inset-0 max-h-screen z-40 bg-chatoverlay cursor-pointer   ${
           sidebarOpen ? 'block' : 'hidden'
         } `}
       ></div>
@@ -128,13 +128,13 @@ const Sidebar = () => {
             ? 'open'
             : 'closed'
         }
-        className='shadow-sidebar group text-zinc-400  lg:z-[49] z-[91] max-w-[16rem]  w-[16rem] 
+        className='shadow-sm   group text-zinc-400  lg:z-[49] z-[91] max-w-[16rem]  w-[16rem] 
              fixed top-0 left-0
-           h-screen  dark:!text-gray-100 bg-neutral-900 border-r border-stone-900 '
+           h-screen  dark:!text-gray-100 bg-lighten dark:bg-neutral-900  '
       >
         {/* top bar */}
 
-        <div className='flex flex-col  h-full '>
+        <div className='flex flex-col z-40 h-full '>
           <ul className='whitespace-pre text-[0.9rem] flex flex-col overflow-x-hidden font-medium  scrollbar-thin scrollbar-thumb-transparent  group-hover:scrollbar-thumb-[#7D8084] scrollbar-track-transparent menuScrollBar  h-full  px-0  pb-20'>
             {/* logo */}
             <div

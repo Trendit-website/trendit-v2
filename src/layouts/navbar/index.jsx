@@ -1,30 +1,44 @@
 /* eslint-disable react/prop-types */
 import { useContext } from 'react'
 
-import {
-  MdLightMode,
-  MdMenu,
-  // MdModeNight,
-  MdNotifications,
-} from 'react-icons/md'
+import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
 
 import UserDropdown from '../components/UserDropdown'
 import { Search } from 'lucide-react'
-// import { useLocation } from 'react-router-dom'
-// import Logo from '../../components/Logo'
-import { CiLogout } from 'react-icons/ci'
-import useColorMode from '../../hooks/useColorMode'
 
+import useColorMode from '../../hooks/useColorMode'
+import { useLogoutUser } from '../../api/auth'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import useAccessToken from '../../hooks/useAccessToken'
+
+// const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
 const Navbar = ({ onNotificationClick }) => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
-  // const { pathname } = useLocation()
   // minimized sidebar was omitted for now!
+  const { mutateAsync: logout } = useLogoutUser()
+  const navigate = useNavigate()
+  const { removeAccessToken, token } = useAccessToken()
+
+  const handleLogout = async () => {
+    try {
+      const res = await logout({ access_token: token })
+      if (res.data.status) {
+        removeAccessToken(null)
+        toast.success(res.data.message)
+        navigate('/login')
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message ?? error.message)
+    }
+  }
   const [colorMode, setColorMode] = useColorMode()
+
   return (
     <div
-      className={`right-0 left-0 p-2 shadow-md z-20 sticky light:bglighten top-0 dark:shadow-md  bg-black dark:bg-bgDarkColor`}
+      className={`right-0 left-0 p-2 shadow-md z-20 sticky bg-lighten top-0 dark:shadow-md   dark:bg-bgDarkColor`}
     >
       <div className='px-3 py-1 '>
         <div className='flex items-center justify-between'>
@@ -41,7 +55,7 @@ const Navbar = ({ onNotificationClick }) => {
           >
             <div className='flex items-center justify-between '>
               <div
-                className=' lg:hidden cursor-pointer text-white'
+                className=' lg:hidden cursor-pointer text-black dark:text-white'
                 onClick={() => toggleSideBar()}
               >
                 <MdMenu size={25} />
@@ -110,7 +124,10 @@ const Navbar = ({ onNotificationClick }) => {
                     />
                   </svg>
                 </div>
-                <div className='w-6 h-6 relative cursor-pointer'>
+                <div
+                  onClick={onNotificationClick}
+                  className='w-6 h-6 relative cursor-pointer'
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
@@ -127,7 +144,12 @@ const Navbar = ({ onNotificationClick }) => {
                   </svg>
                 </div>
 
-                <div className='justify-start w-full items-center gap-[7px] cursor-pointer flex'>
+                <div
+                  onClick={() => {
+                    handleLogout()
+                  }}
+                  className='justify-start w-full items-center gap-[7px] cursor-pointer flex'
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'

@@ -33,17 +33,3 @@ export const useRegisterUser = () => {
     },
   })
 }
-export const useLoginUser = () => {
-  return useMutation({
-    mutationFn: ({ data }) => {
-      return API.post(`/login`, data)
-    },
-  })
-}
-export const useLogoutUser = () => {
-  return useMutation({
-    mutationFn: ({ data }) => {
-      return API.delete(`/logout`, data)
-    },
-  })
-}

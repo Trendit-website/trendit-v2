@@ -229,12 +229,12 @@ export default function Welcome() {
           </div>
           <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
             {profile && (
-              <Card className='self-stretch p-6 bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-white text-base font-bold font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-base font-bold font-['Campton']">
                     Complete your profile set up
                   </div>
-                  <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
                     You need to link your Facebook Account to Hawkit before you
                     can start earning with your Facebook Account. Click the
                     button below to link your Facebook account now.
@@ -256,9 +256,9 @@ export default function Welcome() {
                         />
                       </svg>
                     }
-                    className='p-2 rounded-none bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                    className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
-                    <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
+                    <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                       Go to settings
                     </div>
                   </Button>
@@ -285,12 +285,12 @@ export default function Welcome() {
               </Card>
             )}
             {linkIg && (
-              <Card className='self-stretch p-6 bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-white text-base font-bold font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-base font-bold font-['Campton']">
                     Link your Instagram Account
                   </div>
-                  <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
                     You need to link your Facebook Account to Hawkit before you
                     can start earning with your Facebook Account. Click the
                     button below to link your Facebook account now.
@@ -349,9 +349,9 @@ export default function Welcome() {
                         </defs>
                       </svg>
                     }
-                    className='p-2 rounded-none bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                    className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
-                    <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
+                    <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                       Link Instagram account
                     </div>
                   </Button>
@@ -383,23 +383,23 @@ export default function Welcome() {
         <div className='w[822px] mx-auto text-center md:mt-40 h-20 pb-3 flex-col justify-start items-center inline-flex'>
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
                 About Us
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
                 Terms
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
                 Privacy policy
               </div>
             </div>
           </div>
           <div className='py-3 justify-start items-center gap-[7px] inline-flex'>
-            <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+            <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
               © 2024 Trendit Techology.
             </div>
           </div>

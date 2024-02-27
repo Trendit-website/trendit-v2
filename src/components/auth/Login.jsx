@@ -5,24 +5,48 @@ import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
+import { useLoginUser } from '../../api/auth'
+import toast from 'react-hot-toast'
+import useAccessToken from '../../hooks/useAccessToken'
 
 export default function Login() {
   const {
     // register,
     handleSubmit,
     control,
-    // formState: { errors },
+    formState: { errors },
   } = useForm()
   const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const { mutateAsync: handleLogin } = useLoginUser()
+  //  const { userData } = useCurrentUser()
+  //  const toggleVisibility = () => setIsVisible(!isVisible)
+  const { setAccessToken } = useAccessToken()
+
+  const onSubmit = async (data) => {
+    //  const user_id = userData?.id
+    console.log(data, 'data')
+    try {
+      const res = await handleLogin({
+        data,
+      })
+      console.log(res)
+      if (res?.data?.status) {
+        //  setCurrentUser(res.data.user_data)
+
+        setAccessToken(res?.data?.access_token)
+        toast.success(res.data.message)
+        navigate('/dashboard')
+      }
+    } catch (error) {
+      toast.error(error.response?.message ?? error.message)
+    }
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='  md:h-[1024px] py-6 relative bg-black'>
+        <div className='  md:h-[1024px] py-6 relative bg-lighten dark:bg-black'>
           <div className='left-0 top-0 absolute'>
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
@@ -30,10 +54,10 @@ export default function Login() {
           <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
             <Logo />
 
-            <div className="text-center p-2 hidden  md:flex text-white text-[12.83px] font-bold font-['Campton']">
-              <Button variant='flat bg-none '>Go Back</Button>
+            <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+              <Button variant='flat bg-none'>Go Back</Button>
             </div>
-            <div className="text-center p-2 md:hidden  text-white text-[12.83px] font-bold font-['Campton']">
+            <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
               <Button variant='flat bg-none  '>
                 <ChevronRight />
               </Button>
@@ -51,52 +75,47 @@ export default function Login() {
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3 flex'>
-              {/* <Input
-                size='sm'
-                placeholder='Enter a valid email'
-                className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-              /> */}
               <Controller
-                name='email'
+                name='email_username'
                 control={control}
                 render={({ field }) => (
                   <Input
                     {...field}
                     size='sm'
+                    errorMessage={errors?.email_username?.message}
+                    isInvalid={!!errors?.email_username}
+                    required={true}
                     placeholder='Enter a valid email'
-                    className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   />
                 )}
+                rules={{ required: true }}
               />
               <Controller
-                name='username'
+                name='password'
                 control={control}
                 render={({ field }) => (
                   <Input
                     {...field}
                     size='sm'
-                    placeholder='Referral code/username (Optional)'
-                    className="grow shrink basis-0 bg-white rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    errorMessage={errors?.password?.message}
+                    isInvalid={!!errors?.password}
+                    required={true}
+                    placeholder='password'
+                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   />
                 )}
+                rules={{ required: true }}
               />
 
-              {/* <Input
-                size='sm'
-                placeholder='Referral code/username (Optional)'
-                className="grow shrink bg-white rounded basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-              /> */}
               <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
-                <div className="text-center cursor-pointer text-white text-[12.83px] font-bold font-['Campton']">
+                <div className="text-center cursor-pointer text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                   Forgot password
                 </div>
               </div>
               <Button
                 type='submit'
-                onClick={() => {
-                  navigate('/confirm-otp')
-                }}
-                className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
+                className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
                 Continue
               </Button>
@@ -136,7 +155,7 @@ export default function Login() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-1.5 inline-flex'>
-                <div className="p-2 bg-white text-center text-white text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex">
+                <div className="p-2 bg-[#B0B0B0] dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -163,7 +182,7 @@ export default function Login() {
                   </svg>
                   Google
                 </div>
-                <div className="p-2 text-center bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex text-white text-[12.83px] font-bold font-['Campton']">
+                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -182,7 +201,7 @@ export default function Login() {
                   </svg>
                   Facebook
                 </div>
-                <div className="p-2 text-center bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex text-white text-[12.83px] font-bold font-['Campton']">
+                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -225,7 +244,7 @@ export default function Login() {
             </div>
           </div>
           <div className='w-[24rem] mx-auto my-4'>
-            <div className='w-full h-0.5 bg-gradient-to-r  from-[#000] via-[#87189E] to-[#000]'></div>
+            <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff] via-[#FF6DFB] to-[#fff]'></div>
             <div className=' flex p-2 bordert border[#CB29BE]  justify-center items-center'>
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
                 By signing up, you agree to our
@@ -234,7 +253,7 @@ export default function Login() {
                 <span className="text-zinc-400 text-[12.83px] font-normal font-['Campton']">
                   {' '}
                 </span>
-                <span className="text-white text-[12.83px] font-bold font-['Campton']">
+                <span className="text-black dark:text-white  text-[12.83px] font-bold font-['Campton']">
                   Terms and Privacy Policy
                 </span>
               </div>
