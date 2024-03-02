@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/button'
 export default function EngagementTaskCard() {
   return (
     <div className='flex flex-col md:grid md:grid-cols-2 gap-3'>
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'

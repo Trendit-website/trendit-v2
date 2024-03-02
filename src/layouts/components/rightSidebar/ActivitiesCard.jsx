@@ -3,7 +3,7 @@
 export default function ActivitiesCard() {
   return (
     <div>
-      <div className='self-stretch p-3 bg-neutral-900 bg-opacity-40 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-3 bg-[#B0B0B0] dark:bg-neutral-900 bg-opacity-40 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='21'

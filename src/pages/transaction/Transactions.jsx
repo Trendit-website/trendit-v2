@@ -15,7 +15,7 @@ export default function Transactions() {
       <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch h-[276px] flex-col justify-start items-start gap-2 flex'>
-            <div className='self-stretch border-b border-stone-900 justify-between items-center inline-flex'>
+            <div className='self-stretch borderb borderstone-900 justify-between items-center inline-flex'>
               <div className='justify-start items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
                   <div className='flex flex-col w-full'>
@@ -112,11 +112,11 @@ export default function Transactions() {
             )}
           </div>
           <div className='self-stretch mt-40 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-white text-2xl font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
               Transaction History
             </div>
           </div>
-          <div className='self-stretch border-b border-stone-900 justify-between items-center inline-flex'>
+          <div className='self-stretch borderb borderstone900 justify-between items-center inline-flex'>
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
@@ -128,7 +128,7 @@ export default function Transactions() {
                     onSelectionChange={setSelectedHistory}
                     variant='underlined'
                     classNames={{
-                      tabList: '  bordered py-2',
+                      tabList: '  bordered  py-2',
                       cursor: ' bg-fuchsia-400',
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
@@ -197,13 +197,13 @@ export default function Transactions() {
             </div>
           </div>
           <div className='self-stretch px-3 justify-between items-start inline-flex'>
-            <div className="w-[145px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[145px] text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Type
             </div>
-            <div className="w-[860px] hidden md:grid text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[860px] hidden md:grid text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Description
             </div>
-            <div className="text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Amount
             </div>
           </div>

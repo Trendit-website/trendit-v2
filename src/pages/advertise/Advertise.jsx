@@ -85,7 +85,7 @@ export default function Advertise() {
             </svg>
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
-            <div className="text-white text-sm font-bold font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
               Earn on Trendit just got easier
             </div>
             <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
@@ -102,7 +102,7 @@ export default function Advertise() {
           </div>
         </div>
         <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
-          <div className='border-b border-stone-900 justify-between w-full items-center flex'>
+          <div className='borderb borderstone-900 justify-between w-full items-center flex'>
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
@@ -151,7 +151,7 @@ export default function Advertise() {
             <Button
               endContent={<ChevronRight />}
               variant='light'
-              className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
+              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Campton']"
             >
               History{' '}
             </Button>

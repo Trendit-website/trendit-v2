@@ -1,11 +1,14 @@
 import { Input } from '@nextui-org/input'
 import { Switch } from '@nextui-org/switch'
+import { useDarkMode } from 'usehooks-ts'
 
 export default function PrefrenceForm() {
+  const { toggle, isDarkMode } = useDarkMode(false)
+
   return (
     <div>
       <div className='self-stretch grow min-h-screen shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
-        <div className="text-white text-sm font-bold font-['Campton']">
+        <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
           Appearance
         </div>
         <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
@@ -13,7 +16,12 @@ export default function PrefrenceForm() {
             <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
               <Input
                 endContent={
-                  <Switch size='sm' defaultSelected color='default' />
+                  <Switch
+                    size='sm'
+                    isSelected={isDarkMode}
+                    color='default'
+                    onClick={toggle}
+                  />
                 }
                 placeholder='Dark Mode'
                 size='sm'
@@ -40,7 +48,12 @@ export default function PrefrenceForm() {
             <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
               <Input
                 endContent={
-                  <Switch size='sm' defaultSelected color='default' />
+                  <Switch
+                    size='sm'
+                    isSelected={!isDarkMode}
+                    color='default'
+                    onClick={toggle}
+                  />
                 }
                 placeholder='Light Mode'
                 size='sm'
@@ -67,7 +80,12 @@ export default function PrefrenceForm() {
             <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
               <Input
                 endContent={
-                  <Switch size='sm' defaultSelected color='default' />
+                  <Switch
+                    size='sm'
+                    defaultSelected
+                    color='default'
+                    // onClick={handleSystemColorModeToggle}
+                  />
                 }
                 placeholder='System Settings'
                 size='sm'

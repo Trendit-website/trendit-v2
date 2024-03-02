@@ -14,7 +14,7 @@ export default {
     extend: {
       colors: {
         bgDarkColor: '#161616',
-        lighten: '#F5F7FA',
+        lighten: '#fff',
       },
     },
   },

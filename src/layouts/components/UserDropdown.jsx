@@ -1,19 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-// import UserOne from "../../assets/images/avatar2.jpg";
-// import ArrowDown from "../../components/ArrowDown";
-import useCurrentUser from '../../hooks/useCurrentUser'
 import { Avatar } from '@nextui-org/react'
-import { ChevronDown } from 'lucide-react'
-import userImage1 from '../../assets/RectangleUser.svg'
+import { useGetProfile } from '../../api/profileApis'
 
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const { removeCurrentUser, userData } = useCurrentUser()
 
   const trigger = useRef(null)
   const dropdown = useRef(null)
+
+  const { data: profileDeatils } = useGetProfile()
 
   // close on click outside
   useEffect(() => {
@@ -41,10 +38,6 @@ const UserDropdown = () => {
     return () => document.removeEventListener('keydown', keyHandler)
   })
 
-  const logout = () => {
-    removeCurrentUser()
-  }
-
   return (
     <div className='relative '>
       <Link
@@ -54,33 +47,20 @@ const UserDropdown = () => {
         to='#'
       >
         <span className='rounded-full flex items-center'>
-          {userData?.data?.FILE_NAME?.includes('http') ? (
-            <Avatar
-              className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-              src={userData?.data?.FILE_NAME || userImage1}
-              title={
-                userData?.data?.LAST_NAME + ' ' + userData?.data?.FIRST_NAME
-              }
-            />
-          ) : (
-            <Avatar
-              // name={userData?.data?.FIRST_NAME?.trim()[0]}
-              src={userImage1}
-              className=' cursor-pointer w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-              title={
-                userData?.data?.LAST_NAME + ' ' + userData?.data?.FIRST_NAME
-              }
-            />
-          )}
+          <Avatar
+            className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
+            src={profileDeatils?.profile_picture}
+            title={profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
+          />
         </span>
         <span className='hidden text-left lg:block'>
           <div className='flex gap-1'>
             <div className='flex-col justify-start  gap-1.5 inline-flex'>
               <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
-                {userData?.data?.LAST_NAME || 'Adewale Adedamola'}
+                {profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
               </div>
               <div className="text-right text-zinc-400 text-sm font-medium font-['Campton']">
-                @moski7
+                @{profileDeatils?.username}
               </div>
             </div>
 
@@ -212,7 +192,7 @@ const UserDropdown = () => {
           </ul>
           <button
             className='flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base group'
-            onClick={logout}
+            // onClick={logout}
           >
             <svg
               className='fill-current group-hover:rotate-45 duration-75 ease-in-out'

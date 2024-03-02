@@ -17,8 +17,24 @@ import Referal from './pages/referal/Referal'
 import Support from './pages/support/Support'
 import PageNotFound from './pages/PageNotFound'
 import Settings from './pages/setting/Settings'
+import { useEffect } from 'react'
+import { useDarkMode } from 'usehooks-ts'
+import ForgetPassword from './components/auth/ForgetPassword'
 
 function App() {
+  const { isDarkMode } = useDarkMode()
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark')
+      document.body.classList.add('text-foreground')
+      document.body.classList.add('bg-background')
+    } else {
+      document.body.classList.remove('dark')
+      document.body.classList.remove('text-foreground')
+      document.body.classList.remove('bg-background')
+    }
+  }, [isDarkMode])
   return (
     <>
       <Animation>
@@ -28,6 +44,7 @@ function App() {
           <Route path='/confirm-otp' element={<ConfirmOtp />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/onboard' element={<OnBoard />} />
+          <Route path='/forgot_password' element={<ForgetPassword />} />
           <Route path='/home2' element={<Home />} />
           <Route path='/dashboard' element={<RootLayout />}>
             <Route path='' element={<Welcome />} />

@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import API from '../services/AxiosInstance'
 // import { formatError, showSuccess } from "../utilities/messagePopup";
 
@@ -33,25 +33,20 @@ export const useRegisterUser = () => {
     },
   })
 }
-export const useLoginUser = () => {
+export const useUserProfile = () => {
   return useMutation({
     mutationFn: ({ data }) => {
-      return API.post(`/login`, data)
+      return API.post(`/profile/edit`, data)
     },
   })
 }
 
-export const useForgetPassword = () => {
-  return useMutation({
-    mutationFn: ({ data }) => {
-      return API.post(`/forgot-password`, data)
-    },
-  })
-}
-export const useLogoutUser = () => {
-  return useMutation({
-    mutationFn: ({ data }) => {
-      return API.delete(`/logout`, data)
+export const useGetProfile = () => {
+  return useQuery({
+    queryKey: ['get_profile'],
+    queryFn: async () => {
+      const res = await API.get(`/profile`)
+      return res?.data?.user_profile
     },
   })
 }

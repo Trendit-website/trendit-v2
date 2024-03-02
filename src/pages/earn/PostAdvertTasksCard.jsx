@@ -1,7 +1,7 @@
 export default function PostAdvertTasksCard() {
   return (
     <div className='flex flex-col gap-3'>
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -20,10 +20,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white  text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
               Post adverts on your Facebook page
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Post adverts of various businesses and top brands on your
               Instagram Page and earn N100 per advert past. 1 you post, the more
               you earn. Note that your Instagram account must have at least 1000
@@ -47,7 +47,7 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -59,7 +59,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -67,7 +67,7 @@ export default function PostAdvertTasksCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -90,10 +90,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Post adverts on your Tiktok account
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -116,7 +116,7 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function PostAdvertTasksCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -183,10 +183,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Post adverts on your WhatsApp status
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -209,7 +209,7 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -221,7 +221,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function PostAdvertTasksCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -244,10 +244,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Post adverts on your X account
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -270,7 +270,7 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -282,7 +282,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
