@@ -12,7 +12,7 @@ const FaqCard = ({ question, answer }) => {
 
   return (
     <>
-      <div className='self-stretch w-full flex-col p-3  bg-[#1E1E1E]  border border-stone-900 justify-start gap-6 inline-flex'>
+      <div className='self-stretch w-full flex-col p-3 bg-gray-200 dark:bg-[#1E1E1E]  dark:border my-0.5 dark:border-stone-900 justify-start gap-6 inline-flex'>
         <div
           onClick={toggleAccordion}
           className='flex gap-2 cursor-pointer items-center '
@@ -20,15 +20,15 @@ const FaqCard = ({ question, answer }) => {
           {isOpen ? (
             <FaMinus
               //   onClick={toggleAccordion}
-              className='text-[#FFCFFD] cursor-pointer '
+              className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer '
             />
           ) : (
             <FaPlus
               //   onClick={toggleAccordion}
-              className='text-[#FFCFFD] cursor-pointer '
+              className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer '
             />
           )}
-          <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Campton']">
+          <div className="grow shrink basis-0 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
             How can i make money on Trendit?
           </div>
         </div>
@@ -36,7 +36,7 @@ const FaqCard = ({ question, answer }) => {
         {isOpen && (
           <div className='bgswhite p-4 '>
             {/* <div className='text-gray-700'>{answer}</div> */}
-            <div className='text-white'>
+            <div className='text-black dark:text-white'>
               How can i make money on Trendit? How can i make money on Trendit?
               How can i make money on Trendit? How can i make money on Trendit?
             </div>

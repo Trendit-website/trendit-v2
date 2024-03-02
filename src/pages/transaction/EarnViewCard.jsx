@@ -5,7 +5,7 @@ import { IoAdd } from 'react-icons/io5'
 export default function EarnViewCard() {
   return (
     <div>
-      <div className='self-stretch  p-6 bg-white bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
+      <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
         <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
           <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
             <div className='self-stretch justify-center items-start gap-3 inline-flex'>
@@ -23,7 +23,7 @@ export default function EarnViewCard() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="grow shrink basis-0 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
@@ -37,19 +37,19 @@ export default function EarnViewCard() {
                 >
                   <path
                     d='M8 9.33291L8 3.33291M5.33333 5.33291L7.5286 3.13764C7.78895 2.8773 8.21106 2.8773 8.47141 3.13765L10.6667 5.33291M2.66667 13.3329L13.3333 13.3329'
-                    stroke='#FF6DFB'
+                    className='dark:stroke-[#FF6DFB] stroke-[#FF6DFB]'
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-fuchsia-400 text-sm font-medium font-['Campton']">
+                <div className="text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Campton']">
                   Export
                 </div>
               </div>
               <div className='justify-start items-center gap-2 flex'>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="dark:opacity-50 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
                   Period
                 </div>
-                <div className="text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
                   All time
                 </div>
                 <svg
@@ -61,7 +61,7 @@ export default function EarnViewCard() {
                 >
                   <path
                     d='M10.5 5.25L7 8.75L3.5 5.25'
-                    stroke='#B1B1B1'
+                    className='dark:stroke-[#B1B1B1] stroke-white'
                     strokeWidth='1.16667'
                     strokeLinecap='round'
                     strokeLinejoin='round'
@@ -69,7 +69,7 @@ export default function EarnViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch text-fuchsia-200 text-[40px] font-normal font-['Campton']">
+            <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
               ₦3,321.09
             </div>
           </div>
@@ -77,10 +77,10 @@ export default function EarnViewCard() {
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
                 startContent={
-                  <IoAdd size={30} className='w-[18px] h-[18px] ' />
+                  <IoAdd size={30} className='w-[18px]  h-[18px] ' />
                 }
                 variant='light'
-                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-center text-black text-[12.83px] font-bold font-['Campton']"
+                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-center text-white dark:text-black text-[12.83px] font-bold font-['Campton']"
               >
                 Fund
               </Button>
@@ -90,7 +90,7 @@ export default function EarnViewCard() {
                   <ExternalLinkIcon size={30} className='w-[18px] h-[18px] ' />
                 }
                 variant='light'
-                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-black text-[12.83px] font-bold font-['Campton']"
+                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-white dark:text-black text-[12.83px] font-bold font-['Campton']"
               >
                 Withdraw
               </Button>
@@ -183,7 +183,7 @@ export default function EarnViewCard() {
                     fill='#4CAF50'
                   />
                 </svg>
-                <div className="text-center text-green-500 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-white opacity-50 dark:opacity-100 dark:text-green-500 text-[10px] font-normal font-['Campton']">
                   53.3%
                 </div>
               </div>

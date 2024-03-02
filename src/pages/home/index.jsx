@@ -8,11 +8,15 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 import selfieImage from '../../assets/selfie.svg'
 import readingImage from '../../assets/reading-side.svg'
 import { useState } from 'react'
+import { useGetProfile } from '../../api/profileApis'
 
 export default function Welcome() {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
   const [showUp, setShowUp] = useState(true)
+  const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils, 'profile')
+
   return (
     <div>
       <div className='p-3  flex-col justify-start items-start gap-3 inline-flex relative'>
@@ -250,7 +254,8 @@ export default function Welcome() {
                       >
                         <path
                           d='M3.33331 4.16667H13.3333M13.3333 4.16667C13.3333 5.08714 14.0795 5.83333 15 5.83333C15.9205 5.83333 16.6666 5.08714 16.6666 4.16667C16.6666 3.24619 15.9205 2.5 15 2.5C14.0795 2.5 13.3333 3.24619 13.3333 4.16667ZM6.66665 10H16.6666M6.66665 10C6.66665 10.9205 5.92045 11.6667 4.99998 11.6667C4.07951 11.6667 3.33331 10.9205 3.33331 10C3.33331 9.07953 4.07951 8.33333 4.99998 8.33333C5.92045 8.33333 6.66665 9.07953 6.66665 10ZM3.33331 15.8333H13.3333M13.3333 15.8333C13.3333 16.7538 14.0795 17.5 15 17.5C15.9205 17.5 16.6666 16.7538 16.6666 15.8333C16.6666 14.9129 15.9205 14.1667 15 14.1667C14.0795 14.1667 13.3333 14.9129 13.3333 15.8333Z'
-                          stroke='#FFD0FE'
+                          // stroke='#FFD0FE'
+                          className='text-[#FFD0FE] stroke-[#CB29BE] dark:stroke-[#FFD0FE]'
                           strokeWidth='2'
                           strokeLinecap='round'
                         />

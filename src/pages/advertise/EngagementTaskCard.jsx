@@ -3,7 +3,7 @@ import { Button } from '@nextui-org/button'
 export default function EngagementTaskCard() {
   return (
     <div className='flex flex-col md:grid md:grid-cols-2 gap-3'>
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -22,10 +22,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white  text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
               Like and follow facebook business pages
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -48,7 +48,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>
@@ -59,7 +59,7 @@ export default function EngagementTaskCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -82,10 +82,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Like and follow facebook business pages
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -108,7 +108,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function EngagementTaskCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -146,10 +146,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Post adverts on your WhatsApp status
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -172,7 +172,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>
@@ -183,7 +183,7 @@ export default function EngagementTaskCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -198,10 +198,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Post adverts on your X account
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -224,7 +224,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function EngagementTaskCard() {
           </div>
         </div>
       </div>
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -284,10 +284,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Like and follow facebook business pages
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -310,7 +310,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>
@@ -320,7 +320,7 @@ export default function EngagementTaskCard() {
           </div>
         </div>
       </div>
-      <div className='self-stretch p-6 bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='48'
@@ -367,10 +367,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Like and follow facebook business pages
             </div>
-            <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -393,7 +393,7 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦150 per Advert post
               </div>
             </div>

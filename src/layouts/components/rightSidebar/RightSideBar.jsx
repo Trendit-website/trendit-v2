@@ -17,7 +17,7 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col  justify-start items-start inline-flex'>
+      <div className='flex-col justify-start items-start inline-flex'>
         <div className=' py-3 bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
           <div className='self-stretch  px-[11px] flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch px-3 py-1.5  bg-lighten dark:bg-zinc-900 rounded justify-start items-center gap-2 inline-flex'>
@@ -70,9 +70,10 @@ export default function RightSidebar() {
                   cursor: ' bg-fuchsia-400',
                   //   selectedKey: 'text-fuchsia-400',
                   selectedKey: 'text-green-400',
-                  tabContent: 'group-data-[selected=true]:text-fuchsia-400 ',
+                  tabContent:
+                    'group-data-[selected=true]:text-[#FF6DFB] dark:group-data-[selected=true]:text-fuchsia-400 ',
                 }}
-                className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                className="text-center text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
                 // color={selected ? 'text-fuchsia-400' : ''}
                 color='secondary'
                 // className='text-fuchsia-400'
@@ -105,7 +106,11 @@ export default function RightSidebar() {
                   title={
                     <div>
                       Notifications
-                      <Chip size='sm' className='text-white' variant='light'>
+                      <Chip
+                        size='sm'
+                        className='text-black dark:text-white'
+                        variant='light'
+                      >
                         20+
                       </Chip>
                     </div>
@@ -137,7 +142,11 @@ export default function RightSidebar() {
                   title={
                     <div>
                       Messages
-                      <Chip size='sm' className='text-white' variant='light'>
+                      <Chip
+                        size='sm'
+                        className='text-black dark:text-white'
+                        variant='light'
+                      >
                         5
                       </Chip>
                     </div>

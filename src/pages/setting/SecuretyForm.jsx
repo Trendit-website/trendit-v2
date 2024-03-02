@@ -7,14 +7,14 @@ export default function SecuretyForm() {
     <div>
       <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
         <div className='self-stretch h[446px] flex-col justify-start items-start gap-6 flex'>
-          <div className="text-white text-sm font-bold font-['Campton']">
+          <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
             Security
           </div>
 
           <div className='self-stretch h[302px] flex-col justify-start items-center gap-3.5 flex'>
             <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
               <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                   Password
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function SecuretyForm() {
             </div>
             <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
               <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                   Change Password
                 </div>
               </div>
@@ -55,7 +55,7 @@ export default function SecuretyForm() {
                   endContent={
                     <Button
                       variant='light'
-                      className="text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                      className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
                     >
                       Edit
                     </Button>
@@ -87,7 +87,7 @@ export default function SecuretyForm() {
 
             <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
               <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                   Confirm Password
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function SecuretyForm() {
                   endContent={
                     <Button
                       variant='light'
-                      className="text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                      className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
                     >
                       Edit
                     </Button>
@@ -128,7 +128,7 @@ export default function SecuretyForm() {
           </div>
         </div>
         <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
-          <div className="text-white mt-8 text-sm font-bold font-['Campton']">
+          <div className="text-black dark:text-white mt8 text-sm font-bold font-['Campton']">
             2 Factor Authentication
           </div>
           <div className='self-stretch flex-col justify-start items-center gap-3.5 flex'>
@@ -191,7 +191,7 @@ export default function SecuretyForm() {
                 endContent={
                   <Button
                     variant='light'
-                    className="text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                    className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
                   >
                     Activate
                   </Button>

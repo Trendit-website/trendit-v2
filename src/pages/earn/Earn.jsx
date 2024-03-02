@@ -488,17 +488,17 @@ export default function Earn() {
             )}
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
-            <div className="text-white text-sm font-bold font-['Campton']">
+            <div className="text-blck dark:text-white text-sm font-bold font-['Campton']">
               Earn on Trendit just got easier
             </div>
-            <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
+            <div className="self-stretch md:w-[30rem] text-center text-black dark:text-zinc-400 text-xs font-normal font-['Campton']">
               Get people with atleast 1000 active followers to repost your
               adverts and perform certain social tasks for you on their social
               media accounts. Select the type of task you want people to perform
               below:
             </div>
 
-            <Button className=' px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
+            <Button className=' px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='17'
@@ -512,7 +512,7 @@ export default function Earn() {
                   strokeLinecap='round'
                 />
               </svg>
-              <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+              <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Campton']">
                 Pay N1,000 for activation
               </div>
             </Button>
@@ -524,7 +524,7 @@ export default function Earn() {
           </div>
         </div>
         <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
-          <div className='border-b border-stone-900 justify-between w-full items-center flex'>
+          <div className=' justify-between w-full items-center flex'>
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
@@ -573,7 +573,7 @@ export default function Earn() {
             <Button
               endContent={<ChevronRight />}
               variant='light'
-              className="text-white justify-start items-center flex text-sm font-medium font-['Campton']"
+              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Campton']"
             >
               History{' '}
             </Button>

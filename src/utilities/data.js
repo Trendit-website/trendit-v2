@@ -58,3 +58,13 @@ export const animals = [
     description: 'A large semiaquatic reptile',
   },
 ]
+export const genders = [
+  {
+    label: 'Male',
+    value: 'male',
+  },
+  {
+    label: 'Female',
+    value: 'female',
+  },
+]

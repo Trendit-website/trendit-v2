@@ -18,7 +18,8 @@ export default function Login() {
   } = useForm()
   const navigate = useNavigate()
 
-  const { mutateAsync: handleLogin } = useLoginUser()
+  const { mutateAsync: handleLogin, isLoading } = useLoginUser()
+  // const { loginUser: handleLogin, isLoading } = useLoginUser()
   //  const { userData } = useCurrentUser()
   //  const toggleVisibility = () => setIsVisible(!isVisible)
   const { setAccessToken } = useAccessToken()
@@ -27,9 +28,7 @@ export default function Login() {
     //  const user_id = userData?.id
     console.log(data, 'data')
     try {
-      const res = await handleLogin({
-        data,
-      })
+      const res = await handleLogin({ data })
       console.log(res)
       if (res?.data?.status) {
         //  setCurrentUser(res.data.user_data)
@@ -42,6 +41,23 @@ export default function Login() {
       toast.error(error.response?.message ?? error.message)
     }
   }
+
+  // const onSubmit = async (data) => {
+  //   //  const user_id = userData?.id
+  //   console.log(data, 'data')
+  //   try {
+  //     const res = await handleLogin(data) // Remove the unnecessary object wrapper around data
+  //     console.log(res)
+  //     if (res?.data?.status) {
+  //       //  setCurrentUser(res.data.user_data)
+  //       setAccessToken(res?.data?.access_token)
+  //       toast.success(res.data.message)
+  //       navigate('/dashboard')
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.response?.message ?? error.message)
+  //   }
+  // }
 
   return (
     <div>
@@ -109,7 +125,10 @@ export default function Login() {
               />
 
               <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
-                <div className="text-center cursor-pointer text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+                <div
+                  onClick={() => navigate('/forgot_password')}
+                  className="text-center cursor-pointer text-black dark:text-white text-[12.83px] font-bold font-['Campton']"
+                >
                   Forgot password
                 </div>
               </div>
@@ -117,7 +136,9 @@ export default function Login() {
                 type='submit'
                 className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
-                Continue
+                {/* {isLoading ? <Spinner color='current' /> : 'Continue'} */}
+                {isLoading ? 'loading....' : 'Continue'}
+                {/* Continue */}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>
@@ -244,7 +265,7 @@ export default function Login() {
             </div>
           </div>
           <div className='w-[24rem] mx-auto my-4'>
-            <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff] via-[#FF6DFB] to-[#fff]'></div>
+            <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff]  dark:from-[#000] !via-[#FF6DFB] to-[#fff] dark:to-[#000]'></div>
             <div className=' flex p-2 bordert border[#CB29BE]  justify-center items-center'>
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
                 By signing up, you agree to our

@@ -251,7 +251,7 @@ export default function VerifyEmail() {
             </div>
           </div>
           <div className='w-[24rem] mx-auto my-4'>
-            <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff] via-[#FF6DFB] to-[#fff] dark:from-[#000] dark:via-[#FF6DFB] dark:to-[#000] '></div>
+            <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff]  dark:from-[#000] !via-[#FF6DFB] to-[#fff] dark:to-[#000] '></div>
             <div className=' flex p-2 bordert border[#CB29BE]  justify-center items-center'>
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
                 By signing up, you agree to our

@@ -8,7 +8,8 @@ const access_token = JSON.parse(localStorage.getItem('access_token'))?.state
 // console.log(access_token, 'accccc nhhhh')
 // console.log(token, 'token')
 const API = axios.create({
-  baseURL: `https://trendit3-v2-gj9x.onrender.com/api`,
+  // baseURL: `https://trendit3-v2-gj9x.onrender.com/api`,
+  baseURL: `https://trendit3-hd9u.onrender.com/api`,
 })
 API.interceptors.request.use((req) => {
   req.headers['signup_token'] = token

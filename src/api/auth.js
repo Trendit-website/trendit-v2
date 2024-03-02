@@ -40,6 +40,14 @@ export const useLoginUser = () => {
     },
   })
 }
+
+export const useForgetPassword = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/forgot-password`, data)
+    },
+  })
+}
 export const useLogoutUser = () => {
   return useMutation({
     mutationFn: ({ data }) => {

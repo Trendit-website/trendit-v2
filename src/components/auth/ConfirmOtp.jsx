@@ -15,7 +15,7 @@ export default function ConfirmOtp() {
     // register,
     handleSubmit,
     control,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm()
   const { mutateAsync: verifyUserEmail } = useVerifyEmailOtp()
@@ -31,11 +31,11 @@ export default function ConfirmOtp() {
     const updatedOtp = [...otp]
     updatedOtp[index] = value
     setOtp(updatedOtp)
-
     // If all OTP digits are entered, submit the form
     if (updatedOtp.filter((digit) => digit !== '').length === 6) {
       otp2.current = updatedOtp
-      handleSubmit(onSubmit)()
+      onSubmit()
+      console.log(otp2, '245555')
     }
   }
 
@@ -50,7 +50,6 @@ export default function ConfirmOtp() {
         setCurrentUser(res.data.user_data)
         toast.success(res.data.message)
         navigate('/signup')
-        reset()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
@@ -64,7 +63,6 @@ export default function ConfirmOtp() {
       })
       if (res.data.status) {
         toast.success(res.data.message)
-        reset()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
@@ -106,7 +104,7 @@ export default function ConfirmOtp() {
                 {[...Array(6)].map((_, index) => (
                   <Controller
                     key={index}
-                    name={`entered_code_${index}`}
+                    name={`entered_code${index}`}
                     control={control}
                     render={({ field }) => (
                       <Input

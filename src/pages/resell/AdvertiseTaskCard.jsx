@@ -8,7 +8,7 @@ import imgplaceholder from '../../assets/Rectangle5.svg'
 
 export default function AdvertiseTaskCard() {
   return (
-    <Card className=' p-6 bg-zinc-900 rounded-lg flex-col justify-start items-start gap-2 inline-flex'>
+    <Card className=' p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg flex-col justify-start items-start gap-2 inline-flex'>
       <div className='w[365.67px] bgred-500 h[148.59px] relative bg-neutral-800'>
         <Image
           className='w-[365px] rounded-none h[149px] wfull left0 top0 bsolute opacity-50'
@@ -55,7 +55,7 @@ export default function AdvertiseTaskCard() {
       <div className='self-stretch justify-start items-start gap-2 inline-flex'>
         <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
           <div className='self-stretch justify-between items-start inline-flex'>
-            <div className="w-[221px] text-white text-sm font-medium font-['Campton']">
+            <div className="w-[221px] text-black dark:text-white text-sm font-medium font-['Campton']">
               Toks Toyota camry 05 on sales @ +2349060344669
             </div>
             <svg
@@ -67,7 +67,7 @@ export default function AdvertiseTaskCard() {
             >
               <path
                 d='M3.33331 3.92334V14.4477C3.33331 14.8193 3.72447 15.0611 4.05692 14.8949L7.77222 13.0372C8.33527 12.7557 8.99802 12.7557 9.56107 13.0372L13.2764 14.8949C13.6088 15.0611 14 14.8193 14 14.4477V3.92334C14 2.81877 13.1045 1.92334 12 1.92334H5.33331C4.22874 1.92334 3.33331 2.81877 3.33331 3.92334Z'
-                stroke='white'
+                className='dark:stroke-white stroke-black'
                 strokeLinecap='round'
               />
             </svg>
@@ -104,7 +104,7 @@ export default function AdvertiseTaskCard() {
                   Commission
                 </div>
               </div>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                 ₦270,000 per sale
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function AdvertiseTaskCard() {
               <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton'] line-through">
                 30% off
               </div>
-              <Button className='justify-start bg-zinc-900 items-center gap-2 flex'>
+              <Button className='justify-start bg-gray-200 dark:bg-zinc-900 items-center gap-2 flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='17'
@@ -125,7 +125,7 @@ export default function AdvertiseTaskCard() {
                     fill='#FF6DFB'
                   />
                 </svg>
-                <div className="text-fuchsia-400 text-sm font-medium font-['Campton']">
+                <div className=" text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Campton']">
                   More details
                 </div>
               </Button>

@@ -1,9 +1,12 @@
 /* eslint-disable no-irregular-whitespace */
 
+import { useGetProfile } from '../../api/profileApis'
 import frameImage from '../../assets/Frame237892.svg'
 import { Snippet } from '@nextui-org/snippet'
 
 export default function Referal() {
+  const { data: profileDeatils } = useGetProfile()
+
   return (
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-12 inline-flex'>
@@ -30,7 +33,7 @@ export default function Referal() {
                     className="grow bg-white shrink basis-0 text-black text-[12.83px] font-normal font-['Campton']"
                     size='sm'
                   >
-                    https://trendit-web.vercel.app/7839
+                    {profileDeatils?.referral_link}
                   </Snippet>
                   <div className=''>
                     <svg
@@ -123,7 +126,7 @@ export default function Referal() {
             </div>
           </div>
         </div>
-        <div className='self-stretch flex-col justify-start items-start gap-4 flex'>
+        <div className='self-stretch h-96 flex-col justify-start items-start gap-4 flex'>
           <div className="text-white py-3 text-2xl font-medium font-['Campton']">
             Invited friends
           </div>
