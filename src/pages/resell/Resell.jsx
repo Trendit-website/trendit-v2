@@ -1,11 +1,9 @@
 import { Button } from '@nextui-org/button'
-import { ChevronRight, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
-// import { Chip } from '@nextui-org/chip'
 import AdvertiseTaskCard from './AdvertiseTaskCard'
-// import EngagementTaskCard from './EngagementTaskCard'
 import { Input } from '@nextui-org/input'
 
 export default function Resell() {
@@ -68,7 +66,7 @@ export default function Resell() {
           </div>
         </div>
         <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-          <div className="text-white text-2xl font-medium font-['Campton']">
+          <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
             Market Place
           </div>
         </div>
@@ -77,9 +75,9 @@ export default function Resell() {
             startContent={<Search />}
             placeholder='Search'
             size='sm'
-            className="text-center max-w-md bg-zinc-900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
+            className="text-center max-w-md bg-zinc900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
             classNames={{
-              dataFocused: 'bg-black',
+              dataFocused: 'dark:bg-black',
               input: [
                 'bg-transparent',
                 'text-black/90 dark:text-white/90',
@@ -87,13 +85,13 @@ export default function Resell() {
               ],
               innerWrapper: 'bg-transparent',
               inputWrapper: [
-                'shadow-xl',
-                'bg-zinc-800',
-                'dark:bg-black',
+                'dark:shadow-xl',
+                'dark:bg-zinc-800',
                 'backdrop-blur-xl',
                 'backdrop-saturate-200',
-                'hover:bg-zinc-900',
-                'dark:hover:bg-zinc-800',
+                'dark:hover:bg-zinc-900',
+                'dark:hover:bg-zinc-900',
+                'hover:bg-gray-200',
                 'group-data-[focused=true]:bg-zinc-800',
                 'dark:group-data-[focused=true]:bg-zinc-800',
                 '!cursor-text',
@@ -111,13 +109,13 @@ export default function Resell() {
                   >
                     <path
                       d='M6.66667 4L10.1953 7.5286C10.4556 7.78894 10.4556 8.21106 10.1953 8.4714L6.66667 12'
-                      stroke='white'
+                      className='dark:stroke-white stroke-black'
                       strokeLinecap='round'
                     />
                   </svg>
                 }
                 variant='light'
-                className="text-white md:hidden justify-start items-center flex text-sm font-medium font-['Campton']"
+                className="text-black dark:text-white md:hidden justify-start items-center flex text-sm font-medium font-['Campton']"
               >
                 History
                 <span>
@@ -130,7 +128,7 @@ export default function Resell() {
                   >
                     <path
                       d='M6.66667 4L10.1953 7.5286C10.4556 7.78894 10.4556 8.21106 10.1953 8.4714L6.66667 12'
-                      stroke='white'
+                      className='dark:stroke-white stroke-black'
                       strokeLinecap='round'
                     />
                   </svg>
@@ -149,13 +147,14 @@ export default function Resell() {
               >
                 <path
                   d='M6.66667 4L10.1953 7.5286C10.4556 7.78894 10.4556 8.21106 10.1953 8.4714L6.66667 12'
-                  stroke='white'
+                  // stroke='white'
+                  className='stroke-black dark:stroke-white'
                   strokeLinecap='round'
                 />
               </svg>
             }
             variant='light'
-            className="text-white hidden md:flex justify-start items-center  text-sm font-medium font-['Campton']"
+            className="text-black dark:text-white hidden md:flex justify-start items-center  text-sm font-medium font-['Campton']"
           >
             History
           </Button>
@@ -176,8 +175,9 @@ export default function Resell() {
                       tabList: '  bordered  py-2',
                       cursor: ' bg-fuchsia-400',
                       selectedKey: 'text-green-400',
+                      base: 'border border-2 border-red',
                       tabContent:
-                        'group-data-[selected=true]:text-fuchsia-400 ',
+                        'group-data-[selected=true]:text-fuchsia-400  ',
                     }}
                     className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
                     color='secondary'
