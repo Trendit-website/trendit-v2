@@ -1,8 +1,12 @@
 import { Button } from '@nextui-org/button'
 import { ExternalLinkIcon } from 'lucide-react'
 import { IoAdd } from 'react-icons/io5'
+import SelectPaymentmodal from './components/SelectPaymentmodal'
+import { useDisclosure } from '@nextui-org/react'
 
 export default function OrdersViewCard() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <div>
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
@@ -76,6 +80,7 @@ export default function OrdersViewCard() {
           <div className='justify-start items-start gap-[19px] inline-flex'>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
+                onClick={onOpen}
                 startContent={
                   <IoAdd size={30} className='w-[18px]  h-[18px] ' />
                 }
@@ -191,6 +196,8 @@ export default function OrdersViewCard() {
           </div>
         </div>
       </div>
+
+      <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />
     </div>
   )
 }

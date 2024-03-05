@@ -1,7 +1,7 @@
 export default function TransactionCard() {
   return (
     <div>
-      <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5 dark:bg-white bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
+      <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5  bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
         <div className='p-1.5 bg-[#B1B1B1] dark:bg-white dark:bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -34,7 +34,7 @@ export default function TransactionCard() {
           + ₦3,675
         </div>
       </div>
-      <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5 dark:bg-white bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
+      <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5  bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
         <div className='p-1.5 bg-[#B1B1B1] dark:bg-white dark:bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -67,7 +67,7 @@ export default function TransactionCard() {
           + ₦3,675
         </div>
       </div>
-      <div className=' w-full self-stretch p-3 bg-[#B1B1B1] my-0.5 dark:bg-white bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
+      <div className=' w-full self-stretch p-3 bg-[#B1B1B1] my-0.5  bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
         <div className='p-1.5 bg-[#B1B1B1] dark:bg-white dark:bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
           <svg
             xmlns='http://www.w3.org/2000/svg'

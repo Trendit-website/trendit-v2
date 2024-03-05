@@ -23,10 +23,8 @@ export const useGetCountry = () => {
     queryKey: ['country'],
     queryFn: async () => {
       const res = await API.get(`/countries`)
-      console.log(res, 'res')
-      console.log(res?.data)
+
       return res?.data?.countries
-      // return res?.data?.data
     },
   })
 
@@ -34,13 +32,10 @@ export const useGetCountry = () => {
 }
 
 export const useGetState = (country) => {
-  //   console.log(country)
   const { data, isLoading, isError } = useQuery({
     queryKey: ['state', country],
     queryFn: async () => {
-      // const res = await API.get(`/states?${country}`)
-      // const res = await API.get(`/states`)
-      const res = await API.get(`/states`)
+      const res = await API.post(`/states`, { country })
       console.log(res?.data?.states, 'state')
       return res?.data?.states
     },
@@ -50,17 +45,16 @@ export const useGetState = (country) => {
 }
 
 export const useGetLga = (state) => {
+  console.log(state, 'useGetLga')
   const { data, isLoading, isError } = useQuery({
     queryKey: ['lga', state],
     queryFn: async () => {
-      // const res = await API.get(`/states/lga/${state}`)
-      // const res = await API.get(`/states/lga`)
-      const res = await API.get(`/states/lga?state=${state}`)
-      console.log(res?.data?.lgas, 'lga')
-      return res?.data?.states
+      const res = await API.post(`/states/lga`, { state })
+      console.log(res, 'success')
+      console.log(res?.data?.state_lga, 'lga location')
+      return res?.data?.state_lga
     },
     enabled: !!state,
   })
-
   return { data, isLoading, isError }
 }
