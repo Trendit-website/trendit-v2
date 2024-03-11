@@ -48,7 +48,9 @@ export default function VerifyEmail() {
             <Logo />
 
             <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
-              <Button variant='flat bg-none '>Go Back</Button>
+              <Button onClick={() => navigate(-1)} variant='flat bg-none '>
+                Go Back
+              </Button>
             </div>
             <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
               <Button variant='flat bg-none  '>
@@ -85,7 +87,7 @@ export default function VerifyEmail() {
                 rules={{ required: true }}
               />
               <Controller
-                name='username'
+                name='referrer_code'
                 control={control}
                 render={({ field }) => (
                   <Input

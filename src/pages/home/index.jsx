@@ -8,14 +8,18 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 import selfieImage from '../../assets/selfie.svg'
 import readingImage from '../../assets/reading-side.svg'
 import { useState } from 'react'
-import { useGetProfile } from '../../api/profileApis'
+import SelectPaymentmodal from '../transaction/components/SelectPaymentmodal'
+import { useDisclosure } from '@nextui-org/react'
+import { useNavigate } from 'react-router-dom'
+import { useFetchBallance } from '../../api/walletApi'
 
 export default function Welcome() {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
   const [showUp, setShowUp] = useState(true)
-  const { data: profileDeatils } = useGetProfile()
-  console.log(profileDeatils, 'profile')
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const navigate = useNavigate()
+  const { data: showBalance } = useFetchBallance()
 
   return (
     <div>
@@ -108,11 +112,12 @@ export default function Welcome() {
                 Wallet bal:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Campton']">
-                ₦3,321.09
+                {showBalance?.currency_code}:{showBalance?.balance}
               </div>
             </div>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
+                onClick={onOpen}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -263,7 +268,10 @@ export default function Welcome() {
                     }
                     className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
-                    <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+                    <div
+                      onClick={() => navigate(`/dashboard/settings`)}
+                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']"
+                    >
                       Go to settings
                     </div>
                   </Button>
@@ -410,6 +418,8 @@ export default function Welcome() {
           </div>
         </div>
       </div>
+
+      {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />}
     </div>
   )
 }

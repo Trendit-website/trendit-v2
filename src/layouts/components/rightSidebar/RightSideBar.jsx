@@ -11,9 +11,17 @@ import NotificationCard from './NotificationCard'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SearchIcon } from 'lucide-react'
 import { Chip } from '@nextui-org/chip'
+import {
+  useGetActivities,
+  useGetMessages,
+  useGetNotification,
+} from '../../../api/notificationApi'
 
 export default function RightSidebar() {
   const [selected, setSelected] = useState('activities')
+  const { data: notification } = useGetNotification()
+  const { data: messages } = useGetMessages()
+  const { data: activities } = useGetActivities()
 
   return (
     <>
@@ -90,15 +98,15 @@ export default function RightSidebar() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    {[1, 2, 3, 4, 5, 6, 7].map((a) => (
-                      <ActivitiesCard key={a} />
-                    ))}
-                    <Button
-                      variant='light'
-                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
-                    >
-                      View more
-                    </Button>
+                    <ActivitiesCard />
+                    {activities?.length > 8 && (
+                      <Button
+                        variant='light'
+                        className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      >
+                        View more
+                      </Button>
+                    )}
                   </motion.div>
                 </Tab>
                 <Tab
@@ -111,7 +119,7 @@ export default function RightSidebar() {
                         className='text-black dark:text-white'
                         variant='light'
                       >
-                        20+
+                        {notification?.length}
                       </Chip>
                     </div>
                   }
@@ -125,16 +133,16 @@ export default function RightSidebar() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    {[1, 2, 3, 4, 5, 6, 7].map((a) => (
-                      <NotificationCard key={a} />
-                    ))}
+                    <NotificationCard />
 
-                    <Button
-                      variant='light'
-                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
-                    >
-                      View more
-                    </Button>
+                    {notification?.length > 8 && (
+                      <Button
+                        variant='light'
+                        className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      >
+                        View more
+                      </Button>
+                    )}
                   </motion.div>
                 </Tab>
                 <Tab
@@ -147,7 +155,7 @@ export default function RightSidebar() {
                         className='text-black dark:text-white'
                         variant='light'
                       >
-                        5
+                        {messages?.length}
                       </Chip>
                     </div>
                   }
@@ -161,15 +169,15 @@ export default function RightSidebar() {
                       scale: { duration: 0.4 },
                     }}
                   >
-                    {[1, 2, 3, 4, 5, 6, 7].map((a) => (
-                      <MessageCard key={a} />
-                    ))}
-                    <Button
-                      variant='light'
-                      className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
-                    >
-                      View more
-                    </Button>
+                    <MessageCard />
+                    {messages?.length > 8 && (
+                      <Button
+                        variant='light'
+                        className="text-center  bg-none mx-auto px-2 py-3 justify-center items-center gap-1 inline-flex text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      >
+                        View more
+                      </Button>
+                    )}
                   </motion.div>
                 </Tab>
               </Tabs>
