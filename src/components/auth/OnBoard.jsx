@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
 import { ChevronRight } from 'lucide-react'
 import { AiTwotoneEdit } from 'react-icons/ai'
-import {
-  Button,
-  Input,
-  Select,
-  SelectItem,
-  useDisclosure,
-} from '@nextui-org/react'
+import { Button, Select, SelectItem, useDisclosure } from '@nextui-org/react'
 import Logo from '../Logo'
 import { genders } from '../../utilities/data'
 import AuthModal from './AuthModal'
 import { useNavigate } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useUserProfile } from '../../api/profileApis'
@@ -22,16 +16,19 @@ import { useUserProfile } from '../../api/profileApis'
 export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()
+  const [selectedImage, setSelectedImage] = useState(null)
 
   const {
     handleSubmit,
     control,
     watch,
     setValue,
+    register,
     formState: { errors },
   } = useForm({})
 
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
+
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().country
   )
@@ -53,15 +50,32 @@ export default function OnBoard() {
   }, [watch().state, setValue])
 
   const onSubmit = async (data) => {
+    console.log(data, 'form data')
+
+    const selectedDate = `${data.year}-${data.month.padStart(
+      2,
+      '0'
+    )}-${data.day.padStart(2, '0')}`
     try {
-      const res = await updateProfile({
-        data,
-      })
+      const formData = new FormData()
+      // Append selected image to formData if available
+      if (selectedImage) {
+        formData.append('profile_picture', selectedImage)
+      }
+      // Append other form fields
+      formData.append('gender', data.gender)
+      formData.append('birthday', selectedDate)
+      formData.append('country', data.country)
+      formData.append('state', data.state)
+      formData.append('local_government', data.local_government)
+      console.log(formData, 'formdata')
+      const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
           duration: 20000,
         })
+        onOpen()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -90,15 +104,43 @@ export default function OnBoard() {
                   profile set up.
                 </div>
                 <div className='flex-col justify-center items-center gap-2 flex'>
-                  <div className='w-[66px] h-[66px] relative'>
-                    <div className='w-[66px] h-[66px] left-0 top-0 absolute bg-fuchsia-600 bg-opacity-40 rounded-[10px]' />
-                    <div className='w-8 h-8  top-[21px] absolute cursor-pointer'>
-                      <AiTwotoneEdit className='text-white w-16' size={40} />
-                    </div>
+                  <div className='w-[66px] h-[66px] cursor-pointer relative'>
+                    <div className='w-[66px] h-[66px] cursor-pointer left-0 top-0 absolute bg-fuchsia-600 bg-opacity-40 rounded-[10px]' />
+                    {/* Invisible input field */}
+                    <input
+                      type='file'
+                      accept='image/*'
+                      id='image-upload'
+                      className='absolute w-full h-full opacity-0 cursor-pointer'
+                      onChange={(e) =>
+                        setSelectedImage(URL.createObjectURL(e.target.files[0]))
+                      }
+                    />
+                    {/* Pencil icon */}
+                    <label
+                      htmlFor='image-upload'
+                      className='w-full cursor-pointer h-full'
+                    >
+                      <div className='w-8 h-8 cursor-pointer absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                        <AiTwotoneEdit
+                          className='text-white w-full h-full'
+                          size={40}
+                        />
+                      </div>
+                    </label>
                   </div>
                   <div className="text-center text-zinc-400 text-[10px] font-normal font-['Campton']">
                     Upload photo
                   </div>
+                  {selectedImage && (
+                    <div className='mt-4'>
+                      <img
+                        src={selectedImage}
+                        alt='Selected'
+                        className='w-24 h-24 rounded-full'
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
               <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
@@ -118,6 +160,9 @@ export default function OnBoard() {
                         selectedKeys={field.value ? [field.value] : []}
                         className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select Gender'
+                        classNames={{
+                          listboxWrapper: 'dark:text-white text-black',
+                        }}
                       >
                         {genders.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
@@ -127,16 +172,6 @@ export default function OnBoard() {
                       </Select>
                     )}
                   />
-                  <Select
-                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                    placeholder='Select gender'
-                  >
-                    {genders.map((gender) => (
-                      <SelectItem key={gender.value} value={gender.value}>
-                        {gender.label}
-                      </SelectItem>
-                    ))}
-                  </Select>
                 </div>
                 <div className='self-stretch flex-col justify-center items-start gap-3.5 inline-flex'>
                   <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
@@ -144,22 +179,90 @@ export default function OnBoard() {
                   </label>
                   <div className=' flex gap-4'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <Input
+                      {/* <DatePicker
+                        id='day'
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        dateFormat='dd'
+                        placeholderText='Day'
+                        className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      /> */}
+                      <input
+                        type='number'
+                        id='day'
+                        name='day'
                         placeholder='Day'
-                        className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        min='1'
+                        max='31'
+                        {...register('day', { required: 'Day is required' })}
+                        // className='w-16 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
+                        className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
                     </div>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <Input
-                        placeholder='Mon'
-                        className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      {/* <DatePicker
+                        id='month'
+                        selected={selectedDate}
+                        onChange={handleDateChange}
+                        dateFormat='MMMM'
+                        placeholderText='Month'
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode='select'
+                        className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none  shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      /> */}
+                      <input
+                        type='text'
+                        id='month'
+                        name='month'
+                        placeholder='Month'
+                        {...register('month', {
+                          required: 'Month is required',
+                        })}
+                        // className='w-16 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
+                        className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
                     </div>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <Input
+                      <input
+                        type='number'
+                        id='year'
+                        name='year'
                         placeholder='Year'
-                        className="grow  rounded shrink basis-0 text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        min='1900'
+                        max={new Date().getFullYear()} // or you can set a limit
+                        {...register('year', { required: 'Year is required' })}
+                        // className='w-20 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
+                        className="grow py-4 md:w-32  rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
+                      {/* <Controller
+                        name='gender'
+                        control={control}
+                        render={({ field }) => (
+                          <Select
+                            {...field}
+                            aria-labelledby='gender'
+                            isInvalid={!!errors.gender}
+                            errorMessage={errors?.gender?.message}
+                            selectedKeys={field.value ? [field.value] : []}
+                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='Select Gender'
+                            classNames={{
+                              listboxWrapper: 'dark:text-white text-black',
+                            }}
+                            selectorIcon='none'
+                          >
+                            {genders.map((gender) => (
+                              <SelectItem
+                                key={gender.value}
+                                value={gender.value}
+                              >
+                                {gender.label}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        )}
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -173,7 +276,6 @@ export default function OnBoard() {
                     control={control}
                     render={({ field }) => (
                       <Select
-                        {...field}
                         aria-labelledby='country'
                         isInvalid={!!errors.country}
                         errorMessage={errors?.country?.message}
@@ -181,9 +283,13 @@ export default function OnBoard() {
                         selectedKeys={field.value ? [field.value] : []}
                         className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select country'
+                        classNames={{
+                          listboxWrapper: 'dark:text-white text-black',
+                        }}
+                        {...field}
                       >
                         {countries?.map((cou) => (
-                          <SelectItem key={cou.currency_code} value={cou.name}>
+                          <SelectItem key={cou.name} value={cou.name}>
                             {cou.name}
                           </SelectItem>
                         ))}
@@ -201,7 +307,6 @@ export default function OnBoard() {
                       control={control}
                       render={({ field }) => (
                         <Select
-                          {...field}
                           aria-labelledby='state'
                           isInvalid={!!errors.state}
                           errorMessage={errors?.state?.message}
@@ -209,9 +314,13 @@ export default function OnBoard() {
                           selectedKeys={field.value ? [field.value] : []}
                           className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                           placeholder='Select state'
+                          classNames={{
+                            listboxWrapper: 'dark:text-white text-black',
+                          }}
+                          {...field}
                         >
                           {states?.map((cou) => (
-                            <SelectItem key={cou.state_code} value={cou.name}>
+                            <SelectItem key={cou.name} value={cou.name}>
                               {cou.name}
                             </SelectItem>
                           ))}
@@ -219,40 +328,42 @@ export default function OnBoard() {
                       )}
                     />
                   </div>
-                  <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <labl className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
-                      LGA
-                    </labl>
+                  {watch().country === 'Nigeria' && (
+                    <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                      <labl className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                        LGA
+                      </labl>
 
-                    <Controller
-                      name='local_government'
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                          {...field}
-                          aria-labelledby='local_government'
-                          isInvalid={!!errors.local_government}
-                          errorMessage={errors?.local_government?.message}
-                          isLoading={isLgaLoading}
-                          selectedKeys={field.value ? [field.value] : []}
-                          className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                          placeholder='Select lga'
-                        >
-                          {lgas?.map((cou) => (
-                            <SelectItem
-                              key={cou.currency_code}
-                              value={cou.name}
-                            >
-                              {cou.name}
-                            </SelectItem>
-                          ))}
-                        </Select>
-                      )}
-                    />
-                  </div>
+                      <Controller
+                        name='local_government'
+                        control={control}
+                        render={({ field }) => (
+                          <Select
+                            aria-labelledby='local_government'
+                            isInvalid={!!errors.local_government}
+                            errorMessage={errors?.local_government?.message}
+                            isLoading={isLgaLoading}
+                            selectedKeys={field.value ? [field.value] : []}
+                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='Select lga'
+                            classNames={{
+                              listboxWrapper: 'dark:text-white text-black',
+                            }}
+                            {...field}
+                          >
+                            {lgas?.map((lga) => (
+                              <SelectItem key={lga} value={lga}>
+                                {lga}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        )}
+                      />
+                    </div>
+                  )}
                 </div>
                 <Button
-                  onClick={onOpen}
+                  type='submit'
                   className="w-[290px] px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Campton'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
                 >
                   Continue

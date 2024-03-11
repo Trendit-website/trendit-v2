@@ -8,6 +8,7 @@ import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useRegisterUser } from '../../api/auth'
 import useCurrentUser from '../../hooks/useCurrentUser'
+import useAccessToken from '../../hooks/useAccessToken'
 
 export default function Signup() {
   const [isVisible, setIsVisible] = useState(false)
@@ -21,6 +22,7 @@ export default function Signup() {
   const { mutateAsync: handleReg } = useRegisterUser()
   const { userData } = useCurrentUser()
   const toggleVisibility = () => setIsVisible(!isVisible)
+  const { setAccessToken } = useAccessToken()
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
@@ -30,6 +32,8 @@ export default function Signup() {
         data: { ...data, user_id },
       })
       if (res.data.status) {
+        console.log(res, 'signup res')
+        setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
         navigate('/onboard')
         reset()
