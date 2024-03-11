@@ -30,12 +30,13 @@ export default function SignOutModal({ isOpen, onClose }) {
         backdrop='blur'
         isOpen={isOpen}
         onClose={onClose}
+        hideCloseButton={true}
       >
-        <ModalContent className='w[20rem] md:w-[28rem] '>
+        <ModalContent className=' md:w-[28rem] overflow-visible '>
           <div className='w[483px] h-[274px] p-12 bg-white rounded flex-col justify-center items-center gap-6 inline-flex'>
             <div
               onClick={onClose}
-              className='p-2 bg-fuchsia-400 top-0 absolute z-40 right-0 cursor-pointer rounded-[100px] '
+              className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>

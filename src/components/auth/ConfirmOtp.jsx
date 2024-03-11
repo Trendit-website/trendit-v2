@@ -35,7 +35,6 @@ export default function ConfirmOtp() {
     if (updatedOtp.filter((digit) => digit !== '').length === 6) {
       otp2.current = updatedOtp
       onSubmit()
-      console.log(otp2, '245555')
     }
   }
 
@@ -81,7 +80,9 @@ export default function ConfirmOtp() {
             <Logo />
 
             <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
-              <Button variant='flat bg-none '>Go Back</Button>
+              <Button onClick={() => navigate(-1)} variant='flat bg-none '>
+                Go Back
+              </Button>
               <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />

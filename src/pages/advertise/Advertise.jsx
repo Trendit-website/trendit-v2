@@ -6,9 +6,11 @@ import { useState } from 'react'
 // import { Chip } from '@nextui-org/chip'
 import AdvertiseTaskCard from './AdvertiseTaskCard'
 import EngagementTaskCard from './EngagementTaskCard'
+import { useNavigate } from 'react-router-dom'
 
 export default function Advertise() {
   const [selected, setSelected] = useState('advert task')
+  const navigate = useNavigate()
 
   return (
     <div>
@@ -149,6 +151,7 @@ export default function Advertise() {
               </AnimatePresence>
             </div>
             <Button
+              onClick={() => navigate(`/dashboard/advertise-history`)}
               endContent={<ChevronRight />}
               variant='light'
               className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Campton']"

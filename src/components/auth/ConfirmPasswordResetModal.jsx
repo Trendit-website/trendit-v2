@@ -11,12 +11,13 @@ export default function ConfirmPasswordResetModal({ isOpen, onClose }) {
         backdrop='blur'
         isOpen={isOpen}
         onClose={onClose}
+        hideCloseButton={true}
       >
-        <ModalContent className='w[20rem] md:w-[28rem] '>
-          <div className='w[483px] h-[274px] p-12 bg-white rounded flex-col justify-center items-center gap-6 inline-flex'>
+        <ModalContent className='overflow-visible md:w-[28rem] '>
+          <div className='h-[274px] p-12 bg-white rounded flex-col justify-center items-center gap-6 inline-flex'>
             <div
               onClick={onClose}
-              className='p-2 bg-fuchsia-400 top-0 absolute z-40 right-0 cursor-pointer rounded-[100px] '
+              className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-4 cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>

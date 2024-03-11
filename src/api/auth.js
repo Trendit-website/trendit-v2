@@ -48,10 +48,25 @@ export const useForgetPassword = () => {
     },
   })
 }
+
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/reset-password`, data)
+    },
+  })
+}
 export const useLogoutUser = () => {
   return useMutation({
     mutationFn: ({ data }) => {
       return API.delete(`/logout`, data)
+    },
+  })
+}
+export const useDeleteAcc = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.delete(`/delete-account`, data)
     },
   })
 }

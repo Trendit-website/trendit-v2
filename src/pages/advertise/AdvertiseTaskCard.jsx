@@ -1,6 +1,8 @@
 import { Button } from '@nextui-org/button'
+import { useNavigate } from 'react-router-dom'
 
 export default function AdvertiseTaskCard() {
+  const navigate = useNavigate()
   return (
     <div className='flex flex-col md:grid md:grid-cols-2 gap-3'>
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
@@ -112,7 +114,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>

@@ -20,12 +20,13 @@ export default function AuthModal({ isOpen, onClose }) {
         backdrop='blur'
         isOpen={isOpen}
         onClose={onClose}
+        hideCloseButton={true}
       >
-        <ModalContent className='w[20rem] md:w-[28rem] '>
+        <ModalContent className='overflow-visible md:w-[28rem] '>
           <div className='w[18rem] md:w-[28rem] border border-fuchsia-400 flex-col justify-start items-center inline-flex'>
             <div
               onClick={onClose}
-              className='p-2 bg-fuchsia-400 top-0 absolute z-40 right-0 cursor-pointer rounded-[100px] '
+              className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>

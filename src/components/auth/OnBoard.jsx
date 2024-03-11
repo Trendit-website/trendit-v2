@@ -11,7 +11,6 @@ import { useEffect, useState } from 'react'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useUserProfile } from '../../api/profileApis'
-// import { Navigate } from 'react-router-dom'
 
 export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,10 +33,6 @@ export default function OnBoard() {
   )
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
-  console.log(countries, 'coutry')
-  console.log(states, 'states')
-  console.log(lgas, 'lgas')
-
   const { mutateAsync: updateProfile } = useUserProfile()
 
   useEffect(() => {
@@ -50,12 +45,16 @@ export default function OnBoard() {
   }, [watch().state, setValue])
 
   const onSubmit = async (data) => {
-    console.log(data, 'form data')
+    const day = watch('day')
+    const month = watch('month')
+    const year = watch('year')
 
-    const selectedDate = `${data.year}-${data.month.padStart(
+    const selectedDate = `${year}-${month?.padStart(2, '0')}-${day?.padStart(
       2,
       '0'
-    )}-${data.day.padStart(2, '0')}`
+    )}`
+    data = { ...data, birthday: selectedDate }
+    console.log(selectedDate, 'selectedDate')
     try {
       const formData = new FormData()
       // Append selected image to formData if available
@@ -68,8 +67,7 @@ export default function OnBoard() {
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
-      console.log(formData, 'formdata')
-      const res = await updateProfile(formData)
+      const res = await updateProfile({ formData: data })
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
@@ -89,7 +87,7 @@ export default function OnBoard() {
     <>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className=' h-[1024px] relative bg-white dark:bg-black'>
+          <div className=' h[1024px] h-[1054px] relative bg-white dark:bg-black'>
             <div className='left-0 top-0 absolute'>
               <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
               <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
@@ -107,11 +105,13 @@ export default function OnBoard() {
                   <div className='w-[66px] h-[66px] cursor-pointer relative'>
                     <div className='w-[66px] h-[66px] cursor-pointer left-0 top-0 absolute bg-fuchsia-600 bg-opacity-40 rounded-[10px]' />
                     {/* Invisible input field */}
+
                     <input
                       type='file'
                       accept='image/*'
                       id='image-upload'
                       className='absolute w-full h-full opacity-0 cursor-pointer'
+                      {...register('profile_picture')}
                       onChange={(e) =>
                         setSelectedImage(URL.createObjectURL(e.target.files[0]))
                       }
@@ -161,7 +161,21 @@ export default function OnBoard() {
                         className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select Gender'
                         classNames={{
-                          listboxWrapper: 'dark:text-white text-black',
+                          listbox: [
+                            'bg-transparent',
+                            'text-black/90 dark:text-white/90',
+                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                          ],
+                          popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                          trigger: [
+                            'bg-zinc-700 bg-opacity-10',
+                            'dark:bg-white dark:bg-opacity-10',
+                            'hover:bg-bg-white hover:bg-opacity-10',
+                            'dark:hover:bg-default/70',
+                            'group-data-[focused=true]:bg-default-200/50',
+                            'dark:group-data-[focused=true]:bg-default/60',
+                            '!cursor-text',
+                          ],
                         }}
                       >
                         {genders.map((gender) => (
@@ -179,14 +193,6 @@ export default function OnBoard() {
                   </label>
                   <div className=' flex gap-4'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      {/* <DatePicker
-                        id='day'
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        dateFormat='dd'
-                        placeholderText='Day'
-                        className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                      /> */}
                       <input
                         type='number'
                         id='day'
@@ -195,22 +201,10 @@ export default function OnBoard() {
                         min='1'
                         max='31'
                         {...register('day', { required: 'Day is required' })}
-                        // className='w-16 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
                         className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
                     </div>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      {/* <DatePicker
-                        id='month'
-                        selected={selectedDate}
-                        onChange={handleDateChange}
-                        dateFormat='MMMM'
-                        placeholderText='Month'
-                        showMonthDropdown
-                        showYearDropdown
-                        dropdownMode='select'
-                        className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none  shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                      /> */}
                       <input
                         type='text'
                         id='month'
@@ -219,7 +213,6 @@ export default function OnBoard() {
                         {...register('month', {
                           required: 'Month is required',
                         })}
-                        // className='w-16 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
                         className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
                     </div>
@@ -232,37 +225,8 @@ export default function OnBoard() {
                         min='1900'
                         max={new Date().getFullYear()} // or you can set a limit
                         {...register('year', { required: 'Year is required' })}
-                        // className='w-20 rounded-md px-2 py-1 border border-gray-300 focus:outline-none focus:border-indigo-500'
                         className="grow py-4 md:w-32  rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                       />
-                      {/* <Controller
-                        name='gender'
-                        control={control}
-                        render={({ field }) => (
-                          <Select
-                            {...field}
-                            aria-labelledby='gender'
-                            isInvalid={!!errors.gender}
-                            errorMessage={errors?.gender?.message}
-                            selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                            placeholder='Select Gender'
-                            classNames={{
-                              listboxWrapper: 'dark:text-white text-black',
-                            }}
-                            selectorIcon='none'
-                          >
-                            {genders.map((gender) => (
-                              <SelectItem
-                                key={gender.value}
-                                value={gender.value}
-                              >
-                                {gender.label}
-                              </SelectItem>
-                            ))}
-                          </Select>
-                        )}
-                      /> */}
                     </div>
                   </div>
                 </div>
@@ -274,6 +238,7 @@ export default function OnBoard() {
                   <Controller
                     name='country'
                     control={control}
+                    aria-labelledby='country'
                     render={({ field }) => (
                       <Select
                         aria-labelledby='country'
@@ -284,7 +249,21 @@ export default function OnBoard() {
                         className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select country'
                         classNames={{
-                          listboxWrapper: 'dark:text-white text-black',
+                          listbox: [
+                            'bg-transparent',
+                            'text-black/90 dark:text-white/90',
+                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                          ],
+                          popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                          trigger: [
+                            'bg-zinc-700 bg-opacity-10',
+                            'dark:bg-white dark:bg-opacity-10',
+                            'hover:bg-bg-white hover:bg-opacity-10',
+                            'dark:hover:bg-default/70',
+                            'group-data-[focused=true]:bg-default-200/50',
+                            'dark:group-data-[focused=true]:bg-default/60',
+                            '!cursor-text',
+                          ],
                         }}
                         {...field}
                       >
@@ -304,6 +283,7 @@ export default function OnBoard() {
                     </label>
                     <Controller
                       name='state'
+                      aria-labelledby='state'
                       control={control}
                       render={({ field }) => (
                         <Select
@@ -315,7 +295,21 @@ export default function OnBoard() {
                           className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                           placeholder='Select state'
                           classNames={{
-                            listboxWrapper: 'dark:text-white text-black',
+                            listbox: [
+                              'bg-transparent',
+                              'text-black/90 dark:text-white/90',
+                              'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                            ],
+                            popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                            trigger: [
+                              'bg-zinc-700 bg-opacity-10',
+                              'dark:bg-white dark:bg-opacity-10',
+                              'hover:bg-bg-white hover:bg-opacity-10',
+                              'dark:hover:bg-default/70',
+                              'group-data-[focused=true]:bg-default-200/50',
+                              'dark:group-data-[focused=true]:bg-default/60',
+                              '!cursor-text',
+                            ],
                           }}
                           {...field}
                         >
@@ -337,6 +331,7 @@ export default function OnBoard() {
                       <Controller
                         name='local_government'
                         control={control}
+                        aria-labelledby='local_government'
                         render={({ field }) => (
                           <Select
                             aria-labelledby='local_government'
@@ -347,7 +342,21 @@ export default function OnBoard() {
                             className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Select lga'
                             classNames={{
-                              listboxWrapper: 'dark:text-white text-black',
+                              listbox: [
+                                'bg-transparent',
+                                'text-black/90 dark:text-white/90',
+                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                              ],
+                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                              trigger: [
+                                'bg-zinc-700 bg-opacity-10',
+                                'dark:bg-white dark:bg-opacity-10',
+                                'hover:bg-bg-white hover:bg-opacity-10',
+                                'dark:hover:bg-default/70',
+                                'group-data-[focused=true]:bg-default-200/50',
+                                'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                              ],
                             }}
                             {...field}
                           >
@@ -390,10 +399,12 @@ export default function OnBoard() {
               </div>
               <div className='p-2 justify-center items-center gap-1 flex'>
                 <div className="text-center p-2 hidden  md:flex text-white text-[12.83px] font-bold font-['Campton']">
-                  <Button variant='flat bg-none '>Go Back</Button>
+                  <Button onClick={() => navigate(-1)} variant='flat bg-none '>
+                    Go Back
+                  </Button>
                 </div>
                 <div className="text-center p-2 md:hidden  text-white text-[12.83px] font-bold font-['Campton']">
-                  <Button variant='flat bg-none  '>
+                  <Button onClick={() => navigate(-1)} variant='flat bg-none  '>
                     <ChevronRight />
                   </Button>
                 </div>
