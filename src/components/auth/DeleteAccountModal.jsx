@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 import { Modal, ModalContent, Button } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
-import { useLogoutUser } from '../../api/auth'
+import { useDeleteAcc } from '../../api/auth'
 import { useNavigate } from 'react-router-dom'
 import useAccessToken from '../../hooks/useAccessToken'
 import toast from 'react-hot-toast'
 
 export default function DeleteAccountModal({ isOpen, onClose }) {
-  const { mutateAsync: logout } = useLogoutUser()
+  const { mutateAsync: deleteAcc } = useDeleteAcc()
   const navigate = useNavigate()
   const { removeAccessToken, token } = useAccessToken()
 
   const handleDelAcc = async () => {
     try {
-      const res = await logout({ access_token: token })
+      const res = await deleteAcc({ access_token: token })
       if (res.data.status) {
         removeAccessToken(null)
         toast.success(res.data.message)
-        navigate('/signup')
+        navigate('/')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
@@ -32,12 +32,13 @@ export default function DeleteAccountModal({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         className='rounded-none'
+        hideCloseButton={true}
       >
-        <ModalContent className='w[20rem] md:w-[28rem] '>
+        <ModalContent className='overflow-visible md:w-[28rem] '>
           <div className='w[483px] h-[274px] p-12 bg-white rounded flex-col justify-center items-center gap-6 inline-flex'>
             <div
               onClick={onClose}
-              className='p-2 bg-fuchsia-400 -top-2 absolute z-40 right-0 cursor-pointer rounded-[100px] '
+              className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>

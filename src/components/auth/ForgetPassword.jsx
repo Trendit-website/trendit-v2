@@ -7,8 +7,8 @@ import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { useForgetPassword } from '../../api/auth'
 import toast from 'react-hot-toast'
-import useAccessToken from '../../hooks/useAccessToken'
 import ConfirmPasswordResetModal from './ConfirmPasswordResetModal'
+import useResetToken from '../../hooks/useResetToken'
 
 export default function ForgetPassword() {
   const {
@@ -20,23 +20,23 @@ export default function ForgetPassword() {
   const navigate = useNavigate()
 
   const { mutateAsync: handleLogin } = useForgetPassword()
-  const { setAccessToken } = useAccessToken()
+  const { setResetToken } = useResetToken()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const onSubmit = async (data) => {
-    //  const user_id = userData?.id
-    console.log(data, 'data')
-    onOpen()
     try {
       const res = await handleLogin({
         data,
       })
       console.log(res)
       if (res?.data?.status) {
-        //  setCurrentUser(res.data.user_data)
-        setAccessToken(res?.data?.access_token)
+        console.log(res?.data?.reset_token, 'reset token')
+        setResetToken(res?.data?.reset_token)
         toast.success(res.data.message)
         onOpen()
+        setTimeout(() => {
+          navigate('/reset_password')
+        }, 3000)
       }
     } catch (error) {
       toast.error(error.response?.message ?? error.message)
@@ -56,7 +56,9 @@ export default function ForgetPassword() {
               <Logo />
 
               <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
-                <Button variant='flat bg-none'>Go Back</Button>
+                <Button onClick={() => navigate(-1)} variant='flat bg-none'>
+                  Go Back
+                </Button>
               </div>
               <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                 <Button variant='flat bg-none  '>

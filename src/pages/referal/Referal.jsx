@@ -127,7 +127,7 @@ export default function Referal() {
           </div>
         </div>
         <div className='self-stretch h-96 flex-col justify-start items-start gap-4 flex'>
-          <div className="text-white py-3 text-2xl font-medium font-['Campton']">
+          <div className="text-black dark:text-white py-3 text-2xl font-medium font-['Campton']">
             Invited friends
           </div>
           <div className='self-stretch grow shrink basis-0 flex-col justify-center items-center gap-6 flex'>
@@ -175,7 +175,7 @@ export default function Referal() {
               <div className="text-white text-sm font-bold font-['Campton']">
                 No referral yet!
               </div>
-              <div className="w-[194px] text-center text-zinc-400 text-xs font-normal font-['Campton']">
+              <div className="w-[194px] text-center text-black dark:text-zinc-400 text-xs font-normal font-['Campton']">
                 Keep sharing your link and get more friends eventually.
               </div>
             </div>

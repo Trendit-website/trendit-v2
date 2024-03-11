@@ -56,7 +56,7 @@ const UserDropdown = () => {
         <span className='hidden text-left lg:block'>
           <div className='flex gap-1'>
             <div className='flex-col justify-start  gap-1.5 inline-flex'>
-              <div className="text-center text-white text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                 {profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
               </div>
               <div className="text-right text-zinc-400 text-sm font-medium font-['Campton']">

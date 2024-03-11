@@ -18,6 +18,7 @@ export default function Login() {
   } = useForm()
   const navigate = useNavigate()
 
+
   const { mutateAsync: handleLogin, isLoading } = useLoginUser()
   // const { loginUser: handleLogin, isLoading } = useLoginUser()
   //  const { userData } = useCurrentUser()
@@ -25,14 +26,9 @@ export default function Login() {
   const { setAccessToken } = useAccessToken()
 
   const onSubmit = async (data) => {
-    //  const user_id = userData?.id
-    console.log(data, 'data')
     try {
       const res = await handleLogin({ data })
-      console.log(res)
       if (res?.data?.status) {
-        //  setCurrentUser(res.data.user_data)
-
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
         navigate('/dashboard')
@@ -41,23 +37,6 @@ export default function Login() {
       toast.error(error.response?.message ?? error.message)
     }
   }
-
-  // const onSubmit = async (data) => {
-  //   //  const user_id = userData?.id
-  //   console.log(data, 'data')
-  //   try {
-  //     const res = await handleLogin(data) // Remove the unnecessary object wrapper around data
-  //     console.log(res)
-  //     if (res?.data?.status) {
-  //       //  setCurrentUser(res.data.user_data)
-  //       setAccessToken(res?.data?.access_token)
-  //       toast.success(res.data.message)
-  //       navigate('/dashboard')
-  //     }
-  //   } catch (error) {
-  //     toast.error(error.response?.message ?? error.message)
-  //   }
-  // }
 
   return (
     <div>
@@ -71,7 +50,9 @@ export default function Login() {
             <Logo />
 
             <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
-              <Button variant='flat bg-none'>Go Back</Button>
+              <Button onClick={() => navigate(-1)} variant='flat bg-none'>
+                Go Back
+              </Button>
             </div>
             <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
               <Button variant='flat bg-none  '>
@@ -256,7 +237,7 @@ export default function Login() {
             <div className='p-2 justify-center items-center gap-1 flex'>
               <div
                 onClick={() => {
-                  navigate('/signup')
+                  navigate('/ ')
                 }}
                 className="text-center cursor-pointer text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
               >
