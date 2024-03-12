@@ -7,7 +7,7 @@ import useAccessToken from '../../hooks/useAccessToken'
 import toast from 'react-hot-toast'
 
 export default function SignOutModal({ isOpen, onClose }) {
-  const { mutateAsync: logout } = useLogoutUser()
+  const { mutateAsync: logout, isPending } = useLogoutUser()
   const navigate = useNavigate()
   const { removeAccessToken, token } = useAccessToken()
   const handleLogout = async () => {
@@ -56,7 +56,7 @@ export default function SignOutModal({ isOpen, onClose }) {
               className='w-[290px] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
             >
               <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
-                Continue
+                {isPending ? 'Signing you out.' : 'Continue'}
               </div>
             </Button>
           </div>

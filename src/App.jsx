@@ -24,18 +24,13 @@ import GenerateEngagementTask from './pages/earn/components/GenerateEngagementTa
 import EarnTask from './pages/earn/components/EarnTask'
 import History from './pages/history/History'
 import ProtectedRoute from './pages/ProtectedRoute'
-// import { jwtDecode } from 'jwt-decode'
-// import useAccessToken from './hooks/useAccessToken'
+
 import ResetPassword from './components/auth/ResetPassword'
 
 function App() {
   const { isDarkMode } = useDarkMode()
-  // const { removeAccessToken } = useAccessToken()
-  // const navigate = useNavigate()
 
   useEffect(() => {
-    // const access_token = JSON.parse(localStorage.getItem('access_token'))?.state
-    //   ?.token
     if (isDarkMode) {
       document.body.classList.add('dark')
       document.body.classList.add('text-foreground')
@@ -45,17 +40,6 @@ function App() {
       document.body.classList.remove('text-foreground')
       document.body.classList.remove('bg-background')
     }
-
-    // if (access_token) {
-    //   const decodedToken = jwtDecode(access_token)
-    //   if (decodedToken.exp * 1000 < new Date().getTime()) {
-    //     removeAccessToken(null)
-    //     navigate('/login')
-    //     // return <Navigate to='/login' />
-    //   } else {
-    //     navigate('/login')
-    //   }
-    // }
   }, [isDarkMode])
   return (
     <>
@@ -68,7 +52,14 @@ function App() {
           <Route path='/onboard' element={<OnBoard />} />
           <Route path='/forgot_password' element={<ForgetPassword />} />
           <Route path='/reset_password' element={<ResetPassword />} />
-          <Route path='/dashboard' element={<RootLayout />}>
+          <Route
+            path='/dashboard'
+            element={
+              <ProtectedRoute>
+                <RootLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route
               path=''
               element={

@@ -19,7 +19,7 @@ export default function ForgetPassword() {
   } = useForm()
   const navigate = useNavigate()
 
-  const { mutateAsync: handleLogin } = useForgetPassword()
+  const { mutateAsync: handleLogin, isPending } = useForgetPassword()
   const { setResetToken } = useResetToken()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -100,7 +100,7 @@ export default function ForgetPassword() {
                   type='submit'
                   className="w-[290px] px-6 py-3.5 mt-4 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
                 >
-                  Continue
+                  {isPending ? 'Please wait....' : 'Continue'}
                 </Button>
               </div>
               <div className='self-stretch mt-16 flex-col justify-start items-center gap-2 flex'>
