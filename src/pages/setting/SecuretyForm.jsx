@@ -1,10 +1,21 @@
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
 import { Switch } from '@nextui-org/switch'
+import { useGetSecurityPrefrence } from '../../api/settingsApis'
+import { useForm } from 'react-hook-form'
 
 export default function SecuretyForm() {
+  const { data: securityPrefrence } = useGetSecurityPrefrence()
+ const { handleSubmit, control } = useForm({})
+  console.log(securityPrefrence, 'securityPrefrence')
+
+  const onSubmit = async (data) => {
+    console.log(data, 'data')
+  }
   return (
     <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+
       <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
         <div className='self-stretch h[446px] flex-col justify-start items-start gap-6 flex'>
           <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
@@ -162,8 +173,14 @@ export default function SecuretyForm() {
             <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
               <Input
                 endContent={
-                  <Switch size='sm' defaultSelected color='default' />
+                  <Switch
+                    size='sm'
+                    disabled={true}
+                    defaultSelected
+                    color='default'
+                  />
                 }
+                disabled={true}
                 placeholder='Phone'
                 size='sm'
                 classNames={{
@@ -221,6 +238,7 @@ export default function SecuretyForm() {
           </div>
         </div>
       </div>
+      </form>
     </div>
   )
 }

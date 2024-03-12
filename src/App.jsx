@@ -26,6 +26,7 @@ import History from './pages/history/History'
 import ProtectedRoute from './pages/ProtectedRoute'
 
 import ResetPassword from './components/auth/ResetPassword'
+import Payment from './pages/payment/Payment'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -82,6 +83,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <GenerateEngagementTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='payment'
+              element={
+                <ProtectedRoute>
+                  <Payment />
                 </ProtectedRoute>
               }
             />

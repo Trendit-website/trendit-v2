@@ -4,7 +4,6 @@ import API from '../services/AxiosInstance'
 export const useUpdateNoticePrefence = () => {
   return useMutation({
     mutationFn: ({ data }) => {
-      console.log(data, 'apiss')
       return API.post(`/settings/notifications`, data)
     },
   })
@@ -41,7 +40,7 @@ export const useGetUserPrefence = () => {
     queryFn: async () => {
       const res = await API.get(`/settings/preferences`)
       console.log(res, 'user_preference')
-      // return res?.data?.user_profile
+      return res?.data?.user_preferences
     },
   })
 }
@@ -51,7 +50,7 @@ export const useGetSecurityPrefrence = () => {
     queryFn: async () => {
       const res = await API.get(`/settings/security`)
       console.log(res, 'sec_prefence')
-      // return res?.data?.user_profile
+      return res?.data?.security_settings
     },
   })
 }

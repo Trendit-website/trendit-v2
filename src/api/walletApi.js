@@ -11,7 +11,7 @@ export const useFundWallet = () => {
 
 export const useVerifyPayment = () => {
   return useMutation({
-    mutationFn: ({ data }) => {
+    mutationFn: (data) => {
       return API.post(`/payment/verify`, data)
     },
   })
@@ -23,6 +23,24 @@ export const useFetchBallance = () => {
     queryFn: async () => {
       const res = await API.post(`/show_balance`)
       return res?.data
+    },
+  })
+}
+
+export const useUpdateBankDetils = () => {
+  return useMutation({
+    mutationFn: (data) => {
+      return API.post(`/profile/bank`, data)
+    },
+  })
+}
+
+export const useBankDetails = () => {
+  return useQuery({
+    queryKey: ['get_bank'],
+    queryFn: async () => {
+      const res = await API.get(`/profile/bank`)
+      return res?.data?.bank_details
     },
   })
 }

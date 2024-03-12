@@ -8,16 +8,10 @@ import toast from 'react-hot-toast'
 
 export default function NotificationForm() {
   const { data: noticePrefencents } = useGetNoticPrefence()
-  const {
-    handleSubmit,
-    control,
-    // watch,
-    // setValue,
-    // register,
-    // formState: { errors },
-  } = useForm({})
-
-  const { mutateAsync: handleNoticePrefencents } = useUpdateNoticePrefence()
+  const { handleSubmit, control } = useForm({})
+  console.log(noticePrefencents, 'noticePrefencents')
+  const { mutateAsync: handleNoticePrefencents, isPending } =
+    useUpdateNoticePrefence()
 
   const onSubmit = async (data) => {
     console.log(data, 'data')
@@ -65,7 +59,7 @@ export default function NotificationForm() {
                   control={control}
                   render={({ field }) => (
                     <Checkbox
-                      defaultSelected={!!noticePrefencents?.email?.new_features}
+                      defaultSelected={!!noticePrefencents?.email_new_features}
                       radius='none'
                       color='secondary'
                       className='text-white'
@@ -86,7 +80,7 @@ export default function NotificationForm() {
                   control={control}
                   render={({ field }) => (
                     <Checkbox
-                      defaultSelected={!!noticePrefencents?.email?.new_tasks}
+                      defaultSelected={!!noticePrefencents?.email_new_tasks}
                       radius='none'
                       color='secondary'
                       className='text-white'
@@ -108,7 +102,7 @@ export default function NotificationForm() {
                   control={control}
                   render={({ field }) => (
                     <Checkbox
-                      defaultSelected={!!noticePrefencents?.email?.money_earned}
+                      defaultSelected={!!noticePrefencents?.email_money_earned}
                       radius='none'
                       color='secondary'
                       className='text-white'
@@ -285,7 +279,7 @@ export default function NotificationForm() {
               />
             </svg>
             <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
-              Update
+              {isPending ? 'Updating....' : 'Update'}
             </div>
           </Button>
         </div>

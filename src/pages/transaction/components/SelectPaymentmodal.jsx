@@ -3,10 +3,10 @@ import { Button, Input, Modal, ModalContent, Snippet } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 // import CryptoTransfermodal from './CryptoTransfermodal'
 // import BankTransfermodal from './BankTransfermodal'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useFundWallet, useVerifyPayment } from '../../../api/walletApi'
+import { useFundWallet } from '../../../api/walletApi'
 
 export default function SelectPaymentmodal({ isOpen, onClose }) {
   const [view, setView] = useState('fund')
@@ -17,7 +17,6 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
   } = useForm({})
 
   const { mutateAsync: fundWallet } = useFundWallet()
-  const { mutateAsync: verifyPayment } = useVerifyPayment()
 
   const onSubmit = async (data) => {
     try {
@@ -29,7 +28,8 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
         })
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
-          window.open(authorizationUrl, '_blank') // Open the URL in a new tab
+          localStorage.setItem('paystack_redirect', window.location.pathname)
+          window.open(authorizationUrl) // Open the URL in a new tab
         }
 
         // const urlParams = new URLSearchParams(window.location.search)
@@ -43,36 +43,6 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
       })
     }
   }
-
-  // Inside the component handling the page opened by the authorization URL
-  useEffect(() => {
-    const verifyPaymentOnLoad = async () => {
-      // Retrieve the trxref from the URL
-      const currentURL = window.location.href // Extract current browser URL
-      console.log(currentURL, 'trx')
-      // const urlParams = new URLSearchParams(window.location.search)
-      const urlParams = new URLSearchParams(currentURL)
-      console.log(urlParams, 'url')
-      const trxref = urlParams.get('trxref')
-      if (trxref) {
-        try {
-          // Use the retrieved trxref to call verifyPayment
-          await verifyPayment({ reference: trxref })
-          console.log('Payment verified successfully.')
-          // You can perform further actions after successful verification
-        } catch (error) {
-          console.error('Error verifying payment:', error)
-          // Handle error if verification fails
-        }
-      } else {
-        console.error('trxref not found in URL.')
-        // Handle case when trxref is not found in the URL
-      }
-    }
-
-    // Call verifyPaymentOnLoad when the component mounts
-    verifyPaymentOnLoad()
-  }, []) // Empty dependency array ensures the effect runs only once when the component mounts
 
   return (
     <>
