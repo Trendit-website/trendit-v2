@@ -2,12 +2,14 @@
 import { Button, Input } from '@nextui-org/react'
 
 import Logo from '../Logo'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, EyeIcon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
+import { FaRegEyeSlash } from 'react-icons/fa'
+import { useState } from 'react'
 
 export default function Login() {
   const {
@@ -17,11 +19,11 @@ export default function Login() {
     formState: { errors },
   } = useForm()
   const navigate = useNavigate()
-
+  const [isVisible, setIsVisible] = useState(false)
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
-  // const { loginUser: handleLogin, isLoading } = useLoginUser()
-  //  const { userData } = useCurrentUser()
-  //  const toggleVisibility = () => setIsVisible(!isVisible)
+
+  const toggleVisibility = () => setIsVisible(!isVisible)
+
   const { setAccessToken } = useAccessToken()
 
   const onSubmit = async (data) => {
@@ -99,6 +101,20 @@ export default function Login() {
                     required={true}
                     placeholder='password'
                     className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    endContent={
+                      <button
+                        className='focus:outline-none'
+                        type='button'
+                        onClick={toggleVisibility}
+                      >
+                        {isVisible ? (
+                          <EyeIcon className='text-2xl text-default-400 pointer-events-none' />
+                        ) : (
+                          <FaRegEyeSlash className='text-2xl text-default-400 pointer-events-none' />
+                        )}
+                      </button>
+                    }
+                    type={isVisible ? 'text' : 'password'}
                   />
                 )}
                 rules={{ required: true }}
