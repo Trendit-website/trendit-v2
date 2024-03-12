@@ -5,7 +5,7 @@ import APIFormData from '../services/AxiosInstanceFormdata'
 
 export const useUserProfile = () => {
   return useMutation({
-    mutationFn: ({ formData }) => {
+    mutationFn: (formData) => {
       return APIFormData.post(`/profile/edit`, formData)
     },
   })

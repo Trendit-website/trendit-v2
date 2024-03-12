@@ -101,7 +101,7 @@ export default function GeneralForm() {
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
-      const res = await updateProfile({ formData: data })
+      const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
