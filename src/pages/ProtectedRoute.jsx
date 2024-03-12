@@ -1,19 +1,24 @@
 /* eslint-disable react/prop-types */
-import { Navigate, useLocation } from 'react-router-dom'
-import useCurrentUser from '../hooks/useCurrentUser'
+import { Navigate } from 'react-router-dom'
+import { useGetProfile } from '../api/profileApis'
+import LoadingState from '../components/auth/LoadingState'
+import toast from 'react-hot-toast'
 
 const ProtectedRoute = ({ children }) => {
-  const { userData } = useCurrentUser()
-  const location = useLocation()
+  const { data: profileDeatils, isPending, error } = useGetProfile()
 
-  const isAuthenticated = userData
-
-  // Add your authentication logic here, e.g., check if user is logged in
-  if (!isAuthenticated) {
-    return <Navigate to='/login' state={{ from: location }} replace />
-  } else {
+  if (profileDeatils) {
     return children
   }
+  if (error?.response?.status === '401') {
+    toast.error('Unauthorized, Please Login!!')
+    return <Navigate to='/login' />
+  }
+  if (isPending) {
+    return <LoadingState />
+  }
+
+  return <Navigate to='/login' />
 }
 
 export default ProtectedRoute

@@ -7,7 +7,7 @@ import useAccessToken from '../../hooks/useAccessToken'
 import toast from 'react-hot-toast'
 
 export default function DeleteAccountModal({ isOpen, onClose }) {
-  const { mutateAsync: deleteAcc } = useDeleteAcc()
+  const { mutateAsync: deleteAcc, isPending } = useDeleteAcc()
   const navigate = useNavigate()
   const { removeAccessToken, token } = useAccessToken()
 
@@ -59,7 +59,7 @@ export default function DeleteAccountModal({ isOpen, onClose }) {
               className='w-[290px] px-6 py-6 bg-[#FF3D00] rounded-[100px] justify-center items-center gap-2 inline-flex'
             >
               <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
-                Continue
+                {isPending ? 'Please wait....' : 'Continue'}
               </div>
             </Button>
           </div>

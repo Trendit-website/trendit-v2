@@ -18,8 +18,7 @@ export default function Login() {
   } = useForm()
   const navigate = useNavigate()
 
-
-  const { mutateAsync: handleLogin, isLoading } = useLoginUser()
+  const { mutateAsync: handleLogin, isPending } = useLoginUser()
   // const { loginUser: handleLogin, isLoading } = useLoginUser()
   //  const { userData } = useCurrentUser()
   //  const toggleVisibility = () => setIsVisible(!isVisible)
@@ -117,9 +116,7 @@ export default function Login() {
                 type='submit'
                 className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
-                {/* {isLoading ? <Spinner color='current' /> : 'Continue'} */}
-                {isLoading ? 'loading....' : 'Continue'}
-                {/* Continue */}
+                {isPending ? 'Please wait....' : 'Continue'}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>

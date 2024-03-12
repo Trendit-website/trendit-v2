@@ -19,7 +19,7 @@ export default function Signup() {
     reset,
     formState: { errors },
   } = useForm()
-  const { mutateAsync: handleReg } = useRegisterUser()
+  const { mutateAsync: handleReg, isPending } = useRegisterUser()
   const { userData } = useCurrentUser()
   const toggleVisibility = () => setIsVisible(!isVisible)
   const { setAccessToken } = useAccessToken()
@@ -165,7 +165,7 @@ export default function Signup() {
                 type='submit'
                 className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
-                Continue
+                {isPending ? 'Please wait....' : 'Continue'}
               </Button>
             </div>
           </div>

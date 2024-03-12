@@ -16,8 +16,7 @@ export default function VerifyEmail() {
     reset,
     formState: { errors },
   } = useForm()
-  const { mutateAsync: verifyUserEmail, isLoading: isVerifed } =
-    useVerifyEmail()
+  const { mutateAsync: verifyUserEmail, isPending } = useVerifyEmail()
   const navigate = useNavigate()
 
   const { setSignUpToken } = useSignUpToken()
@@ -103,7 +102,7 @@ export default function VerifyEmail() {
                 type='submit'
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
-                {isVerifed ? (
+                {isPending ? (
                   <svg
                     className='animate-spin h-5 w-5 text-current'
                     fill='none'

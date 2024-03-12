@@ -33,7 +33,7 @@ export default function OnBoard() {
   )
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
-  const { mutateAsync: updateProfile } = useUserProfile()
+  const { mutateAsync: updateProfile, isPending } = useUserProfile()
 
   useEffect(() => {
     setValue('state', '')
@@ -67,7 +67,7 @@ export default function OnBoard() {
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
-      const res = await updateProfile({ formData: data })
+      const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
@@ -375,7 +375,7 @@ export default function OnBoard() {
                   type='submit'
                   className="w-[290px] px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Campton'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
                 >
-                  Continue
+                  {isPending ? 'Please wait....' : 'Continue'}
                 </Button>
                 <div className='justify-start items-center inline-flex'>
                   <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">

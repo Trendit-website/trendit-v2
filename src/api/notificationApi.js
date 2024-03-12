@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import API from '../services/AxiosInstance'
 
 export const useGetNotification = () => {
@@ -25,6 +25,14 @@ export const useGetMessages = () => {
     queryFn: async () => {
       const res = await API.post(`/messages`)
       return res?.data?.user_notification
+    },
+  })
+}
+
+export const useGlobalSearch = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/global_search`, data)
     },
   })
 }

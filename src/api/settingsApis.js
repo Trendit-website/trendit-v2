@@ -4,6 +4,7 @@ import API from '../services/AxiosInstance'
 export const useUpdateNoticePrefence = () => {
   return useMutation({
     mutationFn: ({ data }) => {
+      console.log(data, 'apiss')
       return API.post(`/settings/notifications`, data)
     },
   })
