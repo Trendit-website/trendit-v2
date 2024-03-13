@@ -54,7 +54,6 @@ export default function OnBoard() {
       '0'
     )}`
     data = { ...data, birthday: selectedDate }
-    console.log(selectedDate, 'selectedDate')
     try {
       const formData = new FormData()
       // Append selected image to formData if available
@@ -67,6 +66,8 @@ export default function OnBoard() {
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
+      formData.append('phone', data.phone)
+
       const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
@@ -112,9 +113,7 @@ export default function OnBoard() {
                       id='image-upload'
                       className='absolute w-full h-full opacity-0 cursor-pointer'
                       {...register('profile_picture')}
-                      onChange={(e) =>
-                        setSelectedImage(URL.createObjectURL(e.target.files[0]))
-                      }
+                      onChange={(e) => setSelectedImage(e.target.files[0])}
                     />
                     {/* Pencil icon */}
                     <label

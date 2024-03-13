@@ -15,7 +15,6 @@ export default function GeneralForm() {
   const [selectedImage, setSelectedImage] = useState(null)
 
   const { data: profileDeatils } = useGetProfile()
-  console.log(profileDeatils?.birthday, 'profileDeatils')
   const birthdayDate = new Date(profileDeatils?.birthday)
 
   // Get the day, month, and year from the birthday date
@@ -65,8 +64,6 @@ export default function GeneralForm() {
     setValue('local_government', '')
   }, [watch().state, setValue])
 
-  console.log(profileDeatils, 'hhhg')
-
   const onSubmit = async (data) => {
     const day = watch('day')
     const month = watch('month')
@@ -78,8 +75,6 @@ export default function GeneralForm() {
       '0'
     )}`
     data = { ...data, birthday: selectedDate }
-    console.log(selectedDate, 'selectedDate')
-    console.log(data, 'new datadd')
     try {
       const formData = new FormData()
       // Append selected image to formData if available
@@ -92,6 +87,7 @@ export default function GeneralForm() {
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
+      formData.append('phone', data.phone)
       const res = await updateProfile(formData)
       if (res.data.status) {
         setSelectedImage(null)
@@ -128,11 +124,7 @@ export default function GeneralForm() {
                         id='image-upload'
                         className='absolute  w-full h-full opacity-0 cursor-pointer'
                         {...register('profile_picture')}
-                        onChange={(e) =>
-                          setSelectedImage(
-                            URL.createObjectURL(e.target.files[0])
-                          )
-                        }
+                        onChange={(e) => setSelectedImage(e.target.files[0])}
                       />
                       <label
                         htmlFor='image-upload'
@@ -307,7 +299,7 @@ export default function GeneralForm() {
                     />
                   </div>
                 </div>
-                <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
+                {/* <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
                     <div className="text-center text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                       Phone Number
@@ -323,9 +315,9 @@ export default function GeneralForm() {
                           type='text'
                           size='sm'
                           placeholder='+234   Enter a phone'
-                          {...field}
                           errorMessage={errors?.phone?.message}
                           isInvalid={!!errors?.phone}
+                          {...field}
                           classNames={{
                             input: [
                               'bg-transparent',
@@ -357,7 +349,7 @@ export default function GeneralForm() {
                       )}
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
                     <div className="text-center text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
