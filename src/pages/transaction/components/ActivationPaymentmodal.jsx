@@ -6,9 +6,9 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useFundWallet } from '../../../api/walletApi'
+import { useActivateMembership } from '../../../api/walletApi'
 
-export default function SelectPaymentmodal({ isOpen, onClose }) {
+export default function ActivationPaymentmodal({ isOpen, onClose }) {
   const [view, setView] = useState('fund')
   const {
     handleSubmit,
@@ -16,11 +16,11 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
     formState: { errors },
   } = useForm({})
 
-  const { mutateAsync: fundWallet } = useFundWallet()
+  const { mutateAsync: ativateMembership } = useActivateMembership()
 
   const onSubmit = async (data) => {
     try {
-      const res = await fundWallet({ data })
+      const res = await ativateMembership({ data })
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
@@ -178,6 +178,7 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
                             size='sm'
                             placeholder='amount'
                             {...field}
+                            // value='1000'
                             errorMessage={errors?.amount?.message}
                             isInvalid={!!errors?.amount}
                             classNames={{

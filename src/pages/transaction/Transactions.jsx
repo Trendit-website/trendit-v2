@@ -14,7 +14,7 @@ export default function Transactions() {
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
-          <div className='self-stretch h-[276px] flex-col justify-start items-start gap-2 flex'>
+          <div className='self-stretch h[276px] flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch borderb borderstone-900 justify-between items-center inline-flex'>
               <div className='justify-start items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
@@ -207,58 +207,46 @@ export default function Transactions() {
               Amount
             </div>
           </div>
-          <div className='w'>
-            {selectedHistory === 'all' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TransactionCard />
-                  </motion.div>
-                )
-              })}
-            {selectedHistory === 'earned history' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TransactionCard />
-                  </motion.div>
-                )
-              })}
-            {selectedHistory === 'orders history' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TransactionCard />
-                  </motion.div>
-                )
-              })}
+          <div className='w-full'>
+            {selectedHistory === 'all' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <TransactionCard />
+              </motion.div>
+            )}
+            {selectedHistory === 'earned history' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <TransactionCard />
+              </motion.div>
+            )}
+            {selectedHistory === 'orders history' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <TransactionCard />
+              </motion.div>
+            )}
           </div>
         </div>
       </div>

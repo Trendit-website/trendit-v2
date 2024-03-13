@@ -42,8 +42,8 @@ export default function EarnTask() {
           </div>
         </div>
 
-        <div className='self-stretch h[177px] border border-white flex-col justify-start items-start flex'>
-          <div className='self-stretch h[170px] p-6 bg-zinc-400 bg-opacity-30 rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
+        <div className='self-stretch  border border-white flex-col justify-start items-start flex'>
+          <div className='self-stretch  p-6 bg-zinc-400 bg-opacity-30 rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
             <div className='flex-col justify-start items-start gap-1.5 flex'>
               <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
                 Jan 12th 9:27pm
@@ -85,12 +85,12 @@ export default function EarnTask() {
                 </div>
               </div>
             </div>
-            <div className='w-[304.97px] origin-top-left  absolute right-[1.7rem] top-[9.5rem] justify-start items-start gap-[115.18px] inline-flex'>
-              <Image src={Igframe} alt='igFrme' className='h-[10.1rem]' />
+            <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-[1.7rem] top-[9.5rem] justify-start items-start gap-[115.18px] md:inline-flex'>
+              <Image src={Igframe} alt='igFrme' className='h- md:h-[10.1rem]' />
             </div>
           </div>
           <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
-            <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
+            <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
               <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
                 You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
                 like and followed the page. Your Trendit account will be
@@ -132,7 +132,7 @@ export default function EarnTask() {
             59:23
           </div>
         </div>
-        <div className='self-stretch justify-start items-start gap-3 inline-flex'>
+        <div className='grid md:self-stretch justify-start items-start gap-3 md:inline-flex'>
           <div className='grow shrink basis-0 self-stretch p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
             <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
               <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
@@ -208,7 +208,7 @@ export default function EarnTask() {
                   </div>
                 </Link>
                 <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
-                  <div className='grow shrink basis-0 h-9 justify-start items-center gap-2.5 flex'>
+                  <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                     <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
                       You must NOT UNLIKE or UNFOLLOW the Facebook page after
                       you have like and followed the page. Your Hawkit account
@@ -235,15 +235,15 @@ export default function EarnTask() {
             </div>
           </div>
           <div className='grow shrink basis-0 self-stretch p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
-            <div className='self-stretch h-[88px] py-6 flex-col justify-start items-center gap-3 flex'>
+            <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
               <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
                 <div className="grow shrink basis-0 text-center text-stone-900 text-2xl font-medium font-['Campton']">
                   Upload proof
                 </div>
               </div>
             </div>
-            <div className='h-[282.59px] flex-col justify-start items-center gap-8 flex'>
-              <div className='w-[243px] h-[148.59px] opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
+            <div className=' flex-col justify-start items-center gap-8 flex'>
+              <div className='w-[243px] opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
                 <div className='w-6 h-6 relative flex-col justify-start items-start flex' />
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -260,7 +260,7 @@ export default function EarnTask() {
                   />
                 </svg>
               </div>
-              <div className='self-stretch h-[102px] flex-col justify-start items-start gap-3 flex'>
+              <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
                 <div className="self-stretch text-black text-xs font-semibold font-['Campton']">
                   Please enter the name on your Facebook account that performed
                   this task
@@ -301,7 +301,7 @@ export default function EarnTask() {
           </div>
         </div>
         <div className='self-stretch h-[43px] flex-col justify-start items-end gap-2 flex'>
-          <div className='w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'>
+          <div className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'>
             <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
               Mark as Done
             </div>

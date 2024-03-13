@@ -7,12 +7,14 @@ import { useState } from 'react'
 import { Chip } from '@nextui-org/chip'
 import PostAdvertTasksCard from './PostAdvertTasksCard'
 import { useDisclosure } from '@nextui-org/react'
-import SelectPaymentmodal from '../transaction/components/SelectPaymentmodal'
+import { useGetProfile } from '../../api/profileApis'
+import ActivationPaymentmodal from '../transaction/components/ActivationPaymentmodal'
 
 export default function Earn() {
   const [selected, setSelected] = useState('post advert')
   const [showwarning, setShowWarning] = useState(true)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { data: profileDeatils } = useGetProfile()
 
   return (
     <>
@@ -502,27 +504,29 @@ export default function Earn() {
                 perform below:
               </div>
 
-              <Button
-                onClick={onOpen}
-                className=' px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
-              >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='17'
-                  height='17'
-                  viewBox='0 0 17 17'
-                  fill='none'
+              {!profileDeatils?.membership_fee && (
+                <Button
+                  onClick={onOpen}
+                  className=' px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
-                  <path
-                    d='M11.1666 6.58984V5.25651C11.1666 3.78375 9.97274 2.58984 8.49998 2.58984C7.82368 2.58984 7.20618 2.8416 6.73609 3.25651M5.96668 14.5898H11.0333C11.7801 14.5898 12.1534 14.5898 12.4387 14.4445C12.6895 14.3167 12.8935 14.1127 13.0214 13.8618C13.1667 13.5766 13.1667 13.2032 13.1667 12.4565V8.72318C13.1667 7.97644 13.1667 7.60307 13.0214 7.31786C12.8935 7.06697 12.6895 6.863 12.4387 6.73517C12.1534 6.58984 11.7801 6.58984 11.0333 6.58984H5.96668C5.21994 6.58984 4.84657 6.58984 4.56136 6.73517C4.31047 6.863 4.1065 7.06697 3.97867 7.31786C3.83334 7.60307 3.83334 7.97644 3.83334 8.72318V12.4565C3.83334 13.2032 3.83334 13.5766 3.97867 13.8618C4.1065 14.1127 4.31047 14.3167 4.56136 14.4445C4.84657 14.5898 5.21994 14.5898 5.96668 14.5898Z'
-                    stroke='#1877F2'
-                    strokeLinecap='round'
-                  />
-                </svg>
-                <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Campton']">
-                  Pay N1,000 for activation
-                </div>
-              </Button>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='17'
+                    height='17'
+                    viewBox='0 0 17 17'
+                    fill='none'
+                  >
+                    <path
+                      d='M11.1666 6.58984V5.25651C11.1666 3.78375 9.97274 2.58984 8.49998 2.58984C7.82368 2.58984 7.20618 2.8416 6.73609 3.25651M5.96668 14.5898H11.0333C11.7801 14.5898 12.1534 14.5898 12.4387 14.4445C12.6895 14.3167 12.8935 14.1127 13.0214 13.8618C13.1667 13.5766 13.1667 13.2032 13.1667 12.4565V8.72318C13.1667 7.97644 13.1667 7.60307 13.0214 7.31786C12.8935 7.06697 12.6895 6.863 12.4387 6.73517C12.1534 6.58984 11.7801 6.58984 11.0333 6.58984H5.96668C5.21994 6.58984 4.84657 6.58984 4.56136 6.73517C4.31047 6.863 4.1065 7.06697 3.97867 7.31786C3.83334 7.60307 3.83334 7.97644 3.83334 8.72318V12.4565C3.83334 13.2032 3.83334 13.5766 3.97867 13.8618C4.1065 14.1127 4.31047 14.3167 4.56136 14.4445C4.84657 14.5898 5.21994 14.5898 5.96668 14.5898Z'
+                      stroke='#1877F2'
+                      strokeLinecap='round'
+                    />
+                  </svg>
+                  <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Campton']">
+                    Pay N1,000 for activation
+                  </div>
+                </Button>
+              )}
             </div>
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
@@ -615,7 +619,7 @@ export default function Earn() {
         </div>
       </div>
 
-      {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />}
+      {isOpen && <ActivationPaymentmodal isOpen={isOpen} onClose={onClose} />}
     </>
   )
 }

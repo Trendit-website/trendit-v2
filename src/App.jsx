@@ -27,6 +27,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 
 import ResetPassword from './components/auth/ResetPassword'
 import Payment from './pages/payment/Payment'
+import ToastProvider from './providers/ToastProvider'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -42,9 +43,11 @@ function App() {
       document.body.classList.remove('bg-background')
     }
   }, [isDarkMode])
+  
   return (
     <>
       <Animation>
+        <ToastProvider />
         <Routes>
           <Route path='/' element={<VerifyEmail />} />
           <Route path='/login' element={<Login />} />

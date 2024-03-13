@@ -11,7 +11,7 @@ export const useUpdateNoticePrefence = () => {
 
 export const useUpdateUserPrefence = () => {
   return useMutation({
-    mutationFn: ({ data }) => {
+    mutationFn: (data) => {
       return API.post(`/settings/preferences`, data)
     },
   })

@@ -9,6 +9,14 @@ export const useFundWallet = () => {
   })
 }
 
+export const useActivateMembership = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/payment/membership-fee`, data)
+    },
+  })
+}
+
 export const useVerifyPayment = () => {
   return useMutation({
     mutationFn: (data) => {
@@ -41,6 +49,15 @@ export const useBankDetails = () => {
     queryFn: async () => {
       const res = await API.get(`/profile/bank`)
       return res?.data?.bank_details
+    },
+  })
+}
+export const useFetchTransactionHistory = () => {
+  return useQuery({
+    queryKey: ['transaction_history'],
+    queryFn: async () => {
+      const res = await API.get(`/transactions`)
+      return res?.data?.transactions_history
     },
   })
 }
