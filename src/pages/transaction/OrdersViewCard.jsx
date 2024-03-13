@@ -3,9 +3,11 @@ import { ExternalLinkIcon } from 'lucide-react'
 import { IoAdd } from 'react-icons/io5'
 import SelectPaymentmodal from './components/SelectPaymentmodal'
 import { useDisclosure } from '@nextui-org/react'
+import { useFetchBallance } from '../../api/walletApi'
 
 export default function OrdersViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { data: showBalance } = useFetchBallance()
 
   return (
     <div>
@@ -74,7 +76,7 @@ export default function OrdersViewCard() {
               </div>
             </div>
             <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
-              ₦3,321.09
+              {showBalance?.currency_code}:{showBalance?.balance}
             </div>
           </div>
           <div className='justify-start items-start gap-[19px] inline-flex'>

@@ -9,12 +9,10 @@ import toast from 'react-hot-toast'
 export default function NotificationForm() {
   const { data: noticePrefencents } = useGetNoticPrefence()
   const { handleSubmit, control } = useForm({})
-  console.log(noticePrefencents, 'noticePrefencents')
   const { mutateAsync: handleNoticePrefencents, isPending } =
     useUpdateNoticePrefence()
 
   const onSubmit = async (data) => {
-    console.log(data, 'data')
     try {
       const formattedData = {
         email: {
@@ -34,9 +32,7 @@ export default function NotificationForm() {
         },
       }
 
-      console.log(formattedData, 'formattedData')
       const res = await handleNoticePrefencents({ data: formattedData })
-      console.log(res)
       if (res?.data?.status) {
         toast.success(res.data.message)
       }

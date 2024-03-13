@@ -134,7 +134,7 @@ export default function BankDetailsForm() {
           <Button
             variant='light'
             type='submit'
-            className='self-stretch  cursor-pointer justify-start items-center gap-[7px] inline-flex'
+            className='self-stretch w-40 cursor-pointer justify-start items-center gap-[7px] inline-flex'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
