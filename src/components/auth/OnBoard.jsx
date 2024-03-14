@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import { Button, Select, SelectItem, useDisclosure } from '@nextui-org/react'
 import Logo from '../Logo'
-import { genders } from '../../utilities/data'
+import { days, genders, months, years } from '../../utilities/data'
 import AuthModal from './AuthModal'
 import { useNavigate } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form'
@@ -192,7 +192,7 @@ export default function OnBoard() {
                   </label>
                   <div className=' flex gap-4'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <input
+                      {/* <input
                         type='number'
                         id='day'
                         name='day'
@@ -201,10 +201,49 @@ export default function OnBoard() {
                         max='31'
                         {...register('day', { required: 'Day is required' })}
                         className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      /> */}
+                      <Controller
+                        name='day'
+                        control={control}
+                        aria-labelledby='day'
+                        render={({ field }) => (
+                          <Select
+                            aria-labelledby='day'
+                            isInvalid={!!errors.day}
+                            errorMessage={errors?.day?.message}
+                            selectedKeys={field.value ? [field.value] : []}
+                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='Day'
+                            classNames={{
+                              listbox: [
+                                'bg-transparent',
+                                'text-black/90 dark:text-white/90',
+                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                              ],
+                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                              trigger: [
+                                'bg-zinc-700 bg-opacity-10',
+                                'dark:bg-white dark:bg-opacity-10',
+                                'hover:bg-bg-white hover:bg-opacity-10',
+                                'dark:hover:bg-default/70',
+                                'group-data-[focused=true]:bg-default-200/50',
+                                'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                              ],
+                            }}
+                            {...field}
+                          >
+                            {days.map((day) => (
+                              <SelectItem key={day} value={String(day)}>
+                                {String(day)}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        )}
                       />
                     </div>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <input
+                      {/* <input
                         type='text'
                         id='month'
                         name='month'
@@ -213,10 +252,49 @@ export default function OnBoard() {
                           required: 'Month is required',
                         })}
                         className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      /> */}
+                      <Controller
+                        name='month'
+                        control={control}
+                        aria-labelledby='month'
+                        render={({ field }) => (
+                          <Select
+                            aria-labelledby='month'
+                            isInvalid={!!errors.month}
+                            errorMessage={errors?.month?.message}
+                            selectedKeys={field.value ? [field.value] : []}
+                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='Mon'
+                            classNames={{
+                              listbox: [
+                                'bg-transparent',
+                                'text-black/90 dark:text-white/90',
+                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                              ],
+                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                              trigger: [
+                                'bg-zinc-700 bg-opacity-10',
+                                'dark:bg-white dark:bg-opacity-10',
+                                'hover:bg-bg-white hover:bg-opacity-10',
+                                'dark:hover:bg-default/70',
+                                'group-data-[focused=true]:bg-default-200/50',
+                                'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                              ],
+                            }}
+                            {...field}
+                          >
+                            {months.map((month) => (
+                              <SelectItem key={month.value} value={month.value}>
+                                {month.label}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        )}
                       />
                     </div>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <input
+                      {/* <input
                         type='number'
                         id='year'
                         name='year'
@@ -225,6 +303,45 @@ export default function OnBoard() {
                         max={new Date().getFullYear()} // or you can set a limit
                         {...register('year', { required: 'Year is required' })}
                         className="grow py-4 md:w-32  rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      /> */}
+                      <Controller
+                        name='year'
+                        control={control}
+                        aria-labelledby='year'
+                        render={({ field }) => (
+                          <Select
+                            aria-labelledby='year'
+                            isInvalid={!!errors.year}
+                            errorMessage={errors?.year?.message}
+                            selectedKeys={field.value ? [field.value] : []}
+                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='year'
+                            classNames={{
+                              listbox: [
+                                'bg-transparent',
+                                'text-black/90 dark:text-white/90',
+                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                              ],
+                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                              trigger: [
+                                'bg-zinc-700 bg-opacity-10',
+                                'dark:bg-white dark:bg-opacity-10',
+                                'hover:bg-bg-white hover:bg-opacity-10',
+                                'dark:hover:bg-default/70',
+                                'group-data-[focused=true]:bg-default-200/50',
+                                'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                              ],
+                            }}
+                            {...field}
+                          >
+                            {years.map((year) => (
+                              <SelectItem key={year} value={String(year)}>
+                                {String(year)}
+                              </SelectItem>
+                            ))}
+                          </Select>
+                        )}
                       />
                     </div>
                   </div>
