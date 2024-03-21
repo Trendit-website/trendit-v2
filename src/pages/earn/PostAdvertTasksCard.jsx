@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
 export default function PostAdvertTasksCard() {
+  const navigate = useNavigate()
+
   return (
     <div className='flex flex-col gap-3'>
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
@@ -52,7 +56,10 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
@@ -121,7 +128,10 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
@@ -214,7 +224,10 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
@@ -275,7 +288,10 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task

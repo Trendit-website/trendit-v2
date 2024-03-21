@@ -5,6 +5,9 @@ import OverViewCard from './OverViewCard'
 import AdvrtTaskViewCard from './AdvrtTaskViewCard'
 import EngageTaskViewCard from './EngageTaskViewCard'
 import TaskCard from './TaskCard'
+import CompletedTaskCard from './CompletedTaskCard'
+import PendingTaskCard from './PendingTaskCard'
+import ArchivedTaskCard from './ArchivedTaskCard'
 
 export default function History() {
   const [selected, setSelected] = useState('overview')
@@ -203,74 +206,58 @@ export default function History() {
           </div>
 
           <div className=' w-full space-y-4'>
-            {selectedHistory === 'all' &&
-              [1, 2, 3, 4, 5].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 '
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TaskCard />
-                  </motion.div>
-                )
-              })}
-            {selectedHistory === 'pending' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TaskCard />
-                  </motion.div>
-                )
-              })}
-            {selectedHistory === 'completeted' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TaskCard />
-                  </motion.div>
-                )
-              })}
-            {selectedHistory === 'archived' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <TaskCard />
-                  </motion.div>
-                )
-              })}
+            {selectedHistory === 'all' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 '
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <TaskCard />
+              </motion.div>
+            )}
+            {selectedHistory === 'pending' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <PendingTaskCard />
+              </motion.div>
+            )}
+            {selectedHistory === 'completeted' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <CompletedTaskCard />
+              </motion.div>
+            )}
+            {selectedHistory === 'archived' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <ArchivedTaskCard />
+              </motion.div>
+            )}
           </div>
         </div>
       </div>

@@ -54,7 +54,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center cursor-pointer text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -181,7 +184,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -233,7 +239,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -319,7 +328,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -402,7 +414,10 @@ export default function AdvertiseTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>

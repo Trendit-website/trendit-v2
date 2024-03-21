@@ -26,12 +26,12 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
           position: 'top-right',
           duration: 20000,
         })
-        onClose()
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
           window.open(authorizationUrl) // Open the URL in a new tab
         }
+        onClose()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

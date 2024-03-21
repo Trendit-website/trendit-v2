@@ -28,6 +28,13 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import ResetPassword from './components/auth/ResetPassword'
 import Payment from './pages/payment/Payment'
 import ToastProvider from './providers/ToastProvider'
+import CreateIgEngageTask from './pages/advertise/components/CreateIgEngageTask'
+import JoinGroupEngageTask from './pages/advertise/components/engageTask/JoinGroupEngageTask'
+import LikeEngageTask from './pages/advertise/components/engageTask/LikeEngageTask'
+import FollowerEngageTask from './pages/advertise/components/engageTask/FollowerEngageTask'
+import FollowerAndLikeEngageTask from './pages/advertise/components/engageTask/FollowerAndLikeEngageTask'
+import CommentEngageTask from './pages/advertise/components/engageTask/CommentEngageTask'
+import SharePostEngageTask from './pages/advertise/components/engageTask/SharePostEngageTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -43,7 +50,7 @@ function App() {
       document.body.classList.remove('bg-background')
     }
   }, [isDarkMode])
-  
+
   return (
     <>
       <Animation>
@@ -132,6 +139,63 @@ function App() {
               }
             />
             <Route
+              path='engage-ig-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateIgEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-joinGP-task'
+              element={
+                <ProtectedRoute>
+                  <JoinGroupEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-like-task'
+              element={
+                <ProtectedRoute>
+                  <LikeEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-follower-task'
+              element={
+                <ProtectedRoute>
+                  <FollowerEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-follower&like-task'
+              element={
+                <ProtectedRoute>
+                  <FollowerAndLikeEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-comment-task'
+              element={
+                <ProtectedRoute>
+                  <CommentEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='engage-share-task'
+              element={
+                <ProtectedRoute>
+                  <SharePostEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path='resell'
               element={
                 <ProtectedRoute>
@@ -171,7 +235,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path='*' element={<PageNotFound />} />
+            <Route path='*' element={<div>page coming soon</div>} />
           </Route>
           <Route path='*' element={<PageNotFound />} />
         </Routes>

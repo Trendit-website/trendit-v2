@@ -21,6 +21,7 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
   const onSubmit = async (data) => {
     try {
       const res = await fundWallet({ data })
+      console.log(res?.data)
       if (res.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',

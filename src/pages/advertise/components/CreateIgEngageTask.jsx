@@ -25,7 +25,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../api/advertApi'
 
-export default function CreateIgAdvertTask() {
+export default function CreateIgEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
