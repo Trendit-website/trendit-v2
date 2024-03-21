@@ -36,3 +36,14 @@ export const useGetLga = (state) => {
   })
   return { data, isLoading, isError }
 }
+
+export const useGetReligion = () => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['religion'],
+    queryFn: async () => {
+      const res = await API.get(`/religions`)
+      return res?.data?.religions
+    },
+  })
+  return { data, isLoading, isError }
+}

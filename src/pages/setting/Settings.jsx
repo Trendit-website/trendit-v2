@@ -15,7 +15,7 @@ export default function Settings() {
       <div className=' w-full p-3 bg-white dark:bg-neutral-900 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch px-4 md:px-0 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-white text-2xl font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
               Profile Settings
             </div>
           </div>
@@ -68,7 +68,7 @@ export default function Settings() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className='p-2 justify-center items-center gap-1 flex'>
+            {/* <div className='p-2 justify-center items-center gap-1 flex'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='18'
@@ -85,7 +85,7 @@ export default function Settings() {
               <div className="text-center text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-bold font-['Campton']">
                 Save
               </div>
-            </div>
+            </div> */}
           </div>
 
           {selected === 'generalform' && (

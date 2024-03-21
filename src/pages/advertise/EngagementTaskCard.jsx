@@ -1,6 +1,8 @@
 import { Button } from '@nextui-org/button'
+import { useNavigate } from 'react-router-dom'
 
 export default function EngagementTaskCard() {
+  const navigate = useNavigate()
   return (
     <div className='flex flex-col md:grid md:grid-cols-2 gap-3'>
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
@@ -23,7 +25,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get Real People to Join Your Group
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -52,7 +54,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-joinGP-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -83,7 +88,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get people to Like your business pages
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -112,7 +117,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-like-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -147,7 +155,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Post adverts on your WhatsApp status
+              Get People to follow you
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -176,7 +184,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-follower-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -199,7 +210,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Post adverts on your X account
+              Get Real People to Like and Follow Your Business Page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -228,7 +239,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-follower&like-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -285,7 +299,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get Real People to Comment on Your Social Media Posts
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -314,7 +328,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-comment-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>
@@ -368,7 +385,7 @@ export default function EngagementTaskCard() {
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get People to Share Your social media Post
             </div>
             <div className="self-stretch text-black dark:text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -397,7 +414,10 @@ export default function EngagementTaskCard() {
                 ₦150 per Advert post
               </div>
             </div>
-            <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+            <Button
+              onClick={() => navigate('/dashboard/engage-share-task')}
+              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+            >
               Create Advert
             </Button>
           </div>

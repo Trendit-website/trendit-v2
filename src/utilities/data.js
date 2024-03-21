@@ -58,7 +58,27 @@ export const animals = [
     description: 'A large semiaquatic reptile',
   },
 ]
+export const platforms = [
+  {
+    label: 'Facebook',
+    value: 'facebook',
+  },
+  {
+    label: 'WhatsApp',
+    value: 'whatsapp',
+  },
+  {
+    label: 'Tiktok',
+    value: 'tioktok',
+  },
+  { label: 'Instagram', value: 'instagram' },
+  { label: 'Twitter', value: 'twitter' },
+]
 export const genders = [
+  {
+    label: 'Others',
+    value: 'others',
+  },
   {
     label: 'Male',
     value: 'male',
@@ -90,3 +110,27 @@ export const years = Array.from(
   { length: 100 },
   (_, i) => new Date().getFullYear() - i
 )
+
+export const generateVideoThumbnail = async (videoFile) => {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video')
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+
+    video.src = URL.createObjectURL(videoFile)
+    video.addEventListener('loadedmetadata', () => {
+      canvas.width = video.videoWidth
+      canvas.height = video.videoHeight
+      context.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+      const thumbnailUrl = canvas.toDataURL('image/jpeg')
+      resolve(thumbnailUrl)
+    })
+
+    video.addEventListener('error', (error) => {
+      reject(error)
+    })
+
+    video.load()
+  })
+}

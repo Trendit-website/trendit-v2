@@ -190,18 +190,8 @@ export default function OnBoard() {
                   <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                     Birthday
                   </label>
-                  <div className=' flex gap-4'>
-                    <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      {/* <input
-                        type='number'
-                        id='day'
-                        name='day'
-                        placeholder='Day'
-                        min='1'
-                        max='31'
-                        {...register('day', { required: 'Day is required' })}
-                        className="grow py-4 w-20 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                      /> */}
+                  <div className=' flex justify-between items-center gap-6'>
+                    <div className='grow w-20 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='day'
                         control={control}
@@ -242,17 +232,7 @@ export default function OnBoard() {
                         )}
                       />
                     </div>
-                    <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      {/* <input
-                        type='text'
-                        id='month'
-                        name='month'
-                        placeholder='Month'
-                        {...register('month', {
-                          required: 'Month is required',
-                        })}
-                        className="grow py-4 md:w-28 rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                      /> */}
+                    <div className='grow shrink md:w-28 basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='month'
                         control={control}
@@ -293,17 +273,7 @@ export default function OnBoard() {
                         )}
                       />
                     </div>
-                    <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      {/* <input
-                        type='number'
-                        id='year'
-                        name='year'
-                        placeholder='Year'
-                        min='1900'
-                        max={new Date().getFullYear()} // or you can set a limit
-                        {...register('year', { required: 'Year is required' })}
-                        className="grow py-4 md:w-32  rounded-lg px-2 bg-zinc-800 focus:outline-none shrink basis-0 dark:text-white text-stone-800 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                      /> */}
+                    <div className='grow md:w-32 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='year'
                         control={control}
