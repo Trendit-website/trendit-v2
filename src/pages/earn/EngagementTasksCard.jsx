@@ -127,7 +127,10 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
@@ -220,7 +223,10 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
@@ -281,7 +287,10 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div className='w-[109px] flex-col justify-start items-start inline-flex'>
+          <div
+            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
+          >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task

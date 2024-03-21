@@ -326,7 +326,7 @@ export default function GenerateEngagementTask() {
                 <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                   Need quick cash to earn?
                 </div>
-                <div className="self-stretch w-[30rem] text-center text-black text-xs font-normal font-['Campton']">
+                <div className="self-stretch w-[30rem] text-center text-black dark:text-white text-xs font-normal font-['Campton']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
                   Instagram, Twitter or Tiktok, you MUST have atleast 1,000

@@ -3,10 +3,30 @@
 import { Modal, ModalContent } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from 'react'
+import { useFetchBallance } from '../../../api/walletApi'
+import toast from 'react-hot-toast'
 
-export default function AdvertPaymentModal({ isOpen, onClose }) {
+export default function AdvertPaymentModal({
+  isOpen,
+  onClose,
+  amount,
+  onSuccess,
+  onWalletPaymentSuccess,
+}) {
   const [view, setView] = useState('')
+  const { data: walletBalance } = useFetchBallance()
 
+  const balanceAfterPayment = walletBalance?.balance - amount
+
+  const handleFinalPayment = async () => {
+    try {
+      await onWalletPaymentSuccess()
+      setView('procceed')
+    } catch (error) {
+      toast.error('Wallet payment failed:', error)
+      console.error('Wallet payment failed:', error)
+    }
+  }
   return (
     <>
       <div>
@@ -82,7 +102,11 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                   </svg>
                 </div>
                 <div
-                  onClick={() => setView('confirmPayment')}
+                  onClick={() => {
+                    // setPaymentMethod(paymentMethod)
+                    // initializePayment(onSuccessPayment, onClosePayment)
+                    setView('confirmPayment')
+                  }}
                   className='self-stretch p-6 cursor-pointer bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-start gap-2 inline-flex'
                 >
                   <svg
@@ -124,7 +148,9 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                   </svg>
                 </div>
                 <div
-                  onClick={() => setView('confirmPayment')}
+                  // onClick={() => setView('confirmPayment')}
+                  // onClick={handlePayWithPaystack}
+                  onClick={onSuccess}
                   className='self-stretch p-6 cursor-pointer bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-start gap-2 inline-flex'
                 >
                   <svg
@@ -144,7 +170,8 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                   <div className='grow shrink basis-0 h-11 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                       <div className="self-stretch text-stone-900 text-sm font-medium font-['Campton']">
-                        Pay with Crypto
+                        {/* Pay with Crypto */}
+                        Pay with Paystack
                       </div>
                       <div className="self-stretch text-stone-900 text-xs font-normal font-['Campton']">
                         Get real people to post your ads on their social media
@@ -192,7 +219,7 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                         Total Pay
                       </div>
                       <div className="text-stone-900 text-3xl font-medium font-['Campton']">
-                        ₦589 .90
+                        {walletBalance?.currency_code}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -200,7 +227,7 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                         Amount due to task
                       </div>
                       <div className="text-black text-[12.83px] font-normal font-['Campton']">
-                        $500
+                        {walletBalance?.currency_code}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -208,7 +235,8 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                         Wallet balance after this payment
                       </div>
                       <div className="text-black text-[12.83px] font-normal font-['Campton']">
-                        $500
+                        {walletBalance?.currency_code}: {''}
+                        {balanceAfterPayment}
                       </div>
                     </div>
                   </div>
@@ -238,7 +266,7 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                   </div>
                 </div>
                 <div
-                  onClick={() => setView('procceed')}
+                  onClick={handleFinalPayment}
                   className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
                   <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
@@ -355,7 +383,10 @@ export default function AdvertPaymentModal({ isOpen, onClose }) {
                       now. You have 1 hour to perform this task. Please confirm
                       only if you are ready to perform the task.
                     </div>
-                    <div className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'>
+                    <div
+                      onClick={onClose}
+                      className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                    >
                       <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
                         Go Home
                       </div>

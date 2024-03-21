@@ -16,6 +16,8 @@ APIFormData.interceptors.request.use((req) => {
   req.headers['Authorization'] = `Bearer ${access_token}`
   req.headers['Content-type'] = 'multipart/form-data'
   req.headers['Accept'] = 'application/json'
+  req.headers['CALLBACK-URL'] = window.location.origin + `/dashboard/payment`
+
   return req
 })
 export default APIFormData
