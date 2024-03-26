@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 
 import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
@@ -16,9 +16,13 @@ const Navbar = ({ onNotificationClick }) => {
     useContext(dashboardContext)
   // minimized sidebar was omitted for now!
 
-  const { toggle } = useDarkMode(false)
+  const { toggle, isDarkMode } = useDarkMode(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  useEffect(() => {
+    // Store dark mode preference in local storage
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
+  }, [isDarkMode])
   return (
     <>
       <div

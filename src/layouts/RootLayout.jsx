@@ -13,14 +13,14 @@ function RootLayout() {
   const { sidebarOpen, sidebarMinimized, isTablet } =
     useContext(dashboardContext)
   const { pathname } = useLocation()
-  const [showRightSidebar, setShowRightSidebar] = useState(false)
+  const [showRightSidebar, setShowRightSidebar] = useState(true)
 
   const toggleRightSidebar = () => {
     setShowRightSidebar(!showRightSidebar)
   }
 
   return (
-    <div className='dark:text-gray-100  dark:bg-neutral-900  dark:bgslate-700 bglighten duration-200 ease-in-out  overflow-clip'>
+    <div className='dark:text-gray-100  dark:bg-neutral-900 duration-200 ease-in-out  overflow-clip'>
       <div className='flex w-full '>
         <Sidebar />
         <motion.div
@@ -39,8 +39,8 @@ function RootLayout() {
             className={`py-4 flex-1 z-1 mx-auto w-full overflow-clip
                           ${
                             sidebarOpen && !isTablet
-                              ? ' w-[98%] lg:w-[98%] subsemi:w-[90%]   xx:w-[84%]  '
-                              : ' max-w-[98%] sm:w-[72%] md:w-[98%] lg:w-[98%] '
+                              ? ' w-[100%] lg:w-[100%] subsemi:w-[90%]   xx:w-[84%]  '
+                              : ' max-w-[100%] sm:w-[72%] md:w-[100%] lg:w-[10%] '
                           }
                         
                         `}

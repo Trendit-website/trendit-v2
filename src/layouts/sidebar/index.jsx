@@ -47,10 +47,6 @@ const Sidebar = () => {
     // setShowminimizedsubMenu(false);
   }
 
-  // const foldSidebar = () => {
-  //   minimizeSidebar();
-  // };
-
   useEffect(() => {
     isTablet && setSidebarOpen(false)
   }, [pathname])
@@ -107,10 +103,10 @@ const Sidebar = () => {
   // };
 
   return (
-    <div className="relative bg-blue-500 bglighten dark:bg-neutral-900 z-40  shadowsidebar font-['Campton']">
+    <div className="relative bg-blue-500  dark:bg-neutral-900 z-40  shadowsidebar font-['Campton']">
       <div
         onClick={() => overlayClicked()}
-        className={`lg:hidden fixed inset-0 max-h-screen z-40 bg-chatoverlay cursor-pointer   ${
+        className={`lg:hidden fixed inset-0 max-h-screen z-40 cursor-pointer   ${
           sidebarOpen ? 'block' : 'hidden'
         } `}
       ></div>
@@ -128,14 +124,14 @@ const Sidebar = () => {
             ? 'open'
             : 'closed'
         }
-        className='shadow-sm   group text-zinc-400  lg:z-[49] z-[91] max-w-[16rem]  w-[16rem] 
+        className='shadow-sm border-r min-h-full group text-black lg:z-[49] z-[91] max-w-[17rem] w-[17rem] 
              fixed top-0 left-0
            h-screen  dark:!text-gray-100 bg-lighten dark:bg-neutral-900  '
       >
         {/* top bar */}
 
         <div className='flex flex-col z-40 h-full '>
-          <ul className='whitespace-pre text-[0.9rem] flex flex-col overflow-x-hidden font-medium  scrollbar-thin scrollbar-thumb-transparent  group-hover:scrollbar-thumb-[#7D8084] scrollbar-track-transparent menuScrollBar  h-full  px-0  pb-20'>
+          <ul className='whitespace-pre text-[1rem] flex flex-col overflow-x-hidden font-medium  scrollbar-thin scrollbar-thumb-transparent  group-hover:scrollbar-thumb-[#7D8084] scrollbar-track-transparent h-full px-2 pb-20'>
             {/* logo */}
             <div
               className={`flex flex-col bg-sidebarBg  ${
@@ -162,11 +158,11 @@ const Sidebar = () => {
                 <div className='p-0'>
                   {!sidebarMinimized && route?.title && (
                     <small
-                      className={`mx-[1.2rem]  text-zinc-400 font-bold text-sm inline-block px-2 mb-2 font-['Campton'] ${
+                      className={`mx-[1.2rem]  text-black font-light capitalize text-sm inline-block px-2 mb-2 font-['Campton'] ${
                         i === 0 ? 'pt-3' : 'pt-7'
                       }`}
                     >
-                      {route.title?.toLocaleUpperCase()}
+                      {route.title}
                     </small>
                   )}
 

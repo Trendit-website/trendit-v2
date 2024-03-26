@@ -1,16 +1,16 @@
-import { MdContactSupport } from 'react-icons/md'
-import {
-  CassetteTape,
-  HomeIcon,
-  MousePointerClick,
-  SettingsIcon,
-} from 'lucide-react'
+import { MousePointerClick } from 'lucide-react'
 import { TbSpeakerphone } from 'react-icons/tb'
 import { BiShare } from 'react-icons/bi'
 import { RiMenuSearchLine } from 'react-icons/ri'
-import { FaArrowTrendUp } from 'react-icons/fa6'
-import { IoStatsChart } from 'react-icons/io5'
-import { RiHeartsLine } from 'react-icons/ri'
+import {
+  EarnIcon,
+  HomeIcon,
+  GrowIcon,
+  TransIcon,
+  SettingIcon,
+  ReferalIcon,
+  SupportIcon,
+} from '../../assets/EarnIcon'
 
 export const defaultMenu = [
   {
@@ -24,7 +24,7 @@ export const defaultMenu = [
     title: '',
     name: 'Earn',
     route: 'earn',
-    icon: CassetteTape,
+    icon: EarnIcon,
     withSubMenu: false,
   },
   {
@@ -54,7 +54,7 @@ export const defaultMenu = [
     title: '',
     name: 'Grow',
     // routeMerge: true,
-    icon: FaArrowTrendUp,
+    icon: GrowIcon,
     withSubMenu: false,
     route: '/dashboard/grow',
   },
@@ -71,7 +71,7 @@ export const defaultMenu = [
     title: 'Quick Actions',
     name: 'Transactions',
     // routeMerge: true,
-    icon: IoStatsChart,
+    icon: TransIcon,
     withSubMenu: false,
     route: 'transactions',
   },
@@ -79,7 +79,7 @@ export const defaultMenu = [
     title: '',
     name: 'Refer Link',
     // routeMerge: true,
-    icon: RiHeartsLine,
+    icon: ReferalIcon,
     withSubMenu: false,
     route: 'refer-link',
   },
@@ -87,7 +87,7 @@ export const defaultMenu = [
     title: '',
     name: 'Setting',
     // routeMerge: true,
-    icon: SettingsIcon,
+    icon: SettingIcon,
     withSubMenu: false,
     route: 'settings',
   },
@@ -95,7 +95,7 @@ export const defaultMenu = [
     title: '',
     name: 'Support',
     // routeMerge: true,
-    icon: MdContactSupport,
+    icon: SupportIcon,
     withSubMenu: false,
     route: 'support',
   },

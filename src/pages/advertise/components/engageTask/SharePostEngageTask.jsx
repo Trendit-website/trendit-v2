@@ -137,7 +137,7 @@ export default function SharePostEngageTask() {
               </div>
               <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className="text-stone-900 text-2xl font-medium font-['Campton']">
+                  <div className="dark:text-white text-stone-900 text-2xl font-medium font-['Campton']">
                     Get People To Comment On your Post
                   </div>
                 </div>
@@ -146,7 +146,7 @@ export default function SharePostEngageTask() {
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Select Platform
                           </div>
                         </div>
@@ -197,7 +197,7 @@ export default function SharePostEngageTask() {
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -205,7 +205,7 @@ export default function SharePostEngageTask() {
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Select Location
                           </div>
                         </div>
@@ -256,7 +256,7 @@ export default function SharePostEngageTask() {
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
                             This is the desired Number of Whatsapp Status Advert
                             Posts you want us to get for you.
                           </div>
@@ -264,7 +264,7 @@ export default function SharePostEngageTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Number of Shares You Want
                           </div>
                         </div>
@@ -291,7 +291,7 @@ export default function SharePostEngageTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -303,7 +303,7 @@ export default function SharePostEngageTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Your Social Media Page/Profile Link (e.g Instagram,
                             Twitter or Tiktok Page Link)
                           </div>
@@ -331,7 +331,7 @@ export default function SharePostEngageTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -343,7 +343,7 @@ export default function SharePostEngageTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Select Gender
                           </div>
                         </div>
@@ -394,7 +394,7 @@ export default function SharePostEngageTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
                             You can target and select a particular location
                             where your task or advert will be mostly shown.
                             Select 'All Nigeria' if you want to target every
@@ -404,7 +404,7 @@ export default function SharePostEngageTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                             Select Religion
                           </div>
                         </div>
@@ -453,7 +453,7 @@ export default function SharePostEngageTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
                             You can target people of a particular religion or
                             belief. Your advert and task will be shown to the
                             particular religion you select. Select 'All
@@ -465,7 +465,7 @@ export default function SharePostEngageTask() {
                   </div>
                   <div className='self-stretch px-3 py-2 bg-zinc-400 bg-opacity-30 rounded flex-col justify-center items-center gap-2 flex'>
                     <div className='w[68px] grow shrink basis-0 px-2 flex-col justify-center items-center gap-2 flex'>
-                      <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                         Total Pay
                       </div>
                       <Input

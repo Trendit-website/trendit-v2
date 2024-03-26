@@ -43,10 +43,10 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col justify-start items-start inline-flex'>
-        <div className=' py-3 bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
+      <div className='flex-col border-l min-h-full justify-start items-start inline-flex'>
+        <div className=' py-3  bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='self-stretch  px-[11px] flex-col justify-start items-start gap-2 flex'>
+            <div className='self-stretch w-96 flex-col justify-start items-start gap-2 flex'>
               <div className='self-stretch px-3 py-1.5  bg-lighten dark:bg-zinc-900 rounded justify-start items-center gap-2 inline-flex'>
                 <Controller
                   name='query'
@@ -54,9 +54,7 @@ export default function RightSidebar() {
                   render={({ field }) => (
                     <Input
                       size='sm'
-                      radius='lg'
                       classNames={{
-                        label: 'text-black/50 dark:text-white/90',
                         input: [
                           'bg-transparent',
                           'text-black/90 dark:text-white/90',
@@ -64,7 +62,6 @@ export default function RightSidebar() {
                         ],
                         innerWrapper: 'bg-transparent',
                         inputWrapper: [
-                          'shadow-xl',
                           'bg-default-200/50',
                           'dark:bg-default/60',
                           'backdrop-blur-xl',
@@ -76,10 +73,10 @@ export default function RightSidebar() {
                           '!cursor-text',
                         ],
                       }}
-                      className="text-center px-4 text-zinc-400 text-sm font-medium font-['Campton']"
+                      className="text-center rounded-none text-black text-sm font-medium font-['Campton']"
                       placeholder='search...'
                       startContent={
-                        <SearchIcon className='text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0' />
+                        <SearchIcon className='text-black mb-0.5 dark:text-white/90 pointer-events-none flex-shrink-0' />
                       }
                       {...field}
                       isClearable={true}
