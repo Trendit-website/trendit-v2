@@ -5,8 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { AvatarGroup, Image, Input, Link } from '@nextui-org/react'
 import Igframe from '../../../assets/IGFrame131.svg'
 import usersImage from '../../../assets/RectangleUser.svg'
+import { usePerformTask } from '../../../api/earnApi'
 
-export default function EarnTask() {
+export default function EarnEngageTask() {
+  const { data: fetchTask } = usePerformTask()
+  console.log(fetchTask, 'Task')
   function CustomAvatar({ src }) {
     return (
       <img
