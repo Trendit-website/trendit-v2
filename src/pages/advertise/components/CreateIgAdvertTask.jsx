@@ -30,9 +30,9 @@ export default function CreateIgAdvertTask() {
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
 
-  const base = 150
+  // const base = 150
 
-  const [amount, setAmount] = useState(base)
+  // const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
 
   const {
@@ -43,12 +43,14 @@ export default function CreateIgAdvertTask() {
     watch,
     register,
     formState: { errors },
-  } = useForm({})
+  } = useForm({
+    defaultValues: { amount: 150 },
+  })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
-  const calculatedAmount = watch().posts_count * base
+  const calculatedAmount = +watch().posts_count * +watch().amount
   const handleChange = async ({ target }) => {
     const { name } = target
 
@@ -120,7 +122,7 @@ export default function CreateIgAdvertTask() {
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -129,12 +131,7 @@ export default function CreateIgAdvertTask() {
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
 
-      // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvert(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
@@ -166,7 +163,7 @@ export default function CreateIgAdvertTask() {
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -176,8 +173,8 @@ export default function CreateIgAdvertTask() {
       formData.append('account_link', data.phone)
 
       // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
+      // setAmount(calculatedAmount)
+      // data.amount = calculatedAmount
       console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
@@ -592,11 +589,19 @@ export default function CreateIgAdvertTask() {
                       <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
                         Total Pay
                       </div>
-                      <Input
-                        disabled
-                        value={amount}
-                        {...register('amount')}
-                        className="text-stone-900 wfull text-3xl font-medium font-['Campton']"
+
+                      <Controller
+                        name='amount'
+                        control={control}
+                        render={({ field }) => (
+                          <Input
+                            {...field}
+                            disabled
+                            value={calculatedAmount}
+                            // {...register('amount')}
+                            className="text-stone-900 wfull text-3xl font-medium font-['Campton']"
+                          />
+                        )}
                       />
                     </div>
                     <Button

@@ -5,12 +5,14 @@ import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
 import AdvertiseTaskCard from './AdvertiseTaskCard'
 import { Input } from '@nextui-org/input'
-import DetailsModal from './components/DetailsModal'
-import { useDisclosure } from '@nextui-org/react'
+// import DetailsModal from './components/DetailsModal'
+// import { useDisclosure } from '@nextui-org/react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Resell() {
   const [selected, setSelected] = useState('advert task')
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  // const { isOpen, onOpen, onClose } = useDisclosure()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -49,7 +51,10 @@ export default function Resell() {
                 media accounts. Select the type of task you want people to
                 perform below:
               </div>
-              <Button className='w-[290px] h-11 px-6 py-3.5 bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
+              <Button
+                onClick={() => navigate('/dashboard/resell-post')}
+                className='w-[290px] h-11 px-6 py-3.5 bg-fuchsia-400 text-white dark:text-black dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='17'
@@ -63,7 +68,7 @@ export default function Resell() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center  text-[12.83px] font-medium font-['Campton']">
                   Post an Advert
                 </div>
               </Button>
@@ -253,11 +258,11 @@ export default function Resell() {
               }}
             >
               <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {[1, 2, 3, 4, 5, 6].map((key) => (
+                {/* {[1, 2, 3, 4, 5, 6].map((key) => (
                   <div onClick={onOpen} className='' key={key}>
-                    <AdvertiseTaskCard />
                   </div>
-                ))}
+                ))} */}
+                <AdvertiseTaskCard />
               </div>
             </motion.div>
           )}
@@ -272,16 +277,14 @@ export default function Resell() {
               }}
             >
               <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {[1, 2, 3, 4, 5, 6].map((key) => (
-                  <AdvertiseTaskCard key={key} />
-                ))}
+                {/* {[1, 2, 3, 4, 5, 6].map((key) => (
+                  ))} */}
+                <AdvertiseTaskCard />
               </div>
             </motion.div>
           )}
         </div>
       </div>
-
-      <DetailsModal isOpen={isOpen} onClose={onClose} />
     </>
   )
 }

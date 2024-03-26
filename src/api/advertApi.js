@@ -24,12 +24,11 @@ export const useCreateAdvertPaymentWallet = () => {
   })
 }
 
-export const useGetAdvert = () => {
+export const useGetAdvert = (status) => {
   return useQuery({
-    queryKey: ['get_dvert'],
+    queryKey: ['get_dvert', status],
     queryFn: async () => {
-      const res = await API.get(`/current-user/tasks`)
-      console.log(res?.data, 'resss')
+      const res = await API.get(`/current-user/tasks?${status}`)
       return res?.data?.all_tasks
     },
   })
