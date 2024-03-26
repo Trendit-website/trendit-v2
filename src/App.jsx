@@ -61,6 +61,11 @@ function App() {
     }
   }, [isDarkMode])
 
+  useEffect(() => {
+    // Store dark mode preference in local storage
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
+  }, [isDarkMode])
+
   return (
     <>
       <Animation>

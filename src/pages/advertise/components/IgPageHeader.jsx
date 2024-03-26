@@ -4,7 +4,7 @@ import Igframe from '../../../assets/IGFrame131.svg'
 export default function IgPageHeader() {
   return (
     <div>
-      <div className='self-stretch h-[177px] border border-white flex-col justify-start items-start flex'>
+      <div className='self-stretch relative h-[177px] border border-white flex-col justify-start items-start flex'>
         <div className='self-stretch h-[170px] p-6 bg-zinc-400 bg-opacity-30 rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
@@ -47,7 +47,7 @@ export default function IgPageHeader() {
               </div>
             </div>
           </div>
-          <div className='w-[304.97px] origin-top-left absolute right-[1.7rem] top-[7.2rem] justify-start items-start gap-[115.18px] inline-flex'>
+          <div className='w-[304.97px] origin-top-left absolute right-0 top-0 top[9.2rem] justify-start items-start gap-[115.18px] inline-flex'>
             <Image src={Igframe} alt='igFrme' className='h-[10.1rem]' />
           </div>
         </div>
