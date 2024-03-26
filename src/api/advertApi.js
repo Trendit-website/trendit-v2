@@ -28,7 +28,16 @@ export const useGetAdvert = (status) => {
   return useQuery({
     queryKey: ['get_dvert', status],
     queryFn: async () => {
-      const res = await API.get(`/current-user/tasks?${status}`)
+      const res = await API.get(`/current-user/tasks?status=${status}`)
+      return res?.data?.all_tasks
+    },
+  })
+}
+export const useGetAllAdvert = () => {
+  return useQuery({
+    queryKey: ['get_dvert'],
+    queryFn: async () => {
+      const res = await API.get(`/current-user/tasks`)
       return res?.data?.all_tasks
     },
   })
