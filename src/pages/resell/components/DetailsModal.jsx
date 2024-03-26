@@ -8,10 +8,10 @@ import {
   useDisclosure,
 } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
-import imgplaceholder from '../../../assets/Rectangle5.svg'
+// import imgplaceholder from '../../../assets/Rectangle5.svg'
 import GeneratedLinkModal from './GeneratedLinkModal'
 
-export default function DetailsModal({ isOpen, onClose }) {
+export default function DetailsModal({ isOpen, onClose, fetchSingleItem }) {
   const {
     isOpen: isLinkGenerated,
     onOpen: openLinkGenerated,
@@ -22,6 +22,7 @@ export default function DetailsModal({ isOpen, onClose }) {
     onClose()
     openLinkGenerated()
   }
+
   return (
     <>
       <div>
@@ -51,16 +52,17 @@ export default function DetailsModal({ isOpen, onClose }) {
                   you are ready to perform the task.
                 </div>
               </div>
-              <div className='h-[392.59px] flex-col justify-start items-center gap-3 flex'>
+              <div className='flex-col justify-start items-center gap-3 flex'>
                 <div className='self-stretch  p-6 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-start gap-2 flex'>
                   <div className='w-[339px]  relative bg-neutral-800'>
                     <Image
-                      className='w-[365px] rounded-none opacity-50'
-                      src={imgplaceholder}
+                      className='w-[365px] h-[15rem] rounded-none opacity-50'
+                      // src={imgplaceholder}
+                      src={fetchSingleItem?.item_img}
                     />
-                    <div className='w-[316.50px] left-[11px] top-[127px] absolute justify-between items-center inline-flex'>
+                    <div className='w-[316.50px] z-10 left-[11px] top-[7.5rem] lg:top-[10rem] 2xl:top-[13rem] absolute justify-between items-center inline-flex'>
                       <div className='justify-start items-start gap-0.5 flex'>
-                        <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
+                        <div className='p-1 bg-white  rounded justify-start items-start gap-[29px] flex'>
                           <div className='justify-start items-center gap-2.5 flex'>
                             <div className="text-blue-600 text-xs font-normal font-['Campton']">
                               #Cars
@@ -90,9 +92,9 @@ export default function DetailsModal({ isOpen, onClose }) {
                         </div>
                       </div>
                       <div className='justify-start z-20 items-start gap-[2.50px] flex'>
-                        <div className='w-[6.50px] h-[6.50px] bg-stone-900 rounded-full' />
-                        <div className='w-[6.50px] h-[6.50px] bg-stone-900 rounded-full' />
-                        <div className='w-[6.50px] h-[6.50px] bg-stone-900 rounded-full' />
+                        <div className='w-[6.50px] h-[6.50px] bg-white bgstone-900 rounded-full' />
+                        <div className='w-[6.50px] h-[6.50px] bg-white bgstone-900 rounded-full' />
+                        <div className='w-[6.50px] h-[6.50px] bg-white bgstone-900 rounded-full' />
                       </div>
                     </div>
                   </div>
@@ -100,7 +102,8 @@ export default function DetailsModal({ isOpen, onClose }) {
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                       <div className='self-stretch justify-between items-start inline-flex'>
                         <div className="w-[221px] text-stone-900 text-sm font-medium font-['Campton']">
-                          Toks Toyota camry 05 on sales @ +2349060344669
+                          {fetchSingleItem?.name} on sales @{' '}
+                          {fetchSingleItem?.phone}
                         </div>
                         <svg
                           xmlns='http://www.w3.org/2000/svg'
@@ -116,7 +119,7 @@ export default function DetailsModal({ isOpen, onClose }) {
                           />
                         </svg>
                       </div>
-                      <div className='self-stretch h-[29px] flex-col justify-start items-start flex'>
+                      <div className='self-stretch  flex-col justify-start items-start flex'>
                         <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
                           <div className='justify-start items-center gap-0.5 flex'>
                             <svg
@@ -149,17 +152,17 @@ export default function DetailsModal({ isOpen, onClose }) {
                             </div>
                           </div>
                           <div className="text-stone-900 text-sm font-bold font-['Campton']">
-                            ₦270,000 per sale
+                            ₦{fetchSingleItem?.price} {''} per sale
                           </div>
                         </div>
                       </div>
                       <div className='self-stretch  justify-start items-center gap-3 inline-flex'>
-                        <Button className='grow shrink basis-0 h-[24px]  p-2 bg-white rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
+                        <Button className='grow shrink basis-0   p-2 bg-white rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
                           <div className="text-center text-black text-[10px] font-medium font-['Campton']">
                             Buy this product
                           </div>
                         </Button>
-                        <Button className='grow shrink h-[24px] basis-0 p-2 bg-fuchsia-400 rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
+                        <Button className='grow shrink  basis-0 p-2 bg-fuchsia-400 rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
                           <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                             Resell this product
                           </div>
@@ -169,7 +172,7 @@ export default function DetailsModal({ isOpen, onClose }) {
                   </div>
                 </div>
                 <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
-                  <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
+                  <div className='grow shrink basis-0 h[50px] justify-start items-center gap-2.5 flex'>
                     <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
                       You must NOT UNLIKE or UNFOLLOW the Facebook page after
                       you have like and followed the page. Your Trendit account

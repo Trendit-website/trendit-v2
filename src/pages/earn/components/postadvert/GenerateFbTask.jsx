@@ -1,17 +1,19 @@
 /* eslint-disable no-irregular-whitespace */
 
 import { useNavigate } from 'react-router-dom'
-import frameImage from '../../../assets/engageIcon237873.svg'
+import frameImage from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Chip, Tab, Tabs, useDisclosure } from '@nextui-org/react'
-import PostAdvertTasksCard from '../PostAdvertTasksCard'
-import IgGeneratedTask from './IgGeneratedTask'
-import ConfirmTaskModal from './ConfirmTaskModal'
+import PostAdvertTasksCard from '../../PostAdvertTasksCard'
+import IgGeneratedTask from '.././IgGeneratedTask'
+import ConfirmTaskModal from '.././ConfirmTaskModal'
+import { usePerformTask } from '../../../../api/earnApi'
 
-export default function GenerateEngagementTask() {
+export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { data: fetchTask } = usePerformTask(selected)
 
   const navigate = useNavigate()
   return (
@@ -196,7 +198,7 @@ export default function GenerateEngagementTask() {
                         title='Pending'
                       ></Tab>
                       <Tab
-                        key='in review'
+                        key='in_review'
                         title={
                           <div>
                             In Review
@@ -285,7 +287,7 @@ export default function GenerateEngagementTask() {
               <PostAdvertTasksCard />
             </motion.div>
           )}
-          {selected === 'in review' && (
+          {selected === 'cancelled' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -296,15 +298,111 @@ export default function GenerateEngagementTask() {
               }}
             >
               <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((key) => (
-                  <div className='' key={key}>
-                    <IgGeneratedTask />
+                {fetchTask?.map((task, index) => (
+                  <div key={index} className=''>
+                    <IgGeneratedTask
+                      status={task?.status}
+                      caption={task?.task?.caption}
+                      price={task?.reward_money}
+                    />
                   </div>
                 ))}
               </div>
             </motion.div>
           )}
-          {selected !== 'in review' && (
+          {selected === 'completed' && (
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+              className='flex flex-col gap-2 w-full'
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+            >
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {fetchTask?.map((task, index) => (
+                  <div key={index} className=''>
+                    <IgGeneratedTask
+                      status={task?.status}
+                      caption={task?.task?.caption}
+                      price={task?.reward_money}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+          {selected === 'failed' && (
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+              className='flex flex-col gap-2 w-full'
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+            >
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {fetchTask?.map((task, index) => (
+                  <div key={index} className=''>
+                    <IgGeneratedTask
+                      status={task?.status}
+                      caption={task?.task?.caption}
+                      price={task?.reward_money}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+          {selected === 'pending' && (
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+              className='flex flex-col gap-2 w-full'
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+            >
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {fetchTask?.map((task, index) => (
+                  <div key={index} className=''>
+                    <IgGeneratedTask
+                      status={task?.status}
+                      caption={task?.task?.caption}
+                      price={task?.reward_money}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+          {selected === 'in_review' && (
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+              className='flex flex-col gap-2 w-full'
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+            >
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {fetchTask?.map((task, index) => (
+                  <div key={index} className=''>
+                    <IgGeneratedTask
+                      status={task?.status}
+                      caption={task?.task?.caption}
+                      price={task?.reward_money}
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+          {fetchTask?.length === 0 && (
             <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
               <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                 <svg
@@ -359,7 +457,12 @@ export default function GenerateEngagementTask() {
         </div>
       </div>
 
-      <ConfirmTaskModal isOpen={isOpen} onClose={onClose} />
+      <ConfirmTaskModal
+        isOpen={isOpen}
+        onClose={onClose}
+        task_type='advert'
+        platform='facebook'
+      />
     </>
   )
 }

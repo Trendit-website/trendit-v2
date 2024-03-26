@@ -20,8 +20,7 @@ import { useEffect } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 import ForgetPassword from './components/auth/ForgetPassword'
 import CreateIgAdvertTask from './pages/advertise/components/CreateIgAdvertTask'
-import GenerateEngagementTask from './pages/earn/components/GenerateEngagementTask'
-import EarnTask from './pages/earn/components/EarnTask'
+import GenerateEngagementTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
 import History from './pages/history/History'
 import ProtectedRoute from './pages/ProtectedRoute'
 
@@ -35,6 +34,17 @@ import FollowerEngageTask from './pages/advertise/components/engageTask/Follower
 import FollowerAndLikeEngageTask from './pages/advertise/components/engageTask/FollowerAndLikeEngageTask'
 import CommentEngageTask from './pages/advertise/components/engageTask/CommentEngageTask'
 import SharePostEngageTask from './pages/advertise/components/engageTask/SharePostEngageTask'
+import GenerateIgTask from './pages/earn/components/postadvert/GenerateIgTask'
+import GenerateTwTask from './pages/earn/components/postadvert/GenerateTwTask'
+import GenerateWapTask from './pages/earn/components/postadvert/GenerateWapTask'
+import GenerateFbTask from './pages/earn/components/postadvert/GenerateFbTask'
+import GenerateFbEngageTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
+import GenerateWhaEngageTask from './pages/earn/components/engageadvert/GenerateWhaEngageTask'
+import GenerateIgEngageTask from './pages/earn/components/engageadvert/GenerateIgEngageTask'
+import GenerateTwEngageTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
+import EarnEngageTask from './pages/earn/components/EarnEngageTask'
+import EarnAdvertTask from './pages/earn/components/EarnAdvertTask'
+import ResellForm from './pages/resell/components/ResellForm'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -97,6 +107,70 @@ function App() {
               }
             />
             <Route
+              path='earn-engage_ig-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateIgEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-engage_tw-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateTwEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-engage_whatsapp-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateWhaEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-engage_fb-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateFbEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert_ig-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateIgTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert_tw-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateTwTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert_whatsapp-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateWapTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert_fb-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateFbTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path='payment'
               element={
                 <ProtectedRoute>
@@ -105,10 +179,18 @@ function App() {
               }
             />
             <Route
-              path='earn-task'
+              path='earn-engage-task'
               element={
                 <ProtectedRoute>
-                  <EarnTask />
+                  <EarnEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert-task'
+              element={
+                <ProtectedRoute>
+                  <EarnAdvertTask />
                 </ProtectedRoute>
               }
             />
@@ -204,6 +286,14 @@ function App() {
               }
             />
             <Route
+              path='resell-post'
+              element={
+                <ProtectedRoute>
+                  <ResellForm />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path='transactions'
               element={
                 <ProtectedRoute>
@@ -235,7 +325,10 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path='*' element={<div>page coming soon</div>} />
+            <Route
+              path='*'
+              element={<div className='min-h-screen'>Page Coming Soon</div>}
+            />
           </Route>
           <Route path='*' element={<PageNotFound />} />
         </Routes>

@@ -56,7 +56,7 @@ export default function EngagementTasksCard() {
             </div>
           </div>
           <div
-            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            onClick={() => navigate(`/dashboard/earn-engage_fb-task`)}
             className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'
           >
             <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
@@ -128,7 +128,7 @@ export default function EngagementTasksCard() {
             </div>
           </div>
           <div
-            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            onClick={() => navigate(`/dashboard/earn-engage_ig-task`)}
             className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'
           >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
@@ -224,7 +224,7 @@ export default function EngagementTasksCard() {
             </div>
           </div>
           <div
-            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            onClick={() => navigate(`/dashboard/earn-engage_whatsapp-task`)}
             className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
           >
             <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
@@ -288,7 +288,7 @@ export default function EngagementTasksCard() {
             </div>
           </div>
           <div
-            onClick={() => navigate(`/dashboard/earn-engage-task`)}
+            onClick={() => navigate(`/dashboard/earn-engage_tw-task`)}
             className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
           >
             <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>

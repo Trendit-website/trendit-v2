@@ -48,7 +48,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: RiMenuSearchLine,
     withSubMenu: false,
-    route: '/orders',
+    route: '/dashboard/orders',
   },
   {
     title: '',
@@ -56,7 +56,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: FaArrowTrendUp,
     withSubMenu: false,
-    route: '/grow',
+    route: '/dashboard/grow',
   },
   {
     title: '',
@@ -64,7 +64,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: MousePointerClick,
     withSubMenu: false,
-    route: '/giveaways',
+    route: '/dashboard/giveaways',
   },
 
   {

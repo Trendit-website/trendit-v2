@@ -5,13 +5,18 @@ import OverViewCard from './OverViewCard'
 import AdvrtTaskViewCard from './AdvrtTaskViewCard'
 import EngageTaskViewCard from './EngageTaskViewCard'
 import TaskCard from './TaskCard'
-import CompletedTaskCard from './CompletedTaskCard'
-import PendingTaskCard from './PendingTaskCard'
-import ArchivedTaskCard from './ArchivedTaskCard'
+// import CompletedTaskCard from './CompletedTaskCard'
+// import PendingTaskCard from './PendingTaskCard'
+// import ArchivedTaskCard from './ArchivedTaskCard'
+import { useGetAdvert } from '../../api/advertApi'
+import { format } from 'date-fns'
 
 export default function History() {
   const [selected, setSelected] = useState('overview')
-  const [selectedHistory, setSelectedHistory] = useState('all')
+
+  const [selectedHistory, setSelectedHistory] = useState()
+  const { data: adverts } = useGetAdvert(selectedHistory)
+  console.log(adverts)
 
   return (
     <div>
@@ -150,12 +155,12 @@ export default function History() {
                       title='Pending'
                     ></Tab>
                     <Tab
-                      key='completeted'
+                      key='approved'
                       title='Completed'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
                     ></Tab>
                     <Tab
-                      key='archived'
+                      key='decline'
                       title='Archived'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
                     ></Tab>
@@ -216,7 +221,23 @@ export default function History() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <TaskCard />
+                <div className='grid gap-4'>
+                  {adverts?.length === 0 ? (
+                    <div className='text-center'>No {selectedHistory} Task</div>
+                  ) : (
+                    adverts?.map((advert, index) => (
+                      <TaskCard
+                        key={index}
+                        goal={advert?.goal}
+                        when={format(
+                          new Date(advert.date_created),
+                          'yyyy-MM-dd HH:mm:ss'
+                        )}
+                        status={advert?.status}
+                      />
+                    ))
+                  )}
+                </div>
               </motion.div>
             )}
             {selectedHistory === 'pending' && (
@@ -229,10 +250,27 @@ export default function History() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <PendingTaskCard />
+                {/* <PendingTaskCard /> */}
+                <div className='grid gap-4'>
+                  {adverts?.length === 0 ? (
+                    <div className='text-center'>No {selectedHistory} Task</div>
+                  ) : (
+                    adverts?.map((advert, index) => (
+                      <TaskCard
+                        key={index}
+                        goal={advert?.goal}
+                        when={format(
+                          new Date(advert.date_created),
+                          'yyyy-MM-dd HH:mm:ss'
+                        )}
+                        status={advert?.status}
+                      />
+                    ))
+                  )}
+                </div>
               </motion.div>
             )}
-            {selectedHistory === 'completeted' && (
+            {selectedHistory === 'approved' && (
               <motion.div
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
@@ -242,10 +280,27 @@ export default function History() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <CompletedTaskCard />
+                {/* <CompletedTaskCard /> */}
+                <div className='grid gap-4'>
+                  {adverts?.length === 0 ? (
+                    <div className='text-center'>No {selectedHistory} Task</div>
+                  ) : (
+                    adverts?.map((advert, index) => (
+                      <TaskCard
+                        key={index}
+                        goal={advert?.goal}
+                        when={format(
+                          new Date(advert.date_created),
+                          'yyyy-MM-dd HH:mm:ss'
+                        )}
+                        status={advert?.status}
+                      />
+                    ))
+                  )}
+                </div>
               </motion.div>
             )}
-            {selectedHistory === 'archived' && (
+            {selectedHistory === 'decline' && (
               <motion.div
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
@@ -255,7 +310,24 @@ export default function History() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <ArchivedTaskCard />
+                {/* <ArchivedTaskCard /> */}
+                <div className='grid gap-4'>
+                  {adverts?.length === 0 ? (
+                    <div className='text-center'>No {selectedHistory} Task</div>
+                  ) : (
+                    adverts?.map((advert, index) => (
+                      <TaskCard
+                        key={index}
+                        goal={advert?.goal}
+                        when={format(
+                          new Date(advert.date_created),
+                          'yyyy-MM-dd HH:mm:ss'
+                        )}
+                        status={advert?.status}
+                      />
+                    ))
+                  )}
+                </div>
               </motion.div>
             )}
           </div>

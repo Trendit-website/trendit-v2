@@ -1,11 +1,39 @@
 /* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/prop-types */
-import { Modal, ModalContent } from '@nextui-org/react'
+import { Button, Modal, ModalContent } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import { useGenerateTask } from '../../../api/earnApi'
+import toast from 'react-hot-toast'
 
-export default function ConfirmTaskModal({ isOpen, onClose }) {
+export default function ConfirmTaskModal({
+  isOpen,
+  onClose,
+  task_type,
+  platform,
+}) {
   const navigate = useNavigate()
+  const { mutateAsync: generateTask, isPending } = useGenerateTask()
+
+  const handleSubmit = async () => {
+    console.log(task_type, platform, 'ggg')
+    try {
+      const res = await generateTask({
+        task_type,
+        platform,
+      })
+      console.log(res, 'generateTask')
+      if (res.data.status) {
+        toast.success(res.data.message)
+        onClose()
+        navigate(`/dashboard/earn-task`)
+      }
+      onClose()
+    } catch (error) {
+      console.log(error)
+      toast.error(error.response?.data?.message ?? error.message)
+    }
+  }
   return (
     <>
       <div>
@@ -35,14 +63,15 @@ export default function ConfirmTaskModal({ isOpen, onClose }) {
                   you are ready to perform the task.
                 </div>
               </div>
-              <div
-                onClick={() => navigate(`/dashboard/earn-task`)}
-                className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
+              <Button
+                onClick={handleSubmit}
+                disabled={isPending}
+                className='w-[290px] cursor-pointer px-6 py-4.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
-                  Confirm
+                  {isPending ? 'Generating...' : 'Confirm'}
                 </div>
-              </div>
+              </Button>
             </div>
           </ModalContent>
         </Modal>
