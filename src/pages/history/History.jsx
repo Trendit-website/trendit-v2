@@ -8,7 +8,7 @@ import TaskCard from './TaskCard'
 // import CompletedTaskCard from './CompletedTaskCard'
 // import PendingTaskCard from './PendingTaskCard'
 // import ArchivedTaskCard from './ArchivedTaskCard'
-import { useGetAdvert } from '../../api/advertApi'
+import { useGetAdvert, useGetAllAdvert } from '../../api/advertApi'
 import { format } from 'date-fns'
 
 export default function History() {
@@ -16,6 +16,7 @@ export default function History() {
 
   const [selectedHistory, setSelectedHistory] = useState()
   const { data: adverts } = useGetAdvert(selectedHistory)
+  const { data: adverts2 } = useGetAllAdvert()
   console.log(adverts)
 
   return (
@@ -160,7 +161,7 @@ export default function History() {
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
                     ></Tab>
                     <Tab
-                      key='decline'
+                      key='declined'
                       title='Archived'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
                     ></Tab>
@@ -222,10 +223,10 @@ export default function History() {
                 }}
               >
                 <div className='grid gap-4'>
-                  {adverts?.length === 0 ? (
+                  {adverts2?.length === 0 ? (
                     <div className='text-center'>No {selectedHistory} Task</div>
                   ) : (
-                    adverts?.map((advert, index) => (
+                    adverts2?.map((advert, index) => (
                       <TaskCard
                         key={index}
                         goal={advert?.goal}
@@ -300,7 +301,7 @@ export default function History() {
                 </div>
               </motion.div>
             )}
-            {selectedHistory === 'decline' && (
+            {selectedHistory === 'declined' && (
               <motion.div
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
