@@ -22,13 +22,16 @@ export default function ConfirmTaskModal({
         task_type,
         platform,
       })
-      console.log(res, 'generateTask')
-      if (res.data.status) {
+      if (res.status === 206) {
+        toast.success(res.data.message)
+        onClose()
+      } else if (res.status === 200) {
         toast.success(res.data.message)
         onClose()
         navigate(`/dashboard/earn-task`)
+      } else {
+        onClose()
       }
-      onClose()
     } catch (error) {
       console.log(error)
       toast.error(error.response?.data?.message ?? error.message)
