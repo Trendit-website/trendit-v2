@@ -43,7 +43,7 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col border-l min-h-full justify-start items-start inline-flex'>
+      <div className='flex-col border-l dark:border-0 min-h-full justify-start items-start inline-flex'>
         <div className=' py-3  bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className='self-stretch w-96 flex-col justify-start items-start gap-2 flex'>

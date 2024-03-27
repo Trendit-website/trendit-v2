@@ -11,6 +11,8 @@ export default function ConfirmTaskModal({
   onClose,
   task_type,
   platform,
+  title,
+  description,
 }) {
   const navigate = useNavigate()
   const { mutateAsync: generateTask, isPending } = useGenerateTask()
@@ -28,7 +30,7 @@ export default function ConfirmTaskModal({
       } else if (res.status === 200) {
         toast.success(res.data.message)
         onClose()
-        navigate(`/dashboard/earn-task`)
+        navigate(`/dashboard/earn-advert-task`)
       } else {
         onClose()
       }
@@ -49,7 +51,7 @@ export default function ConfirmTaskModal({
           hideCloseButton={true}
         >
           <ModalContent className='md:w-[30rem] overflow-visible'>
-            <div className='p-12 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className='p-12 dark:bg-[#111111] bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
                 className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
@@ -57,13 +59,15 @@ export default function ConfirmTaskModal({
                 <AiOutlineClose size={20} color='#fff' />
               </div>
               <div className='flex-col justify-center items-center gap-3 flex'>
-                <div className="text-stone-900 text-sm font-bold font-['Campton']">
-                  Generate Next Twitter Task?
+                <div className="dark:text-white capitalize text-stone-900 text-sm font-bold font-['Campton']">
+                  {title ? title : 'Generate Next Twitter Task?'}
                 </div>
-                <div className="w-[253px] text-center text-black text-xs font-normal font-['Campton']">
-                  Are you sure you want to generate your next Twitter task now.
+                <div className="w-[253px] text-center dark:text-[#B0B0B0] text-black text-xs font-normal font-['Campton']">
+                  {description
+                    ? description
+                    : ` Are you sure you want to generate your next Twitter task now.
                   You have 1 hour to perform this task. Please confirm only if
-                  you are ready to perform the task.
+                  you are ready to perform the task.`}
                 </div>
               </div>
               <Button

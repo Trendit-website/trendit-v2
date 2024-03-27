@@ -122,7 +122,7 @@ export default function EarnAdvertTask() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className=' p-3 flex-col justify-start items-start gap-3 inline-flex'>
+        <div className=' min-h-screen w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
           <div className='justify-start cursor-pointer items-center gap-[7px] inline-flex'>
             <div onClick={() => navigate(-1)} className='cursor-pointer'>
               <svg
@@ -145,7 +145,7 @@ export default function EarnAdvertTask() {
             </div>
           </div>
 
-          <div className='self-stretch  border border-white flex-col justify-start items-start flex'>
+          <div className='self-stretch relative border border-white flex-col justify-start items-start flex'>
             <div className='self-stretch  p-6 bg-zinc-400 bg-opacity-30 rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
               <div className='flex-col justify-start items-start gap-1.5 flex'>
                 <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
@@ -188,7 +188,7 @@ export default function EarnAdvertTask() {
                   </div>
                 </div>
               </div>
-              <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-[1.7rem] top-[9.5rem] justify-start items-start gap-[115.18px] md:inline-flex'>
+              <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
                 <Image
                   src={Igframe}
                   alt='igFrme'
