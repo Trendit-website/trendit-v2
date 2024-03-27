@@ -13,14 +13,13 @@ import { usePerformTask } from '../../../../api/earnApi'
 export default function GenerateFbEngageTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
-    const { data: fetchTask } = usePerformTask(selected)
-
+  const { data: fetchTask } = usePerformTask(selected)
 
   const navigate = useNavigate()
   return (
     <>
       <div>
-        <div className='w-full  p-3 flex-col justify-start items-start gap-3 flex'>
+        <div className='w-full min-h-screen  p-3 flex-col justify-start items-start gap-3 flex'>
           <div className='justify-start cursor-pointer items-center gap-[7px] inline-flex'>
             <div onClick={() => navigate(-1)} className='cursor-pointer'>
               <svg

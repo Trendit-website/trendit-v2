@@ -1,7 +1,7 @@
 /* eslint-disable no-irregular-whitespace */
 
 import { useNavigate } from 'react-router-dom'
-import frameImage from '../../../../assets/engageIcon237873.svg'
+import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Chip, Tab, Tabs, useDisclosure } from '@nextui-org/react'
@@ -9,17 +9,21 @@ import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
 import { usePerformTask } from '../../../../api/earnApi'
+import { useDarkMode } from 'usehooks-ts'
+import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 
 export default function GenerateTwEngageTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
+  const { isDarkMode } = useDarkMode()
+  const frameImage = isDarkMode ? frameImageDark : frameImageLight
 
   const navigate = useNavigate()
   return (
     <>
       <div>
-        <div className='w-full  p-3 flex-col justify-start items-start gap-3 flex'>
+        <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 flex'>
           <div className='justify-start cursor-pointer items-center gap-[7px] inline-flex'>
             <div onClick={() => navigate(-1)} className='cursor-pointer'>
               <svg
@@ -31,9 +35,9 @@ export default function GenerateTwEngageTask() {
               >
                 <path
                   d='M18.9998 12H5.99985M10.9998 6L5.70696 11.2929C5.31643 11.6834 5.31643 12.3166 5.70696 12.7071L10.9998 18'
-                  stroke='black'
                   strokeWidth='2'
                   strokeLinecap='round'
+                  className='dark:stroke-white stroke-black'
                 />
               </svg>
             </div>
@@ -42,7 +46,7 @@ export default function GenerateTwEngageTask() {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start flex'>
-            <div className='self-stretch h-[347px] pb-6 bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
+            <div className='self-stretch h-[347px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
               <div
                 style={{
                   backgroundImage: `url(${frameImage})`,
@@ -71,17 +75,17 @@ export default function GenerateTwEngageTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="text-white text-sm font-medium font-['Campton']">
+                  <div className="text-white dark:text-black text-sm font-medium font-['Campton']">
                     Post adverts on Facebook
                   </div>
-                  <div className="self-stretch text-center text-white text-xs font-normal font-['Campton']">
+                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Campton']">
                     Like and Follow Facebook Pages for Businesses and
                     Organizations and earn
                     <br />
                     ₦10 per Like/Follow. The more pages you like, the more you
                     earn.
                   </div>
-                  <div className='p-1 bg-white rounded justify-start items-start gap-3 inline-flex'>
+                  <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Campton']">
                       124 Task available
                     </div>
@@ -89,17 +93,17 @@ export default function GenerateTwEngageTask() {
                 </div>
               </div>
             </div>
-            <div className='self-stretch p-6 bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+            <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center text-stone-900 text-base font-bold font-['Campton']">
+                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Campton']">
                   Link your Instagram Account
                 </div>
-                <div className="self-stretch text-stone-900 text-xs font-normal font-['Campton']">
+                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Campton']">
                   You need to link your Facebook Account to Hawkit before you
                   can start earning with your Facebook Account. Click the button
                   below to link your Facebook account now.
                 </div>
-                <div className='p-2 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+                <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='20'
@@ -147,7 +151,7 @@ export default function GenerateTwEngageTask() {
                       </radialGradient>
                     </defs>
                   </svg>
-                  <div className="text-center text-stone-900 text-[12.83px] font-bold font-['Campton']">
+                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Campton']">
                     Link Instagram account
                   </div>
                 </div>
@@ -161,9 +165,9 @@ export default function GenerateTwEngageTask() {
               >
                 <path
                   d='M18 6L6 18M18 18L6 6.00001'
-                  stroke='#1E1E1E'
                   strokeWidth='2'
                   strokeLinecap='round'
+                  className='dark:stroke-white stroke-[#1E1E1E] '
                 />
               </svg>
             </div>
@@ -243,12 +247,12 @@ export default function GenerateTwEngageTask() {
                   >
                     <path
                       d='M19.5858 3.5H4.41421C3.63316 3.5 3 4.13317 3 4.91421C3 5.28929 3.149 5.649 3.41421 5.91421L8.41421 10.9142C8.78929 11.2893 9 11.798 9 12.3284V17.2639C9 18.0215 9.428 18.714 10.1056 19.0528L14.2764 21.1382C14.6088 21.3044 15 21.0627 15 20.691V12.3284C15 11.798 15.2107 11.2893 15.5858 10.9142L20.5858 5.91421C20.851 5.649 21 5.28929 21 4.91421C21 4.13317 20.3668 3.5 19.5858 3.5Z'
-                      stroke='#1E1E1E'
                       strokeWidth='2'
                       strokeLinecap='round'
+                      className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E]'
                     />
                   </svg>
-                  <div className="text-center text-stone-900 text-sm font-medium font-['Campton']">
+                  <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
                     Filter
                   </div>
                 </div>
@@ -262,12 +266,12 @@ export default function GenerateTwEngageTask() {
                   >
                     <path
                       d='M5 17.5L5 7.5M7 16.5L5.35355 18.1464C5.15829 18.3417 4.84171 18.3417 4.64645 18.1464L3 16.5M12 4.5H21M12 12.5H18M12 20.5H14M12 8.5H20M12 16.5H16'
-                      stroke='#1E1E1E'
                       strokeWidth='2'
                       strokeLinecap='round'
+                      className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E]'
                     />
                   </svg>
-                  <div className="text-center text-stone-900 text-sm font-medium font-['Campton']">
+                  <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
                     Sort
                   </div>
                 </div>
@@ -420,11 +424,11 @@ export default function GenerateTwEngageTask() {
                   />
                 </svg>
               </div>
-              <div className='h[58px]  flex-col justify-start items-center gap-3 flex'>
+              <div className='flex-col justify-start items-center gap-3 flex'>
                 <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
                   Need quick cash to earn?
                 </div>
-                <div className="self-stretch w-[30rem] text-center text-black dark:text-white text-xs font-normal font-['Campton']">
+                <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Campton']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
                   Instagram, Twitter or Tiktok, you MUST have atleast 1,000
@@ -433,7 +437,7 @@ export default function GenerateTwEngageTask() {
               </div>
               <div
                 onClick={onOpen}
-                className='w-[290px] px-6 cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -448,7 +452,7 @@ export default function GenerateTwEngageTask() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Campton']">
                   Generate task
                 </div>
               </div>

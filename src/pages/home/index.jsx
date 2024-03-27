@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-irregular-whitespace */
 
 import { Button } from '@nextui-org/button'
@@ -13,7 +14,7 @@ import { useDisclosure } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
 import { useFetchBallance } from '../../api/walletApi'
 
-export default function Welcome() {
+export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
   const [showUp, setShowUp] = useState(true)
@@ -180,55 +181,67 @@ export default function Welcome() {
           </div>
         </Card>
 
-        <div className='selfstretch justify-start items-start gap-4 inline-flex'>
-          <Card className=' bg-green-50 rounded px-4'>
-            <div className=' inline-flex lg:mb-8 items-center justify-end'>
-              <Button
-                variant='light'
-                isIconOnly
-                endContent={<FaArrowRightLong />}
-                className="text-black hover:bg-green-50 text-sm font-medium font-['Campton']"
-              />
-            </div>
-            <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
-              <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                <div className="text-black text-sm font-bold font-['Campton']">
-                  Create an Advert
-                </div>
-                <div className=" text-stone-900 text-xs font-normal font-['Campton']">
-                  Get real people to post your ads on their social media
-                  account.
-                </div>
+        <div className='justify-start items-start gap-4 inline-flex'>
+          <div onClick={() => navigate(`/dashboard/advertise`)} className=''>
+            <Card className=' bg-green-50 cursor-pointer rounded px-4'>
+              <div className=' inline-flex lg:mb-8 items-center justify-end'>
+                <Button
+                  variant='light'
+                  isIconOnly
+                  endContent={<FaArrowRightLong />}
+                  className="text-black hover:bg-green-50 text-sm font-medium font-['Campton']"
+                />
               </div>
-              <div className=' w-20 relative  -right-24 md:w-full md:inline-flex'>
-                <Image src={selfieImage} />
-              </div>
-            </div>
-          </Card>
-          <Card className='bg-rose-50 rounded px-4'>
-            <div className=' inline-flex md:mb-8 items-center justify-end  '>
-              <Button
-                variant='light'
-                isIconOnly
-                endContent={<FaArrowRightLong />}
-                className="text-black hover:bg-rose-50 text-sm font-medium font-['Campton']"
-              />
-            </div>
-            <div className=' grid items-center md:mt-8  md:gap-4 md:grid-cols-2'>
-              <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                <div className="text-black text-sm font-bold font-['Campton']">
-                  Engage a task
+              <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
+                <div className=' flex-col justify-start items-start gap-3 inline-flex'>
+                  <div className="text-black text-sm font-bold font-['Campton']">
+                    Create an Advert
+                  </div>
+                  <div className=" text-stone-900 text-xs font-normal font-['Campton']">
+                    Get real people to post your ads on their social media
+                    account.
+                  </div>
                 </div>
-                <div className=" text-stone-900 text-xs font-normal font-['Campton']">
-                  Monetize Your Influence! Earn by Posting Ads on Your Social
-                  Media.
+                <div
+                  className={`w-20 relative  ${
+                    !onNotificationClick ? 'right-0' : ' -right-24'
+                  } md:w-full md:inline-flex`}
+                >
+                  <Image src={selfieImage} />
                 </div>
               </div>
-              <div className='w-20 relative  -right-24 md:w-full md:inline-flex'>
-                <Image src={readingImage} />
+            </Card>
+          </div>
+          <div onClick={() => navigate(`/dashboard/earn`)} className=''>
+            <Card className='bg-rose-50 cursor-pointer rounded px-4'>
+              <div className=' inline-flex md:mb-8 items-center justify-end  '>
+                <Button
+                  variant='light'
+                  isIconOnly
+                  endContent={<FaArrowRightLong />}
+                  className="text-black hover:bg-rose-50 text-sm font-medium font-['Campton']"
+                />
               </div>
-            </div>
-          </Card>
+              <div className=' grid items-center md:mt-8  md:gap-4 md:grid-cols-2'>
+                <div className=' flex-col justify-start items-start gap-3 inline-flex'>
+                  <div className="text-black text-sm font-bold font-['Campton']">
+                    Engage a task
+                  </div>
+                  <div className=" text-stone-900 text-xs font-normal font-['Campton']">
+                    Monetize Your Influence! Earn by Posting Ads on Your Social
+                    Media.
+                  </div>
+                </div>
+                <div
+                  className={`w-20 relative  ${
+                    !onNotificationClick ? 'right-0' : ' -right-24'
+                  } md:w-full md:inline-flex`}
+                >
+                  <Image src={readingImage} />
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
         <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
