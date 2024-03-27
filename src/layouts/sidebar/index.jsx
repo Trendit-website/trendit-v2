@@ -124,7 +124,7 @@ const Sidebar = () => {
             ? 'open'
             : 'closed'
         }
-        className='shadow-sm border-r min-h-full group text-black lg:z-[49] z-[91] max-w-[17rem] w-[17rem] 
+        className='shadow-sm border-r dark:border-0 min-h-full group text-black lg:z-[49] z-[91] max-w-[17rem] w-[17rem] 
              fixed top-0 left-0
            h-screen  dark:!text-gray-100 bg-lighten dark:bg-neutral-900  '
       >
@@ -158,7 +158,7 @@ const Sidebar = () => {
                 <div className='p-0'>
                   {!sidebarMinimized && route?.title && (
                     <small
-                      className={`mx-[1.2rem]  text-black font-light capitalize text-sm inline-block px-2 mb-2 font-['Campton'] ${
+                      className={`mx-[1.2rem]  font-light capitalize text-sm inline-block px-2 mb-2 font-['Campton'] ${
                         i === 0 ? 'pt-3' : 'pt-7'
                       }`}
                     >

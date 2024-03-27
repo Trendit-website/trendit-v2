@@ -12,10 +12,8 @@ import useCurrentUser from '../../hooks/useCurrentUser'
 
 export default function ConfirmOtp() {
   const {
-    // register,
     handleSubmit,
     control,
-    // reset,
     formState: { errors },
   } = useForm()
   const { mutateAsync: verifyUserEmail } = useVerifyEmailOtp()
@@ -122,8 +120,6 @@ export default function ConfirmOtp() {
                       />
                     )}
                     rules={{ required: true }}
-                    // {...register(`entered_code_${index}`, {})}
-                    // error={errors[`entered_code_${index}`]?.message}
                   />
                 ))}
               </div>
