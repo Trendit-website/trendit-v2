@@ -10,6 +10,7 @@ import TaskCard from './TaskCard'
 // import ArchivedTaskCard from './ArchivedTaskCard'
 import { useGetAdvert, useGetAllAdvert } from '../../api/advertApi'
 import { format } from 'date-fns'
+import { useNavigate } from 'react-router-dom'
 
 export default function History() {
   const [selected, setSelected] = useState('overview')
@@ -18,10 +19,14 @@ export default function History() {
   const { data: adverts } = useGetAdvert(selectedHistory)
   const { data: adverts2 } = useGetAllAdvert()
   console.log(adverts)
+  const naviaget = useNavigate()
 
+  const handleRoute = () => {
+    naviaget('/dashboard/earn-advert-task')
+  }
   return (
     <div>
-      <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
+      <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch h-[276px] flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch borderb borderstone-900 justify-between items-center inline-flex'>
@@ -235,6 +240,9 @@ export default function History() {
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
+                        onNextPage={() =>
+                          advert.status === 'pending' ? handleRoute() : ''
+                        }
                       />
                     ))
                   )}
@@ -265,6 +273,9 @@ export default function History() {
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
+                        onNextPage={() =>
+                          advert.status === 'pending' ? handleRoute() : ''
+                        }
                       />
                     ))
                   )}

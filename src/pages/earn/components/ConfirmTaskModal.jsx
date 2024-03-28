@@ -13,6 +13,7 @@ export default function ConfirmTaskModal({
   platform,
   title,
   description,
+  goal,
 }) {
   const navigate = useNavigate()
   const { mutateAsync: generateTask, isPending } = useGenerateTask()
@@ -23,6 +24,7 @@ export default function ConfirmTaskModal({
       const res = await generateTask({
         task_type,
         platform,
+        goal,
       })
       if (res.status === 206) {
         toast.success(res.data.message)

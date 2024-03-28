@@ -24,6 +24,7 @@ import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
 } from '../../../api/advertApi'
+import { useNavigate } from 'react-router-dom'
 
 export default function CreateIgEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -34,7 +35,7 @@ export default function CreateIgEngageTask() {
 
   const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
-
+  const navigate = useNavigate()
   const {
     handleSubmit,
     control,
@@ -186,6 +187,7 @@ export default function CreateIgEngageTask() {
           position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -577,13 +579,14 @@ export default function CreateIgEngageTask() {
                     <div className='w[68px] grow shrink basis-0 px-2 flex-col justify-center items-center gap-2 flex'>
                       <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                         Total Pay
+                        {calculatedAmount}
                       </div>
-                      <Input
+                      {/* <Input
                         disabled
                         value={amount}
                         {...register('amount')}
                         className="text-stone-900 wfull text-3xl font-medium font-['Campton']"
-                      />
+                      /> */}
                     </div>
                     <Button
                       type='submit'

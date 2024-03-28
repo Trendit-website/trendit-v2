@@ -1,3 +1,6 @@
+import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
+
 export const animals = [
   {
     label: 'Cat',
@@ -133,4 +136,8 @@ export const generateVideoThumbnail = async (videoFile) => {
 
     video.load()
   })
+}
+
+export function cn(...inputs) {
+  return twMerge(clsx(inputs))
 }

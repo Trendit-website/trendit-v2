@@ -12,7 +12,7 @@ import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 
-export default function GenerateTwEngageTask() {
+export default function GenerateShareEngageTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
@@ -465,7 +465,8 @@ export default function GenerateTwEngageTask() {
         isOpen={isOpen}
         onClose={onClose}
         task_type='engagement'
-        platform='twitter'
+        goal='share'
+        title='Generate Share and Repost Task?'
       />
     </>
   )
