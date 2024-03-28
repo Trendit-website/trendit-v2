@@ -44,7 +44,7 @@ export default function CreateIgAdvertTask() {
     register,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 150 },
+    defaultValues: { amount: 150, posts_count: 1 },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -588,6 +588,9 @@ export default function CreateIgAdvertTask() {
                     <div className='w[68px] grow shrink basis-0 px-2 flex-col justify-center items-center gap-2 flex'>
                       <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
                         Total Pay
+                      </div>
+                      <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                        {calculatedAmount}
                       </div>
 
                       <Controller

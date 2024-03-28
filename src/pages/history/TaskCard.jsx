@@ -2,16 +2,13 @@
 // import { useGetAdvert } from '../../api/advertApi'
 // import { format } from 'date-fns'
 
-export default function TaskCard({ goal, when, status }) {
-  // const { data: adverts } = useGetAdvert('all')
-  // console.log(adverts, 'adverts')
+export default function TaskCard({ goal, when, status, onNextPage }) {
   return (
     <>
-      {/* {adverts?.map((advert, index) => (
-        <div key={index}>
-        </div>
-      ))} */}
-      <div className='w-full p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'>
+      <div
+        onClick={onNextPage}
+        className='w-full cursor-pointer p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
+      >
         <div className='justify-start items-center gap-2 inline-flex'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -63,7 +60,6 @@ export default function TaskCard({ goal, when, status }) {
           <div className='p-2 bg-white rounded justify-start items-start gap-[29px] flex'>
             <div className='justify-start items-center gap-2.5 flex'>
               <div className="text-stone-900 capitalize text-xs font-normal font-['Campton']">
-                {/* {advert?.status} */}
                 {status}
               </div>
             </div>
@@ -71,12 +67,9 @@ export default function TaskCard({ goal, when, status }) {
         </div>
         <div className='flex-col justify-start items-start gap-3 flex'>
           <div className="text-stone-900 text-sm font-medium font-['Campton']">
-            {/* {advert?.goal} */}
             {goal}
           </div>
           <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
-            {/* {advert?.date_created} */}
-            {/* {format(new Date(advert.date_created), 'yyyy-MM-dd HH:mm:ss')} */}
             {when}
           </div>
           <div className='py-[4.50px] justify-start items-center gap-1.5 inline-flex'>

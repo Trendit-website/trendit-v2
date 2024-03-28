@@ -20,7 +20,7 @@ import { useEffect } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 import ForgetPassword from './components/auth/ForgetPassword'
 import CreateIgAdvertTask from './pages/advertise/components/CreateIgAdvertTask'
-import GenerateEngagementTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
+import GenerateEngagementTask from './pages/earn/components/engageadvert/GenerateLikeEngageTask'
 import History from './pages/history/History'
 import ProtectedRoute from './pages/ProtectedRoute'
 
@@ -38,13 +38,14 @@ import GenerateIgTask from './pages/earn/components/postadvert/GenerateIgTask'
 import GenerateTwTask from './pages/earn/components/postadvert/GenerateTwTask'
 import GenerateWapTask from './pages/earn/components/postadvert/GenerateWapTask'
 import GenerateFbTask from './pages/earn/components/postadvert/GenerateFbTask'
-import GenerateFbEngageTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
-import GenerateWhaEngageTask from './pages/earn/components/engageadvert/GenerateWhaEngageTask'
-import GenerateIgEngageTask from './pages/earn/components/engageadvert/GenerateIgEngageTask'
-import GenerateTwEngageTask from './pages/earn/components/engageadvert/GenerateTwEngageTask'
 import EarnEngageTask from './pages/earn/components/EarnEngageTask'
 import EarnAdvertTask from './pages/earn/components/EarnAdvertTask'
 import ResellForm from './pages/resell/components/ResellForm'
+import GenerateLikeEngageTask from './pages/earn/components/engageadvert/GenerateLikeEngageTask'
+import GenerateFollowEngageTask from './pages/earn/components/engageadvert/GenerateFollowEngageTask'
+import GenerateCommentEngageTask from './pages/earn/components/engageadvert/GenerateCommentEngageTask'
+import GenerateShareEngageTask from './pages/earn/components/engageadvert/GenerateShareEngageTask'
+import GenerateJoinEngageTask from './pages/earn/components/engageadvert/GenerateJoinEngageTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -112,34 +113,42 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_ig-task'
+              path='earn-engage_like-task'
               element={
                 <ProtectedRoute>
-                  <GenerateIgEngageTask />
+                  <GenerateLikeEngageTask />
                 </ProtectedRoute>
               }
             />
             <Route
-              path='earn-engage_tw-task'
+              path='earn-engage_comment-task'
               element={
                 <ProtectedRoute>
-                  <GenerateTwEngageTask />
+                  <GenerateCommentEngageTask />
                 </ProtectedRoute>
               }
             />
             <Route
-              path='earn-engage_whatsapp-task'
+              path='earn-engage_follow-task'
               element={
                 <ProtectedRoute>
-                  <GenerateWhaEngageTask />
+                  <GenerateFollowEngageTask />
                 </ProtectedRoute>
               }
             />
             <Route
-              path='earn-engage_fb-task'
+              path='earn-engage_share-task'
               element={
                 <ProtectedRoute>
-                  <GenerateFbEngageTask />
+                  <GenerateShareEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-engage_join-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateJoinEngageTask />
                 </ProtectedRoute>
               }
             />

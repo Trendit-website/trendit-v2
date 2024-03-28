@@ -1,47 +1,48 @@
-import { Button, Input } from '@nextui-org/react'
+import { Button } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Controller, useForm } from 'react-hook-form'
 import { useVerifyEmailOtp, useVerifyEmailResendOtp } from '../../api/auth'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
-import { useRef } from 'react'
+import { useEffect } from 'react'
 import useSignUpToken from '../../hooks/useSignUpToken'
 import useCurrentUser from '../../hooks/useCurrentUser'
+import OtpPinInput from './OtpPinInput'
 
 export default function ConfirmOtp() {
   const {
     handleSubmit,
     control,
+    watch,
     formState: { errors },
   } = useForm()
   const { mutateAsync: verifyUserEmail } = useVerifyEmailOtp()
   const { mutateAsync: resendOtp } = useVerifyEmailResendOtp()
   const navigate = useNavigate()
 
-  const [otp, setOtp] = useState(['', '', '', '', '', '']) // Array to store OTP digits
-  const otp2 = useRef()
+  // const [otp, setOtp] = useState(['', '', '', '', '', '']) // Array to store OTP digits
+  // const otp2 = useRef()
   const { token } = useSignUpToken()
-  const { setCurrentUser } = useCurrentUser()
+  const { setCurrentUser, userData } = useCurrentUser()
 
-  const handleOtpChange = (index, value) => {
-    const updatedOtp = [...otp]
-    updatedOtp[index] = value
-    setOtp(updatedOtp)
-    // If all OTP digits are entered, submit the form
-    if (updatedOtp.filter((digit) => digit !== '').length === 6) {
-      otp2.current = updatedOtp
-      onSubmit()
-    }
-  }
+  // const handleOtpChange = (index, value) => {
+  //   const updatedOtp = [...otp]
+  //   updatedOtp[index] = value
+  //   setOtp(updatedOtp)
+  //   // If all OTP digits are entered, submit the form
+  //   if (updatedOtp.filter((digit) => digit !== '').length === 6) {
+  //     otp2.current = updatedOtp
+  //     onSubmit()
+  //   }
+  // }
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
     try {
-      const code = otp2.current.join('')
-      const entered_code = parseInt(code)
+      // const code = otp2.current.join('')
+      // const entered_code = parseInt(code)
       const res = await verifyUserEmail({
-        data: { entered_code, signup_token: token },
+        data: { ...data, signup_token: token },
       })
       if (res.data.status) {
         setCurrentUser(res.data.user_data)
@@ -65,6 +66,10 @@ export default function ConfirmOtp() {
       toast.error(error.response?.data?.message ?? error.message)
     }
   }
+
+  useEffect(() => {
+    if (watch().entered_code?.length === 6) onSubmit()
+  }, [watch().entered_code])
 
   return (
     <div>
@@ -94,17 +99,45 @@ export default function ConfirmOtp() {
                 Confirm your email
               </div>
               <div className="w-80 mb-4 text-center text-zinc-400 text-base font-normal font-['Campton']">
-                We have sent an email with a code to adedamolamoses@gmail.com,
-                please enter it below to create your Trendit account.
+                We have sent an email with a code to {userData?.email}, please
+                enter it below to create your Trendit account.
               </div>
             </div>
             <div className=' w-[80%] md:w-full mx-auto  flex-col justify-start items-center gap-3.5 flex'>
               <div className='self-stretch justify-center items-center gap-3.5 flex'>
-                {[...Array(6)].map((_, index) => (
+                <Controller
+                  control={control}
+                  name='entered_code'
+                  rules={{
+                    required: 'OTP is required',
+                    minLength: {
+                      value: 6,
+                      message: 'OTP should have only 6 characters',
+                    },
+                  }}
+                  render={({ field }) => (
+                    <OtpPinInput
+                      native
+                      length={6}
+                      ref={field.ref}
+                      value={field.value}
+                      onChange={field.onChange}
+                      error={errors?.entered_code?.message}
+                    />
+                  )}
+                />
+                {/* {[...Array(6)].map((_, index) => (
                   <Controller
                     key={index}
                     name={`entered_code${index}`}
                     control={control}
+                    rules={{
+                      required: 'OTP is required',
+                      minLength: {
+                        value: 6,
+                        message: 'OTP should have only 6 characters',
+                      },
+                    }}
                     render={({ field }) => (
                       <Input
                         {...field}
@@ -113,15 +146,15 @@ export default function ConfirmOtp() {
                         errorMessage={errors?.entered_code?.message}
                         isInvalid={!!errors?.entered_code}
                         required={true}
+                        ref={field.ref}
                         className="grow shrink basis-0 text-center rounded-lg w-3 h-3  text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton'] tracking-[10.39px]"
                         onChange={(e) => handleOtpChange(index, e.target.value)}
                         maxLength={1}
                         inputMode='numeric'
                       />
                     )}
-                    rules={{ required: true }}
                   />
-                ))}
+                ))} */}
               </div>
               <div className='justify-start items-center inline-flex my-12'>
                 <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
