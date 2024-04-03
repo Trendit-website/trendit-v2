@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useUserProfile } from '../../api/profileApis'
+import useCurrentUser from '../../hooks/useCurrentUser'
 
 export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -25,6 +26,7 @@ export default function OnBoard() {
     register,
     formState: { errors },
   } = useForm({})
+  const { userData } = useCurrentUser()
 
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
@@ -34,7 +36,7 @@ export default function OnBoard() {
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
   const { mutateAsync: updateProfile, isPending } = useUserProfile()
-
+  console.log(selectedImage, 'himg')
   useEffect(() => {
     setValue('state', '')
     setValue('local_government', '')
@@ -99,12 +101,23 @@ export default function OnBoard() {
                   Welcome onboard!
                 </div>
                 <div className="self-stretch text-center text-zinc-400 text-base font-normal font-['Campton']">
-                  Hi Damola, we are excited to have you onboard! Finish up your
-                  profile set up.
+                  Hi {userData?.email}, we are excited to have you onboard!
+                  Finish up your profile set up.
                 </div>
                 <div className='flex-col justify-center items-center gap-2 flex'>
                   <div className='w-[66px] h-[66px] cursor-pointer relative'>
-                    <div className='w-[66px] h-[66px] cursor-pointer left-0 top-0 absolute bg-fuchsia-600 bg-opacity-40 rounded-[10px]' />
+                    {selectedImage ? (
+                      <div className='mt-4'>
+                        <img
+                          // src={selectedImage}
+                          src={URL.createObjectURL(selectedImage)}
+                          alt='Selected'
+                          className='w-24 h-24 -top-4 absolute rounded-full'
+                        />
+                      </div>
+                    ) : (
+                      <div className='w-[66px] h-[66px] cursor-pointer left-0 top-0 absolute bg-fuchsia-600 bg-opacity-40 rounded-[10px]' />
+                    )}
                     {/* Invisible input field */}
 
                     <input
@@ -131,15 +144,6 @@ export default function OnBoard() {
                   <div className="text-center text-zinc-400 text-[10px] font-normal font-['Campton']">
                     Upload photo
                   </div>
-                  {selectedImage && (
-                    <div className='mt-4'>
-                      <img
-                        src={selectedImage}
-                        alt='Selected'
-                        className='w-24 h-24 rounded-full'
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
               <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
@@ -191,7 +195,7 @@ export default function OnBoard() {
                     Birthday
                   </label>
                   <div className=' flex justify-between items-center gap-6'>
-                    <div className='grow w-20 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                    <div className='grow w-28 md:w-20 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='day'
                         control={control}
@@ -214,6 +218,7 @@ export default function OnBoard() {
                               trigger: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
+                                'focus:border-fuchsia-600',
                                 'hover:bg-bg-white hover:bg-opacity-10',
                                 'dark:hover:bg-default/70',
                                 'group-data-[focused=true]:bg-default-200/50',

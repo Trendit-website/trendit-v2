@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Login from './components/auth/Login'
 import Animation from './utilities/Animation'
@@ -79,6 +79,7 @@ function App() {
           <Route path='/onboard' element={<OnBoard />} />
           <Route path='/forgot_password' element={<ForgetPassword />} />
           <Route path='/reset_password' element={<ResetPassword />} />
+          <Route path='' element={<Navigate to='/dashboard' />} />
           <Route
             path='/dashboard'
             element={
