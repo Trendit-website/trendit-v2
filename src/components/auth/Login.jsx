@@ -8,20 +8,24 @@ import { useNavigate } from 'react-router'
 import { useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Login() {
   const {
-    // register,
     handleSubmit,
     control,
     formState: { errors },
+    setFocus,
   } = useForm()
   const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(false)
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
+
+  useEffect(() => {
+    setFocus('email_username')
+  }, [setFocus])
 
   const { setAccessToken } = useAccessToken()
 
@@ -83,11 +87,26 @@ export default function Login() {
                     isInvalid={!!errors?.email_username}
                     required={true}
                     placeholder='Enter a valid email'
-                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    type='email'
+                    // className='focus:border-2 focus:border-fuchsia-600'
+                    // classNames={{
+                    //   mainWrapper:
+                    //     'focus:border-fuchsia-600 focus:border-2 !important',
+                    //   input:
+                    //     'focus:border-fuchsia-600 focus:border-2 !important',
+                    // }}
+                    className={`grow shrink basis-0 focus:ring focus:ring-fuchsia-600 focus:border-2 focus:border-fuchsia-600  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']`}
                   />
                 )}
-                rules={{ required: true }}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: 'Entered value does not match email format',
+                  },
+                }}
               />
+
               <Controller
                 name='password'
                 control={control}
@@ -99,7 +118,13 @@ export default function Login() {
                     isInvalid={!!errors?.password}
                     required={true}
                     placeholder='password'
-                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                    // onFocus={togglePassWwordActive}
+                    // onBlur={togglePassWwordActive}
+                    // className={`${
+                    //   isPasswordActive
+                    //     ? 'border-2 border-fuchsia-600'
+                    //     : 'border-0'
+                    // } grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']`}
                     endContent={
                       <button
                         className='focus:outline-none'
@@ -140,10 +165,20 @@ export default function Login() {
                         )}
                       </button>
                     }
+                    classNames={{
+                      mainWrapper:
+                        'focus:border-fuchsia-600 focus:border-2 !important',
+                    }}
                     type={isVisible ? 'text' : 'password'}
                   />
                 )}
-                rules={{ required: true }}
+                rules={{
+                  required: true,
+                  // minLength: {
+                  //   value: 8,
+                  //   message: 'min length is 8',
+                  // },
+                }}
               />
 
               <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
@@ -156,6 +191,7 @@ export default function Login() {
               </div>
               <Button
                 type='submit'
+                isDisabled={isPending}
                 className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
               >
                 {isPending ? 'Please wait....' : 'Continue'}
