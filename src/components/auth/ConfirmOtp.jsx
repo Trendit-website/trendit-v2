@@ -37,12 +37,13 @@ export default function ConfirmOtp() {
   //   }
   // }
 
-  const onSubmit = async (data) => {
+  const onSubmit = async () => {
     try {
       // const code = otp2.current.join('')
       // const entered_code = parseInt(code)
+      const entered_code = parseInt(watch().entered_code)
       const res = await verifyUserEmail({
-        data: { ...data, signup_token: token },
+        data: { entered_code, signup_token: token },
       })
       if (res.data.status) {
         setCurrentUser(res.data.user_data)
@@ -105,7 +106,7 @@ export default function ConfirmOtp() {
             </div>
             <div className=' w-[80%] md:w-full mx-auto  flex-col justify-start items-center gap-3.5 flex'>
               <div className='self-stretch justify-center items-center gap-3.5 flex'>
-                <Controller
+                {/* <Controller
                   control={control}
                   name='entered_code'
                   rules={{
@@ -125,7 +126,29 @@ export default function ConfirmOtp() {
                       error={errors?.entered_code?.message}
                     />
                   )}
+                /> */}
+                <Controller
+                  control={control}
+                  name='entered_code' // Ensure this matches the field name
+                  rules={{
+                    required: 'OTP is required',
+                    minLength: {
+                      value: 6,
+                      message: 'OTP should have only 6 characters',
+                    },
+                  }}
+                  render={({ field }) => (
+                    <OtpPinInput
+                      native
+                      length={6}
+                      ref={field.ref}
+                      value={field.value}
+                      onChange={field.onChange}
+                      error={errors?.entered_code?.message}
+                    />
+                  )}
                 />
+
                 {/* {[...Array(6)].map((_, index) => (
                   <Controller
                     key={index}
