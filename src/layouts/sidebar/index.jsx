@@ -191,6 +191,37 @@ const Sidebar = () => {
                           to={route.route}
                           className={`group/navitem ${
                             sidebarMinimized
+                              ? 'flex flex-col text-center justify-center hover:no-underline gap-1 cursor-pointer duration-300 font-medium text-gray-400'
+                              : ' p-3 link flex gap-2'
+                          }`}
+                        >
+                          <route.icon
+                            size={sidebarMinimized ? 30 : 20}
+                            className={`min-w-max group-hover/navitem:text-menuItemColor ${
+                              sidebarMinimized && 'mx-auto'
+                            }
+    ${
+      pathname.includes(route.name?.toLocaleLowerCase())
+        ? 'text-fuchsia-400'
+        : 'text-menuItemIcon'
+    }`}
+                          />
+                          <span
+                            className={`
+    ${
+      pathname.includes(route.name?.toLocaleLowerCase())
+        ? 'text-fuchsia-400'
+        : 'text-menuItemIcon'
+    }`}
+                          >
+                            {route.name}
+                          </span>
+                        </NavLink>
+
+                        {/* <NavLink
+                          to={route.route}
+                          className={`group/navitem ${
+                            sidebarMinimized
                               ? 'flex flex-col text-center justify-center hover:no-underline   gap-1 cursor-pointer  duration-300 font-medium text-gray-400'
                               : ' p-3 link flex gap-2'
                           }`}
@@ -220,7 +251,7 @@ const Sidebar = () => {
                           >
                             {route.name}
                           </span>
-                        </NavLink>
+                        </NavLink> */}
                       </li>
                     </>
                   )}
