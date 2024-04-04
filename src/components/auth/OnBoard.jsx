@@ -56,7 +56,6 @@ export default function OnBoard() {
       '0'
     )}`
     data = { ...data, birthday: selectedDate }
-    onOpen()
     try {
       const formData = new FormData()
       // Append selected image to formData if available

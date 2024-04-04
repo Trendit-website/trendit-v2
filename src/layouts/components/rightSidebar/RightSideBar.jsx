@@ -43,11 +43,11 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col border-l dark:border-0 min-h-full justify-start items-start inline-flex'>
-        <div className=' py-3  bg-lighten dark:bg-neutral-900  flex-col justify-start items-start gap-2 flex'>
+      <div className='flex-col border-l dark:border-0 dark:bg-[#161616] min-h-full justify-start items-start inline-flex'>
+        <div className=' py-3  bg-lighten dark:bg-[#161616]  flex-col justify-start items-start gap-2 flex'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className='self-stretch w-96 flex-col justify-start items-start gap-2 flex'>
-              <div className='self-stretch px-3 py-1.5  bg-lighten dark:bg-zinc-900 rounded justify-start items-center gap-2 inline-flex'>
+              <div className='self-stretch px-3 py-3  bglighten dark:bgzinc-900 rounded justify-start items-center gap-2 inline-flex'>
                 <Controller
                   name='query'
                   control={control}
@@ -99,18 +99,12 @@ export default function RightSidebar() {
                 variant='underlined'
                 classNames={{
                   tabList: '  bordered  py-2',
-                  cursor: ' bg-fuchsia-400',
-                  //   selectedKey: 'text-fuchsia-400',
-                  selectedKey: 'text-green-400',
+                  cursor: ' bg-[#FF6DFB]',
                   tabContent:
-                    'group-data-[selected=true]:text-[#FF6DFB] dark:group-data-[selected=true]:text-fuchsia-400 ',
+                    'group-data-[selected=true]:text-[#FF6DFB] dark:group-data-[selected=true]:text-[#FF6DFB] ',
                 }}
-                className="text-center text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
-                // color={selected ? 'text-fuchsia-400' : ''}
-                color='secondary'
-                // className='text-fuchsia-400'
-                // className={`tab ${selected ===  'text-fuchsia-400'}`}
-                // color='#FF6DFB'
+                className="text-center text-[#FF6DFB] dark:text-[#FF6DFB] text-[12.83px] font-bold font-['Campton']"
+                // color='secondary'
               >
                 <Tab key='activities' title='Activities'>
                   <motion.div
@@ -136,16 +130,18 @@ export default function RightSidebar() {
                 <Tab
                   key='notifications'
                   title={
-                    <div>
-                      Notifications
-                      <Chip
-                        size='sm'
-                        className='text-black dark:text-white'
-                        variant='light'
-                      >
-                        {notification?.length}
-                      </Chip>
-                    </div>
+                    notification?.length > 0 && (
+                      <div>
+                        Notifications
+                        <Chip
+                          size='sm'
+                          className='text-black dark:text-white'
+                          variant='light'
+                        >
+                          {notification?.length}
+                        </Chip>
+                      </div>
+                    )
                   }
                 >
                   <motion.div
@@ -172,16 +168,18 @@ export default function RightSidebar() {
                 <Tab
                   key='messages'
                   title={
-                    <div>
-                      Messages
-                      <Chip
-                        size='sm'
-                        className='text-black dark:text-white'
-                        variant='light'
-                      >
-                        {messages?.length}
-                      </Chip>
-                    </div>
+                    notification?.length > 0 && (
+                      <div>
+                        Messages
+                        <Chip
+                          size='sm'
+                          className='text-black dark:text-white'
+                          variant='light'
+                        >
+                          {messages?.length}
+                        </Chip>
+                      </div>
+                    )
                   }
                 >
                   <motion.div

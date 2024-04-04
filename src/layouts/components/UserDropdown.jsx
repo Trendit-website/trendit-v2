@@ -59,7 +59,7 @@ const UserDropdown = () => {
               <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
                 {profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
               </div>
-              <div className="text-right text-zinc-400 text-sm font-medium font-['Campton']">
+              <div className="text-zinc-400 text-sm font-medium font-['Campton']">
                 @{profileDeatils?.username}
               </div>
             </div>

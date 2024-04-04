@@ -14,7 +14,11 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({})
+  } = useForm({
+    defaultValues: {
+      amount: 1000,
+    },
+  })
 
   const { mutateAsync: ativateMembership } = useActivateMembership()
 
@@ -50,11 +54,12 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         hideCloseButton={true}
+        className='rounded-none'
       >
         <ModalContent className=' md:w[28rem]  overflow-visible'>
           {view === 'fund' && (
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className='h-[412px] p-12 w-full bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+              <div className='h-[412px] p-12 w-full rounded flex-col justify-center items-center gap-12 inline-flex'>
                 <div
                   onClick={onClose}
                   className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-4 cursor-pointer rounded-[100px] '
@@ -65,7 +70,7 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
                   {/* <div className="text-stone-900 text-sm font-bold font-['Campton']">
                   How would you like to pay?
                 </div> */}
-                  <div className="text-stone-900 text-sm font-bold font-['Campton']">
+                  <div className=" dark:text-white dark:text-opacity-70 text-stone-900 text-sm font-bold font-['Campton']">
                     Make Payment
                   </div>
                   {/* <div className="w-[253px] text-center text-black text-xs font-normal font-['Campton']">
@@ -187,7 +192,7 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
                                 'text-black/90 dark:text-white/90',
                                 'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                               ],
-                              innerWrapper: 'bg-transparent',
+                              innerWrapper: 'bg-transparent ',
                               inputWrapper: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bgwhite dark:bg-opacity-10',
@@ -195,6 +200,8 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
                                 'dark:hover:bg-default/70',
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
                                 '!cursor-text',
                               ],
                             }}
