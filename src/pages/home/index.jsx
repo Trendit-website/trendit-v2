@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-irregular-whitespace */
 
@@ -101,7 +102,7 @@ export default function Welcome({ onNotificationClick }) {
           <div className='left[660px] cursor-pointer top[18px] absolut justify-end items-center inline-flex'>
             <Button
               variant='light'
-              endContent={<ChevronRight className='w-4 h-4 relative' />}
+              endContent={<ChevronRight className='w-4 h-4' />}
               className="text-black hover:bg-cyan-50 text-sm font-medium font-['Campton']"
             >
               View more
@@ -118,7 +119,8 @@ export default function Welcome({ onNotificationClick }) {
             </div>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
-                onClick={onOpen}
+                // onClick={onOpen}
+                onClick={() => navigate(`/dashboard/fund`)}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -182,14 +184,17 @@ export default function Welcome({ onNotificationClick }) {
         </Card>
 
         <div className='justify-start items-start gap-4 inline-flex'>
-          <div onClick={() => navigate(`/dashboard/advertise`)} className=''>
-            <Card className=' bg-green-50 cursor-pointer rounded px-4'>
-              <div className=' inline-flex lg:mb-8 items-center justify-end'>
+          <div
+            onClick={() => navigate(`/dashboard/advertise`)}
+            className='h-full'
+          >
+            <Card className=' bg-green-50 cursor-pointer h-full rounded px-4'>
+              <div className='inline-flex items-center justify-end'>
                 <Button
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black hover:bg-green-50 text-sm font-medium font-['Campton']"
+                  className="text-black lg:mb-8 hover:bg-green-50 text-sm font-medium font-['Campton']"
                 />
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
@@ -212,17 +217,17 @@ export default function Welcome({ onNotificationClick }) {
               </div>
             </Card>
           </div>
-          <div onClick={() => navigate(`/dashboard/earn`)} className=''>
-            <Card className='bg-rose-50 cursor-pointer rounded px-4'>
-              <div className=' inline-flex md:mb-8 items-center justify-end  '>
+          <div onClick={() => navigate(`/dashboard/earn`)} className='h-full'>
+            <Card className='h-full bg-rose-50 cursor-pointer rounded px-4'>
+              <div className='inline-flex  items-center justify-end'>
                 <Button
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black hover:bg-rose-50 text-sm font-medium font-['Campton']"
+                  className="text-black lg:mb-5 hover:bg-green-50 text-sm font-medium font-['Campton']"
                 />
               </div>
-              <div className=' grid items-center md:mt-8  md:gap-4 md:grid-cols-2'>
+              <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
                   <div className="text-black text-sm font-bold font-['Campton']">
                     Engage a task
@@ -257,9 +262,10 @@ export default function Welcome({ onNotificationClick }) {
                     Complete your profile set up
                   </div>
                   <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-                    You need to link your Facebook Account to Hawkit before you
-                    can start earning with your Facebook Account. Click the
-                    button below to link your Facebook account now.
+                    To personalize your experience and let you take full
+                    advantage of everything we offer, we encourage you to
+                    complete your profile settings. A well-rounded profile lets
+                    you showcase your expertise, interests, and goals. 
                   </div>
                   <Button
                     startContent={
@@ -317,9 +323,9 @@ export default function Welcome({ onNotificationClick }) {
                     Link your Instagram Account
                   </div>
                   <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-                    You need to link your Facebook Account to Hawkit before you
-                    can start earning with your Facebook Account. Click the
-                    button below to link your Facebook account now.
+                    You need to link your  Instagram Account to Trendit before
+                    you can start earning with your  Instagram Account. Click
+                    the button below to link your Instagram  account now.
                   </div>
                   <Button
                     startContent={

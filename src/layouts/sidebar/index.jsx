@@ -201,7 +201,7 @@ const Sidebar = () => {
                               sidebarMinimized && 'mx-auto'
                             }
     ${
-      pathname.includes(route.name?.toLocaleLowerCase())
+      pathname === route.route?.toLocaleLowerCase()
         ? 'text-fuchsia-400'
         : 'text-menuItemIcon'
     }`}
@@ -209,7 +209,7 @@ const Sidebar = () => {
                           <span
                             className={`
     ${
-      pathname.includes(route.name?.toLocaleLowerCase())
+      pathname === route.route?.toLocaleLowerCase()
         ? 'text-fuchsia-400'
         : 'text-menuItemIcon'
     }`}
@@ -217,41 +217,6 @@ const Sidebar = () => {
                             {route.name}
                           </span>
                         </NavLink>
-
-                        {/* <NavLink
-                          to={route.route}
-                          className={`group/navitem ${
-                            sidebarMinimized
-                              ? 'flex flex-col text-center justify-center hover:no-underline   gap-1 cursor-pointer  duration-300 font-medium text-gray-400'
-                              : ' p-3 link flex gap-2'
-                          }`}
-                        >
-                          <route.icon
-                            // strokeWidth={pathname.includes(route.route) && 4}
-                            size={sidebarMinimized ? 30 : 20}
-                            className={`min-w-max group-hover/navitem:text-menuItemColor ${
-                              sidebarMinimized && 'mx-auto'
-                            }
-                           
-                            
-                            ${
-                              pathname.includes(route.name?.toLocaleLowerCase())
-                                ? 'text-fuchsia-400'
-                                : 'text-menuItemIcon'
-                            }`}
-                          />
-
-                          <span
-                            className={`
-                            ${
-                              pathname.includes(route.name?.toLocaleLowerCase())
-                                ? 'text-fuchsia-400'
-                                : 'text-menuItemIcon'
-                            }`}
-                          >
-                            {route.name}
-                          </span>
-                        </NavLink> */}
                       </li>
                     </>
                   )}

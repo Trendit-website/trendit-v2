@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import { useGetProfile } from '../../api/profileApis'
+import { Button } from '@nextui-org/react'
+import toast from 'react-hot-toast'
 
 export default function EngagementTasksCard() {
   const navigate = useNavigate()
+  const { data: profileDeatils } = useGetProfile()
+
   return (
     <div className='flex flex-col gap-3'>
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
@@ -68,15 +73,22 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-engage_comment-task`)}
-            className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
-              <div className="text-center  text-white text-[10px] font-medium font-['Campton']">
+          <div className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-engage_comment-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
+              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -136,15 +148,22 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-engage_like-task`)}
-            className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-engage_like-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -200,15 +219,23 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-engage_follow-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-engage_follow-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
+
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -276,15 +303,22 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-engage_tw-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-engage_tw-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -351,15 +385,22 @@ export default function EngagementTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-engage_join-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-engage_join-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available

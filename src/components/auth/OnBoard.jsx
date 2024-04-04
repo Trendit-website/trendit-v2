@@ -47,6 +47,7 @@ export default function OnBoard() {
   }, [watch().state, setValue])
 
   const onSubmit = async (data) => {
+    onOpen()
     const day = watch('day')
     const month = watch('month')
     const year = watch('year')
@@ -73,14 +74,12 @@ export default function OnBoard() {
       const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
         onOpen()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -148,7 +147,7 @@ export default function OnBoard() {
               </div>
               <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                 <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                  <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 textblack dark:textwhite  text-[12.83px] font-medium font-['Campton']">
                     Select Gender
                   </label>
                   <Controller
@@ -161,25 +160,28 @@ export default function OnBoard() {
                         isInvalid={!!errors.gender}
                         errorMessage={errors?.gender?.message}
                         selectedKeys={field.value ? [field.value] : []}
-                        className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        // className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select Gender'
-                        classNames={{
-                          listbox: [
-                            'bg-transparent',
-                            'text-black/90 dark:text-white/90',
-                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                          ],
-                          popoverContent: ['dark:bg-zinc-700', 'bg-white '],
-                          trigger: [
-                            'bg-zinc-700 bg-opacity-10',
-                            'dark:bg-white dark:bg-opacity-10',
-                            'hover:bg-bg-white hover:bg-opacity-10',
-                            'dark:hover:bg-default/70',
-                            'group-data-[focused=true]:bg-default-200/50',
-                            'dark:group-data-[focused=true]:bg-default/60',
-                            '!cursor-text',
-                          ],
-                        }}
+                        // classNames={{
+                        //   listbox: [
+                        //     'bg-transparent',
+                        //     'text-black/90 dark:text-white/90',
+                        //     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                        //   ],
+                        //   popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                        //   trigger: [
+                        //     'bg-zinc-700 bg-opacity-10',
+                        //     'dark:bg-white dark:bg-opacity-10',
+                        //     'hover:bg-bg-white hover:bg-opacity-10',
+                        //     'dark:hover:bg-default/70',
+                        //     'group-data-[focused=true]:bg-default-200/50',
+                        //     'dark:group-data-[focused=true]:bg-default/60',
+                        //     '!cursor-text',
+                        //     'border-2 border-transparent',
+                        //     'focus-within:!border-fuchsia-600  ',
+                        //     '!cursor-text',
+                        //   ],
+                        // }}
                       >
                         {genders.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
@@ -194,7 +196,7 @@ export default function OnBoard() {
                   <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
                     Birthday
                   </label>
-                  <div className=' flex justify-between items-center gap-6'>
+                  <div className=' flex justify-between items-center gap-3 md:gap-6'>
                     <div className='grow w-28 md:w-20 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='day'
@@ -219,10 +221,12 @@ export default function OnBoard() {
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
                                 'focus:border-fuchsia-600',
-                                'hover:bg-bg-white hover:bg-opacity-10',
                                 'dark:hover:bg-default/70',
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
                                 '!cursor-text',
                               ],
                             }}
@@ -237,7 +241,7 @@ export default function OnBoard() {
                         )}
                       />
                     </div>
-                    <div className='grow shrink md:w-28 basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                    <div className='grow shrink w-32 md:w-28 basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                       <Controller
                         name='month'
                         control={control}
@@ -265,6 +269,9 @@ export default function OnBoard() {
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
                                 '!cursor-text',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
+                                '!cursor-text',
                               ],
                             }}
                             {...field}
@@ -290,7 +297,7 @@ export default function OnBoard() {
                             errorMessage={errors?.year?.message}
                             selectedKeys={field.value ? [field.value] : []}
                             className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                            placeholder='year'
+                            placeholder='Year'
                             classNames={{
                               listbox: [
                                 'bg-transparent',
@@ -305,6 +312,9 @@ export default function OnBoard() {
                                 'dark:hover:bg-default/70',
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
                                 '!cursor-text',
                               ],
                             }}
@@ -354,6 +364,9 @@ export default function OnBoard() {
                             'group-data-[focused=true]:bg-default-200/50',
                             'dark:group-data-[focused=true]:bg-default/60',
                             '!cursor-text',
+                            'border-2 border-transparent',
+                            'focus-within:!border-fuchsia-600  ',
+                            '!cursor-text',
                           ],
                         }}
                         {...field}
@@ -400,6 +413,9 @@ export default function OnBoard() {
                               'group-data-[focused=true]:bg-default-200/50',
                               'dark:group-data-[focused=true]:bg-default/60',
                               '!cursor-text',
+                              'border-2 border-transparent',
+                              'focus-within:!border-fuchsia-600  ',
+                              '!cursor-text',
                             ],
                           }}
                           {...field}
@@ -430,8 +446,8 @@ export default function OnBoard() {
                             errorMessage={errors?.local_government?.message}
                             isLoading={isLgaLoading}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
-                            placeholder='Select lga'
+                            className="grow shrink basis-0 capitalize dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            placeholder='Select Lga'
                             classNames={{
                               listbox: [
                                 'bg-transparent',
@@ -446,6 +462,9 @@ export default function OnBoard() {
                                 'dark:hover:bg-default/70',
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
+                                '!cursor-text',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
                                 '!cursor-text',
                               ],
                             }}
@@ -464,9 +483,33 @@ export default function OnBoard() {
                 </div>
                 <Button
                   type='submit'
+                  isDisabled={isPending}
                   className="w-[290px] px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Campton'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
                 >
-                  {isPending ? 'Please wait....' : 'Continue'}
+                  {isPending ? (
+                    <svg
+                      className='animate-spin h-5 w-5 text-current'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      />
+                      <path
+                        className='opacity-75'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                        fill='currentColor'
+                      />
+                    </svg>
+                  ) : (
+                    'Continue'
+                  )}
                 </Button>
                 <div className='justify-start items-center inline-flex'>
                   <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">

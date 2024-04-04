@@ -1,7 +1,11 @@
+import { Button } from '@nextui-org/react'
+import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { useGetProfile } from '../../api/profileApis'
 
 export default function PostAdvertTasksCard() {
   const navigate = useNavigate()
+  const { data: profileDeatils } = useGetProfile()
 
   return (
     <div className='flex flex-col gap-3'>
@@ -56,15 +60,22 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-advert_fb-task`)}
-            className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-advert_fb-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -79,26 +90,53 @@ export default function PostAdvertTasksCard() {
           xmlns='http://www.w3.org/2000/svg'
           width='47'
           height='48'
-          viewBox='0 0 47 48'
+          viewBox='0 0 20 20'
           fill='none'
         >
           <path
-            d='M34.8307 17.5134C38.2597 19.6762 42.4604 20.9488 46.9973 20.9488V13.2457C46.1386 13.2458 45.2822 13.1667 44.4422 13.0097V19.0732C39.9057 19.0732 35.7055 17.8008 32.2758 15.6381V31.3582C32.2758 39.2222 25.0507 45.5967 16.1389 45.5967C12.8137 45.5967 9.72286 44.7097 7.15546 43.1884C10.0858 45.8322 14.1723 47.4722 18.6933 47.4722C27.6058 47.4722 34.8311 41.0977 34.8311 33.2333V17.5134H34.8307ZM37.9828 9.7419C36.2303 8.05266 35.0796 5.86959 34.8307 3.45606V2.46533H32.4094C33.0189 5.53281 35.098 8.15347 37.9828 9.7419ZM12.7922 37.1539C11.8131 36.0213 11.2839 34.6355 11.2862 33.2108C11.2862 29.6142 14.5909 26.6979 18.6681 26.6979C19.4278 26.6975 20.183 26.8005 20.9073 27.0031V19.1276C20.0609 19.0254 19.2069 18.9818 18.3533 18.9978V25.1276C17.6287 24.9249 16.8731 24.822 16.113 24.8226C12.036 24.8226 8.73151 27.7385 8.73151 31.3356C8.73151 33.8792 10.3832 36.0812 12.7922 37.1539Z'
-            fill='#FF004F'
+            d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
+            fill='url(#paint0_radial_3736_11282)'
           />
           <path
-            d='M32.2758 15.638C35.7057 17.8006 39.9055 19.073 44.4422 19.073V13.0095C41.9098 12.5335 39.6681 11.366 37.9826 9.7419C35.0976 8.1533 33.0189 5.53265 32.4094 2.46533H26.0496V33.233C26.0351 36.8199 22.7361 39.7242 18.6677 39.7242C16.2705 39.7242 14.1406 38.7159 12.7918 37.1538C10.3832 36.0812 8.73132 33.879 8.73132 31.3358C8.73132 27.739 12.0358 24.8227 16.1128 24.8227C16.894 24.8227 17.6468 24.93 18.3531 25.1278V18.998C9.59764 19.1576 2.55634 25.4699 2.55634 33.2331C2.55634 37.1085 4.30973 40.6217 7.15563 43.1887C9.72303 44.7097 12.8136 45.5971 16.1391 45.5971C25.0511 45.5971 32.276 39.2221 32.276 31.3582L32.2758 15.638Z'
-            fill='black'
+            d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
+            fill='url(#paint1_radial_3736_11282)'
           />
           <path
-            d='M44.4423 13.0092V11.37C42.1587 11.3731 39.9203 10.8088 37.9828 9.74172C39.6978 11.3984 41.9561 12.5409 44.4423 13.0095M32.4094 2.46498C32.3513 2.1719 32.3067 1.87685 32.2758 1.58057V0.589844H23.4943V31.3578C23.4803 34.9444 20.1813 37.8487 16.1128 37.8487C14.9594 37.8502 13.8218 37.6122 12.7918 37.1539C14.1406 38.7158 16.2705 39.7238 18.6677 39.7238C22.7359 39.7238 26.0352 36.8199 26.0496 33.233V2.46514L32.4094 2.46498ZM18.3536 18.9976V17.2523C17.6198 17.1638 16.88 17.1195 16.1394 17.1197C7.22648 17.1197 0.00158691 23.4946 0.00158691 31.3578C0.00158691 36.2878 2.84106 40.6325 7.15598 43.1882C4.31009 40.6214 2.55669 37.108 2.55669 33.2328C2.55669 25.4697 9.59781 19.1573 18.3536 18.9976Z'
-            fill='#00F2EA'
+            d='M10.0007 2.1875C7.87898 2.1875 7.61266 2.1968 6.77938 2.23469C5.94766 2.27281 5.37992 2.40445 4.8832 2.59766C4.3693 2.79719 3.93344 3.06414 3.49922 3.49852C3.06461 3.93281 2.79766 4.36867 2.5975 4.88234C2.40375 5.37922 2.27195 5.94719 2.23453 6.77852C2.19727 7.61188 2.1875 7.87828 2.1875 10.0001C2.1875 12.1219 2.19688 12.3873 2.23469 13.2206C2.27297 14.0523 2.40461 14.6201 2.59766 15.1168C2.79734 15.6307 3.0643 16.0666 3.49867 16.5008C3.93281 16.9354 4.36867 17.203 4.88219 17.4025C5.3793 17.5957 5.94711 17.7273 6.77867 17.7655C7.61203 17.8034 7.87813 17.8127 9.99977 17.8127C12.1217 17.8127 12.3872 17.8034 13.2205 17.7655C14.0522 17.7273 14.6205 17.5957 15.1177 17.4025C15.6313 17.203 16.0666 16.9354 16.5006 16.5008C16.9352 16.0666 17.2021 15.6307 17.4023 15.117C17.5944 14.6201 17.7262 14.0522 17.7653 13.2208C17.8027 12.3875 17.8125 12.1219 17.8125 10.0001C17.8125 7.87828 17.8027 7.61203 17.7653 6.77867C17.7262 5.94695 17.5944 5.3793 17.4023 4.88258C17.2021 4.36867 16.9352 3.93281 16.5006 3.49852C16.0661 3.06398 15.6315 2.79703 15.1172 2.59773C14.6191 2.40445 14.0511 2.27273 13.2194 2.23469C12.386 2.1968 12.1207 2.1875 9.99828 2.1875H10.0007ZM9.29984 3.59539C9.50789 3.59508 9.74 3.59539 10.0007 3.59539C12.0867 3.59539 12.3339 3.60289 13.1577 3.64031C13.9194 3.67516 14.3328 3.80242 14.6082 3.90938C14.9728 4.05094 15.2327 4.22023 15.506 4.49375C15.7795 4.76719 15.9487 5.02758 16.0906 5.39219C16.1976 5.66719 16.325 6.08063 16.3597 6.84234C16.3971 7.66594 16.4052 7.91328 16.4052 9.99828C16.4052 12.0833 16.3971 12.3307 16.3597 13.1542C16.3248 13.9159 16.1976 14.3294 16.0906 14.6045C15.9491 14.9691 15.7795 15.2287 15.506 15.502C15.2326 15.7754 14.973 15.9446 14.6082 16.0863C14.3331 16.1937 13.9194 16.3206 13.1577 16.3555C12.3341 16.3929 12.0867 16.401 10.0007 16.401C7.91461 16.401 7.66734 16.3929 6.84383 16.3555C6.08211 16.3203 5.66867 16.193 5.39305 16.0861C5.02852 15.9445 4.76805 15.7752 4.49461 15.5018C4.22117 15.2284 4.05195 14.9686 3.91 14.6038C3.80305 14.3287 3.67562 13.9153 3.64094 13.1536C3.60352 12.33 3.59602 12.0827 3.59602 9.99633C3.59602 7.91008 3.60352 7.66398 3.64094 6.84039C3.67578 6.07867 3.80305 5.66523 3.91 5.38984C4.05164 5.02523 4.22117 4.76484 4.49469 4.49141C4.76813 4.21797 5.02852 4.04867 5.39312 3.9068C5.66852 3.79938 6.08211 3.67242 6.84383 3.63742C7.56453 3.60484 7.84383 3.59508 9.29984 3.59344V3.59539ZM14.171 4.89258C13.6534 4.89258 13.2335 5.31211 13.2335 5.82977C13.2335 6.34734 13.6534 6.76727 14.171 6.76727C14.6886 6.76727 15.1085 6.34734 15.1085 5.82977C15.1085 5.31219 14.6886 4.89227 14.171 4.89227V4.89258ZM10.0007 5.98797C7.78508 5.98797 5.98867 7.78438 5.98867 10.0001C5.98867 12.2158 7.78508 14.0113 10.0007 14.0113C12.2164 14.0113 14.0122 12.2158 14.0122 10.0001C14.0122 7.78445 12.2163 5.98797 10.0005 5.98797H10.0007ZM10.0007 7.39586C11.4389 7.39586 12.6049 8.56172 12.6049 10.0001C12.6049 11.4383 11.4389 12.6043 10.0007 12.6043C8.56242 12.6043 7.39656 11.4383 7.39656 10.0001C7.39656 8.56172 8.56242 7.39586 10.0007 7.39586Z'
+            fill='white'
           />
+          <defs>
+            <radialGradient
+              id='paint0_radial_3736_11282'
+              cx='0'
+              cy='0'
+              r='1'
+              gradientUnits='userSpaceOnUse'
+              gradientTransform='translate(5.3125 21.5404) rotate(-90) scale(19.8215 18.4355)'
+            >
+              <stop stopColor='#FFDD55' />
+              <stop offset='0.1' stopColor='#FFDD55' />
+              <stop offset='0.5' stopColor='#FF543E' />
+              <stop offset='1' stopColor='#C837AB' />
+            </radialGradient>
+            <radialGradient
+              id='paint1_radial_3736_11282'
+              cx='0'
+              cy='0'
+              r='1'
+              gradientUnits='userSpaceOnUse'
+              gradientTransform='translate(-3.35008 1.4407) rotate(78.681) scale(8.86031 36.5225)'
+            >
+              <stop stopColor='#3771C8' />
+              <stop offset='0.128' stopColor='#3771C8' />
+              <stop offset='1' stopColor='#6600FF' stopOpacity='0' />
+            </radialGradient>
+          </defs>
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Post adverts on your Tiktok account
+              Post adverts on your Instagram account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
               Get real people to post your ads on their social media account.
@@ -128,15 +166,22 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-advert_ig-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-advert_ig-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -224,15 +269,22 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-advert_whatsapp-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h-[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-advert_whatsapp-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available
@@ -288,15 +340,22 @@ export default function PostAdvertTasksCard() {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => navigate(`/dashboard/earn-advert_tw-task`)}
-            className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'
-          >
-            <div className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-tl-md rounded-tr-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+          <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
+            <Button
+              isDisabled={!profileDeatils?.membership_fee}
+              onClick={() => {
+                if (profileDeatils?.membership_fee) {
+                  navigate(`/dashboard/earn-advert_tw-task`)
+                } else {
+                  toast.error('Please activate your membership')
+                }
+              }}
+              className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+            >
               <div className="text-center text-white text-[10px] font-medium font-['Campton']">
                 Generate Task
               </div>
-            </div>
+            </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
               <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
                 124 Task available

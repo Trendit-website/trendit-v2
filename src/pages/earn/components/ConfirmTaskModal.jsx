@@ -53,7 +53,7 @@ export default function ConfirmTaskModal({
           hideCloseButton={true}
         >
           <ModalContent className='md:w-[30rem] overflow-visible'>
-            <div className='p-12 dark:bg-[#111111] bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className='p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
                 className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
