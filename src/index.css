@@ -18,11 +18,11 @@
 
 @layer base {
   html {
-    @apply font-Campton dark:!text-gray-100 !bg-lighten dark:bg-slate-800;
+    @apply font-Campton;
   }
 
   body {
-    @apply font-Campton dark:!text-gray-100 !bg-lighten dark:!bg-slate-800;
+    @apply font-Campton;
   }
 }
 

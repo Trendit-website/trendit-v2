@@ -47,6 +47,7 @@ export default function OnBoard() {
   }, [watch().state, setValue])
 
   const onSubmit = async (data) => {
+    onOpen()
     const day = watch('day')
     const month = watch('month')
     const year = watch('year')
@@ -84,9 +85,62 @@ export default function OnBoard() {
     }
   }
 
+  const animals = [
+    {
+      label: 'Cat',
+      value: 'cat',
+      description: 'The second most popular pet in the world',
+    },
+    {
+      label: 'Dog',
+      value: 'dog',
+      description: 'The most popular pet in the world',
+    },
+    {
+      label: 'Elephant',
+      value: 'elephant',
+      description: 'The largest land animal',
+    },
+    { label: 'Lion', value: 'lion', description: 'The king of the jungle' },
+    { label: 'Tiger', value: 'tiger', description: 'The largest cat species' },
+    {
+      label: 'Giraffe',
+      value: 'giraffe',
+      description: 'The tallest land animal',
+    },
+    {
+      label: 'Dolphin',
+      value: 'dolphin',
+      description: 'A widely distributed and diverse group of aquatic mammals',
+    },
+    {
+      label: 'Penguin',
+      value: 'penguin',
+      description: 'A group of aquatic flightless birds',
+    },
+    {
+      label: 'Zebra',
+      value: 'zebra',
+      description: 'A several species of African equids',
+    },
+    {
+      label: 'Shark',
+      value: 'shark',
+      description:
+        'A group of elasmobranch fish characterized by a cartilaginous skeleton',
+    },
+  ]
+
   return (
     <>
       <div>
+        <Select label='Select an animal' className='max-w-xs'>
+          {animals.map((animal) => (
+            <SelectItem key={animal.value} value={animal.value}>
+              {animal.label}
+            </SelectItem>
+          ))}
+        </Select>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className=' h[1024px] h-[1054px] relative bg-white dark:bg-black'>
             <div className='left-0 top-0 absolute'>
@@ -146,7 +200,7 @@ export default function OnBoard() {
               </div>
               <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                 <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                  <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 textblack dark:textwhite  text-[12.83px] font-medium font-['Campton']">
                     Select Gender
                   </label>
                   <Controller
@@ -159,28 +213,28 @@ export default function OnBoard() {
                         isInvalid={!!errors.gender}
                         errorMessage={errors?.gender?.message}
                         selectedKeys={field.value ? [field.value] : []}
-                        className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        // className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select Gender'
-                        classNames={{
-                          listbox: [
-                            'bg-transparent',
-                            'text-black/90 dark:text-white/90',
-                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                          ],
-                          popoverContent: ['dark:bg-zinc-700', 'bg-white '],
-                          trigger: [
-                            'bg-zinc-700 bg-opacity-10',
-                            'dark:bg-white dark:bg-opacity-10',
-                            'hover:bg-bg-white hover:bg-opacity-10',
-                            'dark:hover:bg-default/70',
-                            'group-data-[focused=true]:bg-default-200/50',
-                            'dark:group-data-[focused=true]:bg-default/60',
-                            '!cursor-text',
-                            'border-2 border-transparent',
-                            'focus-within:!border-fuchsia-600  ',
-                            '!cursor-text',
-                          ],
-                        }}
+                        // classNames={{
+                        //   listbox: [
+                        //     'bg-transparent',
+                        //     'text-black/90 dark:text-white/90',
+                        //     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                        //   ],
+                        //   popoverContent: ['dark:bg-zinc-700', 'bg-white '],
+                        //   trigger: [
+                        //     'bg-zinc-700 bg-opacity-10',
+                        //     'dark:bg-white dark:bg-opacity-10',
+                        //     'hover:bg-bg-white hover:bg-opacity-10',
+                        //     'dark:hover:bg-default/70',
+                        //     'group-data-[focused=true]:bg-default-200/50',
+                        //     'dark:group-data-[focused=true]:bg-default/60',
+                        //     '!cursor-text',
+                        //     'border-2 border-transparent',
+                        //     'focus-within:!border-fuchsia-600  ',
+                        //     '!cursor-text',
+                        //   ],
+                        // }}
                       >
                         {genders.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>

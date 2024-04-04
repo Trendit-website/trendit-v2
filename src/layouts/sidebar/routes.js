@@ -23,21 +23,21 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Earn',
-    route: 'earn',
+    route: '/dashboard/earn',
     icon: EarnIcon,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Advertise',
-    route: 'advertise',
+    route: '/dashboard/advertise',
     icon: TbSpeakerphone,
     withSubMenu: false,
   },
   {
     title: '',
     name: 'Resell',
-    route: 'resell',
+    route: '/dashboard/resell',
     icon: BiShare,
     withSubMenu: false,
   },
@@ -73,7 +73,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: TransIcon,
     withSubMenu: false,
-    route: 'transactions',
+    route: '/dashboard/transactions',
   },
   {
     title: '',
@@ -81,7 +81,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: ReferalIcon,
     withSubMenu: false,
-    route: 'refer-link',
+    route: '/dashboard/refer-link',
   },
   {
     title: '',
@@ -89,7 +89,7 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: SettingIcon,
     withSubMenu: false,
-    route: 'settings',
+    route: '/dashboard/settings',
   },
   {
     title: '',
@@ -97,6 +97,6 @@ export const defaultMenu = [
     // routeMerge: true,
     icon: SupportIcon,
     withSubMenu: false,
-    route: 'support',
+    route: '/dashboard/support',
   },
 ]
