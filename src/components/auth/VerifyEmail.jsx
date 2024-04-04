@@ -81,6 +81,13 @@ export default function VerifyEmail() {
                     errorMessage={errors?.email?.message}
                     isInvalid={!!errors?.email}
                     required={true}
+                    classNames={{
+                      inputWrapper: [
+                        'border-2 border-transparent',
+                        'focus-within:!border-fuchsia-600  ',
+                        '!cursor-text',
+                      ],
+                    }}
                   />
                 )}
                 rules={{ required: true }}
@@ -92,6 +99,13 @@ export default function VerifyEmail() {
                   <Input
                     {...field}
                     size='sm'
+                    classNames={{
+                      inputWrapper: [
+                        'border-2 border-transparent',
+                        'focus-within:!border-fuchsia-600  ',
+                        '!cursor-text',
+                      ],
+                    }}
                     placeholder='Referral code/username (Optional)'
                     className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                   />

@@ -11,12 +11,7 @@ export default {
   ],
   theme: {
     fontFamily: { Campton: ['Campton', 'sans-serif'] },
-    extend: {
-      colors: {
-        bgDarkColor: '#161616',
-        lighten: '#fff',
-      },
-    },
+    extend: {},
   },
   darkMode: 'class',
 
@@ -27,69 +22,11 @@ export default {
         light: {
           colors: {
             secondary: '#FF6DFB',
-            background: '#FFFFFF', // or DEFAULT
-            foreground: '#11181C', // or 50 to 900 DEFAULT
-            primary: {
-              50: '#ffe2f6',
-              100: '#ffb2de',
-              200: '#ff80c5',
-              300: '#fd4eac',
-              400: '#fc1d95',
-              500: '#e2037b',
-              600: '#b10060',
-              700: '#800045',
-              800: '#4e0029',
-              900: '#1f0011',
-              foreground: '#FFFFFF',
-              DEFAULT: '#006FEE',
-            },
-            // ... rest of the colors
           },
         },
         dark: {
-          colors: {
-            background: '#FFFFFF', // or DEFAULT
-            foreground: '#11181C', // or 50 to 900 DEFAULT
-            primary: {
-              50: '#ffe2f6',
-              100: '#ffb2de',
-              200: '#ff80c5',
-              300: '#fd4eac',
-              400: '#fc1d95',
-              500: '#e2037b',
-              600: '#b10060',
-              700: '#800045',
-              800: '#4e0029',
-              900: '#1f0011',
-              foreground: '#FFFFFF',
-              DEFAULT: '#006FEE',
-            },
-            // ... rest of the colors
-          },
+          colors: {},
         },
-        // dark: {
-        //   colors: {
-        //     background: '#000000', // or DEFAULT
-        //     foreground: '#ECEDEE', // or 50 to 900 DEFAULT
-        //     primary: {
-        //       //... 50 to 900
-        //       foreground: '#FFFFFF',
-        //       DEFAULT: '#006FEE',
-        //     },
-        //   },
-        //   // ... rest of the colors
-        // },
-        // mytheme: {
-        //   // custom theme
-        //   extend: 'dark',
-        //   colors: {
-        //     primary: {
-        //       DEFAULT: '#BEF264',
-        //       foreground: '#000000',
-        //     },
-        //     focus: '#BEF264',
-        //   },
-        // },
       },
     }),
   ],

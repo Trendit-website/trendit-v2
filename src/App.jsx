@@ -46,6 +46,7 @@ import GenerateFollowEngageTask from './pages/earn/components/engageadvert/Gener
 import GenerateCommentEngageTask from './pages/earn/components/engageadvert/GenerateCommentEngageTask'
 import GenerateShareEngageTask from './pages/earn/components/engageadvert/GenerateShareEngageTask'
 import GenerateJoinEngageTask from './pages/earn/components/engageadvert/GenerateJoinEngageTask'
+import FundWallet from './pages/home/FundWallet'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -102,6 +103,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Earn />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='fund'
+              element={
+                <ProtectedRoute>
+                  <FundWallet />
                 </ProtectedRoute>
               }
             />

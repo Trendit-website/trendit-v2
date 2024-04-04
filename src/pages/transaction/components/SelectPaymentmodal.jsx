@@ -51,11 +51,12 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         hideCloseButton={true}
+        className='rounded-none'
       >
         <ModalContent className=' md:w[28rem]  overflow-visible'>
           {view === 'fund' && (
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className='h-[412px] p-12 w-full bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+              <div className='h-[412px] p-12 w-full rounded flex-col justify-center items-center gap-12 inline-flex'>
                 <div
                   onClick={onClose}
                   className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-4 cursor-pointer rounded-[100px] '
@@ -196,6 +197,8 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
                                 'group-data-[focused=true]:bg-default-200/50',
                                 'dark:group-data-[focused=true]:bg-default/60',
                                 '!cursor-text',
+                                'border-2 border-transparent',
+                                'focus-within:!border-fuchsia-600  ',
                               ],
                             }}
                             className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Campton']"
