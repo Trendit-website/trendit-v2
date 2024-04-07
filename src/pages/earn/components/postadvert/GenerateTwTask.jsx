@@ -73,14 +73,13 @@ export default function GenerateTwTask() {
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Campton']">
-                    Post adverts on Twitter
+                    Like an Retweet Post on Twitter Accounts
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Campton']">
-                    Like and Follow Facebook Pages for Businesses and
-                    Organizations and earn
-                    <br />
-                    ₦10 per Like/Follow. The more pages you like, the more you
-                    earn.
+                    Like and Follow Twitter Accounts for Businesses and
+                    Organizations and earn ₦
+                    <br />5 per Like/Follow. The more pages you like, the more
+                    you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Campton']">
@@ -92,13 +91,13 @@ export default function GenerateTwTask() {
             </div>
             <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Campton']">
-                  Link your Instagram Account
+                <div className="text-center  text-base font-bold font-['Campton']">
+                  Link your Twitter Accounts
                 </div>
                 <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Campton']">
-                  You need to link your Facebook Account to Hawkit before you
-                  can start earning with your Facebook Account. Click the button
-                  below to link your Facebook account now.
+                  You need to link your Twitter Accounts to Trendit before you
+                  can start earning with your Twitter Accounts . Click the
+                  button below to link your  Twitter Accounts now.
                 </div>
                 <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
                   <svg
@@ -113,7 +112,7 @@ export default function GenerateTwTask() {
                       fill='black'
                     />
                   </svg>
-                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Campton']">
+                  <div className="text-center text-[12.83px] font-bold font-['Campton']">
                     Link Twitter account
                   </div>
                 </div>

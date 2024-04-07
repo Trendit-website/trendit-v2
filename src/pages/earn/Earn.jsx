@@ -8,7 +8,7 @@ import { Chip } from '@nextui-org/chip'
 import PostAdvertTasksCard from './PostAdvertTasksCard'
 import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
-import ActivationPaymentmodal from '../transaction/components/ActivationPaymentmodal'
+import ActivationPaymentmodal2 from '../transaction/components/ActivationPaymentmodal2'
 
 export default function Earn() {
   const [selected, setSelected] = useState('post advert')
@@ -429,7 +429,7 @@ export default function Earn() {
         </div>
       </div>
 
-      {isOpen && <ActivationPaymentmodal isOpen={isOpen} onClose={onClose} />}
+      {isOpen && <ActivationPaymentmodal2 isOpen={isOpen} onClose={onClose} />}
     </>
   )
 }
