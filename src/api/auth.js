@@ -70,3 +70,10 @@ export const useDeleteAcc = () => {
     },
   })
 }
+export const useGoogleLogin = () => {
+  return useMutation({
+    mutationFn: () => {
+      return API.get(`/gg_login`)
+    },
+  })
+}

@@ -135,7 +135,7 @@ export default function GenerateTwTask() {
           </div>
 
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
-            <div className=' justify-between w-full border-b border-stone-500 items-center flex'>
+            <div className=' justify-between w-full borderb border-stone500 items-center flex'>
               <div className='justify-start  items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
                   <div className='flex flex-col  w-full'>
@@ -147,8 +147,8 @@ export default function GenerateTwTask() {
                       onSelectionChange={setSelected}
                       variant='underlined'
                       classNames={{
-                        tab: '!px-0 mr-2',
-                        tabList: '!p-0',
+                        tab: '!px0 mr2',
+                        tabList: '!p0 bordered  py-2',
                         cursor: ' bg-fuchsia-400',
                         selectedKey: 'text-green-400',
                         tabContent:
@@ -197,46 +197,48 @@ export default function GenerateTwTask() {
                   </div>
                 </AnimatePresence>
               </div>
-              <div className='px-3 justify-start items-center gap-[11px] flex'>
-                <div className='justify-start items-center gap-[7px] flex'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='25'
-                    viewBox='0 0 24 25'
-                    fill='none'
-                  >
-                    <path
-                      d='M19.5858 3.5H4.41421C3.63316 3.5 3 4.13317 3 4.91421C3 5.28929 3.149 5.649 3.41421 5.91421L8.41421 10.9142C8.78929 11.2893 9 11.798 9 12.3284V17.2639C9 18.0215 9.428 18.714 10.1056 19.0528L14.2764 21.1382C14.6088 21.3044 15 21.0627 15 20.691V12.3284C15 11.798 15.2107 11.2893 15.5858 10.9142L20.5858 5.91421C20.851 5.649 21 5.28929 21 4.91421C21 4.13317 20.3668 3.5 19.5858 3.5Z'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                      className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E]'
-                    />
-                  </svg>
-                  <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
-                    Filter
+              {fetchTask?.length >= 5 && (
+                <div className='px-3 justify-start items-center gap-[11px] flex'>
+                  <div className='justify-start items-center gap-[7px] flex'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='25'
+                      viewBox='0 0 24 25'
+                      fill='none'
+                    >
+                      <path
+                        d='M19.5858 3.5H4.41421C3.63316 3.5 3 4.13317 3 4.91421C3 5.28929 3.149 5.649 3.41421 5.91421L8.41421 10.9142C8.78929 11.2893 9 11.798 9 12.3284V17.2639C9 18.0215 9.428 18.714 10.1056 19.0528L14.2764 21.1382C14.6088 21.3044 15 21.0627 15 20.691V12.3284C15 11.798 15.2107 11.2893 15.5858 10.9142L20.5858 5.91421C20.851 5.649 21 5.28929 21 4.91421C21 4.13317 20.3668 3.5 19.5858 3.5Z'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
+                      />
+                    </svg>
+                    <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
+                      Filter
+                    </div>
+                  </div>
+                  <div className='justify-start items-center gap-[7px] flex'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='25'
+                      viewBox='0 0 24 25'
+                      fill='none'
+                    >
+                      <path
+                        d='M5 17.5L5 7.5M7 16.5L5.35355 18.1464C5.15829 18.3417 4.84171 18.3417 4.64645 18.1464L3 16.5M12 4.5H21M12 12.5H18M12 20.5H14M12 8.5H20M12 16.5H16'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
+                      />
+                    </svg>
+                    <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
+                      Sort
+                    </div>
                   </div>
                 </div>
-                <div className='justify-start items-center gap-[7px] flex'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='25'
-                    viewBox='0 0 24 25'
-                    fill='none'
-                  >
-                    <path
-                      d='M5 17.5L5 7.5M7 16.5L5.35355 18.1464C5.15829 18.3417 4.84171 18.3417 4.64645 18.1464L3 16.5M12 4.5H21M12 12.5H18M12 20.5H14M12 8.5H20M12 16.5H16'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                      className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E]'
-                    />
-                  </svg>
-                  <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
-                    Sort
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
           {selected === 'post advert' && (

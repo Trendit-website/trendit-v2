@@ -47,6 +47,7 @@ import GenerateCommentEngageTask from './pages/earn/components/engageadvert/Gene
 import GenerateShareEngageTask from './pages/earn/components/engageadvert/GenerateShareEngageTask'
 import GenerateJoinEngageTask from './pages/earn/components/engageadvert/GenerateJoinEngageTask'
 import FundWallet from './pages/home/FundWallet'
+import GenerateTiktokTask from './pages/earn/components/postadvert/GenerateTiktokTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -167,6 +168,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <GenerateIgTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert_tiktok-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateTiktokTask />
                 </ProtectedRoute>
               }
             />
