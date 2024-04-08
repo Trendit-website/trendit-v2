@@ -35,19 +35,18 @@ export default function DeleteAccountModal({ isOpen, onClose }) {
         hideCloseButton={true}
       >
         <ModalContent className='overflow-visible md:w-[28rem] '>
-          <div className='w[483px] h-[274px] p-12 bg-white rounded flex-col justify-center items-center gap-6 inline-flex'>
+          <div className=' p-12 rounded flex-col justify-center items-center gap-6 inline-flex'>
             <div
               onClick={onClose}
               className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>
-            <div className='w-12 h-12 relative' />
             <div className='flex-col justify-center items-center gap-3 flex'>
-              <div className="text-stone-900 text-2xl font-bold font-['Campton']">
+              <div className=" text-2xl font-bold font-['Campton']">
                 Delete Account
               </div>
-              <div className="w-[253px] text-center text-black text-xs font-normal font-['Campton']">
+              <div className=" text-center text-xs font-normal font-['Campton']">
                 Are you sure you want to delete your account,? By pressing this
                 button you no longer have an account on Trendit.
               </div>

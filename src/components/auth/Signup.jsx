@@ -207,7 +207,13 @@ export default function Signup() {
                       }}
                     />
                   )}
-                  rules={{ required: true }}
+                  rules={{
+                    required: true,
+                    minLength: {
+                      value: 8,
+                      message: 'min length is 8',
+                    },
+                  }}
                 />
 
                 <p

@@ -5,9 +5,11 @@ import { Input } from '@nextui-org/input'
 import { SearchIcon } from 'lucide-react'
 import FaqCard from './FaqCard'
 import { Button } from '@nextui-org/button'
+import { useGetProfile } from '../../api/profileApis'
 
 export default function Support() {
   const [selected, setSelected] = useState('all')
+  const { data: userDetails } = useGetProfile()
 
   return (
     <div>
@@ -17,7 +19,7 @@ export default function Support() {
             <div className='self-stretch dark:border-b dark:border-stone-900 justify-center items-center inline-flex'>
               <div className='grow pt-16 pb-6 flex flex-col justify- items-center'>
                 <div className="w-[236px] text-center pb-12 gap-8 text-black dark:text-white text-2xl font-medium font-['Campton']">
-                  Hi Adedamola, How can we help?
+                  Hi {userDetails?.lastname}, How can we help?
                 </div>
                 <div className='self-stretch w-full justify-between items-start gap-4 inline-flex'>
                   <Button className='grow shrink bg-[#FFD0FE] rounded-sm basis-0  px-3 py-[71px] dark:bg-white dark:bg-opacity-5 dark:border dark:border-stone-900 justify-center items-center gap-3 flex'>

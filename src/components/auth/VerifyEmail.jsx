@@ -5,7 +5,7 @@ import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { useVerifyEmail } from '../../api/auth'
+import { useGoogleLogin, useVerifyEmail } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useSignUpToken from '../../hooks/useSignUpToken'
 
@@ -17,6 +17,9 @@ export default function VerifyEmail() {
     formState: { errors },
   } = useForm()
   const { mutateAsync: verifyUserEmail, isPending } = useVerifyEmail()
+  const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
+    useGoogleLogin()
+
   const navigate = useNavigate()
 
   const { setSignUpToken } = useSignUpToken()
@@ -32,6 +35,19 @@ export default function VerifyEmail() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
+    }
+  }
+  const handleGgLogin = async () => {
+    try {
+      const res = await handleGoogleLogin()
+      if (res?.data?.status) {
+        setSignUpToken(res?.data?.access_token)
+        window.open(res?.data?.authorization_url)
+        toast.success(res.data.message)
+        // navigate('/dashboard')
+      }
+    } catch (error) {
+      toast.error(error.response?.message ?? error.message)
     }
   }
 
@@ -177,7 +193,11 @@ export default function VerifyEmail() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-1.5 inline-flex'>
-                <div className="p-2 bg-[#B0B0B0] dark:bg-white text-center text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex">
+                <Button
+                  onClick={handleGgLogin}
+                  isDisabled={loadingAuth}
+                  className="p-2 bg-[#B0B0B0] rounded-none dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -202,9 +222,32 @@ export default function VerifyEmail() {
                       fill='#1976D2'
                     />
                   </svg>
-                  Google
-                </div>
-                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
+                  {loadingAuth ? (
+                    <svg
+                      className='animate-spin h-5 w-5 text-current'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      />
+                      <path
+                        className='opacity-75'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                        fill='currentColor'
+                      />
+                    </svg>
+                  ) : (
+                    'Google'
+                  )}
+                </Button>
+                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -222,8 +265,8 @@ export default function VerifyEmail() {
                     />
                   </svg>
                   Facebook
-                </div>
-                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
+                </Button>
+                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -245,7 +288,7 @@ export default function VerifyEmail() {
                     />
                   </svg>
                   Titkok
-                </div>
+                </Button>
               </div>
             </div>
           </div>

@@ -5,7 +5,7 @@ import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { useLoginUser } from '../../api/auth'
+import { useGoogleLogin, useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
 import { useEffect, useState } from 'react'
@@ -20,6 +20,8 @@ export default function Login() {
   const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(false)
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
+  const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
+    useGoogleLogin()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
 
@@ -36,6 +38,19 @@ export default function Login() {
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
         navigate('/dashboard')
+      }
+    } catch (error) {
+      toast.error(error.response?.message ?? error.message)
+    }
+  }
+  const handleGgLogin = async () => {
+    try {
+      const res = await handleGoogleLogin()
+      if (res?.data?.status) {
+        setAccessToken(res?.data?.access_token)
+        window.open(res?.data?.authorization_url)
+        toast.success(res.data.message)
+        // navigate('/dashboard')
       }
     } catch (error) {
       toast.error(error.response?.message ?? error.message)
@@ -174,10 +189,7 @@ export default function Login() {
                 )}
                 rules={{
                   required: true,
-                  // minLength: {
-                  //   value: 8,
-                  //   message: 'min length is 8',
-                  // },
+                 
                 }}
               />
 
@@ -255,7 +267,11 @@ export default function Login() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-1.5 inline-flex'>
-                <div className="p-2 bg-[#B0B0B0] dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex">
+                <Button
+                  onClick={handleGgLogin}
+                  isDisabled={loadingAuth}
+                  className="p-2 bg-[#B0B0B0] rounded-none dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -280,9 +296,32 @@ export default function Login() {
                       fill='#1976D2'
                     />
                   </svg>
-                  Google
-                </div>
-                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
+                  {loadingAuth ? (
+                    <svg
+                      className='animate-spin h-5 w-5 text-current'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      />
+                      <path
+                        className='opacity-75'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                        fill='currentColor'
+                      />
+                    </svg>
+                  ) : (
+                    'Google'
+                  )}
+                </Button>
+                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -300,8 +339,8 @@ export default function Login() {
                     />
                   </svg>
                   Facebook
-                </div>
-                <div className="p-2 text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
+                </Button>
+                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -323,7 +362,7 @@ export default function Login() {
                     />
                   </svg>
                   Titkok
-                </div>
+                </Button>
               </div>
             </div>
           </div>
