@@ -49,6 +49,7 @@ export default function PrefrenceForm() {
             <div className='self-stretch flex-col justify-start items-center gap-3.5 flex'>
               <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                 <Input
+                  isReadOnly
                   name='appearance'
                   endContent={
                     <Switch
@@ -75,6 +76,8 @@ export default function PrefrenceForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   control={control}
@@ -83,6 +86,7 @@ export default function PrefrenceForm() {
               </div>
               <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                 <Input
+                  isReadOnly
                   name='appearance'
                   endContent={
                     <Switch
@@ -109,6 +113,8 @@ export default function PrefrenceForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   control={control}
@@ -117,6 +123,7 @@ export default function PrefrenceForm() {
               </div>
               <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                 <Input
+                  isReadOnly
                   endContent={
                     <Switch
                       size='sm'
@@ -142,6 +149,8 @@ export default function PrefrenceForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"

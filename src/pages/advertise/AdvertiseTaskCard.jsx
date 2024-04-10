@@ -9,28 +9,34 @@ export default function AdvertiseTaskCard() {
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
-          height='48'
-          viewBox='0 0 47 48'
+          height='47'
+          viewBox='0 0 47 47'
           fill='none'
         >
           <path
-            d='M47 24.0898C47 11.1112 36.4786 0.589844 23.5 0.589844C10.5214 0.589844 0 11.1112 0 24.0898C0 35.8193 8.59366 45.5415 19.8281 47.3044V30.8828H13.8613V24.0898H19.8281V18.9125C19.8281 13.0228 23.3366 9.76953 28.7045 9.76953C31.2756 9.76953 33.9648 10.2285 33.9648 10.2285V16.0117H31.0016C28.0823 16.0117 27.1719 17.8232 27.1719 19.6818V24.0898H33.6895L32.6476 30.8828H27.1719V47.3044C38.4063 45.5415 47 35.8195 47 24.0898Z'
-            fill='#1877F2'
+            d='M34.8307 16.9236C38.2597 19.0864 42.4604 20.359 46.9973 20.359V12.6558C46.1386 12.656 45.2822 12.5769 44.4422 12.4199V18.4833C39.9057 18.4833 35.7055 17.2109 32.2758 15.0483V30.7683C32.2758 38.6324 25.0507 45.0069 16.1389 45.0069C12.8137 45.0069 9.72286 44.1199 7.15546 42.5986C10.0858 45.2424 14.1723 46.8824 18.6933 46.8824C27.6058 46.8824 34.8311 40.5079 34.8311 32.6435V16.9236H34.8307ZM37.9828 9.15206C36.2303 7.46282 35.0796 5.27975 34.8307 2.86622V1.87549H32.4094C33.0189 4.94297 35.098 7.56362 37.9828 9.15206ZM12.7922 36.5641C11.8131 35.4315 11.2839 34.0457 11.2862 32.6209C11.2862 29.0243 14.5909 26.108 18.6681 26.108C19.4278 26.1077 20.183 26.2106 20.9073 26.4132V18.5378C20.0609 18.4355 19.2069 18.3919 18.3533 18.408V24.5378C17.6287 24.335 16.8731 24.2321 16.113 24.2327C12.036 24.2327 8.73151 27.1487 8.73151 30.7458C8.73151 33.2893 10.3832 35.4913 12.7922 36.5641Z'
+            fill='#FF004F'
           />
           <path
-            d='M32.6476 30.8828L33.6895 24.0898H27.1719V19.6818C27.1719 17.8231 28.0823 16.0117 31.0016 16.0117H33.9648V10.2285C33.9648 10.2285 31.2756 9.76953 28.7043 9.76953C23.3366 9.76953 19.8281 13.0228 19.8281 18.9125V24.0898H13.8613V30.8828H19.8281V47.3044C21.0428 47.4947 22.2705 47.5902 23.5 47.5898C24.7295 47.5902 25.9572 47.4948 27.1719 47.3044V30.8828H32.6476Z'
+            d='M32.2758 15.0481C35.7057 17.2108 39.9055 18.4832 44.4422 18.4832V12.4197C41.9098 11.9437 39.6681 10.7762 37.9826 9.15206C35.0976 7.56346 33.0189 4.94281 32.4094 1.87549H26.0496V32.6431C26.0351 36.2301 22.7361 39.1343 18.6677 39.1343C16.2705 39.1343 14.1406 38.1261 12.7918 36.5639C10.3832 35.4913 8.73132 33.2891 8.73132 30.746C8.73132 27.1492 12.0358 24.2329 16.1128 24.2329C16.894 24.2329 17.6468 24.3402 18.3531 24.5379V18.4081C9.59764 18.5678 2.55634 24.88 2.55634 32.6433C2.55634 36.5187 4.30973 40.0319 7.15563 42.5989C9.72303 44.1199 12.8136 45.0072 16.1391 45.0072C25.0511 45.0072 32.276 38.6322 32.276 30.7683L32.2758 15.0481Z'
             fill='white'
+          />
+          <path
+            d='M44.4423 12.4193V10.7802C42.1587 10.7832 39.9203 10.219 37.9828 9.15187C39.6978 10.8086 41.9561 11.951 44.4423 12.4197M32.4094 1.87514C32.3513 1.58205 32.3067 1.28701 32.2758 0.990728V0H23.4943V30.768C23.4803 34.3546 20.1813 37.2588 16.1128 37.2588C14.9594 37.2604 13.8218 37.0224 12.7918 36.5641C14.1406 38.1259 16.2705 39.134 18.6677 39.134C22.7359 39.134 26.0352 36.23 26.0496 32.6431V1.8753L32.4094 1.87514ZM18.3536 18.4078V16.6625C17.6198 16.5739 16.88 16.5296 16.1394 16.5299C7.22648 16.5299 0.00158691 22.9047 0.00158691 30.768C0.00158691 35.698 2.84106 40.0427 7.15598 42.5984C4.31009 40.0315 2.55669 36.5182 2.55669 32.643C2.55669 24.8799 9.59781 18.5674 18.3536 18.4078Z'
+            fill='#00F2EA'
           />
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get People to post your advert on Tiktok
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to post your adverts on their Tiktok account
+              having atleast 1000 active followers each on their account to post
+              your advert to their followers. This will give your advert massive
+              views within a short period of time. You can indicate any number
+              of people you want to post your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -67,33 +73,31 @@ export default function AdvertiseTaskCard() {
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          width='47'
-          height='48'
-          viewBox='0 0 47 48'
+          width='48'
+          height='47'
+          viewBox='0 0 48 47'
           fill='none'
         >
           <path
-            d='M34.8307 17.5134C38.2597 19.6762 42.4604 20.9488 46.9973 20.9488V13.2457C46.1386 13.2458 45.2822 13.1667 44.4422 13.0097V19.0732C39.9057 19.0732 35.7055 17.8008 32.2758 15.6381V31.3582C32.2758 39.2222 25.0507 45.5967 16.1389 45.5967C12.8137 45.5967 9.72286 44.7097 7.15546 43.1884C10.0858 45.8322 14.1723 47.4722 18.6933 47.4722C27.6058 47.4722 34.8311 41.0977 34.8311 33.2333V17.5134H34.8307ZM37.9828 9.7419C36.2303 8.05266 35.0796 5.86959 34.8307 3.45606V2.46533H32.4094C33.0189 5.53281 35.098 8.15347 37.9828 9.7419ZM12.7922 37.1539C11.8131 36.0213 11.2839 34.6355 11.2862 33.2108C11.2862 29.6142 14.5909 26.6979 18.6681 26.6979C19.4278 26.6975 20.183 26.8005 20.9073 27.0031V19.1276C20.0609 19.0254 19.2069 18.9818 18.3533 18.9978V25.1276C17.6287 24.9249 16.8731 24.822 16.113 24.8226C12.036 24.8226 8.73151 27.7385 8.73151 31.3356C8.73151 33.8792 10.3832 36.0812 12.7922 37.1539Z'
-            fill='#FF004F'
+            d='M47.5 23.5C47.5 10.5214 36.9786 0 24 0C11.0214 0 0.5 10.5214 0.5 23.5C0.5 35.2294 9.09366 44.9516 20.3281 46.7145V30.293H14.3613V23.5H20.3281V18.3227C20.3281 12.433 23.8366 9.17969 29.2045 9.17969C31.7756 9.17969 34.4648 9.63867 34.4648 9.63867V15.4219H31.5016C28.5823 15.4219 27.6719 17.2334 27.6719 19.0919V23.5H34.1895L33.1476 30.293H27.6719V46.7145C38.9063 44.9516 47.5 35.2296 47.5 23.5Z'
+            fill='#1877F2'
           />
           <path
-            d='M32.2758 15.638C35.7057 17.8006 39.9055 19.073 44.4422 19.073V13.0095C41.9098 12.5335 39.6681 11.366 37.9826 9.7419C35.0976 8.1533 33.0189 5.53265 32.4094 2.46533H26.0496V33.233C26.0351 36.8199 22.7361 39.7242 18.6677 39.7242C16.2705 39.7242 14.1406 38.7159 12.7918 37.1538C10.3832 36.0812 8.73132 33.879 8.73132 31.3358C8.73132 27.739 12.0358 24.8227 16.1128 24.8227C16.894 24.8227 17.6468 24.93 18.3531 25.1278V18.998C9.59764 19.1576 2.55634 25.4699 2.55634 33.2331C2.55634 37.1085 4.30973 40.6217 7.15563 43.1887C9.72303 44.7097 12.8136 45.5971 16.1391 45.5971C25.0511 45.5971 32.276 39.2221 32.276 31.3582L32.2758 15.638Z'
-            fill='black'
-          />
-          <path
-            d='M44.4423 13.0092V11.37C42.1587 11.3731 39.9203 10.8088 37.9828 9.74172C39.6978 11.3984 41.9561 12.5409 44.4423 13.0095M32.4094 2.46498C32.3513 2.1719 32.3067 1.87685 32.2758 1.58057V0.589844H23.4943V31.3578C23.4803 34.9444 20.1813 37.8487 16.1128 37.8487C14.9594 37.8502 13.8218 37.6122 12.7918 37.1539C14.1406 38.7158 16.2705 39.7238 18.6677 39.7238C22.7359 39.7238 26.0352 36.8199 26.0496 33.233V2.46514L32.4094 2.46498ZM18.3536 18.9976V17.2523C17.6198 17.1638 16.88 17.1195 16.1394 17.1197C7.22648 17.1197 0.00158691 23.4946 0.00158691 31.3578C0.00158691 36.2878 2.84106 40.6325 7.15598 43.1882C4.31009 40.6214 2.55669 37.108 2.55669 33.2328C2.55669 25.4697 9.59781 19.1573 18.3536 18.9976Z'
-            fill='#00F2EA'
+            d='M33.1476 30.293L34.1895 23.5H27.6719V19.0919C27.6719 17.2332 28.5823 15.4219 31.5016 15.4219H34.4648V9.63867C34.4648 9.63867 31.7756 9.17969 29.2043 9.17969C23.8366 9.17969 20.3281 12.433 20.3281 18.3227V23.5H14.3613V30.293H20.3281V46.7145C21.5428 46.9049 22.7705 47.0003 24 47C25.2295 47.0004 26.4572 46.9049 27.6719 46.7145V30.293H33.1476Z'
+            fill='white'
           />
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get people to post your Advert on Facebook
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get Genuine people with more than a 1000 followers 0r friends on
+              their facebook account to post your advert to their audience to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -136,31 +140,25 @@ export default function AdvertiseTaskCard() {
           fill='none'
         >
           <path
-            d='M21.9499 22.4067L0.205078 43.0245C0.44927 43.8076 0.888091 44.5299 1.488 45.1361C2.0879 45.7422 2.83301 46.2162 3.66636 46.5219C4.49971 46.8275 5.39924 46.9566 6.29618 46.8994C7.19313 46.8422 8.06375 46.6001 8.84149 46.1917L33.3085 33.5808L21.9499 22.4067Z'
-            fill='#EA4335'
+            d='M45.9576 7.33069C45.6881 5.91379 45.1623 4.62204 44.4327 3.58408C43.703 2.54613 42.795 1.79817 41.7989 1.4147C38.1524 0 23.4762 0 23.4762 0C23.4762 0 8.79924 0.0428221 5.15268 1.45752C4.1566 1.84102 3.24853 2.58901 2.51889 3.62702C1.78924 4.66502 1.26349 5.95682 0.99399 7.37378C-0.109009 16.5905 -0.536883 30.6346 1.02428 39.4826C1.29381 40.8995 1.81957 42.1913 2.54921 43.2292C3.27885 44.2672 4.18691 45.0151 5.18296 45.3986C8.82953 46.8133 23.5061 46.8133 23.5061 46.8133C23.5061 46.8133 38.1825 46.8133 41.8288 45.3986C42.8249 45.0152 43.733 44.2672 44.4627 43.2293C45.1924 42.1913 45.7182 40.8995 45.9877 39.4826C47.1511 30.2529 47.5096 16.2174 45.9576 7.33069Z'
+            fill='#FF0000'
           />
           <path
-            d='M43.9376 18.902L33.3573 13.4175L21.4478 22.8756L33.4057 33.5511L43.9055 28.1253C44.8357 27.6845 45.6148 27.0218 46.1584 26.2088C46.702 25.3959 46.9894 24.4638 46.9894 23.5136C46.9894 22.5634 46.702 21.6313 46.1584 20.8184C45.6148 20.0054 44.8357 19.3426 43.9055 18.9019L43.9376 18.902Z'
-            fill='#FBBC04'
-          />
-          <path
-            d='M0.205081 3.90088C0.0736456 4.34063 0.00821741 4.79438 0.0105587 5.24993V41.6753C0.0119214 42.1306 0.0772867 42.584 0.205081 43.0245L22.6953 22.9347L0.205081 3.90088Z'
-            fill='#4285F4'
-          />
-          <path
-            d='M22.1119 23.4625L33.3571 13.4176L8.9226 0.747858C8.00327 0.260598 6.95766 0.00255471 5.89228 1.01856e-05C3.24843 -0.00463999 0.924075 1.5834 0.205078 3.88606L22.1119 23.4625Z'
-            fill='#34A853'
+            d='M18.8047 33.4377L30.9798 23.4064L18.8047 13.375V33.4377Z'
+            fill='white'
           />
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Post adverts on your WhatsApp status
+              Get People to post your advert on Youtube
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get Genuine people with more than a 1000 followers 0r friends on
+              their Youtube account to post your advert to their audience to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -197,25 +195,48 @@ export default function AdvertiseTaskCard() {
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          width='47'
-          height='48'
-          viewBox='0 0 47 48'
+          width='48'
+          height='47'
+          viewBox='0 0 48 47'
           fill='none'
         >
           <path
-            d='M37.0145 2.84766H44.2211L28.4761 20.8447L47 45.3298H32.4966L21.1382 30.4778L8.13883 45.3298H0.92825L17.7699 26.0794L0 2.84961H14.8716L25.1391 16.4248L37.0145 2.84766ZM34.4863 41.0175H38.4793L12.7018 6.9347H8.41692L34.4863 41.0175Z'
-            fill='black'
+            d='M1.50868 23.2187C1.50758 27.1677 2.54719 31.0235 4.52399 34.422L1.31963 46.034L13.2928 42.9181C16.6044 44.7074 20.3148 45.645 24.0853 45.6452H24.0953C36.5425 45.6452 46.6749 35.5925 46.6802 23.2364C46.6826 17.249 44.3354 11.6188 40.0708 7.38302C35.807 3.14755 30.1363 0.813768 24.0943 0.811035C11.6456 0.811035 1.514 10.8632 1.50886 23.2187'
+            fill='#1ED760'
           />
+          <path
+            d='M0.702362 23.2114C0.701077 27.3024 1.77795 31.2962 3.82523 34.8164L0.505966 46.8446L12.9084 43.6171C16.3257 45.4663 20.1732 46.4413 24.0883 46.4427H24.0984C36.9922 46.4427 47.4885 36.0284 47.494 23.23C47.4962 17.0275 45.0646 11.1949 40.6477 6.80735C36.2303 2.42032 30.3568 0.00255039 24.0984 0C11.2024 0 0.707501 10.4129 0.702362 23.2114ZM8.08848 34.2102L7.62539 33.4806C5.67869 30.4085 4.65119 26.8583 4.65266 23.2129C4.6567 12.5751 13.3796 3.92031 24.1057 3.92031C29.3001 3.9225 34.1817 5.9322 37.8534 9.57853C41.5249 13.2252 43.5452 18.0728 43.5439 23.2286C43.5391 33.8664 34.8161 42.5222 24.0984 42.5222H24.0907C20.6009 42.5204 17.1783 41.5903 14.1934 39.8325L13.4831 39.4144L6.12324 41.3296L8.08848 34.2102Z'
+            fill='url(#paint0_linear_5470_3651)'
+          />
+          <path
+            d='M18.2509 13.5077C17.813 12.5416 17.3521 12.5221 16.9356 12.5052C16.5946 12.4906 16.2048 12.4917 15.8153 12.4917C15.4254 12.4917 14.792 12.6373 14.2566 13.2175C13.7206 13.7982 12.2104 15.2017 12.2104 18.0561C12.2104 20.9107 14.3052 23.6693 14.5973 24.0568C14.8896 24.4436 18.6413 30.4887 24.5831 32.8143C29.5213 34.7469 30.5262 34.3626 31.5979 34.2656C32.6699 34.1691 35.0567 32.8626 35.5437 31.5078C36.031 30.1532 36.031 28.992 35.8849 28.7493C35.7388 28.5076 35.3489 28.3624 34.7643 28.0724C34.1795 27.7822 31.3055 26.3786 30.7698 26.1849C30.2338 25.9915 29.8441 25.8949 29.4543 26.4759C29.0644 27.0559 27.945 28.3624 27.6038 28.7493C27.2629 29.1372 26.9217 29.1855 26.3373 28.8953C25.7523 28.6042 23.8697 27.9922 21.6361 26.0159C19.8983 24.478 18.725 22.5789 18.384 21.9979C18.043 21.4179 18.3475 21.1035 18.6406 20.8144C18.9033 20.5544 19.2254 20.1369 19.518 19.7982C19.8094 19.4594 19.9067 19.2176 20.1016 18.8307C20.2968 18.4434 20.1991 18.1046 20.0532 17.8144C19.9067 17.5242 18.7707 14.6548 18.2509 13.5077Z'
+            fill='white'
+          />
+          <defs>
+            <linearGradient
+              id='paint0_linear_5470_3651'
+              x1='2349.91'
+              y1='4684.46'
+              x2='2349.91'
+              y2='0'
+              gradientUnits='userSpaceOnUse'
+            >
+              <stop stop-color='#F9F9F9' />
+              <stop offset='1' stop-color='white' />
+            </linearGradient>
+          </defs>
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Post adverts on your X account
+              Get People to post your advert on WhatsApp
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to post your adverts on their WhatsApp Status
+              having atleast 1000 active followers each on their account to post
+              your advert to their followers. This will give your advert massive
+              views within a short period of time. You can indicate any number
+              of people you want to post your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -258,11 +279,11 @@ export default function AdvertiseTaskCard() {
         >
           <path
             d='M35.9844 0H11.0156C4.93186 0 0 4.93186 0 11.0156V35.9844C0 42.0681 4.93186 47 11.0156 47H35.9844C42.0681 47 47 42.0681 47 35.9844V11.0156C47 4.93186 42.0681 0 35.9844 0Z'
-            fill='url(#paint0_radial_2678_11282)'
+            fill='url(#paint0_radial_5470_5700)'
           />
           <path
             d='M35.9844 0H11.0156C4.93186 0 0 4.93186 0 11.0156V35.9844C0 42.0681 4.93186 47 11.0156 47H35.9844C42.0681 47 47 42.0681 47 35.9844V11.0156C47 4.93186 42.0681 0 35.9844 0Z'
-            fill='url(#paint1_radial_2678_11282)'
+            fill='url(#paint1_radial_5470_5700)'
           />
           <path
             d='M23.5017 5.14062C18.5156 5.14062 17.8897 5.16247 15.9315 5.25152C13.977 5.34111 12.6428 5.65046 11.4755 6.10449C10.2678 6.57339 9.24358 7.20073 8.22316 8.22151C7.20183 9.24211 6.57449 10.2664 6.10413 11.4735C5.64881 12.6412 5.33909 13.9759 5.25115 15.9295C5.16357 17.8879 5.14062 18.514 5.14062 23.5002C5.14062 28.4864 5.16266 29.1103 5.25152 31.0685C5.34148 33.023 5.65083 34.3572 6.10449 35.5245C6.57376 36.7322 7.2011 37.7564 8.22188 38.7768C9.24211 39.7982 10.2664 40.427 11.4731 40.8959C12.6413 41.3499 13.9757 41.6593 15.9299 41.7489C17.8883 41.8379 18.5136 41.8597 23.4994 41.8597C28.486 41.8597 29.1099 41.8379 31.0681 41.7489C33.0226 41.6593 34.3583 41.3499 35.5265 40.8959C36.7336 40.427 37.7564 39.7982 38.7765 38.7768C39.7978 37.7564 40.425 36.7322 40.8955 35.525C41.3468 34.3572 41.6567 33.0226 41.7485 31.0688C41.8364 29.1106 41.8594 28.4864 41.8594 23.5002C41.8594 18.514 41.8364 17.8883 41.7485 15.9299C41.6567 13.9753 41.3468 12.6413 40.8955 11.4741C40.425 10.2664 39.7978 9.24211 38.7765 8.22151C37.7553 7.20036 36.734 6.57302 35.5254 6.10468C34.355 5.65046 33.0201 5.34093 31.0655 5.25152C29.1071 5.16247 28.4837 5.14062 23.496 5.14062H23.5017ZM21.8546 8.44917C22.3435 8.44843 22.889 8.44917 23.5017 8.44917C28.4038 8.44917 28.9847 8.46679 30.9205 8.55473C32.7105 8.63662 33.6821 8.93569 34.3293 9.18703C35.1861 9.5197 35.7969 9.91755 36.4391 10.5603C37.0817 11.2029 37.4794 11.8148 37.813 12.6716C38.0643 13.3179 38.3638 14.2895 38.4453 16.0795C38.5332 18.015 38.5523 18.5962 38.5523 23.496C38.5523 28.3957 38.5332 28.9772 38.4453 30.9124C38.3634 32.7025 38.0643 33.674 37.813 34.3205C37.4803 35.1773 37.0817 35.7874 36.4391 36.4296C35.7966 37.0722 35.1865 37.4698 34.3293 37.8027C33.6828 38.0551 32.7105 38.3535 30.9205 38.4354C28.985 38.5233 28.4038 38.5424 23.5017 38.5424C18.5993 38.5424 18.0183 38.5233 16.083 38.4354C14.293 38.3527 13.3214 38.0537 12.6737 37.8023C11.817 37.4695 11.2049 37.0718 10.5623 36.4292C9.91975 35.7866 9.52209 35.1762 9.1885 34.319C8.93716 33.6726 8.63772 32.701 8.5562 30.9109C8.46826 28.9755 8.45064 28.3942 8.45064 23.4914C8.45064 18.5887 8.46826 18.0104 8.5562 16.0749C8.63809 14.2849 8.93716 13.3133 9.1885 12.6661C9.52136 11.8093 9.91975 11.1974 10.5625 10.5548C11.2051 9.91223 11.817 9.51438 12.6738 9.18097C13.321 8.92853 14.293 8.63019 16.083 8.54794C17.7766 8.47138 18.433 8.44843 21.8546 8.44458V8.44917ZM33.3019 11.4976C32.0856 11.4976 31.0988 12.4835 31.0988 13.6999C31.0988 14.9163 32.0856 15.9031 33.3019 15.9031C34.5182 15.9031 35.505 14.9163 35.505 13.6999C35.505 12.4836 34.5182 11.4968 33.3019 11.4968V11.4976ZM23.5017 14.0717C18.2949 14.0717 14.0734 18.2933 14.0734 23.5002C14.0734 28.7071 18.2949 32.9266 23.5017 32.9266C28.7086 32.9266 32.9286 28.7071 32.9286 23.5002C32.9286 18.2935 28.7082 14.0717 23.5013 14.0717H23.5017ZM23.5017 17.3803C26.8814 17.3803 29.6216 20.12 29.6216 23.5002C29.6216 26.88 26.8814 29.6201 23.5017 29.6201C20.1217 29.6201 17.3819 26.88 17.3819 23.5002C17.3819 20.12 20.1217 17.3803 23.5017 17.3803Z'
@@ -270,41 +291,43 @@ export default function AdvertiseTaskCard() {
           />
           <defs>
             <radialGradient
-              id='paint0_radial_2678_11282'
+              id='paint0_radial_5470_5700'
               cx='0'
               cy='0'
               r='1'
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(12.4844 50.6199) rotate(-90) scale(46.5805 43.3235)'
             >
-              <stop stopColor='#FFDD55' />
-              <stop offset='0.1' stopColor='#FFDD55' />
-              <stop offset='0.5' stopColor='#FF543E' />
-              <stop offset='1' stopColor='#C837AB' />
+              <stop stop-color='#FFDD55' />
+              <stop offset='0.1' stop-color='#FFDD55' />
+              <stop offset='0.5' stop-color='#FF543E' />
+              <stop offset='1' stop-color='#C837AB' />
             </radialGradient>
             <radialGradient
-              id='paint1_radial_2678_11282'
+              id='paint1_radial_5470_5700'
               cx='0'
               cy='0'
               r='1'
               gradientUnits='userSpaceOnUse'
               gradientTransform='translate(-7.87268 3.38565) rotate(78.681) scale(20.8217 85.8279)'
             >
-              <stop stopColor='#3771C8' />
-              <stop offset='0.128' stopColor='#3771C8' />
-              <stop offset='1' stopColor='#6600FF' stopOpacity='0' />
+              <stop stop-color='#3771C8' />
+              <stop offset='0.128' stop-color='#3771C8' />
+              <stop offset='1' stop-color='#6600FF' stop-opacity='0' />
             </radialGradient>
           </defs>
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get People to post your advert on Instagram
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to post your advert on their Instagram account
+              having atleast 1000 active followers each on their account to post
+              your advert to their followers. This will give your advert massive
+              views within a short period of time. You can indicate any number
+              of people you want to post your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -346,51 +369,21 @@ export default function AdvertiseTaskCard() {
           fill='none'
         >
           <path
-            d='M1.50869 23.2187C1.50759 27.1677 2.5472 31.0235 4.52401 34.422L1.31964 46.034L13.2928 42.9181C16.6044 44.7074 20.3148 45.645 24.0854 45.6452H24.0953C36.5425 45.6452 46.6749 35.5925 46.6802 23.2364C46.6826 17.249 44.3354 11.6188 40.0709 7.38302C35.8071 3.14755 30.1364 0.813768 24.0944 0.811035C11.6456 0.811035 1.51402 10.8632 1.50888 23.2187'
-            fill='url(#paint0_linear_2678_6733)'
-          />
-          <path
-            d='M0.702377 23.2114C0.701092 27.3024 1.77796 31.2962 3.82525 34.8164L0.505981 46.8446L12.9084 43.6171C16.3257 45.4663 20.1732 46.4413 24.0883 46.4427H24.0984C36.9922 46.4427 47.4885 36.0284 47.494 23.23C47.4963 17.0275 45.0646 11.1949 40.6477 6.80735C36.2303 2.42032 30.3568 0.00255039 24.0984 0C11.2024 0 0.707516 10.4129 0.702377 23.2114ZM8.0885 34.2102L7.62541 33.4806C5.67871 30.4085 4.65121 26.8583 4.65268 23.2129C4.65672 12.5751 13.3796 3.92031 24.1057 3.92031C29.3001 3.9225 34.1817 5.9322 37.8534 9.57853C41.5249 13.2252 43.5452 18.0728 43.5439 23.2286C43.5392 33.8664 34.8161 42.5222 24.0984 42.5222H24.0907C20.6009 42.5204 17.1783 41.5903 14.1935 39.8325L13.4831 39.4144L6.12326 41.3296L8.0885 34.2102Z'
-            fill='url(#paint1_linear_2678_6733)'
-          />
-          <path
-            d='M18.2509 13.5077C17.813 12.5416 17.3521 12.5221 16.9356 12.5052C16.5946 12.4906 16.2047 12.4917 15.8153 12.4917C15.4254 12.4917 14.792 12.6373 14.2566 13.2175C13.7206 13.7982 12.2104 15.2017 12.2104 18.0561C12.2104 20.9107 14.3052 23.6693 14.5972 24.0568C14.8896 24.4436 18.6413 30.4887 24.5831 32.8143C29.5213 34.7469 30.5262 34.3626 31.5979 34.2656C32.6698 34.1691 35.0567 32.8626 35.5436 31.5078C36.031 30.1532 36.031 28.992 35.8849 28.7493C35.7387 28.5076 35.3489 28.3624 34.7643 28.0724C34.1795 27.7822 31.3055 26.3786 30.7698 26.1849C30.2338 25.9915 29.8441 25.8949 29.4543 26.4759C29.0644 27.0559 27.945 28.3624 27.6038 28.7493C27.2629 29.1372 26.9217 29.1855 26.3373 28.8953C25.7523 28.6042 23.8697 27.9922 21.6361 26.0159C19.8983 24.478 18.725 22.5789 18.384 21.9979C18.043 21.4179 18.3475 21.1035 18.6406 20.8144C18.9033 20.5544 19.2254 20.1369 19.518 19.7982C19.8094 19.4594 19.9067 19.2176 20.1016 18.8307C20.2967 18.4434 20.1991 18.1046 20.0532 17.8144C19.9067 17.5242 18.7707 14.6548 18.2509 13.5077Z'
+            d='M37.5145 2.25781H44.7211L28.9761 20.2549L47.5 44.7399H32.9966L21.6382 29.8879L8.63883 44.7399H1.42825L18.2699 25.4895L0.5 2.25977H15.3716L25.6391 15.8349L37.5145 2.25781ZM34.9863 40.4277H38.9793L13.2018 6.34485H8.91692L34.9863 40.4277Z'
             fill='white'
           />
-          <defs>
-            <linearGradient
-              id='paint0_linear_2678_6733'
-              x1='2269.35'
-              y1='4523.1'
-              x2='2269.35'
-              y2='0.811035'
-              gradientUnits='userSpaceOnUse'
-            >
-              <stop stopColor='#1FAF38' />
-              <stop offset='1' stopColor='#60D669' />
-            </linearGradient>
-            <linearGradient
-              id='paint1_linear_2678_6733'
-              x1='2349.91'
-              y1='4684.46'
-              x2='2349.91'
-              y2='0'
-              gradientUnits='userSpaceOnUse'
-            >
-              <stop stopColor='#F9F9F9' />
-              <stop offset='1' stopColor='white' />
-            </linearGradient>
-          </defs>
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
-              Like and follow facebook business pages
+              Get People to post your advert on Twitter
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get Genuine people with more than a 1000 followers 0r friends on
+              their Twitter account to post your advert to their audience to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account. Get real people to
+              post your ads on their social media account.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
