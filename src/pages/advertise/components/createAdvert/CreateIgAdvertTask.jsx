@@ -13,17 +13,17 @@ import {
   genders,
   generateVideoThumbnail,
   platforms,
-} from '../../../utilities/data'
-import AdvertPaymentModal from './AdvertPaymentModal'
-import IgPageHeader from './IgPageHeader'
+} from '../../../../utilities/data'
+import AdvertPaymentModal from '../AdvertPaymentModal'
+import IgPageHeader from '../IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
-import { useGetCountry, useGetReligion } from '../../../api/locationApis'
+import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
-} from '../../../api/advertApi'
+} from '../../../../api/advertApi'
 
 export default function CreateIgAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -232,10 +232,7 @@ export default function CreateIgAdvertTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -262,7 +259,7 @@ export default function CreateIgAdvertTask() {
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="text-center text-[10px] font-normal font-['Campton']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -270,7 +267,7 @@ export default function CreateIgAdvertTask() {
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Location
                           </div>
                         </div>
@@ -286,7 +283,7 @@ export default function CreateIgAdvertTask() {
                                 errorMessage={errors?.target_country?.message}
                                 isLoading={isCountryLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                                 placeholder='Select country'
                                 classNames={{
                                   listbox: [
@@ -294,10 +291,7 @@ export default function CreateIgAdvertTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -321,7 +315,7 @@ export default function CreateIgAdvertTask() {
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="text-center text-[10px] font-normal font-['Campton']">
                             This is the desired Number of Whatsapp Status Advert
                             Posts you want us to get for you.
                           </div>
@@ -329,7 +323,7 @@ export default function CreateIgAdvertTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Number of WhatsApp Status post you want
                           </div>
                         </div>
@@ -356,7 +350,7 @@ export default function CreateIgAdvertTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink basis-0 text-[10px] font-normal font-['Campton']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -368,7 +362,7 @@ export default function CreateIgAdvertTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Gender
                           </div>
                         </div>
@@ -391,10 +385,7 @@ export default function CreateIgAdvertTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -419,7 +410,7 @@ export default function CreateIgAdvertTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
                             You can target and select a particular location
                             where your task or advert will be mostly shown.
                             Select 'All Nigeria' if you want to target every
@@ -429,7 +420,7 @@ export default function CreateIgAdvertTask() {
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Religion
                           </div>
                         </div>
@@ -443,7 +434,7 @@ export default function CreateIgAdvertTask() {
                                 isInvalid={!!errors.religion}
                                 errorMessage={errors?.religion?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                                 placeholder='Select Religion'
                                 isLoading={isReligionLoading}
                                 {...field}
@@ -453,10 +444,7 @@ export default function CreateIgAdvertTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -478,7 +466,7 @@ export default function CreateIgAdvertTask() {
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink  basis-0 text-[10px] font-normal font-['Campton']">
                             You can target people of a particular religion or
                             belief. Your advert and task will be shown to the
                             particular religion you select. Select 'All
@@ -488,7 +476,7 @@ export default function CreateIgAdvertTask() {
                       </div>
                       <div className='self-stretch rounded-md flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Enter Advert Task or Caption
                           </div>
                         </div>
@@ -500,7 +488,7 @@ export default function CreateIgAdvertTask() {
                         />
 
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink basis-0  text-[10px] font-normal font-['Campton']">
                             Please enter the advert text or caption. The advert
                             text or caption should be well detailed. You can
                             also include a link to your site, a phone number for
@@ -512,7 +500,7 @@ export default function CreateIgAdvertTask() {
                     </div>
                     <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
                       <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                        <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                        <div className="text-center text-[12.83px] font-medium font-['Campton']">
                           Choose one of the Advert Media Upload Below:
                         </div>
                       </div>
@@ -521,6 +509,7 @@ export default function CreateIgAdvertTask() {
                           <input
                             type='file'
                             // accept='image/*'
+                            multiple
                             id='image-upload'
                             name='media'
                             className='absolute hidden w-full opacity-0 cursor-pointer'
@@ -529,8 +518,22 @@ export default function CreateIgAdvertTask() {
                           />
                           <label
                             htmlFor='image-upload'
-                            className="text-center cursor-pointer dark:text-white text-zinc-400 text-[10px] font-normal font-['Campton']"
+                            className="text-center w-20 flex items-center gap-2 cursor-pointer  text-[#FF6DFB] text-[10px] font-normal font-['Campton']"
                           >
+                            <svg
+                              xmlns='http://www.w3.org/2000/svg'
+                              width='20'
+                              height='20'
+                              viewBox='0 0 20 20'
+                              fill='none'
+                            >
+                              <path
+                                d='M2.50466 6.66667C2.5 7.01051 2.5 7.39635 2.5 7.83333V12.1667C2.5 14.0335 2.5 14.9669 2.86331 15.68C3.18289 16.3072 3.69282 16.8171 4.32003 17.1367C5.03307 17.5 5.96649 17.5 7.83333 17.5H12.1667C12.6037 17.5 12.9895 17.5 13.3333 17.4953M2.50466 6.66667C2.51991 5.54158 2.58504 4.86616 2.86331 4.32003C3.18289 3.69282 3.69282 3.18289 4.32003 2.86331C5.03307 2.5 5.96649 2.5 7.83333 2.5H12.1667C14.0335 2.5 14.9669 2.5 15.68 2.86331C16.3072 3.18289 16.8171 3.69282 17.1367 4.32003C17.5 5.03307 17.5 5.96649 17.5 7.83333V12.1667C17.5 13.4282 17.5 14.2635 17.3879 14.8925M2.50466 6.66667L6.67133 10.8333M13.3333 17.4953C14.4584 17.4801 15.1338 17.415 15.68 17.1367C16.3072 16.8171 16.8171 16.3072 17.1367 15.68C17.2545 15.4488 17.3341 15.1944 17.3879 14.8925M13.3333 17.4953L6.67133 10.8333M6.67133 10.8333L7.73726 9.7674C8.52929 8.97537 8.92531 8.57935 9.38197 8.43097C9.78365 8.30046 10.2163 8.30046 10.618 8.43097C11.0747 8.57935 11.4707 8.97537 12.2627 9.7674L17.3879 14.8925M14.175 5.83333H14.1583'
+                                stroke='#FF6DFB'
+                                strokeWidth='2'
+                                strokeLinecap='round'
+                              />
+                            </svg>{' '}
                             Photo
                           </label>
                         </div>
@@ -541,30 +544,31 @@ export default function CreateIgAdvertTask() {
                             id='video-upload'
                             className='absolute w-full hidden opacity-0 cursor-pointer'
                             {...register('media')}
-                            // onChange={(e) => {
-                            //   const file = e.target.files[0]
-                            //   setSelectedFile(file)
-                            //   if (file) {
-                            //     const reader = new FileReader()
-                            //     reader.onloadend = () => {
-                            //       setVideoPreview(reader.result)
-                            //     }
-                            //     reader.readAsDataURL(file)
-                            //   } else {
-                            //     setVideoPreview(null)
-                            //   }
-                            // }}
                             onChange={handleChange}
                           />
                           <label
                             htmlFor='video-upload'
-                            className="text-center cursor-pointer dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']"
+                            className="text-center w-20 flex items-center gap-2 cursor-pointer text-[12.83px] font-medium font-['Campton']"
                           >
+                            <svg
+                              xmlns='http://www.w3.org/2000/svg'
+                              width='20'
+                              height='20'
+                              viewBox='0 0 20 20'
+                              fill='none'
+                            >
+                              <path
+                                d='M15.0001 6.66683L17.298 6.09236C17.8239 5.96087 18.3334 6.35867 18.3334 6.90081V13.0995C18.3334 13.6417 17.8239 14.0395 17.298 13.908L15.0001 13.3335M7.00008 16.6668H9.66675C11.5336 16.6668 12.467 16.6668 13.1801 16.3035C13.8073 15.9839 14.3172 15.474 14.6368 14.8468C15.0001 14.1338 15.0001 13.2003 15.0001 11.3335V8.66683C15.0001 6.79999 15.0001 5.86657 14.6368 5.15353C14.3172 4.52632 13.8073 4.01639 13.1801 3.69681C12.467 3.3335 11.5336 3.3335 9.66675 3.3335H7.00008C5.13324 3.3335 4.19982 3.3335 3.48678 3.69681C2.85957 4.01639 2.34964 4.52632 2.03006 5.15353C1.66675 5.86657 1.66675 6.79999 1.66675 8.66683V11.3335C1.66675 13.2003 1.66675 14.1338 2.03006 14.8468C2.34964 15.474 2.85957 15.9839 3.48678 16.3035C4.19982 16.6668 5.13324 16.6668 7.00008 16.6668Z'
+                                stroke='#B1B1B1'
+                                strokeWidth='2'
+                                strokeLinecap='round'
+                              />
+                            </svg>{' '}
                             Video
                           </label>
                         </div>
                       </div>
-                      <div className="w-[559px] h-6 dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
+                      <div className="w-[559px] h-6 text-[10px] font-normal font-['Campton']">
                         Upload a Photo of the Advert You want people to post on
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
@@ -580,40 +584,94 @@ export default function CreateIgAdvertTask() {
                             <source src={imageUrl} type='video/mp4' />
                           </video>
                         </div> ? (
-                        <div className='w-[243px] h-[148.59px] opacity-50 dark:bg-white bg-stone-900 justify-center items-center inline-flex'></div>
+                        <div className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            width='25'
+                            height='24'
+                            viewBox='0 0 25 24'
+                            fill='none'
+                          >
+                            <path
+                              d='M12.252 4V20M20.252 12L4.25195 12'
+                              stroke='#FFD0FE'
+                              strokeWidth='2'
+                              strokeLinecap='round'
+                            />
+                          </svg>
+                        </div>
                       ) : null}
                     </div>
                   </div>
-                  <div className='self-stretch px-3 py-2 bg-zinc-400 bg-opacity-30 rounded flex-col justify-center items-center gap-2 flex'>
-                    <div className='w[68px] grow shrink basis-0 px-2 flex-col justify-center items-center gap-2 flex'>
-                      <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between items-center inline-flex'>
+                    <div className='self-stretch px-2 flex-col justify-center items-center gap-2 inline-flex'>
+                      <div className="text-white text-[12.83px] font-medium font-['Campton']">
                         Total Pay
                       </div>
-                      <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
-                        {calculatedAmount}
-                      </div>
 
-                      <Controller
-                        name='amount'
-                        control={control}
-                        render={({ field }) => (
-                          <Input
-                            {...field}
-                            disabled
-                            // value={calculatedAmount}
-                            className="text-stone-900 wfull text-3xl font-medium font-['Campton']"
-                          />
-                        )}
-                      />
+                      <div className='self-stretch w-full  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                        <Controller
+                          name='amount'
+                          control={control}
+                          render={({ field }) => (
+                            <Input
+                              type='text'
+                              size='sm'
+                              placeholder='amount'
+                              {...field}
+                              errorMessage={errors?.amount?.message}
+                              isInvalid={!!errors?.amount}
+                              value={calculatedAmount}
+                              classNames={{
+                                input: [
+                                  'text-black/90 dark:text-white/90',
+                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                ],
+                                inputWrapper: [
+                                  'bg-opacity-10',
+                                  'dark:hover:bg-opacity-10',
+                                  'group-data-[focused=true]:bg-opacity-10',
+                                  'dark:group-data-[focused=true]:bg-opacity-10',
+                                  'border-2 border-transparent',
+                                  'focus-within:!border-fuchsia-600  ',
+                                  '!cursor-text',
+                                ],
+                              }}
+                              className=" rounded text-zinc-400 text-3xl font-normal font-['Campton']"
+                            />
+                          )}
+                        />
+                      </div>
                     </div>
                     <Button
                       type='submit'
-                      // onClick={onOpen}
+                      isDisabled={isPending}
                       className='w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                     >
-                      <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
-                        {isPending ? 'Submiting....' : 'Submit and Pay'}
-                      </div>
+                      {isPending ? (
+                        <svg
+                          className='animate-spin h-5 w-5 text-current'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <circle
+                            className='opacity-25'
+                            cx='12'
+                            cy='12'
+                            r='10'
+                            stroke='currentColor'
+                            strokeWidth='4'
+                          />
+                          <path
+                            className='opacity-75'
+                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                            fill='currentColor'
+                          />
+                        </svg>
+                      ) : (
+                        'Submit and Pay'
+                      )}
                     </Button>
                   </div>
                 </div>

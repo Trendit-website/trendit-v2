@@ -47,6 +47,8 @@ export default function SecuretyForm() {
                         'group-data-[focused=true]:bg-default-200/50',
                         'dark:group-data-[focused=true]:bg-default/60',
                         '!cursor-text',
+                        'border-2 border-transparent',
+                        'focus-within:!border-fuchsia-600  ',
                       ],
                     }}
                     className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
@@ -88,6 +90,8 @@ export default function SecuretyForm() {
                         'group-data-[focused=true]:bg-default-200/50',
                         'dark:group-data-[focused=true]:bg-default/60',
                         '!cursor-text',
+                        'border-2 border-transparent',
+                        'focus-within:!border-fuchsia-600  ',
                       ],
                     }}
                     className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
@@ -129,6 +133,8 @@ export default function SecuretyForm() {
                         'group-data-[focused=true]:bg-default-200/50',
                         'dark:group-data-[focused=true]:bg-default/60',
                         '!cursor-text',
+                        'border-2 border-transparent',
+                        'focus-within:!border-fuchsia-600  ',
                       ],
                     }}
                     className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
@@ -164,6 +170,8 @@ export default function SecuretyForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
@@ -197,6 +205,8 @@ export default function SecuretyForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
@@ -229,6 +239,8 @@ export default function SecuretyForm() {
                       'group-data-[focused=true]:bg-default-200/50',
                       'dark:group-data-[focused=true]:bg-default/60',
                       '!cursor-text',
+                      'border-2 border-transparent',
+                      'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
