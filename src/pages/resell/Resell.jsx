@@ -75,7 +75,7 @@ export default function Resell() {
             </div>
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
+            <div className=" text-2xl font-medium font-['Campton']">
               Market Place
             </div>
           </div>
@@ -103,6 +103,8 @@ export default function Resell() {
                   'hover:bg-gray-200',
                   'group-data-[focused=true]:bg-zinc-800',
                   'dark:group-data-[focused=true]:bg-zinc-800',
+                  'border-2 border-transparent',
+                  'focus-within:!border-fuchsia-600  ',
                   '!cursor-text',
                 ],
               }}
@@ -169,7 +171,7 @@ export default function Resell() {
             </Button>
           </div>
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
-            <div className='border-b border-stone-900 justify-between w-full items-center flex'>
+            <div className='dark:border-b dark:border-stone-900 justify-between w-full items-center flex'>
               <div className='justify-start items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
                   <div className='flex flex-col w-full'>
@@ -184,7 +186,6 @@ export default function Resell() {
                         tabList: '  bordered  py-2',
                         cursor: ' bg-fuchsia-400',
                         selectedKey: 'text-green-400',
-                        base: 'border border-2 border-red',
                         tabContent:
                           'group-data-[selected=true]:text-fuchsia-400  ',
                       }}

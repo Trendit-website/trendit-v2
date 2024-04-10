@@ -19,7 +19,6 @@ import Settings from './pages/setting/Settings'
 import { useEffect } from 'react'
 import { useDarkMode } from 'usehooks-ts'
 import ForgetPassword from './components/auth/ForgetPassword'
-import CreateIgAdvertTask from './pages/advertise/components/CreateIgAdvertTask'
 import GenerateEngagementTask from './pages/earn/components/engageadvert/GenerateLikeEngageTask'
 import History from './pages/history/History'
 import ProtectedRoute from './pages/ProtectedRoute'
@@ -48,6 +47,7 @@ import GenerateShareEngageTask from './pages/earn/components/engageadvert/Genera
 import GenerateJoinEngageTask from './pages/earn/components/engageadvert/GenerateJoinEngageTask'
 import FundWallet from './pages/home/FundWallet'
 import GenerateTiktokTask from './pages/earn/components/postadvert/GenerateTiktokTask'
+import CreateIgAdvertTask from './pages/advertise/components/createAdvert/CreateIgAdvertTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()

@@ -96,7 +96,7 @@ export default function OnBoard() {
             </div>
             <div className=' w-[20rem] md:w-[23rem] left-[10%] md:left-[40%] top-[189px] absolute flex-col justify-start items-center gap-6 inline-flex'>
               <div className='flex-col justify-start items-center gap-6 flex'>
-                <div className="w-80 text-center  text-white darktext-white text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+                <div className="w-80 text-center text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
                   Welcome onboard!
                 </div>
                 <div className="self-stretch text-center text-zinc-400 text-base font-normal font-['Campton']">
@@ -111,7 +111,7 @@ export default function OnBoard() {
                           // src={selectedImage}
                           src={URL.createObjectURL(selectedImage)}
                           alt='Selected'
-                          className='w-24 h-24 -top-4 absolute rounded-full'
+                          className='w24 h24 w-[66px] h-[66px] -top-4 absolute rounded-[10px]'
                         />
                       </div>
                     ) : (
@@ -160,28 +160,27 @@ export default function OnBoard() {
                         isInvalid={!!errors.gender}
                         errorMessage={errors?.gender?.message}
                         selectedKeys={field.value ? [field.value] : []}
-                        // className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select Gender'
-                        // classNames={{
-                        //   listbox: [
-                        //     'bg-transparent',
-                        //     'text-black/90 dark:text-white/90',
-                        //     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                        //   ],
-                        //   popoverContent: ['dark:bg-zinc-700', 'bg-white '],
-                        //   trigger: [
-                        //     'bg-zinc-700 bg-opacity-10',
-                        //     'dark:bg-white dark:bg-opacity-10',
-                        //     'hover:bg-bg-white hover:bg-opacity-10',
-                        //     'dark:hover:bg-default/70',
-                        //     'group-data-[focused=true]:bg-default-200/50',
-                        //     'dark:group-data-[focused=true]:bg-default/60',
-                        //     '!cursor-text',
-                        //     'border-2 border-transparent',
-                        //     'focus-within:!border-fuchsia-600  ',
-                        //     '!cursor-text',
-                        //   ],
-                        // }}
+                        classNames={{
+                          listbox: [
+                            'bg-transparent',
+                            'text-black/90 dark:text-white/90',
+                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                          ],
+                          trigger: [
+                            'bg-zinc-700 bg-opacity-10',
+                            'dark:bg-white dark:bg-opacity-10',
+                            'hover:bg-bg-white hover:bg-opacity-10',
+                            'dark:hover:bg-default/70',
+                            'group-data-[focused=true]:bg-default-200/50',
+                            'dark:group-data-[focused=true]:bg-default/60',
+                            '!cursor-text',
+                            'border-2 border-transparent',
+                            'focus-within:!border-fuchsia-600  ',
+                            '!cursor-text',
+                          ],
+                        }}
                       >
                         {genders.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
@@ -193,7 +192,7 @@ export default function OnBoard() {
                   />
                 </div>
                 <div className='self-stretch flex-col justify-center items-start gap-3.5 inline-flex'>
-                  <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
                     Birthday
                   </label>
                   <div className=' flex justify-between items-center gap-3 md:gap-6'>
@@ -208,7 +207,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.day}
                             errorMessage={errors?.day?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Day'
                             classNames={{
                               listbox: [
@@ -216,7 +215,6 @@ export default function OnBoard() {
                                 'text-black/90 dark:text-white/90',
                                 'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                               ],
-                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                               trigger: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
@@ -252,7 +250,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.month}
                             errorMessage={errors?.month?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Mon'
                             classNames={{
                               listbox: [
@@ -260,7 +258,6 @@ export default function OnBoard() {
                                 'text-black/90 dark:text-white/90',
                                 'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                               ],
-                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                               trigger: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
@@ -296,7 +293,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.year}
                             errorMessage={errors?.year?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Year'
                             classNames={{
                               listbox: [
@@ -304,7 +301,6 @@ export default function OnBoard() {
                                 'text-black/90 dark:text-white/90',
                                 'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                               ],
-                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                               trigger: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
@@ -332,7 +328,7 @@ export default function OnBoard() {
                   </div>
                 </div>
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                  <label className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
                     Select Country
                   </label>
 
@@ -347,7 +343,7 @@ export default function OnBoard() {
                         errorMessage={errors?.country?.message}
                         isLoading={isCountryLoading}
                         selectedKeys={field.value ? [field.value] : []}
-                        className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                         placeholder='Select country'
                         classNames={{
                           listbox: [
@@ -355,7 +351,6 @@ export default function OnBoard() {
                             'text-black/90 dark:text-white/90',
                             'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                           ],
-                          popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                           trigger: [
                             'bg-zinc-700 bg-opacity-10',
                             'dark:bg-white dark:bg-opacity-10',
@@ -382,7 +377,7 @@ export default function OnBoard() {
                 </div>
                 <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <label className="text-center px-2 text-black dark:text-white  text-[12.83px] font-medium font-['Campton']">
+                    <label className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
                       State
                     </label>
                     <Controller
@@ -396,7 +391,7 @@ export default function OnBoard() {
                           errorMessage={errors?.state?.message}
                           isLoading={isStateLoading}
                           selectedKeys={field.value ? [field.value] : []}
-                          className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                          className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                           placeholder='Select state'
                           classNames={{
                             listbox: [
@@ -404,7 +399,6 @@ export default function OnBoard() {
                               'text-black/90 dark:text-white/90',
                               'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                             ],
-                            popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                             trigger: [
                               'bg-zinc-700 bg-opacity-10',
                               'dark:bg-white dark:bg-opacity-10',
@@ -431,7 +425,7 @@ export default function OnBoard() {
                   </div>
                   {watch().country === 'Nigeria' && (
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <labl className="text-center px-2 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                      <labl className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
                         LGA
                       </labl>
 
@@ -446,7 +440,7 @@ export default function OnBoard() {
                             errorMessage={errors?.local_government?.message}
                             isLoading={isLgaLoading}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 capitalize dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 capitalize rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Select Lga'
                             classNames={{
                               listbox: [
@@ -454,7 +448,6 @@ export default function OnBoard() {
                                 'text-black/90 dark:text-white/90',
                                 'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                               ],
-                              popoverContent: ['dark:bg-zinc-700', 'bg-white '],
                               trigger: [
                                 'bg-zinc-700 bg-opacity-10',
                                 'dark:bg-white dark:bg-opacity-10',
