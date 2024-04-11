@@ -24,10 +24,9 @@ import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
-// import Igframe from '../../../../assets/IGFrame131.svg'
-import Igframe from '../../../../assets/IGFrame131.svg'
+import TwFrame from '../../../../assets/logo_x_icon.svg'
 
-export default function CreateIgAdvertTask() {
+export default function CreateTwAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
@@ -46,7 +45,7 @@ export default function CreateIgAdvertTask() {
     register,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 150, posts_count: 1, platform: 'instagram' },
+    defaultValues: { amount: 150, posts_count: 1, platform: 'twitter' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -201,9 +200,9 @@ export default function CreateIgAdvertTask() {
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
                 <IgPageHeader
-                  title={'Get People to Post Your Advert on Instagram'}
-                  frame={Igframe}
-                  descp={`Get real people to post your advert on their Instagram account having atleast 1000 active followers each on their account to post your
+                  title={'Get People to Post Your Advert on Twitter'}
+                  frame={TwFrame}
+                  descp={`Get real people to post your advert on their Twitter account having at least 1000 active followers each on their account to post your
 advert to their followers. This will give your advert massive views within a short period of time. You can indicate any number of people you 
 want to post your advert.`}
                   price={`₦150 per Advert Post`}
@@ -335,7 +334,7 @@ want to post your advert.`}
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Campton']">
-                            Number of Instagram Advert Post you want
+                            Number of Twitter Advert Post you want
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -362,8 +361,8 @@ want to post your advert.`}
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink basis-0 text-[10px] font-normal font-['Campton']">
-                            Enter the desired Number of Instagram Advert Post
-                            you want Us to get for you.
+                            Enter the desired Number of Twitter Advert Post you
+                            want Us to get for you.
                           </div>
                         </div>
                       </div>

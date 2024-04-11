@@ -48,6 +48,11 @@ import GenerateJoinEngageTask from './pages/earn/components/engageadvert/Generat
 import FundWallet from './pages/home/FundWallet'
 import GenerateTiktokTask from './pages/earn/components/postadvert/GenerateTiktokTask'
 import CreateIgAdvertTask from './pages/advertise/components/createAdvert/CreateIgAdvertTask'
+import CreateFbAdvertTask from './pages/advertise/components/createAdvert/CreateFbAdvertTask'
+import CreateTwAdvertTask from './pages/advertise/components/createAdvert/CreateTwAdvertTask'
+import CreateTkAdvertTask from './pages/advertise/components/createAdvert/CreateTkAdvertTask'
+import CreateWsAdvertTask from './pages/advertise/components/createAdvert/CreateWsAdvertTask'
+import CreateYtAdvertTask from './pages/advertise/components/createAdvert/CreateYtAdvertTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -250,6 +255,51 @@ function App() {
                 <ProtectedRoute>
                   {' '}
                   <CreateIgAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-fb-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateFbAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-tw-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateTwAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-tk-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateTkAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-ws-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateWsAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-yt-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateYtAdvertTask />
                 </ProtectedRoute>
               }
             />

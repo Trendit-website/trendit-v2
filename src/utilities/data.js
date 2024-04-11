@@ -76,6 +76,7 @@ export const platforms = [
   },
   { label: 'Instagram', value: 'instagram' },
   { label: 'Twitter', value: 'twitter' },
+  { label: 'Youtube', value: 'youtube' },
 ]
 export const genders = [
   {

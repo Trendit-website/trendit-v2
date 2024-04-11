@@ -46,9 +46,11 @@ export default function Login() {
   const handleGgLogin = async () => {
     try {
       const res = await handleGoogleLogin()
+      console.log(res, 'kkk')
+      console.log(res?.data?.authorization_url, 'url')
       if (res?.data?.status) {
-        setAccessToken(res?.data?.access_token)
         window.open(res?.data?.authorization_url)
+        setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
         // navigate('/dashboard')
       }
@@ -189,7 +191,6 @@ export default function Login() {
                 )}
                 rules={{
                   required: true,
-                 
                 }}
               />
 
