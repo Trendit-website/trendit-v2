@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Image } from '@nextui-org/react'
-import Igframe from '../../../assets/IGFrame131.svg'
 
-export default function IgPageHeader() {
+export default function IgPageHeader({ title, frame, descp, price }) {
   return (
     <div>
       <div className='self-stretch relative border border-zinc-400 flex-col justify-start items-start flex'>
@@ -11,9 +11,9 @@ export default function IgPageHeader() {
               Jan 12th 9:27pm
             </div>
             <div className=" text-3xl font-medium font-['Campton']">
-              Get People to Post your Advert on their Social Media page
+              {title}
             </div>
-            <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+            <div className='py1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -31,9 +31,7 @@ export default function IgPageHeader() {
                   Pricing
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
-              </div>
+              <div className=" text-sm font-bold font-['Campton']">{price}</div>
             </div>
             <div className='self-stretch justify-start items-start gap-3 inline-flex'>
               {/* <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
@@ -42,14 +40,13 @@ export default function IgPageHeader() {
               <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
                 134 Likes
               </div> */}
-              <div className="text-[#FFA2A2] text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
-                Note: That you must have atleast 1000 followers to be able to
-                Generate this task
+              <div className="text-[#909090] md:w-[70rem] text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                {descp}
               </div>
             </div>
           </div>
           <div className='w-[304.97px] origin-top-left absolute right-0 top-0 top[9.2rem] justify-start items-start gap-[115.18px] inline-flex'>
-            <Image src={Igframe} alt='igFrme' className='h-[10.1rem]' />
+            <Image src={frame} alt='igFrme' className='h-[10.1rem]' />
           </div>
         </div>
         <div className='self-stretch p-3 hidden bg-sky-100 justify-start items-start gap-[29px] inlineflex'>

@@ -77,3 +77,10 @@ export const useGoogleLogin = () => {
     },
   })
 }
+export const useGoogleSignu = () => {
+  return useMutation({
+    mutationFn: () => {
+      return API.get(`/gg_signup`)
+    },
+  })
+}

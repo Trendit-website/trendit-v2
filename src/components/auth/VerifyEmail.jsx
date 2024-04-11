@@ -5,7 +5,7 @@ import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { useGoogleLogin, useVerifyEmail } from '../../api/auth'
+import { useGoogleSignu, useVerifyEmail } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useSignUpToken from '../../hooks/useSignUpToken'
 
@@ -18,7 +18,7 @@ export default function VerifyEmail() {
   } = useForm()
   const { mutateAsync: verifyUserEmail, isPending } = useVerifyEmail()
   const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
-    useGoogleLogin()
+    useGoogleSignu()
 
   const navigate = useNavigate()
 
