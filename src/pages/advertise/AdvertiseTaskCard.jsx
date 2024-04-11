@@ -61,7 +61,7 @@ export default function AdvertiseTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              onClick={() => navigate('/dashboard/advertise-tk-task')}
               className="text-center cursor-pointer text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -122,7 +122,7 @@ export default function AdvertiseTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              onClick={() => navigate('/dashboard/advertise-fb-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -148,7 +148,7 @@ export default function AdvertiseTaskCard() {
             fill='white'
           />
         </svg>
-        <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
+        <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
               Get People to post your advert on Youtube
@@ -183,7 +183,7 @@ export default function AdvertiseTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              onClick={() => navigate('/dashboard/advertise-yt-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -261,7 +261,7 @@ export default function AdvertiseTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              onClick={() => navigate('/dashboard/advertise-ws-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -269,6 +269,7 @@ export default function AdvertiseTaskCard() {
           </div>
         </div>
       </div>
+
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -360,6 +361,7 @@ export default function AdvertiseTaskCard() {
           </div>
         </div>
       </div>
+
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -408,7 +410,7 @@ export default function AdvertiseTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/advertise-ig-task')}
+              onClick={() => navigate('/dashboard/advertise-tw-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
