@@ -1,36 +1,23 @@
 import { Button } from '@nextui-org/button'
 import { useNavigate } from 'react-router-dom'
+import AudioMack from '../../assets/audio_mack.svg'
 
 export default function EngagementTaskCard() {
   const navigate = useNavigate()
   return (
     <div className='flex flex-col md:grid md:grid-cols-2 gap-3'>
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='47'
-          height='48'
-          viewBox='0 0 47 48'
-          fill='none'
-        >
-          <path
-            d='M47 24.0898C47 11.1112 36.4786 0.589844 23.5 0.589844C10.5214 0.589844 0 11.1112 0 24.0898C0 35.8193 8.59366 45.5415 19.8281 47.3044V30.8828H13.8613V24.0898H19.8281V18.9125C19.8281 13.0228 23.3366 9.76953 28.7045 9.76953C31.2756 9.76953 33.9648 10.2285 33.9648 10.2285V16.0117H31.0016C28.0823 16.0117 27.1719 17.8232 27.1719 19.6818V24.0898H33.6895L32.6476 30.8828H27.1719V47.3044C38.4063 45.5415 47 35.8195 47 24.0898Z'
-            fill='#1877F2'
-          />
-          <path
-            d='M32.6476 30.8828L33.6895 24.0898H27.1719V19.6818C27.1719 17.8231 28.0823 16.0117 31.0016 16.0117H33.9648V10.2285C33.9648 10.2285 31.2756 9.76953 28.7043 9.76953C23.3366 9.76953 19.8281 13.0228 19.8281 18.9125V24.0898H13.8613V30.8828H19.8281V47.3044C21.0428 47.4947 22.2705 47.5902 23.5 47.5898C24.7295 47.5902 25.9572 47.4948 27.1719 47.3044V30.8828H32.6476Z'
-            fill='white'
-          />
-        </svg>
+        <img alt='fff' src={AudioMack} />
+
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
-              Get Real People to Join Your Group
+              Get Real People to Follow Your Audiomack Channel
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to follow your Audiomack channel. you can get any
+              number of people to follow your Audiomack channel without
+              disclosing your Login details
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -51,7 +38,7 @@ export default function EngagementTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦30 per Follow
               </div>
             </div>
             <Button
