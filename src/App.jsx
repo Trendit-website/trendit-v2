@@ -54,6 +54,7 @@ import CreateTkAdvertTask from './pages/advertise/components/createAdvert/Create
 import CreateWsAdvertTask from './pages/advertise/components/createAdvert/CreateWsAdvertTask'
 import CreateYtAdvertTask from './pages/advertise/components/createAdvert/CreateYtAdvertTask'
 import './assetlinks.json'
+import Wellness from './well'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -82,10 +83,7 @@ function App() {
         <Routes>
           <Route path='/' element={<VerifyEmail />} />
           <Route path='/login' element={<Login />} />
-          <Route
-            path='/.well-known/assetlinks.json'
-            // element={<Login />}
-          />
+          <Route path='/.well-known/assetlinks.json' element={<Wellness />} />
           <Route path='/confirm-otp' element={<ConfirmOtp />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/onboard' element={<OnBoard />} />
