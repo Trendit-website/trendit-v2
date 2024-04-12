@@ -18,6 +18,8 @@ import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
+import AudFrame from '../../../../assets/audio_mack_icon.svg'
+import IgPageHeaderEngage from '../IgPageHeaderEngage'
 
 export default function JoinGroupEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -133,7 +135,13 @@ export default function JoinGroupEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
-                <IgPageHeader />
+                <IgPageHeaderEngage
+                  frame={AudFrame}
+                  title={'Get People to Follow your Channel on Audiomack'}
+                  descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
+people to post your ads on their social media account.`}
+                  price={`₦30 per Follow`}
+                />
               </div>
               <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
