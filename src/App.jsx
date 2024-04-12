@@ -83,7 +83,7 @@ function App() {
         <Routes>
           <Route path='/' element={<VerifyEmail />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/.well-known/assetlinks.json' element={<Wellness />} />
+          {/* <Route path='/.well-known/assetlinks.json' element={<Wellness />} /> */}
           <Route path='/confirm-otp' element={<ConfirmOtp />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/onboard' element={<OnBoard />} />
