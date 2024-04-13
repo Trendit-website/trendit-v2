@@ -60,11 +60,11 @@ export default function Login() {
       toast.error(error.response?.message ?? error.message)
     }
   }
+  const access_token = searchParams.get('access_token')
 
   useEffect(() => {
     // Retrieve the trxref from the URL
 
-    const access_token = searchParams.get('access_token')
     console.log(access_token, 'access_token')
     if (access_token) {
       try {

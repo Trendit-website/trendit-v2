@@ -25,22 +25,17 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import YoutubeIcon from '../../../../assets/logos_youtube-icon.svg'
+import { useNavigate } from 'react-router'
 
 export default function CreateYtAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
-
-  // const base = 150
-
-  // const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
 
   const {
     handleSubmit,
     control,
-    // watch,
-    // setValue,
     watch,
     register,
     formState: { errors },
@@ -111,6 +106,8 @@ export default function CreateYtAdvertTask() {
     onOpen()
   }
 
+  const navigate = useNavigate()
+
   const handlePaymentSuccess = async () => {
     try {
       const data = watch()
@@ -135,9 +132,9 @@ export default function CreateYtAdvertTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -146,7 +143,6 @@ export default function CreateYtAdvertTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -173,21 +169,15 @@ export default function CreateYtAdvertTask() {
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
 
-      // Update the amount state
-      // setAmount(calculatedAmount)
-      // data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }

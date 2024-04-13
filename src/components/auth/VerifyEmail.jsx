@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router'
 import { useGoogleSignu, useVerifyEmail } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useSignUpToken from '../../hooks/useSignUpToken'
+import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import useAccessToken from '../../hooks/useAccessToken'
 
 export default function VerifyEmail() {
   const {
@@ -19,6 +22,8 @@ export default function VerifyEmail() {
   const { mutateAsync: verifyUserEmail, isPending } = useVerifyEmail()
   const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
     useGoogleSignu()
+  const [searchParams] = useSearchParams()
+  const { setAccessToken } = useAccessToken()
 
   const navigate = useNavigate()
 
@@ -41,7 +46,6 @@ export default function VerifyEmail() {
     try {
       const res = await handleGoogleLogin()
       if (res?.data?.status) {
-        console.log(res?.data?.authorization_url, 'jjj')
         window.open(res?.data?.authorization_url)
         setSignUpToken(res?.data?.access_token)
         toast.success(res.data.message)
@@ -51,6 +55,27 @@ export default function VerifyEmail() {
       toast.error(error.response?.message ?? error.message)
     }
   }
+
+  const access_token = searchParams.get('access_token')
+
+  useEffect(() => {
+    // Retrieve the trxref from the URL
+    if (access_token) {
+      try {
+        // Use the retrieved trxref to call verifyPayment
+        setAccessToken(access_token)
+        navigate('/dashboard')
+
+        // You can perform further actions after successful verification
+      } catch (error) {
+        console.error({ error })
+        // Handle error if verification fails
+      }
+    } else {
+      console.error('access_token not found in URL.')
+      // Handle case when access_token is not found in the URL
+    }
+  }, [])
 
   return (
     <div>

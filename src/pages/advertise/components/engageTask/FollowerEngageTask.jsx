@@ -9,7 +9,6 @@ import {
 } from '@nextui-org/react'
 import { genders, platforms } from '../../../../utilities/data'
 import AdvertPaymentModal from '../AdvertPaymentModal'
-import IgPageHeader from '../IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
@@ -19,29 +18,26 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import SpotyFram from '../../../../assets/logos_spotify-icon.svg'
+import SpotyFram from '../../../../assets/logos_apple-app-store.svg'
+import { useNavigate } from 'react-router'
 
 export default function FollowerEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const navigate = useNavigate()
 
-  const base = 150
-
-  const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
 
   const {
     handleSubmit,
     control,
-    // watch,
-    // setValue,
     watch,
     formState: { errors },
-  } = useForm({})
+  } = useForm({ defaultValues: { amount: 150, posts_count: 1 } })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
-  const calculatedAmount = watch().posts_count * base
+  const calculatedAmount = +watch().posts_count * +watch().amount
 
   const onSubmit = async () => {
     onOpen()
@@ -57,7 +53,7 @@ export default function FollowerEngageTask() {
       formData.append('task_type', 'engagement')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -66,17 +62,12 @@ export default function FollowerEngageTask() {
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
 
-      // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvert(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -85,7 +76,6 @@ export default function FollowerEngageTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -100,7 +90,7 @@ export default function FollowerEngageTask() {
       formData.append('task_type', 'engagement')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -108,21 +98,16 @@ export default function FollowerEngageTask() {
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
 
-      // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -136,10 +121,10 @@ export default function FollowerEngageTask() {
               <div className='w-full'>
                 <IgPageHeaderEngage
                   frame={SpotyFram}
-                  title={'Get People to Follow your Channel on Audiomack'}
+                  title={`Get People to Download and Review Your App on Apple store`}
                   descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
 people to post your ads on their social media account.`}
-                  price={`₦30 per Follow`}
+                  price={`₦5 per Like`}
                 />
               </div>
               <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
