@@ -19,28 +19,25 @@ import {
 } from '../../../../api/advertApi'
 import AudFrame from '../../../../assets/audio_mack_icon.svg'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
+import { useNavigate } from 'react-router'
 
 export default function JoinGroupEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const base = 150
-
-  const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
+  const navigate = useNavigate()
 
   const {
     handleSubmit,
     control,
-    // watch,
-    // setValue,
     watch,
     formState: { errors },
-  } = useForm({})
+  } = useForm({ defaultValues: { amount: 150, posts_count: 1 } })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
-  const calculatedAmount = watch().posts_count * base
+  const calculatedAmount = +watch().posts_count * +watch().amount
 
   const onSubmit = async () => {
     onOpen()
@@ -56,7 +53,7 @@ export default function JoinGroupEngageTask() {
       formData.append('task_type', 'engagement')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -65,17 +62,13 @@ export default function JoinGroupEngageTask() {
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
 
-      // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvert(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -99,7 +92,7 @@ export default function JoinGroupEngageTask() {
       formData.append('task_type', 'engagement')
       formData.append('target_country', data.target_country)
       formData.append('platform', data.platform)
-      formData.append('amount', amount)
+      formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
@@ -107,17 +100,13 @@ export default function JoinGroupEngageTask() {
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
 
-      // Update the amount state
-      setAmount(calculatedAmount)
-      data.amount = calculatedAmount
-      console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
           position: 'top-right',
           duration: 20000,
         })
+        navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -483,7 +472,6 @@ people to post your ads on their social media account.`}
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
-                              value={calculatedAmount}
                               classNames={{
                                 input: [
                                   'text-black/90 dark:text-white/90',
