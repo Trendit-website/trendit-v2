@@ -25,7 +25,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import TkFrame from '../../../../assets/logos_tiktok-icon.svg'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function CreateTkAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -101,7 +101,7 @@ export default function CreateTkAdvertTask() {
       }
     }
   }
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const onSubmit = async () => {
     onOpen()
@@ -133,7 +133,7 @@ export default function CreateTkAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -174,7 +174,7 @@ export default function CreateTkAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

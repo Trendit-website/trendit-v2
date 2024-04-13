@@ -25,15 +25,14 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import WhatsLogo from '../../../../assets/logos_whatsapp-icon.svg'
-import { useNavigate } from 'react-router'
-
+// import { useNavigate } from 'react-router'
 
 export default function CreateWsAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
 
-    const [count, setCount] = useState(1)
+  const [count, setCount] = useState(1)
 
   const {
     handleSubmit,
@@ -107,8 +106,7 @@ export default function CreateWsAdvertTask() {
   const onSubmit = async () => {
     onOpen()
   }
-    const navigate = useNavigate()
-
+  // // const navigate = useNavigate()
 
   const handlePaymentSuccess = async () => {
     try {
@@ -136,7 +134,7 @@ export default function CreateWsAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -172,14 +170,13 @@ export default function CreateWsAdvertTask() {
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
 
-      
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

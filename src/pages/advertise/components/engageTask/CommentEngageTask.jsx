@@ -19,12 +19,12 @@ import {
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/like_icon.svg'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function CommentEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [count, setCount] = useState(1)
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
   const {
     handleSubmit,
     control,
@@ -68,7 +68,7 @@ export default function CommentEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -105,7 +105,7 @@ export default function CommentEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

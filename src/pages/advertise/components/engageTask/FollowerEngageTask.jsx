@@ -19,11 +19,11 @@ import {
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import SpotyFram from '../../../../assets/logos_apple-app-store.svg'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function FollowerEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -67,7 +67,7 @@ export default function FollowerEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -104,7 +104,7 @@ export default function FollowerEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
