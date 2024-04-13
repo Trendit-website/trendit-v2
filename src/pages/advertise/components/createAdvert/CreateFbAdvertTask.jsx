@@ -25,22 +25,20 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import FbFrame from '../../../../assets/logos_facebook.svg'
+import { useNavigate } from 'react-router'
+
 
 export default function CreateFbAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
 
-  // const base = 150
-
-  // const [amount, setAmount] = useState(base)
   const [count, setCount] = useState(1)
 
   const {
     handleSubmit,
     control,
-    // watch,
-    // setValue,
+   
     watch,
     register,
     formState: { errors },
@@ -106,6 +104,8 @@ export default function CreateFbAdvertTask() {
       }
     }
   }
+    const navigate = useNavigate()
+
 
   const onSubmit = async () => {
     onOpen()
@@ -135,9 +135,9 @@ export default function CreateFbAdvertTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+         navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -146,7 +146,6 @@ export default function CreateFbAdvertTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -173,17 +172,13 @@ export default function CreateFbAdvertTask() {
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
 
-      // Update the amount state
-      // setAmount(calculatedAmount)
-      // data.amount = calculatedAmount
-      console.log(data, 'data')
+
       const res = await createAdvertWithWallet(formData)
-      console.log(res, 'res')
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
+         navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
