@@ -9,7 +9,6 @@ import {
 } from '@nextui-org/react'
 import { genders, platforms } from '../../../../utilities/data'
 import AdvertPaymentModal from '.././AdvertPaymentModal'
-import IgPageHeader from '.././IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
@@ -35,7 +34,6 @@ export default function JoinGroupEngageTask() {
     // watch,
     // setValue,
     watch,
-    register,
     formState: { errors },
   } = useForm({})
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
@@ -145,8 +143,8 @@ people to post your ads on their social media account.`}
               </div>
               <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className="dark:text-white text-stone-900 text-2xl font-medium font-['Campton']">
-                    Create Advert Task
+                  <div className=" text-2xl font-medium font-['Campton']">
+                    Create an Engagement Task
                   </div>
                 </div>
                 <div className='self-stretch grow shrink basis-0 px-16 py-6 flex-col justify-start items-start gap-12 flex'>
@@ -154,7 +152,7 @@ people to post your ads on their social media account.`}
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Platform
                           </div>
                         </div>
@@ -205,7 +203,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="text-center  text-[10px] font-normal font-['Campton']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -213,7 +211,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center  text-[12.83px] font-medium font-['Campton']">
                             Select Location
                           </div>
                         </div>
@@ -264,16 +262,18 @@ people to post your ads on their social media account.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[10px] font-normal font-['Campton']">
-                            This is the desired Number of Whatsapp Status Advert
-                            Posts you want us to get for you.
+                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                            You can target and select a particular location
+                            where your task or advert will be mostly shown. You
+                            can also select all States if you want to target
+                            every location in Nigeria
                           </div>
                         </div>
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
-                            Number of Group Members You Want
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                            Number of Followers do you want?
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -299,20 +299,16 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
-                            You can select the kind of gender whether male or
-                            female that you want to see your task. For example,
-                            if you are selling women fashion items, you can
-                            select the Female gender so your task will be shown
-                            to only females. Select 'All Gender' if you want to
-                            target all genders
+                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
+                            This is the number of Download and Review want us to
+                            get for you
                           </div>
                         </div>
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
-                            Your Group Invite Link
+                            The Link to Your social Media Post
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -339,12 +335,9 @@ people to post your ads on their social media account.`}
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
-                            You can select the kind of gender whether male or
-                            female that you want to see your task. For example,
-                            if you are selling women fashion items, you can
-                            select the Female gender so your task will be shown
-                            to only females. Select 'All Gender' if you want to
-                            target all genders
+                            Enter the link to the post you want people to like.
+                            ensure the link you paste here is the link to your
+                            post not your page
                           </div>
                         </div>
                       </div>
@@ -402,10 +395,12 @@ people to post your ads on their social media account.`}
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
-                            You can target and select a particular location
-                            where your task or advert will be mostly shown.
-                            Select 'All Nigeria' if you want to target every
-                            location in Nigeria
+                            You can select the kind of gender whether male or
+                            female that you want to see your task. For example,
+                            if you are selling women fashion items, you can
+                            select the Female gender so your task will be shown
+                            to only females. Select 'All Gender' if you want to
+                            target all genders
                           </div>
                         </div>
                       </div>
@@ -470,26 +465,75 @@ people to post your ads on their social media account.`}
                       </div>
                     </div>
                   </div>
-                  <div className='self-stretch px-3 py-2 bg-zinc-400 bg-opacity-30 rounded flex-col justify-center items-center gap-2 flex'>
-                    <div className='w[68px] grow shrink basis-0 px-2 flex-col justify-center items-center gap-2 flex'>
-                      <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between items-center inline-flex'>
+                    <div className='self-stretch px-2 flex-col justify-center items-center gap-2 inline-flex'>
+                      <div className="text-white text-[12.83px] font-medium font-['Campton']">
                         Total Pay
                       </div>
-                      <Input
-                        disabled
-                        value={amount}
-                        {...register('amount')}
-                        className="text-stone-900 wfull text-3xl font-medium font-['Campton']"
-                      />
+
+                      <div className='self-stretch w-full  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                        <Controller
+                          name='amount'
+                          control={control}
+                          render={({ field }) => (
+                            <Input
+                              type='text'
+                              size='sm'
+                              placeholder='amount'
+                              {...field}
+                              errorMessage={errors?.amount?.message}
+                              isInvalid={!!errors?.amount}
+                              value={calculatedAmount}
+                              classNames={{
+                                input: [
+                                  'text-black/90 dark:text-white/90',
+                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                ],
+                                inputWrapper: [
+                                  'bg-opacity-10',
+                                  'dark:hover:bg-opacity-10',
+                                  'group-data-[focused=true]:bg-opacity-10',
+                                  'dark:group-data-[focused=true]:bg-opacity-10',
+                                  'border-2 border-transparent',
+                                  'focus-within:!border-fuchsia-600  ',
+                                  '!cursor-text',
+                                ],
+                              }}
+                              className=" rounded text-zinc-400 text-3xl font-normal font-['Campton']"
+                            />
+                          )}
+                        />
+                      </div>
                     </div>
                     <Button
                       type='submit'
-                      // onClick={onOpen}
+                      isDisabled={isPending}
                       className='w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                     >
-                      <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
-                        {isPending ? 'Submiting....' : 'Submit and Pay'}
-                      </div>
+                      {isPending ? (
+                        <svg
+                          className='animate-spin h-5 w-5 text-current'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <circle
+                            className='opacity-25'
+                            cx='12'
+                            cy='12'
+                            r='10'
+                            stroke='currentColor'
+                            strokeWidth='4'
+                          />
+                          <path
+                            className='opacity-75'
+                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                            fill='currentColor'
+                          />
+                        </svg>
+                      ) : (
+                        'Submit and Pay'
+                      )}
                     </Button>
                   </div>
                 </div>
