@@ -4,7 +4,8 @@ import axios from 'axios'
 
 const APIFormData = axios.create({
   // baseURL: `https://trendit3-v2-gj9x.onrender.com/api`,
-  baseURL: `https://trendit3-hd9u.onrender.com/api`,
+  // baseURL: `https://trendit3-hd9u.onrender.com/api`,
+  baseURL: `https://api.trendit3.com/api`,
 })
 APIFormData.interceptors.request.use((req) => {
   const token = JSON.parse(localStorage.getItem('signup_token'))?.state?.token

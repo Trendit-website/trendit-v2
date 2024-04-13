@@ -54,7 +54,6 @@ import CreateTkAdvertTask from './pages/advertise/components/createAdvert/Create
 import CreateWsAdvertTask from './pages/advertise/components/createAdvert/CreateWsAdvertTask'
 import CreateYtAdvertTask from './pages/advertise/components/createAdvert/CreateYtAdvertTask'
 import './assetlinks.json'
-import Wellness from './well'
 
 function App() {
   const { isDarkMode } = useDarkMode()

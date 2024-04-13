@@ -9,6 +9,7 @@ import { useGoogleLogin, useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 export default function Login() {
   const {
@@ -22,6 +23,7 @@ export default function Login() {
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
   const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
     useGoogleLogin()
+  const [searchParams] = useSearchParams()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
 
@@ -58,6 +60,28 @@ export default function Login() {
       toast.error(error.response?.message ?? error.message)
     }
   }
+
+  useEffect(() => {
+    // Retrieve the trxref from the URL
+
+    const access_token = searchParams.get('access_token')
+    console.log(access_token, 'access_token')
+    if (access_token) {
+      try {
+        // Use the retrieved trxref to call verifyPayment
+        setAccessToken(access_token)
+        navigate('/dashboard')
+
+        // You can perform further actions after successful verification
+      } catch (error) {
+        console.error('Error verifying payment:', error)
+        // Handle error if verification fails
+      }
+    } else {
+      console.error('trxref not found in URL.')
+      // Handle case when trxref is not found in the URL
+    }
+  }, [])
 
   return (
     <div>
