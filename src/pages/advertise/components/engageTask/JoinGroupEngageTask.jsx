@@ -19,13 +19,13 @@ import {
 } from '../../../../api/advertApi'
 import AudFrame from '../../../../assets/audio_mack_icon.svg'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function JoinGroupEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const [count, setCount] = useState(1)
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const {
     handleSubmit,
@@ -68,7 +68,7 @@ export default function JoinGroupEngageTask() {
           position: 'top-right',
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -106,7 +106,7 @@ export default function JoinGroupEngageTask() {
           position: 'top-right',
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

@@ -26,13 +26,13 @@ import {
 } from '../../../../api/advertApi'
 // import Igframe from '../../../../assets/IGFrame131.svg'
 import Igframe from '../../../../assets/IGFrame131.svg'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function CreateIgAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -135,7 +135,7 @@ export default function CreateIgAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -177,7 +177,7 @@ export default function CreateIgAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

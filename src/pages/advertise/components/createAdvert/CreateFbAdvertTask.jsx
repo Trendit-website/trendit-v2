@@ -25,8 +25,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import FbFrame from '../../../../assets/logos_facebook.svg'
-import { useNavigate } from 'react-router'
-
+// import { useNavigate } from 'react-router'
 
 export default function CreateFbAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -38,7 +37,6 @@ export default function CreateFbAdvertTask() {
   const {
     handleSubmit,
     control,
-   
     watch,
     register,
     formState: { errors },
@@ -104,8 +102,7 @@ export default function CreateFbAdvertTask() {
       }
     }
   }
-    const navigate = useNavigate()
-
+  // // const navigate = useNavigate()
 
   const onSubmit = async () => {
     onOpen()
@@ -137,7 +134,7 @@ export default function CreateFbAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -172,13 +169,12 @@ export default function CreateFbAdvertTask() {
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
 
-
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

@@ -19,12 +19,12 @@ import {
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/logos_spotify-icon.svg'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 
 export default function SharePostEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [count, setCount] = useState(1)
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const {
     handleSubmit,
@@ -66,7 +66,7 @@ export default function SharePostEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -103,7 +103,7 @@ export default function SharePostEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        navigate('dashboard/advertise-history')
+        // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {

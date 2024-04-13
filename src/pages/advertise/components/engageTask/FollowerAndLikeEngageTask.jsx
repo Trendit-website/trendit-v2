@@ -19,12 +19,11 @@ import {
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/logos_google-play-icon.svg'
-import { useNavigate } from 'react-router'
-
+// import { useNavigate } from 'react-router'
 
 export default function FollowerAndLikeEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const navigate = useNavigate()
+  // // const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -68,10 +67,9 @@ export default function FollowerAndLikeEngageTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-        
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -109,11 +107,10 @@ export default function FollowerAndLikeEngageTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-         navigate('dashboard/advertise-history')
+        //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
