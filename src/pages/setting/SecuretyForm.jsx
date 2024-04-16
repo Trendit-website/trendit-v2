@@ -17,12 +17,10 @@ export default function SecuretyForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
           <div className='self-stretch h[446px] flex-col justify-start items-start gap-6 flex'>
-            <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-              Security
-            </div>
+            <div className=" text-sm font-bold font-['Campton']">Security</div>
 
             <div className='self-stretch h[302px] flex-col justify-start items-center gap-3.5 flex'>
-              <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
+              {/* <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
                   <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
                     Password
@@ -54,15 +52,15 @@ export default function SecuretyForm() {
                     className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
                   />
                 </div>
-              </div>
+              </div> */}
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-[12.83px] font-medium font-['Campton']">
                     Change Password
                   </div>
                 </div>
 
-                <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                   <Input
                     endContent={
                       <Button
@@ -83,7 +81,7 @@ export default function SecuretyForm() {
 
                       innerWrapper: 'bg-transparent',
                       inputWrapper: [
-                        'bg-zinc-700 bg-opacity-10',
+                        'bg-zinc-700 rounded-none bg-opacity-10',
                         'dark:bg-white dark:bg-opacity-10',
                         'hover:bg-bg-white hover:bg-opacity-10',
                         'dark:hover:bg-default/70',
@@ -101,12 +99,12 @@ export default function SecuretyForm() {
 
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-[12.83px] font-medium font-['Campton']">
                     Confirm Password
                   </div>
                 </div>
 
-                <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                   <Input
                     endContent={
                       <Button
@@ -126,7 +124,7 @@ export default function SecuretyForm() {
                       ],
                       innerWrapper: 'bg-transparent',
                       inputWrapper: [
-                        'bg-zinc-700 bg-opacity-10',
+                        'bg-zinc-700 rounded-none bg-opacity-10',
                         'dark:bg-white dark:bg-opacity-10',
                         'hover:bg-bg-white hover:bg-opacity-10',
                         'dark:hover:bg-default/70',
@@ -143,12 +141,12 @@ export default function SecuretyForm() {
               </div>
             </div>
           </div>
-          <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
-            <div className="text-black dark:text-white mt8 text-sm font-bold font-['Campton']">
+          <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
+            <div className=" text-sm font-bold font-['Campton']">
               2 Factor Authentication
             </div>
-            <div className='self-stretch flex-col justify-start items-center gap-3.5 flex'>
-              <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+            <div className='self-stretch flex-col justify-start items-center gap-1.5 flex'>
+              <div className='self-stretch w-full hover:text-white bg-opacity-10 justify-start items-center gap-2 inline-flex'>
                 <Input
                   endContent={
                     <Switch size='sm' defaultSelected color='default' />
@@ -163,7 +161,7 @@ export default function SecuretyForm() {
                     ],
                     innerWrapper: 'bg-transparent',
                     inputWrapper: [
-                      'bg-zinc-700 bg-opacity-10',
+                      'bg-zinc-700 rounded-none bg-opacity-10',
                       'dark:bg-white dark:bg-opacity-10',
                       'hover:bg-bg-white hover:bg-opacity-10',
                       'dark:hover:bg-default/70',
@@ -177,7 +175,7 @@ export default function SecuretyForm() {
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
                 />
               </div>
-              <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+              <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                 <Input
                   endContent={
                     <Switch
@@ -198,7 +196,7 @@ export default function SecuretyForm() {
                     ],
                     innerWrapper: 'bg-transparent',
                     inputWrapper: [
-                      'bg-zinc-700 bg-opacity-10',
+                      'bg-zinc-700 rounded-none bg-opacity-10',
                       'dark:bg-white dark:bg-opacity-10',
                       'hover:bg-bg-white hover:bg-opacity-10',
                       'dark:hover:bg-default/70',
@@ -212,7 +210,7 @@ export default function SecuretyForm() {
                   className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
                 />
               </div>
-              <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+              <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                 <Input
                   endContent={
                     <Button
@@ -232,7 +230,7 @@ export default function SecuretyForm() {
                     ],
                     innerWrapper: 'bg-transparent',
                     inputWrapper: [
-                      'bg-zinc-700 bg-opacity-10',
+                      'bg-zinc-700 rounded-none bg-opacity-10',
                       'dark:bg-white dark:bg-opacity-10',
                       'hover:bg-bg-white hover:bg-opacity-10',
                       'dark:hover:bg-default/70',

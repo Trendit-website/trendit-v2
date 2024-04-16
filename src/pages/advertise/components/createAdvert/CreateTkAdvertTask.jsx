@@ -12,14 +12,18 @@ import {
 import {
   genders,
   generateVideoThumbnail,
-  platforms,
+  tkplatforms,
 } from '../../../../utilities/data'
 import AdvertPaymentModal from '../AdvertPaymentModal'
 import IgPageHeader from '../IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
-import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
+import {
+  useGetCountry,
+  useGetReligion,
+  useGetState,
+} from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
@@ -32,17 +36,32 @@ export default function CreateTkAdvertTask() {
   const [imageUrl, setImageUrl] = useState('')
   const [media, setMedia] = useState(null)
   const [count, setCount] = useState(1)
+  // const [files, setFiles] = useState([])
+
+  // const handleFileChange = (event) => {
+  //   const selectedFiles = Array.from(event.target.files)
+  //   const mappedFiles = selectedFiles.map((file) => ({
+  //     data: file,
+  //     preview: URL.createObjectURL(file),
+  //   }))
+  //   setFiles((files) => [...files, ...mappedFiles])
+  // }
 
   const {
     handleSubmit,
     control,
     watch,
     register,
+    setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 150, posts_count: 1, platform: 'tioktok' },
+    defaultValues: { amount: 150, posts_count: 1, platform: 'tiktok' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
+
+  const { data: states, isLoading: isStateLoading } = useGetState(
+    watch().target_country
+  )
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -84,8 +103,11 @@ export default function CreateTkAdvertTask() {
 
       // If the file is valid, set the image URL, log the file, and set the image state
       setImageUrl(URL.createObjectURL(file))
+      // setFiles(URL.createObjectURL(file))
       setMedia(file)
+      // setFiles(file)
 
+      // console.log(files, 'files')
       console.log(media, 'media')
       console.log(imageUrl, 'imageUrl')
 
@@ -103,6 +125,10 @@ export default function CreateTkAdvertTask() {
   }
   // // const navigate = useNavigate()
 
+  useEffect(() => {
+    setValue('target_state', '')
+  }, [watch().target_country, setValue])
+
   const onSubmit = async () => {
     onOpen()
   }
@@ -112,12 +138,17 @@ export default function CreateTkAdvertTask() {
       const data = watch()
       const formData = new FormData()
       // Append selected image to formData if available
+      // if (files) {
+      //   formData.append('media', files)
+      // }
       if (media) {
         formData.append('media', media)
       }
       // Append other form fields
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
+      formData.append('target_state', data.target_state)
+
       formData.append('platform', data.platform)
       formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
@@ -127,7 +158,7 @@ export default function CreateTkAdvertTask() {
       formData.append('religion', data.religion)
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
-
+      // console.log(data, 'form')
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
@@ -158,6 +189,8 @@ export default function CreateTkAdvertTask() {
       // Append other form fields
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
+      formData.append('target_state', data.target_state)
+
       formData.append('platform', data.platform)
       formData.append('amount', calculatedAmount)
       formData.append('engagements_count', data.posts_count)
@@ -245,7 +278,7 @@ want to post your advert.`}
                                 className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Campton']"
                                 {...field}
                               >
-                                {platforms.map((platform) => (
+                                {tkplatforms?.map((platform) => (
                                   <SelectItem
                                     key={platform.value}
                                     value={platform.value}
@@ -322,6 +355,67 @@ want to post your advert.`}
                           </div>
                         </div>
                       </div>
+                      <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
+                        <div className='px-2 justify-center items-center gap-2 inline-flex'>
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                            State
+                          </div>
+                        </div>
+                        <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
+                          <Controller
+                            name='target_state'
+                            aria-labelledby='target_state'
+                            control={control}
+                            render={({ field }) => (
+                              <Select
+                                aria-labelledby='target_state'
+                                isInvalid={!!errors.target_state}
+                                errorMessage={errors?.target_state?.message}
+                                isLoading={isStateLoading}
+                                selectedKeys={field.value ? [field.value] : []}
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                placeholder='Select state'
+                                classNames={{
+                                  listbox: [
+                                    'bg-transparent',
+                                    'text-black/90 dark:text-white/90',
+                                    'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                  ],
+                                  trigger: [
+                                    'bg-zinc-700 bg-opacity-10',
+                                    'dark:bg-white dark:bg-opacity-10',
+                                    'hover:bg-bg-white hover:bg-opacity-10',
+                                    'dark:hover:bg-default/70',
+                                    'group-data-[focused=true]:bg-default-200/50',
+                                    'dark:group-data-[focused=true]:bg-default/60',
+                                    '!cursor-text',
+                                    'border-2 border-transparent',
+                                    'focus-within:!border-fuchsia-600  ',
+                                    '!cursor-text',
+                                  ],
+                                }}
+                                {...field}
+                              >
+                                {states?.map((cou) => (
+                                  <SelectItem key={cou.name} value={cou.name}>
+                                    {cou.name}
+                                  </SelectItem>
+                                ))}
+                              </Select>
+                            )}
+                          />
+                        </div>
+
+                        <div className='justify-center items-center gap-2 inline-flex'>
+                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                            You can target a particular location where your
+                            Advert task will be mostly shown. Select “All over
+                            Nigeria” if you want to target every location within
+                            the country.
+                          </div>
+                        </div>
+                      </div>
+
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Campton']">
@@ -514,6 +608,8 @@ want to post your advert.`}
                             className='absolute hidden w-full opacity-0 cursor-pointer'
                             {...register('media')}
                             onChange={handleChange}
+
+                            // onChange={handleFileChange}
                           />
                           <label
                             htmlFor='image-upload'
@@ -572,6 +668,16 @@ want to post your advert.`}
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
                       </div>
+                      {/* <div className='flex gap-2'>
+                        {files.map((file, index) => (
+                          <Image
+                            key={index}
+                            src={file.preview}
+                            alt='Preview'
+                            style={{ width: 100, height: 100 }}
+                          />
+                        ))}
+                      </div> */}
                       {imageUrl ? (
                         <Image
                           src={imageUrl}

@@ -12,14 +12,14 @@ import {
 import {
   genders,
   generateVideoThumbnail,
-  platforms,
+  ytplatforms,
 } from '../../../../utilities/data'
 import AdvertPaymentModal from '../AdvertPaymentModal'
 import IgPageHeader from '../IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
-import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
+import { useGetCountry, useGetReligion, useGetState } from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
@@ -38,11 +38,16 @@ export default function CreateYtAdvertTask() {
     control,
     watch,
     register,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: { amount: 150, posts_count: 1, platform: 'youtube' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
+  
+  const { data: states, isLoading: isStateLoading } = useGetState(
+    watch().country
+  )
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -107,6 +112,10 @@ export default function CreateYtAdvertTask() {
   }
 
   // // const navigate = useNavigate()
+   useEffect(() => {
+     setValue('state', '')
+     //  setValue('local_government', '')
+   }, [watch().country, setValue])
 
   const handlePaymentSuccess = async () => {
     try {
@@ -244,7 +253,7 @@ want to post your advert.`}
                                 className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Campton']"
                                 {...field}
                               >
-                                {platforms.map((platform) => (
+                                {ytplatforms?.map((platform) => (
                                   <SelectItem
                                     key={platform.value}
                                     value={platform.value}
@@ -320,6 +329,54 @@ want to post your advert.`}
                             the country.
                           </div>
                         </div>
+                      </div>
+
+                      <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                        <label className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
+                          State
+                        </label>
+                        <Controller
+                          name='state'
+                          aria-labelledby='state'
+                          control={control}
+                          render={({ field }) => (
+                            <Select
+                              aria-labelledby='state'
+                              isInvalid={!!errors.state}
+                              errorMessage={errors?.state?.message}
+                              isLoading={isStateLoading}
+                              selectedKeys={field.value ? [field.value] : []}
+                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                              placeholder='Select state'
+                              classNames={{
+                                listbox: [
+                                  'bg-transparent',
+                                  'text-black/90 dark:text-white/90',
+                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                ],
+                                trigger: [
+                                  'bg-zinc-700 bg-opacity-10',
+                                  'dark:bg-white dark:bg-opacity-10',
+                                  'hover:bg-bg-white hover:bg-opacity-10',
+                                  'dark:hover:bg-default/70',
+                                  'group-data-[focused=true]:bg-default-200/50',
+                                  'dark:group-data-[focused=true]:bg-default/60',
+                                  '!cursor-text',
+                                  'border-2 border-transparent',
+                                  'focus-within:!border-fuchsia-600  ',
+                                  '!cursor-text',
+                                ],
+                              }}
+                              {...field}
+                            >
+                              {states?.map((cou) => (
+                                <SelectItem key={cou.name} value={cou.name}>
+                                  {cou.name}
+                                </SelectItem>
+                              ))}
+                            </Select>
+                          )}
+                        />
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
