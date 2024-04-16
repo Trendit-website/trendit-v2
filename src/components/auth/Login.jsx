@@ -48,8 +48,6 @@ export default function Login() {
   const handleGgLogin = async () => {
     try {
       const res = await handleGoogleLogin()
-      console.log(res, 'kkk')
-      console.log(res?.data?.authorization_url, 'url')
       if (res?.data?.status) {
         window.open(res?.data?.authorization_url)
         setAccessToken(res?.data?.access_token)
@@ -66,9 +64,10 @@ export default function Login() {
   useEffect(() => {
     // Retrieve the trxref from the URL
     if (access_error) {
-      toast.error(access_error)
+      toast.error(access_error, {
+        duration: 20000,
+      })
     }
-    console.log(access_token, 'access_token')
     if (access_token) {
       try {
         // Use the retrieved trxref to call verifyPayment
@@ -218,7 +217,7 @@ export default function Login() {
                 }}
               />
 
-              <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
+              <div className='w-full md:w-[365px] h-[15px] flex justify-end itemscenter gap-2'>
                 <div
                   onClick={() => navigate('/forgot_password')}
                   className="text-center cursor-pointer text-[12.83px] font-bold font-['Campton']"
@@ -407,9 +406,9 @@ export default function Login() {
               </div>
             </div>
           </div>
-          <div className='w-[24rem] mx-auto my-4'>
+          <div className='md:w-[24rem] mx-auto my-4'>
             <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff]  dark:from-[#000] !via-[#FF6DFB] to-[#fff] dark:to-[#000]'></div>
-            <div className=' flex p-2 bordert border[#CB29BE]  justify-center items-center'>
+            <div className=' flex flex-col sm:flex-row p-2 bordert border[#CB29BE]  justify-center items-center'>
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
                 By signing up, you agree to our
               </div>

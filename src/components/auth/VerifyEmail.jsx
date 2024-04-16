@@ -62,9 +62,10 @@ export default function VerifyEmail() {
 
   useEffect(() => {
     // Retrieve the trxref from the URL
-    console.log(access_error, 'error')
     if (access_error) {
-      toast.error(access_error)
+      toast.error(access_error, {
+        duration: 20000,
+      })
     }
     if (access_token) {
       try {

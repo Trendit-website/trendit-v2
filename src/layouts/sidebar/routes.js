@@ -7,7 +7,7 @@ import {
   // HomeIcon,
   GrowIcon,
   // TransIcon,
-  SettingIcon,
+  // SettingIcon,
   // ReferalIcon,
   // SupportIcon,
 } from '../../assets/EarnIcon'
@@ -15,6 +15,7 @@ import { VscHeart } from 'react-icons/vsc'
 import { BiBarChart } from 'react-icons/bi'
 import { PiWarningOctagon } from 'react-icons/pi'
 import { RiHome2Line } from 'react-icons/ri'
+import { HiOutlineAdjustmentsHorizontal } from 'react-icons/hi2'
 
 export const defaultMenu = [
   {
@@ -94,7 +95,8 @@ export const defaultMenu = [
     title: '',
     name: 'Setting',
     // routeMerge: true,
-    icon: SettingIcon,
+    // icon: SettingIcon,
+    icon: HiOutlineAdjustmentsHorizontal,
     withSubMenu: false,
     route: '/dashboard/settings',
   },

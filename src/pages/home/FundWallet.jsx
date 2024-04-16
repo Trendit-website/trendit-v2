@@ -22,10 +22,10 @@ export default function FundWallet() {
       const res = await fundWallet({ data })
       console.log(res?.data)
       if (res.data.status) {
+        const authorizationUrl = res?.data?.authorization_url
         toast.success(res.data.message, {
           duration: 20000,
         })
-        const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
           window.open(authorizationUrl) // Open the URL in a new tab
