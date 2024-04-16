@@ -36,11 +36,11 @@ export default function GeneralForm() {
       lastname: profileDeatils?.lastname,
       email: profileDeatils?.email,
       username: profileDeatils?.username,
-      state: profileDeatils?.state,
       profile_picture: profileDeatils?.profile_picture,
       local_government: profileDeatils?.local_government,
       country: profileDeatils?.country,
       gender: profileDeatils?.gender,
+      state: profileDeatils?.state,
       phone: profileDeatils?.phone,
       day,
       month,
@@ -92,13 +92,11 @@ export default function GeneralForm() {
       if (res.data.status) {
         setSelectedImage(null)
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -110,9 +108,7 @@ export default function GeneralForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='self-stretch grow shrink w-full  basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
             <div className='self-stretch flex-col w-full justify-start items-start gap-6 flex'>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                Profile
-              </div>
+              <div className="text-sm font-bold font-['Campton']">Profile</div>
               <div className='flex-col justify-start items-center gap-6 flex'>
                 <div className='flex-col justify-center items-center gap-2 flex'>
                   <div className='w-[66px] cursor-pointer h-[66px] relative'>
@@ -189,7 +185,7 @@ export default function GeneralForm() {
                       </div>
                     </div>
                     <div className='w-full flex gap-4'>
-                      <div className='self-stretch w-full  bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-full bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='firstname'
                           control={control}
@@ -225,7 +221,7 @@ export default function GeneralForm() {
                           )}
                         />
                       </div>
-                      <div className='self-stretch w-full bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-full bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='lastname'
                           control={control}
@@ -270,7 +266,7 @@ export default function GeneralForm() {
                       Email address
                     </div>
                   </div>
-                  <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                     <Controller
                       name='email'
                       control={control}
@@ -315,7 +311,7 @@ export default function GeneralForm() {
                     </div>
                   </div>
 
-                  <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                     <Controller
                       name='username'
                       control={control}
@@ -370,7 +366,7 @@ export default function GeneralForm() {
                   <div className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
                     Select Gender
                   </div>
-                  <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                     <Controller
                       name='gender'
                       control={control}
@@ -381,7 +377,6 @@ export default function GeneralForm() {
                           isInvalid={!!errors.gender}
                           errorMessage={errors?.gender?.message}
                           selectedKeys={field.value ? [field.value] : []}
-                          // className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                           placeholder='Select Gender'
                           classNames={{
                             listbox: [
@@ -422,7 +417,7 @@ export default function GeneralForm() {
                       </div>
                     </div>
                     <div className=' flex gap-4 w-full'>
-                      <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='day'
                           control={control}
@@ -465,7 +460,7 @@ export default function GeneralForm() {
                           )}
                         />
                       </div>
-                      <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='month'
                           control={control}
@@ -511,7 +506,7 @@ export default function GeneralForm() {
                           )}
                         />
                       </div>
-                      <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='year'
                           control={control}
@@ -564,7 +559,7 @@ export default function GeneralForm() {
                     </div>
                   </div>
 
-                  <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                     <Controller
                       name='country'
                       control={control}
@@ -615,7 +610,7 @@ export default function GeneralForm() {
                         State
                       </div>
                     </div>
-                    <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                    <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                       <Controller
                         name='state'
                         aria-labelledby='state'
@@ -627,7 +622,7 @@ export default function GeneralForm() {
                             errorMessage={errors?.state?.message}
                             isLoading={isStateLoading}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                             placeholder='Select state'
                             classNames={{
                               listbox: [
@@ -660,7 +655,7 @@ export default function GeneralForm() {
                     </div>
                   </div>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                    <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                       {watch().country === 'Nigeria' && (
                         <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                           <labl className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
@@ -736,7 +731,30 @@ export default function GeneralForm() {
                   />
                 </svg>
                 <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
-                  {isPending ? 'Updating....' : 'Update'}
+                  {isPending ? (
+                    <svg
+                      className='animate-spin h-5 w-5 text-current'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      />
+                      <path
+                        className='opacity-75'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                        fill='currentColor'
+                      />
+                    </svg>
+                  ) : (
+                    'Update'
+                  )}
                 </div>
               </Button>
               <div className='self-stretch  cursor-pointer justify-start items-center gap-[7px] inline-flex'>

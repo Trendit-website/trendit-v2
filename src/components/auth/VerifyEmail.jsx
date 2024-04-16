@@ -45,6 +45,7 @@ export default function VerifyEmail() {
   const handleGgLogin = async () => {
     try {
       const res = await handleGoogleLogin()
+      console.log(res?.data)
       if (res?.data?.status) {
         window.open(res?.data?.authorization_url)
         setSignUpToken(res?.data?.access_token)
@@ -52,14 +53,16 @@ export default function VerifyEmail() {
         // navigate('/dashboard')
       }
     } catch (error) {
-      toast.error(error.response?.message ?? error.message)
+      toast.error(error.response?.data?.message ?? error.message)
     }
   }
 
   const access_token = searchParams.get('access_token')
+  const access_error = searchParams.get('error')
 
   useEffect(() => {
     // Retrieve the trxref from the URL
+    console.log(access_error, 'error')
     if (access_token) {
       try {
         // Use the retrieved trxref to call verifyPayment

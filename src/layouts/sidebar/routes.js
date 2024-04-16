@@ -4,20 +4,25 @@ import { BiShare } from 'react-icons/bi'
 import { RiMenuSearchLine } from 'react-icons/ri'
 import {
   EarnIcon,
-  HomeIcon,
+  // HomeIcon,
   GrowIcon,
-  TransIcon,
+  // TransIcon,
   SettingIcon,
-  ReferalIcon,
-  SupportIcon,
+  // ReferalIcon,
+  // SupportIcon,
 } from '../../assets/EarnIcon'
+import { VscHeart } from 'react-icons/vsc'
+import { BiBarChart } from 'react-icons/bi'
+import { PiWarningOctagon } from 'react-icons/pi'
+import { RiHome2Line } from 'react-icons/ri'
 
 export const defaultMenu = [
   {
     title: '',
     name: 'Home',
     route: '/dashboard',
-    icon: HomeIcon,
+    // icon: HomeIcon,
+    icon: RiHome2Line,
     withSubMenu: false,
   },
   {
@@ -71,7 +76,8 @@ export const defaultMenu = [
     title: 'Quick Actions',
     name: 'Transactions',
     // routeMerge: true,
-    icon: TransIcon,
+    // icon: TransIcon,
+    icon: BiBarChart,
     withSubMenu: false,
     route: '/dashboard/transactions',
   },
@@ -79,7 +85,8 @@ export const defaultMenu = [
     title: '',
     name: 'Refer Link',
     // routeMerge: true,
-    icon: ReferalIcon,
+    // icon: ReferalIcon,
+    icon: VscHeart,
     withSubMenu: false,
     route: '/dashboard/refer-link',
   },
@@ -95,7 +102,8 @@ export const defaultMenu = [
     title: '',
     name: 'Support',
     // routeMerge: true,
-    icon: SupportIcon,
+    icon: PiWarningOctagon,
+    // icon: SupportIcon,
     withSubMenu: false,
     route: '/dashboard/support',
   },

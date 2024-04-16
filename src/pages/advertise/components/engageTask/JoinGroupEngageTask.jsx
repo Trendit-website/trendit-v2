@@ -12,7 +12,7 @@ import AdvertPaymentModal from '.././AdvertPaymentModal'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetReligion } from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
+// import { useState } from 'react'
 import {
   useCreateAdvert,
   useCreateAdvertPaymentWallet,
@@ -24,7 +24,7 @@ import IgPageHeaderEngage from '../IgPageHeaderEngage'
 export default function JoinGroupEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const [count, setCount] = useState(1)
+  // const [count, setCount] = useState(1)
   // // const navigate = useNavigate()
 
   const {
@@ -65,7 +65,6 @@ export default function JoinGroupEngageTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
         // navigate('dashboard/advertise-history')
@@ -77,7 +76,6 @@ export default function JoinGroupEngageTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -103,14 +101,12 @@ export default function JoinGroupEngageTask() {
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          position: 'top-right',
           duration: 20000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        position: 'top-right',
         duration: 20000,
       })
     }
@@ -275,10 +271,6 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.posts_count?.message}
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
-                                value={count}
-                                onChange={(e) => {
-                                  setCount(e.target.value)
-                                }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
@@ -310,10 +302,6 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.account_link?.message}
                                 isInvalid={!!errors?.account_link}
                                 required={true}
-                                value={count}
-                                onChange={(e) => {
-                                  setCount(e.target.value)
-                                }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
@@ -469,9 +457,10 @@ people to post your ads on their social media account.`}
                               type='text'
                               size='sm'
                               placeholder='amount'
-                              {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
+                              {...field}
+                              isDisabled={true}
                               classNames={{
                                 input: [
                                   'text-black/90 dark:text-white/90',

@@ -39,7 +39,7 @@ export default function ForgetPassword() {
         }, 3000)
       }
     } catch (error) {
-      toast.error(error.response?.message ?? error.message)
+      toast.error(error.response?.data?.message ?? error.message)
     }
   }
 
