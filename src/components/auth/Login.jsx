@@ -42,7 +42,7 @@ export default function Login() {
         navigate('/dashboard')
       }
     } catch (error) {
-      toast.error(error.response?.message ?? error.message)
+      toast.error(error.response?.data?.message ?? error.message)
     }
   }
   const handleGgLogin = async () => {
@@ -221,7 +221,7 @@ export default function Login() {
               <div className='w-[365px] h-[15px] justify-end items-center gap-2 inline-flex'>
                 <div
                   onClick={() => navigate('/forgot_password')}
-                  className="text-center cursor-pointer text-black dark:text-white text-[12.83px] font-bold font-['Campton']"
+                  className="text-center cursor-pointer text-[12.83px] font-bold font-['Campton']"
                 >
                   Forgot password
                 </div>

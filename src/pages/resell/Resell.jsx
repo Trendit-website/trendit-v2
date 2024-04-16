@@ -17,7 +17,7 @@ export default function Resell() {
   return (
     <>
       <div>
-        <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
+        <div className='w-full p-3 min-h-screen flex-col justify-start items-start gap-3 inline-flex'>
           <div className='self-stretch  pb-6 flex-col justify-start items-center gap-6 flex'>
             <div className=' justify-center items-center inline-flex'>
               <svg

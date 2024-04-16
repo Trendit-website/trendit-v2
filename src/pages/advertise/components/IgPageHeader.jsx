@@ -40,7 +40,7 @@ export default function IgPageHeader({ title, frame, descp, price }) {
               <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
                 134 Likes
               </div> */}
-              <div className="text-[#909090] md:w-[70rem] text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+              <div className="dark:text-[#909090] md:w-[70rem] text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
                 {descp}
               </div>
             </div>

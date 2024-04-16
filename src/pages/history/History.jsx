@@ -18,7 +18,8 @@ export default function History() {
   const [selectedHistory, setSelectedHistory] = useState()
   const { data: adverts } = useGetAdvert(selectedHistory)
   const { data: adverts2 } = useGetAllAdvert()
-  console.log(adverts)
+  console.log(adverts, 'llp')
+  console.log(adverts2, 'll22p')
   const naviaget = useNavigate()
 
   const handleRoute = () => {
@@ -235,6 +236,7 @@ export default function History() {
                       <TaskCard
                         key={index}
                         goal={advert?.goal}
+                        platform={advert?.platform}
                         when={format(
                           new Date(advert.date_created),
                           'yyyy-MM-dd HH:mm:ss'
@@ -268,6 +270,7 @@ export default function History() {
                       <TaskCard
                         key={index}
                         goal={advert?.goal}
+                        platform={advert?.platform}
                         when={format(
                           new Date(advert.date_created),
                           'yyyy-MM-dd HH:mm:ss'
@@ -301,6 +304,7 @@ export default function History() {
                       <TaskCard
                         key={index}
                         goal={advert?.goal}
+                        platform={advert?.platform}
                         when={format(
                           new Date(advert.date_created),
                           'yyyy-MM-dd HH:mm:ss'
@@ -331,6 +335,7 @@ export default function History() {
                       <TaskCard
                         key={index}
                         goal={advert?.goal}
+                        platform={advert?.platform}
                         when={format(
                           new Date(advert.date_created),
                           'yyyy-MM-dd HH:mm:ss'
