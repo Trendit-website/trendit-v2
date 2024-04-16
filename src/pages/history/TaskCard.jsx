@@ -17,7 +17,7 @@ export default function TaskCard({
         className='w-full cursor-pointer p-3 bg-[#2F2F2F6B] bg-opacity30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
       >
         <div className='justify-start items-center gap-2 inline-flex'>
-          {task_type === 'advert' && platform === 'facebook' ? (
+          {task_type === 'advert' || platform === 'facebook' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -34,7 +34,7 @@ export default function TaskCard({
                 fill='white'
               />
             </svg>
-          ) : task_type === 'advert' && platform === 'instagram' ? (
+          ) : task_type === 'advert' || platform === 'instagram' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -82,7 +82,7 @@ export default function TaskCard({
                 </radialGradient>
               </defs>
             </svg>
-          ) : task_type === 'advert' && platform === 'whatsapp' ? (
+          ) : task_type === 'advert' || platform === 'whatsapp' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -127,7 +127,7 @@ export default function TaskCard({
                 </linearGradient>
               </defs>
             </svg>
-          ) : task_type === 'advert' && platform === 'tiktok' ? (
+          ) : task_type === 'advert' || platform === 'tiktok' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -148,7 +148,7 @@ export default function TaskCard({
                 fill='#00F2EA'
               />
             </svg>
-          ) : task_type === 'advert' && platform === 'twitter' ? (
+          ) : task_type === 'advert' || platform === 'twitter' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
