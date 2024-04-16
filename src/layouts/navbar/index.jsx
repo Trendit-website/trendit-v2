@@ -26,7 +26,7 @@ const Navbar = ({ onNotificationClick }) => {
   return (
     <>
       <div
-        className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0   dark:bg-black`}
+        className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0   dark:bgblack`}
       >
         <div className='px-3 py-1 '>
           <div className='flex items-center justify-between'>

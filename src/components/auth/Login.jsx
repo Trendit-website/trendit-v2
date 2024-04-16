@@ -61,10 +61,13 @@ export default function Login() {
     }
   }
   const access_token = searchParams.get('access_token')
+  const access_error = searchParams.get('error')
 
   useEffect(() => {
     // Retrieve the trxref from the URL
-
+    if (access_error) {
+      toast.error(access_error)
+    }
     console.log(access_token, 'access_token')
     if (access_token) {
       try {
@@ -74,12 +77,9 @@ export default function Login() {
 
         // You can perform further actions after successful verification
       } catch (error) {
-        console.error('Error verifying payment:', error)
+        console.error('Error verifying user:', error)
         // Handle error if verification fails
       }
-    } else {
-      console.error('trxref not found in URL.')
-      // Handle case when trxref is not found in the URL
     }
   }, [])
 
