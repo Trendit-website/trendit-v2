@@ -197,13 +197,13 @@ export default function Transactions() {
             </div>
           </div>
           <div className='self-stretch px-3 justify-between items-start inline-flex'>
-            <div className="w-[145px] text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[145px]  dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Type
             </div>
-            <div className="w-[860px] hidden md:grid text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[860px] hidden md:grid  dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Description
             </div>
-            <div className="text-black dark:text-white dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className=" dark:text-opacity-50 text-xs font-medium font-['Campton']">
               Amount
             </div>
           </div>

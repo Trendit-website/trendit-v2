@@ -15,14 +15,16 @@ export default function Payment() {
       // Retrieve the trxref from the URL
 
       const trxref = searchParams.get('trxref')
-      console.log(trxref, 'trxref')
       if (trxref) {
         try {
           // Use the retrieved trxref to call verifyPayment
           const res = await verifyPayment({ reference: trxref })
-          console.log(res)
-          console.log('Payment verified successfully.')
-          if (res?.data?.status) {
+          if (
+            res?.data?.status &&
+            res?.data?.payment_type === 'task-creation'
+          ) {
+            navigate(`/dashboard/advertise-history`)
+          } else if (res?.data?.status) {
             navigate(`${newPage}`)
           }
           // You can perform further actions after successful verification

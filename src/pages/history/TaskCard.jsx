@@ -2,7 +2,14 @@
 // import { useGetAdvert } from '../../api/advertApi'
 // import { format } from 'date-fns'
 
-export default function TaskCard({ goal, when, status, onNextPage, platform }) {
+export default function TaskCard({
+  goal,
+  when,
+  status,
+  onNextPage,
+  platform,
+  task_type,
+}) {
   return (
     <>
       <div
@@ -10,7 +17,7 @@ export default function TaskCard({ goal, when, status, onNextPage, platform }) {
         className='w-full cursor-pointer p-3 bg-[#2F2F2F6B] bg-opacity30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
       >
         <div className='justify-start items-center gap-2 inline-flex'>
-          {platform === 'facebook' ? (
+          {task_type === 'advert' && platform === 'facebook' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -27,7 +34,7 @@ export default function TaskCard({ goal, when, status, onNextPage, platform }) {
                 fill='white'
               />
             </svg>
-          ) : platform === 'instagram' ? (
+          ) : task_type === 'advert' && platform === 'instagram' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -75,7 +82,7 @@ export default function TaskCard({ goal, when, status, onNextPage, platform }) {
                 </radialGradient>
               </defs>
             </svg>
-          ) : platform === 'whatsapp' ? (
+          ) : task_type === 'advert' && platform === 'whatsapp' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -120,7 +127,7 @@ export default function TaskCard({ goal, when, status, onNextPage, platform }) {
                 </linearGradient>
               </defs>
             </svg>
-          ) : platform === 'tiktok' ? (
+          ) : task_type === 'advert' && platform === 'tiktok' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'
@@ -141,7 +148,7 @@ export default function TaskCard({ goal, when, status, onNextPage, platform }) {
                 fill='#00F2EA'
               />
             </svg>
-          ) : platform === 'twitter' ? (
+          ) : task_type === 'advert' && platform === 'twitter' ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='20'

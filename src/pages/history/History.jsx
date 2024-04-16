@@ -127,7 +127,7 @@ export default function History() {
             )}
           </div>
           <div className='self-stretch mt-40 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
+            <div className=" text-2xl font-medium font-['Campton']">
               My Adverts
             </div>
           </div>
@@ -237,6 +237,7 @@ export default function History() {
                         key={index}
                         goal={advert?.goal}
                         platform={advert?.platform}
+                        task_type={advert?.task_type}
                         when={format(
                           new Date(advert.date_created),
                           'yyyy-MM-dd HH:mm:ss'
