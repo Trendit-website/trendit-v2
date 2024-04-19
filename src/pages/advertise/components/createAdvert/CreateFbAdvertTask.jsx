@@ -173,7 +173,7 @@ export default function CreateFbAdvertTask() {
       // Append other form fields
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
-            formData.append('target_state', data.target_state)
+      formData.append('target_state', data.target_state)
 
       formData.append('platform', data.platform)
       formData.append('amount', calculatedAmount)
@@ -698,6 +698,7 @@ want to post your advert.`}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               value={calculatedAmount}
+                              isDisabled
                               classNames={{
                                 input: [
                                   'text-black/90 dark:text-white/90',
