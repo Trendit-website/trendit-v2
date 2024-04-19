@@ -39,7 +39,7 @@ function RootLayout() {
             className={`py-4 flex-1 z-1 mx-auto w-full overflow-clip
                           ${
                             sidebarOpen && !isTablet
-                              ? ' w-[100%] lg:w-[100%] subsemi:w-[90%]   xx:w-[84%]  '
+                              ? ' w-[100%] lg:w-[100%] '
                               : ' max-w-[100%] sm:w-[72%] md:w-[100%] lg:w-[10%] '
                           }
                         

@@ -308,7 +308,7 @@ export default function EngagementTasksCard() {
               isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
-                  navigate(`/dashboard/earn-engage_tw-task`)
+                  navigate(`/dashboard/earn-engage_share-task`)
                 } else {
                   toast.error('Please activate your membership')
                 }
