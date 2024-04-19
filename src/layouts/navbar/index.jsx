@@ -26,7 +26,7 @@ const Navbar = ({ onNotificationClick }) => {
   return (
     <>
       <div
-        className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0   dark:bgblack`}
+        className={`right-0 left-0 p-2 shadow-md z20 sticky top-0  dark:bgblack`}
       >
         <div className='px-3 py-1 '>
           <div className='flex items-center justify-between'>
@@ -43,7 +43,7 @@ const Navbar = ({ onNotificationClick }) => {
             >
               <div className='flex items-center justify-between '>
                 <div
-                  className=' lg:hidden cursor-pointer text-black dark:text-white'
+                  className=' lg:hidden cursor-pointer'
                   onClick={() => toggleSideBar()}
                 >
                   <MdMenu size={25} />

@@ -58,28 +58,24 @@ export default function GenerateFollowEngageTask() {
               <div className='w-[47px] h-[47px] relative'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  width='47'
-                  height='47'
-                  viewBox='0 0 47 47'
+                  width='44'
+                  height='45'
+                  viewBox='0 0 44 45'
                   fill='none'
                 >
                   <path
-                    d='M47 23.5C47 10.5214 36.4786 0 23.5 0C10.5214 0 0 10.5214 0 23.5C0 35.2294 8.59366 44.9516 19.8281 46.7145V30.293H13.8613V23.5H19.8281V18.3227C19.8281 12.433 23.3366 9.17969 28.7045 9.17969C31.2756 9.17969 33.9648 9.63867 33.9648 9.63867V15.4219H31.0016C28.0823 15.4219 27.1719 17.2334 27.1719 19.0919V23.5H33.6895L32.6476 30.293H27.1719V46.7145C38.4063 44.9516 47 35.2296 47 23.5Z'
-                    fill='#1877F2'
-                  />
-                  <path
-                    d='M32.6476 30.293L33.6895 23.5H27.1719V19.0919C27.1719 17.2332 28.0823 15.4219 31.0016 15.4219H33.9648V9.63867C33.9648 9.63867 31.2756 9.17969 28.7043 9.17969C23.3366 9.17969 19.8281 12.433 19.8281 18.3227V23.5H13.8613V30.293H19.8281V46.7145C21.0428 46.9049 22.2705 47.0003 23.5 47C24.7295 47.0004 25.9572 46.9049 27.1719 46.7145V30.293H32.6476Z'
-                    fill='white'
+                    d='M28.4231 26.9898C31.3225 26.9898 34.1031 28.1488 36.1532 30.2117C38.2033 32.2746 39.3551 35.0725 39.3551 37.9898V40.1898C39.3551 41.3568 38.8944 42.476 38.0743 43.3011C37.2543 44.1263 36.142 44.5898 34.9823 44.5898H4.37279C3.21305 44.5898 2.10082 44.1263 1.28076 43.3011C0.460703 42.476 0 41.3568 0 40.1898V37.9898C0 35.0725 1.15176 32.2746 3.2019 30.2117C5.25204 28.1488 8.03263 26.9898 10.932 26.9898H28.4231ZM40.2603 16.168C40.6528 15.7693 41.182 15.5366 41.7395 15.5175C42.2969 15.4985 42.8406 15.6946 43.2591 16.0657C43.6776 16.4367 43.9393 16.9547 43.9907 17.5136C44.0421 18.0725 43.8792 18.63 43.5355 19.072L43.3518 19.281L37.1687 25.5026C36.7922 25.8814 36.2913 26.109 35.76 26.1426C35.2286 26.1762 34.7033 26.0136 34.2827 25.6852L34.0771 25.5026L30.9856 22.3918C30.5893 21.9969 30.358 21.4644 30.3391 20.9034C30.3202 20.3425 30.5151 19.7955 30.8838 19.3744C31.2526 18.9533 31.7674 18.6899 32.3228 18.6382C32.8783 18.5865 33.4323 18.7504 33.8716 19.0962L34.0771 19.281L35.6229 20.8364L40.2603 16.168ZM19.6775 0.589844C22.5769 0.589844 25.3575 1.74877 27.4076 3.81167C29.4578 5.87457 30.6095 8.67246 30.6095 11.5898C30.6095 14.5072 29.4578 17.3051 27.4076 19.368C25.3575 21.4309 22.5769 22.5898 19.6775 22.5898C16.7782 22.5898 13.9976 21.4309 11.9475 19.368C9.89734 17.3051 8.74558 14.5072 8.74558 11.5898C8.74558 8.67246 9.89734 5.87457 11.9475 3.81167C13.9976 1.74877 16.7782 0.589844 19.6775 0.589844Z'
+                    fill='#FC11F5'
                   />
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Campton']">
-                    Post adverts on Facebook
+                    Post adverts on Instagram
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Campton']">
-                    Like and Follow Facebook Pages for Businesses and
+                    Like and Follow instagram Pages for Businesses and
                     Organizations and earn
                     <br />
                     ₦10 per Like/Follow. The more pages you like, the more you
@@ -87,7 +83,7 @@ export default function GenerateFollowEngageTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Campton']">
-                      124 Task available
+                      0 Task available
                     </div>
                   </div>
                 </div>
@@ -99,9 +95,9 @@ export default function GenerateFollowEngageTask() {
                   Link your Instagram Account
                 </div>
                 <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Campton']">
-                  You need to link your Facebook Account to Hawkit before you
-                  can start earning with your Facebook Account. Click the button
-                  below to link your Facebook account now.
+                  You need to link your  instagram Account to Hawkit before you
+                  can start earning with your instagram  Account. Click the
+                  button below to link your instagram  account now.
                 </div>
                 <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
                   <svg
@@ -425,7 +421,7 @@ export default function GenerateFollowEngageTask() {
                 </svg>
               </div>
               <div className='flex-col justify-start items-center gap-3 flex'>
-                <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+                <div className="text-sm font-bold font-['Campton']">
                   Need quick cash to earn?
                 </div>
                 <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Campton']">

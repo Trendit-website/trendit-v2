@@ -702,6 +702,7 @@ want to post your advert.`}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               value={calculatedAmount}
+                              isDisabled
                               classNames={{
                                 input: [
                                   'text-black/90 dark:text-white/90',

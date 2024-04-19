@@ -17,7 +17,11 @@ import {
 import AdvertPaymentModal from '../AdvertPaymentModal'
 import IgPageHeader from '../IgPageHeader'
 import { Controller, useForm } from 'react-hook-form'
-import { useGetCountry, useGetReligion, useGetState } from '../../../../api/locationApis'
+import {
+  useGetCountry,
+  useGetReligion,
+  useGetState,
+} from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 import {
@@ -45,7 +49,7 @@ export default function CreateWsAdvertTask() {
     defaultValues: { amount: 150, posts_count: 1, platform: 'whatsapp' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
-  
+
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
@@ -112,10 +116,10 @@ export default function CreateWsAdvertTask() {
     onOpen()
   }
   // // const navigate = useNavigate()
-   useEffect(() => {
-     setValue('target_state', '')
-     //  setValue('local_government', '')
-   }, [watch().target_country, setValue])
+  useEffect(() => {
+    setValue('target_state', '')
+    //  setValue('local_government', '')
+  }, [watch().target_country, setValue])
 
   const handlePaymentSuccess = async () => {
     try {
@@ -128,7 +132,7 @@ export default function CreateWsAdvertTask() {
       // Append other form fields
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
-            formData.append('target_state', data.target_state)
+      formData.append('target_state', data.target_state)
 
       formData.append('platform', data.platform)
       formData.append('amount', calculatedAmount)
@@ -171,7 +175,7 @@ export default function CreateWsAdvertTask() {
       // Append other form fields
       formData.append('task_type', 'advert')
       formData.append('target_country', data.target_country)
-            formData.append('target_state', data.target_state)
+      formData.append('target_state', data.target_state)
 
       formData.append('platform', data.platform)
       formData.append('amount', calculatedAmount)
@@ -695,6 +699,7 @@ want to post your advert.`}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               value={calculatedAmount}
+                              isDisabled
                               classNames={{
                                 input: [
                                   'text-black/90 dark:text-white/90',
