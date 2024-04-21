@@ -48,6 +48,8 @@ export default function GeneralForm() {
     },
   })
 
+  console.log(profileDeatils)
+
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
   const { data: states, isLoading: isStateLoading } = useGetState(
@@ -55,15 +57,17 @@ export default function GeneralForm() {
   )
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
-  useEffect(() => {
-    setValue('state', '')
-    setValue('local_government', '')
-  }, [watch().country, setValue])
+  // useEffect(() => {
+  //   console.log('countr')
+  //   setValue('state', '')
+  //   setValue('local_government', '')
+  // }, [watch().country, setValue])
 
-  useEffect(() => {
-    setValue('local_government', '')
-  }, [watch().state, setValue])
+  // useEffect(() => {
+  //   setValue('local_government', '')
+  // }, [watch().state, setValue])
 
+  console.log(watch(), 'www')
   const onSubmit = async (data) => {
     const day = watch('day')
     const month = watch('month')
@@ -592,6 +596,11 @@ export default function GeneralForm() {
                             ],
                           }}
                           {...field}
+                          onChange={(e) => {
+                            field.onChange(e)
+                            setValue('state', '')
+                            setValue('local_government', '')
+                          }}
                         >
                           {countries?.map((cou) => (
                             <SelectItem key={cou.name} value={cou.name}>
@@ -643,6 +652,10 @@ export default function GeneralForm() {
                               ],
                             }}
                             {...field}
+                            onChange={(e) => {
+                              field.onChange(e)
+                              setValue('local_government', '')
+                            }}
                           >
                             {states?.map((cou) => (
                               <SelectItem key={cou.name} value={cou.name}>
