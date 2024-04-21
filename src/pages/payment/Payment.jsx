@@ -14,11 +14,15 @@ export default function Payment() {
     const verifyPaymentOnLoad = async () => {
       // Retrieve the trxref from the URL
 
-      const trxref = searchParams.get('trxref')
-      if (trxref) {
+      const tx_ref = searchParams.get('tx_ref')
+      const transaction_id = searchParams.get('transaction_id')
+      if (tx_ref && transaction_id) {
         try {
           // Use the retrieved trxref to call verifyPayment
-          const res = await verifyPayment({ reference: trxref })
+          const res = await verifyPayment({
+            reference: tx_ref,
+            transaction_id: transaction_id,
+          })
           if (
             res?.data?.status &&
             res?.data?.payment_type === 'task-creation'
