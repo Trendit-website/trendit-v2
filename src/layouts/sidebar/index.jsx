@@ -98,10 +98,6 @@ const Sidebar = () => {
         },
       }
 
-  // const routeToHome = () => {
-  //   navigate("/engage/posts");
-  // };
-
   return (
     <div className="relative bg-blue-500  dark:bg-neutral-900 z-40  shadowsidebar font-['Campton']">
       <div
@@ -201,7 +197,7 @@ const Sidebar = () => {
                               sidebarMinimized && 'mx-auto'
                             }
     ${
-      pathname === route.route?.toLocaleLowerCase()
+      pathname.startsWith(route.route?.toLocaleLowerCase())
         ? 'text-fuchsia-400'
         : 'text-menuItemIcon'
     }`}
@@ -209,7 +205,7 @@ const Sidebar = () => {
                           <span
                             className={`
     ${
-      pathname === route.route?.toLocaleLowerCase()
+      pathname.startsWith(route.route?.toLocaleLowerCase())
         ? 'text-fuchsia-400'
         : 'text-menuItemIcon'
     }`}

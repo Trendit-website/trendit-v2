@@ -4,7 +4,11 @@ import { Button, Input } from '@nextui-org/react'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { useFetchBallance, useFundWallet } from '../../api/walletApi'
+import {
+  useFetchBallance,
+  useFundWallet,
+  useFundWalletHistory,
+} from '../../api/walletApi'
 
 export default function FundWallet() {
   const navigate = useNavigate()
@@ -16,6 +20,9 @@ export default function FundWallet() {
   const { data: showBalance } = useFetchBallance()
 
   const { mutateAsync: fundWallet, isPending } = useFundWallet()
+  const { data: fundHistory } = useFundWalletHistory()
+
+  console.log(fundHistory, 'histor')
 
   const onSubmit = async (data) => {
     try {

@@ -7,7 +7,7 @@ import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile, useUserProfile } from '../../api/profileApis'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 
 export default function GeneralForm() {
@@ -48,8 +48,6 @@ export default function GeneralForm() {
     },
   })
 
-  console.log(profileDeatils)
-
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
   const { data: states, isLoading: isStateLoading } = useGetState(
@@ -57,17 +55,6 @@ export default function GeneralForm() {
   )
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
-  // useEffect(() => {
-  //   console.log('countr')
-  //   setValue('state', '')
-  //   setValue('local_government', '')
-  // }, [watch().country, setValue])
-
-  // useEffect(() => {
-  //   setValue('local_government', '')
-  // }, [watch().state, setValue])
-
-  console.log(watch(), 'www')
   const onSubmit = async (data) => {
     const day = watch('day')
     const month = watch('month')

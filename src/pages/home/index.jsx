@@ -125,7 +125,7 @@ export default function Welcome({ onNotificationClick }) {
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
                 // onClick={onOpen}
-                onClick={() => navigate(`/dashboard/fund`)}
+                onClick={() => navigate(`/dashboard/home/fund`)}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'

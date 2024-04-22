@@ -20,7 +20,7 @@ function RootLayout() {
   }
 
   return (
-    <div className='dark:text-gray-100  dark:bg-neutral-900 duration-200 ease-in-out  overflow-clip'>
+    <div className='dark:text-gray-100  dark:bg-neutral-900 duration-200 ease-in-out  overflow-hidden'>
       <div className='flex w-full '>
         <Sidebar />
         <motion.div
@@ -36,7 +36,7 @@ function RootLayout() {
           <Navbar onNotificationClick={toggleRightSidebar} />
 
           <main
-            className={`py-4 flex-1 z-1 mx-auto w-full overflow-clip
+            className={`py-4 flex-1 z-1 mx-auto w-full overflow-hidden
                           ${
                             sidebarOpen && !isTablet
                               ? ' w-[100%] lg:w-[100%] '
