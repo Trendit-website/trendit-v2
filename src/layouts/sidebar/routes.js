@@ -21,7 +21,7 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Home',
-    route: '/dashboard',
+    route: '/dashboard/home',
     // icon: HomeIcon,
     icon: RiHome2Line,
     withSubMenu: false,

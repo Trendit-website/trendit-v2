@@ -98,7 +98,7 @@ function App() {
             }
           >
             <Route
-              path=''
+              path='home'
               element={
                 <ProtectedRoute>
                   <Welcome />
@@ -115,7 +115,7 @@ function App() {
               }
             />
             <Route
-              path='fund'
+              path='home/fund'
               element={
                 <ProtectedRoute>
                   <FundWallet />
