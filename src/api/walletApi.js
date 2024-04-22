@@ -34,6 +34,16 @@ export const useFetchBallance = () => {
     },
   })
 }
+export const useFundWalletHistory = () => {
+  return useQuery({
+    queryKey: ['funding_history'],
+    queryFn: async () => {
+      const res = await API.get(`/transactions/funding`)
+      console.log(res.data?.funding_history, 'transactions')
+      return res?.data?.funding_history
+    },
+  })
+}
 
 export const useUpdateBankDetils = () => {
   return useMutation({

@@ -43,7 +43,7 @@ export default function RightSidebar() {
 
   return (
     <>
-      <div className='flex-col border-l dark:border-0 dark:bg-[#161616] min-h-full justify-start items-start inline-flex'>
+      <div className='flex-col dark:border-0 dark:bg-[#161616] min-h-full justify-start items-start flex'>
         <div className=' py-3  bg-lighten dark:bg-[#161616]  flex-col justify-start items-start gap-2 flex'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className='self-stretch w-96 flex-col justify-start items-start gap-2 flex'>
@@ -87,7 +87,6 @@ export default function RightSidebar() {
             </div>
           </form>
 
-          <div className='self-stretch  flex-col justify-start items-center gap-2 flex'></div>
           <AnimatePresence mode='wait'>
             <div className='flex flex-col w-full'>
               <Tabs
@@ -101,9 +100,9 @@ export default function RightSidebar() {
                   tabList: '  bordered  py-2',
                   cursor: ' bg-[#FF6DFB]',
                   tabContent:
-                    'group-data-[selected=true]:text-[#FF6DFB] dark:group-data-[selected=true]:text-[#FF6DFB] ',
+                    'group-data-[selected=true]:text-[#FF6DFB]  dark:group-data-[selected=true]:text-[#FF6DFB] ',
                 }}
-                className="text-center text-[#FF6DFB] dark:text-[#FF6DFB] text-[12.83px] font-bold font-['Campton']"
+                className="text-center text-[#FF6DFB] overflow-auto dark:text-[#FF6DFB] text-[12.83px] font-bold font-['Campton']"
                 // color='secondary'
               >
                 <Tab key='activities' title='Activities'>
