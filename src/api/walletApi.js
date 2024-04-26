@@ -39,7 +39,6 @@ export const useFundWalletHistory = () => {
     queryKey: ['funding_history'],
     queryFn: async () => {
       const res = await API.get(`/transactions/funding`)
-      console.log(res.data?.funding_history, 'transactions')
       return res?.data?.funding_history
     },
   })

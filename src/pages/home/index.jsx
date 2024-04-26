@@ -15,12 +15,19 @@ import { useDisclosure } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
 import { useFetchBallance } from '../../api/walletApi'
 import { useGetProfile } from '../../api/profileApis'
+import FundWalletModal from './FundWalletModal'
+import WithdrawWalletModal from './WithdrawWalletModal'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
   const [showUp, setShowUp] = useState(true)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: openWithdraw,
+    onOpen: onOpenWithdraw,
+    onClose: onCloseWithdraw,
+  } = useDisclosure()
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
@@ -119,13 +126,15 @@ export default function Welcome({ onNotificationClick }) {
                 Wallet bal:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Campton']">
-                {showBalance?.currency_code}:{showBalance?.balance}
+                <span>&#8358;</span>
+                {showBalance?.balance?.toLocaleString()}
+                {/* ₦{showBalance?.currency_code}:{showBalance?.balance} */}
               </div>
             </div>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
               <Button
-                // onClick={onOpen}
-                onClick={() => navigate(`/dashboard/home/fund`)}
+                onClick={onOpen}
+                // onClick={() => navigate(`/dashboard/home/fund`)}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -148,6 +157,7 @@ export default function Welcome({ onNotificationClick }) {
               </Button>
 
               <Button
+                onClick={onOpenWithdraw}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -507,7 +517,11 @@ export default function Welcome({ onNotificationClick }) {
         </div>
       </div>
 
-      {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />}
+      {/* {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />} */}
+      {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
+      {openWithdraw && (
+        <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
     </div>
   )
 }

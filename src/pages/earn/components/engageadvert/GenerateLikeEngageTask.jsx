@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Chip, Tab, Tabs, useDisclosure } from '@nextui-org/react'
+import {  Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
@@ -24,8 +24,11 @@ export default function GenerateLikeEngageTask() {
     <>
       <div>
         <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 flex'>
-          <div className='justify-start cursor-pointer items-center gap-[7px] inline-flex'>
-            <div onClick={() => navigate(-1)} className='cursor-pointer'>
+          <div
+            onClick={() => navigate(-1)}
+            className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+          >
+            <div className='cursor-pointer'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='24'
@@ -91,7 +94,7 @@ export default function GenerateLikeEngageTask() {
                 </div>
               </div>
             </div>
-            <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+            {/* <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                 <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Campton']">
                   Link your Youtube Account
@@ -137,7 +140,7 @@ export default function GenerateLikeEngageTask() {
                   className='dark:stroke-white stroke-[#1E1E1E] '
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
 
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
@@ -173,13 +176,13 @@ export default function GenerateLikeEngageTask() {
                         title={
                           <div>
                             In Review
-                            <Chip
+                            {/* <Chip
                               size='sm'
                               className='text-black dark:text-white'
                               variant='light'
                             >
                               23+
-                            </Chip>
+                            </Chip> */}
                           </div>
                         }
                         className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"

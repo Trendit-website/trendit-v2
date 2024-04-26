@@ -62,7 +62,6 @@ export default function PostAdvertTasksCard() {
           </div>
           <div className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-advert_fb-task`)
@@ -141,7 +140,6 @@ export default function PostAdvertTasksCard() {
           </div>
           <div className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-advert_tiktok-task`)
@@ -247,7 +245,6 @@ export default function PostAdvertTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-advert_ig-task`)
@@ -350,7 +347,6 @@ export default function PostAdvertTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-advert_whatsapp-task`)
@@ -421,7 +417,6 @@ export default function PostAdvertTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-advert_tw-task`)

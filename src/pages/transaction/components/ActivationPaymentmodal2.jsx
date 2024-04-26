@@ -183,13 +183,13 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                         <Input
                           type='text'
                           size='sm'
+                          isDisabled
                           placeholder='amount'
                           {...field}
                           errorMessage={errors?.amount?.message}
                           isInvalid={!!errors?.amount}
                           classNames={{
                             input: [
-                              // 'bg-transparent',
                               'text-black/90 dark:text-white/90',
                               'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                             ],

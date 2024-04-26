@@ -7,7 +7,7 @@ export default function TransactionCard() {
       {}
 
       {transactionHistory?.length === 0 ? (
-        <div className="dark:text-white text-black text-[12.83px] font-medium font-['Campton']">
+        <div className="text-[12.83px] font-medium font-['Campton']">
           No transaction
         </div>
       ) : (

@@ -83,7 +83,7 @@ export default function AuthModal({ isOpen, onClose }) {
               </div>
               <Button
                 onClick={() => {
-                  navigate('/dashboard')
+                  navigate('/dashboard/home')
                 }}
                 className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-3 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >

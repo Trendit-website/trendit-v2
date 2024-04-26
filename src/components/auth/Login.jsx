@@ -5,7 +5,7 @@ import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { useGoogleLogin, useLoginUser } from '../../api/auth'
+import { useFacebookLogin, useGoogleLogin, useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
 import { useEffect, useState } from 'react'
@@ -23,6 +23,8 @@ export default function Login() {
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
   const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
     useGoogleLogin()
+  const { mutateAsync: handleFbLogin, isPending: isPendingFb } =
+    useFacebookLogin()
   const [searchParams] = useSearchParams()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -39,15 +41,16 @@ export default function Login() {
       if (res?.data?.status) {
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
-        navigate('/dashboard')
+        navigate('/dashboard/home')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
     }
   }
-  const handleGgLogin = async () => {
+  // social logins
+  const handleFaceBookLogin = async () => {
     try {
-      const res = await handleGoogleLogin()
+      const res = await handleFbLogin()
       if (res?.data?.status) {
         window.open(res?.data?.authorization_url)
         setAccessToken(res?.data?.access_token)
@@ -58,6 +61,19 @@ export default function Login() {
       toast.error(error.response?.message ?? error.message)
     }
   }
+  const handleGgLogin = async () => {
+    try {
+      const res = await handleGoogleLogin()
+      if (res?.data?.status) {
+        window.open(res?.data?.authorization_url)
+        setAccessToken(res?.data?.access_token)
+        toast.success(res.data.message)
+      }
+    } catch (error) {
+      toast.error(error.response?.message ?? error.message)
+    }
+  }
+
   const access_token = searchParams.get('access_token')
   const access_error = searchParams.get('error')
 
@@ -72,7 +88,7 @@ export default function Login() {
       try {
         // Use the retrieved trxref to call verifyPayment
         setAccessToken(access_token)
-        navigate('/dashboard')
+        navigate('/dashboard/home')
 
         // You can perform further actions after successful verification
       } catch (error) {
@@ -345,7 +361,11 @@ export default function Login() {
                     'Google'
                   )}
                 </Button>
-                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
+                <Button
+                  onClick={handleFaceBookLogin}
+                  isDisabled={isPendingFb}
+                  className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -362,7 +382,30 @@ export default function Login() {
                       fill='white'
                     />
                   </svg>
-                  Facebook
+                  {isPending ? (
+                    <svg
+                      className='animate-spin h-5 w-5 text-current'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      xmlns='http://www.w3.org/2000/svg'
+                    >
+                      <circle
+                        className='opacity-25'
+                        cx='12'
+                        cy='12'
+                        r='10'
+                        stroke='currentColor'
+                        strokeWidth='4'
+                      />
+                      <path
+                        className='opacity-75'
+                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                        fill='currentColor'
+                      />
+                    </svg>
+                  ) : (
+                    'Facebook'
+                  )}
                 </Button>
                 <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Campton']">
                   <svg

@@ -70,6 +70,7 @@ export const useDeleteAcc = () => {
     },
   })
 }
+// social login
 export const useGoogleLogin = () => {
   return useMutation({
     mutationFn: () => {
@@ -77,6 +78,15 @@ export const useGoogleLogin = () => {
     },
   })
 }
+
+ export const useFacebookLogin = () => {
+  return useMutation({
+    mutationFn: () => {
+      return API.get(`/facebook_login`)
+    },
+  })
+}
+// social sign up
 export const useGoogleSignu = () => {
   return useMutation({
     mutationFn: () => {
