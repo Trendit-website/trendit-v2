@@ -5,9 +5,8 @@ import { dashboardContext } from '../context/Dashboard'
 import Navbar from './navbar'
 import Sidebar from './sidebar'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import RightSidebar from './components/rightSidebar/RightSideBar'
+// import RightSidebar from './components/rightSidebar/RightSideBar'
 import { AnimatePresence, motion } from 'framer-motion'
-// import useCurrentUser from "../hooks/useCurrentUser";
 
 function RootLayout() {
   const { sidebarOpen, sidebarMinimized, isTablet } =
@@ -48,7 +47,7 @@ function RootLayout() {
             <Outlet />
           </main>
         </motion.div>
-        <AnimatePresence mode='wait'>
+        {/* <AnimatePresence mode='wait'>
           {showRightSidebar && (
             <motion.div
               transition={{
@@ -63,7 +62,7 @@ function RootLayout() {
               />
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
     </div>
   )

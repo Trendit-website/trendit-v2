@@ -4,7 +4,6 @@ import EngagementTasksCard from './EngagementTasksCard'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
 import { useState } from 'react'
-import { Chip } from '@nextui-org/chip'
 import PostAdvertTasksCard from './PostAdvertTasksCard'
 import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
@@ -376,13 +375,13 @@ export default function Earn() {
                         title={
                           <div>
                             Engagement Tasks
-                            <Chip
+                            {/* <Chip
                               size='sm'
                               className='text-white'
                               variant='light'
                             >
                               23+
-                            </Chip>
+                            </Chip> */}
                           </div>
                         }
                         className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"

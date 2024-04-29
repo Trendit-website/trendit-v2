@@ -75,7 +75,6 @@ export default function EngagementTasksCard() {
           </div>
           <div className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-engage_comment-task`)
@@ -150,7 +149,6 @@ export default function EngagementTasksCard() {
           </div>
           <div className='w-[109px] cursor-pointer flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-engage_like-task`)
@@ -221,7 +219,6 @@ export default function EngagementTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-engage_follow-task`)
@@ -305,7 +302,6 @@ export default function EngagementTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-engage_share-task`)
@@ -387,7 +383,6 @@ export default function EngagementTasksCard() {
           </div>
           <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
             <Button
-              isDisabled={!profileDeatils?.membership_fee}
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
                   navigate(`/dashboard/earn-engage_join-task`)

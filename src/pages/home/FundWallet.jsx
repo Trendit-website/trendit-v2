@@ -9,6 +9,7 @@ import {
   useFundWallet,
   useFundWalletHistory,
 } from '../../api/walletApi'
+import { format } from 'date-fns'
 
 export default function FundWallet() {
   const navigate = useNavigate()
@@ -21,8 +22,6 @@ export default function FundWallet() {
 
   const { mutateAsync: fundWallet, isPending } = useFundWallet()
   const { data: fundHistory } = useFundWalletHistory()
-
-  console.log(fundHistory, 'histor')
 
   const onSubmit = async (data) => {
     try {
@@ -51,7 +50,7 @@ export default function FundWallet() {
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='cursor-pointer self-stretch flex-col justify-start items-start gap-2 flex'>
             <div
-              onClick={() => navigate(`/dashboard`)}
+              onClick={() => navigate(-1)}
               className='justify-start items-center gap-[7px] inline-flex'
             >
               <svg
@@ -197,7 +196,7 @@ export default function FundWallet() {
           </div>
           <div className='self-stretch px-3 justify-start items-start gap-12 inline-flex'>
             <div className="w-[166.50px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
-              S/N
+              ID
             </div>
             <div className="w-[256.50px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
               Date
@@ -212,227 +211,58 @@ export default function FundWallet() {
               Status
             </div>
           </div>
-          <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-0.5 flex'>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    1.
+          {fundHistory?.map((history) => (
+            <>
+              <div
+                key={history?.id}
+                className='self-stretch flex-col justify-start items-start gap-0.5 flex'
+              >
+                <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
+                  <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
+                    <div className='justify-start items-center gap-2 flex'>
+                      <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
+                        {history?.id}{' '}
+                      </div>
+                    </div>
+                  </div>
+                  <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
+                    <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
+                      {format(history?.created_at, 'do MMMM yyyy')}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-white text-[12.83px] font-normal font-['Campton']">
+                      ₦
+                    </span>
+                    <span className="text-white text-[12.83px] font-medium font-['Campton']">
+                      {' '}
+                      {history?.amount}{' '}
+                    </span>
+                  </div>
+                  <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
+                    {history?.payment_method}
+                  </div>
+                  <div
+                    className={`px-2 py-1 ${
+                      history?.status === 'complete'
+                        ? 'bg-white'
+                        : 'bg-rose-100'
+                    }    justify-center items-center gap-2 flex`}
+                  >
+                    <div
+                      className={`text-center ${
+                        history?.status === 'complete'
+                          ? 'text-green-500'
+                          : 'text-red-500'
+                      }  text-xs font-semibold font-['Campton']`}
+                    >
+                      {history?.status === 'complete' ? 'Approved' : 'Pending'}
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000{' '}
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                Flutterwave
-              </div>
-              <div className='px-2 py-1 bg-white justify-center items-center gap-2 flex'>
-                <div className="text-center text-green-500 text-xs font-semibold font-['Campton']">
-                  Approved
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    2.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                Bank Transfer
-              </div>
-              <div className='px-2 py-1 bg-white justify-center items-center gap-2 flex'>
-                <div className="text-center text-green-500 text-xs font-semibold font-['Campton']">
-                  Approved
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    3.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                </span>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦2
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  000{' '}
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                Bank Transfer
-              </div>
-              <div className='px-3 py-1 bg-rose-100 justify-center items-center gap-2 flex'>
-                <div className="text-center text-red-500 text-xs font-semibold font-['Campton']">
-                  Pending
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    4.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                Flutterwave
-              </div>
-              <div className='px-2 py-1 bg-white justify-center items-center gap-2 flex'>
-                <div className="text-center text-green-500 text-xs font-semibold font-['Campton']">
-                  Approved
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    5.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                Bank Transfer
-              </div>
-              <div className='px-2 py-1 bg-white justify-center items-center gap-2 flex'>
-                <div className="text-center text-green-500 text-xs font-semibold font-['Campton']">
-                  Approved
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    6.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div className='text-center'>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000
-                </span>
-              </div>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
-                None picked
-              </div>
-              <div className='px-3 py-1 bg-rose-100 justify-center items-center gap-2 flex'>
-                <div className="text-center text-red-500 text-xs font-semibold font-['Campton']">
-                  Pending
-                </div>
-              </div>
-            </div>
-            <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
-              <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
-                <div className='justify-start items-center gap-2 flex'>
-                  <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
-                    7.
-                  </div>
-                </div>
-              </div>
-              <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
-                  Nov 13th 2023 9:21pm
-                </div>
-              </div>
-              <div>
-                <span className="text-white text-[12.83px] font-normal font-['Campton']">
-                  ₦
-                </span>
-                <span className="text-white text-[12.83px] font-medium font-['Campton']">
-                  {' '}
-                  1,000
-                </span>
-              </div>
-              <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
-                None picked{' '}
-              </div>
-              <div className='px-3 py-1 bg-rose-100 justify-center items-center gap-2 flex'>
-                <div className="text-center text-red-500 text-xs font-semibold font-['Campton']">
-                  Pending
-                </div>
-              </div>
-            </div>
-          </div>
+            </>
+          ))}
         </div>
       </div>
     </div>

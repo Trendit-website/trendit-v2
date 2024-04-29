@@ -108,7 +108,7 @@ export default function BankDetailsForm() {
                   control={control}
                   render={({ field }) => (
                     <Input
-                      placeholder='ADEWALE ADEDAMOLA'
+                      placeholder='John Doe'
                       size='sm'
                       classNames={{
                         input: [

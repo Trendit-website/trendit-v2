@@ -2,8 +2,9 @@ import { Button } from '@nextui-org/button'
 import { useDisclosure } from '@nextui-org/react'
 import { ExternalLinkIcon } from 'lucide-react'
 import { IoAdd } from 'react-icons/io5'
-import SelectPaymentmodal from './components/SelectPaymentmodal'
+// import SelectPaymentmodal from './components/SelectPaymentmodal'
 import { useFetchBallance } from '../../api/walletApi'
+import FundWalletModal from '../home/FundWalletModal'
 
 export default function OverViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -12,7 +13,7 @@ export default function OverViewCard() {
   return (
     <div>
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
-        <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
+        <div className='self-stretch  flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
             <div className='self-stretch justify-center items-start gap-3 inline-flex'>
               <div className='grow shrink basis-0 justify-start items-center gap-2 flex'>
@@ -33,7 +34,7 @@ export default function OverViewCard() {
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
-              <div className='justify-start items-center gap-2 flex'>
+              <div className='justify-start hidden items-center gap-2 md:flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -75,12 +76,14 @@ export default function OverViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
-              {showBalance?.currency_code}:{showBalance?.balance}
+            <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
+              {/* {showBalance?.currency_code}:{showBalance?.balance} */}
+              <span>&#8358;</span>
+              {showBalance?.balance?.toLocaleString()}
             </div>
           </div>
-          <div className='justify-start items-start gap-[19px] inline-flex'>
-            <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
+          <div className='justify-center items-center w-full gap-[19px] flex'>
+            <div className='pb-4 justify-center items-center md:justify-start md:items-start  gap-4 flex'>
               <Button
                 onClick={onOpen}
                 startContent={
@@ -104,7 +107,7 @@ export default function OverViewCard() {
             </div>
           </div>
         </div>
-        <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
+        {/* <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
             <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
               Total Earned
@@ -196,10 +199,11 @@ export default function OverViewCard() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />
+      {/* <SelectPaymentmodal isOpen={isOpen} onClose={onClose} /> */}
+      {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
     </div>
   )
 }
