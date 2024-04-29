@@ -43,26 +43,33 @@ export default function FundWalletModal({ isOpen, onClose }) {
           isOpen={isOpen}
           onClose={onClose}
           hideCloseButton={true}
-          className='rounded-none'
+          className='rounded-none w-[23rem] md:w-[30rem]'
         >
-          <ModalContent className='md:w-[30rem] overflow-visible'>
-            <div className='p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
+          <ModalContent className=' overflow-visible'>
+            <div className='p-6 md:p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
-                className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>
               <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
-                <div className='self-stretch p-6 flex-col justify-center items-start gap-6 flex'>
+                <div className='self-stretch flex-col justify-center items-start gap-6 flex'>
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className="grow shrink basis-0 text-sm font-semibold font-['Campton']">
-                        Fund wallet
+                      <div className="text-sm font-bold font-['Campton']">
+                        Fund Your Trendit3 Wallet
+                      </div>
+                      <div className=" text-center text-zinc-400 text-xs font-normal font-['Campton']">
+                        Please enter the amount which you like to fund your
+                        wallet with
                       </div>
                     </div>
                     <div className='justify-start flex-col items-start gap-[19px] flex'>
-                      <div className='self-stretch bg-white bg-opacity-10 rounded-none justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch  flex-col rounded-none gap-2 flex'>
+                        <div className="text-sm font-medium font-['Campton']">
+                          Amount
+                        </div>
                         <Controller
                           name='amount'
                           control={control}
@@ -71,7 +78,6 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               type='text'
                               size='sm'
                               placeholder='amount'
-                              label='Amount'
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
@@ -82,13 +88,13 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               }
                               classNames={{
                                 input: [
-                                  'bg-transparent',
+                                  'bg-transparent ',
                                   'text-black/90 dark:text-white/90',
                                   'placeholder:text-black dark:placeholder:text-black',
                                 ],
                                 innerWrapper: 'bg-transparent',
                                 inputWrapper: [
-                                  'bg-zinc-700 bg-opacity-10',
+                                  'bg-zinc-700 bg-opacity-10  rounded-none',
                                   'dark:bg-white',
                                   'hover:bg-white hover:bg-opacity-10',
                                   'dark:hover:bg-opacity-80',
@@ -99,16 +105,21 @@ export default function FundWalletModal({ isOpen, onClose }) {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded  text-black text-[12.83px] font-normal font-['Campton']"
+                              className=" rounded-none  text-black text-[12.83px] font-normal font-['Campton']"
                             />
                           )}
                         />
+                        <small className=" text-zinc-400 text-xs font-normal font-['Campton']">
+                          You can choose your preferred method of payment such
+                          as Card payment, Bank transfer or USSD, simply by
+                          clicking on th “Change Payment” button.
+                        </small>
                       </div>
-                      <div className=''>
+                      <div className='self-stretch'>
                         <Button
                           type='submit'
                           isDisabled={isPending}
-                          className="md:w-[280px] px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
+                          className=" w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
                         >
                           {isPending ? (
                             <svg

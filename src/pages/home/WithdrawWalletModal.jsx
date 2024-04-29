@@ -43,13 +43,13 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
           isOpen={isOpen}
           onClose={onClose}
           hideCloseButton={true}
-          className='rounded-none'
+          className='rounded-none w-[23rem] md:w-[28rem]'
         >
-          <ModalContent className='md:w-[30rem] overflow-visible'>
-            <div className='p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
+          <ModalContent className=' overflow-visible'>
+            <div className='p-6 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
-                className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>
@@ -62,7 +62,10 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                       </div>
                     </div>
                     <div className='justify-start flex-col items-start gap-[19px] flex'>
-                      <div className='self-stretch bg-white bg-opacity-10 rounded-none justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch rounded-none  gap-2 flex-col flex'>
+                        <div className="text-sm font-medium font-['Campton']">
+                          Amount
+                        </div>
                         <Controller
                           name='amount'
                           control={control}
@@ -71,7 +74,6 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                               type='text'
                               size='sm'
                               placeholder='amount'
-                              label='Amount'
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
@@ -88,7 +90,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                                 ],
                                 innerWrapper: 'bg-transparent',
                                 inputWrapper: [
-                                  'bg-zinc-700 bg-opacity-10',
+                                  'bg-zinc-700 bg-opacity-10 rounden-none',
                                   'dark:bg-white',
                                   'hover:bg-white hover:bg-opacity-10',
                                   'dark:hover:bg-opacity-80',
@@ -104,11 +106,11 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                           )}
                         />
                       </div>
-                      <div className=''>
+                      <div className='self-stretch'>
                         <Button
                           type='submit'
                           isDisabled={isPending}
-                          className="md:w-[280px] px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
+                          className="w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
                         >
                           {isPending ? (
                             <svg

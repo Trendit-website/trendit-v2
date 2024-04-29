@@ -9,7 +9,7 @@ import { ChevronRight } from 'lucide-react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import selfieImage from '../../assets/selfie.svg'
 import readingImage from '../../assets/reading-side.svg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import SelectPaymentmodal from '../transaction/components/SelectPaymentmodal'
 import { useDisclosure } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +17,7 @@ import { useFetchBallance } from '../../api/walletApi'
 import { useGetProfile } from '../../api/profileApis'
 import FundWalletModal from './FundWalletModal'
 import WithdrawWalletModal from './WithdrawWalletModal'
+import { dashboardContext } from '../../context/Dashboard'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -31,6 +32,7 @@ export default function Welcome({ onNotificationClick }) {
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
+  const { isTablet } = useContext(dashboardContext)
 
   return (
     <div>
@@ -224,8 +226,11 @@ export default function Welcome({ onNotificationClick }) {
                 </div>
                 <div
                   className={`w-20 relative  ${
-                    !onNotificationClick ? 'right-0' : ' -right-24'
+                    !isTablet ? '-right-32' : ' -right-24'
                   } md:w-full md:inline-flex`}
+                  // className={`w-20 relative  ${
+                  //   !onNotificationClick ? 'right-0' : ' -right-24'
+                  // } md:w-full md:inline-flex`}
                 >
                   <Image src={selfieImage} />
                 </div>
@@ -254,8 +259,11 @@ export default function Welcome({ onNotificationClick }) {
                 </div>
                 <div
                   className={`w-20 relative  ${
-                    !onNotificationClick ? 'right-0' : ' -right-24'
+                    !isTablet ? '-right-32' : ' -right-24'
                   } md:w-full md:inline-flex`}
+                  // className={`w-20 relative  ${
+                  //   !onNotificationClick ? 'right-0' : ' -right-24'
+                  // } md:w-full md:inline-flex`}
                 >
                   <Image src={readingImage} />
                 </div>
@@ -491,7 +499,7 @@ export default function Welcome({ onNotificationClick }) {
           </div>
         </div>
 
-        <div className='w[822px] mx-auto text-center md:mt-40 h-20 pb-3 flex-col justify-start items-center inline-flex'>
+        <div className='mx-auto text-center md:mt-40 h-20 pb-3 flex-col justify-start items-center inline-flex'>
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">

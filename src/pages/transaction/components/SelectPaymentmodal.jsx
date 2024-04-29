@@ -51,15 +51,15 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         hideCloseButton={true}
-        className='rounded-none'
+        className='rounded-none w-[23rem] md:w-[28rem]'
       >
-        <ModalContent className=' md:w[28rem]  overflow-visible'>
+        <ModalContent className='overflow-visible'>
           {view === 'fund' && (
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className='h-[412px] p-12 w-full rounded flex-col justify-center items-center gap-12 inline-flex'>
+              <div className='p-6 w-full rounded flex-col justify-center items-center gap-12 inline-flex'>
                 <div
                   onClick={onClose}
-                  className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-4 cursor-pointer rounded-[100px] '
+                  className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
                 >
                   <AiOutlineClose size={20} color='#fff' />
                 </div>
@@ -219,10 +219,10 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
           )}
 
           {view === 'crypto' && (
-            <div className=' h-[373px] p-12 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className='p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={() => setView('fund')}
-                className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>
@@ -277,10 +277,10 @@ export default function SelectPaymentmodal({ isOpen, onClose }) {
             </div>
           )}
           {view === 'bankTransfer' && (
-            <div className=' h-[415px] p-12 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className='p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={() => setView('fund')}
-                className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40 cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>

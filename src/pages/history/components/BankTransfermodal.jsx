@@ -10,12 +10,13 @@ export default function BankTransfermodal({ isOpen, onClose }) {
       backdrop='blur'
       isOpen={isOpen}
       onClose={onClose}
+      className='rounded-none w-[23rem] md:w-[28rem]'
     >
       <ModalContent className='md:w-[28rem] '>
-        <div className=' h-[415px] p-12 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+        <div className='  p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
           <div
             onClick={onClose}
-            className='p-2 bg-fuchsia-400 top-0 absolute z-40 right-0 cursor-pointer rounded-[100px] '
+            className='p-2 bg-fuchsia-400 top-0 absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
           >
             <AiOutlineClose size={20} color='#fff' />
           </div>
