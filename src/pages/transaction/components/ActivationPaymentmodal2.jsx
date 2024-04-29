@@ -60,7 +60,7 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
             <div className=' px-[26px] py-8 bg-neutral-900 rounded flex-col justify-start items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
-                className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-4 cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>
@@ -183,13 +183,13 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                         <Input
                           type='text'
                           size='sm'
+                          isDisabled
                           placeholder='amount'
                           {...field}
                           errorMessage={errors?.amount?.message}
                           isInvalid={!!errors?.amount}
                           classNames={{
                             input: [
-                              // 'bg-transparent',
                               'text-black/90 dark:text-white/90',
                               'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                             ],

@@ -99,7 +99,7 @@ const Sidebar = () => {
       }
 
   return (
-    <div className="relative bg-blue-500  dark:bg-neutral-900 z-40  shadowsidebar font-['Campton']">
+    <div className="relative  bg-white  dark:bg-neutral-900 z-40 font-['Campton']">
       <div
         onClick={() => overlayClicked()}
         className={`lg:hidden fixed inset-0 max-h-screen z-40 cursor-pointer   ${
@@ -122,7 +122,7 @@ const Sidebar = () => {
         }
         className='shadow-sm border-r dark:border-0 min-h-full group text-black lg:z-[49] z-[91] max-w-[17rem] w-[17rem] 
              fixed top-0 left-0
-           h-screen  dark:!text-gray-100 bg-lighten dark:bg-neutral-900  '
+           h-screen  dark:!text-gray-100 bg-white dark:bg-neutral-900  '
       >
         {/* top bar */}
 

@@ -111,7 +111,7 @@ export default function Transactions() {
               </motion.div>
             )}
           </div>
-          <div className='self-stretch mt-40 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
+          <div className='self-stretch mt-4 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
               Transaction History
             </div>

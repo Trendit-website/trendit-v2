@@ -1,15 +1,10 @@
-import { MousePointerClick } from 'lucide-react'
+// import { MousePointerClick } from 'lucide-react'
 import { TbSpeakerphone } from 'react-icons/tb'
-import { BiShare } from 'react-icons/bi'
-import { RiMenuSearchLine } from 'react-icons/ri'
+// import { BiShare } from 'react-icons/bi'
+// import { RiMenuSearchLine } from 'react-icons/ri'
 import {
   EarnIcon,
-  // HomeIcon,
-  GrowIcon,
-  // TransIcon,
-  // SettingIcon,
-  // ReferalIcon,
-  // SupportIcon,
+  // GrowIcon,
 } from '../../assets/EarnIcon'
 import { VscHeart } from 'react-icons/vsc'
 import { BiBarChart } from 'react-icons/bi'
@@ -40,44 +35,42 @@ export const defaultMenu = [
     icon: TbSpeakerphone,
     withSubMenu: false,
   },
-  {
-    title: '',
-    name: 'Resell',
-    route: '/dashboard/resell',
-    icon: BiShare,
-    withSubMenu: false,
-  },
+  // {
+  //   title: '',
+  //   name: 'Resell',
+  //   route: '/dashboard/resell',
+  //   icon: BiShare,
+  //   withSubMenu: false,
+  // },
 
-  {
-    title: 'Market place',
-    name: 'Orders',
-    // routeMerge: true,
-    icon: RiMenuSearchLine,
-    withSubMenu: false,
-    route: '/dashboard/orders',
-  },
-  {
-    title: '',
-    name: 'Grow',
-    // routeMerge: true,
-    icon: GrowIcon,
-    withSubMenu: false,
-    route: '/dashboard/grow',
-  },
-  {
-    title: '',
-    name: 'Giveaways',
-    // routeMerge: true,
-    icon: MousePointerClick,
-    withSubMenu: false,
-    route: '/dashboard/giveaways',
-  },
+  // {
+  //   title: 'Market place',
+  //   name: 'Orders',
+  //   // routeMerge: true,
+  //   icon: RiMenuSearchLine,
+  //   withSubMenu: false,
+  //   route: '/dashboard/orders',
+  // },
+  // {
+  //   title: '',
+  //   name: 'Grow',
+  //   // routeMerge: true,
+  //   icon: GrowIcon,
+  //   withSubMenu: false,
+  //   route: '/dashboard/grow',
+  // },
+  // {
+  //   title: '',
+  //   name: 'Giveaways',
+  //   // routeMerge: true,
+  //   icon: MousePointerClick,
+  //   withSubMenu: false,
+  //   route: '/dashboard/giveaways',
+  // },
 
   {
     title: 'Quick Actions',
     name: 'Transactions',
-    // routeMerge: true,
-    // icon: TransIcon,
     icon: BiBarChart,
     withSubMenu: false,
     route: '/dashboard/transactions',
@@ -85,8 +78,6 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Refer Link',
-    // routeMerge: true,
-    // icon: ReferalIcon,
     icon: VscHeart,
     withSubMenu: false,
     route: '/dashboard/refer-link',
@@ -94,8 +85,6 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Setting',
-    // routeMerge: true,
-    // icon: SettingIcon,
     icon: HiOutlineAdjustmentsHorizontal,
     withSubMenu: false,
     route: '/dashboard/settings',
@@ -103,9 +92,7 @@ export const defaultMenu = [
   {
     title: '',
     name: 'Support',
-    // routeMerge: true,
     icon: PiWarningOctagon,
-    // icon: SupportIcon,
     withSubMenu: false,
     route: '/dashboard/support',
   },

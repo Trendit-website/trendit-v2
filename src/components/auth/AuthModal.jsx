@@ -21,13 +21,13 @@ export default function AuthModal({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         hideCloseButton={true}
-        className='rounded-none'
+        className='rounded-none w-[23rem] md:w-[28rem]'
       >
-        <ModalContent className='overflow-visible w-[20rem] md:w-[30rem] '>
+        <ModalContent className='overflow-visible '>
           <div className=' px-4 md:px-12 md:w-[28rem] rounded-none flex-col justify-start items-center inline-flex'>
             <div
               onClick={onClose}
-              className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
+              className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
             >
               <AiOutlineClose size={20} color='#fff' />
             </div>
@@ -83,7 +83,7 @@ export default function AuthModal({ isOpen, onClose }) {
               </div>
               <Button
                 onClick={() => {
-                  navigate('/dashboard')
+                  navigate('/dashboard/home')
                 }}
                 className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-3 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >

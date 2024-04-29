@@ -29,7 +29,7 @@ export default function History() {
     <div>
       <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
-          <div className='self-stretch h-[276px] flex-col justify-start items-start gap-2 flex'>
+          <div className='self-stretch flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch borderb borderstone-900 justify-between items-center inline-flex'>
               <div className='justify-start items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
@@ -126,7 +126,7 @@ export default function History() {
               </motion.div>
             )}
           </div>
-          <div className='self-stretch mt-40 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
+          <div className='self-stretch md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
             <div className=" text-2xl font-medium font-['Campton']">
               My Adverts
             </div>

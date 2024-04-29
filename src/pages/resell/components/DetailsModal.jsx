@@ -33,12 +33,13 @@ export default function DetailsModal({ isOpen, onClose, fetchSingleItem }) {
           isOpen={isOpen}
           onClose={onClose}
           hideCloseButton={true}
+          className='rounded-none w-[23rem] md:w-[28rem]'
         >
-          <ModalContent className='md:w-[30rem] overflow-visible'>
-            <div className=' -[699.59px] p-12 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+          <ModalContent className='overflow-visible'>
+            <div className='p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
-                className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40  cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>

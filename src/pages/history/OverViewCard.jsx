@@ -23,7 +23,7 @@ export default function OverViewCard() {
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
-              <div className='justify-start items-center gap-2 flex'>
+              <div className='justify-start items-center gap-2 hidden  md:flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -70,7 +70,7 @@ export default function OverViewCard() {
             </div>
           </div>
         </div>
-        <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
+        {/* <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
             <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
               Total Earned
@@ -162,7 +162,7 @@ export default function OverViewCard() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
