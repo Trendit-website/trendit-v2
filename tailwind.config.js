@@ -10,7 +10,7 @@ export default {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    fontFamily: { Campton: ['Campton', 'sans-serif'] },
+    fontFamily: { Campton: ['Manrope', 'sans-serif'] },
     extend: {},
   },
   darkMode: 'class',

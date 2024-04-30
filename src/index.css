@@ -1,7 +1,8 @@
-@import url('https://fonts.cdnfonts.com/css/campton');
+/* @import url('https://fonts.cdnfonts.com/css/campton'); */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Manrope', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -16,17 +17,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    @apply font-Campton;
-  }
 
-  body {
-    @apply font-Campton;
-  }
-}
-
-/* @font-face {
-  font-family: 'Campton';
-  src: url('./components/fonts/CamptonBook.otf') format('truetype');
-} */
