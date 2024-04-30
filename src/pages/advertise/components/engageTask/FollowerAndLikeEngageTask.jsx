@@ -10,7 +10,11 @@ import {
 import { genders, platforms } from '../../../../utilities/data'
 import AdvertPaymentModal from '../AdvertPaymentModal'
 import { Controller, useForm } from 'react-hook-form'
-import { useGetCountry, useGetReligion, useGetState } from '../../../../api/locationApis'
+import {
+  useGetCountry,
+  useGetReligion,
+  useGetState,
+} from '../../../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 import {
@@ -34,7 +38,7 @@ export default function FollowerAndLikeEngageTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 150, posts_count: 1 },
+    defaultValues: { amount: 5, posts_count: 1 },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -70,8 +74,7 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('religion', data.religion)
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
-            formData.append('target_state', data.target_state)
-
+      formData.append('target_state', data.target_state)
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
@@ -108,8 +111,7 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('religion', data.religion)
       formData.append('goal', 'join group')
       formData.append('account_link', data.account_link)
-            formData.append('target_state', data.target_state)
-
+      formData.append('target_state', data.target_state)
 
       // Update the amount state
 
@@ -138,23 +140,21 @@ export default function FollowerAndLikeEngageTask() {
                   title={`Get People to Download and Review Your App on Google play `}
                   descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
 people to post your ads on their social media account.`}
-                  price={`₦30 per Follow`}
+                  price={`₦5 per Follow`}
                 />
               </div>
-              <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
+              <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className=" text-2xl font-medium font-['Campton']">
+                  <div className=" text-xl md:text-2xl font-medium font-['Campton']">
                     Create an Engagement Task
                   </div>
                 </div>
-                <div className='self-stretch grow shrink basis-0 px-16 py-6 flex-col justify-start items-start gap-12 flex'>
+                <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
                   <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-6 flex'>
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                        <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
-                            Select Platform
-                          </div>
+                        <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          Select Platform
                         </div>
 
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -203,7 +203,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center  text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Campton']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -262,7 +262,7 @@ people to post your ads on their social media account.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Campton']">
                             You can target and select a particular location
                             where your task or advert will be mostly shown. You
                             can also select all States if you want to target
@@ -322,7 +322,7 @@ people to post your ads on their social media account.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Campton']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -367,7 +367,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center  text-[12.83px] font-medium font-['Campton']">
                             The Link to Your social Media Post
                           </div>
                         </div>
@@ -394,7 +394,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink  text-[10px] font-normal font-['Campton']">
                             Enter the link to the post you want people to like.
                             ensure the link you paste here is the link to your
                             post not your page
@@ -403,7 +403,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Gender
                           </div>
                         </div>
@@ -454,7 +454,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -466,7 +466,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
                             Select Religion
                           </div>
                         </div>
@@ -515,7 +515,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink dark:text-white basis-0 text-stone-900 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
                             You can target people of a particular religion or
                             belief. Your advert and task will be shown to the
                             particular religion you select. Select 'All
@@ -525,13 +525,12 @@ people to post your ads on their social media account.`}
                       </div>
                     </div>
                   </div>
-                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between items-center inline-flex'>
-                    <div className='self-stretch px-2 flex-col justify-center items-center gap-2 inline-flex'>
-                      <div className="text-white text-[12.83px] font-medium font-['Campton']">
-                        Total Pay
-                      </div>
-
-                      <div className='self-stretch w-full  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
+                    <div className="text-white px-2 text-[12.83px] font-medium font-['Campton']">
+                      Total Pay
+                    </div>
+                    <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='amount'
                           control={control}
@@ -565,37 +564,37 @@ people to post your ads on their social media account.`}
                           )}
                         />
                       </div>
+                      <Button
+                        type='submit'
+                        isDisabled={isPending}
+                        className='md:w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                      >
+                        {isPending ? (
+                          <svg
+                            className='animate-spin h-5 w-5 text-current'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg'
+                          >
+                            <circle
+                              className='opacity-25'
+                              cx='12'
+                              cy='12'
+                              r='10'
+                              stroke='currentColor'
+                              strokeWidth='4'
+                            />
+                            <path
+                              className='opacity-75'
+                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                              fill='currentColor'
+                            />
+                          </svg>
+                        ) : (
+                          'Submit and Pay'
+                        )}
+                      </Button>
                     </div>
-                    <Button
-                      type='submit'
-                      isDisabled={isPending}
-                      className='w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                    >
-                      {isPending ? (
-                        <svg
-                          className='animate-spin h-5 w-5 text-current'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <circle
-                            className='opacity-25'
-                            cx='12'
-                            cy='12'
-                            r='10'
-                            stroke='currentColor'
-                            strokeWidth='4'
-                          />
-                          <path
-                            className='opacity-75'
-                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                            fill='currentColor'
-                          />
-                        </svg>
-                      ) : (
-                        'Submit and Pay'
-                      )}
-                    </Button>
                   </div>
                 </div>
               </div>

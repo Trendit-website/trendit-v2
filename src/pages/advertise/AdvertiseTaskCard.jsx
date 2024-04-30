@@ -28,7 +28,7 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Campton']">
               Get People to post your advert on Tiktok
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -57,7 +57,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button
@@ -118,7 +118,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button
@@ -179,7 +179,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button
@@ -257,7 +257,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white  text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button
@@ -349,7 +349,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button
@@ -406,7 +406,7 @@ export default function AdvertiseTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦150 per Advert post
+                ₦80 per Advert post
               </div>
             </div>
             <Button

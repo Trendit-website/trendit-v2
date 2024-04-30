@@ -28,7 +28,7 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Campton']">
               Post adverts on your Facebook page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -55,8 +55,8 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦3 per Page Like and Follow
+              <div className=" text-sm font-bold font-['Campton']">
+                ₦110 per Page Like and Follow
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Campton']">
               Post adverts on your Tictok page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -133,8 +133,8 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦3 per Page Like and Follow
+              <div className=" text-sm font-bold font-['Campton']">
+                ₦110 per Page Like and Follow
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -212,7 +212,7 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Campton']">
               Post adverts on your Instagram account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
@@ -238,8 +238,8 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦3 per Page Like and Follow
+              <div className=" text-sm font-bold font-['Campton']">
+                ₦110 per Page Like and Follow
               </div>
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -314,7 +314,7 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Campton']">
               Post adverts on your WhatsApp status
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
@@ -340,8 +340,8 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦3 per Page Like and Follow
+              <div className=" text-sm font-bold font-['Campton']">
+                ₦60 per Page Like and Follow
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
@@ -384,7 +384,7 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Campton']">
               Post adverts on your X account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
@@ -410,8 +410,8 @@ export default function PostAdvertTasksCard() {
                   Earning:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦3 per Page Like and Follow
+              <div className=" text-sm font-bold font-['Campton']">
+                ₦110 per Page Like and Follow
               </div>
             </div>
           </div>
@@ -431,7 +431,7 @@ export default function PostAdvertTasksCard() {
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center text-black dark:text-white text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
                 124 Task available
               </div>
             </div>
