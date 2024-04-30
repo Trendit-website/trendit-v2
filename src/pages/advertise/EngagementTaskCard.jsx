@@ -38,7 +38,7 @@ export default function EngagementTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦30 per Follow
+                ₦20 per Follow
               </div>
             </div>
             <Button
@@ -165,7 +165,7 @@ export default function EngagementTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦50 per Download and Review
+                ₦120 per Download and Review
               </div>
             </div>
             <Button
@@ -232,7 +232,7 @@ export default function EngagementTaskCard() {
                 </div>
               </div>
               <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
-                ₦50 per Download and Review
+                ₦100 per Download and Review
               </div>
             </div>
             <Button

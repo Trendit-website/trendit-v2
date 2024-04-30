@@ -55,7 +55,7 @@ export default function CreateTkAdvertTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 150, posts_count: 1, platform: 'tiktok' },
+    defaultValues: { amount: 140, posts_count: 1, platform: 'tiktok' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
@@ -220,25 +220,25 @@ export default function CreateTkAdvertTask() {
     <>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
-            <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
-              <div className='w-full'>
+          <div className='p-3 bg-white px-4 dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
+            <div className=' grow flex-col justify-start items-start gap-4 flex'>
+              <div className='wfull'>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Tiktok'}
                   frame={TkFrame}
                   descp={`Get real people to post your advert on their Tiktok account having atleast 1000 active followers each on their account to post your
 advert to their followers. This will give your advert massive views within a short period of time. You can indicate any number of people you 
 want to post your advert.`}
-                  price={`₦150 per Advert Post`}
+                  price={`₦140 per Advert Post`}
                 />
               </div>
-              <div className='self-stretch  mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
-                <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className="dark:text-white text-stone-900 text-2xl font-medium font-['Campton']">
+              <div className='self-stretch md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
+                <div className='self-stretch  py-3 justify-start items-start gap-2 inline-flex'>
+                  <div className=" text-xl md:text-2xl font-medium font-['Campton']">
                     Create Advert Task
                   </div>
                 </div>
-                <div className='self-stretch grow shrink basis-0 px-16 py-6 flex-col justify-start items-start gap-12 flex'>
+                <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start md:gap-12 flex'>
                   <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-6 flex'>
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
@@ -291,7 +291,7 @@ want to post your advert.`}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Campton']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -347,7 +347,7 @@ want to post your advert.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                          <div className="text-[10px] font-normal font-['Campton']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -407,7 +407,7 @@ want to post your advert.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Campton']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -577,7 +577,7 @@ want to post your advert.`}
                         <Textarea
                           {...register('caption')}
                           placeholder='Caption'
-                          className="text-black  self-stretch grow shrink basis-0 px2 py3.5  bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Campton']"
+                          className="text-black  self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Campton']"
                         />
 
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -663,7 +663,7 @@ want to post your advert.`}
                           </label>
                         </div>
                       </div>
-                      <div className="w-[559px] h-6 text-[10px] font-normal font-['Campton']">
+                      <div className="md:w-[559px] h-6 text-[10px] font-normal font-['Campton']">
                         Upload a Photo of the Advert You want people to post on
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
@@ -689,7 +689,7 @@ want to post your advert.`}
                             <source src={imageUrl} type='video/mp4' />
                           </video>
                         </div> ? (
-                        <div className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
+                        <div className='w-full md:w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             width='25'
@@ -708,13 +708,12 @@ want to post your advert.`}
                       ) : null}
                     </div>
                   </div>
-                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between items-center inline-flex'>
-                    <div className='self-stretch px-2 flex-col justify-center items-center gap-2 inline-flex'>
-                      <div className="text-white text-[12.83px] font-medium font-['Campton']">
-                        Total Pay
-                      </div>
-
-                      <div className='self-stretch w-full  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
+                    <div className="text-white px-2 text-[12.83px] font-medium font-['Campton']">
+                      Total Pay
+                    </div>
+                    <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='amount'
                           control={control}
@@ -748,37 +747,37 @@ want to post your advert.`}
                           )}
                         />
                       </div>
+                      <Button
+                        type='submit'
+                        isDisabled={isPending}
+                        className='md:w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                      >
+                        {isPending ? (
+                          <svg
+                            className='animate-spin h-5 w-5 text-current'
+                            fill='none'
+                            viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg'
+                          >
+                            <circle
+                              className='opacity-25'
+                              cx='12'
+                              cy='12'
+                              r='10'
+                              stroke='currentColor'
+                              strokeWidth='4'
+                            />
+                            <path
+                              className='opacity-75'
+                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                              fill='currentColor'
+                            />
+                          </svg>
+                        ) : (
+                          'Submit and Pay'
+                        )}
+                      </Button>
                     </div>
-                    <Button
-                      type='submit'
-                      isDisabled={isPending}
-                      className='w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                    >
-                      {isPending ? (
-                        <svg
-                          className='animate-spin h-5 w-5 text-current'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <circle
-                            className='opacity-25'
-                            cx='12'
-                            cy='12'
-                            r='10'
-                            stroke='currentColor'
-                            strokeWidth='4'
-                          />
-                          <path
-                            className='opacity-75'
-                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                            fill='currentColor'
-                          />
-                        </svg>
-                      ) : (
-                        'Submit and Pay'
-                      )}
-                    </Button>
                   </div>
                 </div>
               </div>
