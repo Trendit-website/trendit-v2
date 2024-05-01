@@ -7,27 +7,35 @@ import {
 } from '../../api/settingsApis'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
+import { useEffect } from 'react'
 
 export default function PrefrenceForm() {
-  const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
-  const { control, setValue } = useForm({})
-
   const { data: userPrefrence } = useGetUserPrefence()
 
-  const { mutateAsync: updateUserPrefence } = useUpdateUserPrefence()
-  // console.log(userPrefrence, 'userPrefrence')
-  // useEffect(() => {
-  //   if (userPrefrence) {
-  //     setValue('appearance', userPrefrence.isDarkMode)
-  //   }
-  // }, [userPrefrence])
+  const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
+  const { control, setValue } = useForm({
+    defaultValues: {
+      appearance: userPrefrence?.appearance,
+    },
+  })
 
-  console.log(userPrefrence, 'userPrefrence 22')
+  const { mutateAsync: updateUserPrefence } = useUpdateUserPrefence()
+
+  useEffect(() => {
+    // Set dark mode state based on the user's preference when component mounts
+    if (userPrefrence?.appearance !== undefined) {
+      toggleDarkMode(userPrefrence?.appearance)
+    }
+  }, [userPrefrence])
+
+  // console.log(userPrefrence?.appearance, 'userPrefrence 2244')
+  // console.log(userPrefrence, 'userPrefrence 22')
 
   const handleToggleDarkMode = async () => {
     toggleDarkMode()
-    setValue('appearance', !isDarkMode)
-    console.log(!isDarkMode, 'isDarkMode')
+    setValue('appearance', !isDarkMode ? 'dark' : 'light')
+    // console.log(!isDarkMode, 'isDarkMode')
+    // console.log(isDarkMode, 'isDarkMode  322')
     try {
       const res = await updateUserPrefence({ appearance: !isDarkMode })
       if (res?.data?.status) {

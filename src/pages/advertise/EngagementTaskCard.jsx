@@ -11,7 +11,7 @@ export default function EngagementTaskCard() {
 
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white  text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Campton']">
               Get Real People to Follow Your Audiomack Channel
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -37,12 +37,14 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Campton']">
                 ₦20 per Follow
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-joinGP-task')}
+              onClick={() =>
+                navigate('/dashboard/advertise-engage-joinGP-task')
+              }
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -64,9 +66,9 @@ export default function EngagementTaskCard() {
             fill='#FC11F5'
           />
         </svg>
-        <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
+        <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Campton']">
               Get Genuine People to Follow Your Social Media Accounts
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -92,12 +94,12 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Campton']">
                 ₦5 per Follow
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-like-task')}
+              onClick={() => navigate('/dashboard/advertise-engage-like-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -136,9 +138,9 @@ export default function EngagementTaskCard() {
             </linearGradient>
           </defs>
         </svg>
-        <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
+        <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Campton']">
               Get People to Download and Review Your App on Apple Store
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -164,12 +166,14 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Campton']">
                 ₦120 per Download and Review
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-follower-task')}
+              onClick={() =>
+                navigate('/dashboard/advertise-engage-follower-task')
+              }
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -205,7 +209,7 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Campton']">
               Get People to Download and Review Your App on Google Play Store
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -236,7 +240,9 @@ export default function EngagementTaskCard() {
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-follower&like-task')}
+              onClick={() =>
+                navigate('/dashboard/advertise-engage-follower&like-task')
+              }
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -259,7 +265,7 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Campton']">
               Get Genuine People to Like Your Social Media Posts
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
@@ -285,12 +291,14 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Campton']">
                 ₦5 per Like
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-comment-task')}
+              onClick={() =>
+                navigate('/dashboard/advertise-engage-comment-task')
+              }
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
@@ -325,7 +333,7 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Campton']">
               Get Real People to Follow Your Spotify Channel
             </div>
             <div className="self-stretch  text-xs font-normal font-['Campton']">
@@ -351,12 +359,12 @@ export default function EngagementTaskCard() {
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Campton']">
                 ₦30 per Follow
               </div>
             </div>
             <Button
-              onClick={() => navigate('/dashboard/engage-share-task')}
+              onClick={() => navigate('/dashboard/advertise-engage-share-task')}
               className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert

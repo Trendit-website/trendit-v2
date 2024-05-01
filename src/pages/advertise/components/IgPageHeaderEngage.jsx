@@ -5,7 +5,7 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
   return (
     <div>
       <div className='self-stretch relative border border-zinc-400 flex-col justify-start items-start flex'>
-        <div className='self-stretch p-6 bg-zinc400 bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
+        <div className='self-stretch p-6 bg-zinc400 z-20 bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch  text-[10px] font-normal font-['Campton']">
               Jan 12th 9:27pm
@@ -39,7 +39,7 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
               <div className=" text-sm font-bold font-['Campton']">{price}</div>
             </div>
           </div>
-          <div className='w-[304.97px] origin-top-left absolute right-0 top-0 top[9.2rem] justify-start items-start gap-[115.18px] inline-flex'>
+          <div className='w-[304.97px] origin-top-left absolute right-0 top-0 -z-10 opacity-20 md:z-0 md:opacity-100 justify-start items-start gap-[115.18px] inline-flex'>
             <Image src={frame} alt='igFrme' className='h-[10.1rem]' />
           </div>
         </div>

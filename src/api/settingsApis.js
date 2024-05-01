@@ -49,7 +49,7 @@ export const useGetSecurityPrefrence = () => {
     queryKey: ['sec_prefence'],
     queryFn: async () => {
       const res = await API.get(`/settings/security`)
-      console.log(res, 'sec_prefence')
+      // console.log(res, 'sec_prefence')
       return res?.data?.security_settings
     },
   })
