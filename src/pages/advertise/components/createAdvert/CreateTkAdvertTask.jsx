@@ -222,7 +222,7 @@ export default function CreateTkAdvertTask() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='p-3 bg-white px-4 dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' grow flex-col justify-start items-start gap-4 flex'>
-              <div className='wfull'>
+              <div className='w-full'>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Tiktok'}
                   frame={TkFrame}
@@ -713,7 +713,7 @@ want to post your advert.`}
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-40 text-white bg-transparent bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='amount'
                           control={control}
@@ -728,21 +728,12 @@ want to post your advert.`}
                               value={calculatedAmount}
                               isDisabled
                               classNames={{
-                                input: [
-                                  'text-black/90 dark:text-white/90',
-                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                                ],
                                 inputWrapper: [
-                                  'bg-opacity-10',
-                                  'dark:hover:bg-opacity-10',
-                                  'group-data-[focused=true]:bg-opacity-10',
-                                  'dark:group-data-[focused=true]:bg-opacity-10',
                                   'border-2 border-transparent',
                                   'focus-within:!border-fuchsia-600  ',
-                                  '!cursor-text',
                                 ],
                               }}
-                              className=" rounded text-zinc-400 text-3xl font-normal font-['Campton']"
+                              className=" rounded bg-transparent text-3xl font-normal font-['Campton']"
                             />
                           )}
                         />

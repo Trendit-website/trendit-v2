@@ -372,14 +372,14 @@ export default function PostAdvertTasksCard() {
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          width='47'
-          height='48'
-          viewBox='0 0 47 48'
+          width='48'
+          height='47'
+          viewBox='0 0 48 47'
           fill='none'
         >
           <path
-            d='M37.0145 2.84766H44.2211L28.4761 20.8447L47 45.3298H32.4966L21.1382 30.4778L8.13883 45.3298H0.92825L17.7699 26.0794L0 2.84961H14.8716L25.1391 16.4248L37.0145 2.84766ZM34.4863 41.0175H38.4793L12.7018 6.9347H8.41692L34.4863 41.0175Z'
-            fill='black'
+            d='M37.5145 2.25781H44.7211L28.9761 20.2549L47.5 44.7399H32.9966L21.6382 29.8879L8.63883 44.7399H1.42825L18.2699 25.4895L0.5 2.25977H15.3716L25.6391 15.8349L37.5145 2.25781ZM34.9863 40.4277H38.9793L13.2018 6.34485H8.91692L34.9863 40.4277Z'
+            fill='white'
           />
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
