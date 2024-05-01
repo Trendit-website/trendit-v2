@@ -227,7 +227,7 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.target_country?.message}
                                 isLoading={isCountryLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                                 placeholder='Select country'
                                 classNames={{
                                   listbox: [
@@ -418,7 +418,7 @@ people to post your ads on their social media account.`}
                                 isInvalid={!!errors.gender}
                                 errorMessage={errors?.gender?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                                 placeholder='Select Gender'
                                 classNames={{
                                   listbox: [
@@ -480,7 +480,7 @@ people to post your ads on their social media account.`}
                                 isInvalid={!!errors.religion}
                                 errorMessage={errors?.religion?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
                                 placeholder='Select Religion'
                                 isLoading={isReligionLoading}
                                 {...field}
@@ -530,7 +530,7 @@ people to post your ads on their social media account.`}
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-40 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='amount'
                           control={control}
@@ -545,21 +545,14 @@ people to post your ads on their social media account.`}
                               value={calculatedAmount}
                               isDisabled
                               classNames={{
-                                input: [
-                                  'text-black/90 dark:text-white/90',
-                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                                ],
+                                input: ['text-black/90 dark:text-white/90'],
                                 inputWrapper: [
-                                  'bg-opacity-10',
-                                  'dark:hover:bg-opacity-10',
-                                  'group-data-[focused=true]:bg-opacity-10',
-                                  'dark:group-data-[focused=true]:bg-opacity-10',
                                   'border-2 border-transparent',
                                   'focus-within:!border-fuchsia-600  ',
                                   '!cursor-text',
                                 ],
                               }}
-                              className=" rounded text-zinc-400 text-3xl font-normal font-['Campton']"
+                              className=" rounded text-3xl font-normal font-['Campton']"
                             />
                           )}
                         />

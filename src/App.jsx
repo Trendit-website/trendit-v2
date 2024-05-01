@@ -306,7 +306,7 @@ function App() {
               }
             />
             <Route
-              path='engage-ig-task'
+              path='advertise-engage-ig-task'
               element={
                 <ProtectedRoute>
                   {' '}
@@ -315,7 +315,7 @@ function App() {
               }
             />
             <Route
-              path='engage-joinGP-task'
+              path='advertise-engage-joinGP-task'
               element={
                 <ProtectedRoute>
                   <JoinGroupEngageTask />
@@ -323,7 +323,7 @@ function App() {
               }
             />
             <Route
-              path='engage-like-task'
+              path='advertise-engage-like-task'
               element={
                 <ProtectedRoute>
                   <LikeEngageTask />
@@ -331,7 +331,7 @@ function App() {
               }
             />
             <Route
-              path='engage-follower-task'
+              path='advertise-engage-follower-task'
               element={
                 <ProtectedRoute>
                   <FollowerEngageTask />
@@ -339,7 +339,7 @@ function App() {
               }
             />
             <Route
-              path='engage-follower&like-task'
+              path='advertise-engage-follower&like-task'
               element={
                 <ProtectedRoute>
                   <FollowerAndLikeEngageTask />
@@ -347,7 +347,7 @@ function App() {
               }
             />
             <Route
-              path='engage-comment-task'
+              path='advertise-engage-comment-task'
               element={
                 <ProtectedRoute>
                   <CommentEngageTask />
@@ -355,7 +355,7 @@ function App() {
               }
             />
             <Route
-              path='engage-share-task'
+              path='advertise-engage-share-task'
               element={
                 <ProtectedRoute>
                   <SharePostEngageTask />

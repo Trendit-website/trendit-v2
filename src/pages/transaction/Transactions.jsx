@@ -12,7 +12,7 @@ export default function Transactions() {
 
   return (
     <div>
-      <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
+      <div className='w-full p-3 flex-col min-h-screen justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch h[276px] flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch borderb borderstone-900 justify-between items-center inline-flex'>

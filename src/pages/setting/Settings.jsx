@@ -12,7 +12,7 @@ export default function Settings() {
 
   return (
     <div>
-      <div className=' w-full p-3 bg-white dark:bg-neutral-900 flex-col justify-start items-start gap-3 inline-flex'>
+      <div className=' w-full p-3 min-h-screen bg-white dark:bg-neutral-900 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch px-4 md:px-0 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">

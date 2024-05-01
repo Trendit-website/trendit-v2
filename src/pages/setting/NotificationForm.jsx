@@ -12,7 +12,7 @@ export default function NotificationForm() {
   return (
     <>
       {isLoading ? (
-        <div className='min-h-screen'>
+        <div className='min-h-screen mx-auto'>
           {' '}
           <svg
             className='animate-spin h-5 w-5 text-current'
