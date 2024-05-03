@@ -148,10 +148,9 @@ export default function SharePostEngageTask() {
                   <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-6 flex'>
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                        
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
-                            Select Platform
-                          </div>
+                        <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          Select Platform
+                        </div>
 
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                           <Controller
@@ -522,7 +521,7 @@ export default function SharePostEngageTask() {
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
-                    <div className="text-white px-2 text-[12.83px] font-medium font-['Campton']">
+                    <div className=" px-2 text-[12.83px] font-medium font-['Campton']">
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
@@ -555,7 +554,7 @@ export default function SharePostEngageTask() {
                                   '!cursor-text',
                                 ],
                               }}
-                              className=" rounded text-zinc-400 text-3xl font-normal font-['Campton']"
+                              className=" rounded text-3xl font-normal font-['Campton']"
                             />
                           )}
                         />
