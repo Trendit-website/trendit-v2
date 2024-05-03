@@ -44,14 +44,14 @@ export default function Signup() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className=' h-screen md:h-[1024px]  relative bg-white dark:bg-black'>
+        <div className=' min-h-screen md:h-[1024px]  relative '>
           <div className='left-0 top-0 absolute'>
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
           </div>
           <div className=' mx-auto w-[20rem] md:w-[23rem] right-[10%] md:right-[38%] top-[200px] absolute  flex-col justify-start items-center gap-6 inlineflex'>
             <div className='self-stretch flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center text-black dark:text-white text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+              <div className="w-80 text-center  text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
                 Tell us about you
               </div>
               <div className="w-[252px] text-center pt-2 pb-5 text-zinc-400 text-base font-normal font-['Campton']">
@@ -60,7 +60,7 @@ export default function Signup() {
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                <div className="text-center px-2 text-black  dark:text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
                   Full Name
                 </div>
                 <div className='flex gap-2'>
@@ -111,7 +111,7 @@ export default function Signup() {
                 </div>
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2 text-black  dark:text-white text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
                   Username
                 </label>
 
@@ -139,7 +139,7 @@ export default function Signup() {
                 />
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2 inline-flex text-black  dark:text-white text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Campton']">
                   Create a password
                 </label>
 
@@ -261,10 +261,10 @@ export default function Signup() {
               <Logo />
             </div>
             <div className='p-2 justify-center items-center gap-1 flex'>
-              <div className="text-center p-2 hidden  md:flex text-black  dark:text-white text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Campton']">
                 <Button variant='flat bg-none '>Go Back</Button>
               </div>
-              <div className="text-center p-2 md:hidden  text-black  dark:text-white text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Campton']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>

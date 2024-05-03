@@ -72,9 +72,10 @@ export default function EngagementTaskCard() {
               Get Genuine People to Follow Your Social Media Accounts
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to follow your social media pages. you can get any
+              numbers of people to follow your social media pages with no need
+              for your login Details, on any social platform like Facebook,
+              Tiktok, Instagram and many more.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -144,9 +145,9 @@ export default function EngagementTaskCard() {
               Get People to Download and Review Your App on Apple Store
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get people to download and review your apps on Apple store. You
+              can get any number of people you want to download and review your
+              app. simply by entering the download link to your app.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -213,9 +214,9 @@ export default function EngagementTaskCard() {
               Get People to Download and Review Your App on Google Play Store
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get people to download and review your app on Google play store.
+              You can get as many download and reviews you desire simply by
+              entering the link to download your app and get started.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -269,9 +270,9 @@ export default function EngagementTaskCard() {
               Get Genuine People to Like Your Social Media Posts
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get Genuine people to like your social media post. You can get as
+              many likes as you desire simply by entering the link to your post
+              either on Instagram, Facebook, Twitter or any platform.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -337,9 +338,9 @@ export default function EngagementTaskCard() {
               Get Real People to Follow Your Spotify Channel
             </div>
             <div className="self-stretch  text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Get real people to follow your Spotify channel. you can get any
+              number of people to follow your Spotify channel without disclosing
+              your Login details
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>

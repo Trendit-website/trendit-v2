@@ -14,14 +14,14 @@ export default function Referal() {
   return (
     <div>
       <div className='w-full p-3 flex-col justify-start items-start gap-12 inline-flex'>
-        <div className='w-full h-[350px] opacity60 relative  bg-cyan-50 rounded'>
+        <div className='w-full h-[350px] relative  bg-cyan-50 rounded'>
           <div
             style={{
               backgroundImage: `url(${frameImage})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
-            className='absolute  bg-cyan-50 w-full h-full opacity-5'
+            className='absolute bg-cyan-50 w-full h-full opacity-5'
           ></div>
           <div className='px-4 md:px-20 flex-col justify-start items-center gap-[18px] inline-flex'>
             <div className="md:w-[471px] md:pt-16 z-10 text-black text-4xl md:text-7xl font-extrabold font-['Campton'] leading-[54.72px]">
