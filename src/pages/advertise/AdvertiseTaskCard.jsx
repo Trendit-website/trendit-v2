@@ -33,7 +33,7 @@ export default function AdvertiseTaskCard() {
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your adverts on their Tiktok account
-              having atleast 1000 active followers each on their account to post
+              having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
               views within a short period of time. You can indicate any number
               of people you want to post your advert.
@@ -93,7 +93,7 @@ export default function AdvertiseTaskCard() {
               Get people to post your Advert on Facebook
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get Genuine people with more than a 1000 followers 0r friends on
+              Get Genuine people with more than a 500 followers 0r friends on
               their facebook account to post your advert to their audience to
               post your ads on their social media account. Get real people to
               post your ads on their social media account. Get real people to
@@ -154,7 +154,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on Youtube
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get Genuine people with more than a 1000 followers 0r friends on
+              Get Genuine people with more than 500 followers or friends on
               their Youtube account to post your advert to their audience to
               post your ads on their social media account. Get real people to
               post your ads on their social media account. Get real people to
@@ -233,7 +233,7 @@ export default function AdvertiseTaskCard() {
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your adverts on their WhatsApp Status
-              having atleast 1000 active followers each on their account to post
+              having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
               views within a short period of time. You can indicate any number
               of people you want to post your advert.
@@ -325,7 +325,7 @@ export default function AdvertiseTaskCard() {
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
               Get real people to post your advert on their Instagram account
-              having atleast 1000 active followers each on their account to post
+              having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
               views within a short period of time. You can indicate any number
               of people you want to post your advert.
@@ -381,7 +381,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on Twitter
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Get Genuine people with more than a 1000 followers 0r friends on
+              Get Genuine people with more than a 500 followers 0r friends on
               their Twitter account to post your advert to their audience to
               post your ads on their social media account. Get real people to
               post your ads on their social media account. Get real people to

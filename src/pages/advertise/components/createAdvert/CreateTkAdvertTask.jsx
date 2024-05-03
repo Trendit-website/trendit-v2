@@ -709,7 +709,7 @@ want to post your advert.`}
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
-                    <div className="text-white px-2 text-[12.83px] font-medium font-['Campton']">
+                    <div className=" px-2 text-[12.83px] font-medium font-['Campton']">
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>

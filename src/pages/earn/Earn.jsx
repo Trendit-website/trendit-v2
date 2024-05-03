@@ -50,7 +50,7 @@ export default function Earn() {
                 </div>
               </div>
             )}
-            {profileDeatils?.membership_fee && (
+            {!profileDeatils?.membership_fee && (
               <div className='w-full p-3 bg-emerald-200 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
                   <div className="grow shrink basis-0 text-green-500 text-xs font-normal font-['Campton']">
@@ -331,7 +331,7 @@ export default function Earn() {
 
                   <Button className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
                     <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Campton']">
-                      Learn Now
+                      Learn More
                     </div>
                   </Button>
                 </div>

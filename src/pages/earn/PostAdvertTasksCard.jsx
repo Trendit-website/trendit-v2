@@ -32,10 +32,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Facebook page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Post adverts of various businesses and top brands on your
-              Instagram Page and earn N100 per advert past. 1 you post, the more
-              you earn. Note that your Instagram account must have at least 1000
-              Active Followers to be for this task.
+              Post adverts of various businesses and top brands on your Facebook
+              Page and earn ₦110 per advert past. The more you post, the more
+              you earn. Note that your Facebook account must have at least 500
+              Active Followers to be eligible for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -75,11 +75,11 @@ export default function PostAdvertTasksCard() {
                 Generate Task
               </div>
             </Button>
-            <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
-                124 Task available
-              </div>
-            </div>
+            {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
+                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                  124 Task available
+                </div>
+              </div> */}
           </div>
         </div>
       </div>
@@ -110,10 +110,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Tictok page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
-              Post adverts of various businesses and top brands on your
-              Instagram Page and earn N100 per advert past. 1 you post, the more
-              you earn. Note that your Instagram account must have at least 1000
-              Active Followers to be for this task.
+              Post adverts of various businesses and top brands on your Tiktok
+              Page and earn ₦110 per advert past. The more you post, the more
+              you earn. Note that your Tiktok account must have at least 500
+              Active Followers to be eligible for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -153,11 +153,11 @@ export default function PostAdvertTasksCard() {
                 Generate Task
               </div>
             </Button>
-            <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
-                124 Task available
-              </div>
-            </div>
+            {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
+                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                  124 Task available
+                </div>
+              </div> */}
           </div>
         </div>
       </div>
@@ -216,9 +216,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Instagram account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Post adverts of various businesses and top brands on your
+              Instagram Page and earn ₦110 per advert . The more you post, the
+              more you earn. Note that your Instagram account must have at least
+              500 Active Followers to be eligible for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -258,11 +259,11 @@ export default function PostAdvertTasksCard() {
                 Generate Task
               </div>
             </Button>
-            <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
-                124 Task available
-              </div>
-            </div>
+            {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
+                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                  124 Task available
+                </div>
+              </div> */}
           </div>
         </div>
       </div>
@@ -318,9 +319,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your WhatsApp status
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Post adverts of various businesses and top brands on your WhatsApp
+              status and earn ₦60 per advert past. The more you post, the more
+              you earn. Note that your WhatsApp Status must have at least 500
+              Active Followers to be eligible for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -360,11 +362,11 @@ export default function PostAdvertTasksCard() {
                 Generate Task
               </div>
             </Button>
-            <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
-                124 Task available
-              </div>
-            </div>
+            {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
+                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                  124 Task available
+                </div>
+              </div> */}
           </div>
         </div>
       </div>
@@ -388,9 +390,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your X account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
-              Get real people to post your ads on their social media account.
+              Post adverts of various businesses and top brands on your Twitter
+              page and earn ₦110 per advert past. The more you post, the more
+              you earn. Note that your Twitter page must have at least 500
+              Active Followers to be eligible for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -430,11 +433,11 @@ export default function PostAdvertTasksCard() {
                 Generate Task
               </div>
             </Button>
-            <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
-                124 Task available
-              </div>
-            </div>
+            {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
+                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                  124 Task available
+                </div>
+              </div> */}
           </div>
         </div>
       </div>

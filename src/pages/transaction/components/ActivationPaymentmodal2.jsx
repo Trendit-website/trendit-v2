@@ -18,7 +18,7 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
     },
   })
 
-  const { mutateAsync: ativateMembership } = useActivateMembership()
+  const { mutateAsync: ativateMembership, isPending } = useActivateMembership()
 
   const onSubmit = async (data) => {
     try {
@@ -87,7 +87,7 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                       </clipPath>
                     </defs>
                   </svg>
-                  <div className="text-white text-base font-bold font-['Campton']">
+                  <div className="text-base font-bold font-['Campton']">
                     Become A memeber Today
                   </div>
                 </div>
@@ -169,13 +169,12 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                   experience? Download our app today!
                 </div>
               </div>
-              <div className=' w-full px-3 pt-3 pb-6 bg-white bg-opacity-10 rounded justify-between items-center inline-flex'>
-                <div className='self-stretch px-2 flex-col justify-center items-center gap-2 inline-flex'>
-                  <div className="text-white text-[12.83px] font-medium font-['Campton']">
-                    Membership Fee
-                  </div>
-
-                  <div className='self-stretch w-full  bg-white bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
+              <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
+                <div className=" px-2 text-[12.83px] font-medium font-['Campton']">
+                  Membership Fee
+                </div>
+                <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-40  bg-zinc-400 bg-opacity-40 rounded-lg justify-start items-center gap-2 inline-flex'>
                     <Controller
                       name='amount'
                       control={control}
@@ -203,18 +202,42 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                               '!cursor-text',
                             ],
                           }}
-                          className=" rounded bg-white bg-opacity-10  text-zinc-400 text-3xl font-normal font-['Campton']"
+                          className=" rounded bg-white bg-opacity-10   text-3xl font-normal font-['Campton']"
                         />
                       )}
                     />
                   </div>
+                  <Button
+                    type='submit'
+                    isDisabled={isPending}
+                    className='md:w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                  >
+                    {isPending ? (
+                      <svg
+                        className='animate-spin h-5 w-5 text-current'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <circle
+                          className='opacity-25'
+                          cx='12'
+                          cy='12'
+                          r='10'
+                          stroke='currentColor'
+                          strokeWidth='4'
+                        />
+                        <path
+                          className='opacity-75'
+                          d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                          fill='currentColor'
+                        />
+                      </svg>
+                    ) : (
+                      'Click here to Pay'
+                    )}
+                  </Button>
                 </div>
-                <Button
-                  type='submit'
-                  className=" px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Campton'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
-                >
-                  Click here to Pay
-                </Button>
               </div>
             </div>
           </form>

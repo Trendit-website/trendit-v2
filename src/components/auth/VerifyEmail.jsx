@@ -87,7 +87,7 @@ export default function VerifyEmail() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='  md:h-[1024px] py-6 relative bg-[#FFFFFF] dark:bg-black'>
+        <div className=' min-h-screen md:h-[1024px] py-6 relative'>
           <div className='left-0 top-0 absolute'>
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
             <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
@@ -95,12 +95,12 @@ export default function VerifyEmail() {
           <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
             <Logo />
 
-            <div className="text-center p-2 hidden  md:flex text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+            <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Campton']">
               <Button onClick={() => navigate(-1)} variant='flat bg-none '>
                 Go Back
               </Button>
             </div>
-            <div className="text-center p-2 md:hidden  text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+            <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Campton']">
               <Button variant='flat bg-none  '>
                 <ChevronRight />
               </Button>
@@ -109,7 +109,7 @@ export default function VerifyEmail() {
 
           <div className=' w-[20rem] my-8 md:w-[23rem] mx-auto  flex-col  items-center gap-6 '>
             <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-              <div className="w-80 text-center text-black dark:text-white text-[40px] md:text-[64px] font-semibold font-['Campton'] leading-10 md:leading-[53.76px]">
+              <div className="w-80 text-center  text-[40px] md:text-[64px] font-semibold font-['Campton'] leading-10 md:leading-[53.76px]">
                 Welcome to Trendit
               </div>
               <div className="w-[18rem] py-2 text-center  text-black dark:text-zinc-400 text-base font-normal font-['Campton']">
