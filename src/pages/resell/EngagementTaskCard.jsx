@@ -27,10 +27,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0 justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white  text-sm font-medium font-['Campton']">
+              <div className="text-white  text-sm font-medium font-['Manrope']">
                 Like and follow facebook business pages
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -49,15 +49,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>
@@ -87,10 +87,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white text-sm font-medium font-['Campton']">
+              <div className="text-white text-sm font-medium font-['Manrope']">
                 Like and follow facebook business pages
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -109,15 +109,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>{' '}
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>
@@ -151,10 +151,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white text-sm font-medium font-['Campton']">
+              <div className="text-white text-sm font-medium font-['Manrope']">
                 Post adverts on your WhatsApp status
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -173,15 +173,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>
@@ -203,10 +203,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0  justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white text-sm font-medium font-['Campton']">
+              <div className="text-white text-sm font-medium font-['Manrope']">
                 Post adverts on your X account
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -225,15 +225,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>
@@ -289,10 +289,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0  justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white text-sm font-medium font-['Campton']">
+              <div className="text-white text-sm font-medium font-['Manrope']">
                 Like and follow facebook business pages
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -311,15 +311,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>
@@ -372,10 +372,10 @@ export default function EngagementTaskCard() {
           </svg>
           <div className='grow shrink basis-0  justify-between items-start flex'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="text-white text-sm font-medium font-['Campton']">
+              <div className="text-white text-sm font-medium font-['Manrope']">
                 Like and follow facebook business pages
               </div>
-              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Campton']">
+              <div className="self-stretch text-zinc-300 text-xs font-normal font-['Manrope']">
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
                 Get real people to post your ads on their social media account.
@@ -394,15 +394,15 @@ export default function EngagementTaskCard() {
                       fill='#B1B1B1'
                     />
                   </svg>
-                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                     Pricing:
                   </div>
                 </div>
-                <div className="text-white text-sm font-bold font-['Campton']">
+                <div className="text-white text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
-              <Button className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
+              <Button className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex">
                 Create Advert
               </Button>
             </div>

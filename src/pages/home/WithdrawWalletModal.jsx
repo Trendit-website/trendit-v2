@@ -57,13 +57,13 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                 <div className='self-stretch p-6 flex-col justify-center items-start gap-6 flex'>
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className="grow shrink basis-0 text-sm font-semibold font-['Campton']">
+                      <div className="grow shrink basis-0 text-sm font-semibold font-['Manrope']">
                         Withdraw Fund
                       </div>
                     </div>
                     <div className='justify-start flex-col items-start gap-[19px] flex'>
                       <div className='self-stretch rounded-none  gap-2 flex-col flex'>
-                        <div className="text-sm font-medium font-['Campton']">
+                        <div className="text-sm font-medium font-['Manrope']">
                           Amount
                         </div>
                         <Controller
@@ -101,7 +101,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded  text-black text-[12.83px] font-normal font-['Campton']"
+                              className=" rounded  text-black text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />
@@ -110,7 +110,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                         <Button
                           type='submit'
                           isDisabled={isPending}
-                          className="w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
+                          className="w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Manrope']"
                         >
                           {isPending ? (
                             <svg

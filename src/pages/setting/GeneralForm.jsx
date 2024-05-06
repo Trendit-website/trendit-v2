@@ -99,7 +99,7 @@ export default function GeneralForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='self-stretch grow shrink w-full  basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
             <div className='self-stretch flex-col w-full justify-start items-start gap-6 flex'>
-              <div className="text-sm font-bold font-['Campton']">Profile</div>
+              <div className="text-sm font-bold font-['Manrope']">Profile</div>
               <div className='flex-col justify-start items-center gap-6 flex'>
                 <div className='flex-col justify-center items-center gap-2 flex'>
                   <div className='w-[66px] cursor-pointer h-[66px] relative'>
@@ -162,7 +162,7 @@ export default function GeneralForm() {
                       </label>
                     </div>
                   </div>
-                  <div className="text-center text-zinc-400 text-[10px] font-normal font-['Campton']">
+                  <div className="text-center text-zinc-400 text-[10px] font-normal font-['Manrope']">
                     Upload photo
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function GeneralForm() {
                 <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                      <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                         Full Name
                       </div>
                     </div>
@@ -207,7 +207,7 @@ export default function GeneralForm() {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                              className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />
@@ -243,7 +243,7 @@ export default function GeneralForm() {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                              className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />
@@ -253,7 +253,7 @@ export default function GeneralForm() {
                 </div>
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                    <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                    <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                       Email address
                     </div>
                   </div>
@@ -288,7 +288,7 @@ export default function GeneralForm() {
                               'focus-within:!border-fuchsia-600  ',
                             ],
                           }}
-                          className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                          className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
                     />
@@ -297,7 +297,7 @@ export default function GeneralForm() {
 
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                    <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                    <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                       Username
                     </div>
                   </div>
@@ -337,12 +337,12 @@ export default function GeneralForm() {
                             <Button
                               variant='light'
                               type='submit'
-                              className="text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                              className="text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
                             >
                               Edit
                             </Button>
                           }
-                          className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                          className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
                     />
@@ -351,10 +351,10 @@ export default function GeneralForm() {
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
-              <div className=" text-sm font-bold font-['Campton']">Update</div>
+              <div className=" text-sm font-bold font-['Manrope']">Update</div>
               <div className='self-stretch flex-col justify-start items-center gap-3.5 flex'>
                 <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                  <div className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                     Select Gender
                   </div>
                   <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -388,7 +388,7 @@ export default function GeneralForm() {
                             ],
                           }}
                           {...field}
-                          className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                          className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         >
                           {genders.map((gender) => (
                             <SelectItem key={gender.value} value={gender.value}>
@@ -403,7 +403,7 @@ export default function GeneralForm() {
                 <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                      <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                         Birthday
                       </div>
                     </div>
@@ -419,7 +419,7 @@ export default function GeneralForm() {
                               isInvalid={!!errors.day}
                               errorMessage={errors?.day?.message}
                               selectedKeys={field.value ? [field.value] : []}
-                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               placeholder='Day'
                               classNames={{
                                 listbox: [
@@ -462,7 +462,7 @@ export default function GeneralForm() {
                               isInvalid={!!errors.month}
                               errorMessage={errors?.month?.message}
                               selectedKeys={field.value ? [field.value] : []}
-                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               placeholder='Mon'
                               classNames={{
                                 listbox: [
@@ -508,7 +508,7 @@ export default function GeneralForm() {
                               isInvalid={!!errors.year}
                               errorMessage={errors?.year?.message}
                               selectedKeys={field.value ? [field.value] : []}
-                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                              className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               placeholder='year'
                               classNames={{
                                 listbox: [
@@ -545,7 +545,7 @@ export default function GeneralForm() {
                 </div>
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                    <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                    <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                       Select Country
                     </div>
                   </div>
@@ -562,7 +562,7 @@ export default function GeneralForm() {
                           errorMessage={errors?.country?.message}
                           isLoading={isCountryLoading}
                           selectedKeys={field.value ? [field.value] : []}
-                          className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                          className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                           placeholder='Select country'
                           classNames={{
                             listbox: [
@@ -602,7 +602,7 @@ export default function GeneralForm() {
                 <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                      <div className="text-center  text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
                         State
                       </div>
                     </div>
@@ -618,7 +618,7 @@ export default function GeneralForm() {
                             errorMessage={errors?.state?.message}
                             isLoading={isStateLoading}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                             placeholder='Select state'
                             classNames={{
                               listbox: [
@@ -658,7 +658,7 @@ export default function GeneralForm() {
                     <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                       {watch().country === 'Nigeria' && (
                         <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                          <labl className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
+                          <labl className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                             LGA
                           </labl>
 
@@ -673,7 +673,7 @@ export default function GeneralForm() {
                                 errorMessage={errors?.local_government?.message}
                                 isLoading={isLgaLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select lga'
                                 classNames={{
                                   listbox: [
@@ -730,7 +730,7 @@ export default function GeneralForm() {
                     className='text-black stroke-black dark:stroke-white'
                   />
                 </svg>
-                <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
+                <div className="text-center text-black dark:text-white text-sm font-medium font-['Manrope']">
                   {isPending ? (
                     <svg
                       className='animate-spin h-5 w-5 text-current'
@@ -772,7 +772,7 @@ export default function GeneralForm() {
                 </svg>
                 <div
                   onClick={onOpen}
-                  className="text-center cursor-pointer text-orange-600 text-sm font-medium font-['Campton']"
+                  className="text-center cursor-pointer text-orange-600 text-sm font-medium font-['Manrope']"
                 >
                   Delete account
                 </div>

@@ -28,10 +28,10 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Manrope']">
               Get People to post your advert on Tiktok
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to post your adverts on their Tiktok account
               having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
@@ -52,17 +52,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-tk-task')}
-              className="text-center cursor-pointer text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center cursor-pointer text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -89,10 +89,10 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Manrope']">
               Get people to post your Advert on Facebook
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get Genuine people with more than a 500 followers 0r friends on
               their facebook account to post your advert to their audience to
               post your ads on their social media account. Get real people to
@@ -113,17 +113,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>{' '}
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-fb-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -150,10 +150,10 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Manrope']">
               Get People to post your advert on Youtube
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get Genuine people with more than 500 followers or friends on
               their Youtube account to post your advert to their audience to
               post your ads on their social media account. Get real people to
@@ -174,17 +174,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-yt-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -228,10 +228,10 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Manrope']">
               Get People to post your advert on WhatsApp
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to post your adverts on their WhatsApp Status
               having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
@@ -252,17 +252,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white  text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white  text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-ws-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -320,10 +320,10 @@ export default function AdvertiseTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Manrope']">
               Get People to post your advert on Instagram
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to post your advert on their Instagram account
               having at least 500 active followers each on their account to post
               your advert to their followers. This will give your advert massive
@@ -344,17 +344,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-ig-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -372,15 +372,15 @@ export default function AdvertiseTaskCard() {
         >
           <path
             d='M37.5145 2.25781H44.7211L28.9761 20.2549L47.5 44.7399H32.9966L21.6382 29.8879L8.63883 44.7399H1.42825L18.2699 25.4895L0.5 2.25977H15.3716L25.6391 15.8349L37.5145 2.25781ZM34.9863 40.4277H38.9793L13.2018 6.34485H8.91692L34.9863 40.4277Z'
-            fill='white'
+            className='fill-black dark:fill-white'
           />
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-medium font-['Manrope']">
               Get People to post your advert on Twitter
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get Genuine people with more than a 500 followers 0r friends on
               their Twitter account to post your advert to their audience to
               post your ads on their social media account. Get real people to
@@ -401,17 +401,17 @@ export default function AdvertiseTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-black dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-black dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦80 per Advert post
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-tw-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>

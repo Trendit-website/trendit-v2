@@ -41,28 +41,28 @@ export default function AdvertiseTaskCard() {
                   <div className='justify-start items-start gap-0.5 flex'>
                     <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
                       <div className='justify-start items-center gap-2.5 flex'>
-                        <div className="text-blue-600 text-xs font-normal font-['Campton']">
+                        <div className="text-blue-600 text-xs font-normal font-['Manrope']">
                           #Cars
                         </div>
                       </div>
                     </div>
                     <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
                       <div className='justify-start items-center gap-2.5 flex'>
-                        <div className="text-blue-600 text-xs font-normal font-['Campton']">
+                        <div className="text-blue-600 text-xs font-normal font-['Manrope']">
                           #Cars
                         </div>
                       </div>
                     </div>
                     <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
                       <div className='justify-start items-center gap-2.5 flex'>
-                        <div className="text-blue-600 text-xs font-normal font-['Campton']">
+                        <div className="text-blue-600 text-xs font-normal font-['Manrope']">
                           #Cars
                         </div>
                       </div>
                     </div>
                     <div className='p-1 bg-white rounded justify-start items-start gap-[29px] flex'>
                       <div className='justify-start items-center gap-2.5 flex'>
-                        <div className="text-blue-600 text-xs font-normal font-['Campton']">
+                        <div className="text-blue-600 text-xs font-normal font-['Manrope']">
                           #Cars
                         </div>
                       </div>
@@ -78,7 +78,7 @@ export default function AdvertiseTaskCard() {
               <div className='self-stretch justify-start items-start gap-2 inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                   <div className='self-stretch justify-between items-start inline-flex'>
-                    <div className="w-[221px] text-black dark:text-white text-sm font-medium font-['Campton']">
+                    <div className="w-[221px] text-black dark:text-white text-sm font-medium font-['Manrope']">
                       {item?.name} on sales @ {item?.phone}
                       {item?.phone === undefined ? '0905799809' : null}
                     </div>
@@ -124,16 +124,16 @@ export default function AdvertiseTaskCard() {
                             </clipPath>
                           </defs>
                         </svg>
-                        <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                        <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                           Commission
                         </div>
                       </div>
-                      <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+                      <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                         ₦{item?.price} {''}per sale
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
-                      <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton'] line-through">
+                      <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope'] line-through">
                         30% off
                       </div>
                       <Button
@@ -152,7 +152,7 @@ export default function AdvertiseTaskCard() {
                             fill='#FF6DFB'
                           />
                         </svg>
-                        <div className=" text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Campton']">
+                        <div className=" text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Manrope']">
                           More details
                         </div>
                       </Button>
@@ -160,12 +160,12 @@ export default function AdvertiseTaskCard() {
                   </div>
                   <div className='self-stretch justify-start items-center gap-3 inline-flex'>
                     <Button className='grow shrink basis-0  p-2 bg-white rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
-                      <div className="text-center text-black text-[10px] font-medium font-['Campton']">
+                      <div className="text-center text-black text-[10px] font-medium font-['Manrope']">
                         Buy this product
                       </div>
                     </Button>
                     <Button className='grow shrink basis-0 p-2 bg-fuchsia-400 rounded-sm border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
-                      <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+                      <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                         Resell this product
                       </div>
                     </Button>

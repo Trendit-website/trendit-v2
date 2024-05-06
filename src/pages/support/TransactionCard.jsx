@@ -19,18 +19,18 @@ export default function TransactionCard() {
           </svg>
         </div>
         <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-          <div className="self-stretch text-white text-[12.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[12.83px] font-medium font-['Manrope']">
             Credit
           </div>
-          <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
             Nov 13th 2023 9:21pm
           </div>
         </div>
-        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Manrope']">
           Payment for New Social Task Order (Get Real People to Follow Your Page
           on Social Media)
         </div>
-        <div className="text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="text-white text-[12.83px] font-medium font-['Manrope']">
           + ₦3,675
         </div>
       </div>
@@ -52,18 +52,18 @@ export default function TransactionCard() {
           </svg>
         </div>
         <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-          <div className="self-stretch text-white text-[12.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[12.83px] font-medium font-['Manrope']">
             Debit
           </div>
-          <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
             Nov 13th 2023 9:21pm
           </div>
         </div>
-        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Manrope']">
           Payment for New Social Task Order (Get Real People to Follow Your Page
           on Social Media)
         </div>
-        <div className="text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="text-white text-[12.83px] font-medium font-['Manrope']">
           + ₦3,675
         </div>
       </div>
@@ -85,18 +85,18 @@ export default function TransactionCard() {
           </svg>
         </div>
         <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-          <div className="self-stretch text-white text-[12.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[12.83px] font-medium font-['Manrope']">
             Withdraw
           </div>
-          <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+          <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
             Nov 13th 2023 9:21pm
           </div>
         </div>
-        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="grow shrink basis-0 text-white text-[12.83px] font-medium font-['Manrope']">
           Payment for New Social Task Order (Get Real People to Follow Your Page
           on Social Media)
         </div>
-        <div className="text-white text-[12.83px] font-medium font-['Campton']">
+        <div className="text-white text-[12.83px] font-medium font-['Manrope']">
           + ₦3,675
         </div>
       </div>

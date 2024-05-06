@@ -41,10 +41,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Manrope']">
               Download and Review App on Apple Store
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Download and review selected app on the Apple store and earn ₦120
               per review, Increased productivity translates to increased
               earnings.
@@ -63,11 +63,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -83,12 +83,12 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div> */}
@@ -115,10 +115,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Subscribe, View and Like on YouTube
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Subscribe on Youtube channels and earn per view, like and comments
               and eardn ₦30 per subscription, Engage and earn more.
             </div>
@@ -136,11 +136,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>{' '}
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -156,12 +156,12 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch h[35px] p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div> */}
@@ -184,10 +184,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Follow peoples and Business pages
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Follow people and pages on selected social media account like
               Facebook, Instagram, Tiktok, and others and earn ₦5per follow the
               more people you follow the more you earn.
@@ -206,11 +206,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -226,13 +226,13 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
 
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div> */}
@@ -267,10 +267,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Follow an Account on Spotify
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Follow selected and given profiles on Spotify and earn ₦10 per
               follower. The more you hustle, the more you gain.
             </div>
@@ -288,11 +288,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -308,12 +308,12 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div> */}
@@ -335,10 +335,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Like Post on Different Social Media Platforms
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Like people Post on Social media platform like Instagram,
               Facebook, Tiktok and others to earn
             </div>
@@ -356,11 +356,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3.5 per Page Like and Follow
               </div>
             </div>
@@ -376,12 +376,12 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div> */}
@@ -415,10 +415,10 @@ export default function EngagementTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Join group chat
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
               Get real people to post your ads on their social media account.
@@ -437,11 +437,11 @@ export default function EngagementTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦3 per Page Like and Follow
               </div>
             </div>
@@ -457,12 +457,12 @@ export default function EngagementTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-              <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+              <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                 124 Task available
               </div>
             </div>

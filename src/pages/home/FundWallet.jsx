@@ -67,7 +67,7 @@ export default function FundWallet() {
                   strokeLinecap='round'
                 />
               </svg>
-              <div className="text-center text-fuchsia-200 text-sm font-medium font-['Campton']">
+              <div className="text-center text-fuchsia-200 text-sm font-medium font-['Manrope']">
                 Go back
               </div>
             </div>
@@ -89,19 +89,19 @@ export default function FundWallet() {
                             fill='white'
                           />
                         </svg>
-                        <div className="grow shrink basis-0 text-white text-sm font-semibold font-['Campton']">
+                        <div className="grow shrink basis-0 text-white text-sm font-semibold font-['Manrope']">
                           Fund wallet
                         </div>
                       </div>
                     </div>
                     <div className='self-stretch justify-center items-start gap-3 inline-flex'>
                       <div className='grow shrink basis-0 h-2 justify-start items-center gap-2 flex'>
-                        <div className="grow shrink basis-0 text-zinc-400 text-xs font-normal font-['Campton']">
+                        <div className="grow shrink basis-0 text-zinc-400 text-xs font-normal font-['Manrope']">
                           Wallet balance
                         </div>
                       </div>
                     </div>
-                    <div className="self-stretch text-fuchsia-200 text-[40px] font-normal font-['Campton']">
+                    <div className="self-stretch text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
                       {showBalance?.currency_code}:{showBalance?.balance}
                     </div>
                   </div>
@@ -142,7 +142,7 @@ export default function FundWallet() {
                                 'focus-within:!border-fuchsia-600  ',
                               ],
                             }}
-                            className=" rounded  text-black text-[12.83px] font-normal font-['Campton']"
+                            className=" rounded  text-black text-[12.83px] font-normal font-['Manrope']"
                           />
                         )}
                       />
@@ -151,7 +151,7 @@ export default function FundWallet() {
                       <Button
                         type='submit'
                         isDisabled={isPending}
-                        className="md:w-[280px] px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
+                        className="md:w-[280px] px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Manrope']"
                       >
                         {isPending ? (
                           <svg
@@ -185,29 +185,29 @@ export default function FundWallet() {
             </form>
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 flex'>
-            <div className="grow shrink basis-0 text-zinc-400 text-xs font-normal font-['Campton']">
+            <div className="grow shrink basis-0 text-zinc-400 text-xs font-normal font-['Manrope']">
               You can choose your preferred method of payment such as Card
               Payment, Bank Transfer, USSD etc. Simply click on "Change Payment"
               button on the Payment Checkout page.
             </div>
           </div>
-          <div className="text-white text-base font-medium font-['Campton']">
+          <div className="text-white text-base font-medium font-['Manrope']">
             Funding History
           </div>
           <div className='self-stretch px-3 justify-start items-start gap-12 inline-flex'>
-            <div className="w-[166.50px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[166.50px] text-white text-opacity-50 text-xs font-medium font-['Manrope']">
               ID
             </div>
-            <div className="w-[256.50px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[256.50px] text-white text-opacity-50 text-xs font-medium font-['Manrope']">
               Date
             </div>
-            <div className="w-[188px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[188px] text-white text-opacity-50 text-xs font-medium font-['Manrope']">
               Amount
             </div>
-            <div className="w-[214px] text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[214px] text-white text-opacity-50 text-xs font-medium font-['Manrope']">
               Payment Method
             </div>
-            <div className="text-white text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="text-white text-opacity-50 text-xs font-medium font-['Manrope']">
               Status
             </div>
           </div>
@@ -220,26 +220,26 @@ export default function FundWallet() {
                 <div className='self-stretch p-3 bg-white bg-opacity-10 border border-stone-900 justify-between items-center inline-flex'>
                   <div className='p-1.5 bg-white bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
                     <div className='justify-start items-center gap-2 flex'>
-                      <div className="text-center text-zinc-400 text-xs font-normal font-['Campton'] tracking-wide">
+                      <div className="text-center text-zinc-400 text-xs font-normal font-['Manrope'] tracking-wide">
                         {history?.id}{' '}
                       </div>
                     </div>
                   </div>
                   <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                    <div className="self-stretch text-zinc-400 text-xs font-medium font-['Campton']">
+                    <div className="self-stretch text-zinc-400 text-xs font-medium font-['Manrope']">
                       {format(history?.created_at, 'do MMMM yyyy')}
                     </div>
                   </div>
                   <div>
-                    <span className="text-white text-[12.83px] font-normal font-['Campton']">
+                    <span className="text-white text-[12.83px] font-normal font-['Manrope']">
                       ₦
                     </span>
-                    <span className="text-white text-[12.83px] font-medium font-['Campton']">
+                    <span className="text-white text-[12.83px] font-medium font-['Manrope']">
                       {' '}
                       {history?.amount}{' '}
                     </span>
                   </div>
-                  <div className="text-right text-white text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-right text-white text-[12.83px] font-medium font-['Manrope']">
                     {history?.payment_method}
                   </div>
                   <div
@@ -254,7 +254,7 @@ export default function FundWallet() {
                         history?.status === 'complete'
                           ? 'text-green-500'
                           : 'text-red-500'
-                      }  text-xs font-semibold font-['Campton']`}
+                      }  text-xs font-semibold font-['Manrope']`}
                     >
                       {history?.status === 'complete' ? 'Approved' : 'Pending'}
                     </div>

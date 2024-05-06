@@ -85,7 +85,10 @@ const NotificationsFormContents = () => {
         },
       }
 
-      const res = await handleNoticePrefencents({ data: formattedData })
+      const res = await handleNoticePrefencents({
+        data: formattedData,
+        setting_type: 'notification',
+      })
       if (res?.data?.status) {
         toast.success(res.data.message)
         queryClient.invalidateQueries({ queryKey: ['notice_prefrence'] })
@@ -99,7 +102,7 @@ const NotificationsFormContents = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='w-full md:px-16 py-6 flex-col justify-start items-start gap-12 inline-flex'>
           <div className='self-stretch h-[182px] flex-col justify-start items-start gap-6 flex'>
-            <div className="text-sm font-bold font-['Campton']">
+            <div className="text-sm font-bold font-['Manrope']">
               Email Alert
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-0.5 flex'>
@@ -121,7 +124,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       New features and updates
@@ -147,7 +150,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       New Tasks
@@ -173,7 +176,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       Money earned
@@ -184,7 +187,7 @@ const NotificationsFormContents = () => {
             </div>
           </div>
           <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
-            <div className="text-sm font-bold font-['Campton']">
+            <div className="text-sm font-bold font-['Manrope']">
               In-App Alert
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-0.5 flex'>
@@ -206,7 +209,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                       name='in_app_new_features'
                     >
@@ -233,7 +236,7 @@ const NotificationsFormContents = () => {
                       className='text-white'
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       New Tasks
@@ -259,7 +262,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       Money earned
@@ -270,7 +273,7 @@ const NotificationsFormContents = () => {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
-            <div className=" text-sm font-bold font-['Campton']">
+            <div className=" text-sm font-bold font-['Manrope']">
               Push Notifications{' '}
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-0.5 flex'>
@@ -292,7 +295,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       New features and updates
@@ -318,7 +321,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       New Tasks
@@ -344,7 +347,7 @@ const NotificationsFormContents = () => {
                       }}
                       classNames={{
                         label:
-                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                          "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                       }}
                     >
                       Money earned

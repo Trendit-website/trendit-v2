@@ -39,7 +39,7 @@ export default function Timer({ onDone }) {
             strokeLinecap='round'
           />
         </svg>
-        <div className="self-stretch text-center text-black text-xs font-semibold font-['Campton']">
+        <div className="self-stretch text-center text-black text-xs font-semibold font-['Manrope']">
           {`${hours.toString().padStart(2, '0')}:${minutes
             .toString()
             .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}

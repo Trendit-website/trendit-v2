@@ -144,7 +144,7 @@ people to post your ads on their social media account.`}
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className=" text-2xl font-medium font-['Campton']">
+                  <div className=" text-2xl font-medium font-['Manrope']">
                     Create an Engagement Task
                   </div>
                 </div>
@@ -153,7 +153,7 @@ people to post your ads on their social media account.`}
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Platform
                           </div>
                         </div>
@@ -188,7 +188,7 @@ people to post your ads on their social media account.`}
                                     '!cursor-text',
                                   ],
                                 }}
-                                className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                                 {...field}
                               >
                                 {platforms.map((platform) => (
@@ -204,7 +204,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className=" text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Manrope']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -212,7 +212,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center  text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
                             Select Location
                           </div>
                         </div>
@@ -228,7 +228,7 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.target_country?.message}
                                 isLoading={isCountryLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select country'
                                 classNames={{
                                   listbox: [
@@ -263,7 +263,7 @@ people to post your ads on their social media account.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-[10px] font-normal font-['Campton']">
+                          <div className="text-[10px] font-normal font-['Manrope']">
                             You can target and select a particular location
                             where your task or advert will be mostly shown. You
                             can also select all States if you want to target
@@ -273,7 +273,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             State
                           </div>
                         </div>
@@ -289,7 +289,7 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.target_state?.message}
                                 isLoading={isStateLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select state'
                                 classNames={{
                                   listbox: [
@@ -323,7 +323,7 @@ people to post your ads on their social media account.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className=" text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Manrope']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -333,7 +333,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Number of Followers do you want?
                           </div>
                         </div>
@@ -353,14 +353,14 @@ people to post your ads on their social media account.`}
                                 }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
-                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
                             rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Manrope']">
                             This is the number of Download and Review want us to
                             get for you
                           </div>
@@ -368,7 +368,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center  text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
                             The Link to Your social Media Post
                           </div>
                         </div>
@@ -388,14 +388,14 @@ people to post your ads on their social media account.`}
                                 }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
-                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
                             rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Manrope']">
                             Enter the link to the post you want people to like.
                             ensure the link you paste here is the link to your
                             post not your page
@@ -404,7 +404,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center  text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
                             Select Gender
                           </div>
                         </div>
@@ -419,7 +419,7 @@ people to post your ads on their social media account.`}
                                 isInvalid={!!errors.gender}
                                 errorMessage={errors?.gender?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select Gender'
                                 classNames={{
                                   listbox: [
@@ -455,7 +455,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Manrope']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -467,7 +467,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Religion
                           </div>
                         </div>
@@ -481,7 +481,7 @@ people to post your ads on their social media account.`}
                                 isInvalid={!!errors.religion}
                                 errorMessage={errors?.religion?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select Religion'
                                 isLoading={isReligionLoading}
                                 {...field}
@@ -516,7 +516,7 @@ people to post your ads on their social media account.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink  basis-0  text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink  basis-0  text-[10px] font-normal font-['Manrope']">
                             You can target people of a particular religion or
                             belief. Your advert and task will be shown to the
                             particular religion you select. Select 'All
@@ -527,7 +527,7 @@ people to post your ads on their social media account.`}
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
-                    <div className="px-2 text-[12.83px] font-medium font-['Campton']">
+                    <div className="px-2 text-[12.83px] font-medium font-['Manrope']">
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
@@ -560,7 +560,7 @@ people to post your ads on their social media account.`}
                                   '!cursor-text',
                                 ],
                               }}
-                              className=" rounded text-3xl font-normal font-['Campton']"
+                              className=" rounded text-3xl font-normal font-['Manrope']"
                             />
                           )}
                         />

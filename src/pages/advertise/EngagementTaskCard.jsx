@@ -11,10 +11,10 @@ export default function EngagementTaskCard() {
 
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Manrope']">
               Get Real People to Follow Your Audiomack Channel
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to follow your Audiomack channel. you can get any
               number of people to follow your Audiomack channel without
               disclosing your Login details
@@ -33,11 +33,11 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦20 per Follow
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function EngagementTaskCard() {
               onClick={() =>
                 navigate('/dashboard/advertise-engage-joinGP-task')
               }
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -68,10 +68,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Manrope']">
               Get Genuine People to Follow Your Social Media Accounts
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get real people to follow your social media pages. you can get any
               numbers of people to follow your social media pages with no need
               for your login Details, on any social platform like Facebook,
@@ -91,17 +91,17 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>{' '}
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Manrope']">
                 ₦5 per Follow
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-engage-like-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -141,10 +141,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Get People to Download and Review Your App on Apple Store
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get people to download and review your apps on Apple store. You
               can get any number of people you want to download and review your
               app. simply by entering the download link to your app.
@@ -163,11 +163,11 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦120 per Download and Review
               </div>
             </div>
@@ -175,7 +175,7 @@ export default function EngagementTaskCard() {
               onClick={() =>
                 navigate('/dashboard/advertise-engage-follower-task')
               }
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -210,10 +210,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Get People to Download and Review Your App on Google Play Store
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get people to download and review your app on Google play store.
               You can get as many download and reviews you desire simply by
               entering the link to download your app and get started.
@@ -232,11 +232,11 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+              <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                 ₦100 per Download and Review
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function EngagementTaskCard() {
               onClick={() =>
                 navigate('/dashboard/advertise-engage-follower&like-task')
               }
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -266,10 +266,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Manrope']">
               Get Genuine People to Like Your Social Media Posts
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Get Genuine people to like your social media post. You can get as
               many likes as you desire simply by entering the link to your post
               either on Instagram, Facebook, Twitter or any platform.
@@ -288,11 +288,11 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Manrope']">
                 ₦5 per Like
               </div>
             </div>
@@ -300,7 +300,7 @@ export default function EngagementTaskCard() {
               onClick={() =>
                 navigate('/dashboard/advertise-engage-comment-task')
               }
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>
@@ -334,10 +334,10 @@ export default function EngagementTaskCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="text-sm font-medium font-['Campton']">
+            <div className="text-sm font-medium font-['Manrope']">
               Get Real People to Follow Your Spotify Channel
             </div>
-            <div className="self-stretch  text-xs font-normal font-['Campton']">
+            <div className="self-stretch  text-xs font-normal font-['Manrope']">
               Get real people to follow your Spotify channel. you can get any
               number of people to follow your Spotify channel without disclosing
               your Login details
@@ -356,17 +356,17 @@ export default function EngagementTaskCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing:
                 </div>
               </div>
-              <div className="text-sm font-bold font-['Campton']">
+              <div className="text-sm font-bold font-['Manrope']">
                 ₦30 per Follow
               </div>
             </div>
             <Button
               onClick={() => navigate('/dashboard/advertise-engage-share-task')}
-              className="text-center text-white text-[10px] font-medium font-['Campton'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
+              className="text-center text-white text-[10px] font-medium font-['Manrope'] bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex"
             >
               Create Advert
             </Button>

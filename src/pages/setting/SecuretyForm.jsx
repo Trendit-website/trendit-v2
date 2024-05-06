@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
 import { Switch } from '@nextui-org/switch'
 import {
-  // useGetSecurityPrefrence,
+  useGetSecurityPrefrence,
   useUpdateSecPrefence,
 } from '../../api/settingsApis'
 import { useForm, Controller } from 'react-hook-form'
@@ -13,14 +13,14 @@ import { useState } from 'react'
 import { EyeIcon } from 'lucide-react'
 
 export default function SecuretyForm() {
-  // const { data: securityPrefrence } = useGetSecurityPrefrence()
+  const { data: securityPrefrence } = useGetSecurityPrefrence()
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      // '2fa_method': securityPrefrence?.2FA_method,
+      two_fa_method: securityPrefrence?.two_fa_method,
     },
   })
   const [isVisible, setIsVisible] = useState(false)
@@ -30,12 +30,15 @@ export default function SecuretyForm() {
   const queryClient = useQueryClient()
   const { mutateAsync: handleSecurityUpdate } = useUpdateSecPrefence()
 
-  // console.log(securityPrefrence, 'securityPrefrence')
+  console.log(securityPrefrence, 'securityPrefrence')
 
   const onSubmit = async (data) => {
-    // console.log(data, 'data')
+    console.log(data, 'data')
     try {
-      const res = await handleSecurityUpdate({ data })
+      const res = await handleSecurityUpdate({
+        ...data,
+        setting_type: 'security',
+      })
       if (res?.data?.status) {
         toast.success(res.data.message)
         queryClient.invalidateQueries({ queryKey: ['sec_prefence'] })
@@ -49,12 +52,12 @@ export default function SecuretyForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='self-stretch grow shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
           <div className='self-stretch h[446px] flex-col justify-start items-start gap-6 flex'>
-            <div className=" text-sm font-bold font-['Campton']">Security</div>
+            <div className=" text-sm font-bold font-['Manrope']">Security</div>
 
             <div className='self-stretch h[302px] flex-col justify-start items-center gap-3.5 flex'>
               {/* <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
                     Password
                   </div>
                 </div>
@@ -81,13 +84,13 @@ export default function SecuretyForm() {
                         'focus-within:!border-fuchsia-600  ',
                       ],
                     }}
-                    className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                    className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                   />
                 </div>
               </div> */}
               {/* <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                  <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                     Change Password
                   </div>
                 </div>
@@ -97,7 +100,7 @@ export default function SecuretyForm() {
                     endContent={
                       <Button
                         variant='light'
-                        className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                        className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
                       >
                         Edit
                       </Button>
@@ -124,14 +127,14 @@ export default function SecuretyForm() {
                         'focus-within:!border-fuchsia-600  ',
                       ],
                     }}
-                    className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                    className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                   />
                 </div>
               </div> */}
 
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                  <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                     Change Password
                   </div>
                 </div>
@@ -189,7 +192,7 @@ export default function SecuretyForm() {
                               variant='light'
                               type='submit'
                               onClick={() => handleSubmit(onSubmit)()}
-                              className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                              className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
                             >
                               Edit
                             </Button>
@@ -220,7 +223,7 @@ export default function SecuretyForm() {
                           ],
                         }}
                         {...field}
-                        className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                       />
                     )}
                   />
@@ -229,13 +232,13 @@ export default function SecuretyForm() {
             </div>
           </div>
           <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
-            <div className=" text-sm font-bold font-['Campton']">
+            <div className=" text-sm font-bold font-['Manrope']">
               2 Factor Authentication
             </div>
             <div className='self-stretch flex-col justify-start items-center gap-1.5 flex'>
               <div className='self-stretch w-full hover:text-white bg-opacity-10 justify-start items-center gap-2 inline-flex'>
                 <Controller
-                  name='2fa_method'
+                  name='two_fa_method'
                   control={control}
                   render={({ field }) => (
                     <Input
@@ -275,7 +278,7 @@ export default function SecuretyForm() {
                           'focus-within:!border-fuchsia-600  ',
                         ],
                       }}
-                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                     />
                   )}
                 />
@@ -313,7 +316,7 @@ export default function SecuretyForm() {
                       'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
-                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                 />
               </div>
               <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -322,7 +325,7 @@ export default function SecuretyForm() {
                   endContent={
                     <Button
                       variant='light'
-                      className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Campton']"
+                      className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
                     >
                       Activate
                     </Button>
@@ -348,7 +351,7 @@ export default function SecuretyForm() {
                       'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
-                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                 />
               </div>
             </div>

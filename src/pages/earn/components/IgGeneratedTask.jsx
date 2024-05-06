@@ -62,18 +62,18 @@ export default function IgGeneratedTask({ status ,caption, price}) {
             </div>
             <div className='p-2 bg-white rounded justify-start items-start gap-[29px] flex'>
               <div className='justify-start items-center gap-2.5 flex'>
-                <div className="text-stone-900 capitalize text-xs font-normal font-['Campton']">
+                <div className="text-stone-900 capitalize text-xs font-normal font-['Manrope']">
                   {status}
                 </div>
               </div>
             </div>
           </div>
           <div className='flex-col justify-start items-start gap-3 flex'>
-            <div className="text-stone-900 text-sm font-medium font-['Campton']">
+            <div className="text-stone-900 text-sm font-medium font-['Manrope']">
               {/* Like and follow facebook business pages */}
               {caption}
             </div>
-            <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
+            <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Manrope']">
               Jan 12th 9:27pm
             </div>
             <div className='py-[4.50px] justify-start items-center gap-1.5 inline-flex'>
@@ -102,11 +102,11 @@ export default function IgGeneratedTask({ status ,caption, price}) {
                     </clipPath>
                   </defs>
                 </svg>
-                <div className="opacity-50 text-black text-[10.50px] font-medium font-['Campton']">
+                <div className="opacity-50 text-black text-[10.50px] font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className="text-stone-900 text-[10.50px] font-bold font-['Campton']">
+              <div className="text-stone-900 text-[10.50px] font-bold font-['Manrope']">
                 ₦{price} per Page Like and Follow
               </div>
             </div>

@@ -49,7 +49,7 @@ export default function PrefrenceForm() {
     <div>
       <form>
         <div className='self-stretch grow min-h-screen shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
-          <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+          <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
             Appearance
           </div>
 
@@ -89,7 +89,7 @@ export default function PrefrenceForm() {
                     ],
                   }}
                   control={control}
-                  className="grow  shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                  className="grow  shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                 />
               </div>
               <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -126,7 +126,7 @@ export default function PrefrenceForm() {
                     ],
                   }}
                   control={control}
-                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                 />
               </div>
               <div className='self-stretch w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -161,7 +161,7 @@ export default function PrefrenceForm() {
                       'focus-within:!border-fuchsia-600  ',
                     ],
                   }}
-                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                  className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                 />
               </div>
             </div>

@@ -42,10 +42,10 @@ export default function Resell() {
               </svg>
             </div>
             <div className=' flex-col justify-start items-center gap-3 flex'>
-              <div className="text-white text-sm font-bold font-['Campton']">
+              <div className="text-white text-sm font-bold font-['Manrope']">
                 Sell anything on Trendit
               </div>
-              <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
+              <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Manrope']">
                 Get people with atleast 1000 active followers to repost your
                 adverts and perform certain social tasks for you on their social
                 media accounts. Select the type of task you want people to
@@ -68,14 +68,14 @@ export default function Resell() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center  text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
                   Post an Advert
                 </div>
               </Button>
             </div>
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className=" text-2xl font-medium font-['Campton']">
+            <div className=" text-2xl font-medium font-['Manrope']">
               Market Place
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function Resell() {
               startContent={<Search />}
               placeholder='Search'
               size='sm'
-              className="text-center max-w-md bg-zinc900 rounded text-zinc-400 text-sm font-medium font-['Campton']"
+              className="text-center max-w-md bg-zinc900 rounded text-zinc-400 text-sm font-medium font-['Manrope']"
               classNames={{
                 dataFocused: 'dark:bg-black',
                 input: [
@@ -126,7 +126,7 @@ export default function Resell() {
                     </svg>
                   }
                   variant='light'
-                  className="text-black dark:text-white md:hidden justify-start items-center flex text-sm font-medium font-['Campton']"
+                  className="text-black dark:text-white md:hidden justify-start items-center flex text-sm font-medium font-['Manrope']"
                 >
                   History
                   <span>
@@ -165,7 +165,7 @@ export default function Resell() {
                 </svg>
               }
               variant='light'
-              className="text-black dark:text-white hidden md:flex justify-start items-center  text-sm font-medium font-['Campton']"
+              className="text-black dark:text-white hidden md:flex justify-start items-center  text-sm font-medium font-['Manrope']"
             >
               History
             </Button>
@@ -189,18 +189,18 @@ export default function Resell() {
                         tabContent:
                           'group-data-[selected=true]:text-fuchsia-400  ',
                       }}
-                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                       color='secondary'
                     >
                       <Tab
                         key='advert task'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                         title='Advert Task'
                       ></Tab>
                       <Tab
                         key='engagement tasks'
                         title={<div>Engagement Tasks</div>}
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       ></Tab>
                     </Tabs>
                   </div>
@@ -222,7 +222,7 @@ export default function Resell() {
                       strokeLinecap='round'
                     />
                   </svg>
-                  <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                     Filter
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function Resell() {
                       strokeLinecap='round'
                     />
                   </svg>
-                  <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                     Sort
                   </div>
                 </div>

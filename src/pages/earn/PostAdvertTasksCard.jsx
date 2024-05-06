@@ -28,10 +28,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Manrope']">
               Post adverts on your Facebook page
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your Facebook
               Page and earn ₦110 per advert past. The more you post, the more
               you earn. Note that your Facebook account must have at least 500
@@ -51,11 +51,11 @@ export default function PostAdvertTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦110 per Page Like and Follow
               </div>
             </div>
@@ -71,12 +71,12 @@ export default function PostAdvertTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                   124 Task available
                 </div>
               </div> */}
@@ -106,10 +106,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className="  text-sm font-medium font-['Campton']">
+            <div className="  text-sm font-medium font-['Manrope']">
               Post adverts on your Tictok page
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your Tiktok
               Page and earn ₦110 per advert past. The more you post, the more
               you earn. Note that your Tiktok account must have at least 500
@@ -129,11 +129,11 @@ export default function PostAdvertTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦110 per Page Like and Follow
               </div>
             </div>
@@ -149,12 +149,12 @@ export default function PostAdvertTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                   124 Task available
                 </div>
               </div> */}
@@ -212,10 +212,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Post adverts on your Instagram account
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your
               Instagram Page and earn ₦110 per advert . The more you post, the
               more you earn. Note that your Instagram account must have at least
@@ -235,11 +235,11 @@ export default function PostAdvertTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>{' '}
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦110 per Page Like and Follow
               </div>
             </div>
@@ -255,12 +255,12 @@ export default function PostAdvertTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                   124 Task available
                 </div>
               </div> */}
@@ -315,10 +315,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Post adverts on your WhatsApp status
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your WhatsApp
               status and earn ₦60 per advert past. The more you post, the more
               you earn. Note that your WhatsApp Status must have at least 500
@@ -338,11 +338,11 @@ export default function PostAdvertTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦60 per Page Like and Follow
               </div>
             </div>
@@ -358,12 +358,12 @@ export default function PostAdvertTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                   124 Task available
                 </div>
               </div> */}
@@ -386,10 +386,10 @@ export default function PostAdvertTasksCard() {
         </svg>
         <div className='grow shrink basis-0  justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-            <div className=" text-sm font-medium font-['Campton']">
+            <div className=" text-sm font-medium font-['Manrope']">
               Post adverts on your X account
             </div>
-            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Campton']">
+            <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your Twitter
               page and earn ₦110 per advert past. The more you post, the more
               you earn. Note that your Twitter page must have at least 500
@@ -409,11 +409,11 @@ export default function PostAdvertTasksCard() {
                     fill='#B1B1B1'
                   />
                 </svg>
-                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-zinc-400 text-sm font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">
+              <div className=" text-sm font-bold font-['Manrope']">
                 ₦110 per Page Like and Follow
               </div>
             </div>
@@ -429,12 +429,12 @@ export default function PostAdvertTasksCard() {
               }}
               className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
             >
-              <div className="text-center text-white text-[10px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[10px] font-medium font-['Manrope']">
                 Generate Task
               </div>
             </Button>
             {/* <div className='self-stretch p-1 bg-neutral-600 bg-opacity-10 rounded-bl-md rounded-br-md justify-center items-start gap-3 inline-flex'>
-                <div className="text-center  text-[8.83px] font-normal font-['Campton']">
+                <div className="text-center  text-[8.83px] font-normal font-['Manrope']">
                   124 Task available
                 </div>
               </div> */}

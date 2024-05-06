@@ -28,7 +28,7 @@ const FaqCard = ({ question, answer }) => {
               className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer '
             />
           )}
-          <div className="grow shrink basis-0 text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+          <div className="grow shrink basis-0 text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
             How can i make money on Trendit?
           </div>
         </div>

@@ -46,7 +46,7 @@ export default function GenerateIgTask() {
                 />
               </svg>
             </div>
-            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Campton']">
+            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
               Go back
             </div>
           </div>
@@ -111,10 +111,10 @@ export default function GenerateIgTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="dark:text-black text-white text-sm font-medium font-['Campton']">
+                  <div className="dark:text-black text-white text-sm font-medium font-['Manrope']">
                     Post adverts on Instagram
                   </div>
-                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Campton']">
+                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
                     Like and Follow Facebook Pages for Businesses and
                     Organizations and earn
                     <br />
@@ -122,7 +122,7 @@ export default function GenerateIgTask() {
                     earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
-                    <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Campton']">
+                    <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
                       {fetchTask?.length}Task available
                     </div>
                   </div>
@@ -131,10 +131,10 @@ export default function GenerateIgTask() {
             </div>
             <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Campton']">
+                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
                   Link your Instagram Account
                 </div>
-                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Campton']">
+                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
                   You need to link your Facebook Account to Hawkit before you
                   can start earning with your Facebook Account. Click the button
                   below to link your Facebook account now.
@@ -187,7 +187,7 @@ export default function GenerateIgTask() {
                       </radialGradient>
                     </defs>
                   </svg>
-                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Campton']">
+                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
                     Link Instagram account
                   </div>
                 </div>
@@ -231,12 +231,12 @@ export default function GenerateIgTask() {
                             tabContent:
                               'group-data-[selected=true]:text-fuchsia-400 ',
                           }}
-                          className="text-center  text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                          className="text-center  text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                           color='secondary'
                         >
                           <Tab
                             key='pending'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                             title='Pending'
                           ></Tab>
                           <Tab
@@ -253,22 +253,22 @@ export default function GenerateIgTask() {
                                 </Chip> */}
                               </div>
                             }
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                           ></Tab>
                           <Tab
                             key='failed'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                             title='Failed'
                           ></Tab>
                           <Tab
                             key='completed'
                             title={'Completed'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                           ></Tab>
                           <Tab
                             key='cancelled'
                             title={'Cancelled'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                           ></Tab>
                         </Tabs>
                       </div>
@@ -291,7 +291,7 @@ export default function GenerateIgTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
+                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
                           Filter
                         </div>
                       </div>
@@ -310,7 +310,7 @@ export default function GenerateIgTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Campton']">
+                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
                           Sort
                         </div>
                       </div>
@@ -465,10 +465,10 @@ export default function GenerateIgTask() {
                     </svg>
                   </div>
                   <div className='h[58px]  flex-col justify-start items-center gap-3 flex'>
-                    <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+                    <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                       Need quick cash to earn?
                     </div>
-                    <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Campton']">
+                    <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
@@ -492,7 +492,7 @@ export default function GenerateIgTask() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Campton']">
+                    <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
                       Generate task
                     </div>
                   </div>

@@ -41,7 +41,7 @@ export default function Welcome({ onNotificationClick }) {
           <div className=' w-full lg:-mt-20 px-[25px] py-[13px] bg-blue-500 justify-start items-start gap-[29px] inline-flex'>
             <div className='grow shrink w-full basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
               <div className='flex justify-between w-full'>
-                <div className="text-center text-white text-base font-bold font-['Campton']">
+                <div className="text-center text-white text-base font-bold font-['Manrope']">
                   Not sure where to start?
                 </div>
                 <div
@@ -83,7 +83,7 @@ export default function Welcome({ onNotificationClick }) {
                       strokeLinecap='round'
                     />
                   </svg>
-                  <div className="text-sky-100 text-sm font-normal font-['Campton']">
+                  <div className="text-sky-100 text-sm font-normal font-['Manrope']">
                     Watch tutorial
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default function Welcome({ onNotificationClick }) {
                       strokeLinecap='round'
                     />
                   </svg>
-                  <div className="text-sky-100 text-sm font-normal font-['Campton']">
+                  <div className="text-sky-100 text-sm font-normal font-['Manrope']">
                     Read FAQ
                   </div>
                 </div>
@@ -117,17 +117,17 @@ export default function Welcome({ onNotificationClick }) {
             <Button
               variant='light'
               endContent={<ChevronRight className='w-4 h-4' />}
-              className="text-black hover:bg-cyan-50 text-sm font-medium font-['Campton']"
+              className="text-black hover:bg-cyan-50 text-sm font-medium font-['Manrope']"
             >
               View more
             </Button>
           </div>
           <div className='h[121px] left[281px] py-16 top[97px] absolut flex-col justify-start items-center gap-[18px] inline-flex'>
             <div className='flex-col justify-start items-center gap-3 flex'>
-              <div className="text-center text-black text-sm font-medium font-['Campton']">
+              <div className="text-center text-black text-sm font-medium font-['Manrope']">
                 Wallet bal:
               </div>
-              <div className="text-center text-black text-[40px] font-normal font-['Campton']">
+              <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
                 <span>&#8358;</span>
                 {showBalance?.balance?.toLocaleString()}
                 {/* ₦{showBalance?.currency_code}:{showBalance?.balance} */}
@@ -153,7 +153,7 @@ export default function Welcome({ onNotificationClick }) {
                   </svg>
                 }
                 variant='light'
-                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-center text-black text-[12.83px] font-bold font-['Campton']"
+                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-center text-black text-[12.83px] font-bold font-['Manrope']"
               >
                 Fund
               </Button>
@@ -175,7 +175,7 @@ export default function Welcome({ onNotificationClick }) {
                   </svg>
                 }
                 variant='light'
-                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-black text-[12.83px] font-bold font-['Campton']"
+                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-white border border-black justify-center items-center gap-1 flex text-black text-[12.83px] font-bold font-['Manrope']"
               >
                 Withdraw
               </Button>
@@ -211,15 +211,15 @@ export default function Welcome({ onNotificationClick }) {
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black lg:mb-8 hover:bg-green-50 text-sm font-medium font-['Campton']"
+                  className="text-black lg:mb-8 hover:bg-green-50 text-sm font-medium font-['Manrope']"
                 />
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-sm font-bold font-['Campton']">
+                  <div className="text-black text-sm font-bold font-['Manrope']">
                     Create an Advert
                   </div>
-                  <div className=" text-stone-900 text-xs font-normal font-['Campton']">
+                  <div className=" text-stone-900 text-xs font-normal font-['Manrope']">
                     Get real people to post your ads on their social media
                     account.
                   </div>
@@ -244,15 +244,15 @@ export default function Welcome({ onNotificationClick }) {
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black lg:mb-5 hover:bg-green-50 text-sm font-medium font-['Campton']"
+                  className="text-black lg:mb-5 hover:bg-green-50 text-sm font-medium font-['Manrope']"
                 />
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-sm font-bold font-['Campton']">
+                  <div className="text-black text-sm font-bold font-['Manrope']">
                     Engage a task
                   </div>
-                  <div className=" text-stone-900 text-xs font-normal font-['Campton']">
+                  <div className=" text-stone-900 text-xs font-normal font-['Manrope']">
                     Monetize Your Influence! Earn by Posting Ads on Your Social
                     Media.
                   </div>
@@ -273,7 +273,7 @@ export default function Welcome({ onNotificationClick }) {
         </div>
         <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-white text-2xl font-medium font-['Campton']">
+            <div className="text-white text-2xl font-medium font-['Manrope']">
               What’s Up
             </div>
           </div>
@@ -285,10 +285,10 @@ export default function Welcome({ onNotificationClick }) {
             userDetails?.profile_picture ? (
               <Card className='self-stretch hidden p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px]'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-base font-bold font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
                     Complete your profile set up
                   </div>
-                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
                     To personalize your experience and let you take full
                     advantage of everything we offer, we encourage you to
                     complete your profile settings. A well-rounded profile lets
@@ -316,7 +316,7 @@ export default function Welcome({ onNotificationClick }) {
                   >
                     <div
                       onClick={() => navigate(`/dashboard/settings`)}
-                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']"
+                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']"
                     >
                       Go to settings
                     </div>
@@ -345,10 +345,10 @@ export default function Welcome({ onNotificationClick }) {
             ) : (
               <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-base font-bold font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
                     Complete your profile set up
                   </div>
-                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
                     To personalize your experience and let you take full
                     advantage of everything we offer, we encourage you to
                     complete your profile settings. A well-rounded profile lets
@@ -376,7 +376,7 @@ export default function Welcome({ onNotificationClick }) {
                   >
                     <div
                       onClick={() => navigate(`/dashboard/settings`)}
-                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']"
+                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']"
                     >
                       Go to settings
                     </div>
@@ -406,10 +406,10 @@ export default function Welcome({ onNotificationClick }) {
             {linkIg && (
               <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-base font-bold font-['Campton']">
+                  <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
                     Link your Instagram Account
                   </div>
-                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Campton']">
+                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
                     You need to link your  Instagram Account to Trendit before
                     you can start earning with your  Instagram Account. Click
                     the button below to link your Instagram  account now.
@@ -470,7 +470,7 @@ export default function Welcome({ onNotificationClick }) {
                     }
                     className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
-                    <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Campton']">
+                    <div className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']">
                       Link Instagram account
                     </div>
                   </Button>
@@ -502,23 +502,23 @@ export default function Welcome({ onNotificationClick }) {
         <div className='mx-auto text-center md:mt-40 h-20 pb-3 flex-col justify-start items-center inline-flex'>
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                 About Us
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                 Terms
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                 Privacy policy
               </div>
             </div>
           </div>
           <div className='py-3 justify-start items-center gap-[7px] inline-flex'>
-            <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Campton']">
+            <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
               © 2024 Trendit Techology.
             </div>
           </div>
