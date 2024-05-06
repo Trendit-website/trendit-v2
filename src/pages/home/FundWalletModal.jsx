@@ -57,17 +57,17 @@ export default function FundWalletModal({ isOpen, onClose }) {
                 <div className='self-stretch flex-col justify-center items-start gap-6 flex'>
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className="text-sm font-bold font-['Campton']">
+                      <div className="text-sm font-bold font-['Manrope']">
                         Fund Your Trendit3 Wallet
                       </div>
-                      <div className=" text-center text-zinc-400 text-xs font-normal font-['Campton']">
+                      <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
                         Please enter the amount which you like to fund your
                         wallet with
                       </div>
                     </div>
                     <div className='justify-start flex-col items-start gap-[19px] flex'>
                       <div className='self-stretch  flex-col rounded-none gap-2 flex'>
-                        <div className="text-sm font-medium font-['Campton']">
+                        <div className="text-sm font-medium font-['Manrope']">
                           Amount
                         </div>
                         <Controller
@@ -105,11 +105,11 @@ export default function FundWalletModal({ isOpen, onClose }) {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded-none  text-black text-[12.83px] font-normal font-['Campton']"
+                              className=" rounded-none  text-black text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />
-                        <small className=" text-zinc-400 text-xs font-normal font-['Campton']">
+                        <small className=" text-zinc-400 text-xs font-normal font-['Manrope']">
                           You can choose your preferred method of payment such
                           as Card payment, Bank transfer or USSD, simply by
                           clicking on th “Change Payment” button.
@@ -119,7 +119,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                         <Button
                           type='submit'
                           isDisabled={isPending}
-                          className=" w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Campton']"
+                          className=" w-full px-6 py-6  bg-fuchsia-600 rounded text-center text-white text-[12.83px] font-medium font-['Manrope']"
                         >
                           {isPending ? (
                             <svg

@@ -24,40 +24,40 @@ export default function ConfirmAdvertPaymentModal({ isOpen, onClose }) {
               <AiOutlineClose size={20} color='#fff' />
             </div>
             <div className='flex-col justify-center items-center gap-3 flex'>
-              <div className="text-stone-900 text-sm font-bold font-['Campton']">
+              <div className="text-stone-900 text-sm font-bold font-['Manrope']">
                 How would you like to pay?
               </div>
             </div>
             <div className='self-stretch h-[261px] flex-col justify-center items-center gap-3 flex'>
               <div className='self-stretch h-[175px] p-3 bg-zinc-400 bg-opacity-30 rounded flex-col justify-center items-center gap-2 flex'>
                 <div className='w-[127px] px-2 flex-col justify-center items-center gap-2 flex'>
-                  <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-stone-900 text-[12.83px] font-medium font-['Manrope']">
                     Total Pay
                   </div>
-                  <div className="text-stone-900 text-3xl font-medium font-['Campton']">
+                  <div className="text-stone-900 text-3xl font-medium font-['Manrope']">
                     ₦589 .90
                   </div>
                 </div>
                 <div className='self-stretch justify-between items-center inline-flex'>
-                  <div className="text-black text-[12.83px] font-normal font-['Campton']">
+                  <div className="text-black text-[12.83px] font-normal font-['Manrope']">
                     Amount due to task
                   </div>
-                  <div className="text-black text-[12.83px] font-normal font-['Campton']">
+                  <div className="text-black text-[12.83px] font-normal font-['Manrope']">
                     $500
                   </div>
                 </div>
                 <div className='self-stretch justify-between items-center inline-flex'>
-                  <div className="text-black text-[12.83px] font-normal font-['Campton']">
+                  <div className="text-black text-[12.83px] font-normal font-['Manrope']">
                     Wallet balance after this payment
                   </div>
-                  <div className="text-black text-[12.83px] font-normal font-['Campton']">
+                  <div className="text-black text-[12.83px] font-normal font-['Manrope']">
                     $500
                   </div>
                 </div>
               </div>
               <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
-                  <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
+                  <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
                     You must NOT UNLIKE or UNFOLLOW the Facebook page after you
                     have like and followed the page. Your Trendit account will
                     be suspended once you UNLIKE or UNFOLLOW the Facebook Page.
@@ -80,7 +80,7 @@ export default function ConfirmAdvertPaymentModal({ isOpen, onClose }) {
               </div>
             </div>
             <div className='w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'>
-              <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                 Proceed
               </div>
             </div>

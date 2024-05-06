@@ -7,7 +7,7 @@ export default function TransactionCard() {
       {}
 
       {transactionHistory?.length === 0 ? (
-        <div className="text-[12.83px] font-medium font-['Campton']">
+        <div className="text-[12.83px] font-medium font-['Manrope']">
           No transaction
         </div>
       ) : (
@@ -63,17 +63,17 @@ export default function TransactionCard() {
                 )}
               </div>
               <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-black dark:text-white text-[12.83px] font-medium font-['Campton']">
+                <div className="self-stretch text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
                   {history?.transaction_type}
                 </div>
-                {/* <div className="self-stretch dark:text-white text-black text-[8.83px] font-medium font-['Campton']">
+                {/* <div className="self-stretch dark:text-white text-black text-[8.83px] font-medium font-['Manrope']">
                 Nov 13th 2023 9:21pm
               </div> */}
               </div>
-              <div className="grow shrink basis-0 dark:text-white text-black text-[12.83px] font-medium font-['Campton'] md:pl-12 lg:pl-24 ">
+              <div className="grow shrink basis-0 dark:text-white text-black text-[12.83px] font-medium font-['Manrope'] md:pl-12 lg:pl-24 ">
                 {history?.description}
               </div>
-              <div className="dark:text-white text-black text-[12.83px] font-medium font-['Campton']">
+              <div className="dark:text-white text-black text-[12.83px] font-medium font-['Manrope']">
                 {history?.amount}
               </div>
             </div>

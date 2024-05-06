@@ -234,7 +234,7 @@ want to post your advert.`}
               </div>
               <div className='self-stretch md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
                 <div className='self-stretch  py-3 justify-start items-start gap-2 inline-flex'>
-                  <div className=" text-xl md:text-2xl font-medium font-['Campton']">
+                  <div className=" text-xl md:text-2xl font-medium font-['Manrope']">
                     Create Advert Task
                   </div>
                 </div>
@@ -243,7 +243,7 @@ want to post your advert.`}
                     <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-medium font-['Manrope']">
                             Select Platform
                           </div>
                         </div>
@@ -275,7 +275,7 @@ want to post your advert.`}
                                     '!cursor-text',
                                   ],
                                 }}
-                                className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                                 {...field}
                               >
                                 {tkplatforms?.map((platform) => (
@@ -291,7 +291,7 @@ want to post your advert.`}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className=" text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Manrope']">
                             Please select the social media or App Store platform
                             where you want to perform this action
                           </div>
@@ -299,7 +299,7 @@ want to post your advert.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Location
                           </div>
                         </div>
@@ -315,7 +315,7 @@ want to post your advert.`}
                                 errorMessage={errors?.target_country?.message}
                                 isLoading={isCountryLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select country'
                                 classNames={{
                                   listbox: [
@@ -347,7 +347,7 @@ want to post your advert.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className="text-[10px] font-normal font-['Campton']">
+                          <div className="text-[10px] font-normal font-['Manrope']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -357,7 +357,7 @@ want to post your advert.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             State
                           </div>
                         </div>
@@ -373,7 +373,7 @@ want to post your advert.`}
                                 errorMessage={errors?.target_state?.message}
                                 isLoading={isStateLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select state'
                                 classNames={{
                                   listbox: [
@@ -407,7 +407,7 @@ want to post your advert.`}
                         </div>
 
                         <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className=" text-[10px] font-normal font-['Campton']">
+                          <div className=" text-[10px] font-normal font-['Manrope']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -418,7 +418,7 @@ want to post your advert.`}
 
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Number of Tiktok Advert Post you want
                           </div>
                         </div>
@@ -438,14 +438,14 @@ want to post your advert.`}
                                 }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
-                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
                             rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink basis-0 text-[10px] font-normal font-['Manrope']">
                             Enter the desired Number of Tiktok Advert Post you
                             want Us to get for you.
                           </div>
@@ -453,7 +453,7 @@ want to post your advert.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Gender
                           </div>
                         </div>
@@ -468,7 +468,7 @@ want to post your advert.`}
                                 isInvalid={!!errors.gender}
                                 errorMessage={errors?.gender?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select Gender'
                                 classNames={{
                                   listbox: [
@@ -501,7 +501,7 @@ want to post your advert.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink text-[10px] font-normal font-['Manrope']">
                             You can select the kind of gender whether male or
                             female that you want to see your task. For example,
                             if you are selling women fashion items, you can
@@ -513,7 +513,7 @@ want to post your advert.`}
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Religion
                           </div>
                         </div>
@@ -527,7 +527,7 @@ want to post your advert.`}
                                 isInvalid={!!errors.religion}
                                 errorMessage={errors?.religion?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select Religion'
                                 isLoading={isReligionLoading}
                                 {...field}
@@ -559,7 +559,7 @@ want to post your advert.`}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink  basis-0 text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink  basis-0 text-[10px] font-normal font-['Manrope']">
                             You can target people of a particular religion or
                             belief. Your advert and task will be shown to the
                             particular religion you select. Select 'All
@@ -569,7 +569,7 @@ want to post your advert.`}
                       </div>
                       <div className='self-stretch rounded-md flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Enter Advert Task or Caption
                           </div>
                         </div>
@@ -577,11 +577,11 @@ want to post your advert.`}
                         <Textarea
                           {...register('caption')}
                           placeholder='Caption'
-                          className="text-black  self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Campton']"
+                          className="text-black  self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
                         />
 
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
-                          <div className="grow shrink basis-0  text-[10px] font-normal font-['Campton']">
+                          <div className="grow shrink basis-0  text-[10px] font-normal font-['Manrope']">
                             Please enter the advert text or caption. The advert
                             text or caption should be well detailed. You can
                             also include a link to your site, a phone number for
@@ -593,7 +593,7 @@ want to post your advert.`}
                     </div>
                     <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
                       <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                        <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                        <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                           Choose one of the Advert Media Upload Below:
                         </div>
                       </div>
@@ -613,7 +613,7 @@ want to post your advert.`}
                           />
                           <label
                             htmlFor='image-upload'
-                            className="text-center w-20 flex items-center gap-2 cursor-pointer  text-[#FF6DFB] text-[10px] font-normal font-['Campton']"
+                            className="text-center w-20 flex items-center gap-2 cursor-pointer  text-[#FF6DFB] text-[10px] font-normal font-['Manrope']"
                           >
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
@@ -643,7 +643,7 @@ want to post your advert.`}
                           />
                           <label
                             htmlFor='video-upload'
-                            className="text-center w-20 flex items-center gap-2 cursor-pointer text-[12.83px] font-medium font-['Campton']"
+                            className="text-center w-20 flex items-center gap-2 cursor-pointer text-[12.83px] font-medium font-['Manrope']"
                           >
                             <svg
                               xmlns='http://www.w3.org/2000/svg'
@@ -663,7 +663,7 @@ want to post your advert.`}
                           </label>
                         </div>
                       </div>
-                      <div className="md:w-[559px] h-6 text-[10px] font-normal font-['Campton']">
+                      <div className="md:w-[559px] h-6 text-[10px] font-normal font-['Manrope']">
                         Upload a Photo of the Advert You want people to post on
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
@@ -709,7 +709,7 @@ want to post your advert.`}
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
-                    <div className=" px-2 text-[12.83px] font-medium font-['Campton']">
+                    <div className=" px-2 text-[12.83px] font-medium font-['Manrope']">
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
@@ -733,7 +733,7 @@ want to post your advert.`}
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded bg-transparent text-3xl font-normal font-['Campton']"
+                              className=" rounded bg-transparent text-3xl font-normal font-['Manrope']"
                             />
                           )}
                         />

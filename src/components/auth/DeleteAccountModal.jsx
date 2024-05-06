@@ -43,10 +43,10 @@ export default function DeleteAccountModal({ isOpen, onClose }) {
               <AiOutlineClose size={20} color='#fff' />
             </div>
             <div className='flex-col justify-center items-center gap-3 flex'>
-              <div className=" text-2xl font-bold font-['Campton']">
+              <div className=" text-2xl font-bold font-['Manrope']">
                 Delete Account
               </div>
-              <div className=" text-center text-xs font-normal font-['Campton']">
+              <div className=" text-center text-xs font-normal font-['Manrope']">
                 Are you sure you want to delete your account,? By pressing this
                 button you no longer have an account on Trendit.
               </div>
@@ -58,7 +58,7 @@ export default function DeleteAccountModal({ isOpen, onClose }) {
               isDisabled={isPending}
               className='w-[290px] px-6 py-6 bg-[#FF3D00] rounded-[100px] justify-center items-center gap-2 inline-flex'
             >
-              <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                 {isPending ? (
                   <svg
                     className='animate-spin h-5 w-5 text-current'

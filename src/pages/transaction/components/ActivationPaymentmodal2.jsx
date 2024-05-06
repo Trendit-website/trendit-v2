@@ -87,33 +87,33 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                       </clipPath>
                     </defs>
                   </svg>
-                  <div className="text-base font-bold font-['Campton']">
+                  <div className="text-base font-bold font-['Manrope']">
                     Become A memeber Today
                   </div>
                 </div>
-                <div className="text-center text-zinc-400 text-sm font-semibold font-['Campton']">
+                <div className="text-center text-zinc-400 text-sm font-semibold font-['Manrope']">
                   Turn your social media accounts into a daily source of income
                 </div>
               </div>
               <div className='flex-col justify-start items-start gap-6 flex'>
-                <div className=" text-zinc-400 text-sm font-normal font-['Campton']">
+                <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   Do you know you can earn daily income by performing social
                   media task such as likes, follows, comments, subscribe, share,
                   retweet and others. that is one of the so many benefit of
                   becoming a member of Trendit
                 </div>
-                <div className=" text-zinc-400 text-sm font-normal font-['Campton']">
+                <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   When you activate your account with a one-time membership fee
                   of N1000, you get an access to enjoy the benefits listed
                   below:
                 </div>
                 <div className=''>
-                  <span className="text-zinc-400 text-sm font-semibold font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-semibold font-['Manrope']">
                     {' '}
                     Earn on Your Terms:
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-normal font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                     Short & Simple Tasks: Unlike time-consuming gigs, our tasks
                     are quick and easy to complete – perfect for fitting into
                     your busy schedule. Like posts, follow accounts, share
@@ -123,15 +123,15 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                     earnings through convenient payment methods.
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-normal font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-semibold font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-semibold font-['Manrope']">
                     {' '}
                     Boost Your Social Media Presence:
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-normal font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                     Expand your social circle and explore engaging content by
                     following recommended accounts.
                     <br />
@@ -144,15 +144,15 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                     relevant online presence.
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-normal font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-semibold font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-semibold font-['Manrope']">
                     {' '}
                     More than Just Earnings:
                     <br />
                   </span>
-                  <span className="text-zinc-400 text-sm font-normal font-['Campton']">
+                  <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                     Interactive Community: Connect with other app users, share
                     experiences, and learn from each other.
                     <br />
@@ -164,13 +164,13 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                     experience – it's a win-win!
                   </span>
                 </div>
-                <div className=" text-zinc-400 text-sm font-semibold font-['Campton']">
+                <div className=" text-zinc-400 text-sm font-semibold font-['Manrope']">
                   Ready to start earning and take control of your social media
                   experience? Download our app today!
                 </div>
               </div>
               <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
-                <div className=" px-2 text-[12.83px] font-medium font-['Campton']">
+                <div className=" px-2 text-[12.83px] font-medium font-['Manrope']">
                   Membership Fee
                 </div>
                 <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
@@ -202,7 +202,7 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                               '!cursor-text',
                             ],
                           }}
-                          className=" rounded bg-white bg-opacity-10   text-3xl font-normal font-['Campton']"
+                          className=" rounded bg-white bg-opacity-10   text-3xl font-normal font-['Manrope']"
                         />
                       )}
                     />

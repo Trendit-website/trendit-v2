@@ -15,7 +15,7 @@ export default function Settings() {
       <div className=' w-full p-3 min-h-screen bg-white dark:bg-neutral-900 flex-col justify-start items-start gap-3 inline-flex'>
         <div className='self-stretch px-4 md:px-0 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-2xl font-medium font-['Manrope']">
               Profile Settings
             </div>
           </div>
@@ -36,33 +36,33 @@ export default function Settings() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center overflow-auto text-[#CB29BE] dark:text-fuchsia-400 text-xs font-bold font-['Campton']"
+                    className="text-center overflow-auto text-[#CB29BE] dark:text-fuchsia-400 text-xs font-bold font-['Manrope']"
                     color='secondary'
                   >
                     <Tab
                       key='generalform'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='General'
                     ></Tab>
                     <Tab
                       key='security'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Security'
                     ></Tab>
                     <Tab
                       key='notifications'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Notifications'
                     ></Tab>
                     <Tab
                       key='bank details'
                       title='Bank details'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                     <Tab
                       key='preferences'
                       title='Preferences'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                   </Tabs>
                 </div>
@@ -82,7 +82,7 @@ export default function Settings() {
                   strokeLinecap='round'
                 />
               </svg>
-              <div className="text-center text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-bold font-['Manrope']">
                 Save
               </div>
             </div> */}

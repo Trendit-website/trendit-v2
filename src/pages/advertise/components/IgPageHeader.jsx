@@ -7,10 +7,10 @@ export default function IgPageHeader({ title, frame, descp, price }) {
       <div className='self-stretch relative border overflow-clip border-zinc-400 flex-col justify-start items-start flex'>
         <div className='self-stretch bg-transparent z-20 p-4 md:bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
-            <div className="self-stretch  text-[10px] font-normal font-['Campton']">
+            <div className="self-stretch  text-[10px] font-normal font-['Manrope']">
               Jan 12th 9:27pm
             </div>
-            <div className=" text-3xl font-medium font-['Campton']">
+            <div className=" text-3xl font-medium font-['Manrope']">
               {title}
             </div>
             <div className='py1.5 justify-start items-center gap-2 inline-flex'>
@@ -27,20 +27,20 @@ export default function IgPageHeader({ title, frame, descp, price }) {
                     className='dark:stroke-zinc-400 stroke-black'
                   />
                 </svg>
-                <div className="opacity-50 dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="opacity-50 dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Pricing
                 </div>
               </div>
-              <div className=" text-sm font-bold font-['Campton']">{price}</div>
+              <div className=" text-sm font-bold font-['Manrope']">{price}</div>
             </div>
             <div className='selfstretch justify-start items-start gap-3 inline-flex'>
-              {/* <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+              {/* <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                 20+ people
               </div>
-              <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+              <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                 134 Likes
               </div> */}
-              <div className="dark:text-[#909090] capitalize md:w-[60rem] text-[9px] font-normal font-['Campton'] md:uppercase tracking-tight">
+              <div className="dark:text-[#909090] capitalize md:w-[60rem] text-[9px] font-normal font-['Manrope'] md:uppercase tracking-tight">
                 {descp}
               </div>
             </div>
@@ -51,7 +51,7 @@ export default function IgPageHeader({ title, frame, descp, price }) {
         </div>
         <div className='self-stretch p-3 hidden bg-sky-100 justify-start items-start gap-[29px]'>
           <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
-            <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
+            <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
               You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
               like and followed the page. Your Trendit account will be suspended
               once you UNLIKE or UNFOLLOW the Facebook Page.

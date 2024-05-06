@@ -53,7 +53,7 @@ export default function AdvertPaymentModal({
                 <AiOutlineClose size={20} color='#fff' />
               </div>
               <div className='self-stretch flex-col justify-center items-center gap-3 flex'>
-                <div className=" text-sm font-bold font-['Campton']">
+                <div className=" text-sm font-bold font-['Manrope']">
                   How would you like to pay?
                 </div>
               </div>
@@ -78,10 +78,10 @@ export default function AdvertPaymentModal({
                   </svg>
                   <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
-                      <div className="self-stretch text-sm font-medium font-['Campton']">
+                      <div className="self-stretch text-sm font-medium font-['Manrope']">
                         100% Secure payment
                       </div>
-                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Campton']">
+                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
                         Pay through our highly secured online payment partner
                         using your VISA/Mastercard/Verve card. Or Bank transfer
                         via USSD or internet Bank Transfer.
@@ -123,10 +123,10 @@ export default function AdvertPaymentModal({
                   </svg>
                   <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
-                      <div className="self-stretch text-sm font-medium font-['Campton']">
+                      <div className="self-stretch text-sm font-medium font-['Manrope']">
                         Pay from your Trendit Wallet
                       </div>
-                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Campton']">
+                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
                         Wallet Balance: {walletBalance?.balance}
                       </div>
                     </div>
@@ -166,11 +166,11 @@ export default function AdvertPaymentModal({
                   </svg>
                   <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
-                      <div className="self-stretch text-sm font-medium font-['Campton']">
+                      <div className="self-stretch text-sm font-medium font-['Manrope']">
                         {/* Pay with Crypto */}
                         Pay with Paystack
                       </div>
-                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Campton']">
+                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
                         Get real people to post your ads on their social media
                         account.{' '}
                       </div>
@@ -205,33 +205,33 @@ export default function AdvertPaymentModal({
                   <AiOutlineClose size={20} color='#fff' />
                 </div>
                 <div className='flex-col justify-center items-center gap-3 flex'>
-                  <div className="text-sm font-bold font-['Campton']">
+                  <div className="text-sm font-bold font-['Manrope']">
                     How would you like to pay?
                   </div>
                 </div>
                 <div className='self-stretch flex-col justify-center items-center gap-3 flex'>
                   <div className='self-stretch p-3 bg-zinc-400 bg-opacity-30 rounded flex-col justify-center items-center gap-2 flex'>
                     <div className=' px-2 flex-col justify-center items-center gap-2 flex'>
-                      <div className="text-center text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                         Total Pay
                       </div>
-                      <div className=" text-3xl font-medium font-['Campton']">
+                      <div className=" text-3xl font-medium font-['Manrope']">
                         {walletBalance?.currency_code}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
-                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         Amount due to task
                       </div>
-                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         {walletBalance?.currency_code}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
-                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         Wallet balance after this payment
                       </div>
-                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                      <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         {walletBalance?.currency_code}: {''}
                         {balanceAfterPayment}
                       </div>
@@ -239,7 +239,7 @@ export default function AdvertPaymentModal({
                   </div>
                   <div className='self-stretch hidden p-3 bg-sky-100 justify-start items-start gap-[29px] inlineflex'>
                     <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-                      <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
+                      <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
                         You must NOT UNLIKE or UNFOLLOW the Facebook page after
                         you have like and followed the page. Your Trendit
                         account will be suspended once you UNLIKE or UNFOLLOW
@@ -266,7 +266,7 @@ export default function AdvertPaymentModal({
                   onClick={handleFinalPayment}
                   className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
-                  <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                     Proceed
                   </div>
                 </div>
@@ -372,17 +372,17 @@ export default function AdvertPaymentModal({
                     </svg>
                   </div>
                   <div className='flex-col justify-start items-center gap-3 flex'>
-                    <div className=" text-sm font-bold font-['Campton']">
+                    <div className=" text-sm font-bold font-['Manrope']">
                       Successful!
                     </div>
-                    <div className="w-[253px] text-center text-zinc-400 text-xs font-normal font-['Campton']">
+                    <div className="w-[253px] text-center text-zinc-400 text-xs font-normal font-['Manrope']">
                       Your payment has been received and processed successfully.
                     </div>
                     <div
                       onClick={handleHome}
                       className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                     >
-                      <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+                      <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                         Go Home
                       </div>
                     </div>

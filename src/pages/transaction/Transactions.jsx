@@ -33,23 +33,23 @@ export default function Transactions() {
                         tabContent:
                           'group-data-[selected=true]:text-fuchsia-400 ',
                       }}
-                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                       color='secondary'
                     >
                       <Tab
                         key='overview'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                         title='Overview'
                       ></Tab>
                       <Tab
                         key='earned'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                         title='Earned'
                       ></Tab>
                       <Tab
                         key='orders'
                         title='Orders'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       ></Tab>
                     </Tabs>
                   </div>
@@ -58,13 +58,13 @@ export default function Transactions() {
               <div className='px-3 opacity-0 justify-start items-center gap-[11px] flex'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <div className='w-6 h-6 p-[3px] justify-center items-center flex' />
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
                     Filter
                   </div>
                 </div>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <div className='w-6 h-6 px-[3px] py-1 justify-center items-center flex' />
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
                     Sort
                   </div>
                 </div>
@@ -112,7 +112,7 @@ export default function Transactions() {
             )}
           </div>
           <div className='self-stretch mt-4 md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-2xl font-medium font-['Manrope']">
               Transaction History
             </div>
           </div>
@@ -133,23 +133,23 @@ export default function Transactions() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Campton']"
+                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
                     color='secondary'
                   >
                     <Tab
                       key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='All'
                     ></Tab>
                     <Tab
                       key='earned history'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Earned'
                     ></Tab>
                     <Tab
                       key='orders history'
                       title='Orders'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                   </Tabs>
                 </div>
@@ -171,7 +171,7 @@ export default function Transactions() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                   Filter
                 </div>
               </div>
@@ -190,20 +190,20 @@ export default function Transactions() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                   Sort
                 </div>
               </div>
             </div>
           </div>
           <div className='self-stretch px-3 justify-between items-start inline-flex'>
-            <div className="w-[145px]  dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[145px]  dark:text-opacity-50 text-xs font-medium font-['Manrope']">
               Type
             </div>
-            <div className="w-[860px] hidden md:grid  dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className="w-[860px] hidden md:grid  dark:text-opacity-50 text-xs font-medium font-['Manrope']">
               Description
             </div>
-            <div className=" dark:text-opacity-50 text-xs font-medium font-['Campton']">
+            <div className=" dark:text-opacity-50 text-xs font-medium font-['Manrope']">
               Amount
             </div>
           </div>

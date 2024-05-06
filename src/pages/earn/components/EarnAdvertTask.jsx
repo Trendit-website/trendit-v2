@@ -139,7 +139,7 @@ export default function EarnAdvertTask() {
                 />
               </svg>
             </div>
-            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Campton']">
+            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
               Go back
             </div>
           </div>
@@ -149,10 +149,10 @@ export default function EarnAdvertTask() {
               <div className='self-stretch relative border border-white flex-col justify-start items-start flex'>
                 <div className='self-stretch  p-6 bg-opacity-40  rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
                   <div className='flex-col justify-start items-start gap-1.5 flex'>
-                    <div className="self-stretch text-zinc-400 text-[10px] font-normal font-['Campton']">
+                    <div className="self-stretch text-zinc-400 text-[10px] font-normal font-['Manrope']">
                       Jan 12th 9:27pm
                     </div>
-                    <div className="capitalize text-3xl font-medium font-['Campton']">
+                    <div className="capitalize text-3xl font-medium font-['Manrope']">
                       Like and follow {task?.task?.platform} page
                     </div>
                     <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
@@ -170,23 +170,23 @@ export default function EarnAdvertTask() {
                             className='stroke-gray-400'
                           />
                         </svg>
-                        <div className="opacity-50 capitalize text-[12px] font-medium font-['Campton']">
+                        <div className="opacity-50 capitalize text-[12px] font-medium font-['Manrope']">
                           earning
                         </div>
                       </div>
-                      <div className=" text-sm font-bold font-['Campton']">
+                      <div className=" text-sm font-bold font-['Manrope']">
                         ₦10 per Advert post
                       </div>
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-                      <div className="text-[#FFA2A2] text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                      <div className="text-[#FFA2A2] text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                         Note: That you must have at Least 1000 followers to be
                         able to Generate this task
                       </div>
-                      {/* <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                      {/* <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                     134 Likes
                   </div>
-                  <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                  <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                     453 Comments
                   </div> */}
                     </div>
@@ -201,7 +201,7 @@ export default function EarnAdvertTask() {
                 </div>
                 <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-                    <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
+                    <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
                       You must NOT UNLIKE or UNFOLLOW the {task?.task?.platform}{' '}
                       page after you have like and followed the page. Your
                       Trendit account will be suspended once you UNLIKE or
@@ -232,7 +232,7 @@ export default function EarnAdvertTask() {
                 <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
                   <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
                     <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                      <div className="grow shrink basis-0 text-center text-2xl font-medium font-['Campton']">
+                      <div className="grow shrink basis-0 text-center text-2xl font-medium font-['Manrope']">
                         Task
                       </div>
                     </div>
@@ -240,39 +240,39 @@ export default function EarnAdvertTask() {
                   <div className=' flex-col justify-start items-center gap-8 flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
                       <div className='self-stretch'>
-                        <span className=" text-xs font-semibold font-['Campton']">
+                        <span className=" text-xs font-semibold font-['Manrope']">
                           Please follow the step-by-step instructions below to
                           do your task:
                           <br />
                           Step 1: 
                         </span>
-                        <span className=" text-xs font-normal font-['Campton']">
+                        <span className=" text-xs font-normal font-['Manrope']">
                           Open the Task Link above on your Instagran Mobile App
                           or browser
                           <br />
                         </span>
-                        <span className=" text-xs font-semibold font-['Campton']">
+                        <span className=" text-xs font-semibold font-['Manrope']">
                           Step 2: 
                         </span>
-                        <span className=" text-xs font-normal font-['Campton']">
+                        <span className=" text-xs font-normal font-['Manrope']">
                           The link will direct you to a Instagram Page which you
                           are meant to like and follow.
                           <br />
                         </span>
-                        <span className=" text-xs font-semibold font-['Campton']">
+                        <span className=" text-xs font-semibold font-['Manrope']">
                           Step 3: 
                         </span>
-                        <span className=" text-xs font-normal font-['Campton']">
+                        <span className=" text-xs font-normal font-['Manrope']">
                           Click on the Like or Follow button on the Instagram
                           Page to start liking or following the page. You MUST
                           NOT Unfollow the account after you have followed the
                           account.
                           <br />
                         </span>
-                        <span className=" text-xs font-semibold font-['Campton']">
+                        <span className=" text-xs font-semibold font-['Manrope']">
                           Step 4: 
                         </span>
-                        <span className=" text-xs font-normal font-['Campton']">
+                        <span className=" text-xs font-normal font-['Manrope']">
                           Create a screenshot of the page that shows you have
                           liked or followed the page and upload the screenshot
                           under the Proof of Work Form below. You are also
@@ -300,14 +300,14 @@ export default function EarnAdvertTask() {
                         }
                         className='self-stretch rounded-none h-[60px] p-2 bg-white bg-opacity-10  items-center gap-1 '
                       >
-                        <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-[10px] font-normal font-['Campton']">
+                        <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-[10px] font-normal font-['Manrope']">
                           {task?.task?.caption}
                         </div>
                       </Snippet>
 
                       <div className='justify-start items-center gap-2 flex'>
                         <div className='w-4 h-4 relative' />
-                        <div className="text-fuchsia-400 text-sm font-medium font-['Campton']">
+                        <div className="text-fuchsia-400 text-sm font-medium font-['Manrope']">
                           Copy text{' '}
                         </div>
                       </div>
@@ -333,7 +333,7 @@ export default function EarnAdvertTask() {
                           href={task?.task?.account_link}
                           className='self-stretch h-9 p-2 bg-white justify-center items-center gap-1 inline-flex'
                         >
-                          <div className="grow shrink basis-0  text-black text-[12.83px] font-normal font-['Campton']">
+                          <div className="grow shrink basis-0  text-black text-[12.83px] font-normal font-['Manrope']">
                             {task?.task?.account_link}
                           </div>
                           <div className='justify-start items-center gap-2 flex'>
@@ -349,7 +349,7 @@ export default function EarnAdvertTask() {
                                 fill='#CB29BE'
                               />
                             </svg>
-                            <div className="text-fuchsia-600 text-sm font-medium font-['Campton']">
+                            <div className="text-fuchsia-600 text-sm font-medium font-['Manrope']">
                               Visit Link
                             </div>
                           </div>
@@ -357,7 +357,7 @@ export default function EarnAdvertTask() {
                       )}
                       <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                         <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
-                          <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
+                          <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Manrope']">
                             You must NOT DELETE THE ADVERT POST on the{' '}
                             <span className='uppercase'>
                               {task?.task?.platform}
@@ -381,7 +381,7 @@ export default function EarnAdvertTask() {
                 <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
                   <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
                     <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                      <div className="grow shrink basis-0 text-center text-white text-2xl font-medium font-['Campton']">
+                      <div className="grow shrink basis-0 text-center text-white text-2xl font-medium font-['Manrope']">
                         Upload proof
                       </div>
                     </div>
@@ -400,7 +400,7 @@ export default function EarnAdvertTask() {
                         />
                         <label
                           htmlFor='image-upload'
-                          className="text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-['Campton']"
+                          className="text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-['Manrope']"
                         >
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -435,28 +435,28 @@ export default function EarnAdvertTask() {
                             : 'grid'
                         }  self-stretch flex-col justify-start items-start gap-3 flex`}
                       >
-                        <div className="self-stretch text-xs font-semibold font-['Campton']">
+                        <div className="self-stretch text-xs font-semibold font-['Manrope']">
                           Please enter the name on your Facebook account that
                           performed this task
                         </div>
                         <Input
                           placeholder='Corehunter007'
                           size='sm'
-                          className="grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-['Campton']"
+                          className="grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']"
                         />
                       </div>
                       <div className='self-stretch justify-between items-center inline-flex'>
                         <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
                           <label
                             htmlFor='image-upload'
-                            className="text-center  cursor-pointer text-[10px] font-medium font-['Campton']"
+                            className="text-center  cursor-pointer text-[10px] font-medium font-['Manrope']"
                           >
                             Upload Proof
                           </label>
                         </div>
                         {/* <div className='p-2 justify-center items-center gap-1 flex'>
                           <div className='w-[18px] h-[18px] relative' />
-                          <div className="text-center text-fuchsia-200 text-[12.83px] font-bold font-['Campton']">
+                          <div className="text-center text-fuchsia-200 text-[12.83px] font-bold font-['Manrope']">
                             Save
                           </div>
                         </div> */}
@@ -472,7 +472,7 @@ export default function EarnAdvertTask() {
                   onClick={() => onCancel(task?.key)}
                   className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
-                  <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-black text-[12.83px] font-medium font-['Manrope']">
                     {loading ? (
                       <svg
                         className='animate-spin h-5 w-5 text-current'
@@ -504,7 +504,7 @@ export default function EarnAdvertTask() {
                   isDisabled={isPending}
                   className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
-                  <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+                  <div className="text-center text-black text-[12.83px] font-medium font-['Manrope']">
                     {isPending ? (
                       <svg
                         className='animate-spin h-5 w-5 text-current'
@@ -550,7 +550,7 @@ export default function EarnAdvertTask() {
                   strokeLinecap='round'
                 />
               </svg>
-              <div className="text-center text-orange-600 text-sm font-medium font-['Campton']">
+              <div className="text-center text-orange-600 text-sm font-medium font-['Manrope']">
                 Report Task
               </div>
             </div>

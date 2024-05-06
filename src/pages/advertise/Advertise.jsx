@@ -87,10 +87,10 @@ export default function Advertise() {
             </svg>
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
-            <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
               Earn on Trendit just got easier
             </div>
-            <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Campton']">
+            <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Manrope']">
               Get people with atleast 1000 active followers to repost your
               adverts and perform certain social tasks for you on their social
               media accounts. Select the type of task you want people to perform
@@ -99,7 +99,7 @@ export default function Advertise() {
           </div>
         </div>
         <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-          <div className="text-white text-2xl font-medium font-['Campton']">
+          <div className="text-white text-2xl font-medium font-['Manrope']">
             Advertise
           </div>
         </div>
@@ -122,12 +122,12 @@ export default function Advertise() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                     color='secondary'
                   >
                     <Tab
                       key='advert task'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Advert Task'
                     ></Tab>
                     <Tab
@@ -144,7 +144,7 @@ export default function Advertise() {
                           </Chip> */}
                         </div>
                       }
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                   </Tabs>
                 </div>
@@ -154,7 +154,7 @@ export default function Advertise() {
               onClick={() => navigate(`/dashboard/advertise-history`)}
               endContent={<ChevronRight />}
               variant='light'
-              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Campton']"
+              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
             >
               History{' '}
             </Button>

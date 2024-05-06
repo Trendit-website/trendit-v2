@@ -19,7 +19,7 @@ export default function OverViewCard() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
@@ -37,15 +37,15 @@ export default function OverViewCard() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Campton']">
+                <div className="text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Manrope']">
                   Export
                 </div>
               </div>
               <div className='justify-start items-center gap-2 flex'>
-                <div className="dark:opacity-50 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="dark:opacity-50 text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Period
                 </div>
-                <div className="text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   All time
                 </div>
                 <svg
@@ -65,18 +65,18 @@ export default function OverViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
+            <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               456 Adverts
             </div>
           </div>
         </div>
         {/* <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -92,7 +92,7 @@ export default function OverViewCard() {
                     fill='#FF3D00'
                   />
                 </svg>
-                <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-orange-600 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>
@@ -100,12 +100,12 @@ export default function OverViewCard() {
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
             <div className='self-stretch justify-start items-center gap-1 inline-flex'>
-              <div className="text-white text-[8.83px] font-medium font-['Campton']">
+              <div className="text-white text-[8.83px] font-medium font-['Manrope']">
                 Total Earned
               </div>
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -121,26 +121,26 @@ export default function OverViewCard() {
                     fill='#FF3D00'
                   />
                 </svg>
-                <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-orange-600 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>
             </div>
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
-            <div className="self-stretch text-white text-[12.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[12.83px] font-medium font-['Manrope']">
               0.00
             </div>
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -156,7 +156,7 @@ export default function OverViewCard() {
                     fill='#4CAF50'
                   />
                 </svg>
-                <div className="text-center text-white opacity-50 dark:opacity-100 dark:text-green-500 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-white opacity-50 dark:opacity-100 dark:text-green-500 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>

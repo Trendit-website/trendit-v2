@@ -48,23 +48,23 @@ export default function History() {
                         tabContent:
                           'group-data-[selected=true]:text-fuchsia-400 ',
                       }}
-                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                       color='secondary'
                     >
                       <Tab
                         key='overview'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                         title='Overview'
                       ></Tab>
                       <Tab
                         key='engage task'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                         title='Enage Task'
                       ></Tab>
                       <Tab
                         key='advert task'
                         title='Advert Task'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       ></Tab>
                     </Tabs>
                   </div>
@@ -73,13 +73,13 @@ export default function History() {
               <div className='px-3 opacity-0 justify-start items-center gap-[11px] flex'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <div className='w-6 h-6 p-[3px] justify-center items-center flex' />
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
                     Filter
                   </div>
                 </div>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <div className='w-6 h-6 px-[3px] py-1 justify-center items-center flex' />
-                  <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+                  <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
                     Sort
                   </div>
                 </div>
@@ -127,7 +127,7 @@ export default function History() {
             )}
           </div>
           <div className='self-stretch md:mt-16 py-3 justify-start items-start gap-2 inline-flex'>
-            <div className=" text-2xl font-medium font-['Campton']">
+            <div className=" text-2xl font-medium font-['Manrope']">
               My Adverts
             </div>
           </div>
@@ -148,28 +148,28 @@ export default function History() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Campton']"
+                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
                     color='secondary'
                   >
                     <Tab
                       key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='All'
                     ></Tab>
                     <Tab
                       key='pending'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Pending'
                     ></Tab>
                     <Tab
                       key='approved'
                       title='Completed'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                     <Tab
                       key='declined'
                       title='Archived'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                   </Tabs>
                 </div>
@@ -191,7 +191,7 @@ export default function History() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                   Filter
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function History() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-center hidden md:grid text-zinc-400 text-sm font-medium font-['Manrope']">
                   Sort
                 </div>
               </div>
