@@ -52,12 +52,12 @@ export default function ResetPassword() {
             <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
               <Logo />
 
-              <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
                 <Button onClick={() => navigate(-1)} variant='flat bg-none'>
                   Go Back
                 </Button>
               </div>
-              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>
@@ -66,10 +66,10 @@ export default function ResetPassword() {
 
             <div className=' w-[20rem] my-8 md:w-[23rem] mx-auto  flex-col  items-center gap-6 '>
               <div className='self-stretch my-2 flex-col justify-start items-center gap-3 flex'>
-                <div className="w-full text-center text-[64px] font-semibold font-['Campton'] leading-[53.76px]">
+                <div className="w-full text-center text-[64px] font-semibold font-['Manrope'] leading-[53.76px]">
                   Reset Your Password
                 </div>
-                <div className="w-80 text-center text-zinc-400 text-base font-normal font-['Campton']">
+                <div className="w-80 text-center text-zinc-400 text-base font-normal font-['Manrope']">
                   Please check your Trendit email address and enter the code
                   that was sent to help reset your password
                 </div>
@@ -94,7 +94,7 @@ export default function ResetPassword() {
                           '!cursor-text',
                         ],
                       }}
-                      className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                     />
                   )}
                   rules={{ required: true }}
@@ -117,7 +117,7 @@ export default function ResetPassword() {
                           '!cursor-text',
                         ],
                       }}
-                      className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                       endContent={
                         <button
                           className='focus:outline-none'
@@ -174,7 +174,7 @@ export default function ResetPassword() {
                 />
                 <Button
                   type='submit'
-                  className="w-[290px] px-6 py-3.5 mt-4 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Campton']"
+                  className="w-[290px] px-6 py-3.5 mt-4 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
                 >
                   {isPending ? (
                     <svg
@@ -205,7 +205,7 @@ export default function ResetPassword() {
               <div className='self-stretch mt-16 flex-col justify-start items-center gap-2 flex'>
                 <div
                   onClick={() => navigate('/')}
-                  className="text-center cursor-pointer py-6 text-[#CB29BE] text-xs font-normal font-['Campton'] tracking-wide"
+                  className="text-center cursor-pointer py-6 text-[#CB29BE] text-xs font-normal font-['Manrope'] tracking-wide"
                 >
                   Back to Home
                 </div>

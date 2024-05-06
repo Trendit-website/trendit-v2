@@ -57,7 +57,7 @@ const OtpPinInput = forwardRef(
                 onPaste={handlePaste}
                 ref={i === 0 ? ref : null}
                 className={cn(
-                  "grow shrink basis-0 text-center rounded-lg w-12 h-12 bg-[#B1B1B1] text-black text-opacity-50 text-[12.83px] font-normal font-['Campton'] tracking-[10.39px]",
+                  "grow shrink basis-0 text-center rounded-lg w-12 h-12 bg-[#B1B1B1] text-black text-opacity-50 text-[12.83px] font-normal font-['Manrope'] tracking-[10.39px]",
                   { 'pointer-events-none opacity-60': disabled }
                 )}
                 // className={cn(

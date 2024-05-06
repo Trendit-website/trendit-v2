@@ -96,10 +96,10 @@ export default function OnBoard() {
             </div>
             <div className=' w-[20rem] md:w-[23rem] left-[10%] md:left-[40%] top-[189px] absolute flex-col justify-start items-center gap-6 inline-flex'>
               <div className='flex-col justify-start items-center gap-6 flex'>
-                <div className="w-80 text-center text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+                <div className="w-80 text-center text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
                   Welcome onboard!
                 </div>
-                <div className="self-stretch text-center text-zinc-400 text-base font-normal font-['Campton']">
+                <div className="self-stretch text-center text-zinc-400 text-base font-normal font-['Manrope']">
                   Hi {userData?.email}, we are excited to have you onboard!
                   Finish up your profile set up.
                 </div>
@@ -140,14 +140,14 @@ export default function OnBoard() {
                       </div>
                     </label>
                   </div>
-                  <div className="text-center text-zinc-400 text-[10px] font-normal font-['Campton']">
+                  <div className="text-center text-zinc-400 text-[10px] font-normal font-['Manrope']">
                     Upload photo
                   </div>
                 </div>
               </div>
               <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
                 <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                  <label className="text-center px-2 textblack dark:textwhite  text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 textblack dark:textwhite  text-[12.83px] font-medium font-['Manrope']">
                     Select Gender
                   </label>
                   <Controller
@@ -160,7 +160,7 @@ export default function OnBoard() {
                         isInvalid={!!errors.gender}
                         errorMessage={errors?.gender?.message}
                         selectedKeys={field.value ? [field.value] : []}
-                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                         placeholder='Select Gender'
                         classNames={{
                           listbox: [
@@ -192,7 +192,7 @@ export default function OnBoard() {
                   />
                 </div>
                 <div className='self-stretch flex-col justify-center items-start gap-3.5 inline-flex'>
-                  <label className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                     Birthday
                   </label>
                   <div className=' flex justify-between items-center gap-3 md:gap-6'>
@@ -207,7 +207,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.day}
                             errorMessage={errors?.day?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                             placeholder='Day'
                             classNames={{
                               listbox: [
@@ -250,7 +250,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.month}
                             errorMessage={errors?.month?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                             placeholder='Mon'
                             classNames={{
                               listbox: [
@@ -293,7 +293,7 @@ export default function OnBoard() {
                             isInvalid={!!errors.year}
                             errorMessage={errors?.year?.message}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                             placeholder='Year'
                             classNames={{
                               listbox: [
@@ -328,7 +328,7 @@ export default function OnBoard() {
                   </div>
                 </div>
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                  <label className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
+                  <label className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                     Select Country
                   </label>
 
@@ -343,7 +343,7 @@ export default function OnBoard() {
                         errorMessage={errors?.country?.message}
                         isLoading={isCountryLoading}
                         selectedKeys={field.value ? [field.value] : []}
-                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                         placeholder='Select country'
                         classNames={{
                           listbox: [
@@ -377,7 +377,7 @@ export default function OnBoard() {
                 </div>
                 <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <label className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
+                    <label className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
                       State
                     </label>
                     <Controller
@@ -391,7 +391,7 @@ export default function OnBoard() {
                           errorMessage={errors?.state?.message}
                           isLoading={isStateLoading}
                           selectedKeys={field.value ? [field.value] : []}
-                          className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                          className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                           placeholder='Select state'
                           classNames={{
                             listbox: [
@@ -425,7 +425,7 @@ export default function OnBoard() {
                   </div>
                   {watch().country === 'Nigeria' && (
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                      <labl className="text-center px-2 text-[12.83px] font-medium font-['Campton']">
+                      <labl className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                         LGA
                       </labl>
 
@@ -440,7 +440,7 @@ export default function OnBoard() {
                             errorMessage={errors?.local_government?.message}
                             isLoading={isLgaLoading}
                             selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 capitalize rounded  text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                            className="grow shrink basis-0 capitalize rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                             placeholder='Select Lga'
                             classNames={{
                               listbox: [
@@ -477,7 +477,7 @@ export default function OnBoard() {
                 <Button
                   type='submit'
                   isDisabled={isPending}
-                  className="w-[290px] px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Campton'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+                  className="w-[290px] px-6 py-6 text-center text-white text-[12.83px] font-medium font-['Manrope'] bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
                 >
                   {isPending ? (
                     <svg
@@ -505,7 +505,7 @@ export default function OnBoard() {
                   )}
                 </Button>
                 <div className='justify-start items-center inline-flex'>
-                  <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                  <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                     I will do this later
                   </div>
 
@@ -513,7 +513,7 @@ export default function OnBoard() {
                     onClick={() => {
                       navigate(`/dashboard/home`)
                     }}
-                    className="text-center cursor-pointer p-2 text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    className="text-center cursor-pointer p-2 text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                   >
                     Skip
                   </div>
@@ -525,12 +525,12 @@ export default function OnBoard() {
                 <Logo />
               </div>
               <div className='p-2 justify-center items-center gap-1 flex'>
-                <div className="text-center p-2 hidden  md:flex text-white text-[12.83px] font-bold font-['Campton']">
+                <div className="text-center p-2 hidden  md:flex text-white text-[12.83px] font-bold font-['Manrope']">
                   <Button onClick={() => navigate(-1)} variant='flat bg-none '>
                     Go Back
                   </Button>
                 </div>
-                <div className="text-center p-2 md:hidden  text-white text-[12.83px] font-bold font-['Campton']">
+                <div className="text-center p-2 md:hidden  text-white text-[12.83px] font-bold font-['Manrope']">
                   <Button onClick={() => navigate(-1)} variant='flat bg-none  '>
                     <ChevronRight />
                   </Button>

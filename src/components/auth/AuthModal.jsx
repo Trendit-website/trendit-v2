@@ -40,10 +40,10 @@ export default function AuthModal({ isOpen, onClose }) {
               className='rounded-none py-4 pt-5 md:pt-10'
             />
             <div className=' py-6 flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center dark:text-white text-black text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+              <div className="w-80 text-center dark:text-white text-black text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
                 All Set!
               </div>
-              <div className=" md:self-stretch w-full px-2 text-center text-zinc-400 text-base font-normal font-['Campton']">
+              <div className=" md:self-stretch w-full px-2 text-center text-zinc-400 text-base font-normal font-['Manrope']">
                 One more question. Your answer will help us tailor how your
                 dashboard will look like.
               </div>
@@ -59,10 +59,10 @@ export default function AuthModal({ isOpen, onClose }) {
                     className='text-white'
                     classNames={{
                       label:
-                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                     }}
                   />
-                  <div className="text-center text-white text-sm font-medium font-['Campton']">
+                  <div className="text-center text-white text-sm font-medium font-['Manrope']">
                     I came to Advertise
                   </div>
                 </div>
@@ -73,10 +73,10 @@ export default function AuthModal({ isOpen, onClose }) {
                     className='text-white'
                     classNames={{
                       label:
-                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Campton']",
+                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                     }}
                   />
-                  <div className="text-center dark:text-white text-black text-sm font-medium font-['Campton']">
+                  <div className="text-center dark:text-white text-black text-sm font-medium font-['Manrope']">
                     I came to Earn
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function AuthModal({ isOpen, onClose }) {
                 onClick={() => {
                   navigate('/dashboard/home')
                 }}
-                className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-3 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+                className=" w-[18rem] md:w-[20rem] text-center text-white text-[12.83px] font-medium font-['Manrope'] px-6 py-3 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
                 Continue
               </Button>

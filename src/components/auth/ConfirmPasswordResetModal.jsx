@@ -24,16 +24,16 @@ export default function ConfirmPasswordResetModal({ isOpen, onClose }) {
             </div>
             <div className='w-12 h-12 relative' />
             <div className='flex-col justify-center items-center gap-3 flex'>
-              <div className="text-stone-900 text-2xl font-bold font-['Campton']">
+              <div className="text-stone-900 text-2xl font-bold font-['Manrope']">
                 Verify Your Account
               </div>
-              <div className="w-[253px] text-center text-black text-xs font-normal font-['Campton']">
+              <div className="w-[253px] text-center text-black text-xs font-normal font-['Manrope']">
                 A message has been sent to this email address verify to reset
                 password
               </div>
             </div>
             <Button className='w-[290px] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'>
-              <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                 Open Email App
               </div>
             </Button>

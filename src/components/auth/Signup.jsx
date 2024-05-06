@@ -51,16 +51,16 @@ export default function Signup() {
           </div>
           <div className=' mx-auto w-[20rem] md:w-[23rem] right-[10%] md:right-[38%] top-[200px] absolute  flex-col justify-start items-center gap-6 inlineflex'>
             <div className='self-stretch flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center  text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+              <div className="w-80 text-center  text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
                 Tell us about you
               </div>
-              <div className="w-[252px] text-center pt-2 pb-5 text-zinc-400 text-base font-normal font-['Campton']">
+              <div className="w-[252px] text-center pt-2 pb-5 text-zinc-400 text-base font-normal font-['Manrope']">
                 We need to know a few things to set up your account.
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3.5 flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                <div className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
+                <div className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
                   Full Name
                 </div>
                 <div className='flex gap-2'>
@@ -81,7 +81,7 @@ export default function Signup() {
                             '!cursor-text',
                           ],
                         }}
-                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -103,7 +103,7 @@ export default function Signup() {
                           ],
                         }}
                         placeholder='Last Name'
-                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -111,7 +111,7 @@ export default function Signup() {
                 </div>
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2  text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
                   Username
                 </label>
 
@@ -132,14 +132,14 @@ export default function Signup() {
                         ],
                       }}
                       placeholder='Enter a username'
-                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                     />
                   )}
                   rules={{ required: true }}
                 />
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Campton']">
+                <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Manrope']">
                   Create a password
                 </label>
 
@@ -153,7 +153,7 @@ export default function Signup() {
                       isInvalid={!!errors?.password}
                       required={true}
                       placeholder='Enter a password'
-                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                       endContent={
                         <button
                           className='focus:outline-none'
@@ -219,7 +219,7 @@ export default function Signup() {
                 <p
                   className={`${
                     errors?.password ? 'text-red-500' : 'text-zinc-400'
-                  } text-center  text-[10px] font-normal font-['Campton']`}
+                  } text-center  text-[10px] font-normal font-['Manrope']`}
                 >
                   (Min. 8 characters with a letter and a number)
                 </p>
@@ -227,7 +227,7 @@ export default function Signup() {
               <Button
                 type='submit'
                 isDisabled={isPending}
-                className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Campton'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+                className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Manrope'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
                 {isPending ? (
                   <svg
@@ -261,10 +261,10 @@ export default function Signup() {
               <Logo />
             </div>
             <div className='p-2 justify-center items-center gap-1 flex'>
-              <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none '>Go Back</Button>
               </div>
-              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>

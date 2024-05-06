@@ -24,10 +24,10 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
               <AiOutlineClose size={20} color='#fff' />
             </div>
             <div className='flex-col justify-center items-center gap-3 flex'>
-              <div className="text-stone-900 text-sm font-bold font-['Campton']">
+              <div className="text-stone-900 text-sm font-bold font-['Manrope']">
                 Links generated!
               </div>
-              <div className="w-[253px] text-center text-black text-xs font-normal font-['Campton']">
+              <div className="w-[253px] text-center text-black text-xs font-normal font-['Manrope']">
                 Your Unique Reseller Link has been generated successfully. You
                 have to share your unique reseller link along with the product
                 images and descriptions to your social network such as Whatsapp,
@@ -36,7 +36,7 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
             </div>
             <div className='self-stretch  flex-col justify-center items-center gap-2 flex'>
               <div className='self-stretch flex-col justify-start items-center gap-2 flex'>
-                <div className="self-stretch text-stone-900 dark:text-white text-sm font-medium font-['Campton']">
+                <div className="self-stretch text-stone-900 dark:text-white text-sm font-medium font-['Manrope']">
                   Share your link
                 </div>
                 <div className='self-stretch h-[34px] flex-col justify-start items-start gap-[19px] flex'>
@@ -44,7 +44,7 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
                     <div className='self-stretch justify-start items-center gap-2 inline-flex'>
                       <Snippet
                         size='sm'
-                        className="grow h-[34px] rounded-none p-2 bg-zinc-400 bg-opacity-30 border border-zinc-400 border-opacity-30 items-center gap-1  shrink basis-0 text-stone-900 text-[12.83px] font-normal font-['Campton']"
+                        className="grow h-[34px] rounded-none p-2 bg-zinc-400 bg-opacity-30 border border-zinc-400 border-opacity-30 items-center gap-1  shrink basis-0 text-stone-900 text-[12.83px] font-normal font-['Manrope']"
                         symbol=''
                         copyIcon={
                           <svg
@@ -148,10 +148,10 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
                 </div>
               </div>
               <div className='justify-start cursor-pointer items-center gap-2 inline-flex'>
-                <div className="opacity-50 text-black text-sm font-medium font-['Campton']">
+                <div className="opacity-50 text-black text-sm font-medium font-['Manrope']">
                   Download Images
                 </div>
-                <div className="text-black text-sm font-medium font-['Campton']">
+                <div className="text-black text-sm font-medium font-['Manrope']">
                   Image 1
                 </div>
                 <svg
@@ -184,7 +184,7 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-fuchsia-400 text-sm font-medium font-['Campton']">
+                <div className="text-fuchsia-400 text-sm font-medium font-['Manrope']">
                   Download
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function GeneratedLinkModal({ isOpen, onClose }) {
               onClick={onClose}
               className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
             >
-              <div className="text-center text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
                 Go Home
               </div>
             </div>

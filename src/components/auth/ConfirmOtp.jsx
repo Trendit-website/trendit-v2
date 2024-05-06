@@ -83,11 +83,11 @@ export default function ConfirmOtp() {
           <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
             <Logo />
 
-            <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Campton']">
+            <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
               <Button onClick={() => navigate(-1)} variant='flat bg-none '>
                 Go Back
               </Button>
-              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Campton']">
+              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>
@@ -96,10 +96,10 @@ export default function ConfirmOtp() {
           </div>
           <div className='  w-[23rem]  mx-auto my-32 flex-col justify-start items-center gap-6'>
             <div className='self-stretch  flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center text-[32px] font-semibold font-['Campton'] leading-[26.88px]">
+              <div className="w-80 text-center text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
                 Confirm your email
               </div>
-              <div className="w-80 mb-4 text-center text-zinc-400 text-base font-normal font-['Campton']">
+              <div className="w-80 mb-4 text-center text-zinc-400 text-base font-normal font-['Manrope']">
                 We have sent an email with a code to {userData?.email}, please
                 enter it below to create your Trendit account.
               </div>
@@ -150,7 +150,7 @@ export default function ConfirmOtp() {
                 />
               </div>
               <div className='justify-start items-center inline-flex my-12'>
-                <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Campton']">
+                <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                   Didn’t receive a code?
                 </div>
                 <div className='p-2 justify-center items-center gap-1 flex'>
@@ -158,7 +158,7 @@ export default function ConfirmOtp() {
                     onClick={() => {
                       handleResendOtp()
                     }}
-                    className="text-center cursor-pointer text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Campton']"
+                    className="text-center cursor-pointer text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
                   >
                     Send new code
                   </div>

@@ -30,7 +30,7 @@ export default function OrdersViewCard() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
@@ -48,15 +48,15 @@ export default function OrdersViewCard() {
                     strokeLinecap='round'
                   />
                 </svg>
-                <div className="text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Campton']">
+                <div className="text-[#FF6DFB] dark:text-fuchsia-400 text-sm font-medium font-['Manrope']">
                   Export
                 </div>
               </div>
               <div className='justify-start items-center gap-2 flex'>
-                <div className="dark:opacity-50 text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="dark:opacity-50 text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Period
                 </div>
-                <div className="text-white dark:text-zinc-400 text-sm font-medium font-['Campton']">
+                <div className="text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   All time
                 </div>
                 <svg
@@ -76,7 +76,7 @@ export default function OrdersViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch mx-auto md:mx-auto text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Campton']">
+            <div className="self-stretch mx-auto md:mx-auto text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               {/* {showBalance?.currency_code}:{showBalance?.balance} */}
               <span>&#8358;</span>
               {showBalance?.balance?.toLocaleString()}
@@ -90,7 +90,7 @@ export default function OrdersViewCard() {
                   <IoAdd size={30} className='w-[18px]  h-[18px] ' />
                 }
                 variant='light'
-                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-center text-white dark:text-black text-[12.83px] font-bold font-['Campton']"
+                className="grow rounded-none w-[120px] shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-center text-white dark:text-black text-[12.83px] font-bold font-['Manrope']"
               >
                 Fund
               </Button>
@@ -100,7 +100,7 @@ export default function OrdersViewCard() {
                   <ExternalLinkIcon size={30} className='w-[18px] h-[18px] ' />
                 }
                 variant='light'
-                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-white dark:text-black text-[12.83px] font-bold font-['Campton']"
+                className="text-center rounded-none w-[120px] grow shrink basis-0 h-[34px] p-2 bg-[#FF6DFB] dark:bg-white border border-black justify-center items-center gap-1 flex text-white dark:text-black text-[12.83px] font-bold font-['Manrope']"
               >
                 Withdraw
               </Button>
@@ -109,11 +109,11 @@ export default function OrdersViewCard() {
         </div>
         {/* <div className='self-stretch justify-start items-center  flex-wrap gap-[53px] inline-flex'>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -129,7 +129,7 @@ export default function OrdersViewCard() {
                     fill='#FF3D00'
                   />
                 </svg>
-                <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-orange-600 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>
@@ -137,12 +137,12 @@ export default function OrdersViewCard() {
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
             <div className='self-stretch justify-start items-center gap-1 inline-flex'>
-              <div className="text-white text-[8.83px] font-medium font-['Campton']">
+              <div className="text-white text-[8.83px] font-medium font-['Manrope']">
                 Total Earned
               </div>
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -158,26 +158,26 @@ export default function OrdersViewCard() {
                     fill='#FF3D00'
                   />
                 </svg>
-                <div className="text-center text-orange-600 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-orange-600 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>
             </div>
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
-            <div className="self-stretch text-white text-[12.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[12.83px] font-medium font-['Manrope']">
               0.00
             </div>
           </div>
           <div className='grow shrink basis-0 flex-col justify-start items-start gap-1.5 inline-flex'>
-            <div className="self-stretch text-white text-[8.83px] font-medium font-['Campton']">
+            <div className="self-stretch text-white text-[8.83px] font-medium font-['Manrope']">
               Total Earned
             </div>
             <div className='self-stretch justify-start items-center gap-2 inline-flex'>
-              <div className="text-white text-[12.83px] font-medium font-['Campton']">
+              <div className="text-white text-[12.83px] font-medium font-['Manrope']">
                 N 30,008.25
               </div>
               <div className='justify-start items-start flex'>
@@ -193,7 +193,7 @@ export default function OrdersViewCard() {
                     fill='#4CAF50'
                   />
                 </svg>
-                <div className="text-center text-white opacity-50 dark:opacity-100 dark:text-green-500 text-[10px] font-normal font-['Campton']">
+                <div className="text-center text-white opacity-50 dark:opacity-100 dark:text-green-500 text-[10px] font-normal font-['Manrope']">
                   53.3%
                 </div>
               </div>

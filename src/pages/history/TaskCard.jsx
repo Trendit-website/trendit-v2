@@ -176,7 +176,7 @@ export default function TaskCard({
           >
             <div className='justify-start items-center gap-2.5 flex'>
               <div
-                className={` capitalize text-xs font-normal font-['Campton']`}
+                className={` capitalize text-xs font-normal font-['Manrope']`}
               >
                 {status}
               </div>
@@ -184,8 +184,8 @@ export default function TaskCard({
           </div>
         </div>
         <div className='flex-col justify-start items-start gap-3 flex'>
-          <div className=" text-sm font-medium font-['Campton']">{goal}</div>
-          <div className="self-stretch text-[10px] font-normal font-['Campton']">
+          <div className=" text-sm font-medium font-['Manrope']">{goal}</div>
+          <div className="self-stretch text-[10px] font-normal font-['Manrope']">
             {when}
           </div>
           <div className='py-[4.50px] justify-start items-center gap-1.5 inline-flex'>
@@ -214,11 +214,11 @@ export default function TaskCard({
                   </clipPath>
                 </defs>
               </svg>
-              <div className="opacity-50  text-[10.50px] font-medium font-['Campton']">
+              <div className="opacity-50  text-[10.50px] font-medium font-['Manrope']">
                 Earning:
               </div>
             </div>
-            <div className=" text-[10.50px] font-bold font-['Campton']">
+            <div className=" text-[10.50px] font-bold font-['Manrope']">
               ₦3 per Page Like and Follow
             </div>
           </div>

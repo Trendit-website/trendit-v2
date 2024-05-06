@@ -40,7 +40,7 @@ export default function EarnEngageTask() {
               />
             </svg>
           </div>
-          <div className="text-center text-fuchsia-400 text-sm font-medium font-['Campton']">
+          <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
             Go back
           </div>
         </div>
@@ -48,10 +48,10 @@ export default function EarnEngageTask() {
         <div className='self-stretch  border border-white flex-col justify-start items-start flex'>
           <div className='self-stretch  p-6 bg-zinc-400 bg-opacity-30 rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
             <div className='flex-col justify-start items-start gap-1.5 flex'>
-              <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Campton']">
+              <div className="self-stretch text-stone-900 text-[10px] font-normal font-['Manrope']">
                 Jan 12th 9:27pm
               </div>
-              <div className="text-stone-900 text-3xl font-medium font-['Campton']">
+              <div className="text-stone-900 text-3xl font-medium font-['Manrope']">
                 Like and follow instagram page
               </div>
               <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
@@ -68,22 +68,22 @@ export default function EarnEngageTask() {
                       stroke='black'
                     />
                   </svg>
-                  <div className="opacity-50 text-black text-sm font-medium font-['Campton']">
+                  <div className="opacity-50 text-black text-sm font-medium font-['Manrope']">
                     Pricing
                   </div>
                 </div>
-                <div className="text-stone-900 text-sm font-bold font-['Campton']">
+                <div className="text-stone-900 text-sm font-bold font-['Manrope']">
                   ₦150 per Advert post
                 </div>
               </div>
               <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-                <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                   20+ people
                 </div>
-                <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                   134 Likes
                 </div>
-                <div className="text-stone-900 text-[9px] font-normal font-['Campton'] uppercase tracking-tight">
+                <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                   453 Comments
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function EarnEngageTask() {
           </div>
           <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
             <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-              <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Campton']">
+              <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
                 You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
                 like and followed the page. Your Trendit account will be
                 suspended once you UNLIKE or UNFOLLOW the Facebook Page.
@@ -131,7 +131,7 @@ export default function EarnEngageTask() {
               strokeLinecap='round'
             />
           </svg>
-          <div className="self-stretch text-center text-black text-xs font-semibold font-['Campton']">
+          <div className="self-stretch text-center text-black text-xs font-semibold font-['Manrope']">
             59:23
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function EarnEngageTask() {
           <div className='grow shrink basis-0 self-stretch p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
             <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
               <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                <div className="grow shrink basis-0 text-center text-stone-900 text-2xl font-medium font-['Campton']">
+                <div className="grow shrink basis-0 text-center text-stone-900 text-2xl font-medium font-['Manrope']">
                   Task
                 </div>
               </div>
@@ -147,38 +147,38 @@ export default function EarnEngageTask() {
             <div className=' flex-col justify-start items-center gap-8 flex'>
               <div className='self-stretch  flex-col justify-start items-center gap-3  flex'>
                 <div className='self-stretch'>
-                  <span className="text-black text-xs font-semibold font-['Campton']">
+                  <span className="text-black text-xs font-semibold font-['Manrope']">
                     Please follow the step-by-step instructions below to do your
                     task:
                     <br />
                     Step 1: 
                   </span>
-                  <span className="text-black text-xs font-normal font-['Campton']">
+                  <span className="text-black text-xs font-normal font-['Manrope']">
                     Open the Task Link above on your Facebook Mobile App or
                     browser
                     <br />
                   </span>
-                  <span className="text-black text-xs font-semibold font-['Campton']">
+                  <span className="text-black text-xs font-semibold font-['Manrope']">
                     Step 2: 
                   </span>
-                  <span className="text-black text-xs font-normal font-['Campton']">
+                  <span className="text-black text-xs font-normal font-['Manrope']">
                     The link will direct you to a Facebook Page which you are
                     meant to like and follow.
                     <br />
                   </span>
-                  <span className="text-black text-xs font-semibold font-['Campton']">
+                  <span className="text-black text-xs font-semibold font-['Manrope']">
                     Step 3: 
                   </span>
-                  <span className="text-black text-xs font-normal font-['Campton']">
+                  <span className="text-black text-xs font-normal font-['Manrope']">
                     Click on the Like or Follow button on the Facebook Page to
                     start liking or following the page. You MUST NOT Unfollow
                     the account after you have followed the account.
                     <br />
                   </span>
-                  <span className="text-black text-xs font-semibold font-['Campton']">
+                  <span className="text-black text-xs font-semibold font-['Manrope']">
                     Step 4: 
                   </span>
-                  <span className="text-black text-xs font-normal font-['Campton']">
+                  <span className="text-black text-xs font-normal font-['Manrope']">
                     Create a screenshot of the page that shows you have liked or
                     followed the page and upload the screenshot under the Proof
                     of Work Form below. You are also required to enter your
@@ -189,7 +189,7 @@ export default function EarnEngageTask() {
                   isExternal
                   className='self-stretch h-9 p-2 bg-white justify-center items-center gap-1 inline-flex'
                 >
-                  <div className="grow shrink basis-0 text-black text-[12.83px] font-normal font-['Campton']">
+                  <div className="grow shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']">
                     https://trendit-web.vercel.app/7839
                   </div>
                   <div className='justify-start items-center gap-2 flex'>
@@ -205,14 +205,14 @@ export default function EarnEngageTask() {
                         fill='#CB29BE'
                       />
                     </svg>
-                    <div className="text-fuchsia-600 text-sm font-medium font-['Campton']">
+                    <div className="text-fuchsia-600 text-sm font-medium font-['Manrope']">
                       Visit Link
                     </div>
                   </div>
                 </Link>
                 <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
-                    <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Campton']">
+                    <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Manrope']">
                       You must NOT UNLIKE or UNFOLLOW the Facebook page after
                       you have like and followed the page. Your Hawkit account
                       will be suspended once you UNLIKE or UNFOLLOW the Facebook
@@ -240,7 +240,7 @@ export default function EarnEngageTask() {
           <div className='grow shrink basis-0 self-stretch p-3 bg-zinc-400 bg-opacity-30 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
             <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
               <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                <div className="grow shrink basis-0 text-center text-stone-900 text-2xl font-medium font-['Campton']">
+                <div className="grow shrink basis-0 text-center text-stone-900 text-2xl font-medium font-['Manrope']">
                   Upload proof
                 </div>
               </div>
@@ -264,19 +264,19 @@ export default function EarnEngageTask() {
                 </svg>
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
-                <div className="self-stretch text-black text-xs font-semibold font-['Campton']">
+                <div className="self-stretch text-black text-xs font-semibold font-['Manrope']">
                   Please enter the name on your Facebook account that performed
                   this task
                 </div>
                 <Input
                   placeholder='Corehunter007'
                   size='sm'
-                  className="grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-['Campton']"
+                  className="grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']"
                 />
 
                 <div className='self-stretch justify-between items-center inline-flex'>
                   <div className='p-2 bg-fuchsia-400 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
-                    <div className="text-center text-stone-900 text-[10px] font-medium font-['Campton']">
+                    <div className="text-center text-stone-900 text-[10px] font-medium font-['Manrope']">
                       Upload Proof
                     </div>
                   </div>
@@ -294,7 +294,7 @@ export default function EarnEngageTask() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    <div className="text-center text-fuchsia-600 text-[12.83px] font-bold font-['Campton']">
+                    <div className="text-center text-fuchsia-600 text-[12.83px] font-bold font-['Manrope']">
                       Save
                     </div>
                   </div>
@@ -305,14 +305,14 @@ export default function EarnEngageTask() {
         </div>
         <div className='self-stretch h-[43px] flex-col justify-start items-end gap-2 flex'>
           <div className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'>
-            <div className="text-center text-black text-[12.83px] font-medium font-['Campton']">
+            <div className="text-center text-black text-[12.83px] font-medium font-['Manrope']">
               Mark as Done
             </div>
           </div>
         </div>
         <div className='self-stretch p-3 justify-between items-end inline-flex'>
           <div className='flex-col justify-center items-start gap-3 inline-flex'>
-            <div className="text-center text-black text-[10px] font-bold font-['Campton']">
+            <div className="text-center text-black text-[10px] font-bold font-['Manrope']">
               You and 23 others
             </div>
 
@@ -324,7 +324,7 @@ export default function EarnEngageTask() {
               <CustomAvatar src={usersImage} />
               <div className='relative'>
                 {/* <div className='w-[42px] h-[42px] left-0 top-0 absolute bg-stone-900 rounded-[100px]' /> */}
-                <div className="left-[14px] top-[17px] bg-stone-900 absolute text-center text-white text-[10px] font-bold font-['Campton']">
+                <div className="left-[14px] top-[17px] bg-stone-900 absolute text-center text-white text-[10px] font-bold font-['Manrope']">
                   23+
                 </div>
               </div>
@@ -345,7 +345,7 @@ export default function EarnEngageTask() {
                 strokeLinecap='round'
               />
             </svg>
-            <div className="text-center text-orange-600 text-sm font-medium font-['Campton']">
+            <div className="text-center text-orange-600 text-sm font-medium font-['Manrope']">
               Report Task
             </div>
           </div>

@@ -18,7 +18,7 @@ export default function Support() {
           <div className='self-stretch  flex-col justify-start items-start gap-2 flex'>
             <div className='self-stretch dark:border-b dark:border-stone-900 justify-center items-center inline-flex'>
               <div className='grow pt-16 pb-6 flex flex-col justify- items-center'>
-                <div className="w-[236px] text-center pb-12 gap-8 text-black dark:text-white text-2xl font-medium font-['Campton']">
+                <div className="w-[236px] text-center pb-12 gap-8 text-black dark:text-white text-2xl font-medium font-['Manrope']">
                   Hi {userDetails?.lastname}, How can we help?
                 </div>
                 <div className='self-stretch w-full justify-between items-start gap-4 inline-flex'>
@@ -36,7 +36,7 @@ export default function Support() {
                         strokeWidth='2'
                       />
                     </svg>
-                    <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
+                    <div className="text-center text-black dark:text-white text-sm font-medium font-['Manrope']">
                       Send an email
                     </div>
                   </Button>
@@ -55,7 +55,7 @@ export default function Support() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
+                    <div className="text-center text-black dark:text-white text-sm font-medium font-['Manrope']">
                       Start a chat
                     </div>
                   </Button>
@@ -64,7 +64,7 @@ export default function Support() {
             </div>
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-black dark:text-white text-2xl font-medium font-['Campton']">
+            <div className="text-black dark:text-white text-2xl font-medium font-['Manrope']">
               Frequently asked questions
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function Support() {
                   '!cursor-text',
                 ],
               }}
-              className="text-center text-zinc-400 text-sm font-medium font-['Campton']"
+              className="text-center text-zinc-400 text-sm font-medium font-['Manrope']"
             />
           </div>
           <div className='self-stretch dark:border-b dark:border-stone-900 justify-between items-center inline-flex'>
@@ -114,28 +114,28 @@ export default function Support() {
                       tabContent:
                         'group-data-[selected=true]:text-fuchsia-400 ',
                     }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Campton']"
+                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
                     color='secondary'
                   >
                     <Tab
                       key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='All'
                     ></Tab>
                     <Tab
                       key='earning'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Earning'
                     ></Tab>
                     <Tab
                       key='advertising'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Advertising'
                     ></Tab>
                     <Tab
                       key='orders'
                       title='Orders'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Campton']"
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                   </Tabs>
                 </div>

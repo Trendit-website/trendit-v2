@@ -30,7 +30,7 @@ export default function BankDetailsForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='self-stretch grow shrink min-h-screen basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
           <div className='self-stretch  flex-col justify-start items-start gap-6 flex'>
-            <div className="text-black dark:text-white text-sm font-bold font-['Campton']">
+            <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
               Account Details
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function BankDetailsForm() {
                           'focus-within:!border-fuchsia-600  ',
                         ],
                       }}
-                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                       {...field}
                     />
                   )}
@@ -96,7 +96,7 @@ export default function BankDetailsForm() {
                           'focus-within:!border-fuchsia-600  ',
                         ],
                       }}
-                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                       {...field}
                     />
                   )}
@@ -129,7 +129,7 @@ export default function BankDetailsForm() {
                           'focus-within:!border-fuchsia-600  ',
                         ],
                       }}
-                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Campton']"
+                      className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                       {...field}
                     />
                   )}
@@ -155,7 +155,7 @@ export default function BankDetailsForm() {
                 className='text-black dark:stroke-white'
               />
             </svg>
-            <div className="text-center text-black dark:text-white text-sm font-medium font-['Campton']">
+            <div className="text-center text-black dark:text-white text-sm font-medium font-['Manrope']">
               {isPending ? 'Updating....' : 'Update'}
             </div>
           </Button>
