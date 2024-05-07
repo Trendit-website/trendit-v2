@@ -11,8 +11,8 @@ export const platforms = [
     value: 'whatsapp',
   },
   {
-    label: 'Tiktok',
-    value: 'tiktok',
+    label: 'TikTok',
+    value: 'TikTok',
   },
   { label: 'Instagram', value: 'instagram' },
   { label: 'Twitter', value: 'twitter' },
@@ -97,8 +97,8 @@ export const waplatforms = [
 ]
 export const tkplatforms = [
   {
-    label: 'Tiktok',
-    value: 'tiktok',
+    label: 'TikTok',
+    value: 'TikTok',
   },
 ]
 export const igplatforms = [{ label: 'Instagram', value: 'instagram' }]
