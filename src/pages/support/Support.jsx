@@ -144,74 +144,58 @@ export default function Support() {
           </div>
 
           <div className='w-full'>
-            {selected === 'all' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <FaqCard />
-                  </motion.div>
-                )
-              })}
-            {selected === 'earning' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <FaqCard />
-                  </motion.div>
-                )
-              })}
-            {selected === 'advertising' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <FaqCard />
-                  </motion.div>
-                )
-              })}
-            {selected === 'orders' &&
-              [1, 2, 3].map((key) => {
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: 100 }}
-                    animate={{ x: 0 }}
-                    className='flex flex-col gap-2 w-full'
-                    transition={{
-                      rotate: { duration: 2 },
-                      scale: { duration: 0.4 },
-                    }}
-                  >
-                    <FaqCard />
-                  </motion.div>
-                )
-              })}
+            {selected === 'all' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <FaqCard />
+              </motion.div>
+            )}
+            {selected === 'earning' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <FaqCard />
+              </motion.div>
+            )}
+            {selected === 'advertising' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <FaqCard />
+              </motion.div>
+            )}
+            {selected === 'orders' && (
+              <motion.div
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                className='flex flex-col gap-2 w-full'
+                transition={{
+                  rotate: { duration: 2 },
+                  scale: { duration: 0.4 },
+                }}
+              >
+                <FaqCard />
+              </motion.div>
+            )}
           </div>
         </div>
       </div>
