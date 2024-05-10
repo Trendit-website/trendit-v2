@@ -4,10 +4,11 @@ import { useState } from 'react'
 import { FaPlus, FaMinus } from 'react-icons/fa'
 
 const FaqCard = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [openFaqId, setOpenFaqId] = useState(null)
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen)
+  const toggleAccordion = (id) => {
+    // Toggle open state: if it's already open, close it; otherwise, set it as open
+    setOpenFaqId((prevOpenId) => (prevOpenId === id ? null : id))
   }
 
   const supportFaqs = [
@@ -142,38 +143,34 @@ Overall, buying social media likes can be a strategic investment in your social 
 
   return (
     <>
-      <div className='self-stretch w-full flex-col p-3 bg-gray-200 dark:bg-[#1E1E1E]  dark:border my-0.5 dark:border-stone-900 justify-start gap-6 inline-flex'>
-        {supportFaqs?.map((faq, index) => (
-          <>
-            <div
-              onClick={toggleAccordion}
-              className='flex gap-2 cursor-pointer items-center '
-            >
-              {isOpen ? (
-                <FaMinus
-                  //   onClick={toggleAccordion}
-                  className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer '
-                />
-              ) : (
-                <FaPlus
-                  //   onClick={toggleAccordion}
-                  className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer '
-                />
-              )}
-              <div className="grow shrink basis-0 text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
-                {faq?.ques}
+      {supportFaqs?.map((faq) => (
+        <div
+          key={faq.id}
+          className='self-stretch w-full flex-col p-3 bg-gray-200 dark:bg-[#1E1E1E]  dark:border my-0.5 dark:border-stone-900 justify-start gap-6 inline-flex'
+        >
+          <div
+            onClick={() => toggleAccordion(faq.id)}
+            className='flex gap-2 cursor-pointer items-center '
+          >
+            {openFaqId === faq.id ? (
+              <FaMinus className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer ' />
+            ) : (
+              <FaPlus className='text-[#FF6DFB] dark:text-[#FFCFFD] cursor-pointer ' />
+            )}
+            <div className="grow shrink basis-0 text-[12.83px] font-medium font-['Manrope']">
+              {faq?.ques}
+            </div>
+          </div>
+
+          {openFaqId === faq.id && (
+            <div className='bgswhite p-4 '>
+              <div className=" text-[12.83px] font-medium font-['Manrope']">
+                {faq?.answ}
               </div>
             </div>
-
-            {isOpen && (
-              <div className='bgswhite p-4 '>
-                {/* <div className='text-gray-700'>{answer}</div> */}
-                <div className='text-black dark:text-white'>{faq?.answ}</div>
-              </div>
-            )}
-          </>
-        ))}
-      </div>
+          )}
+        </div>
+      ))}
     </>
   )
 }

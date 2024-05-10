@@ -682,8 +682,9 @@ want to post your advert.`}
                     <div className="px-2 text-[12.83px] font-medium font-['Manrope']">
                       Total Pay
                     </div>
+
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-center gap-2 inline-flex'>
+                      <div className='self-stretch w-40 text-white rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='amount'
                           control={control}
@@ -697,22 +698,7 @@ want to post your advert.`}
                               isInvalid={!!errors?.amount}
                               value={calculatedAmount}
                               isDisabled
-                              classNames={{
-                                input: [
-                                  'text-black/90 dark:text-white/90',
-                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                                ],
-                                inputWrapper: [
-                                  'bg-opacity-10',
-                                  'dark:hover:bg-opacity-10',
-                                  'group-data-[focused=true]:bg-opacity-10',
-                                  'dark:group-data-[focused=true]:bg-opacity-10',
-                                  'border-2 border-transparent',
-                                  'focus-within:!border-fuchsia-600  ',
-                                  '!cursor-text',
-                                ],
-                              }}
-                              className=" rounded text-zinc-400 text-3xl font-normal font-['Manrope']"
+                              className="text-white bg-transparent  text-3xl font-normal font-['Manrope']"
                             />
                           )}
                         />
