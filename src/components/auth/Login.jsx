@@ -382,7 +382,7 @@ export default function Login() {
                       fill='white'
                     />
                   </svg>
-                  {isPending ? (
+                  {isPendingFb ? (
                     <svg
                       className='animate-spin h-5 w-5 text-current'
                       fill='none'

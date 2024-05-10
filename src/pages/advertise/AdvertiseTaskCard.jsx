@@ -131,7 +131,7 @@ export default function AdvertiseTaskCard() {
         </div>
       </div>
 
-      <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+      {/* <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='47'
@@ -190,7 +190,7 @@ export default function AdvertiseTaskCard() {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
         <svg

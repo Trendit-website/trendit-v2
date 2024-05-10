@@ -55,7 +55,7 @@ export default function CreateTkAdvertTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 140, posts_count: 1, platform: 'tiktok' },
+    defaultValues: { amount: 140, posts_count: 1, platform: 'TikTok' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
