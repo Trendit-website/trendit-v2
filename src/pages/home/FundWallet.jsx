@@ -102,7 +102,7 @@ export default function FundWallet() {
                       </div>
                     </div>
                     <div className="self-stretch text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-                      {showBalance?.currency_code}:{showBalance?.balance}
+                      {showBalance?.currency_symbol}:{showBalance?.balance}
                     </div>
                   </div>
                   <div className='justify-start items-start gap-[19px] flex'>
@@ -119,7 +119,8 @@ export default function FundWallet() {
                             errorMessage={errors?.amount?.message}
                             isInvalid={!!errors?.amount}
                             startContent={
-                              `₦`
+                              // `₦`
+                              showBalance?.currency_symbol
 
                               // <MailIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
                             }
