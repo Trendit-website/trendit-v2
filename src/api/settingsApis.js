@@ -20,7 +20,23 @@ export const useUpdateUserPrefence = () => {
 export const useUpdateSecPrefence = () => {
   return useMutation({
     mutationFn: ({ data }) => {
-      return API.post(`/update-settings`, data)
+      return API.post(`/settings/two-fa`, data)
+    },
+  })
+}
+
+export const useComplete2Fa = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/settings/activate/complete-google-2fa`, data)
+    },
+  })
+}
+
+export const useUpdateUserPassword = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/settings/password`, data)
     },
   })
 }
@@ -44,6 +60,7 @@ export const useGetUserPrefence = () => {
     },
   })
 }
+
 export const useGetSecurityPrefrence = () => {
   return useQuery({
     queryKey: ['sec_prefence'],
@@ -51,6 +68,28 @@ export const useGetSecurityPrefrence = () => {
       const res = await API.get(`/settings/security`)
       // console.log(res, 'sec_prefence')
       return res?.data?.security_settings
+    },
+  })
+}
+
+export const useActivateGoogleAuth = () => {
+  return useQuery({
+    queryKey: ['google_auth'],
+    queryFn: async () => {
+      const res = await API.get(`/settings/activate/google-2fa`)
+      // console.log(res, 'useActivateGoogleAuth')
+      return res?.data?.qr_code_data
+    },
+  })
+}
+
+export const useDeactivateGoogleAuth = () => {
+  return useQuery({
+    queryKey: ['de_google_auth'],
+    queryFn: async () => {
+      const res = await API.get(`/settings/deactivate/google-auth-app`)
+      console.log(res, 'deactivate')
+      return res?.data?.qr_code_data
     },
   })
 }

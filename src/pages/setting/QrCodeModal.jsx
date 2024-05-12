@@ -1,37 +1,30 @@
 /* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/prop-types */
-import { Button, Modal, Input, ModalContent } from '@nextui-org/react'
+import { Button, Modal, Input, ModalContent, Image } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
-import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
+import { useComplete2Fa } from '../../api/settingsApis'
 
-export default function FundWalletModal({ isOpen, onClose }) {
+export default function QrCodeModal({ isOpen, onClose, activeGoogleAuth }) {
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({})
-  const { mutateAsync: fundWallet, isPending } = useFundWallet()
-  const { data: showBalance } = useFetchBallance()
-
+  const { mutateAsync: complete2Fa, isPending } = useComplete2Fa()
   const onSubmit = async (data) => {
     try {
-      const res = await fundWallet({ data })
+      const res = await complete2Fa({ data })
       console.log(res?.data)
       if (res.data.status) {
-        const authorizationUrl = res?.data?.authorization_url
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 4000,
         })
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          window.open(authorizationUrl) // Open the URL in a new tab
-        }
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 6000,
       })
     }
   }
@@ -57,37 +50,43 @@ export default function FundWalletModal({ isOpen, onClose }) {
               </div>
               <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                 <div className='self-stretch flex-col justify-center items-start gap-6 flex'>
-                  <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
-                    <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className="text-sm font-bold font-['Manrope']">
-                        Fund Your Trendit3 Wallet
-                      </div>
-                      <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
-                        Please enter the amount which you like to fund your
-                        wallet with
-                      </div>
+                  <div className='self-stretch  flex-col justify-start items-center gap-[18px] flex'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='49'
+                      height='49'
+                      viewBox='0 0 49 49'
+                      fill='none'
+                    >
+                      <path
+                        d='M22.5 10.2949H26.5M18.9 44.2949H30.1C32.3402 44.2949 33.4603 44.2949 34.316 43.8589C35.0686 43.4755 35.6805 42.8635 36.064 42.1109C36.5 41.2552 36.5 40.1351 36.5 37.8949V10.6949C36.5 8.45471 36.5 7.33461 36.064 6.47896C35.6805 5.72631 35.0686 5.11439 34.316 4.7309C33.4603 4.29492 32.3402 4.29492 30.1 4.29492H18.9C16.6598 4.29492 15.5397 4.29492 14.684 4.7309C13.9314 5.11439 13.3195 5.72631 12.936 6.47896C12.5 7.33461 12.5 8.45471 12.5 10.6949V37.8949C12.5 40.1351 12.5 41.2552 12.936 42.1109C13.3195 42.8635 13.9314 43.4755 14.684 43.8589C15.5397 44.2949 16.6598 44.2949 18.9 44.2949Z'
+                        stroke='#CB29BE'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+
+                    <div className="text-sm font-bold font-['Manrope']">
+                      Scan this QR code
                     </div>
-                    <div className='justify-start flex-col items-start gap-[19px] flex'>
-                      <div className='self-stretch  flex-col rounded-none gap-2 flex'>
-                        <div className="text-sm font-medium font-['Manrope']">
-                          Amount
-                        </div>
+                    <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
+                      Download the Google authenticator app on your new device.
+                      Within the app, scan this QR code.
+                    </div>
+                    <Image className='w-full' src={activeGoogleAuth} />
+                    <div className='self-stretch justify-start flex-col items-start gap-3 flex'>
+                      <div className='self-stretch flex-col rounded-none gap-2 flex'>
                         <Controller
-                          name='amount'
+                          name='entered_code'
                           control={control}
                           render={({ field }) => (
                             <Input
                               type='text'
                               size='sm'
-                              placeholder='amount'
+                              placeholder='entered code'
                               {...field}
-                              errorMessage={errors?.amount?.message}
-                              isInvalid={!!errors?.amount}
-                              startContent={
-                                showBalance?.currency_symbol
-
-                                // <MailIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
-                              }
+                              errorMessage={errors?.entered_code?.message}
+                              isInvalid={!!errors?.entered_code}
                               classNames={{
                                 input: [
                                   'bg-transparent ',
@@ -110,11 +109,12 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               className=" rounded-none  text-black text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
+                          rules={{
+                            required: true,
+                          }}
                         />
                         <small className=" text-zinc-400 text-xs font-normal font-['Manrope']">
-                          You can choose your preferred method of payment such
-                          as Card payment, Bank transfer or USSD, simply by
-                          clicking on th “Change Payment” button.
+                          Enter the code you see to complete activation
                         </small>
                       </div>
                       <div className='self-stretch'>
@@ -145,7 +145,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               />
                             </svg>
                           ) : (
-                            'Fund Wallet'
+                            'Complete Activation'
                           )}
                         </Button>
                       </div>

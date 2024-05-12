@@ -684,24 +684,8 @@ want to post your advert.`}
                     </div>
 
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                      <div className='self-stretch w-40 text-white rounded-lg justify-start items-center gap-2 inline-flex'>
-                        <Controller
-                          name='amount'
-                          control={control}
-                          render={({ field }) => (
-                            <Input
-                              type='text'
-                              size='sm'
-                              placeholder='amount'
-                              {...field}
-                              errorMessage={errors?.amount?.message}
-                              isInvalid={!!errors?.amount}
-                              value={calculatedAmount}
-                              isDisabled
-                              className="text-white bg-transparent  text-3xl font-normal font-['Manrope']"
-                            />
-                          )}
-                        />
+                      <div className="w-40 text-3xl font-medium font-['Manrope']">
+                        ₦{calculatedAmount?.toLocaleString()}
                       </div>
                       <Button
                         type='submit'

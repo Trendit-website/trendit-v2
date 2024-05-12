@@ -113,8 +113,9 @@ export default function Welcome({ onNotificationClick }) {
           </div>
         )}
         <Card className=' w-full h-[315px] relative bg-cyan-50 rounded'>
-          <div className='left[660px] cursor-pointer top[18px] absolut justify-end items-center inline-flex'>
+          <div className='cursor-pointer justify-end items-center inline-flex'>
             <Button
+              onClick={() => navigate('/dashboard/transactions')}
               variant='light'
               endContent={<ChevronRight className='w-4 h-4' />}
               className="text-black hover:bg-cyan-50 text-sm font-medium font-['Manrope']"
@@ -128,7 +129,8 @@ export default function Welcome({ onNotificationClick }) {
                 Wallet bal:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
-                <span>&#8358;</span>
+                {/* <span>&#8358;</span> */}
+                <span>{showBalance?.currency_symbol}</span>
                 {showBalance?.balance?.toLocaleString()}
                 {/* ₦{showBalance?.currency_code}:{showBalance?.balance} */}
               </div>
@@ -343,7 +345,7 @@ export default function Welcome({ onNotificationClick }) {
                 </div>
               </Card>
             ) : (
-              <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
                     Complete your profile set up
@@ -404,7 +406,7 @@ export default function Welcome({ onNotificationClick }) {
               </Card>
             )}
             {linkIg && (
-              <Card className='self-stretch p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
+              <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
                     Link your Instagram Account
