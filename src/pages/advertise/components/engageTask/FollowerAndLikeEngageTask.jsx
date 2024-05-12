@@ -530,32 +530,8 @@ people to post your ads on their social media account.`}
                       Total Pay
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                      <div className='self-stretch w-40  bg-zinc-400 bg-opacity-40 rounded-lg justify-start items-center gap-2 inline-flex'>
-                        <Controller
-                          name='amount'
-                          control={control}
-                          render={({ field }) => (
-                            <Input
-                              type='text'
-                              size='sm'
-                              placeholder='amount'
-                              {...field}
-                              errorMessage={errors?.amount?.message}
-                              isInvalid={!!errors?.amount}
-                              value={calculatedAmount}
-                              isDisabled
-                              classNames={{
-                                input: ['text-black/90 dark:text-white/90'],
-                                inputWrapper: [
-                                  'border-2 border-transparent',
-                                  'focus-within:!border-fuchsia-600  ',
-                                  '!cursor-text',
-                                ],
-                              }}
-                              className=" rounded text-3xl font-normal font-['Manrope']"
-                            />
-                          )}
-                        />
+                      <div className="w-40 text-3xl font-medium font-['Manrope']">
+                        ₦{calculatedAmount?.toLocaleString()}
                       </div>
                       <Button
                         type='submit'

@@ -14,7 +14,7 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
               {title}
             </div>
             <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-              <div className="text-[#909090] md:w-[50rem] text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
+              <div className="text-[#909090] md:w-[50rem] text-[9px] font-normal font-['Manrope'] capitalize tracking-tight">
                 {descp}
               </div>
             </div>
