@@ -8,11 +8,18 @@ import PostAdvertTasksCard from './PostAdvertTasksCard'
 import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import ActivationPaymentmodal2 from '../transaction/components/ActivationPaymentmodal2'
+import LearnMoreModal from '../transaction/components/LearnMoreModal'
 
 export default function Earn() {
   const [selected, setSelected] = useState('post advert')
-  const [showwarning, setShowWarning] = useState(false)
+  const [showwarning, setShowWarning] = useState(true)
+  const [showwVerifiedarning, setShowVerifiedWarning] = useState(true)
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: islearnOpen,
+    onOpen: onLearnOpen,
+    onClose: onLearnClose,
+  } = useDisclosure()
   const { data: profileDeatils } = useGetProfile()
 
   return (
@@ -20,7 +27,7 @@ export default function Earn() {
       <div>
         <div className='w-full p-3 flex-col justify-start items-start gap-3 inline-flex'>
           <div className='self-stretch  pb-6 flex-col justify-start items-center gap-6 flex'>
-            {showwarning && (
+            {!profileDeatils?.membership_fee && showwarning && (
               <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                   <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Manrope']">
@@ -50,31 +57,7 @@ export default function Earn() {
                 </div>
               </div>
             )}
-            {!profileDeatils?.membership_fee && (
-              <div className='w-full p-3 bg-emerald-200 justify-start items-start gap-[29px] inline-flex'>
-                <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
-                  <div className="grow shrink basis-0 text-green-500 text-xs font-normal font-['Manrope']">
-                    Your account have been activated, you can now engage in our
-                    advert task and engagement task to to earn daily with few
-                    steps to finish a task{' '}
-                  </div>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                  >
-                    <path
-                      d='M13.3333 8.33342L9.03024 12.2453C8.87131 12.3898 8.6286 12.3898 8.46968 12.2453L6.66663 10.6061M18.3333 10.0001C18.3333 14.6025 14.6023 18.3334 9.99996 18.3334C5.39759 18.3334 1.66663 14.6025 1.66663 10.0001C1.66663 5.39771 5.39759 1.66675 9.99996 1.66675C14.6023 1.66675 18.3333 5.39771 18.3333 10.0001Z'
-                      stroke='#4CAF50'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
-                </div>
-              </div>
-            )}
+
             {!profileDeatils?.membership_fee && (
               <div className=' justify-center flex-col space-y-8 items-center inline-flex'>
                 <svg
@@ -203,6 +186,36 @@ export default function Earn() {
                   </Button>
                   <div className="text-center text-blue-600 text-xs font-normal font-['Manrope']">
                     Membership fee: ₦1000 for Activation
+                  </div>
+                </div>
+              </div>
+            )}
+            {profileDeatils?.membership_fee && showwVerifiedarning && (
+              <div className='w-full p-3 bg-emerald-200 justify-start items-start gap-[29px] inline-flex'>
+                <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
+                  <div className="grow shrink basis-0 text-green-500 text-xs font-normal font-['Manrope']">
+                    Your account have been activated, you can now engage in our
+                    advert task and engagement task to to earn daily with few
+                    steps to finish a task{' '}
+                  </div>
+                  <div
+                    className='cursor-pointer'
+                    onClick={() => setShowVerifiedWarning(false)}
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='20'
+                      height='20'
+                      viewBox='0 0 20 20'
+                      fill='none'
+                    >
+                      <path
+                        d='M13.3333 8.33342L9.03024 12.2453C8.87131 12.3898 8.6286 12.3898 8.46968 12.2453L6.66663 10.6061M18.3333 10.0001C18.3333 14.6025 14.6023 18.3334 9.99996 18.3334C5.39759 18.3334 1.66663 14.6025 1.66663 10.0001C1.66663 5.39771 5.39759 1.66675 9.99996 1.66675C14.6023 1.66675 18.3333 5.39771 18.3333 10.0001Z'
+                        stroke='#4CAF50'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -337,7 +350,10 @@ export default function Earn() {
                     now
                   </div>
 
-                  <Button className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
+                  <Button
+                    onClick={onLearnOpen}
+                    className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
+                  >
                     <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
                       Learn More
                     </div>
@@ -437,6 +453,9 @@ export default function Earn() {
       </div>
 
       {isOpen && <ActivationPaymentmodal2 isOpen={isOpen} onClose={onClose} />}
+      {islearnOpen && (
+        <LearnMoreModal isOpen={islearnOpen} onClose={onLearnClose} />
+      )}
     </>
   )
 }

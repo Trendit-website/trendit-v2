@@ -5,9 +5,15 @@ import { IoAdd } from 'react-icons/io5'
 import { useDisclosure } from '@nextui-org/react'
 import { useFetchBallance } from '../../api/walletApi'
 import FundWalletModal from '../home/FundWalletModal'
+import WithdrawWalletModal from '../home/WithdrawWalletModal'
 
 export default function EarnViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: openWithdraw,
+    onOpen: onOpenWithdraw,
+    onClose: onCloseWithdraw,
+  } = useDisclosure()
   const { data: showBalance } = useFetchBallance()
 
   return (
@@ -76,7 +82,7 @@ export default function EarnViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch mx-auto md:mx-auto text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
+            <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               {/* {showBalance?.currency_code}:{showBalance?.balance} */}
               <span>{showBalance?.currency_symbol}</span>
               {showBalance?.balance?.toLocaleString()}
@@ -96,6 +102,7 @@ export default function EarnViewCard() {
               </Button>
 
               <Button
+                onClick={onOpenWithdraw}
                 startContent={
                   <ExternalLinkIcon size={30} className='w-[18px] h-[18px] ' />
                 }
@@ -204,6 +211,9 @@ export default function EarnViewCard() {
 
       {/* <SelectPaymentmodal isOpen={isOpen} onClose={onClose} /> */}
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
+      {openWithdraw && (
+        <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
     </div>
   )
 }

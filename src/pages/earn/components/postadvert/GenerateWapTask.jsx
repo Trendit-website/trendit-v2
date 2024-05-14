@@ -112,11 +112,9 @@ export default function GenerateWapTask() {
                     Post adverts on Whatsapp
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Facebook Pages for Businesses and
-                    Organizations and earn
-                    <br />
-                    ₦10 per Like/Follow. The more pages you like, the more you
-                    earn.
+                    Like Thread Pages for Individuals, Businesses and
+                    Organizations and earn ₦3.5 per Like. The more pages you
+                    like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -126,7 +124,7 @@ export default function GenerateWapTask() {
                 </div>
               </div>
             </div>
-            <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+            {/* <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                 <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
                   Link your whatsapp Account
@@ -200,7 +198,7 @@ export default function GenerateWapTask() {
                   className='dark:stroke-white stroke-[#1E1E1E] '
                 />
               </svg>
-            </div>
+            </div> */}
           </div>
 
           {profileDeatils?.social_ids?.facebook_id ? (

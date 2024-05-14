@@ -10,10 +10,19 @@ export default function FundWalletModal({ isOpen, onClose }) {
   const {
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm({})
   const { mutateAsync: fundWallet, isPending } = useFundWallet()
   const { data: showBalance } = useFetchBallance()
+
+  const handleInputChange = (event) => {
+    const { value } = event.target
+    const cleanValue = value.replace(/\D/g, '') // Remove all non-numeric characters
+    const formattedValue = new Intl.NumberFormat('en-US').format(cleanValue) // Format with commas
+    event.target.value = formattedValue // Display formatted value
+    setValue('amount', cleanValue) // Set unformatted value for submission
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -84,30 +93,25 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               startContent={
-                                showBalance?.currency_symbol
-
-                                // <MailIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
+                                <span>{showBalance?.currency_symbol}</span>
                               }
+                              onChange={handleInputChange}
                               classNames={{
                                 input: [
-                                  'bg-transparent ',
                                   'text-black/90 dark:text-white/90',
                                   'placeholder:text-black dark:placeholder:text-black',
+                                  'focus-within:placeholder:text-black focus-within:dark:placeholder:text-white ',
                                 ],
                                 innerWrapper: 'bg-transparent',
                                 inputWrapper: [
-                                  'bg-zinc-700 bg-opacity-10  rounded-none',
+                                  'rounded-none',
                                   'dark:bg-white',
-                                  'hover:bg-white hover:bg-opacity-10',
-                                  'dark:hover:bg-opacity-80',
-                                  'group-data-[focused=true]:bg-default-200/50',
-                                  'dark:group-data-[focused=true]:bg-default/60',
                                   '!cursor-text',
                                   'border-2 border-transparent',
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded-none  text-black text-[12.83px] font-normal font-['Manrope']"
+                              className=" rounded text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />

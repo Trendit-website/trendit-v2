@@ -285,7 +285,7 @@ export default function PostAdvertTasksCard() {
         <div className='grow shrink basis-0 justify-between items-start flex'>
           <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
             <div className="  text-sm font-medium font-['Manrope']">
-              Post adverts on your Tictok page
+              Post adverts on your TikTok page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your Tiktok
@@ -504,7 +504,7 @@ export default function PostAdvertTasksCard() {
             <Button
               onClick={() => {
                 if (profileDeatils?.membership_fee) {
-                  navigate(`/dashboard/earn-advert_whatsapp-task`)
+                  navigate(`/dashboard/earn-advert_thr-task`)
                 } else {
                   toast.error('Please activate your membership')
                 }

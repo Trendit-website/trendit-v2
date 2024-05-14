@@ -54,6 +54,9 @@ import CreateTkAdvertTask from './pages/advertise/components/createAdvert/Create
 import CreateWsAdvertTask from './pages/advertise/components/createAdvert/CreateWsAdvertTask'
 import CreateYtAdvertTask from './pages/advertise/components/createAdvert/CreateYtAdvertTask'
 import './assetlinks.json'
+import PreviewEarnAdvertTask from './pages/earn/components/PreviewEarnAdvertTask'
+import CreateThrAdvertTask from './pages/advertise/components/createAdvert/CreateThrAdvertTask'
+import GenerateThrTask from './pages/earn/components/postadvert/GenerateThrTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -211,6 +214,14 @@ function App() {
               }
             />
             <Route
+              path='earn-advert_thr-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateThrTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path='payment'
               element={
                 <ProtectedRoute>
@@ -231,6 +242,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <EarnAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-advert-task-preview'
+              element={
+                <ProtectedRoute>
+                  <PreviewEarnAdvertTask />
                 </ProtectedRoute>
               }
             />
@@ -293,6 +312,15 @@ function App() {
                 <ProtectedRoute>
                   {' '}
                   <CreateWsAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advertise-thr-task'
+              element={
+                <ProtectedRoute>
+                  {' '}
+                  <CreateThrAdvertTask />
                 </ProtectedRoute>
               }
             />

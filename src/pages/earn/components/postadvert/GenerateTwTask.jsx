@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import {  Tab, Tabs, useDisclosure } from '@nextui-org/react'
+import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
@@ -82,10 +82,9 @@ export default function GenerateTwTask() {
                     Like an Retweet Post on Twitter Accounts
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Twitter Accounts for Businesses and
-                    Organizations and earn ₦
-                    <br />5 per Like/Follow. The more pages you like, the more
-                    you earn.
+                    Like Twitter Pages for Individuals, Businesses and
+                    Organizations and earn ₦3.5 per Like. The more pages you
+                    like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
