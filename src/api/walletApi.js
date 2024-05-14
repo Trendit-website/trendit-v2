@@ -8,6 +8,13 @@ export const useFundWallet = () => {
     },
   })
 }
+export const useWitdrawFundsh = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/payment/withdraw`, data)
+    },
+  })
+}
 
 export const useActivateMembership = () => {
   return useMutation({

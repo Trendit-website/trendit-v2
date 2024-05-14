@@ -77,19 +77,16 @@ export const useActivateGoogleAuth = () => {
     queryKey: ['google_auth'],
     queryFn: async () => {
       const res = await API.get(`/settings/activate/google-2fa`)
-      // console.log(res, 'useActivateGoogleAuth')
       return res?.data?.qr_code_data
     },
   })
 }
 
+
+
 export const useDeactivateGoogleAuth = () => {
-  return useQuery({
-    queryKey: ['de_google_auth'],
-    queryFn: async () => {
-      const res = await API.get(`/settings/deactivate/google-auth-app`)
-      console.log(res, 'deactivate')
-      return res?.data?.qr_code_data
-    },
+  return useMutation(async () => {
+    const res = await API.get(`/settings/deactivate/google-auth-app`)
+    return res?.data
   })
 }

@@ -115,11 +115,9 @@ export default function GenerateIgTask() {
                     Post adverts on Instagram
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Facebook Pages for Businesses and
-                    Organizations and earn
-                    <br />
-                    ₦10 per Like/Follow. The more pages you like, the more you
-                    earn.
+                    Like Instagram Pages for Individuals, Businesses and
+                    Organizations and earn ₦3.5 per Like. The more pages you
+                    like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -135,9 +133,9 @@ export default function GenerateIgTask() {
                   Link your Instagram Account
                 </div>
                 <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Facebook Account to Hawkit before you
-                  can start earning with your Facebook Account. Click the button
-                  below to link your Facebook account now.
+                  You need to link your Instagram Accounts to Trendit before you
+                  can start earning with your Instagram Accounts . Click the
+                  button below to link your Instagram Accounts now.
                 </div>
                 <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
                   <svg

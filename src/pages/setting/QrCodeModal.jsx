@@ -4,23 +4,32 @@ import { Button, Modal, Input, ModalContent, Image } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import { useForm, Controller } from 'react-hook-form'
-import { useComplete2Fa } from '../../api/settingsApis'
+import { useActivateGoogleAuth, useComplete2Fa } from '../../api/settingsApis'
+import { useEffect } from 'react'
+import Loader from '../Loader'
+import { useQueryClient } from '@tanstack/react-query'
 
-export default function QrCodeModal({ isOpen, onClose, activeGoogleAuth }) {
+export default function QrCodeModal({ isOpen, onClose }) {
+  const { data: activeGoogleAuth, isFetching } = useActivateGoogleAuth()
+  const queryClient = useQueryClient()
+
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({})
   const { mutateAsync: complete2Fa, isPending } = useComplete2Fa()
+
   const onSubmit = async (data) => {
     try {
       const res = await complete2Fa({ data })
       console.log(res?.data)
       if (res.data.status) {
+        onClose()
         toast.success(res.data.message, {
           duration: 4000,
         })
+        queryClient.invalidateQueries({ queryKey: ['sec_prefence'] })
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -28,6 +37,22 @@ export default function QrCodeModal({ isOpen, onClose, activeGoogleAuth }) {
       })
     }
   }
+
+  const handleToggleGoogleAuth = async () => {
+    try {
+      const res = await activeGoogleAuth
+      if (res?.data) {
+        toast.success(res?.data?.message)
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message ?? error.message)
+    }
+  }
+
+  useEffect(() => {
+    handleToggleGoogleAuth()
+  }, [])
+
   return (
     <>
       <div>
@@ -39,6 +64,7 @@ export default function QrCodeModal({ isOpen, onClose, activeGoogleAuth }) {
           onClose={onClose}
           hideCloseButton={true}
           className='rounded-none w-[23rem] md:w-[30rem]'
+          scrollBehavior='outside'
         >
           <ModalContent className=' overflow-visible'>
             <div className='p-6 md:p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
@@ -73,6 +99,7 @@ export default function QrCodeModal({ isOpen, onClose, activeGoogleAuth }) {
                       Download the Google authenticator app on your new device.
                       Within the app, scan this QR code.
                     </div>
+                    {isFetching && <Loader />}
                     <Image className='w-full' src={activeGoogleAuth} />
                     <div className='self-stretch justify-start flex-col items-start gap-3 flex'>
                       <div className='self-stretch flex-col rounded-none gap-2 flex'>

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import {  Tab, Tabs, useDisclosure } from '@nextui-org/react'
+import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
@@ -87,13 +87,12 @@ export default function GenerateTiktokTask() {
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
-                    Like an Retweet Post on Ticktok Accounts
+                    Like an Retweet Post on TikTok Accounts
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Ticktok Accounts for Businesses and
-                    Organizations and earn ₦
-                    <br />5 per Like/Follow. The more pages you like, the more
-                    you earn.
+                    Like TikTok Pages for Individuals, Businesses and
+                    Organizations and earn ₦3.5 per Like. The more pages you
+                    like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -106,12 +105,12 @@ export default function GenerateTiktokTask() {
             <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
               <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                 <div className="text-center  text-base font-bold font-['Manrope']">
-                  Link your Ticktok Accounts
+                  Link your TikTok Accounts
                 </div>
                 <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Ticktok Accounts to Trendit before you
-                  can start earning with your Ticktok Accounts . Click the
-                  button below to link your  Ticktok Accounts now.
+                  You need to link your TicTok Accounts to Trendit before you
+                  can start earning with your TikTok Accounts . Click the
+                  button below to link your  TikTok Accounts now.
                 </div>
                 <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
                   <svg

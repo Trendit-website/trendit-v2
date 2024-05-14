@@ -25,7 +25,7 @@ export default function Referal() {
           ></div>
           <div className='px-4 md:px-20 flex-col justify-start items-center gap-[18px] inline-flex'>
             <div className="md:w-[471px] md:pt-16 z-10 text-black text-4xl md:text-7xl font-extrabold font-['Manrope'] leading-[54.72px]">
-              Invite and Get N1000
+              Invite and Get N500
             </div>
             <div className='self-stretch z-10 flex-col justify-start items-center gap-2 flex'>
               <div className="self-stretch text-black text-sm font-medium font-['Manrope']">
@@ -35,7 +35,7 @@ export default function Referal() {
                 <div className='grow shrink basis-0 justify-start items-center gap-2 flex-col flex md:flex-row'>
                   <Snippet
                     variant='bordered'
-                    className="grow rounded-none py-1 bg-white shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']"
+                    className="grow w-40 md:w-full rounded-none py-1 bg-white shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']"
                     size='md'
                     symbol=''
                     copyIcon={
