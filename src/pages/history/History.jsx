@@ -18,12 +18,12 @@ export default function History() {
   const [selectedHistory, setSelectedHistory] = useState()
   const { data: adverts } = useGetAdvert(selectedHistory)
   const { data: adverts2 } = useGetAllAdvert()
-  console.log(adverts, 'llp')
-  console.log(adverts2, 'll22p')
+  // console.log(adverts, 'llp')
+  // console.log(adverts2, 'll22p')
   const naviaget = useNavigate()
 
   const handleRoute = () => {
-    naviaget('/dashboard/earn-advert-task')
+    naviaget('/dashboard/earn-advert-task-preview')
   }
   return (
     <div>

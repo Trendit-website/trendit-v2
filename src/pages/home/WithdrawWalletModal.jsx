@@ -3,7 +3,7 @@
 import { Button, Modal, Input, ModalContent } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
-import { useFundWallet } from '../../api/walletApi'
+import { useFetchBallance, useWitdrawFundsh } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
 
 export default function WithdrawWalletModal({ isOpen, onClose }) {
@@ -12,20 +12,17 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
     control,
     formState: { errors },
   } = useForm({})
-  const { mutateAsync: fundWallet, isPending } = useFundWallet()
+  const { mutateAsync: fundWallet, isPending } = useWitdrawFundsh()
+  const { data: showBalance } = useFetchBallance()
+
   const onSubmit = async (data) => {
     try {
       const res = await fundWallet({ data })
       console.log(res?.data)
       if (res.data.status) {
-        const authorizationUrl = res?.data?.authorization_url
         toast.success(res.data.message, {
           duration: 20000,
         })
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          window.open(authorizationUrl) // Open the URL in a new tab
-        }
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -57,12 +54,26 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                 <div className='self-stretch p-6 flex-col justify-center items-start gap-6 flex'>
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className="grow shrink basis-0 text-sm font-semibold font-['Manrope']">
+                      <div className="grow shrink basis-0 text-md font-semibold font-['Manrope']">
                         Withdraw Fund
                       </div>
                     </div>
-                    <div className='justify-start flex-col items-start gap-[19px] flex'>
+                    <div className=" text-center text-sm font-normal font-['Manrope']">
+                      Please enter the amount which you like to withdraw from
+                      your wallet
+                    </div>
+                    <div className='self-stretch justify-start flex-col items-start gap-[19px] flex'>
                       <div className='self-stretch rounded-none  gap-2 flex-col flex'>
+                        <div className='w[275px]'>
+                          <span className="text-sm font-normal font-['Manrope']">
+                            Wallet Balance
+                          </span>
+
+                          <span className=" text-sm font-semibold font-['Manrope']">
+                            <span>{showBalance?.currency_symbol}</span>
+                            {showBalance?.balance?.toLocaleString()}
+                          </span>
+                        </div>
                         <div className="text-sm font-medium font-['Manrope']">
                           Amount
                         </div>
@@ -78,30 +89,24 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               startContent={
-                                `₦`
-
-                                // <MailIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
+                                <span>{showBalance?.currency_symbol}</span>
                               }
                               classNames={{
                                 input: [
-                                  'bg-transparent',
                                   'text-black/90 dark:text-white/90',
                                   'placeholder:text-black dark:placeholder:text-black',
+                                  'focus-within:placeholder:text-black focus-within:dark:placeholder:text-white ',
                                 ],
                                 innerWrapper: 'bg-transparent',
                                 inputWrapper: [
-                                  'bg-zinc-700 bg-opacity-10 rounden-none',
+                                  'rounded-none',
                                   'dark:bg-white',
-                                  'hover:bg-white hover:bg-opacity-10',
-                                  'dark:hover:bg-opacity-80',
-                                  'group-data-[focused=true]:bg-default-200/50',
-                                  'dark:group-data-[focused=true]:bg-default/60',
                                   '!cursor-text',
                                   'border-2 border-transparent',
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded  text-black text-[12.83px] font-normal font-['Manrope']"
+                              className=" rounded text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
                         />

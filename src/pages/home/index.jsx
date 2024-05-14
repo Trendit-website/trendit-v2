@@ -18,6 +18,8 @@ import { useGetProfile } from '../../api/profileApis'
 import FundWalletModal from './FundWalletModal'
 import WithdrawWalletModal from './WithdrawWalletModal'
 import { dashboardContext } from '../../context/Dashboard'
+import SocialLinkModal from '../components/SocialLinkModal'
+import IgLogoBang from '../../assets/skill-icons_instagram.svg'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -28,6 +30,11 @@ export default function Welcome({ onNotificationClick }) {
     isOpen: openWithdraw,
     onOpen: onOpenWithdraw,
     onClose: onCloseWithdraw,
+  } = useDisclosure()
+  const {
+    isOpen: isOpenVerify,
+    onOpen: onOpenVerify,
+    onClose: onCloseVerify,
   } = useDisclosure()
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
@@ -218,10 +225,10 @@ export default function Welcome({ onNotificationClick }) {
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-sm font-bold font-['Manrope']">
+                  <div className="text-black text-md font-bold font-['Manrope']">
                     Create an Advert
                   </div>
-                  <div className=" text-stone-900 text-xs font-normal font-['Manrope']">
+                  <div className=" text-stone-900 text-sm font-normal font-['Manrope']">
                     Get real people to post your ads on their social media
                     account.
                   </div>
@@ -251,10 +258,10 @@ export default function Welcome({ onNotificationClick }) {
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-sm font-bold font-['Manrope']">
+                  <div className="text-black text-md font-bold font-['Manrope']">
                     Engage a task
                   </div>
-                  <div className=" text-stone-900 text-xs font-normal font-['Manrope']">
+                  <div className=" text-stone-900 text-sms font-normal font-['Manrope']">
                     Monetize Your Influence! Earn by Posting Ads on Your Social
                     Media.
                   </div>
@@ -280,131 +287,72 @@ export default function Welcome({ onNotificationClick }) {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
-            {userDetails?.firstname &&
-            userDetails?.lastname &&
-            userDetails?.gender &&
-            userDetails?.country &&
-            userDetails?.profile_picture ? (
-              <Card className='self-stretch hidden p-6 bg-[#B0B0B0] dark:bg-[#171717] justify-start items-start gap-[29px]'>
-                <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
-                    Complete your profile set up
-                  </div>
-                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                    To personalize your experience and let you take full
-                    advantage of everything we offer, we encourage you to
-                    complete your profile settings. A well-rounded profile lets
-                    you showcase your expertise, interests, and goals. 
-                  </div>
-                  <Button
-                    startContent={
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='20'
-                        height='20'
-                        viewBox='0 0 20 20'
-                        fill='none'
-                      >
-                        <path
-                          d='M3.33331 4.16667H13.3333M13.3333 4.16667C13.3333 5.08714 14.0795 5.83333 15 5.83333C15.9205 5.83333 16.6666 5.08714 16.6666 4.16667C16.6666 3.24619 15.9205 2.5 15 2.5C14.0795 2.5 13.3333 3.24619 13.3333 4.16667ZM6.66665 10H16.6666M6.66665 10C6.66665 10.9205 5.92045 11.6667 4.99998 11.6667C4.07951 11.6667 3.33331 10.9205 3.33331 10C3.33331 9.07953 4.07951 8.33333 4.99998 8.33333C5.92045 8.33333 6.66665 9.07953 6.66665 10ZM3.33331 15.8333H13.3333M13.3333 15.8333C13.3333 16.7538 14.0795 17.5 15 17.5C15.9205 17.5 16.6666 16.7538 16.6666 15.8333C16.6666 14.9129 15.9205 14.1667 15 14.1667C14.0795 14.1667 13.3333 14.9129 13.3333 15.8333Z'
-                          // stroke='#FFD0FE'
-                          className='text-[#FFD0FE] stroke-[#CB29BE] dark:stroke-[#FFD0FE]'
-                          strokeWidth='2'
-                          strokeLinecap='round'
-                        />
-                      </svg>
-                    }
-                    className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
-                  >
-                    <div
-                      onClick={() => navigate(`/dashboard/settings`)}
-                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']"
-                    >
-                      Go to settings
+            {!userDetails?.firstname &&
+              !userDetails?.lastname &&
+              !userDetails?.gender &&
+              !userDetails?.country &&
+              !userDetails?.profile_picture &&
+              profile && (
+                <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
+                  <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+                    <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
+                      Complete your profile set up
                     </div>
-                  </Button>
-                </div>
-                <div
-                  onClick={() => setProfile(false)}
-                  className='absolute right-10 cursor-pointer'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                  >
-                    <path
-                      d='M18 6L6 18M18 18L6 6.00001'
-                      stroke='white'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
-                </div>
-              </Card>
-            ) : (
-              <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
-                <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
-                    Complete your profile set up
-                  </div>
-                  <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                    To personalize your experience and let you take full
-                    advantage of everything we offer, we encourage you to
-                    complete your profile settings. A well-rounded profile lets
-                    you showcase your expertise, interests, and goals. 
-                  </div>
-                  <Button
-                    startContent={
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='20'
-                        height='20'
-                        viewBox='0 0 20 20'
-                        fill='none'
-                      >
-                        <path
-                          d='M3.33331 4.16667H13.3333M13.3333 4.16667C13.3333 5.08714 14.0795 5.83333 15 5.83333C15.9205 5.83333 16.6666 5.08714 16.6666 4.16667C16.6666 3.24619 15.9205 2.5 15 2.5C14.0795 2.5 13.3333 3.24619 13.3333 4.16667ZM6.66665 10H16.6666M6.66665 10C6.66665 10.9205 5.92045 11.6667 4.99998 11.6667C4.07951 11.6667 3.33331 10.9205 3.33331 10C3.33331 9.07953 4.07951 8.33333 4.99998 8.33333C5.92045 8.33333 6.66665 9.07953 6.66665 10ZM3.33331 15.8333H13.3333M13.3333 15.8333C13.3333 16.7538 14.0795 17.5 15 17.5C15.9205 17.5 16.6666 16.7538 16.6666 15.8333C16.6666 14.9129 15.9205 14.1667 15 14.1667C14.0795 14.1667 13.3333 14.9129 13.3333 15.8333Z'
-                          // stroke='#FFD0FE'
-                          className='text-[#FFD0FE] stroke-[#CB29BE] dark:stroke-[#FFD0FE]'
-                          strokeWidth='2'
-                          strokeLinecap='round'
-                        />
-                      </svg>
-                    }
-                    className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
-                  >
-                    <div
-                      onClick={() => navigate(`/dashboard/settings`)}
-                      className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']"
-                    >
-                      Go to settings
+                    <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
+                      To personalize your experience and let you take full
+                      advantage of everything we offer, we encourage you to
+                      complete your profile settings. A well-rounded profile
+                      lets you showcase your expertise, interests, and goals. 
                     </div>
-                  </Button>
-                </div>
-                <div
-                  onClick={() => setProfile(false)}
-                  className='absolute right-10 cursor-pointer'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
+                    <Button
+                      startContent={
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          width='20'
+                          height='20'
+                          viewBox='0 0 20 20'
+                          fill='none'
+                        >
+                          <path
+                            d='M3.33331 4.16667H13.3333M13.3333 4.16667C13.3333 5.08714 14.0795 5.83333 15 5.83333C15.9205 5.83333 16.6666 5.08714 16.6666 4.16667C16.6666 3.24619 15.9205 2.5 15 2.5C14.0795 2.5 13.3333 3.24619 13.3333 4.16667ZM6.66665 10H16.6666M6.66665 10C6.66665 10.9205 5.92045 11.6667 4.99998 11.6667C4.07951 11.6667 3.33331 10.9205 3.33331 10C3.33331 9.07953 4.07951 8.33333 4.99998 8.33333C5.92045 8.33333 6.66665 9.07953 6.66665 10ZM3.33331 15.8333H13.3333M13.3333 15.8333C13.3333 16.7538 14.0795 17.5 15 17.5C15.9205 17.5 16.6666 16.7538 16.6666 15.8333C16.6666 14.9129 15.9205 14.1667 15 14.1667C14.0795 14.1667 13.3333 14.9129 13.3333 15.8333Z'
+                            // stroke='#FFD0FE'
+                            className='text-[#FFD0FE] stroke-[#CB29BE] dark:stroke-[#FFD0FE]'
+                            strokeWidth='2'
+                            strokeLinecap='round'
+                          />
+                        </svg>
+                      }
+                      className='p-2 rounded-none bg-white dark:bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                    >
+                      <div
+                        onClick={() => navigate(`/dashboard/settings`)}
+                        className="text-center text-black dark:text-white text-[12.83px] font-bold font-['Manrope']"
+                      >
+                        Go to settings
+                      </div>
+                    </Button>
+                  </div>
+                  <div
+                    onClick={() => setProfile(false)}
+                    className='absolute right-10 cursor-pointer'
                   >
-                    <path
-                      d='M18 6L6 18M18 18L6 6.00001'
-                      stroke='white'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
-                </div>
-              </Card>
-            )}
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M18 6L6 18M18 18L6 6.00001'
+                        stroke='white'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+                  </div>
+                </Card>
+              )}
             {linkIg && (
               <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
@@ -417,6 +365,7 @@ export default function Welcome({ onNotificationClick }) {
                     the button below to link your Instagram  account now.
                   </div>
                   <Button
+                    onClick={onOpenVerify}
                     startContent={
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -521,7 +470,7 @@ export default function Welcome({ onNotificationClick }) {
           </div>
           <div className='py-3 justify-start items-center gap-[7px] inline-flex'>
             <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-              © 2024 Trendit Techology.
+              © {new Date().getFullYear()} Trendit Techology.
             </div>
           </div>
         </div>
@@ -531,6 +480,14 @@ export default function Welcome({ onNotificationClick }) {
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
       {openWithdraw && (
         <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
+      {isOpenVerify && (
+        <SocialLinkModal
+          type='instagram'
+          LogoBand={IgLogoBang}
+          isOpen={isOpenVerify}
+          onClose={onCloseVerify}
+        />
       )}
     </div>
   )

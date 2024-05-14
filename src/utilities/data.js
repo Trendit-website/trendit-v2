@@ -17,6 +17,7 @@ export const platforms = [
   { label: 'Instagram', value: 'instagram' },
   { label: 'Twitter', value: 'twitter' },
   { label: 'Youtube', value: 'youtube' },
+  { label: 'Thread', value: 'Thread' },
 ]
 export const genders = [
   {
@@ -99,6 +100,12 @@ export const tkplatforms = [
   {
     label: 'TikTok',
     value: 'TikTok',
+  },
+]
+export const threadPlatform = [
+  {
+    label: 'Thread',
+    value: 'Thread',
   },
 ]
 export const igplatforms = [{ label: 'Instagram', value: 'instagram' }]

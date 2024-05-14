@@ -146,7 +146,7 @@ const Navbar = ({ onNotificationClick }) => {
                         fill='#B1B1B1'
                       />
                     </svg>
-                    <div className="text-center text-zinc-400 text-sm font-medium font-['Campton']">
+                    <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
                       Sign Out
                     </div>
                   </div>

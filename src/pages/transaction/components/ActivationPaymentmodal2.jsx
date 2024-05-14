@@ -1,18 +1,15 @@
 /* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
-import { Button, Input, Modal, ModalContent } from '@nextui-org/react'
+import { Button, Modal, ModalContent } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useActivateMembership } from '../../../api/walletApi'
+import Loader from '../../Loader'
 
 export default function ActivationPaymentmodal2({ isOpen, onClose }) {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
+  const { handleSubmit } = useForm({
     defaultValues: {
       amount: 1000,
     },
@@ -52,12 +49,12 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
         isOpen={isOpen}
         onClose={onClose}
         hideCloseButton={true}
-        className='rounded-none '
+        className='rounded-none'
         scrollBehavior='outside'
       >
         <ModalContent className=' overflow-visible'>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className=' px-[26px] py-8 bg-neutral-900 rounded flex-col justify-start items-center gap-12 inline-flex'>
+            <div className=' px-[26px] py-8 rounded flex-col justify-start items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
                 className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
@@ -174,68 +171,15 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                   Membership Fee
                 </div>
                 <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
-                  <div className='self-stretch w-40  bg-zinc-400 bg-opacity-40 rounded-lg justify-start items-center gap-2 inline-flex'>
-                    <Controller
-                      name='amount'
-                      control={control}
-                      render={({ field }) => (
-                        <Input
-                          type='text'
-                          size='sm'
-                          isDisabled
-                          placeholder='amount'
-                          {...field}
-                          errorMessage={errors?.amount?.message}
-                          isInvalid={!!errors?.amount}
-                          classNames={{
-                            input: [
-                              'text-black/90 dark:text-white/90',
-                              'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                            ],
-                            inputWrapper: [
-                              'bg-opacity-10',
-                              'dark:hover:bg-opacity-10',
-                              'group-data-[focused=true]:bg-opacity-10',
-                              'dark:group-data-[focused=true]:bg-opacity-10',
-                              'border-2 border-transparent',
-                              'focus-within:!border-fuchsia-600  ',
-                              '!cursor-text',
-                            ],
-                          }}
-                          className=" rounded bg-white bg-opacity-10   text-3xl font-normal font-['Manrope']"
-                        />
-                      )}
-                    />
+                  <div className="w-40 text-3xl font-medium font-['Manrope']">
+                    ₦{1000?.toLocaleString()}
                   </div>
                   <Button
                     type='submit'
                     isDisabled={isPending}
                     className='md:w-[290px]  cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
-                    {isPending ? (
-                      <svg
-                        className='animate-spin h-5 w-5 text-current'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <circle
-                          className='opacity-25'
-                          cx='12'
-                          cy='12'
-                          r='10'
-                          stroke='currentColor'
-                          strokeWidth='4'
-                        />
-                        <path
-                          className='opacity-75'
-                          d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                          fill='currentColor'
-                        />
-                      </svg>
-                    ) : (
-                      'Click here to Pay'
-                    )}
+                    {isPending ? <Loader /> : 'Click here to Pay'}
                   </Button>
                 </div>
               </div>

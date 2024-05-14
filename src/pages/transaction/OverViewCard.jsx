@@ -5,10 +5,16 @@ import { IoAdd } from 'react-icons/io5'
 // import SelectPaymentmodal from './components/SelectPaymentmodal'
 import { useFetchBallance } from '../../api/walletApi'
 import FundWalletModal from '../home/FundWalletModal'
+import WithdrawWalletModal from '../home/WithdrawWalletModal'
 
 export default function OverViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: showBalance } = useFetchBallance()
+  const {
+    isOpen: openWithdraw,
+    onOpen: onOpenWithdraw,
+    onClose: onCloseWithdraw,
+  } = useDisclosure()
 
   return (
     <div>
@@ -83,7 +89,7 @@ export default function OverViewCard() {
               {showBalance?.balance?.toLocaleString()}
             </div>
           </div>
-          <div className='justify-center items-center w-full gap-[19px] flex'>
+          <div className='justify-start items-center w-full gap-[19px] flex'>
             <div className='pb-4 justify-center items-center md:justify-start md:items-start  gap-4 flex'>
               <Button
                 onClick={onOpen}
@@ -97,6 +103,7 @@ export default function OverViewCard() {
               </Button>
 
               <Button
+                onClick={onOpenWithdraw}
                 startContent={
                   <ExternalLinkIcon size={30} className='w-[18px] h-[18px] ' />
                 }
@@ -205,6 +212,9 @@ export default function OverViewCard() {
 
       {/* <SelectPaymentmodal isOpen={isOpen} onClose={onClose} /> */}
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
+      {openWithdraw && (
+        <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
     </div>
   )
 }

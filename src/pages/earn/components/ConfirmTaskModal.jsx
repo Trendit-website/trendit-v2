@@ -63,12 +63,12 @@ export default function ConfirmTaskModal({
               </div>
               <div className='flex-col justify-center items-center gap-3 flex'>
                 <div className="dark:text-white capitalize text-stone-900 text-sm font-bold font-['Manrope']">
-                  {title ? title : 'Generate Next Twitter Task?'}
+                  {title ? title : `Generate Next ${platform} Task?`}
                 </div>
                 <div className="w-[253px] text-center dark:text-[#B0B0B0] text-black text-xs font-normal font-['Manrope']">
                   {description
                     ? description
-                    : ` Are you sure you want to generate your next Twitter task now.
+                    : ` Are you sure you want to generate your next ${platform} task now.
                   You have 1 hour to perform this task. Please confirm only if
                   you are ready to perform the task.`}
                 </div>

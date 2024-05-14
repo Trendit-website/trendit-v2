@@ -74,7 +74,7 @@ export default function TransactionCard() {
                 {history?.description}
               </div>
               <div className="dark:text-white text-black text-[12.83px] font-medium font-['Manrope']">
-                {history?.amount}
+                {history?.amount?.toLocaleString()}
               </div>
             </div>
           </div>

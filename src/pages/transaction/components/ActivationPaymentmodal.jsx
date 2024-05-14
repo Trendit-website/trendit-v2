@@ -223,7 +223,7 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
           )}
 
           {view === 'crypto' && (
-            <div className=' p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className=' p-6 ounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={() => setView('fund')}
                 className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40  cursor-pointer rounded-[100px] '
@@ -281,7 +281,7 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
             </div>
           )}
           {view === 'bankTransfer' && (
-            <div className=' p-6 bg-white rounded flex-col justify-center items-center gap-12 inline-flex'>
+            <div className=' p-6 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={() => setView('fund')}
                 className='p-2 bg-fuchsia-400 top-[-20px] -right-2 md:-right-4 absolute z-40 cursor-pointer rounded-[100px] '
@@ -289,10 +289,10 @@ export default function ActivationPaymentmodal({ isOpen, onClose }) {
                 <AiOutlineClose size={20} color='#fff' />
               </div>
               <div className='flex-col justify-center items-center gap-3 flex'>
-                <div className="text-stone-900 text-sm font-bold font-['Manrope']">
+                <div className=" text-sm font-bold font-['Manrope']">
                   Fund Wallet with Bank Transfer
                 </div>
-                <div className="w-[253px] text-center text-black text-xs font-normal font-['Manrope']">
+                <div className="w-[253px] text-center  text-xs font-normal font-['Manrope']">
                   Your Unique Reseller Link has been generated successfully. You
                   have to share your unique reseller link along with the product
                   images and descriptions to your social network such as
