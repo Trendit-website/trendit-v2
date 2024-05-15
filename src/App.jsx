@@ -57,6 +57,7 @@ import './assetlinks.json'
 import PreviewEarnAdvertTask from './pages/earn/components/PreviewEarnAdvertTask'
 import CreateThrAdvertTask from './pages/advertise/components/createAdvert/CreateThrAdvertTask'
 import GenerateThrTask from './pages/earn/components/postadvert/GenerateThrTask'
+import TwoFaOtp from './components/auth/TwoFaOtp'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -85,6 +86,7 @@ function App() {
         <Routes>
           <Route path='/' element={<VerifyEmail />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/login/2fa_auth' element={<TwoFaOtp />} />
           {/* <Route path='/.well-known/assetlinks.json' element={<Wellness />} /> */}
           <Route path='/confirm-otp' element={<ConfirmOtp />} />
           <Route path='/signup' element={<Signup />} />

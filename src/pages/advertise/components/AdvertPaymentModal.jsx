@@ -1,11 +1,12 @@
 /* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/prop-types */
-import { Modal, ModalContent } from '@nextui-org/react'
+import { Modal, ModalContent, Button } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useState } from 'react'
 import { useFetchBallance } from '../../../api/walletApi'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../../Loader'
 
 export default function AdvertPaymentModal({
   isOpen,
@@ -13,6 +14,7 @@ export default function AdvertPaymentModal({
   amount,
   onSuccess,
   onWalletPaymentSuccess,
+  isPending
 }) {
   const [view, setView] = useState('')
   const { data: walletBalance } = useFetchBallance()
@@ -127,7 +129,8 @@ export default function AdvertPaymentModal({
                         Pay from your Trendit Wallet
                       </div>
                       <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
-                        Wallet Balance: {walletBalance?.balance}
+                        Wallet Balance: {walletBalance?.currency_symbol}{' '}
+                        {walletBalance?.balance}
                       </div>
                     </div>
                   </div>
@@ -168,7 +171,7 @@ export default function AdvertPaymentModal({
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                       <div className="self-stretch text-sm font-medium font-['Manrope']">
                         {/* Pay with Crypto */}
-                        Pay with Paystack
+                        Pay with Flutter wave
                       </div>
                       <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
                         Get real people to post your ads on their social media
@@ -216,7 +219,7 @@ export default function AdvertPaymentModal({
                         Total Pay
                       </div>
                       <div className=" text-3xl font-medium font-['Manrope']">
-                        {walletBalance?.currency_code}: {''} {amount}
+                        {walletBalance?.currency_symbol}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -224,7 +227,7 @@ export default function AdvertPaymentModal({
                         Amount due to task
                       </div>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
-                        {walletBalance?.currency_code}: {''} {amount}
+                        {walletBalance?.currency_symbol}: {''} {amount}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -232,7 +235,7 @@ export default function AdvertPaymentModal({
                         Wallet balance after this payment
                       </div>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
-                        {walletBalance?.currency_code}: {''}
+                        {walletBalance?.currency_symbol}: {''}
                         {balanceAfterPayment}
                       </div>
                     </div>
@@ -262,14 +265,15 @@ export default function AdvertPaymentModal({
                     </div>
                   </div>
                 </div>
-                <div
+                <Button
                   onClick={handleFinalPayment}
+                  isDisabled={isPending}
                   className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
                   <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
-                    Proceed
+                    {isPending ? <Loader /> : 'Proceed'}
                   </div>
-                </div>
+                </Button>
               </div>
             </ModalContent>
           )}

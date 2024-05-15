@@ -4,10 +4,10 @@ import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useBankDetails, useUpdateBankDetils } from '../../api/walletApi'
 import { useFetchBank, useVerifyBank } from '../../api/bankApi'
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 export default function BankDetailsForm() {
   const { data: userBank } = useBankDetails()
-  const { data: fetchBanks, isPending: fetching } = useFetchBank()
+  const { data: fetchBanks, isLoading: fetching } = useFetchBank()
   const {
     handleSubmit,
     control,
@@ -21,7 +21,15 @@ export default function BankDetailsForm() {
       account_name: userBank?.account_name,
     },
   })
-  console.log(fetchBanks, 'bbb')
+
+  const [searchTerm, setSearchTerm] = useState('')
+
+  // Filter banks based on search term
+  const filteredBanks = useMemo(() => {
+    return fetchBanks?.filter((bank) =>
+      bank?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase())
+    )
+  }, [fetchBanks, searchTerm])
 
   const { mutateAsync: updateUserPrefence, isPending } = useUpdateBankDetils()
   const { mutateAsync: updateVerifyBank } = useVerifyBank()
@@ -35,34 +43,39 @@ export default function BankDetailsForm() {
   //   setValue('account_no', '')
   // }, [watch(), setValue])
 
+  // console.log(filteredBanks, 'filteredBanks')
+  console.log(fetchBanks, 'fetchBanks')
+
   const bankName = watch('bank_name')
   const accountNo = watch('account_no')
 
-  // useEffect(() => {
-  //   const verifyBankDetails = async () => {
-  //     console.log(bankName, accountNo, 'account details')
-  //     if (bankName && accountNo) {
-  //       try {
-  //         const res = await updateVerifyBank({
-  //           bank_name: bankName,
-  //           account_no: accountNo,
-  //         })
+  console.log(bankName, 'bankkk')
 
-  //         console.log(res, 'ressss')
-  //         if (res?.data?.account_name) {
-  //           setValue('account_name', res.data.account_name)
-  //         }
-  //       } catch (error) {
-  //         toast.error(
-  //           'Verification failed: ' +
-  //             (error.response?.data?.message || error.message)
-  //         )
-  //       }
-  //     }
-  //   }
+  useEffect(() => {
+    const verifyBankDetails = async () => {
+      console.log(bankName, accountNo, 'account details')
+      if (bankName && accountNo && accountNo?.length === 10) {
+        try {
+          const res = await updateVerifyBank({
+            bank_name: bankName,
+            account_no: accountNo,
+          })
 
-  //   verifyBankDetails()
-  // }, [accountNo])
+          console.log(res, 'ressss')
+          if (res?.data?.account_name) {
+            setValue('account_name', res.data.account_name)
+          }
+        } catch (error) {
+          toast.error(
+            'Verification failed: ' +
+              (error.response?.data?.message || error.message)
+          )
+        }
+      }
+    }
+
+    verifyBankDetails()
+  }, [accountNo])
   // }, [bankName, accountNo, updateVerifyBank, setValue])
 
   const onSubmit = async (data) => {
@@ -124,9 +137,9 @@ export default function BankDetailsForm() {
                         ],
                       }}
                     >
-                      {fetchBanks?.map((bank) => (
-                        <SelectItem key={bank.value} value={bank.value}>
-                          {bank.name}
+                      {filteredBanks?.map((bank) => (
+                        <SelectItem key={bank?.name} value={bank?.name}>
+                          {bank?.name}
                         </SelectItem>
                       ))}
                     </Select>

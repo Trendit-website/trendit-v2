@@ -559,7 +559,7 @@ want to post your advert.`}
                         <Textarea
                           {...register('caption')}
                           placeholder='Caption'
-                          className="text-black  self-stretch grow shrink basis-0 px2 py3.5  bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
+                          className="self-stretch grow shrink basis-0 px2 py3.5  bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
                         />
 
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>

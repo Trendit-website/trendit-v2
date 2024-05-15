@@ -56,6 +56,15 @@ export const useResetPassword = () => {
     },
   })
 }
+
+export const useVerify2Fa = () => {
+  return useMutation({
+    mutationFn: ({ data }) => {
+      return API.post(`/verify-2fa`, data)
+    },
+  })
+}
+
 export const useLogoutUser = () => {
   return useMutation({
     mutationFn: ({ data }) => {
@@ -79,7 +88,7 @@ export const useGoogleLogin = () => {
   })
 }
 
- export const useFacebookLogin = () => {
+export const useFacebookLogin = () => {
   return useMutation({
     mutationFn: () => {
       return API.get(`/facebook_login`)
