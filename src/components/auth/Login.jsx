@@ -38,10 +38,19 @@ export default function Login() {
   const onSubmit = async (data) => {
     try {
       const res = await handleLogin({ data })
+
+      
       if (res?.data?.status) {
-        setAccessToken(res?.data?.access_token)
-        toast.success(res.data.message)
-        navigate('/dashboard/home')
+        if (res?.data?.two_fa_token) {
+          setAccessToken(res?.data?.two_fa_token)
+          toast.success(res.data.message)
+           navigate('/login/2fa_auth')
+        }else{
+          setAccessToken(res?.data?.access_token)
+          toast.success(res.data.message)
+          navigate('/dashboard/home')
+        }
+
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)

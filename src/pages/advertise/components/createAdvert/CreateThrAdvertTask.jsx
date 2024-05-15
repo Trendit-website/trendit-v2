@@ -274,7 +274,7 @@ export default function CreateThrAdvertTask() {
                                     '!cursor-text',
                                   ],
                                 }}
-                                className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
+                                className="grow shrink rounded basis-0  text-[12.83px] font-normal font-['Manrope']"
                                 {...field}
                               >
                                 {threadPlatform?.map((platform) => (
@@ -437,7 +437,7 @@ export default function CreateThrAdvertTask() {
                                 }}
                                 placeholder='Enter the number of view you want'
                                 {...field}
-                                className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
                             rules={{ required: true }}
@@ -467,7 +467,7 @@ export default function CreateThrAdvertTask() {
                                 isInvalid={!!errors.gender}
                                 errorMessage={errors?.gender?.message}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                                className="grow shrink basis-0   rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select Gender'
                                 classNames={{
                                   listbox: [
@@ -576,7 +576,7 @@ export default function CreateThrAdvertTask() {
                         <Textarea
                           {...register('caption')}
                           placeholder='Caption'
-                          className="text-black  self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
+                          className="self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
                         />
 
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
