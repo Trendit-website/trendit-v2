@@ -7,7 +7,7 @@ import { useFetchBank, useVerifyBank } from '../../api/bankApi'
 import { useEffect } from 'react'
 export default function BankDetailsForm() {
   const { data: userBank } = useBankDetails()
-  const { data: fetchBanks, isPending: fetching } = useFetchBank()
+  const { data: fetchBanks, isLoading: fetching } = useFetchBank()
   const {
     handleSubmit,
     control,
@@ -38,31 +38,31 @@ export default function BankDetailsForm() {
   const bankName = watch('bank_name')
   const accountNo = watch('account_no')
 
-  // useEffect(() => {
-  //   const verifyBankDetails = async () => {
-  //     console.log(bankName, accountNo, 'account details')
-  //     if (bankName && accountNo) {
-  //       try {
-  //         const res = await updateVerifyBank({
-  //           bank_name: bankName,
-  //           account_no: accountNo,
-  //         })
+  useEffect(() => {
+    const verifyBankDetails = async () => {
+      console.log(bankName, accountNo, 'account details')
+      if (bankName && accountNo) {
+        try {
+          const res = await updateVerifyBank({
+            bank_name: bankName,
+            account_no: accountNo,
+          })
 
-  //         console.log(res, 'ressss')
-  //         if (res?.data?.account_name) {
-  //           setValue('account_name', res.data.account_name)
-  //         }
-  //       } catch (error) {
-  //         toast.error(
-  //           'Verification failed: ' +
-  //             (error.response?.data?.message || error.message)
-  //         )
-  //       }
-  //     }
-  //   }
+          console.log(res, 'ressss')
+          if (res?.data?.account_name) {
+            setValue('account_name', res.data.account_name)
+          }
+        } catch (error) {
+          toast.error(
+            'Verification failed: ' +
+              (error.response?.data?.message || error.message)
+          )
+        }
+      }
+    }
 
-  //   verifyBankDetails()
-  // }, [accountNo])
+    verifyBankDetails()
+  }, [accountNo])
   // }, [bankName, accountNo, updateVerifyBank, setValue])
 
   const onSubmit = async (data) => {
@@ -125,7 +125,7 @@ export default function BankDetailsForm() {
                       }}
                     >
                       {fetchBanks?.map((bank) => (
-                        <SelectItem key={bank.value} value={bank.value}>
+                        <SelectItem key={bank.name} value={bank.name}>
                           {bank.name}
                         </SelectItem>
                       ))}

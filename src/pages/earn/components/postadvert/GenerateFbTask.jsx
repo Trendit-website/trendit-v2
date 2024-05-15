@@ -12,10 +12,17 @@ import ConfirmTaskModal from '.././ConfirmTaskModal'
 import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import { useGetProfile } from '../../../../api/profileApis'
+import SocialLinkModal from '../../../components/SocialLinkModal'
+import FbSocialLogo from '../../../../assets/logos_facebook.svg'
 
 export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
+   const {
+     isOpen: isOpenVerify,
+     onOpen: onOpenVerify,
+     onClose: onCloseVerify,
+   } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
@@ -107,7 +114,10 @@ export default function GenerateFbTask() {
                   can start earning with your Facebook Account. Click the button
                   below to link your Facebook account now.
                 </div>
-                <div className='p-2 dark:bg-stone-800 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-2 inline-flex'>
+                <div
+                  onClick={onOpenVerify}
+                  className='p-2 dark:bg-stone-800 cursor-default bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-2 inline-flex'
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='25'
@@ -448,6 +458,15 @@ export default function GenerateFbTask() {
         platform='facebook'
         title='Facebook'
       />
+
+      {isOpenVerify && (
+        <SocialLinkModal
+          type='instagram'
+          LogoBand={FbSocialLogo}
+          isOpen={isOpenVerify}
+          onClose={onCloseVerify}
+        />
+      )}
     </>
   )
 }

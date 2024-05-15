@@ -13,10 +13,16 @@ import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
+import SocialLinkModal from '../../../components/SocialLinkModal'
 
 export default function GenerateTiktokTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: isOpenVerify,
+    onOpen: onOpenVerify,
+    onClose: onCloseVerify,
+  } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
 
   const { isDarkMode } = useDarkMode()
@@ -109,10 +115,13 @@ export default function GenerateTiktokTask() {
                 </div>
                 <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
                   You need to link your TicTok Accounts to Trendit before you
-                  can start earning with your TikTok Accounts . Click the
-                  button below to link your  TikTok Accounts now.
+                  can start earning with your TikTok Accounts . Click the button
+                  below to link your  TikTok Accounts now.
                 </div>
-                <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+                <div
+                  onClick={onOpenVerify}
+                  className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
@@ -134,7 +143,7 @@ export default function GenerateTiktokTask() {
                     />
                   </svg>
                   <div className="text-center text-[12.83px] font-bold font-['Manrope']">
-                    Link Ticktok account
+                    Link TikTok account
                   </div>
                 </div>
               </div>
@@ -455,6 +464,35 @@ export default function GenerateTiktokTask() {
         task_type='advert'
         platform='tiktok'
       />
+      {isOpenVerify && (
+        <SocialLinkModal
+          type='tiktok'
+          LogoBand={
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 47 47'
+              fill='none'
+            >
+              <path
+                d='M34.8307 16.9236C38.2597 19.0864 42.4604 20.359 46.9973 20.359V12.6558C46.1386 12.656 45.2822 12.5769 44.4422 12.4199V18.4833C39.9057 18.4833 35.7055 17.2109 32.2758 15.0483V30.7683C32.2758 38.6324 25.0507 45.0069 16.1389 45.0069C12.8137 45.0069 9.72286 44.1199 7.15546 42.5986C10.0858 45.2424 14.1723 46.8824 18.6933 46.8824C27.6058 46.8824 34.8311 40.5079 34.8311 32.6435V16.9236H34.8307ZM37.9828 9.15206C36.2303 7.46282 35.0796 5.27975 34.8307 2.86622V1.87549H32.4094C33.0189 4.94297 35.098 7.56362 37.9828 9.15206ZM12.7922 36.5641C11.8131 35.4315 11.2839 34.0457 11.2862 32.6209C11.2862 29.0243 14.5909 26.108 18.6681 26.108C19.4278 26.1077 20.183 26.2106 20.9073 26.4132V18.5378C20.0609 18.4355 19.2069 18.3919 18.3533 18.408V24.5378C17.6287 24.335 16.8731 24.2321 16.113 24.2327C12.036 24.2327 8.73151 27.1487 8.73151 30.7458C8.73151 33.2893 10.3832 35.4913 12.7922 36.5641Z'
+                fill='#FF004F'
+              />
+              <path
+                d='M32.2758 15.0481C35.7057 17.2108 39.9055 18.4832 44.4422 18.4832V12.4197C41.9098 11.9437 39.6681 10.7762 37.9826 9.15206C35.0976 7.56346 33.0189 4.94281 32.4094 1.87549H26.0496V32.6431C26.0351 36.2301 22.7361 39.1343 18.6677 39.1343C16.2705 39.1343 14.1406 38.1261 12.7918 36.5639C10.3832 35.4913 8.73132 33.2891 8.73132 30.746C8.73132 27.1492 12.0358 24.2329 16.1128 24.2329C16.894 24.2329 17.6468 24.3402 18.3531 24.5379V18.4081C9.59764 18.5678 2.55634 24.88 2.55634 32.6433C2.55634 36.5187 4.30973 40.0319 7.15563 42.5989C9.72303 44.1199 12.8136 45.0072 16.1391 45.0072C25.0511 45.0072 32.276 38.6322 32.276 30.7683L32.2758 15.0481Z'
+                className='dark:fill-white fill-black'
+              />
+              <path
+                d='M44.4423 12.4193V10.7802C42.1587 10.7832 39.9203 10.219 37.9828 9.15187C39.6978 10.8086 41.9561 11.951 44.4423 12.4197M32.4094 1.87514C32.3513 1.58205 32.3067 1.28701 32.2758 0.990728V0H23.4943V30.768C23.4803 34.3546 20.1813 37.2588 16.1128 37.2588C14.9594 37.2604 13.8218 37.0224 12.7918 36.5641C14.1406 38.1259 16.2705 39.134 18.6677 39.134C22.7359 39.134 26.0352 36.23 26.0496 32.6431V1.8753L32.4094 1.87514ZM18.3536 18.4078V16.6625C17.6198 16.5739 16.88 16.5296 16.1394 16.5299C7.22648 16.5299 0.00158691 22.9047 0.00158691 30.768C0.00158691 35.698 2.84106 40.0427 7.15598 42.5984C4.31009 40.0315 2.55669 36.5182 2.55669 32.643C2.55669 24.8799 9.59781 18.5674 18.3536 18.4078Z'
+                fill='#00F2EA'
+              />
+            </svg>
+          }
+          isOpen={isOpenVerify}
+          onClose={onCloseVerify}
+        />
+      )}
     </>
   )
 }

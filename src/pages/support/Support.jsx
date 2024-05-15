@@ -19,7 +19,7 @@ export default function Support() {
             <div className='self-stretch dark:border-b dark:border-stone-900 justify-center items-center inline-flex'>
               <div className='grow pt-16 pb-6 flex flex-col justify- items-center'>
                 <div className="w-[236px] text-center pb-12 gap-8 text-black dark:text-white text-2xl font-medium font-['Manrope']">
-                  Hi {userDetails?.lastname}, How can we help?
+                  Hi {userDetails?.firstname}, How can we help?
                 </div>
                 <div className='self-stretch w-full justify-between items-start gap-4 inline-flex'>
                   <Button className='grow shrink bg-[#FFD0FE] rounded-sm basis-0  px-3 py-[71px] dark:bg-white dark:bg-opacity-5 dark:border dark:border-stone-900 justify-center items-center gap-3 flex'>
@@ -37,7 +37,9 @@ export default function Support() {
                       />
                     </svg>
                     <div className="text-center text-black dark:text-white text-sm font-medium font-['Manrope']">
-                      Send an email
+                      <a target='blank' href='mailto:support@trendit3.com'>
+                        Send email
+                      </a>
                     </div>
                   </Button>
                   <Button className='grow shrink bg-[#3793FF] basis-0 rounded-sm  px-3 py-[71px] dark:bg-white bg-opacity-20 dark:bg-opacity-5 dark:border dark:border-stone-900 justify-center items-center gap-3 flex'>
