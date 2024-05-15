@@ -66,7 +66,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, LogoBand }) {
               </div>
               <div className='flex-col justify-start items-center gap-3 flex'>
                 <div className='justify-start flex-col items-center gap-2 inline-flex'>
-                  <img src={LogoBand} alt='logo' />
+                  {LogoBand}
                   <div className="text-base capitalize font-bold font-['Manrope']">
                     Link Your {type} Account
                   </div>

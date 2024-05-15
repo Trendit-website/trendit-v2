@@ -13,11 +13,17 @@ import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
+import SocialLinkModal from '../../../components/SocialLinkModal'
 
 export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
+  const {
+    isOpen: isOpenVerify,
+    onOpen: onOpenVerify,
+    onClose: onCloseVerify,
+  } = useDisclosure()
 
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
@@ -104,7 +110,10 @@ export default function GenerateTwTask() {
                   can start earning with your Twitter Accounts . Click the
                   button below to link your  Twitter Accounts now.
                 </div>
-                <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
+                <div
+                  onClick={onOpenVerify}
+                  className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
@@ -436,8 +445,30 @@ export default function GenerateTwTask() {
         isOpen={isOpen}
         onClose={onClose}
         task_type='advert'
-        platform='twitter'
+        platform='x'
       />
+
+      {isOpenVerify && (
+        <SocialLinkModal
+          type='x'
+          LogoBand={
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 47 47'
+              fill='none'
+            >
+              <path
+                d='M37.0145 2.2583H44.2211L28.4761 20.2554L47 44.7404H32.4966L21.1383 29.8884L8.13883 44.7404H0.92825L17.7699 25.49L0 2.26026H14.8716L25.1391 15.8354L37.0145 2.2583ZM34.4863 40.4282H38.4793L12.7018 6.34534H8.41692L34.4863 40.4282Z'
+                className='dark:fill-white fill-black'
+              />
+            </svg>
+          }
+          isOpen={isOpenVerify}
+          onClose={onCloseVerify}
+        />
+      )}
     </>
   )
 }

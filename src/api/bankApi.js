@@ -23,7 +23,7 @@ export const useFetchBank = () => {
     queryKey: ['fetch_bank'],
     queryFn: async () => {
       const res = await API.get(`/banks`)
-      console.log(res, 'fff')
+      // console.log(res, 'fff')
       return res?.data?.supported_banks
     },
   })

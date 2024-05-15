@@ -294,6 +294,49 @@ export default function GeneralForm() {
                     />
                   </div>
                 </div>
+                <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
+                  <div className='px-2 justify-center items-center gap-2 inline-flex'>
+                    <div className="text-center text-[12.83px] font-medium font-['Manrope']">
+                      Phone
+                    </div>
+                  </div>
+                  <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                    <Controller
+                      name='phone'
+                      control={control}
+                      render={({ field }) => (
+                        <Input
+                          type='text'
+                          size='sm'
+                          placeholder='phone'
+                          {...field}
+                          errorMessage={errors?.phone?.message}
+                          isInvalid={!!errors?.phone}
+                          classNames={{
+                            input: [
+                              'bg-transparent',
+                              'text-black/90 dark:text-white/90',
+                              'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                            ],
+                            innerWrapper: 'bg-transparent',
+                            inputWrapper: [
+                              'bg-zinc-700 bg-opacity-10',
+                              'dark:bg-white dark:bg-opacity-10',
+                              'hover:bg-bg-white hover:bg-opacity-10',
+                              'dark:hover:bg-default/70',
+                              'group-data-[focused=true]:bg-default-200/50',
+                              'dark:group-data-[focused=true]:bg-default/60',
+                              '!cursor-text',
+                              'border-2 border-transparent',
+                              'focus-within:!border-fuchsia-600  ',
+                            ],
+                          }}
+                          className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
+                        />
+                      )}
+                    />
+                  </div>
+                </div>
 
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
