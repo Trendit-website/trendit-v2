@@ -5,9 +5,14 @@ import toast from 'react-hot-toast'
 import { useBankDetails, useUpdateBankDetils } from '../../api/walletApi'
 import { useFetchBank, useVerifyBank } from '../../api/bankApi'
 import { useEffect, useMemo, useState } from 'react'
+// import Select from 'react-select'
+
 export default function BankDetailsForm() {
   const { data: userBank } = useBankDetails()
   const { data: fetchBanks, isLoading: fetching } = useFetchBank()
+
+  const [searchTerm, setSearchTerm] = useState('')
+
   const {
     handleSubmit,
     control,
@@ -22,8 +27,6 @@ export default function BankDetailsForm() {
     },
   })
 
-  const [searchTerm, setSearchTerm] = useState('')
-
   // Filter banks based on search term
   const filteredBanks = useMemo(() => {
     return fetchBanks?.filter((bank) =>
@@ -33,15 +36,6 @@ export default function BankDetailsForm() {
 
   const { mutateAsync: updateUserPrefence, isPending } = useUpdateBankDetils()
   const { mutateAsync: updateVerifyBank } = useVerifyBank()
-
-  // useEffect(() => {
-  //   setValue('bank_name', '')
-  //   setValue('account_no', '')
-  // }, [watch().fetchBanks, setValue])
-
-  // useEffect(() => {
-  //   setValue('account_no', '')
-  // }, [watch(), setValue])
 
   // console.log(filteredBanks, 'filteredBanks')
   console.log(fetchBanks, 'fetchBanks')
@@ -75,8 +69,8 @@ export default function BankDetailsForm() {
     }
 
     verifyBankDetails()
-  }, [accountNo])
-  // }, [bankName, accountNo, updateVerifyBank, setValue])
+    // }, [accountNo])
+  }, [bankName, accountNo, updateVerifyBank, setValue])
 
   const onSubmit = async (data) => {
     try {
@@ -108,41 +102,68 @@ export default function BankDetailsForm() {
                   name='bank_name'
                   control={control}
                   render={({ field }) => (
-                    <Select
-                      {...field}
-                      aria-labelledby='bank_name'
-                      isInvalid={!!errors.bank_name}
-                      errorMessage={errors?.bank_name?.message}
-                      isLoading={fetching}
-                      selectedKeys={field.value ? [field.value] : []}
-                      className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                      placeholder='Select Bank'
-                      classNames={{
-                        listbox: [
-                          'bg-transparent',
-                          'text-black/90 dark:text-white/90',
-                          'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                        ],
-                        trigger: [
-                          'bg-zinc-700 bg-opacity-10',
-                          'dark:bg-white dark:bg-opacity-10',
-                          'hover:bg-bg-white hover:bg-opacity-10',
-                          'dark:hover:bg-default/70',
-                          'group-data-[focused=true]:bg-default-200/50',
-                          'dark:group-data-[focused=true]:bg-default/60',
-                          '!cursor-text',
-                          'border-2 border-transparent',
-                          'focus-within:!border-fuchsia-600  ',
-                          '!cursor-text',
-                        ],
-                      }}
-                    >
-                      {filteredBanks?.map((bank) => (
-                        <SelectItem key={bank?.name} value={bank?.name}>
-                          {bank?.name}
-                        </SelectItem>
-                      ))}
-                    </Select>
+                    <>
+                      {/* <Select
+                        {...field}
+                        options={fetchBanks?.map((bank) => ({
+                          label: bank.name,
+                          value: bank.name,
+                        }))}
+                        // isSearchable
+                        isSearchable
+                        isLoading={fetching}
+                        placeholder='Select Bank'
+                        onChange={(selectedOption) =>
+                          field.onChange(selectedOption.value)
+                        }
+                        value={fetchBanks?.find(
+                          (bank) => bank.name === field.value
+                        )}
+                        className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
+                      /> */}
+
+                      <Input
+                        placeholder='Search Bank'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className='mb-2'
+                      />
+                      <Select
+                        {...field}
+                        aria-labelledby='bank_name'
+                        isInvalid={!!errors.bank_name}
+                        errorMessage={errors?.bank_name?.message}
+                        isLoading={fetching}
+                        selectedKeys={field.value ? [field.value] : []}
+                        className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                        placeholder='Select Bank'
+                        classNames={{
+                          listbox: [
+                            'bg-transparent',
+                            'text-black/90 dark:text-white/90',
+                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                          ],
+                          trigger: [
+                            'bg-zinc-700 bg-opacity-10',
+                            'dark:bg-white dark:bg-opacity-10',
+                            'hover:bg-bg-white hover:bg-opacity-10',
+                            'dark:hover:bg-default/70',
+                            'group-data-[focused=true]:bg-default-200/50',
+                            'dark:group-data-[focused=true]:bg-default/60',
+                            '!cursor-text',
+                            'border-2 border-transparent',
+                            'focus-within:!border-fuchsia-600',
+                            '!cursor-text',
+                          ],
+                        }}
+                      >
+                        {filteredBanks?.map((bank) => (
+                          <SelectItem key={bank?.name} value={bank?.name}>
+                            {bank?.name}
+                          </SelectItem>
+                        ))}
+                      </Select>
+                    </>
                   )}
                 />
               </div>

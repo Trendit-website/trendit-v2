@@ -5,11 +5,12 @@ import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { useFacebookLogin, useGoogleLogin, useLoginUser } from '../../api/auth'
+import { useGoogleLogin, useLoginUser } from '../../api/auth'
 import toast from 'react-hot-toast'
 import useAccessToken from '../../hooks/useAccessToken'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import Loader from '../../pages/Loader'
 
 export default function Login() {
   const {
@@ -23,8 +24,8 @@ export default function Login() {
   const { mutateAsync: handleLogin, isPending } = useLoginUser()
   const { mutateAsync: handleGoogleLogin, isPending: loadingAuth } =
     useGoogleLogin()
-  const { mutateAsync: handleFbLogin, isPending: isPendingFb } =
-    useFacebookLogin()
+  // const { mutateAsync: handleFbLogin, isPending: isPendingFb } =
+  //   useFacebookLogin()
   const [searchParams] = useSearchParams()
 
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -39,37 +40,35 @@ export default function Login() {
     try {
       const res = await handleLogin({ data })
 
-      
       if (res?.data?.status) {
         if (res?.data?.two_fa_token) {
           setAccessToken(res?.data?.two_fa_token)
           toast.success(res.data.message)
-           navigate('/login/2fa_auth')
-        }else{
+          navigate('/login/2fa_auth')
+        } else {
           setAccessToken(res?.data?.access_token)
           toast.success(res.data.message)
           navigate('/dashboard/home')
         }
-
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
     }
   }
   // social logins
-  const handleFaceBookLogin = async () => {
-    try {
-      const res = await handleFbLogin()
-      if (res?.data?.status) {
-        window.open(res?.data?.authorization_url)
-        setAccessToken(res?.data?.access_token)
-        toast.success(res.data.message)
-        // navigate('/dashboard')
-      }
-    } catch (error) {
-      toast.error(error.response?.message ?? error.message)
-    }
-  }
+  // const handleFaceBookLogin = async () => {
+  //   try {
+  //     const res = await handleFbLogin()
+  //     if (res?.data?.status) {
+  //       window.open(res?.data?.authorization_url)
+  //       setAccessToken(res?.data?.access_token)
+  //       toast.success(res.data.message)
+  //       // navigate('/dashboard')
+  //     }
+  //   } catch (error) {
+  //     toast.error(error.response?.message ?? error.message)
+  //   }
+  // }
   const handleGgLogin = async () => {
     try {
       const res = await handleGoogleLogin()
@@ -255,30 +254,7 @@ export default function Login() {
                 isDisabled={isPending}
                 className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
               >
-                {isPending ? (
-                  <svg
-                    className='animate-spin h-5 w-5 text-current'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <circle
-                      className='opacity-25'
-                      cx='12'
-                      cy='12'
-                      r='10'
-                      stroke='currentColor'
-                      strokeWidth='4'
-                    />
-                    <path
-                      className='opacity-75'
-                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                      fill='currentColor'
-                    />
-                  </svg>
-                ) : (
-                  'Continue'
-                )}
+                {isPending ? <Loader /> : 'Continue'}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>
@@ -319,7 +295,7 @@ export default function Login() {
                 <Button
                   onClick={handleGgLogin}
                   isDisabled={loadingAuth}
-                  className="p-2 bg-[#B0B0B0] rounded-none dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                  className="p-2 bg-[#B0B0B0] rounded dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -345,32 +321,9 @@ export default function Login() {
                       fill='#1976D2'
                     />
                   </svg>
-                  {loadingAuth ? (
-                    <svg
-                      className='animate-spin h-5 w-5 text-current'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <circle
-                        className='opacity-25'
-                        cx='12'
-                        cy='12'
-                        r='10'
-                        stroke='currentColor'
-                        strokeWidth='4'
-                      />
-                      <path
-                        className='opacity-75'
-                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                        fill='currentColor'
-                      />
-                    </svg>
-                  ) : (
-                    'Google'
-                  )}
+                  {loadingAuth ? <Loader /> : 'Sign in with Google'}
                 </Button>
-                <Button
+                {/* <Button
                   onClick={handleFaceBookLogin}
                   isDisabled={isPendingFb}
                   className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
@@ -392,26 +345,7 @@ export default function Login() {
                     />
                   </svg>
                   {isPendingFb ? (
-                    <svg
-                      className='animate-spin h-5 w-5 text-current'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <circle
-                        className='opacity-25'
-                        cx='12'
-                        cy='12'
-                        r='10'
-                        stroke='currentColor'
-                        strokeWidth='4'
-                      />
-                      <path
-                        className='opacity-75'
-                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                        fill='currentColor'
-                      />
-                    </svg>
+                    <Loader />
                   ) : (
                     'Facebook'
                   )}
@@ -437,8 +371,8 @@ export default function Login() {
                       fill='#00F2EA'
                     />
                   </svg>
-                  Titkok
-                </Button>
+                  TikTok
+                </Button> */}
               </div>
             </div>
           </div>
