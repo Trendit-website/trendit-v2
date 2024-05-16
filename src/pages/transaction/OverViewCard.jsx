@@ -6,9 +6,16 @@ import { IoAdd } from 'react-icons/io5'
 import { useFetchBallance } from '../../api/walletApi'
 import FundWalletModal from '../home/FundWalletModal'
 import WithdrawWalletModal from '../home/WithdrawWalletModal'
+import TransactionDownloadModal from './components/TransactionDownloadModal'
 
 export default function OverViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: isOpenTransac,
+    onOpen: onOpenTrans,
+    onClose: onCloseTransc,
+  } = useDisclosure()
+
   const { data: showBalance } = useFetchBallance()
   const {
     isOpen: openWithdraw,
@@ -40,7 +47,10 @@ export default function OverViewCard() {
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
-              <div className='justify-start hidden items-center gap-2 md:flex'>
+              <div
+                onClick={onOpenTrans}
+                className='justify-start cursor-pointer hidden items-center gap-2 md:flex'
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -83,8 +93,7 @@ export default function OverViewCard() {
               </div>
             </div>
             <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-              {/* {showBalance?.currency_code}:{showBalance?.balance} */}
-              {/* <span>&#8358;</span> */}
+              
               <span>{showBalance?.currency_symbol}</span>
               {showBalance?.balance?.toLocaleString()}
             </div>
@@ -214,6 +223,12 @@ export default function OverViewCard() {
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
       {openWithdraw && (
         <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
+      {isOpenTransac && (
+        <TransactionDownloadModal
+          isOpen={isOpenTransac}
+          onClose={onCloseTransc}
+        />
       )}
     </div>
   )

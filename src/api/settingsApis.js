@@ -4,7 +4,7 @@ import API from '../services/AxiosInstance'
 export const useUpdateNoticePrefence = () => {
   return useMutation({
     mutationFn: ({ data }) => {
-      return API.post(`/update-settings`, data)
+      return API.post(`/settings/notifications`, data)
     },
   })
 }
@@ -12,7 +12,7 @@ export const useUpdateNoticePrefence = () => {
 export const useUpdateUserPrefence = () => {
   return useMutation({
     mutationFn: (data) => {
-      return API.post(`/update-settings/preferences`, data)
+      return API.post(`/settings/preferences`, data)
     },
   })
 }

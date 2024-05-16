@@ -11,6 +11,7 @@ import useSignUpToken from '../../hooks/useSignUpToken'
 import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import useAccessToken from '../../hooks/useAccessToken'
+import Loader from '../../pages/Loader'
 
 export default function VerifyEmail() {
   const {
@@ -165,30 +166,7 @@ export default function VerifyEmail() {
                 type='submit'
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
               >
-                {isPending ? (
-                  <svg
-                    className='animate-spin h-5 w-5 text-current'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    xmlns='http://www.w3.org/2000/svg'
-                  >
-                    <circle
-                      className='opacity-25'
-                      cx='12'
-                      cy='12'
-                      r='10'
-                      stroke='currentColor'
-                      strokeWidth='4'
-                    />
-                    <path
-                      className='opacity-75'
-                      d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                      fill='currentColor'
-                    />
-                  </svg>
-                ) : (
-                  'Continue'
-                )}
+                {isPending ? <Loader /> : 'Continue'}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>
@@ -229,7 +207,7 @@ export default function VerifyEmail() {
                 <Button
                   onClick={handleGgLogin}
                   isDisabled={loadingAuth}
-                  className="p-2 bg-[#B0B0B0] rounded-none dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                  className="p-2 bg-[#B0B0B0] rounded dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -255,32 +233,9 @@ export default function VerifyEmail() {
                       fill='#1976D2'
                     />
                   </svg>
-                  {loadingAuth ? (
-                    <svg
-                      className='animate-spin h-5 w-5 text-current'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      xmlns='http://www.w3.org/2000/svg'
-                    >
-                      <circle
-                        className='opacity-25'
-                        cx='12'
-                        cy='12'
-                        r='10'
-                        stroke='currentColor'
-                        strokeWidth='4'
-                      />
-                      <path
-                        className='opacity-75'
-                        d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                        fill='currentColor'
-                      />
-                    </svg>
-                  ) : (
-                    'Google'
-                  )}
+                  {loadingAuth ? <Loader /> : 'Sign up with Google'}
                 </Button>
-                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">
+                {/* <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='21'
@@ -321,7 +276,7 @@ export default function VerifyEmail() {
                     />
                   </svg>
                   Titkok
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
