@@ -166,11 +166,7 @@ export default function VerifyEmail() {
                 type='submit'
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
               >
-                {isPending ? (
-                 <Loader />
-                ) : (
-                  'Continue'
-                )}
+                {isPending ? <Loader /> : 'Continue'}
               </Button>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-2 flex'>
@@ -211,7 +207,7 @@ export default function VerifyEmail() {
                 <Button
                   onClick={handleGgLogin}
                   isDisabled={loadingAuth}
-                  className="p-2 bg-[#B0B0B0] rounded-none dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                  className="p-2 bg-[#B0B0B0] rounded dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -237,11 +233,7 @@ export default function VerifyEmail() {
                       fill='#1976D2'
                     />
                   </svg>
-                  {loadingAuth ? (
-                    <Loader />
-                  ) : (
-                    'Sign up with Google'
-                  )}
+                  {loadingAuth ? <Loader /> : 'Sign up with Google'}
                 </Button>
                 {/* <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">
                   <svg
