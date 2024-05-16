@@ -240,7 +240,7 @@ export default function VerifyEmail() {
                   {loadingAuth ? (
                     <Loader />
                   ) : (
-                    'Google'
+                    'Sign up with Google'
                   )}
                 </Button>
                 {/* <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">

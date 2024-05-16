@@ -321,7 +321,7 @@ export default function Login() {
                       fill='#1976D2'
                     />
                   </svg>
-                  {loadingAuth ? <Loader /> : 'Google'}
+                  {loadingAuth ? <Loader /> : 'Sign in with Google'}
                 </Button>
                 {/* <Button
                   onClick={handleFaceBookLogin}
