@@ -16,6 +16,7 @@ import { useForm } from 'react-hook-form'
 import Timer from './Timer'
 import { useQueryClient } from '@tanstack/react-query'
 import trLogo from '../../../assets/tr-lg.svg'
+import Loader from '../../Loader'
 
 export default function PreviewEarnAdvertTask() {
   const { data: fetchTask } = usePerformTask('pending')
@@ -184,15 +185,9 @@ export default function PreviewEarnAdvertTask() {
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>
                       <div className="text-[#FFA2A2] text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
-                        Note: That you must have at Least 1000 followers to be
+                        Note: That you must have at Least 500 followers to be
                         able to Generate this task
                       </div>
-                      {/* <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
-                    134 Likes
-                  </div>
-                  <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
-                    453 Comments
-                  </div> */}
                     </div>
                   </div>
                   <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
@@ -391,81 +386,7 @@ export default function PreviewEarnAdvertTask() {
                     </div>
                   </div>
                   <div className=' flex-col justify-start items-center gap-8 flex'>
-                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
-                      <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
-                        <input
-                          type='file'
-                          // accept='image/*'
-                          id='image-upload'
-                          name='media'
-                          className='absolute hidden w-full opacity-0 cursor-pointer'
-                          {...register('screenshot')}
-                          onChange={handleChange}
-                        />
-                        <label
-                          htmlFor='image-upload'
-                          className="text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-['Manrope']"
-                        >
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='24'
-                            height='24'
-                            viewBox='0 0 24 24'
-                            fill='none'
-                          >
-                            <path
-                              d='M12 4V20M20 12L4 12'
-                              stroke='white'
-                              strokeWidth='2'
-                              strokeLinecap='round'
-                            />
-                          </svg>
-                        </label>
-                      </div>
-                      {media && (
-                        <Image
-                          src={URL.createObjectURL(media)}
-                          alt='Preview'
-                          className='w-full h-full object-cover'
-                        />
-                      )}
-                    </div>
-
-                    <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
-                      <div
-                        className={`${
-                          task?.task?.platform === 'whatsapp'
-                            ? 'hidden'
-                            : 'grid'
-                        }  self-stretch flex-col justify-start items-start gap-3 flex`}
-                      >
-                        <div className="self-stretch text-xs font-semibold font-['Manrope']">
-                          Please enter the name on your Facebook account that
-                          performed this task
-                        </div>
-                        <Input
-                          placeholder='Corehunter007'
-                          size='sm'
-                          className="grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-['Manrope']"
-                        />
-                      </div>
-                      <div className='self-stretch justify-between items-center inline-flex'>
-                        <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex'>
-                          <label
-                            htmlFor='image-upload'
-                            className="text-center  cursor-pointer text-[10px] font-medium font-['Manrope']"
-                          >
-                            Upload Proof
-                          </label>
-                        </div>
-                        {/* <div className='p-2 justify-center items-center gap-1 flex'>
-                          <div className='w-[18px] h-[18px] relative' />
-                          <div className="text-center text-fuchsia-200 text-[12.83px] font-bold font-['Manrope']">
-                            Save
-                          </div>
-                        </div> */}
-                      </div>
-                    </div>
+                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'></div>
                   </div>
                 </div>
               </div>
@@ -477,88 +398,12 @@ export default function PreviewEarnAdvertTask() {
                   className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
                   <div className="text-center text-black text-[12.83px] font-medium font-['Manrope']">
-                    {loading ? (
-                      <svg
-                        className='animate-spin h-5 w-5 text-current'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <circle
-                          className='opacity-25'
-                          cx='12'
-                          cy='12'
-                          r='10'
-                          stroke='currentColor'
-                          strokeWidth='4'
-                        />
-                        <path
-                          className='opacity-75'
-                          d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                          fill='currentColor'
-                        />
-                      </svg>
-                    ) : (
-                      'Cancel'
-                    )}
-                  </div>
-                </Button>
-                <Button
-                  type='submit'
-                  isDisabled={isPending}
-                  className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                >
-                  <div className="text-center text-black text-[12.83px] font-medium font-['Manrope']">
-                    {isPending ? (
-                      <svg
-                        className='animate-spin h-5 w-5 text-current'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <circle
-                          className='opacity-25'
-                          cx='12'
-                          cy='12'
-                          r='10'
-                          stroke='currentColor'
-                          strokeWidth='4'
-                        />
-                        <path
-                          className='opacity-75'
-                          d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                          fill='currentColor'
-                        />
-                      </svg>
-                    ) : (
-                      'Mark as Done'
-                    )}
+                    {loading ? <Loader /> : 'Delete Task'}
                   </div>
                 </Button>
               </div>
             </>
           ))}
-          <div className='self-stretch p-3 justify-end items-end inline-flex'>
-            <div className='justify-start items-center gap-[7px] flex'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='21'
-                height='20'
-                viewBox='0 0 21 20'
-                fill='none'
-              >
-                <path
-                  d='M10.748 13.3417V9.17507M10.748 6.67507V6.66673M4.36458 5.35227L9.9148 2.14785C10.4305 1.85013 11.0658 1.85013 11.5815 2.14785L17.1317 5.35227C17.6473 5.64999 17.965 6.2002 17.965 6.79564V13.2045C17.965 13.7999 17.6473 14.3501 17.1317 14.6479L11.5815 17.8523C11.0658 18.15 10.4305 18.15 9.9148 17.8523L4.36458 14.6479C3.84892 14.3501 3.53125 13.7999 3.53125 13.2045V6.79564C3.53125 6.2002 3.84892 5.64999 4.36458 5.35227Z'
-                  stroke='#FF3D00'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                />
-              </svg>
-              <div className="text-center text-orange-600 text-sm font-medium font-['Manrope']">
-                Report Task
-              </div>
-            </div>
-          </div>
         </div>
       </form>
     </div>

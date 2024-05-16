@@ -12,7 +12,7 @@ import { useForm, Controller } from 'react-hook-form'
 
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { EyeIcon } from 'lucide-react'
 import QrCodeModal from './QrCodeModal'
 import { useGetProfile } from '../../api/profileApis'
@@ -24,27 +24,7 @@ export default function SecuretyForm() {
     <>
       {isLoading ? (
         <div className='min-h-screen mx-auto'>
-          {' '}
-          <svg
-            className='animate-spin h-5 w-5 text-current'
-            fill='none'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <circle
-              className='opacity-25'
-              cx='12'
-              cy='12'
-              r='10'
-              stroke='currentColor'
-              strokeWidth='4'
-            />
-            <path
-              className='opacity-75'
-              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-              fill='currentColor'
-            />
-          </svg>
+          <Loader />
         </div>
       ) : (
         <SecuretyFormContent />
@@ -82,7 +62,6 @@ function SecuretyFormContent() {
     useUpdateUserPassword()
   const { mutate: deactiveGoogleAuth } = useDeactivateGoogleAuth()
 
-
   console.log(securityPrefrence, 'securityPrefrence')
 
   const new_password = watch('new_password')
@@ -106,6 +85,12 @@ function SecuretyFormContent() {
     }
   }
 
+  useEffect(() => {
+    if (securityPrefrence) {
+      setValue('two_fa_method', securityPrefrence.two_fa_method || null)
+    }
+  }, [securityPrefrence, setValue])
+
   const onSubmit = async (data) => {
     console.log(data, 'data')
     try {
@@ -120,8 +105,6 @@ function SecuretyFormContent() {
       toast.error(error.response?.data?.message ?? error.message)
     }
   }
-
- 
 
   const handelDeactivateGoogleAuth = () => {
     deactiveGoogleAuth(
@@ -357,7 +340,7 @@ function SecuretyFormContent() {
                             checked={
                               field.value !== null && field.value === 'email'
                             }
-                            // checked={field.value === 'email'}
+                            isSelected={field.value === 'email'}
                             onChange={(e) => {
                               setValue(
                                 'two_fa_method',

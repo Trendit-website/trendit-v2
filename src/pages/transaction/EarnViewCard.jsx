@@ -6,6 +6,7 @@ import { useDisclosure } from '@nextui-org/react'
 import { useFetchBallance } from '../../api/walletApi'
 import FundWalletModal from '../home/FundWalletModal'
 import WithdrawWalletModal from '../home/WithdrawWalletModal'
+import TransactionDownloadModal from './components/TransactionDownloadModal'
 
 export default function EarnViewCard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -13,6 +14,11 @@ export default function EarnViewCard() {
     isOpen: openWithdraw,
     onOpen: onOpenWithdraw,
     onClose: onCloseWithdraw,
+  } = useDisclosure()
+  const {
+    isOpen: isOpenTransac,
+    onOpen: onOpenTrans,
+    onClose: onCloseTransc,
   } = useDisclosure()
   const { data: showBalance } = useFetchBallance()
 
@@ -40,7 +46,10 @@ export default function EarnViewCard() {
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
-              <div className='justify-start hidden items-center gap-2 md:flex'>
+              <div
+                onClick={onOpenTrans}
+                className='justify-start hidden items-center gap-2 md:flex'
+              >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -213,6 +222,13 @@ export default function EarnViewCard() {
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
       {openWithdraw && (
         <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+      )}
+
+      {isOpenTransac && (
+        <TransactionDownloadModal
+          isOpen={isOpenTransac}
+          onClose={onCloseTransc}
+        />
       )}
     </div>
   )
