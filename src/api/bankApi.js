@@ -6,7 +6,6 @@ export const useFetchBank = () => {
     queryKey: ['fetch_bank'],
     queryFn: async () => {
       const res = await API.get(`/banks`)
-      console.log(res, 'fff')
       return res?.data?.supported_banks
     },
   })
@@ -15,7 +14,6 @@ export const useFetchBank = () => {
 export const useVerifyBank = () => {
   return useMutation({
     mutationFn: (data) => {
-      console.log(data, 'verifying')
       return API.post(`/banks/verify/account`, data)
     },
   })
