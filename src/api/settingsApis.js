@@ -55,7 +55,6 @@ export const useGetUserPrefence = () => {
     queryKey: ['user_preference'],
     queryFn: async () => {
       const res = await API.get(`/settings/preferences`)
-      console.log(res, 'user_preference')
       return res?.data?.user_preferences
     },
   })
@@ -66,7 +65,6 @@ export const useGetSecurityPrefrence = () => {
     queryKey: ['sec_prefence'],
     queryFn: async () => {
       const res = await API.get(`/settings/security`)
-      // console.log(res, 'sec_prefence')
       return res?.data?.security_settings
     },
   })
@@ -81,8 +79,6 @@ export const useActivateGoogleAuth = () => {
     },
   })
 }
-
-
 
 export const useDeactivateGoogleAuth = () => {
   return useMutation(async () => {
