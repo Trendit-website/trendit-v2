@@ -6,6 +6,7 @@ import SecuretyForm from './SecuretyForm'
 import NotificationForm from './NotificationForm'
 import BankDetailsForm from './BankDetailsForm'
 import PrefrenceForm from './PrefrenceForm'
+import SocialAccount from './SocialAccount'
 
 export default function Settings() {
   const [selected, setSelected] = useState('generalform')
@@ -57,6 +58,11 @@ export default function Settings() {
                     <Tab
                       key='bank details'
                       title='Bank details'
+                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                    ></Tab>
+                    <Tab
+                      key='social account'
+                      title='Social Account'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                     <Tab
@@ -125,6 +131,19 @@ export default function Settings() {
               }}
             >
               <NotificationForm />
+            </motion.div>
+          )}
+          {selected === 'social account' && (
+            <motion.div
+              initial={{ x: 100 }}
+              animate={{ x: 0 }}
+              className='flex flex-col gap-2 w-full'
+              transition={{
+                rotate: { duration: 2 },
+                scale: { duration: 0.4 },
+              }}
+            >
+              <SocialAccount />
             </motion.div>
           )}
           {selected === 'bank details' && (

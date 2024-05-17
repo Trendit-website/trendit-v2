@@ -21,7 +21,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
     const cleanValue = value.replace(/\D/g, '') // Remove all non-numeric characters
     const formattedValue = new Intl.NumberFormat('en-US').format(cleanValue) // Format with commas
     event.target.value = formattedValue // Display formatted value
-    setValue('amount', cleanValue) // Set unformatted value for submission
+    setValue('amount', formattedValue) // Set unformatted value for submission
   }
 
   const onSubmit = async (data) => {

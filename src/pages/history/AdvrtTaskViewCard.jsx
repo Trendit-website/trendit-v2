@@ -4,7 +4,7 @@ export default function AdvrtTaskViewCard() {
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
         <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
           <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-            <div className='self-stretch justify-center items-start gap-3 inline-flex'>
+            <div className='self-stretch hidden justify-center items-start gap-3 inlineflex'>
               <div className='grow shrink basis-0 justify-start items-center gap-2 flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -65,7 +65,7 @@ export default function AdvrtTaskViewCard() {
                 </svg>
               </div>
             </div>
-            <div className="self-stretch text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
+            <div className="self-stretch py-10 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               456 Adverts
             </div>
           </div>

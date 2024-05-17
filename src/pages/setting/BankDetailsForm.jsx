@@ -37,27 +37,19 @@ export default function BankDetailsForm() {
   const { mutateAsync: updateUserPrefence, isPending } = useUpdateBankDetils()
   const { mutateAsync: updateVerifyBank } = useVerifyBank()
 
-  // console.log(filteredBanks, 'filteredBanks')
-  console.log(fetchBanks, 'fetchBanks')
-
   const bankName = watch('bank_name')
   const accountNo = watch('account_no')
 
-  console.log(bankName, 'bankkk')
-
   useEffect(() => {
-    const verifyBankDetails = async () => {
-      console.log(bankName, accountNo, 'account details')
+    const verifyBankDetails = async (data) => {
+      data = { bank_name: bankName, account_no: accountNo }
       if (bankName && accountNo && accountNo?.length === 10) {
         try {
-          const res = await updateVerifyBank({
-            bank_name: bankName,
-            account_no: accountNo,
-          })
+          const res = await updateVerifyBank(data)
 
-          console.log(res, 'ressss')
-          if (res?.data?.account_name) {
-            setValue('account_name', res.data.account_name)
+          if (res?.data?.account_info) {
+            setValue('account_name', res.data?.account_info?.account_name)
+            toast.success(res.data?.message)
           }
         } catch (error) {
           toast.error(
@@ -69,7 +61,6 @@ export default function BankDetailsForm() {
     }
 
     verifyBankDetails()
-    // }, [accountNo])
   }, [bankName, accountNo, updateVerifyBank, setValue])
 
   const onSubmit = async (data) => {
@@ -212,6 +203,7 @@ export default function BankDetailsForm() {
                   render={({ field }) => (
                     <Input
                       size='sm'
+                      readOnly
                       classNames={{
                         input: [
                           'bg-transparent',

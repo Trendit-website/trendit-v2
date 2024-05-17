@@ -6,13 +6,14 @@ import toast from 'react-hot-toast'
 import { useDownloadTransHistory } from '../../../api/downloadHistoryApi'
 import { useState } from 'react'
 import { format } from 'date-fns'
+import Loader from '../../Loader'
 
 export default function TransactionDownloadModal({ isOpen, onClose }) {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [period, setPeriod] = useState('All time')
 
-  const { mutateAsync: downloadHistory } = useDownloadTransHistory()
+  const { mutateAsync: downloadHistory, isPending } = useDownloadTransHistory()
 
   const handleExport = async () => {
     if (!startDate || !endDate) {
@@ -26,11 +27,8 @@ export default function TransactionDownloadModal({ isOpen, onClose }) {
         end_date: endDate,
         format: 'pdf',
       })
-      console.log(res, 'ggg')
       if (res?.status) {
-        console.log(res?.data, 'lllop')
         const blob = await res?.data
-        // const blob = new Blob([res.data], { type: 'application/pdf' })
         const downloadUrl = window.URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = downloadUrl
@@ -103,7 +101,13 @@ export default function TransactionDownloadModal({ isOpen, onClose }) {
                   onClick={handleExport}
                   className='px-4 py-2 bg-fuchsia-400 rounded'
                 >
-                  Export
+                  {isPending ? (
+                    <div className='flex justify-center'>
+                      <Loader />
+                    </div>
+                  ) : (
+                    'Export'
+                  )}
                 </button>
               </div>
             </div>
