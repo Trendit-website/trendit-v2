@@ -5,7 +5,6 @@ import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
-import { useState } from 'react'
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {

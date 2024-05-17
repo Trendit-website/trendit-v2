@@ -1,7 +1,6 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import API from '../services/AxiosInstance'
 
-
 export const useVerifySocial = () => {
   return useMutation({
     mutationFn: (data) => {
@@ -10,16 +9,12 @@ export const useVerifySocial = () => {
   })
 }
 
-
-
-
-
-export const useFetchTransactionHistory = () => {
+export const useGetSocialLinks = () => {
   return useQuery({
-    queryKey: ['transaction_history'],
+    queryKey: ['get_social'],
     queryFn: async () => {
-      const res = await API.get(`/transactions`)
-      return res?.data?.transactions_history
+      const res = await API.post(`/verified_socials`)
+      return res?.data
     },
   })
 }

@@ -131,7 +131,7 @@ export default function History() {
               My Adverts
             </div>
           </div>
-          <div className='self-stretch borderb borderstone900 justify-between items-center inline-flex'>
+          <div className='self-stretch  borderb borderstone900 justify-between items-center inline-flex'>
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
@@ -175,7 +175,7 @@ export default function History() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className='px-3 justify-start items-center gap-[11px] flex'>
+            <div className='px-3 justify-start hidden items-center gap-[11px] flx'>
               <div className='justify-start items-center gap-[7px] flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

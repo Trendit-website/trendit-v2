@@ -15,7 +15,8 @@ export const useFetchBank = () => {
 export const useVerifyBank = () => {
   return useMutation({
     mutationFn: (data) => {
-      return API.get(`/banks/verify/account`, data)
+      console.log(data, 'verifying')
+      return API.post(`/banks/verify/account`, data)
     },
   })
 }
