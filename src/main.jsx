@@ -6,6 +6,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { BrowserRouter } from 'react-router-dom'
 import DashboardContext from './context/Dashboard.jsx'
 import QueryProvider from './providers/QueryProvider.jsx'
+import AppearanceProvider from './providers/AppearanceProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <DashboardContext>
         <NextUIProvider>
           <QueryProvider>
+            <AppearanceProvider>
             <App />
+            </AppearanceProvider>
           </QueryProvider>
         </NextUIProvider>
       </DashboardContext>
