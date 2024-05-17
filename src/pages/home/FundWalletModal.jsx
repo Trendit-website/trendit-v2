@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
+import { useState } from 'react'
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {
@@ -21,7 +22,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
     const cleanValue = value.replace(/\D/g, '') // Remove all non-numeric characters
     const formattedValue = new Intl.NumberFormat('en-US').format(cleanValue) // Format with commas
     event.target.value = formattedValue // Display formatted value
-    setValue('amount', cleanValue) // Set unformatted value for submission
+    setValue('amount', formattedValue) // Set unformatted value for submission
   }
 
   const onSubmit = async (data) => {
