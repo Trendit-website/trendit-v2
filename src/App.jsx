@@ -58,25 +58,43 @@ import PreviewEarnAdvertTask from './pages/earn/components/PreviewEarnAdvertTask
 import CreateThrAdvertTask from './pages/advertise/components/createAdvert/CreateThrAdvertTask'
 import GenerateThrTask from './pages/earn/components/postadvert/GenerateThrTask'
 import TwoFaOtp from './components/auth/TwoFaOtp'
+import { AppearanceContext, SetAppearanceContext } from './providers/AppearanceProvider'
+import API from './services/AxiosInstance'
+import { useContext } from 'react'
 
 function App() {
-  const { isDarkMode } = useDarkMode()
+  const { toggle, isDarkMode } = useDarkMode()
+  const userPrefrences = useContext(AppearanceContext)
+  const setPrefrence = useContext(SetAppearanceContext)
+  const setAppearance = () => {
+    API.get('/settings/preferences')
+    .then((response) => (setPrefrence(response.data.user_preferences.appearance), response.data.user_preferences.appearance === 'light' ? console.log(100) : toggle(!isDarkMode) ))
+    .catch((error) => console.error(error))
+   }
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add('dark')
-      document.body.classList.add('text-foreground')
-      document.body.classList.add('bg-background')
-    } else {
-      document.body.classList.remove('dark')
-      document.body.classList.remove('text-foreground')
-      document.body.classList.remove('bg-background')
-    }
+    API.get('/settings/preferences')
+    .then((response) => (setPrefrence(response.data.user_preferences.appearance), response.data.user_preferences.appearance === 'dark' ?
+    ( document.body.classList.add('dark'), document.body.classList.add('text-foreground'),  document.body.classList.add('bg-background'))
+     : (document.body.classList.remove('dark'), document.body.classList.remove('text-foreground'), document.body.classList.remove('bg-background')) 
+    ))
+    .catch((error) => console.error(error)) 
+    
+    
+    // if (isDarkMode) {
+    //   document.body.classList.add('dark')
+    //   document.body.classList.add('text-foreground')
+    //   document.body.classList.add('bg-background')
+    // } else {
+    //   document.body.classList.remove('dark')
+    //   document.body.classList.remove('text-foreground')
+    //   document.body.classList.remove('bg-background')
+    // }
   }, [isDarkMode])
 
   useEffect(() => {
     // Store dark mode preference in local storage
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
+    // localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
   }, [isDarkMode])
 
   return (
