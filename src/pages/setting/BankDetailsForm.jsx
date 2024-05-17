@@ -35,7 +35,8 @@ export default function BankDetailsForm() {
   }, [fetchBanks, searchTerm])
 
   const { mutateAsync: updateUserPrefence, isPending } = useUpdateBankDetils()
-  const { mutateAsync: updateVerifyBank } = useVerifyBank()
+  const { mutateAsync: updateVerifyBank, isPending: verifyAccount } =
+    useVerifyBank()
 
   const bankName = watch('bank_name')
   const accountNo = watch('account_no')
@@ -204,6 +205,7 @@ export default function BankDetailsForm() {
                     <Input
                       size='sm'
                       readOnly
+                      isDisabled={verifyAccount}
                       classNames={{
                         input: [
                           'bg-transparent',

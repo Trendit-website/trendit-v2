@@ -7,7 +7,9 @@ import {
 } from '../../api/settingsApis'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
+import { useEffect, useContext } from 'react'
+import { AppearanceContext, SetAppearanceContext } from '../../providers/AppearanceProvider'
+import API from '../../services/AxiosInstance'
 
 export default function PrefrenceForm() {
   const { data: userPrefrence } = useGetUserPrefence()
@@ -23,27 +25,52 @@ export default function PrefrenceForm() {
 
   useEffect(() => {
     // Set dark mode state based on the user's preference when component mounts
-    if (userPrefrence?.appearance !== undefined) {
-      toggleDarkMode(userPrefrence?.appearance)
-    }
+    // if (userPrefrence?.appearance !== undefined) {
+    //   toggleDarkMode(userPrefrence?.appearance)
+    // }
+    // if (userPrefrence?.appearance === 'light') {
+    //   toggleDarkMode(!isDarkMode)
+    // }
   }, [userPrefrence])
 
-  // console.log(userPrefrence?.appearance, 'userPrefrence 2244')
-  // console.log(userPrefrence, 'userPrefrence 22')
+  const userPrefrences = useContext(AppearanceContext)
+  const setPrefrence = useContext(SetAppearanceContext)
 
-  const handleToggleDarkMode = async () => {
+  const handleToggleDarkMode = async (prefOption) => {
     toggleDarkMode()
-    setValue('appearance', !isDarkMode ? 'dark' : 'light')
+    setValue('appearance', prefOption)
+    if(prefOption === 'dark') {
+      document.body.classList.add('dark')
+      document.body.classList.add('text-foreground')
+      document.body.classList.add('bg-background')
+      API.post('/settings/preferences', {
+        "setting_name": "appearance",
+        "value": "dark"
+      }).then((response) => (toast.success(response.data?.message), setPrefrence('dark'))).catch((error) => toast.errorerror.response?.data?.message ?? error.message)
+    } else if (prefOption === 'light') {
+      document.body.classList.remove('dark')
+      document.body.classList.remove('text-foreground')
+      document.body.classList.remove('bg-background')
+      API.post('/settings/preferences', {
+        "setting_name": "appearance",
+        "value": "light"
+      }).then((response) => (toast.success(response.data?.message), setPrefrence('light'))).catch((error) => toast.error.response?.data?.message ?? error.message)
+    } else if (prefOption === 'system') {
+      document.body.classList.remove('dark')
+      document.body.classList.remove('text-foreground')
+      document.body.classList.remove('bg-background')
+    }
+    // setValue('appearance', !isDarkMode ? 'dark' : 'light')
     // console.log(!isDarkMode, 'isDarkMode')
     // console.log(isDarkMode, 'isDarkMode  322')
-    try {
-      const res = await updateUserPrefence({ appearance: !isDarkMode })
-      if (res?.data?.status) {
-        toast.success(res.data.message)
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message ?? error.message)
-    }
+    // try {
+    //   const res = await updateUserPrefence({ appearance: prefOption })
+    //   if (res?.data?.status) {
+    //     toast.success(res.data.message)
+    //   }
+    // } catch (error) {
+    //   toast.error(error.response?.data?.message ?? error.message)
+    // }
   }
   return (
     <div>
@@ -64,7 +91,7 @@ export default function PrefrenceForm() {
                       size='sm'
                       isSelected={isDarkMode}
                       color='default'
-                      onClick={handleToggleDarkMode}
+                      onClick={() => handleToggleDarkMode('dark')}
                     />
                   }
                   placeholder='Dark Mode'
@@ -101,7 +128,7 @@ export default function PrefrenceForm() {
                       size='sm'
                       isSelected={!isDarkMode}
                       color='default'
-                      onClick={handleToggleDarkMode}
+                      onClick={() => handleToggleDarkMode('light')}
                     />
                   }
                   placeholder='Light Mode'
