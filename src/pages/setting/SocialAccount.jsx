@@ -16,7 +16,7 @@ export default function SocialAccount() {
           !socialLinks?.x_verified &&
           !socialLinks?.tiktok_verified &&
           !socialLinks?.instagram_verified && (
-            <div className='shadow-lg py-10 px-3 bg-gray-800 rounded-md'>
+            <div className='shadow-lg py-10 px-3 text-white font-Manrope bg-gray-800 rounded-md'>
               Your social account has not been linked yet
             </div>
           )}
