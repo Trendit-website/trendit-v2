@@ -6,11 +6,12 @@ import { dashboardContext } from '../../context/Dashboard'
 
 import UserDropdown from '../components/UserDropdown'
 import { Search } from 'lucide-react'
-import { useDarkMode } from 'usehooks-ts'
 import SignOutModal from '../../components/auth/SignOutModal'
 import { useDisclosure } from '@nextui-org/react'
-import { useGetUserPrefence, useUpdateUserPrefence } from '../../api/settingsApis'
-import { AppearanceContext, SetAppearanceContext } from '../../providers/AppearanceProvider'
+import {
+  AppearanceContext,
+  SetAppearanceContext,
+} from '../../providers/AppearanceProvider'
 import API from '../../services/AxiosInstance'
 import toast from 'react-hot-toast'
 
@@ -20,29 +21,42 @@ const Navbar = ({ onNotificationClick }) => {
     useContext(dashboardContext)
   // minimized sidebar was omitted for now!
 
-  const { toggle, isDarkMode } = useDarkMode(false)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
   // const userPrefrence = useGetUserPrefence()
   // console.log(userPrefrence.data?.appearance)
   const setAppearance = () => {
-    if(userPrefrences === 'light') {
+    if (userPrefrences === 'light') {
       document.body.classList.add('dark')
       document.body.classList.add('text-foreground')
       document.body.classList.add('bg-background')
       API.post('/settings/preferences', {
-        "setting_name": "appearance",
-        "value": "dark"
-      }).then((response) => (toast.success(response.data?.message), setPrefrence('dark'))).catch((error) => toast.errorerror.response?.data?.message ?? error.message)
+        setting_name: 'appearance',
+        value: 'dark',
+      })
+        .then(
+          (response) => (
+            toast.success(response.data?.message), setPrefrence('dark')
+          )
+        )
+        .catch(
+          (error) => toast.errorerror.response?.data?.message ?? error.message
+        )
     } else if (userPrefrences === 'dark') {
       document.body.classList.remove('dark')
       document.body.classList.remove('text-foreground')
       document.body.classList.remove('bg-background')
       API.post('/settings/preferences', {
-        "setting_name": "appearance",
-        "value": "light"
-      }).then((response) => (toast.success(response.data?.message), setPrefrence('light'))).catch((error) => toast.error.response?.data?.message ?? error.message)
+        setting_name: 'appearance',
+        value: 'light',
+      })
+        .then(
+          (response) => (
+            toast.success(response.data?.message), setPrefrence('light')
+          )
+        )
+        .catch((error) => toast.error.response?.data?.message ?? error.message)
     } else if (userPrefrences === undefined) {
       document.body.classList.remove('dark')
       document.body.classList.remove('text-foreground')

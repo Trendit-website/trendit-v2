@@ -5,9 +5,26 @@ import toast from 'react-hot-toast'
 import { useBankDetails, useUpdateBankDetils } from '../../api/walletApi'
 import { useFetchBank, useVerifyBank } from '../../api/bankApi'
 import { useEffect, useMemo, useState } from 'react'
+import Loader from '../Loader'
 // import Select from 'react-select'
 
 export default function BankDetailsForm() {
+  const { isLoading } = useBankDetails()
+
+  return (
+    <>
+      {isLoading ? (
+        <div className='min-h-screen mx-auto'>
+          <Loader />
+        </div>
+      ) : (
+        <BankDetailsFormContent />
+      )}
+    </>
+  )
+}
+
+function BankDetailsFormContent() {
   const { data: userBank } = useBankDetails()
   const { data: fetchBanks, isLoading: fetching } = useFetchBank()
 
@@ -118,7 +135,8 @@ export default function BankDetailsForm() {
                         placeholder='Search Bank'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className='mb-2'
+                        className='mb-2 py-0'
+                        size='sm'
                       />
                       <Select
                         {...field}
@@ -161,7 +179,7 @@ export default function BankDetailsForm() {
               </div>
               <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                 <label className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
-                  Account Number
+                  Enter Account Number
                 </label>
                 <Controller
                   name='account_no'

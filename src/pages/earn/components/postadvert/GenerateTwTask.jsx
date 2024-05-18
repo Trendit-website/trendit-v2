@@ -147,7 +147,7 @@ export default function GenerateTwTask() {
               </svg>
             </div>
           </div>
-          {profileDeatils?.social_ids?.facebook_id ? (
+          {profileDeatils?.social_ids?.x_id ? (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb border-stone500 items-center flex'>
