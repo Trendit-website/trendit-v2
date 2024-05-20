@@ -135,10 +135,8 @@ export default function Welcome({ onNotificationClick }) {
                 Wallet bal:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
-                {/* <span>&#8358;</span> */}
                 <span>{showBalance?.currency_symbol}</span>
                 {showBalance?.balance?.toLocaleString()}
-                {/* ₦{showBalance?.currency_code}:{showBalance?.balance} */}
               </div>
             </div>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
@@ -208,7 +206,7 @@ export default function Welcome({ onNotificationClick }) {
           </div>
         </Card>
 
-        <div className='justify-start items-start gap-4 inline-flex'>
+        <div className='justify-start items-start grid grid-cols-2 gap-4 inlineflex'>
           <div
             onClick={() => navigate(`/dashboard/advertise`)}
             className='h-full'
@@ -219,21 +217,21 @@ export default function Welcome({ onNotificationClick }) {
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black lg:mb-8 hover:bg-green-50 text-sm font-medium font-['Manrope']"
+                  className='text-black lg:mb-8 hover:bg-green-50 text-sm font-medium font-Manrope'
                 />
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-md font-bold font-['Manrope']">
+                  <div className='text-black text-md font-bold font-Manrope'>
                     Create an Advert
                   </div>
-                  <div className=" text-stone-900 text-sm font-normal font-['Manrope']">
+                  <div className=' text-stone-900 text-sm font-normal font-Manrope'>
                     Get real people to post your ads on their social media
                     account.
                   </div>
                 </div>
                 <div
-                  className={`w-20 relative  ${
+                  className={`w-20 relative top-7 md:top-0 ${
                     !isTablet ? '-right-32' : ' -right-24'
                   } md:w-full md:inline-flex`}
                   // className={`w-20 relative  ${
@@ -252,15 +250,15 @@ export default function Welcome({ onNotificationClick }) {
                   variant='light'
                   isIconOnly
                   endContent={<FaArrowRightLong />}
-                  className="text-black lg:mb-5 hover:bg-green-50 text-sm font-medium font-['Manrope']"
+                  className='text-black lg:mb-5 hover:bg-green-50 text-sm font-medium font-Manrope'
                 />
               </div>
               <div className=' grid items-center mt-2  md:mt-10 md:gap-4 md:grid-cols-2  '>
                 <div className=' flex-col justify-start items-start gap-3 inline-flex'>
-                  <div className="text-black text-md font-bold font-['Manrope']">
+                  <div className='text-black text-md font-bold font-Manrope'>
                     Engage a task
                   </div>
-                  <div className=" text-stone-900 text-sms font-normal font-['Manrope']">
+                  <div className=' text-stone-900 text-sm font-normal font-Manrope'>
                     Monetize Your Influence! Earn by Posting Ads on Your Social
                     Media.
                   </div>
@@ -352,7 +350,7 @@ export default function Welcome({ onNotificationClick }) {
                   </div>
                 </Card>
               )}
-            {linkIg && (
+            {!userDetails?.social_links?.instagram_verified && linkIg && (
               <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
