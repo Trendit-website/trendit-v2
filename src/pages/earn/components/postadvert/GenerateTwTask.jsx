@@ -54,7 +54,7 @@ export default function GenerateTwTask() {
                 />
               </svg>
             </div>
-            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+            <div className='text-center text-fuchsia-400 text-sm font-medium font-Manrope'>
               Go back
             </div>
           </div>
@@ -83,75 +83,77 @@ export default function GenerateTwTask() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
-                <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
+                <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
+                  <div className='text-white dark:text-black text-sm font-medium font-Manrope'>
                     Like an Retweet Post on Twitter Accounts
                   </div>
-                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
+                  <div className='self-stretch dark:text-black text-center text-white text-xs font-normal font-Manrope'>
                     Like Twitter Pages for Individuals, Businesses and
                     Organizations and earn ₦3.5 per Like. The more pages you
                     like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
-                    <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
+                    <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
                       {fetchTask?.length} Task available
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
-              <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center  text-base font-bold font-['Manrope']">
-                  Link your Twitter Accounts
-                </div>
-                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Twitter Accounts to Trendit before you
-                  can start earning with your Twitter Accounts . Click the
-                  button below to link your  Twitter Accounts now.
-                </div>
-                <div
-                  onClick={onOpenVerify}
-                  className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='24'
-                    viewBox='0 0 47 47'
-                    fill='none'
+            {!profileDeatils?.social_links?.x_verified && (
+              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+                <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+                  <div className='text-center  text-base font-bold font-Manrope'>
+                    Link your Twitter Accounts
+                  </div>
+                  <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
+                    You need to link your Twitter Accounts to Trendit before you
+                    can start earning with your Twitter Accounts . Click the
+                    button below to link your  Twitter Accounts now.
+                  </div>
+                  <div
+                    onClick={onOpenVerify}
+                    className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
-                    <path
-                      d='M37.0145 2.2583H44.2211L28.4761 20.2554L47 44.7404H32.4966L21.1383 29.8884L8.13883 44.7404H0.92825L17.7699 25.49L0 2.26026H14.8716L25.1391 15.8354L37.0145 2.2583ZM34.4863 40.4282H38.4793L12.7018 6.34534H8.41692L34.4863 40.4282Z'
-                      fill='black'
-                    />
-                  </svg>
-                  <div className="text-center text-[12.83px] font-bold font-['Manrope']">
-                    Link Twitter account
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 47 47'
+                      fill='none'
+                    >
+                      <path
+                        d='M37.0145 2.2583H44.2211L28.4761 20.2554L47 44.7404H32.4966L21.1383 29.8884L8.13883 44.7404H0.92825L17.7699 25.49L0 2.26026H14.8716L25.1391 15.8354L37.0145 2.2583ZM34.4863 40.4282H38.4793L12.7018 6.34534H8.41692L34.4863 40.4282Z'
+                        fill='black'
+                      />
+                    </svg>
+                    <div className='text-center text-[12.83px] font-bold font-Manrope'>
+                      Link Twitter account
+                    </div>
                   </div>
                 </div>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                >
+                  <path
+                    d='M18 6L6 18M18 18L6 6.00001'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    className='dark:stroke-white stroke-[#B1B1B1] '
+                  />
+                </svg>
               </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <path
-                  d='M18 6L6 18M18 18L6 6.00001'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  className='dark:stroke-white stroke-[#B1B1B1] '
-                />
-              </svg>
-            </div>
+            )}
           </div>
-          {profileDeatils?.social_ids?.x_id ? (
+          {!profileDeatils?.social_links?.x_verified && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb border-stone500 items-center flex'>
-                  <div className='justify-start  items-center gap-[11px] flex'>
+                  <div className='justify-start overflow-x-scroll items-center gap-[11px] flex'>
                     <AnimatePresence mode='wait'>
                       <div className='flex flex-col  w-full'>
                         <Tabs
@@ -169,12 +171,12 @@ export default function GenerateTwTask() {
                             tabContent:
                               'group-data-[selected=true]:text-fuchsia-400 ',
                           }}
-                          className="text-center  text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
+                          className='text-center  text-fuchsia-400 text-[12.83px] font-bold font-Manrope'
                           color='secondary'
                         >
                           <Tab
                             key='pending'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                             title='Pending'
                           ></Tab>
                           <Tab
@@ -191,29 +193,29 @@ export default function GenerateTwTask() {
                                 </Chip> */}
                               </div>
                             }
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                           <Tab
                             key='failed'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                             title='Failed'
                           ></Tab>
                           <Tab
                             key='completed'
                             title={'Completed'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                           <Tab
                             key='cancelled'
                             title={'Cancelled'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                         </Tabs>
                       </div>
                     </AnimatePresence>
                   </div>
                   {fetchTask?.length >= 5 && (
-                    <div className='px-3 justify-start items-center gap-[11px] flex'>
+                    <div className='px-3 justify-start hidden items-center gap-[11px] flx'>
                       <div className='justify-start items-center gap-[7px] flex'>
                         <svg
                           xmlns='http://www.w3.org/2000/svg'
@@ -229,7 +231,7 @@ export default function GenerateTwTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
+                        <div className='text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-Manrope'>
                           Filter
                         </div>
                       </div>
@@ -248,7 +250,7 @@ export default function GenerateTwTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
+                        <div className='text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-Manrope'>
                           Sort
                         </div>
                       </div>
@@ -384,7 +386,7 @@ export default function GenerateTwTask() {
                   </div>
                 </motion.div>
               )}
-              {fetchTask?.length === 0 && (
+              {selected === 'pending' && fetchTask?.length === 0 && (
                 <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
                   <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                     <svg
@@ -403,10 +405,10 @@ export default function GenerateTwTask() {
                     </svg>
                   </div>
                   <div className='h[58px]  flex-col justify-start items-center gap-3 flex'>
-                    <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
+                    <div className='text-black dark:text-white text-sm font-bold font-Manrope'>
                       Need quick cash to earn?
                     </div>
-                    <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
+                    <div className='self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-Manrope'>
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
@@ -430,14 +432,14 @@ export default function GenerateTwTask() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
+                    <div className='text-center dark:text-black text-white text-[12.83px] font-medium font-Manrope'>
                       Generate task
                     </div>
                   </div>
                 </div>
               )}
             </>
-          ) : null}
+          )}
         </div>
       </div>
 

@@ -106,7 +106,7 @@ const Navbar = ({ onNotificationClick }) => {
             
             `}
                 >
-                  <div className=' flex lg:hidden  h-full  '>
+                  <div className='hidden flx lg:hidden  h-full  '>
                     <button className='pl3  py-1 pt-[0.5rem] outline-none rounded'>
                       {' '}
                       <Search className=' text-gray-400' size={20} />
@@ -203,7 +203,7 @@ const Navbar = ({ onNotificationClick }) => {
             <UserDropdown className='font-medium text-gray-600' />
           </div> */}
             <div className='flex items-center gap-2 lg:hidden'>
-              <div className=' flex lg:hidden  h-full  '>
+              <div className='hidden fle lg:hidden  h-full  '>
                 <button className='pl3  py-1 pt-[0.5rem] outline-none rounded'>
                   {' '}
                   <Search className=' text-gray-400' size={20} />

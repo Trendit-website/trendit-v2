@@ -18,11 +18,11 @@ import FbSocialLogo from '../../../../assets/logos_facebook.svg'
 export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
-   const {
-     isOpen: isOpenVerify,
-     onOpen: onOpenVerify,
-     onClose: onCloseVerify,
-   } = useDisclosure()
+  const {
+    isOpen: isOpenVerify,
+    onOpen: onOpenVerify,
+    onClose: onCloseVerify,
+  } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
@@ -86,7 +86,7 @@ export default function GenerateFbTask() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
-                <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
+                <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className=" dark:text-black text-white text-sm font-medium font-['Manrope']">
                     Post adverts on Facebook
                   </div>
@@ -103,63 +103,64 @@ export default function GenerateFbTask() {
                 </div>
               </div>
             </div>
-
-            <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
-              <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
-                  Link your Facebook Account
-                </div>
-                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Facebook Account to Hawkit before you
-                  can start earning with your Facebook Account. Click the button
-                  below to link your Facebook account now.
-                </div>
-                <div
-                  onClick={onOpenVerify}
-                  className='p-2 dark:bg-stone-800 cursor-default bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-2 inline-flex'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='25'
-                    height='25'
-                    viewBox='0 0 47 47'
-                    fill='none'
+            {!profileDeatils?.social_links?.facebook_verified && (
+              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+                <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+                  <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
+                    Link your Facebook Account
+                  </div>
+                  <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
+                    You need to link your Facebook Account to Hawkit before you
+                    can start earning with your Facebook Account. Click the
+                    button below to link your Facebook account now.
+                  </div>
+                  <div
+                    onClick={onOpenVerify}
+                    className='p-2 dark:bg-stone-800 cursor-default bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-2 inline-flex'
                   >
-                    <path
-                      d='M47 23.5C47 10.5214 36.4786 0 23.5 0C10.5214 0 0 10.5214 0 23.5C0 35.2294 8.59366 44.9516 19.8281 46.7145V30.293H13.8613V23.5H19.8281V18.3227C19.8281 12.433 23.3366 9.17969 28.7045 9.17969C31.2756 9.17969 33.9648 9.63867 33.9648 9.63867V15.4219H31.0016C28.0823 15.4219 27.1719 17.2334 27.1719 19.0919V23.5H33.6895L32.6476 30.293H27.1719V46.7145C38.4063 44.9516 47 35.2296 47 23.5Z'
-                      fill='#1877F2'
-                    />
-                    <path
-                      d='M32.6476 30.293L33.6895 23.5H27.1719V19.0919C27.1719 17.2332 28.0823 15.4219 31.0016 15.4219H33.9648V9.63867C33.9648 9.63867 31.2756 9.17969 28.7043 9.17969C23.3366 9.17969 19.8281 12.433 19.8281 18.3227V23.5H13.8613V30.293H19.8281V46.7145C21.0428 46.9049 22.2705 47.0003 23.5 47C24.7295 47.0004 25.9572 46.9049 27.1719 46.7145V30.293H32.6476Z'
-                      fill='white'
-                    />
-                  </svg>
-                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
-                    Link Facebook account
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='25'
+                      height='25'
+                      viewBox='0 0 47 47'
+                      fill='none'
+                    >
+                      <path
+                        d='M47 23.5C47 10.5214 36.4786 0 23.5 0C10.5214 0 0 10.5214 0 23.5C0 35.2294 8.59366 44.9516 19.8281 46.7145V30.293H13.8613V23.5H19.8281V18.3227C19.8281 12.433 23.3366 9.17969 28.7045 9.17969C31.2756 9.17969 33.9648 9.63867 33.9648 9.63867V15.4219H31.0016C28.0823 15.4219 27.1719 17.2334 27.1719 19.0919V23.5H33.6895L32.6476 30.293H27.1719V46.7145C38.4063 44.9516 47 35.2296 47 23.5Z'
+                        fill='#1877F2'
+                      />
+                      <path
+                        d='M32.6476 30.293L33.6895 23.5H27.1719V19.0919C27.1719 17.2332 28.0823 15.4219 31.0016 15.4219H33.9648V9.63867C33.9648 9.63867 31.2756 9.17969 28.7043 9.17969C23.3366 9.17969 19.8281 12.433 19.8281 18.3227V23.5H13.8613V30.293H19.8281V46.7145C21.0428 46.9049 22.2705 47.0003 23.5 47C24.7295 47.0004 25.9572 46.9049 27.1719 46.7145V30.293H32.6476Z'
+                        fill='white'
+                      />
+                    </svg>
+                    <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
+                      Link Facebook account
+                    </div>
                   </div>
                 </div>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                >
+                  <path
+                    d='M18 6L6 18M18 18L6 6.00001'
+                    strokeWidth='2'
+                    strokeLinecap='round'
+                    className='dark:stroke-white stroke-[#1E1E1E]'
+                  />
+                </svg>
               </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <path
-                  d='M18 6L6 18M18 18L6 6.00001'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  className='dark:stroke-white stroke-[#1E1E1E]'
-                />
-              </svg>
-            </div>
+            )}
           </div>
-          {profileDeatils?.social_ids?.facebook_id ? (
+          {profileDeatils?.social_links?.facebook_verified && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
-                  <div className='justify-start  items-center gap-[11px] flex'>
+                  <div className='justify-start overflow-x-scroll items-center gap-[11px] flex'>
                     <AnimatePresence mode='wait'>
                       <div className='flex flex-col  w-full'>
                         <Tabs
@@ -222,7 +223,7 @@ export default function GenerateFbTask() {
                   </div>
 
                   {fetchTask?.length >= 5 && (
-                    <div className='px-3 justify-start items-center gap-[11px] flex'>
+                    <div className='px-3 justify-start hidden items-center gap-[11px] flx'>
                       <div className='justify-start items-center gap-[7px] flex'>
                         <svg
                           xmlns='http://www.w3.org/2000/svg'
@@ -394,7 +395,7 @@ export default function GenerateFbTask() {
                   </div>
                 </motion.div>
               )}
-              {fetchTask?.length === 0 && (
+              {selected === 'pending' && fetchTask?.length === 0 && (
                 <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
                   <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                     <svg
@@ -447,7 +448,7 @@ export default function GenerateFbTask() {
                 </div>
               )}
             </>
-          ) : null}
+          )}
         </div>
       </div>
 
