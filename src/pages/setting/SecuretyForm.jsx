@@ -431,7 +431,7 @@ function SecuretyFormContent() {
                             onChange={(e) => {
                               setValue(
                                 'two_fa_method',
-                                e.target.checked ? 'email' : ''
+                                e.target.checked ? 'email' : null
                               )
                               handleSubmit(onSubmit)() // Trigger form submission after state update
                             }}
