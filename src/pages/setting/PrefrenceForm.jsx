@@ -3,12 +3,13 @@ import { useDarkMode } from 'usehooks-ts'
 import { useGetUserPrefence } from '../../api/settingsApis'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import {
   AppearanceContext,
   SetAppearanceContext,
 } from '../../providers/AppearanceProvider'
 import API from '../../services/AxiosInstance'
+import Loader from '../Loader'
 
 export default function PrefrenceForm() {
   const { data: userPrefrence } = useGetUserPrefence()
@@ -19,17 +20,22 @@ export default function PrefrenceForm() {
       appearance: userPrefrence?.appearance || 'system',
     },
   })
+  const [isLoading, setLoading] = useState()
 
   useEffect(() => {
-    if (userPrefrence?.appearance) {
-      setValue('appearance', userPrefrence?.appearance)
-    }
+    setLoading(true)
+    API.get('/settings/preferences')
+    .then((response) => (setLoading(false), setValue('appearance',response.data?.user_preferences?.appearance)))
+    .catch((error) => console.error(error))
+    // if (userPrefrence?.appearance) {
+    //   setValue('appearance', userPrefrence?.appearance)
+    // }
   }, [userPrefrence, setValue])
 
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
 
-  const handleToggleDarkMode = async (prefOption) => {
+  const handleToggleDarkMode = (prefOption) => {
     toggleDarkMode()
     setValue('appearance', prefOption)
     if (prefOption === 'dark') {
@@ -64,15 +70,18 @@ export default function PrefrenceForm() {
         )
         .catch((error) => toast.error.response?.data?.message ?? error.message)
     } else if (prefOption === 'system') {
-      document.body.classList.remove('dark')
-      document.body.classList.remove('text-foreground')
-      document.body.classList.remove('bg-background')
+      // document.body.classList.remove('dark')
+      // document.body.classList.remove('text-foreground')
+      // document.body.classList.remove('bg-background')
     }
   }
 
   const appearance = watch('appearance')
   return (
     <div>
+      {isLoading ? <div className='flex flex-row items-center justify-center'>
+        <Loader />
+        </div> :
       <form>
         <div className='self-stretch grow min-h-screen shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
           <div className='text-sm font-bold font-Manrope'>Appearance</div>
@@ -116,6 +125,7 @@ export default function PrefrenceForm() {
           </div>
         </div>
       </form>
+      }
     </div>
   )
 }
