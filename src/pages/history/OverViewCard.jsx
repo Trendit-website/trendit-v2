@@ -1,8 +1,8 @@
 import { useGetTotalAdvertTask } from '../../api/advitersesApi'
+import Loader from '../Loader'
 
 export default function OverViewCard() {
   const { data: totalTask } = useGetTotalAdvertTask()
-  console.log(totalTask, 'ggg')
   return (
     <div>
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
@@ -70,7 +70,7 @@ export default function OverViewCard() {
               </div>
             </div>
             <div className="self-stretch py-10 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-              456 Adverts
+              {totalTask ? `${totalTask?.length} Orders` : <Loader />} 
             </div>
           </div>
         </div>

@@ -28,7 +28,8 @@ export const useGetAdvert = (status) => {
   return useQuery({
     queryKey: ['get_dvert', status],
     queryFn: async () => {
-      const res = await API.get(`/current-user/tasks?status=${status}`)
+      const res = await API.get(`/user/tasks/advert`)
+      console.log(res.data)
       return res?.data?.all_tasks
     },
   })
@@ -37,7 +38,7 @@ export const useGetTotalAdvertTask = () => {
   return useQuery({
     queryKey: ['get_total_advert'],
     queryFn: async () => {
-      const res = await API.get(`/user/tasks/total`)
+      const res = await API.get(`/user/tasks`)
       console.log(res?.data)
       return res?.data?.all_tasks
     },
