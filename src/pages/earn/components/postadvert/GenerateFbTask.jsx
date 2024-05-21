@@ -13,7 +13,7 @@ import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
-import FbSocialLogo from '../../../../assets/logos_facebook.svg'
+import toast from 'react-hot-toast'
 
 export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
@@ -28,6 +28,19 @@ export default function GenerateFbTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+
+  const handOpenSocialModal = () => {
+    if (profileDeatils?.social_links?.facebook_verified === 'pending') {
+      toast.error('Verification request has been sent')
+    } else if (
+      profileDeatils?.social_links?.facebook_verified === 'rejected' ||
+      profileDeatils?.social_links?.facebook_verified === 'idle'
+    ) {
+      onOpenVerify()
+    } else {
+      onOpenVerify()
+    }
+  }
 
   return (
     <>
@@ -53,7 +66,7 @@ export default function GenerateFbTask() {
                 />
               </svg>
             </div>
-            <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+            <div className='text-center text-fuchsia-400 text-sm font-medium font-Manrope'>
               Go back
             </div>
           </div>
@@ -87,35 +100,35 @@ export default function GenerateFbTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className=" dark:text-black text-white text-sm font-medium font-['Manrope']">
+                  <div className=' dark:text-black text-white text-sm font-medium font-Manrope'>
                     Post adverts on Facebook
                   </div>
-                  <div className="self-stretch text-center  dark:text-black text-white text-xs font-normal font-['Manrope']">
+                  <div className='self-stretch text-center  dark:text-black text-white text-xs font-normal font-Manrope'>
                     Like Facebook Pages for Individuals, Businesses and
                     Organizations and earn ₦3.5 per Like. The more pages you
                     like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
-                    <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
+                    <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
                       {fetchTask?.length} Task available
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {!profileDeatils?.social_links?.facebook_verified && (
+            {profileDeatils?.social_links?.facebook_verified === 'pending' && (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
+                  <div className='text-center dark:text-white text-stone-900 text-base font-bold font-Manrope'>
                     Link your Facebook Account
                   </div>
-                  <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                    You need to link your Facebook Account to Hawkit before you
+                  <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
+                    You need to link your Facebook Account to Trendit before you
                     can start earning with your Facebook Account. Click the
                     button below to link your Facebook account now.
                   </div>
                   <div
-                    onClick={onOpenVerify}
+                    onClick={handOpenSocialModal}
                     className='p-2 dark:bg-stone-800 cursor-default bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-2 inline-flex'
                   >
                     <svg
@@ -134,7 +147,7 @@ export default function GenerateFbTask() {
                         fill='white'
                       />
                     </svg>
-                    <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
+                    <div className='text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-Manrope'>
                       Link Facebook account
                     </div>
                   </div>
@@ -156,11 +169,11 @@ export default function GenerateFbTask() {
               </div>
             )}
           </div>
-          {profileDeatils?.social_links?.facebook_verified && (
+          {profileDeatils?.social_links?.facebook_verified === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
-                  <div className='justify-start overflow-x-scroll items-center gap-[11px] flex'>
+                  <div className='justify-start overflow-x-clip items-center gap-[11px] flex'>
                     <AnimatePresence mode='wait'>
                       <div className='flex flex-col  w-full'>
                         <Tabs
@@ -178,12 +191,12 @@ export default function GenerateFbTask() {
                             tabContent:
                               'group-data-[selected=true]:text-fuchsia-400 ',
                           }}
-                          className="text-center  text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
+                          className='text-center  text-fuchsia-400 text-[12.83px] font-bold font-Manrope'
                           color='secondary'
                         >
                           <Tab
                             key='pending'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                             title='Pending'
                           ></Tab>
                           <Tab
@@ -200,22 +213,22 @@ export default function GenerateFbTask() {
                                 </Chip> */}
                               </div>
                             }
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                           <Tab
                             key='failed'
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                             title='Failed'
                           ></Tab>
                           <Tab
                             key='completed'
                             title={'Completed'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                           <Tab
                             key='cancelled'
                             title={'Cancelled'}
-                            className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
+                            className=' text-zinc-400 text-[12.83px] font-bold font-Manrope'
                           ></Tab>
                         </Tabs>
                       </div>
@@ -239,7 +252,7 @@ export default function GenerateFbTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
+                        <div className='text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-Manrope'>
                           Filter
                         </div>
                       </div>
@@ -258,7 +271,7 @@ export default function GenerateFbTask() {
                             className='dark:stroke-[#B1B1B1] stroke-[#1E1E1E] '
                           />
                         </svg>
-                        <div className="text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-['Manrope']">
+                        <div className='text-center dark:text-[#B1B1B1] text-stone-900 text-sm font-medium font-Manrope'>
                           Sort
                         </div>
                       </div>
@@ -414,10 +427,10 @@ export default function GenerateFbTask() {
                     </svg>
                   </div>
                   <div className='h[58px]  flex-col justify-start items-center gap-3 flex'>
-                    <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
+                    <div className='text-black dark:text-white text-sm font-bold font-Manrope'>
                       Need quick cash to earn?
                     </div>
-                    <div className="self-stretch w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-['Manrope']">
+                    <div className='self-stretch w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-Manrope'>
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
@@ -441,7 +454,7 @@ export default function GenerateFbTask() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
+                    <div className='text-center dark:text-black text-white text-[12.83px] font-medium font-Manrope'>
                       Generate task
                     </div>
                   </div>
@@ -462,8 +475,25 @@ export default function GenerateFbTask() {
 
       {isOpenVerify && (
         <SocialLinkModal
-          type='instagram'
-          LogoBand={FbSocialLogo}
+          type='facebook'
+          LogoBand={
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='47'
+              height='47'
+              viewBox='0 0 47 47'
+              fill='none'
+            >
+              <path
+                d='M47 23.5C47 10.5214 36.4786 0 23.5 0C10.5214 0 0 10.5214 0 23.5C0 35.2294 8.59366 44.9516 19.8281 46.7145V30.293H13.8613V23.5H19.8281V18.3227C19.8281 12.433 23.3366 9.17969 28.7045 9.17969C31.2756 9.17969 33.9648 9.63867 33.9648 9.63867V15.4219H31.0016C28.0823 15.4219 27.1719 17.2334 27.1719 19.0919V23.5H33.6895L32.6476 30.293H27.1719V46.7145C38.4063 44.9516 47 35.2296 47 23.5Z'
+                fill='#1877F2'
+              />
+              <path
+                d='M32.6476 30.293L33.6895 23.5H27.1719V19.0919C27.1719 17.2332 28.0823 15.4219 31.0016 15.4219H33.9648V9.63867C33.9648 9.63867 31.2756 9.17969 28.7043 9.17969C23.3366 9.17969 19.8281 12.433 19.8281 18.3227V23.5H13.8613V30.293H19.8281V46.7145C21.0428 46.9049 22.2705 47.0003 23.5 47C24.7295 47.0004 25.9572 46.9049 27.1719 46.7145V30.293H32.6476Z'
+                fill='white'
+              />
+            </svg>
+          }
           isOpen={isOpenVerify}
           onClose={onCloseVerify}
         />

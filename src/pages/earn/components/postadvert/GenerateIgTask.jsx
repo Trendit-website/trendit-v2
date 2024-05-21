@@ -13,6 +13,7 @@ import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
+import toast from 'react-hot-toast'
 
 export default function GenerateIgTask() {
   const [selected, setSelected] = useState()
@@ -27,6 +28,19 @@ export default function GenerateIgTask() {
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const { data: profileDeatils } = useGetProfile()
+
+  const handOpenSocialModal = () => {
+    if (profileDeatils?.social_links?.facebook_verified === 'pending') {
+      toast.error('Verification request has been sent')
+    } else if (
+      profileDeatils?.social_links?.facebook_verified === 'rejected' ||
+      profileDeatils?.social_links?.facebook_verified === 'idle'
+    ) {
+      onOpenVerify()
+    } else {
+      onOpenVerify()
+    }
+  }
 
   const navigate = useNavigate()
   return (
@@ -134,7 +148,7 @@ export default function GenerateIgTask() {
                 </div>
               </div>
             </div>
-            {!profileDeatils?.social_links?.instagram_verified && (
+            {profileDeatils?.social_links?.instagram_verified === 'pending' && (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
@@ -146,7 +160,7 @@ export default function GenerateIgTask() {
                     the button below to link your Instagram Accounts now.
                   </div>
                   <div
-                    onClick={onOpenVerify}
+                    onClick={handOpenSocialModal}
                     className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
                   >
                     <svg
@@ -223,11 +237,11 @@ export default function GenerateIgTask() {
             )}
           </div>
 
-          {profileDeatils?.social_links?.instagram_verified && (
+          {profileDeatils?.social_links?.instagram_verified === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
-                  <div className='justify-start overflow-x-scroll items-center gap-[11px] flex'>
+                  <div className='justify-start overflow-x-clip items-center gap-[11px] flex'>
                     <AnimatePresence mode='wait'>
                       <div className='flex flex-col  w-full'>
                         <Tabs
