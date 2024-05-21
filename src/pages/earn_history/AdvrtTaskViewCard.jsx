@@ -1,8 +1,4 @@
-import { useGetTotalAdvertTask } from '../../api/advitersesApi'
-import Loader from '../Loader'
-
-export default function OverViewCard() {
-  const { data: totalTask } = useGetTotalAdvertTask()
+export default function AdvrtTaskViewCard() {
   return (
     <div>
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
@@ -27,7 +23,7 @@ export default function OverViewCard() {
                   Jan 1 - Jan 27, 2023
                 </div>
               </div>
-              <div className='justify-start items-center gap-2 hidden  md:flex'>
+              <div className='justify-start items-center gap-2 hidden md:flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -70,7 +66,7 @@ export default function OverViewCard() {
               </div>
             </div>
             <div className="self-stretch py-10 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-              {totalTask ? `${totalTask?.length} Adverts` : <Loader />}
+              456 Adverts
             </div>
           </div>
         </div>
