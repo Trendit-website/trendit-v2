@@ -9,6 +9,7 @@ import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import ActivationPaymentmodal2 from '../transaction/components/ActivationPaymentmodal2'
 import LearnMoreModal from '../transaction/components/LearnMoreModal'
+import { useNavigate } from 'react-router-dom'
 
 export default function Earn() {
   const [selected, setSelected] = useState('post advert')
@@ -21,6 +22,7 @@ export default function Earn() {
     onClose: onLearnClose,
   } = useDisclosure()
   const { data: profileDeatils } = useGetProfile()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -416,10 +418,11 @@ export default function Earn() {
               </div>
               <Button
                 endContent={<ChevronRight />}
+                onClick={() => navigate(`/dashboard/earn-history`)}
                 variant='light'
                 className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
               >
-                History{' '}
+                History
               </Button>
             </div>
           </div>

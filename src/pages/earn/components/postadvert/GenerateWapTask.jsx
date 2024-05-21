@@ -203,7 +203,7 @@ export default function GenerateWapTask() {
 
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
             <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
-              <div className='justify-start overflow-x-scroll items-center gap-[11px] flex'>
+              <div className='justify-start overflow-x-clip items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
                   <div className='flex flex-col  w-full'>
                     <Tabs
