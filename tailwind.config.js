@@ -22,6 +22,7 @@ export default {
         light: {
           colors: {
             secondary: '#FF6DFB',
+            border: '#E879F9'
           },
         },
         dark: {
