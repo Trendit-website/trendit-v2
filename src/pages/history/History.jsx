@@ -177,7 +177,7 @@ export default function History() {
                 <div className='flex flex-col w-full'>
                   <div className="flex flex-row items-center gap-x-8 text-center text-fuchsia-400 text-xs font-bold font-['Manrope']">
                     {historyTabs.map((tab, index) => (
-                      <p key={index} onClick={() => selectTab(tab.key)} className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] ${selectedHistory === tab.key ? 'border-b-2 border-border border-solid text-secondary font-bold' : ''}`}>{tab.title}</p>
+                      <p key={index} onClick={() => selectTab(tab.key)} className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] ${selectedHistory === tab.key ? 'border-b-2 border-border border-solid text-[#E879F9] font-bold' : ''}`}>{tab.title}</p>
                     ))}
                   </div>
                   {/* <Tabs
