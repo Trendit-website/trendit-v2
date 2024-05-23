@@ -467,17 +467,17 @@ export default function Welcome({ onNotificationClick }) {
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-                About Us
+               <a href='https://trendit3.com'> About Us </a>
+              </div>
+            </div>
+            <div className='py-3 justify-start items-center gap-[7px] flex'>
+              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']" onClick={() => navigate('terms')}>
+              <a href='/terms'>  Terms </a>
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-                Terms
-              </div>
-            </div>
-            <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-                Privacy policy
+               <a href='/terms'> Privacy policy </a>
               </div>
             </div>
           </div>
