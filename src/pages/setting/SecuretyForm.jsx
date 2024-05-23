@@ -237,14 +237,6 @@ function SecuretyFormContent() {
                           size='lg'
                           endContent={
                             <div className='flex gap-2 items-center'>
-                              <Button
-                                variant='light'
-                                type='submit'
-                                onClick={handleSubmit(handleUpdatePassword)}
-                                className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
-                              >
-                                {isUpdating ? <Loader /> : 'Edit'}
-                              </Button>
                               <button
                                 className='focus:outline-none'
                                 type='button'
@@ -402,6 +394,16 @@ function SecuretyFormContent() {
                         />
                       )}
                     />
+                  </div>
+                  <div className='flex justify-start'>
+                    <Button
+                      variant='light'
+                      type='submit'
+                      onClick={handleSubmit(handleUpdatePassword)}
+                      className='md:w-[290px]   cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2'
+                    >
+                      {isUpdating ? <Loader /> : 'Edit'}
+                    </Button>
                   </div>
                 </div>
               </div>

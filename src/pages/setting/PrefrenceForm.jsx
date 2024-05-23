@@ -12,6 +12,22 @@ import API from '../../services/AxiosInstance'
 import Loader from '../Loader'
 
 export default function PrefrenceForm() {
+  const { isLoading } = useGetUserPrefence()
+
+  return (
+    <>
+      {isLoading ? (
+        <div className='min-h-screen mx-auto'>
+          <Loader />
+        </div>
+      ) : (
+        <PrefrenceFormContent />
+      )}
+    </>
+  )
+}
+
+function PrefrenceFormContent() {
   const { data: userPrefrence } = useGetUserPrefence()
 
   const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
@@ -25,8 +41,13 @@ export default function PrefrenceForm() {
   useEffect(() => {
     setLoading(true)
     API.get('/settings/preferences')
-    .then((response) => (setLoading(false), setValue('appearance',response.data?.user_preferences?.appearance)))
-    .catch((error) => console.error(error))
+      .then(
+        (response) => (
+          setLoading(false),
+          setValue('appearance', response.data?.user_preferences?.appearance)
+        )
+      )
+      .catch((error) => console.error(error))
     // if (userPrefrence?.appearance) {
     //   setValue('appearance', userPrefrence?.appearance)
     // }
@@ -79,53 +100,55 @@ export default function PrefrenceForm() {
   const appearance = watch('appearance')
   return (
     <div>
-      {isLoading ? <div className='flex flex-row items-center justify-center'>
-        <Loader />
-        </div> :
-      <form>
-        <div className='self-stretch grow min-h-screen shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
-          <div className='text-sm font-bold font-Manrope'>Appearance</div>
-          <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
-            <RadioGroup
-              label='Select Appearance'
-              orientation='vertical'
-              color='secondary'
-              className='w-full'
-              value={appearance}
-            >
-              <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
-                <Radio
-                  onClick={() => handleToggleDarkMode('dark')}
-                  value='dark'
-                  isDisabled={appearance === 'dark'}
-                >
-                  Dark Mode
-                </Radio>
-              </div>
-
-              <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
-                <Radio
-                  onClick={() => handleToggleDarkMode('light')}
-                  value='light'
-                  isDisabled={appearance === 'light'}
-                >
-                  Light Mode
-                </Radio>
-              </div>
-              <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
-                <Radio
-                  onClick={() => handleToggleDarkMode('system')}
-                  value='system'
-                  isDisabled={appearance === 'system'}
-                >
-                  System Settings
-                </Radio>
-              </div>
-            </RadioGroup>
-          </div>
+      {isLoading ? (
+        <div className='flex flex-row items-center justify-center'>
+          <Loader />
         </div>
-      </form>
-      }
+      ) : (
+        <form>
+          <div className='self-stretch grow min-h-screen shrink basis-0 md:px-16 py-6 flex-col justify-start items-start gap-12 flex'>
+            <div className='text-sm font-bold font-Manrope'>Appearance</div>
+            <div className='self-stretch flex-col justify-start items-start gap-6 flex'>
+              <RadioGroup
+                label='Select Appearance'
+                orientation='vertical'
+                color='secondary'
+                className='w-full'
+                value={appearance}
+              >
+                <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <Radio
+                    onClick={() => handleToggleDarkMode('dark')}
+                    value='dark'
+                    isDisabled={appearance === 'dark'}
+                  >
+                    Dark Mode
+                  </Radio>
+                </div>
+
+                <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <Radio
+                    onClick={() => handleToggleDarkMode('light')}
+                    value='light'
+                    isDisabled={appearance === 'light'}
+                  >
+                    Light Mode
+                  </Radio>
+                </div>
+                <div className='self-stretch py-2 px-2 w-full bg-white hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <Radio
+                    onClick={() => handleToggleDarkMode('system')}
+                    value='system'
+                    isDisabled={appearance === 'system'}
+                  >
+                    System Settings
+                  </Radio>
+                </div>
+              </RadioGroup>
+            </div>
+          </div>
+        </form>
+      )}
     </div>
   )
 }

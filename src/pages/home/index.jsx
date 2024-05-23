@@ -42,13 +42,13 @@ export default function Welcome({ onNotificationClick }) {
   const { isTablet } = useContext(dashboardContext)
 
   const handOpenSocialModal = () => {
-    if (userDetails?.social_links?.facebook_verified === 'pending') {
-      toast.error('Verification request has been sent')
-    } else if (
+    if (
       userDetails?.social_links?.facebook_verified === 'rejected' ||
       userDetails?.social_links?.facebook_verified === 'idle'
     ) {
       onOpenVerify()
+    } else if (userDetails?.social_links?.facebook_verified === 'pending') {
+      toast.error('Verification request has been sent')
     } else {
       onOpenVerify()
     }
@@ -364,8 +364,9 @@ export default function Welcome({ onNotificationClick }) {
                   </div>
                 </Card>
               )}
-            {userDetails?.social_links?.instagram_verified === 'pending' &&
-              linkIg && (
+            {userDetails?.social_links?.instagram_verified === 'idle' ||
+              userDetails?.social_links?.instagram_verified === 'pending' ||
+              (linkIg && (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                     <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
@@ -458,7 +459,7 @@ export default function Welcome({ onNotificationClick }) {
                     </svg>
                   </div>
                 </Card>
-              )}
+              ))}
           </div>
         </div>
 
@@ -482,7 +483,7 @@ export default function Welcome({ onNotificationClick }) {
           </div>
           <div className='py-3 justify-start items-center gap-[7px] inline-flex'>
             <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-              © {new Date().getFullYear()} Trendit Techology.
+              © {new Date().getFullYear()} Trendit Media ltd.
             </div>
           </div>
         </div>

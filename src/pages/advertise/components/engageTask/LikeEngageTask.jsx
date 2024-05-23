@@ -56,6 +56,11 @@ export default function LikeEngageTask() {
     setValue('target_state', '')
   }, [watch().target_country, setValue])
 
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   const handlePaymentSuccess = async () => {
     try {
       const data = watch()
@@ -87,7 +92,7 @@ export default function LikeEngageTask() {
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
-          window.open(authorizationUrl) // Open the URL in a new tab
+          openInNewTab(authorizationUrl) // Call the function to open in a new tab
         }
       }
     } catch (error) {
@@ -213,7 +218,7 @@ people to post your ads on their social media account.`}
                       </div>
                       <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
+                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
                             Select Location
                           </div>
                         </div>
@@ -229,7 +234,7 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.target_country?.message}
                                 isLoading={isCountryLoading}
                                 selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 dark:text-white text-black  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                                className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                                 placeholder='Select country'
                                 classNames={{
                                   listbox: [
@@ -237,10 +242,7 @@ people to post your ads on their social media account.`}
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -265,66 +267,6 @@ people to post your ads on their social media account.`}
 
                         <div className='justify-center items-center gap-2 inline-flex'>
                           <div className="text-[10px] font-normal font-['Manrope']">
-                            You can target and select a particular location
-                            where your task or advert will be mostly shown. You
-                            can also select all States if you want to target
-                            every location in Nigeria
-                          </div>
-                        </div>
-                      </div>
-                      <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
-                        <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                          <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                            State
-                          </div>
-                        </div>
-                        <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
-                          <Controller
-                            name='target_state'
-                            aria-labelledby='target_state'
-                            control={control}
-                            render={({ field }) => (
-                              <Select
-                                aria-labelledby='target_state'
-                                isInvalid={!!errors.target_state}
-                                errorMessage={errors?.target_state?.message}
-                                isLoading={isStateLoading}
-                                selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                                placeholder='Select state'
-                                classNames={{
-                                  listbox: [
-                                    'bg-transparent',
-                                    'text-black/90 dark:text-white/90',
-                                    'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                                  ],
-                                  trigger: [
-                                    'bg-zinc-700 bg-opacity-10',
-                                    'dark:bg-white dark:bg-opacity-10',
-                                    'hover:bg-bg-white hover:bg-opacity-10',
-                                    'dark:hover:bg-default/70',
-                                    'group-data-[focused=true]:bg-default-200/50',
-                                    'dark:group-data-[focused=true]:bg-default/60',
-                                    '!cursor-text',
-                                    'border-2 border-transparent',
-                                    'focus-within:!border-fuchsia-600  ',
-                                    '!cursor-text',
-                                  ],
-                                }}
-                                {...field}
-                              >
-                                {states?.map((cou) => (
-                                  <SelectItem key={cou.name} value={cou.name}>
-                                    {cou.name}
-                                  </SelectItem>
-                                ))}
-                              </Select>
-                            )}
-                          />
-                        </div>
-
-                        <div className='justify-center items-center gap-2 inline-flex'>
-                          <div className=" text-[10px] font-normal font-['Manrope']">
                             You can target a particular location where your
                             Advert task will be mostly shown. Select “All over
                             Nigeria” if you want to target every location within
@@ -332,6 +274,70 @@ people to post your ads on their social media account.`}
                           </div>
                         </div>
                       </div>
+                      {watch().target_country !== 'All Countries' && (
+                        <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
+                          <div className='px-2 justify-center items-center gap-2 inline-flex'>
+                            <div className="text-center text-[12.83px] font-medium font-['Manrope']">
+                              State
+                            </div>
+                          </div>
+                          <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
+                            <Controller
+                              name='target_state'
+                              aria-labelledby='target_state'
+                              control={control}
+                              render={({ field }) => (
+                                <Select
+                                  aria-labelledby='target_state'
+                                  isInvalid={!!errors.target_state}
+                                  errorMessage={errors?.target_state?.message}
+                                  isLoading={isStateLoading}
+                                  selectedKeys={
+                                    field.value ? [field.value] : []
+                                  }
+                                  className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                                  placeholder='Select state'
+                                  classNames={{
+                                    listbox: [
+                                      'bg-transparent',
+                                      'text-black/90 dark:text-white/90',
+                                      'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                    ],
+                                    trigger: [
+                                      'bg-zinc-700 bg-opacity-10',
+                                      'dark:bg-white dark:bg-opacity-10',
+                                      'hover:bg-bg-white hover:bg-opacity-10',
+                                      'dark:hover:bg-default/70',
+                                      'group-data-[focused=true]:bg-default-200/50',
+                                      'dark:group-data-[focused=true]:bg-default/60',
+                                      '!cursor-text',
+                                      'border-2 border-transparent',
+                                      'focus-within:!border-fuchsia-600  ',
+                                      '!cursor-text',
+                                    ],
+                                  }}
+                                  {...field}
+                                >
+                                  {states?.map((cou) => (
+                                    <SelectItem key={cou.name} value={cou.name}>
+                                      {cou.name}
+                                    </SelectItem>
+                                  ))}
+                                </Select>
+                              )}
+                            />
+                          </div>
+
+                          <div className='justify-center items-center gap-2 inline-flex'>
+                            <div className="text-[10px] font-normal font-['Manrope']">
+                              You can target a particular location where your
+                              Advert task will be mostly shown. Select “All over
+                              Nigeria” if you want to target every location
+                              within the country.
+                            </div>
+                          </div>
+                        </div>
+                      )}
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Manrope']">
