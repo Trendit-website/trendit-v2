@@ -1,10 +1,12 @@
 // import { Spinner } from '@nextui-org/react'
 import { useEffect } from 'react'
 import { useVerifyPayment } from '../../api/walletApi'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 
 export default function Payment() {
   const { mutateAsync: verifyPayment } = useVerifyPayment()
+  const location = useLocation()
+
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const newPage = localStorage.getItem('paystack_redirect')
@@ -28,8 +30,10 @@ export default function Payment() {
             res?.data?.payment_type === 'task-creation'
           ) {
             navigate(`/dashboard/advertise-history`)
+            window.close()
           } else if (res?.data?.status) {
             navigate(`${newPage}`)
+            window.close()
           }
           // You can perform further actions after successful verification
         } catch (error) {
@@ -45,6 +49,27 @@ export default function Payment() {
     // Call verifyPaymentOnLoad when the component mounts
     verifyPaymentOnLoad()
   }, []) // Empty dependency array ensures the effect runs only once when the component mounts
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    if (params.get('payment') === 'success') {
+      if (window.opener) {
+        window.opener.postMessage('closeTab', '*')
+      }
+    }
+  }, [location.search])
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (event.data === 'closeTab') {
+        window.close()
+      }
+    }
+    window.addEventListener('message', handleMessage)
+    return () => {
+      window.removeEventListener('message', handleMessage)
+    }
+  }, [])
 
   return (
     <div className='bg-stone-800 flex items-center justify-center w-full h-screen'>

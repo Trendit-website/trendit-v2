@@ -7,12 +7,11 @@ import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile, useUserProfile } from '../../api/profileApis'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [selectedImage, setSelectedImage] = useState(null)
 
   const { data: profileDeatils } = useGetProfile()
   const birthdayDate = new Date(profileDeatils?.birthday)
@@ -48,6 +47,14 @@ export default function GeneralForm() {
     },
   })
 
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  useEffect(() => {
+    if (profileDeatils?.profile_picture) {
+      setSelectedImage(profileDeatils.profile_picture)
+    }
+  }, [profileDeatils])
+
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
   const { data: states, isLoading: isStateLoading } = useGetState(
@@ -69,7 +76,7 @@ export default function GeneralForm() {
     try {
       const formData = new FormData()
       // Append selected image to formData if available
-      if (selectedImage) {
+      if (selectedImage && typeof selectedImage === 'object') {
         formData.append('profile_picture', selectedImage)
       }
       // Append other form fields
@@ -107,7 +114,13 @@ export default function GeneralForm() {
                       <div className='mt-4'>
                         <img
                           // src={selectedImage}
-                          src={URL.createObjectURL(selectedImage)}
+                          name='profile_picture'
+                          // src={URL.createObjectURL(selectedImage)}
+                          src={
+                            typeof selectedImage === 'object'
+                              ? URL.createObjectURL(selectedImage)
+                              : selectedImage
+                          }
                           alt='Selected'
                           className='w24 h24 w-[66px] h-[66px] -top-4 absolute rounded-[10px]'
                         />

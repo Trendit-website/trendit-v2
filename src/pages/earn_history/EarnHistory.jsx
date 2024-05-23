@@ -8,7 +8,7 @@ import TaskCard from './TaskCard'
 // import CompletedTaskCard from './CompletedTaskCard'
 // import PendingTaskCard from './PendingTaskCard'
 // import ArchivedTaskCard from './ArchivedTaskCard'
-import {  useGetAllAdvert } from '../../api/advertApi'
+import { useGetAllAdvert } from '../../api/advertApi'
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 import API from '../../services/AxiosInstance'
@@ -40,12 +40,12 @@ export default function EarnHistory() {
   const [eachAdvert, setEachAdvert] = useState()
   const [isLoading, setLoading] = useState(false)
   // const { data: adverts } = useGetAdvert(selectedHistory)
-  const { data: adverts2 } = useGetAllAdvert()
+  // const { data: adverts2 } = useGetAllAdvert()
   const selectTab = (status) => {
     setSelectedHistory(status)
     setLoading(true)
     status === 'all' ? getAdvert() : setEachAdvert('')
-    API.get(`/user/tasks?status=${status}`)
+    API.get(`/performed-tasks?status=${status}`)
       .then(
         (response) => (
           setEachAdvert(response.data.all_tasks), setLoading(false)
@@ -54,7 +54,7 @@ export default function EarnHistory() {
       .catch((error) => console.error(error))
   }
   const getAdvert = () => {
-    API.get('/user/tasks')
+    API.get('/performed-tasks')
       .then((response) => setAdvert(response.data.all_tasks))
       .catch((error) => console.error(error))
   }
@@ -113,7 +113,7 @@ export default function EarnHistory() {
                   </div>
                 </AnimatePresence>
               </div>
-              <div className='px-3 opacity-0 justify-start items-center gap-[11px] flex'>
+              <div className='px-3 opacity-0 justify-start items-center gap-[11px]  fex'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <div className='w-6 h-6 p-[3px] justify-center items-center flex' />
                   <div className="text-center text-zinc-400 text-sm font-medium font-['Manrope']">
@@ -234,7 +234,7 @@ export default function EarnHistory() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className='px-3 justify-start hidden lg:flex lg:flex-row items-center gap-[11px] flx'>
+            <div className='px-3 justify-start  lg:flex lg:flex-row items-center gap-[11px] hidden flx'>
               <div className='justify-start items-center gap-[7px] flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

@@ -3,8 +3,13 @@
 import { Button, Modal, Input, ModalContent } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
-import { useFetchBallance, useWitdrawFundsh } from '../../api/walletApi'
+import {
+  useBankDetails,
+  useFetchBallance,
+  useWitdrawFundsh,
+} from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
+import BankCard from '../setting/BankCard'
 
 export default function WithdrawWalletModal({ isOpen, onClose }) {
   const {
@@ -15,6 +20,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
   } = useForm({})
   const { mutateAsync: fundWallet, isPending } = useWitdrawFundsh()
   const { data: showBalance } = useFetchBallance()
+  const { data: userBank } = useBankDetails()
 
   const handleInputChange = (event) => {
     const { value } = event.target
@@ -157,6 +163,9 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                   </div>
                 </div>
               </form>
+              <div className='grid md:px-10 '>
+                {userBank ? <BankCard /> : null}
+              </div>
             </div>
           </ModalContent>
         </Modal>
