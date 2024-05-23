@@ -59,7 +59,7 @@ import CreateThrAdvertTask from './pages/advertise/components/createAdvert/Creat
 import GenerateThrTask from './pages/earn/components/postadvert/GenerateThrTask'
 import TwoFaOtp from './components/auth/TwoFaOtp'
 import {
-  AppearanceContext,
+  // AppearanceContext,
   SetAppearanceContext,
 } from './providers/AppearanceProvider'
 import API from './services/AxiosInstance'
@@ -67,21 +67,8 @@ import { useContext } from 'react'
 import EarnHistory from './pages/earn_history/EarnHistory'
 
 function App() {
-  const { toggle, isDarkMode } = useDarkMode()
-  const userPrefrences = useContext(AppearanceContext)
+  const { isDarkMode } = useDarkMode()
   const setPrefrence = useContext(SetAppearanceContext)
-  // const setAppearance = () => {
-  //   API.get('/settings/preferences')
-  //     .then(
-  //       (response) => (
-  //         setPrefrence(response.data.user_preferences.appearance),
-  //         response.data.user_preferences.appearance === 'light'
-  //           ? console.log(100)
-  //           : toggle(!isDarkMode)
-  //       )
-  //     )
-  //     .catch((error) => console.error(error))
-  // }
 
   useEffect(() => {
     API.get('/settings/preferences')

@@ -169,7 +169,7 @@ export default function GenerateFbTask() {
               </div>
             )}
           </div>
-          {profileDeatils?.social_links?.facebook_verified === 'verified' && (
+          {profileDeatils?.social_links?.facebook_verified !== 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>

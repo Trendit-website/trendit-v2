@@ -61,7 +61,7 @@ export default function EarnHistory() {
   useEffect(() => {
     getAdvert()
   }, [])
-  // console.log(adverts, 'llp')
+  console.log(adverts, 'llp')
   // console.log(adverts2, 'll22p')
   const naviaget = useNavigate()
 
