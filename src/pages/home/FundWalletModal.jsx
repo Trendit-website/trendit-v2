@@ -24,6 +24,11 @@ export default function FundWalletModal({ isOpen, onClose }) {
     setValue('amount', formattedValue) // Set unformatted value for submission
   }
 
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+
   const onSubmit = async (data) => {
     try {
       const res = await fundWallet({ data })
@@ -35,7 +40,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
         })
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
-          window.open(authorizationUrl) // Open the URL in a new tab
+          openInNewTab(authorizationUrl) // Call the function to open in a new tab
         }
       }
     } catch (error) {

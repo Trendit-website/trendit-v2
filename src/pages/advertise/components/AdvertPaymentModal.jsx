@@ -14,7 +14,7 @@ export default function AdvertPaymentModal({
   amount,
   onSuccess,
   onWalletPaymentSuccess,
-  isPending
+  isPending,
 }) {
   const [view, setView] = useState('')
   const { data: walletBalance } = useFetchBallance()
@@ -306,12 +306,14 @@ export default function AdvertPaymentModal({
                         clipRule='evenodd'
                         d='M98.9682 7.88433C99.7448 8.5517 103.094 10.9026 104.175 10.3309C105.51 9.62529 103.397 7.49958 102.828 6.97553C102.105 6.30879 99.5175 4.29181 98.5269 4.47901C96.547 4.85353 98.2689 7.28363 98.9682 7.88433Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M100.618 32.0117C101.058 31.1478 102.225 30.8302 102.765 29.9943C103.415 28.9893 103.713 28.1098 103.474 26.8774C101.811 27.437 99.9194 29.1307 98.807 30.4552C97.8767 31.5621 96.5559 33.875 98.9828 33.8808C98.9615 33.5516 98.9401 33.222 98.9188 32.893C99.6463 32.9988 100.288 32.6627 100.618 32.0117Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
@@ -324,12 +326,14 @@ export default function AdvertPaymentModal({
                         clipRule='evenodd'
                         d='M107.959 41.4375C108.652 40.8562 109.408 39.1732 109.548 38.3044C109.603 37.9642 109.358 37.7036 109.387 37.4532C109.443 36.9761 110.424 36.0539 109.396 35.6622C108.498 35.3194 107.653 37.9817 107.424 38.563C107.19 39.1569 106.552 40.3145 106.748 40.8895C106.91 41.3666 107.491 41.8293 107.959 41.4375Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M116.252 5.39894C116.879 4.81688 117.276 4.15679 117.212 3.35641C117.16 2.72595 116.688 0.552221 116.156 0.616126C114.392 0.829124 115.185 6.3901 116.252 5.39894Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
@@ -342,36 +346,42 @@ export default function AdvertPaymentModal({
                         clipRule='evenodd'
                         d='M81.1234 101.831C80.2031 102.247 81.3588 108.308 82.7047 108.112C84.2766 107.884 82.0004 101.435 81.1234 101.831Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M80.099 99.8245C79.9854 101.189 81.7588 101.698 81.8429 100.215C81.9076 99.0706 80.2183 98.3901 80.099 99.8245Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M70.3611 63.6437C71.1709 66.6607 78.5414 67.9445 77.5483 63.8754C77.0511 61.8383 74.9745 63.6481 73.5244 63.4108C72.5859 63.2577 69.7911 61.5163 70.3611 63.6437Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M68.5123 58.2621C68.8588 56.6481 65.3264 54.8659 64.0451 55.3103C62.17 55.9607 62.1782 60.119 63.6082 61.2244C63.7966 61.3701 64.3735 61.7172 64.656 61.4404C65.1017 61.0028 64.6145 61.1221 64.5103 60.6858C64.3452 59.9915 63.8053 59.0995 64.3433 58.3098C65.3603 56.817 68.0157 60.5753 68.5123 58.2621Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M57.7415 66.0981C56.4684 66.0265 55.4238 68.0027 57.2977 67.8376C57.6561 67.8056 58.427 67.7152 58.6354 67.3385C58.98 66.7139 58.3014 66.1295 57.7415 66.0981Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
                         clipRule='evenodd'
                         d='M119.522 18.9854C119.086 18.355 118.172 17.3405 117.386 17.9728C116.69 18.5335 116.811 19.9175 117.078 20.6052C117.798 22.4566 119.497 24.1059 121.42 23.0392C120.752 21.7011 120.376 20.2195 119.522 18.9854Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                     </svg>
                   </div>
@@ -387,7 +397,7 @@ export default function AdvertPaymentModal({
                       className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                     >
                       <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
-                        Go Home
+                        Go History
                       </div>
                     </div>
                   </div>

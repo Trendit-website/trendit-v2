@@ -8,7 +8,7 @@ import TaskCard from './TaskCard'
 // import CompletedTaskCard from './CompletedTaskCard'
 // import PendingTaskCard from './PendingTaskCard'
 // import ArchivedTaskCard from './ArchivedTaskCard'
-import { useGetAdvert, useGetAllAdvert } from '../../api/advertApi'
+// import {  useGetAllAdvert } from '../../api/advertApi'
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 import API from '../../services/AxiosInstance'
@@ -20,19 +20,19 @@ export default function History() {
   const historyTabs = [
     {
       key: 'all',
-      title: 'All'
+      title: 'All',
     },
     {
       key: 'pending',
-      title: 'Pending'
+      title: 'Pending',
     },
     {
       key: 'approved',
-      title: 'Completed'
+      title: 'Completed',
     },
     {
       key: 'declined',
-      title: 'Archived'
+      title: 'Archived',
     },
   ]
   const [selectedHistory, setSelectedHistory] = useState(historyTabs[0].key)
@@ -40,23 +40,26 @@ export default function History() {
   const [eachAdvert, setEachAdvert] = useState()
   const [isLoading, setLoading] = useState(false)
   // const { data: adverts } = useGetAdvert(selectedHistory)
-  const { data: adverts2 } = useGetAllAdvert()
+  // const { data: adverts2 } = useGetAllAdvert()
   const selectTab = (status) => {
     setSelectedHistory(status)
     setLoading(true)
-    status === 'all' ? getAdvert() :
-    setEachAdvert('')
+    status === 'all' ? getAdvert() : setEachAdvert('')
     API.get(`/user/tasks?status=${status}`)
-    .then((response) => (setEachAdvert(response.data.all_tasks), setLoading(false)))
-    .catch((error) => console.error(error))
+      .then(
+        (response) => (
+          setEachAdvert(response.data.all_tasks), setLoading(false)
+        )
+      )
+      .catch((error) => console.error(error))
   }
   const getAdvert = () => {
     API.get('/user/tasks')
-    .then((response) => (setAdvert(response.data.all_tasks)))
-    .catch((error) => console.error(error))
+      .then((response) => setAdvert(response.data.all_tasks))
+      .catch((error) => console.error(error))
   }
   useEffect(() => {
-    getAdvert() 
+    getAdvert()
   }, [])
   // console.log(adverts, 'llp')
   // console.log(adverts2, 'll22p')
@@ -177,7 +180,17 @@ export default function History() {
                 <div className='flex flex-col w-full'>
                   <div className="flex flex-row items-center gap-x-8 text-center text-fuchsia-400 text-xs font-bold font-['Manrope']">
                     {historyTabs.map((tab, index) => (
-                      <p key={index} onClick={() => selectTab(tab.key)} className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] ${selectedHistory === tab.key ? 'border-b-2 border-border border-solid text-[#E879F9] font-bold' : ''}`}>{tab.title}</p>
+                      <p
+                        key={index}
+                        onClick={() => selectTab(tab.key)}
+                        className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] ${
+                          selectedHistory === tab.key
+                            ? 'border-b-2 border-border border-solid text-[#E879F9] font-bold'
+                            : ''
+                        }`}
+                      >
+                        {tab.title}
+                      </p>
                     ))}
                   </div>
                   {/* <Tabs
@@ -309,28 +322,36 @@ export default function History() {
                 }}
               >
                 {/* <PendingTaskCard /> */}
-                {isLoading ? <div className='flex flex-row justify-center'> <Loader /> </div>: 
-                <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? 
-                      <div className='text-center'>No {selectedHistory} Task</div>
-                    : (eachAdvert?.map((advert, index) => (
-                      <TaskCard
-                      key={index}
-                      goal={advert?.goal || advert?.caption}
-                      platform={advert?.platform}
-                      when={format(
-                        new Date(advert.date_created),
-                        'yyyy-MM-dd HH:mm:ss'
-                      )}
-                      status={advert?.status}
-                      onNextPage={() =>
-                        advert.status === 'pending' ? handleRoute() : ''
-                      }
-                    />
-                    )))      
-                        }
+                {isLoading ? (
+                  <div className='flex flex-row justify-center'>
+                    {' '}
+                    <Loader />{' '}
                   </div>
-                  }
+                ) : (
+                  <div className='grid gap-4'>
+                    {eachAdvert?.length === 0 ? (
+                      <div className='text-center'>
+                        No {selectedHistory} Task
+                      </div>
+                    ) : (
+                      eachAdvert?.map((advert, index) => (
+                        <TaskCard
+                          key={index}
+                          goal={advert?.goal || advert?.caption}
+                          platform={advert?.platform}
+                          when={format(
+                            new Date(advert.date_created),
+                            'yyyy-MM-dd HH:mm:ss'
+                          )}
+                          status={advert?.status}
+                          onNextPage={() =>
+                            advert.status === 'pending' ? handleRoute() : ''
+                          }
+                        />
+                      ))
+                    )}
+                  </div>
+                )}
               </motion.div>
             )}
             {selectedHistory === 'approved' && (
@@ -344,28 +365,36 @@ export default function History() {
                 }}
               >
                 {/* <CompletedTaskCard /> */}
-                {isLoading ? <div className='flex flex-row justify-center'> <Loader /> </div> : 
-                    <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? 
-                      <div className='text-center'>No {selectedHistory} Task</div>
-                    : (eachAdvert?.map((advert, index) => (
-                      <TaskCard
-                      key={index}
-                      goal={advert?.goal || advert?.caption}
-                      platform={advert?.platform}
-                      when={format(
-                        new Date(advert.date_created),
-                        'yyyy-MM-dd HH:mm:ss'
-                      )}
-                      status={advert?.status}
-                      onNextPage={() =>
-                        advert.status === 'pending' ? handleRoute() : ''
-                      }
-                    />
-                    )))      
-                        }
+                {isLoading ? (
+                  <div className='flex flex-row justify-center'>
+                    {' '}
+                    <Loader />{' '}
                   </div>
-                  }
+                ) : (
+                  <div className='grid gap-4'>
+                    {eachAdvert?.length === 0 ? (
+                      <div className='text-center'>
+                        No {selectedHistory} Task
+                      </div>
+                    ) : (
+                      eachAdvert?.map((advert, index) => (
+                        <TaskCard
+                          key={index}
+                          goal={advert?.goal || advert?.caption}
+                          platform={advert?.platform}
+                          when={format(
+                            new Date(advert.date_created),
+                            'yyyy-MM-dd HH:mm:ss'
+                          )}
+                          status={advert?.status}
+                          onNextPage={() =>
+                            advert.status === 'pending' ? handleRoute() : ''
+                          }
+                        />
+                      ))
+                    )}
+                  </div>
+                )}
               </motion.div>
             )}
             {selectedHistory === 'declined' && (
@@ -379,28 +408,36 @@ export default function History() {
                 }}
               >
                 {/* <ArchivedTaskCard /> */}
-                {isLoading ? <div className='flex flex-row justify-center'> <Loader /> </div> : 
-                <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? 
-                      <div className='text-center'>No {selectedHistory} Task</div>
-                    : (eachAdvert?.map((advert, index) => (
-                      <TaskCard
-                      key={index}
-                      goal={advert?.goal || advert?.caption}
-                      platform={advert?.platform}
-                      when={format(
-                        new Date(advert.date_created),
-                        'yyyy-MM-dd HH:mm:ss'
-                      )}
-                      status={advert?.status}
-                      onNextPage={() =>
-                        advert.status === 'pending' ? handleRoute() : ''
-                      }
-                    />
-                    )))      
-                        }
+                {isLoading ? (
+                  <div className='flex flex-row justify-center'>
+                    {' '}
+                    <Loader />{' '}
                   </div>
-                  }
+                ) : (
+                  <div className='grid gap-4'>
+                    {eachAdvert?.length === 0 ? (
+                      <div className='text-center'>
+                        No {selectedHistory} Task
+                      </div>
+                    ) : (
+                      eachAdvert?.map((advert, index) => (
+                        <TaskCard
+                          key={index}
+                          goal={advert?.goal || advert?.caption}
+                          platform={advert?.platform}
+                          when={format(
+                            new Date(advert.date_created),
+                            'yyyy-MM-dd HH:mm:ss'
+                          )}
+                          status={advert?.status}
+                          onNextPage={() =>
+                            advert.status === 'pending' ? handleRoute() : ''
+                          }
+                        />
+                      ))
+                    )}
+                  </div>
+                )}
               </motion.div>
             )}
           </div>
