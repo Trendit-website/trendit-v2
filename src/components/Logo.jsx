@@ -44,12 +44,6 @@ export default function Logo() {
 
   return (
     <div>
-      {/* {!isDarkMode ? (
-        <Image className='w-20 md:w-full ml-3' src={lightLogo} />
-      ) : (
-        <Image className='w-20 md:w-full ml-3' src={logo} />
-      )} */}
-
       <div onClick={toggleAppearance}>
         {userPrefrences === 'dark' ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
@@ -59,4 +53,27 @@ export default function Logo() {
       </div>
     </div>
   )
+}
+
+{
+  /* import { useDarkMode } from 'usehooks-ts'
+import { AppearanceContext} from '../providers/AppearanceProvider'
+import { useContext } from 'react' */
+}
+
+{
+  /* export default function Logo() {
+  const { isDarkMode } = useDarkMode(false)
+  const apperance = useContext(AppearanceContext)
+
+  return (
+    <div>
+      {apperance === 'dark' ? (
+        <Image className='w-20 md:w-full ml-3' src={logo} />
+      ) : (
+        <Image className='w-20 md:w-full ml-3' src={lightLogo} />
+      )}
+    </div>
+  )
+} */
 }

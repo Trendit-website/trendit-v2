@@ -58,6 +58,7 @@ import PreviewEarnAdvertTask from './pages/earn/components/PreviewEarnAdvertTask
 import CreateThrAdvertTask from './pages/advertise/components/createAdvert/CreateThrAdvertTask'
 import GenerateThrTask from './pages/earn/components/postadvert/GenerateThrTask'
 import TwoFaOtp from './components/auth/TwoFaOtp'
+import Terms from './pages/terms'
 import {
   // AppearanceContext,
   SetAppearanceContext,
@@ -109,6 +110,7 @@ function App() {
         <Routes>
           <Route path='/' element={<VerifyEmail />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/terms' element={<Terms />} />
           <Route path='/login/2fa_auth' element={<TwoFaOtp />} />
           {/* <Route path='/.well-known/assetlinks.json' element={<Wellness />} /> */}
           <Route path='/confirm-otp' element={<ConfirmOtp />} />

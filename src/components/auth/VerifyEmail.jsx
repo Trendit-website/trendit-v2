@@ -302,7 +302,7 @@ export default function VerifyEmail() {
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                 By signing up, you agree to our
               </div>
-              <div className='p-2 justify-center items-center gap-1 flex py-3'>
+              <div className='p-2 justify-center items-center gap-1 flex py-3' onClick={() => navigate('/terms')}>
                 <span className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                   {' '}
                 </span>
