@@ -52,7 +52,6 @@ export const usePreviewTask = (task_key) => {
     queryKey: ['perform_task', task_key],
     queryFn:async () => {
       const res = await API.get(`/user/tasks/${task_key}`)
-      console.log(res, task_key)
     }
   })
 }
