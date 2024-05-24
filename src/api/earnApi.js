@@ -28,6 +28,15 @@ export const useSubmitPerformTask = () => {
   })
 }
 
+export const usePreviewTask = (task_key) => {
+  return useQuery({
+    queryKey: ['perform_task', task_key],
+    queryFn:async () => {
+      const res = await API.get(`/user/tasks/${task_key}`)
+      console.log(res, task_key)
+    }
+  })
+}
 export const useCalcelTask = () => {
   return useMutation({
     mutationFn: (id) => {

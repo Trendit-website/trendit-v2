@@ -7,6 +7,7 @@ import Igframe from '../../../assets/IGFrame131.svg'
 import {
   useCalcelTask,
   usePerformTask,
+  usePreviewTask,
   useSubmitPerformTask,
 } from '../../../api/earnApi'
 import DownloadImageButton from '../../../components/DownloadButton'
@@ -17,13 +18,22 @@ import Timer from './Timer'
 import { useQueryClient } from '@tanstack/react-query'
 import trLogo from '../../../assets/tr-lg.svg'
 import Loader from '../../Loader'
+import API from '../../../services/AxiosInstance'
 
 export default function PreviewEarnAdvertTask() {
-  const { data: fetchTask } = usePerformTask('pending')
+  // const { data: fetchTask } = usePreviewTask('iii4it44euo2gi0ftvq5')
+  const [fetchTask, setFetchTask] = useState([])
   const [imageUrls, setImageUrls] = useState([])
   const [media, setMedia] = useState(null)
   const { mutateAsync: submitPerformTask, isPending } = useSubmitPerformTask()
   const { mutateAsync: calcelTask, isPending: loading } = useCalcelTask()
+
+  const getTaskPreview = (task_key) => {
+    API.get(`/user/tasks/${task_key}`)
+    .then((response) => (setFetchTask(response.data?.task)))
+    .catch((error) => console.error(error))
+  }
+ 
 
   const queryClient = useQueryClient()
   const {
@@ -32,7 +42,6 @@ export default function PreviewEarnAdvertTask() {
     watch,
     register,
   } = useForm({})
-  console.log(fetchTask, 'Task')
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -49,8 +58,8 @@ export default function PreviewEarnAdvertTask() {
         console.error('Error fetching images:', error)
       }
     }
-
-    fetchImages()
+     getTaskPreview('3r6fquy6g94mvem5uh14')
+    // fetchImages()
   }, [])
 
   const handleChange = async ({ target }) => {
@@ -80,7 +89,7 @@ export default function PreviewEarnAdvertTask() {
       fetchTask?.forEach((task) => {
         // Append reward_money and task_id_key for each task
         formData.append(`reward_money`, task?.reward_money)
-        formData.append(`task_id_key`, task?.task?.task_key)
+        formData.append(`task_id_key`, fetchTask?.task_key)
       })
       // Append other form fields
       console.log(data, 'formmm data')
@@ -149,16 +158,16 @@ export default function PreviewEarnAdvertTask() {
             </div>
           </div>
 
-          {fetchTask?.map((task, index) => (
+          
             <>
               <div className='self-stretch relative border border-white flex-col justify-start items-start flex'>
                 <div className='self-stretch  p-6 bg-opacity-40  rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
                   <div className='flex-col justify-start items-start gap-1.5 flex'>
                     <div className="self-stretch text-zinc-400 text-[10px] font-normal font-['Manrope']">
-                      Jan 12th 9:27pm
+                      {fetchTask?.date_created}
                     </div>
                     <div className="capitalize text-3xl font-medium font-['Manrope']">
-                      Like and follow {task?.task?.platform} page
+                      Like and follow {fetchTask?.platform} page
                     </div>
                     <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
                       <div className='justify-start items-center gap-0.5 flex'>
@@ -184,10 +193,10 @@ export default function PreviewEarnAdvertTask() {
                       </div>
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-                      <div className="text-[#FFA2A2] text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
+                      {/* <div className="text-[#FFA2A2] text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                         Note: That you must have at Least 500 followers to be
                         able to Generate this task
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
@@ -198,36 +207,25 @@ export default function PreviewEarnAdvertTask() {
                     />
                   </div>
                 </div>
-                <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
+                <div className='self-stretch p-3 bg-[#ADFFB0] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                     <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
-                      You must NOT UNLIKE or UNFOLLOW the {task?.task?.platform}{' '}
-                      page after you have like and followed the page. Your
-                      Trendit account will be suspended once you UNLIKE or
-                      UNFOLLOW the {task?.task?.platform}
+                        Your task has been approved and is on on our page for eligible users to perform.. Thank you.
                       Page.
                     </div>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='20'
-                      height='20'
-                      viewBox='0 0 20 20'
-                      fill='none'
-                    >
-                      <path
-                        d='M10.0013 13.3413V9.17464M10.0013 6.67464V6.66631M18.3346 9.99984C18.3346 14.6022 14.6037 18.3332 10.0013 18.3332C5.39893 18.3332 1.66797 14.6022 1.66797 9.99984C1.66797 5.39746 5.39893 1.6665 10.0013 1.6665C14.6037 1.6665 18.3346 5.39746 18.3346 9.99984Z'
-                        stroke='#1877F2'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                      />
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.3642 17.4489H4.63582C4.08329 17.4489 3.55339 17.2294 3.16268 16.8387C2.77198 16.448 2.55249 15.9181 2.55249 15.3655V4.63802C2.55249 4.08549 2.77198 3.55558 3.16268 3.16488C3.55339 2.77418 4.08329 2.55469 4.63582 2.55469H15.3642C15.9167 2.55469 16.4466 2.77418 16.8373 3.16488C17.228 3.55558 17.4475 4.08549 17.4475 4.63802V15.3655C17.4475 15.9181 17.228 16.448 16.8373 16.8387C16.4466 17.2294 15.9167 17.4489 15.3642 17.4489ZM4.63582 3.38802C4.3043 3.38802 3.98636 3.51972 3.75194 3.75414C3.51752 3.98856 3.38582 4.3065 3.38582 4.63802V15.3655C3.38582 15.697 3.51752 16.015 3.75194 16.2494C3.98636 16.4838 4.3043 16.6155 4.63582 16.6155H15.3642C15.6957 16.6155 16.0136 16.4838 16.248 16.2494C16.4825 16.015 16.6142 15.697 16.6142 15.3655V4.63802C16.6142 4.3065 16.4825 3.98856 16.248 3.75414C16.0136 3.51972 15.6957 3.38802 15.3642 3.38802H4.63582Z" fill="#006304"/>
+                        <path d="M4.63582 3.38802C4.3043 3.38802 3.98636 3.51972 3.75194 3.75414C3.51752 3.98856 3.38582 4.3065 3.38582 4.63802V15.3655C3.38582 15.697 3.51752 16.015 3.75194 16.2494C3.98636 16.4838 4.3043 16.6155 4.63582 16.6155H15.3642C15.6957 16.6155 16.0136 16.4838 16.248 16.2494C16.4825 16.015 16.6142 15.697 16.6142 15.3655V4.63802C16.6142 4.3065 16.4825 3.98856 16.248 3.75414C16.0136 3.51972 15.6957 3.38802 15.3642 3.38802H4.63582Z" fill="#006304"/>
+                        <path d="M13.1749 8.66701C13.5499 8.28368 12.9582 7.69201 12.5832 8.07534L9.61656 11.042C9.13323 10.5587 8.6499 10.0837 8.1749 9.60034C8.09644 9.52188 7.99002 9.47781 7.87906 9.47781C7.76811 9.47781 7.66169 9.52188 7.58323 9.60034C7.50477 9.6788 7.46069 9.78522 7.46069 9.89618C7.46069 10.0071 7.50477 10.1136 7.58323 10.192L9.31657 11.9253C9.39616 12.0016 9.50215 12.0442 9.6124 12.0442C9.72265 12.0442 9.82864 12.0016 9.90823 11.9253L13.1749 8.66701Z" fill="white"/>
+                        </svg>
+
                   </div>
                 </div>
               </div>
-              <div className='w-full'>
+              {/* <div className='w-full'>
                 <Timer onDone={() => onCancel(task?.key)} />
-              </div>
-              <div key={index} className='grid gap-3 md:gap-6 md:grid-cols-2'>
+              </div> */}
+              <div className='grid justify-center gap-3 md:gap-6 md:grid-cols-2'>
                 <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
                   <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
                     <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
@@ -284,6 +282,7 @@ export default function PreviewEarnAdvertTask() {
                         // variant='solid'
                         symbol=''
                         copyIcon={
+                          <Link href={fetchTask?.account_link}>
                           <svg
                             xmlns='http://www.w3.org/2000/svg'
                             width='17'
@@ -296,44 +295,27 @@ export default function PreviewEarnAdvertTask() {
                               fill='#FF6DFB'
                             />
                           </svg>
+                          </Link>
                         }
                         className='self-stretch rounded-none h-[60px] p-2 bg-white bg-opacity-10  items-center gap-1 '
                       >
                         <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-[10px] font-normal font-['Manrope']">
-                          {task?.task?.caption}
+                          {fetchTask?.account_link}
                         </div>
                       </Snippet>
 
                       <div className='justify-start items-center gap-2 flex'>
                         <div className='w-4 h-4 relative' />
-                        <div className="text-fuchsia-400 text-sm font-medium font-['Manrope']">
-                          Copy text{' '}
                         </div>
-                      </div>
-                      {task?.task?.media_path && (
-                        <div className='w-[243px] items-center inline-flex flex-col py-2 relative opacity-50 bg-neutral-800'>
-                          <Image
-                            className='w-40 h-40'
-                            src={task?.task?.media_path}
-                            alt='Image'
-                          />
-                          <Button
-                            variant='ghost'
-                            className='p-2 mt-3 bg-fuchsia-400'
-                          >
-                            <DownloadImageButton object={task} />
-                          </Button>
-                        </div>
-                      )}
 
-                      {task?.task?.account_link && (
+                      {/* {fetchTask?.account_link && (
                         <Link
                           isExternal
-                          href={task?.task?.account_link}
+                          href={fetchTask?.account_link}
                           className='self-stretch h-9 p-2 bg-white justify-center items-center gap-1 inline-flex'
                         >
                           <div className="grow shrink basis-0  text-black text-[12.83px] font-normal font-['Manrope']">
-                            {task?.task?.account_link}
+                            {fetchTask?.account_link}
                           </div>
                           <div className='justify-start items-center gap-2 flex'>
                             <svg
@@ -353,19 +335,19 @@ export default function PreviewEarnAdvertTask() {
                             </div>
                           </div>
                         </Link>
-                      )}
+                      )} */}
                       <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                         <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
                           <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Manrope']">
                             You must NOT DELETE THE ADVERT POST on the{' '}
                             <span className='uppercase'>
-                              {task?.task?.platform}
+                              {fetchTask?.platform}
                             </span>{' '}
                             page after you have post the avdert on your account
                             Your Trendit account will be suspended once you
                             Delete the advert on your{' '}
                             <span className='uppercase'>
-                              {task?.task?.platform}
+                              {fetchTask?.platform}
                             </span>{' '}
                             {''}
                             Page.
@@ -374,19 +356,6 @@ export default function PreviewEarnAdvertTask() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-
-                <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
-                  <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
-                    <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                      <div className="grow shrink basis-0 text-center text-white text-2xl font-medium font-['Manrope']">
-                        Upload proof
-                      </div>
-                    </div>
-                  </div>
-                  <div className=' flex-col justify-start items-center gap-8 flex'>
-                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'></div>
                   </div>
                 </div>
               </div>
@@ -403,7 +372,7 @@ export default function PreviewEarnAdvertTask() {
                 </Button>
               </div>
             </>
-          ))}
+          
         </div>
       </form>
     </div>
