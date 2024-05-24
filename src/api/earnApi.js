@@ -19,6 +19,25 @@ export const usePerformTask = (status) => {
     },
   })
 }
+export const usePreviewPerformTask = (key) => {
+  return useQuery({
+    queryKey: ['perform_task', key],
+    queryFn: async () => {
+      const res = await API.get(`/performed-tasks/${key}`)
+      return res?.data?.performed_task
+    },
+  })
+}
+
+export const usePerformTotalTask = () => {
+  return useQuery({
+    queryKey: ['perform_task_total'],
+    queryFn: async () => {
+      const res = await API.get(`/performed-tasks`)
+      return res?.data?.performed_tasks
+    },
+  })
+}
 
 export const useSubmitPerformTask = () => {
   return useMutation({

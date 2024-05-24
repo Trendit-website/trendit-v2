@@ -38,6 +38,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
         toast.success(res.data.message, {
           duration: 20000,
         })
+        onClose()
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
           openInNewTab(authorizationUrl) // Call the function to open in a new tab
