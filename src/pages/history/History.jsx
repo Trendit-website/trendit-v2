@@ -302,9 +302,7 @@ export default function History() {
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
-                        onNextPage={() =>
-                          advert.status === 'pending' ? handleRoute(advert?.task_key) : ''
-                        }
+                        onNextPage={() => handleRoute(advert?.task_key)}
                       />
                     ))
                   )}
@@ -345,7 +343,7 @@ export default function History() {
                           )}
                           status={advert?.status}
                           onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
+                            advert.status === 'pending' ? handleRoute(advert?.task_key) : ''
                           }
                         />
                       ))
@@ -388,7 +386,7 @@ export default function History() {
                           )}
                           status={advert?.status}
                           onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
+                            advert.status === 'approved' ? handleRoute(advert?.task_key) : ''
                           }
                         />
                       ))
@@ -430,9 +428,7 @@ export default function History() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
-                          }
+                          onNextPage={() => handleRoute(advert?.task_key)}
                         />
                       ))
                     )}
