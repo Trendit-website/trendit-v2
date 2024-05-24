@@ -55,7 +55,7 @@ export default function History() {
   }
   const getAdvert = () => {
     API.get('/user/tasks')
-      .then((response) => (setAdvert(response.data.all_tasks)))
+      .then((response) => setAdvert(response.data.all_tasks))
       .catch((error) => console.error(error))
   }
   useEffect(() => {
@@ -193,44 +193,6 @@ export default function History() {
                       </p>
                     ))}
                   </div>
-                  {/* <Tabs
-                    fullWidth
-                    size='md'
-                    aria-label='Tabs form'
-                    selectedKey={selectedHistory}
-                    onSelectionChange={setSelectedHistory}
-                    variant='underlined'
-                    classNames={{
-                      tabList: '  bordered  py-2',
-                      cursor: ' bg-fuchsia-400',
-                      tabContent:
-                        'group-data-[selected=true]:text-fuchsia-400 ',
-                    }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
-                    color='secondary'
-                  >
-                    <Tab
-                      key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='All'
-                    ></Tab>
-                    <Tab
-                      key='pending'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='Pending'
-                      onClick={selectTab('pending')}
-                    ></Tab>
-                    <Tab
-                      key='approved'
-                      title='Completed'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                    <Tab
-                      key='declined'
-                      title='Archived'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                  </Tabs> */}
                 </div>
               </AnimatePresence>
             </div>
@@ -303,7 +265,9 @@ export default function History() {
                         )}
                         status={advert?.status}
                         onNextPage={() =>
-                          advert.status === 'pending' ? handleRoute(advert?.task_key) : ''
+                          advert.status === 'pending'
+                            ? handleRoute(advert?.task_key)
+                            : ''
                         }
                       />
                     ))
