@@ -10,9 +10,11 @@ import API from '../../services/AxiosInstance'
 import { useEffect, useState } from 'react'
 import { Button } from '@nextui-org/react'
 import Loader from '../Loader'
+import toast from 'react-hot-toast'
 
 export default function PreviewAdvertTask() {
   const param = useParams()
+  const navigate = useNavigate()
   const [loading, isLoading] = useState()
   const taskId = param.taskId
   const { data: fetchTaskPreview } = usePreviewTask(taskId)
@@ -23,11 +25,17 @@ export default function PreviewAdvertTask() {
     .catch((error) => console.error(error))
   }
 
+  const deleteTask = (task_id) => {
+    API.delete(`/user/tasks/${task_id}`)
+    .then((response) => (toast.success(response.data.message), navigate('/dashboard/zadvertise-history')))
+    .catch((error) => toast.error(error.message))
+  }
+
   useEffect(() => {
     getPreview(taskId)
   }, [])
 
-  const navigate = useNavigate()
+ 
 
   return (
     <div>
@@ -313,7 +321,7 @@ export default function PreviewAdvertTask() {
                 <Button
                   type='submit'
                   isDisabled={loading}
-                  onClick={() => onCancel(task?.key)}
+                  onClick={() => deleteTask(taskPreview?.task_key)}
                 //   className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
                   <div className="flex items-center text-center text-[#FF3D00] text-[12.83px] font-medium font-['Manrope']">
