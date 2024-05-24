@@ -39,6 +39,7 @@ import GenerateWapTask from './pages/earn/components/postadvert/GenerateWapTask'
 import GenerateFbTask from './pages/earn/components/postadvert/GenerateFbTask'
 import EarnEngageTask from './pages/earn/components/EarnEngageTask'
 import EarnAdvertTask from './pages/earn/components/EarnAdvertTask'
+import PreviewAdvertTask from './pages/advertise/PreviewAdvertTask'
 import ResellForm from './pages/resell/components/ResellForm'
 import GenerateLikeEngageTask from './pages/earn/components/engageadvert/GenerateLikeEngageTask'
 import GenerateFollowEngageTask from './pages/earn/components/engageadvert/GenerateFollowEngageTask'
@@ -277,6 +278,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PreviewEarnAdvertTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='advert-task-preview/:taskId'
+              element={
+                <ProtectedRoute>
+                  <PreviewAdvertTask />
                 </ProtectedRoute>
               }
             />

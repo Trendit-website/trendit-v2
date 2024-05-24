@@ -65,8 +65,8 @@ export default function History() {
   // console.log(adverts2, 'll22p')
   const naviaget = useNavigate()
 
-  const handleRoute = () => {
-    naviaget('/dashboard/earn-advert-task-preview')
+  const handleRoute = (task_id) => {
+    naviaget(`/dashboard/advert-task-preview/${task_id}`)
   }
   return (
     <div>
@@ -193,44 +193,6 @@ export default function History() {
                       </p>
                     ))}
                   </div>
-                  {/* <Tabs
-                    fullWidth
-                    size='md'
-                    aria-label='Tabs form'
-                    selectedKey={selectedHistory}
-                    onSelectionChange={setSelectedHistory}
-                    variant='underlined'
-                    classNames={{
-                      tabList: '  bordered  py-2',
-                      cursor: ' bg-fuchsia-400',
-                      tabContent:
-                        'group-data-[selected=true]:text-fuchsia-400 ',
-                    }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
-                    color='secondary'
-                  >
-                    <Tab
-                      key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='All'
-                    ></Tab>
-                    <Tab
-                      key='pending'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='Pending'
-                      onClick={selectTab('pending')}
-                    ></Tab>
-                    <Tab
-                      key='approved'
-                      title='Completed'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                    <Tab
-                      key='declined'
-                      title='Archived'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                  </Tabs> */}
                 </div>
               </AnimatePresence>
             </div>
@@ -302,9 +264,12 @@ export default function History() {
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
-                        onNextPage={() =>
-                          advert.status === 'pending' ? handleRoute() : ''
-                        }
+                        // onNextPage={() =>
+                        //   advert.status === 'pending'
+                        //     ? handleRoute(advert?.task_key)
+                        //     : ''
+                        // }
+                        onNextPage={() => handleRoute(advert?.task_key)}
                       />
                     ))
                   )}
@@ -345,7 +310,9 @@ export default function History() {
                           )}
                           status={advert?.status}
                           onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
+                            advert.status === 'pending'
+                              ? handleRoute(advert?.task_key)
+                              : ''
                           }
                         />
                       ))
@@ -388,7 +355,9 @@ export default function History() {
                           )}
                           status={advert?.status}
                           onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
+                            advert.status === 'approved'
+                              ? handleRoute(advert?.task_key)
+                              : ''
                           }
                         />
                       ))
@@ -430,9 +399,7 @@ export default function History() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
-                          }
+                          onNextPage={() => handleRoute(advert?.task_key)}
                         />
                       ))
                     )}
