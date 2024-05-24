@@ -55,7 +55,7 @@ export default function History() {
   }
   const getAdvert = () => {
     API.get('/user/tasks')
-      .then((response) => setAdvert(response.data.all_tasks))
+      .then((response) => (setAdvert(response.data.all_tasks)))
       .catch((error) => console.error(error))
   }
   useEffect(() => {
@@ -65,8 +65,8 @@ export default function History() {
   // console.log(adverts2, 'll22p')
   const naviaget = useNavigate()
 
-  const handleRoute = () => {
-    naviaget('/dashboard/earn-advert-task-preview')
+  const handleRoute = (task_id) => {
+    naviaget(`/dashboard/advert-task-preview/${task_id}`)
   }
   return (
     <div>
@@ -303,7 +303,7 @@ export default function History() {
                         )}
                         status={advert?.status}
                         onNextPage={() =>
-                          advert.status === 'pending' ? handleRoute() : ''
+                          advert.status === 'pending' ? handleRoute(advert?.task_key) : ''
                         }
                       />
                     ))
