@@ -770,6 +770,7 @@ export default function CreateThrAdvertTask() {
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          isPending={isPending}
         />
       )}
     </>

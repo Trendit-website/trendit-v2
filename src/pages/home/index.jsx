@@ -364,8 +364,9 @@ export default function Welcome({ onNotificationClick }) {
                   </div>
                 </Card>
               )}
-            {userDetails?.social_links?.instagram_verified === 'idle' ||
-              userDetails?.social_links?.instagram_verified === 'pending' ||
+            {userDetails?.social_links?.instagram_verified === 'pending' ||
+              userDetails?.social_links?.instagram_verified === 'rejected' ||
+              userDetails?.social_links?.instagram_verified === 'idle' ||
               (linkIg && (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
@@ -467,17 +468,20 @@ export default function Welcome({ onNotificationClick }) {
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-               <a href='https://trendit3.com'> About Us </a>
+                <a href='https://trendit3.com'> About Us </a>
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
-              <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']" onClick={() => navigate('terms')}>
-              <a href='/terms'>  Terms </a>
+              <div
+                className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']"
+                onClick={() => navigate('terms')}
+              >
+                <a href='/terms'> Terms </a>
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-               <a href='/terms'> Privacy policy </a>
+                <a href='/terms'> Privacy policy </a>
               </div>
             </div>
           </div>

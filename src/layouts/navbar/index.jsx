@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 
 import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
@@ -63,11 +63,7 @@ const Navbar = ({ onNotificationClick }) => {
       document.body.classList.remove('bg-background')
     }
   }
-  useEffect(() => {
-    // Store dark mode preference in local storage
-    // localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
-    // setAppearance()
-  }, [])
+
   return (
     <>
       <div
@@ -155,7 +151,7 @@ const Navbar = ({ onNotificationClick }) => {
                       />
                     </svg>
                   </div>
-                  <div
+                  {/* <div
                     onClick={onNotificationClick}
                     className='w-6 h-6 relative cursor-pointer'
                   >
@@ -173,7 +169,7 @@ const Navbar = ({ onNotificationClick }) => {
                         strokeLinecap='round'
                       />
                     </svg>
-                  </div>
+                  </div> */}
 
                   <div
                     onClick={onOpen}

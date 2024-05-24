@@ -1,4 +1,9 @@
+import { usePerformTotalTask } from '../../api/earnApi'
+import Loader from '../Loader'
+
 export default function AdvrtTaskViewCard() {
+  const { data: totalTask } = usePerformTotalTask()
+
   return (
     <div>
       <div className='self-stretch  p-6 bg-[#1E1E1E] dark:bg-white dark:bg-opacity-5 border border-stone-900 flex-col justify-center items-start gap-6 flex'>
@@ -66,7 +71,7 @@ export default function AdvrtTaskViewCard() {
               </div>
             </div>
             <div className="self-stretch py-10 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-              456 Adverts
+              {totalTask ? `${totalTask?.length} Adverts` : <Loader />}
             </div>
           </div>
         </div>
