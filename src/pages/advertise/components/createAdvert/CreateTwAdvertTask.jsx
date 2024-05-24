@@ -129,9 +129,7 @@ export default function CreateTwAdvertTask() {
     )
     setImageUrl((prevImageUrl) => prevImageUrl.filter((_, i) => i !== index))
   }
-  console.log(previewUrls, 'previe')
-  console.log(imageUrl, 'imageUrl')
-  // // const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(() => {
     setValue('target_state', '')
@@ -145,10 +143,10 @@ export default function CreateTwAdvertTask() {
     onOpen()
   }
 
-  const openInNewTab = (url) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
-    if (newWindow) newWindow.opener = null
-  }
+  // const openInNewTab = (url) => {
+  //   const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  //   if (newWindow) newWindow.opener = null
+  // }
   const handlePaymentSuccess = async () => {
     try {
       const data = watch()
@@ -177,11 +175,26 @@ export default function CreateTwAdvertTask() {
         toast.success(res.data.message, {
           duration: 20000,
         })
-        //  navigate('dashboard/advertise-history')
+        onClose()
+
+        // if (authorizationUrl) {
+        //   localStorage.setItem('paystack_redirect', window.location.pathname)
+        //   openInNewTab(authorizationUrl) // Call the function to open in a new tab
+
+        // }
         const authorizationUrl = res?.data?.authorization_url
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
-          openInNewTab(authorizationUrl) // Call the function to open in a new tab
+          const newTab = window.open(authorizationUrl) // Open the URL in a new tab
+          newTab.opener = window
+          window.addEventListener('message', (event) => {
+            console.log('Received message in original tab:', event.data)
+            if (event.data === 'closeOriginalTab') {
+              console.log('Closing original tab...')
+              window.close()
+              // newTab.close()
+            }
+          })
         }
       }
     } catch (error) {
@@ -753,6 +766,7 @@ want to post your advert.`}
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          isPending={isPending}
         />
       )}
     </>

@@ -8,7 +8,6 @@ import TaskCard from './TaskCard'
 // import CompletedTaskCard from './CompletedTaskCard'
 // import PendingTaskCard from './PendingTaskCard'
 // import ArchivedTaskCard from './ArchivedTaskCard'
-import { useGetAllAdvert } from '../../api/advertApi'
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom'
 import API from '../../services/AxiosInstance'
@@ -39,8 +38,7 @@ export default function EarnHistory() {
   const [adverts, setAdvert] = useState()
   const [eachAdvert, setEachAdvert] = useState()
   const [isLoading, setLoading] = useState(false)
-  // const { data: adverts } = useGetAdvert(selectedHistory)
-  // const { data: adverts2 } = useGetAllAdvert()
+
   const selectTab = (status) => {
     setSelectedHistory(status)
     setLoading(true)
@@ -48,25 +46,23 @@ export default function EarnHistory() {
     API.get(`/performed-tasks?status=${status}`)
       .then(
         (response) => (
-          setEachAdvert(response.data.all_tasks), setLoading(false)
+          setEachAdvert(response?.data?.all_tasks), setLoading(false)
         )
       )
       .catch((error) => console.error(error))
   }
   const getAdvert = () => {
     API.get('/performed-tasks')
-      .then((response) => setAdvert(response.data.all_tasks))
+      .then((response) => setAdvert(response?.data?.performed_tasks))
       .catch((error) => console.error(error))
   }
   useEffect(() => {
     getAdvert()
   }, [])
-  console.log(adverts, 'llp')
-  // console.log(adverts2, 'll22p')
-  const naviaget = useNavigate()
+  const navigate = useNavigate()
 
-  const handleRoute = () => {
-    naviaget('/dashboard/earn-advert-task-preview')
+  const handleRoute = (taskId) => {
+    navigate(`/dashboard/earn-advert-task-preview/${taskId}`)
   }
   return (
     <div>
@@ -183,7 +179,7 @@ export default function EarnHistory() {
                       <p
                         key={index}
                         onClick={() => selectTab(tab.key)}
-                        className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] ${
+                        className={`text-zinc-400 text-[12.83px] cursor-pointer font-bold font-['Manrope'] ${
                           selectedHistory === tab.key
                             ? 'border-b-2 border-border border-solid text-secondary font-bold'
                             : ''
@@ -193,49 +189,11 @@ export default function EarnHistory() {
                       </p>
                     ))}
                   </div>
-                  {/* <Tabs
-                    fullWidth
-                    size='md'
-                    aria-label='Tabs form'
-                    selectedKey={selectedHistory}
-                    onSelectionChange={setSelectedHistory}
-                    variant='underlined'
-                    classNames={{
-                      tabList: '  bordered  py-2',
-                      cursor: ' bg-fuchsia-400',
-                      tabContent:
-                        'group-data-[selected=true]:text-fuchsia-400 ',
-                    }}
-                    className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
-                    color='secondary'
-                  >
-                    <Tab
-                      key='all'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='All'
-                    ></Tab>
-                    <Tab
-                      key='pending'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='Pending'
-                      onClick={selectTab('pending')}
-                    ></Tab>
-                    <Tab
-                      key='approved'
-                      title='Completed'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                    <Tab
-                      key='declined'
-                      title='Archived'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                  </Tabs> */}
                 </div>
               </AnimatePresence>
             </div>
             <div className='px-3 justify-start  lg:flex lg:flex-row items-center gap-[11px] hidden flx'>
-              <div className='justify-start items-center gap-[7px] flex'>
+              <div className='justify-start hidden items-center gap-[7px] flx'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='24'
@@ -254,7 +212,7 @@ export default function EarnHistory() {
                   Filter
                 </div>
               </div>
-              <div className='justify-start items-center gap-[7px] flex'>
+              <div className='justify-start hidden items-center gap-[7px] flx'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='24'
@@ -291,20 +249,20 @@ export default function EarnHistory() {
                   {adverts?.length === 0 ? (
                     <div className='text-center'>No {selectedHistory} Task</div>
                   ) : (
-                    adverts?.map((advert, index) => (
+                    adverts?.map((advert) => (
                       <TaskCard
-                        key={index}
-                        goal={advert?.caption || advert?.goal}
-                        platform={advert?.platform}
-                        task_type={advert?.task_type}
+                        key={advert?.key}
+                        goal={advert?.task?.caption || advert?.task?.goal}
+                        platform={advert?.task?.platform}
+                        task_type={advert?.task?.task_type}
                         when={format(
-                          new Date(advert.date_created),
+                          new Date(advert?.task?.date_created),
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
-                        onNextPage={() =>
-                          advert.status === 'pending' ? handleRoute() : ''
-                        }
+                        onNextPage={() => handleRoute(advert?.key)}
+                        price={advert?.reward_money}
+                        // taskId={advert?.key}
                       />
                     ))
                   )}
@@ -337,16 +295,17 @@ export default function EarnHistory() {
                       eachAdvert?.map((advert, index) => (
                         <TaskCard
                           key={index}
-                          goal={advert?.goal || advert?.caption}
-                          platform={advert?.platform}
+                          goal={advert?.task?.caption || advert?.task?.goal}
+                          platform={advert?.task?.platform}
+                          task_type={advert?.task?.task_type}
                           when={format(
-                            new Date(advert.date_created),
+                            new Date(advert?.task?.date_created),
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
-                          }
+                          onNextPage={() => handleRoute(advert?.key)}
+                          price={advert?.reward_money}
+                          taskId={advert?.key}
                         />
                       ))
                     )}
@@ -380,16 +339,17 @@ export default function EarnHistory() {
                       eachAdvert?.map((advert, index) => (
                         <TaskCard
                           key={index}
-                          goal={advert?.goal || advert?.caption}
-                          platform={advert?.platform}
+                          goal={advert?.task?.caption || advert?.task?.goal}
+                          platform={advert?.task?.platform}
+                          task_type={advert?.task?.task_type}
                           when={format(
-                            new Date(advert.date_created),
+                            new Date(advert?.task?.date_created),
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
-                          }
+                          onNextPage={() => handleRoute(advert?.key)}
+                          price={advert?.reward_money}
+                          taskId={advert?.key}
                         />
                       ))
                     )}
@@ -423,16 +383,17 @@ export default function EarnHistory() {
                       eachAdvert?.map((advert, index) => (
                         <TaskCard
                           key={index}
-                          goal={advert?.goal || advert?.caption}
-                          platform={advert?.platform}
+                          goal={advert?.task?.caption || advert?.task?.goal}
+                          platform={advert?.task?.platform}
+                          task_type={advert?.task?.task_type}
                           when={format(
-                            new Date(advert.date_created),
+                            new Date(advert?.task?.date_created),
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() =>
-                            advert.status === 'pending' ? handleRoute() : ''
-                          }
+                          onNextPage={() => handleRoute(advert?.key)}
+                          price={advert?.reward_money}
+                          taskId={advert?.key}
                         />
                       ))
                     )}

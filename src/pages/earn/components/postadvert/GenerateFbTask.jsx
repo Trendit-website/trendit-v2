@@ -14,6 +14,7 @@ import { useDarkMode } from 'usehooks-ts'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
+import { useQueryClient } from '@tanstack/react-query'
 
 export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
@@ -28,6 +29,7 @@ export default function GenerateFbTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.facebook_verified === 'pending') {
@@ -40,6 +42,7 @@ export default function GenerateFbTask() {
     } else {
       onOpenVerify()
     }
+    queryClient.invalidateQueries({ queryKey: ['get_profile'] })
   }
 
   return (
@@ -116,7 +119,9 @@ export default function GenerateFbTask() {
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.facebook_verified === 'pending' && (
+            {profileDeatils?.social_links?.facebook_verified === 'pending' ||
+            profileDeatils?.social_links?.facebook_verified === 'idle' ||
+            profileDeatils?.social_links?.facebook_verified ? (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className='text-center dark:text-white text-stone-900 text-base font-bold font-Manrope'>
@@ -167,9 +172,9 @@ export default function GenerateFbTask() {
                   />
                 </svg>
               </div>
-            )}
+            ) : null}
           </div>
-          {profileDeatils?.social_links?.facebook_verified !== 'verified' && (
+          {profileDeatils?.social_links?.facebook_verified === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>

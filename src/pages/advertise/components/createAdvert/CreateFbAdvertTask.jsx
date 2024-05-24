@@ -184,6 +184,7 @@ export default function CreateFbAdvertTask() {
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
           openInNewTab(authorizationUrl) // Call the function to open in a new tab
+          
         }
       }
     } catch (error) {
@@ -754,7 +755,8 @@ want to post your advert.`}
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
-          isPending={walletPending}
+          // isPending={walletPending}
+          isPending={isPending}
         />
       )}
     </>

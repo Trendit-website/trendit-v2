@@ -273,7 +273,7 @@ function App() {
               }
             />
             <Route
-              path='earn-advert-task-preview'
+              path='earn-advert-task-preview/:taskId'
               element={
                 <ProtectedRoute>
                   <PreviewEarnAdvertTask />
