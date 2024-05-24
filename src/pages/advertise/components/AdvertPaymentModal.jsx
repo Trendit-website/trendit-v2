@@ -179,20 +179,24 @@ export default function AdvertPaymentModal({
                       </div>
                     </div>
                   </div>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                  >
-                    <path
-                      d='M5 12H18M13 6L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L13 18'
-                      stroke='#FF6DFB'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
+                  {isPending ? (
+                    <Loader />
+                  ) : (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M5 12H18M13 6L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L13 18'
+                        stroke='#FF6DFB'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+                  )}
                 </div>
               </div>
             </div>

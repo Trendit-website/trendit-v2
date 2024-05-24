@@ -763,6 +763,7 @@ want to post your advert.`}
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          isPending={isPending}
         />
       )}
     </>

@@ -7,6 +7,7 @@ import { useForm, Controller } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useVerifySocial } from '../../api/verifySocialApi'
 import Loader from '../Loader'
+import { useQueryClient } from '@tanstack/react-query'
 
 export default function SocialLinkModal({ isOpen, onClose, type, LogoBand }) {
   const {
@@ -20,27 +21,22 @@ export default function SocialLinkModal({ isOpen, onClose, type, LogoBand }) {
   })
 
   const { mutateAsync: verifySocial, isPending } = useVerifySocial()
+  const queryClient = useQueryClient()
 
   const onSubmit = async (data) => {
-    console.log(data, 'data received')
     try {
       const res = await verifySocial({ ...data })
       if (res.data.status) {
-        toast.success(res.data.message, {
-          duration: 20000,
-        })
-        const authorizationUrl = res?.data?.authorization_url
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          window.open(authorizationUrl) // Open the URL in a new tab
-        }
+        toast.success(res.data.message)
+        queryClient.invalidateQueries({ queryKey: ['get_profile'] })
         onClose()
+        queryClient.invalidateQueries({ queryKey: ['get_profile'] })
       }
     } catch (error) {
-      toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
-      })
+      toast.error(error.response?.data?.message ?? error.message)
+      queryClient.invalidateQueries({ queryKey: ['get_profile'] })
     }
+    queryClient.invalidateQueries({ queryKey: ['get_profile'] })
   }
 
   return (
