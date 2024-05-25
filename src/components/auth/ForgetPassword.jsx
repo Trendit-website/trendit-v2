@@ -12,7 +12,6 @@ import useResetToken from '../../hooks/useResetToken'
 
 export default function ForgetPassword() {
   const {
-    // register,
     handleSubmit,
     control,
     formState: { errors },
@@ -28,9 +27,7 @@ export default function ForgetPassword() {
       const res = await handleLogin({
         data,
       })
-      console.log(res)
       if (res?.data?.status) {
-        console.log(res?.data?.reset_token, 'reset token')
         setResetToken(res?.data?.reset_token)
         toast.success(res.data.message)
         onOpen()
