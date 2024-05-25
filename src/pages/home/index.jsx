@@ -87,7 +87,7 @@ export default function Welcome({ onNotificationClick }) {
                 </div>
               </div>
               <div className='justify-start w-[300px] lg:w-[400px] items-center gap-2 lg:gap-[59px] cursor-pointer inline-flex'>
-                <div className='justify-start w-full items-center gap-2 flex'>
+                {/* <div className='justify-start w-full items-center gap-2 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='18'
@@ -106,7 +106,7 @@ export default function Welcome({ onNotificationClick }) {
                   <div className="text-sky-100 text-sm font-normal font-['Manrope']">
                     Watch tutorial
                   </div>
-                </div>
+                </div> */}
                 <div
                   onClick={() => navigate('/dashboard/support')}
                   className='justify-start w-full items-center gap-2 flex'
@@ -468,20 +468,42 @@ export default function Welcome({ onNotificationClick }) {
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-                <a href='https://trendit3.com'> About Us </a>
+                <a
+                  href='https://trendit3.com/privacy-policy'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {' '}
+                  About Us{' '}
+                </a>
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div
+                href='https://trendit3.com/privacy-policy'
+                target='_blank'
+                rel='noreferrer'
                 className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']"
-                onClick={() => navigate('terms')}
+                // onClick={() => navigate('terms')}
               >
-                <a href='/terms'> Terms </a>
+                <a
+                  href='https://trendit3.com/privacy-policy'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Terms
+                </a>
               </div>
             </div>
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-                <a href='/terms'> Privacy policy </a>
+                <a
+                  href='https://trendit3.com/privacy-policy'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  Privacy policy
+                </a>
               </div>
             </div>
           </div>

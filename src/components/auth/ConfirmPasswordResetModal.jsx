@@ -33,9 +33,15 @@ export default function ConfirmPasswordResetModal({ isOpen, onClose }) {
               </div>
             </div>
             <Button className='w-[290px] px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'>
-              <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
-                Open Email App
-              </div>
+              <a
+                href='https://mail.google.com'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
+                  Open Email App
+                </div>
+              </a>
             </Button>
           </div>
         </ModalContent>
