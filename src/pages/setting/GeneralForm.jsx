@@ -66,7 +66,6 @@ export default function GeneralForm() {
     const day = watch('day')
     const month = watch('month')
     const year = watch('year')
-    console.log(data?.day, 'day')
 
     const selectedDate = `${year}-${month?.padStart(2, '0')}-${day?.padStart(
       2,
@@ -347,6 +346,13 @@ export default function GeneralForm() {
                           className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
+                      rules={{
+                        pattern: {
+                          value:
+                            /^\+?[1-9]\d{1,14}$|^\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,9}$/,
+                          message: 'This is not a valid phone number',
+                        },
+                      }}
                     />
                   </div>
                 </div>

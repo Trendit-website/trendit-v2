@@ -26,7 +26,6 @@ export default function TwoFaOtp() {
   const onSubmit = async () => {
     try {
       const entered_code = parseInt(watch().entered_code)
-      console.log(token, 'token')
       const res = await verify2fa({
         data: { entered_code, two_fa_token: token },
       })
