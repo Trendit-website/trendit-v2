@@ -31,16 +31,14 @@ export default function ResetPassword() {
   const confirm_password = watch('confirm_password')
 
   const onSubmit = async (data) => {
-    console.log(token, 'token')
     try {
       if (new_password !== confirm_password) {
-        toast.error('Passwords do not match', { duration: 5000 })
+        toast.error('Passwords do not match', { duration: 3000 })
         return
       }
       const res = await handleResetPassword({
         data: { ...data, reset_token: token },
       })
-      console.log(res)
       if (res?.data?.status) {
         toast.success(res.data.message)
         navigate('/login')

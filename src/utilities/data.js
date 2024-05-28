@@ -15,7 +15,7 @@ export const platforms = [
     value: 'TikTok',
   },
   { label: 'Instagram', value: 'instagram' },
-  { label: 'Twitter', value: 'twitter' },
+  { label: 'X', value: 'x' },
   { label: 'Youtube', value: 'youtube' },
   { label: 'Thread', value: 'Thread' },
 ]
@@ -109,5 +109,5 @@ export const threadPlatform = [
   },
 ]
 export const igplatforms = [{ label: 'Instagram', value: 'instagram' }]
-export const twplatforms = [{ label: 'Twitter', value: 'twitter' }]
+export const twplatforms = [{ label: 'X', value: 'x' }]
 export const ytplatforms = [{ label: 'Youtube', value: 'youtube' }]

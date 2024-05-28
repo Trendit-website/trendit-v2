@@ -31,7 +31,6 @@ export default function Signup() {
         data: { ...data, user_id },
       })
       if (res.data.status) {
-        console.log(res, 'signup res')
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
         navigate('/onboard')

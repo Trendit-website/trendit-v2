@@ -40,7 +40,7 @@ export default function AuthModal({ isOpen, onClose }) {
               className='rounded-none py-4 pt-5 md:pt-10'
             />
             <div className=' py-6 flex-col justify-start items-center gap-6 flex'>
-              <div className="w-80 text-center dark:text-white text-black text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
+              <div className="w-80 text-center text-[32px] font-semibold font-['Manrope'] leading-[26.88px]">
                 All Set!
               </div>
               <div className=" md:self-stretch w-full px-2 text-center text-zinc-400 text-base font-normal font-['Manrope']">
@@ -59,10 +59,10 @@ export default function AuthModal({ isOpen, onClose }) {
                     className='text-white'
                     classNames={{
                       label:
-                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
+                        "grow shrink basis-0  dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                     }}
                   />
-                  <div className="text-center text-white text-sm font-medium font-['Manrope']">
+                  <div className="text-center text-sm font-medium font-['Manrope']">
                     I came to Advertise
                   </div>
                 </div>
@@ -73,10 +73,10 @@ export default function AuthModal({ isOpen, onClose }) {
                     className='text-white'
                     classNames={{
                       label:
-                        "grow shrink basis-0 text-black dark:text-white dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
+                        "grow shrink basis-0 dark:text-opacity-50 text-[12.83px] font-medium font-['Manrope']",
                     }}
                   />
-                  <div className="text-center dark:text-white text-black text-sm font-medium font-['Manrope']">
+                  <div className="text-center text-sm font-medium font-['Manrope']">
                     I came to Earn
                   </div>
                 </div>

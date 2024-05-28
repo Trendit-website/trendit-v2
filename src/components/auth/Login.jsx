@@ -398,14 +398,19 @@ export default function Login() {
               <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                 By signing up, you agree to our
               </div>
-              <div className='p-2 justify-center items-center gap-1 flex py-3'>
+              <a
+                href='https://trendit3.com/privacy-policy'
+                target='_blank'
+                rel='noreferrer'
+                className='p-2 justify-center items-center gap-1 flex py-3'
+              >
                 <span className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                   {' '}
                 </span>
                 <span className="text-[12.83px] font-bold font-['Manrope']">
                   Terms and Privacy Policy
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

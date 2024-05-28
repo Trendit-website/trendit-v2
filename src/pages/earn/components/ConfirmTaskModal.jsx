@@ -68,7 +68,7 @@ export default function ConfirmTaskModal({
                 <div className="w-[253px] text-center dark:text-[#B0B0B0] text-black text-xs font-normal font-['Manrope']">
                   {description
                     ? description
-                    : ` Are you sure you want to generate your next ${platform} task now.
+                    : ` Are you sure you want to generate your next ${goal} task now.
                   You have 1 hour to perform this task. Please confirm only if
                   you are ready to perform the task.`}
                 </div>

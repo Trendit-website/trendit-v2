@@ -42,7 +42,6 @@ export default function OnBoard() {
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
   const { mutateAsync: updateProfile, isPending } = useUserProfile()
-  console.log(selectedImage, 'himg')
   useEffect(() => {
     setValue('state', '')
     setValue('local_government', '')
@@ -188,7 +187,7 @@ export default function OnBoard() {
                           ],
                         }}
                       >
-                        {genders.map((gender) => (
+                        {genders?.slice(1)?.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
                             {gender.label}
                           </SelectItem>
@@ -345,8 +344,9 @@ export default function OnBoard() {
                       control={control}
                       render={({ field }) => (
                         <Input
-                          type='text'
+                          type='tel'
                           size='sm'
+                          // pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$'
                           placeholder='phone'
                           {...field}
                           errorMessage={errors?.phone?.message}
@@ -373,6 +373,13 @@ export default function OnBoard() {
                           className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
+                      rules={{
+                        pattern: {
+                          value:
+                            /^\+?[1-9]\d{1,14}$|^\(?\d{1,4}\)?[\s.-]?\d{1,4}[\s.-]?\d{1,4}[\s.-]?\d{1,9}$/,
+                          message: 'This is not a valid phone number',
+                        },
+                      }}
                     />
                   </div>
                 </div>
@@ -415,7 +422,7 @@ export default function OnBoard() {
                         }}
                         {...field}
                       >
-                        {countries?.map((cou) => (
+                        {countries?.slice(1)?.map((cou) => (
                           <SelectItem key={cou.name} value={cou.name}>
                             {cou.name}
                           </SelectItem>
@@ -463,7 +470,7 @@ export default function OnBoard() {
                           }}
                           {...field}
                         >
-                          {states?.map((cou) => (
+                          {states?.slice(1)?.map((cou) => (
                             <SelectItem key={cou.name} value={cou.name}>
                               {cou.name}
                             </SelectItem>

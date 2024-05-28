@@ -2,7 +2,7 @@
 import { Button, Input } from '@nextui-org/react'
 
 import Logo from '../Logo'
-import { ChevronRight } from 'lucide-react'
+// import { ChevronRight } from 'lucide-react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { useGoogleSignu, useVerifyEmail } from '../../api/auth'
@@ -46,7 +46,6 @@ export default function VerifyEmail() {
   const handleGgLogin = async () => {
     try {
       const res = await handleGoogleLogin()
-      console.log(res?.data)
       if (res?.data?.status) {
         window.open(res?.data?.authorization_url)
         setSignUpToken(res?.data?.access_token)
@@ -96,7 +95,7 @@ export default function VerifyEmail() {
           <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
             <Logo />
 
-            <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
+            {/* <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
               <Button onClick={() => navigate(-1)} variant='flat bg-none '>
                 Go Back
               </Button>
@@ -105,7 +104,7 @@ export default function VerifyEmail() {
               <Button variant='flat bg-none  '>
                 <ChevronRight />
               </Button>
-            </div>
+            </div> */}
           </div>
 
           <div className=' w-[20rem] my-8 md:w-[23rem] mx-auto  flex-col  items-center gap-6 '>
@@ -114,8 +113,8 @@ export default function VerifyEmail() {
                 Welcome to Trendit
               </div>
               <div className="w-[18rem] py-2 text-center  text-black dark:text-zinc-400 text-base font-normal font-['Manrope']">
-                Earn money by connecting businesses to their potential
-                customers.
+                Turn Daily Social Tasks into Paychecks! Get Paid for your
+                Engagements.
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3 flex'>
@@ -142,7 +141,7 @@ export default function VerifyEmail() {
                 )}
                 rules={{ required: true }}
               />
-              <Controller
+              {/* <Controller
                 name='referrer_code'
                 control={control}
                 render={({ field }) => (
@@ -160,7 +159,7 @@ export default function VerifyEmail() {
                     className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                   />
                 )}
-              />
+              /> */}
 
               <Button
                 type='submit'
@@ -299,17 +298,23 @@ export default function VerifyEmail() {
           <div className='w-[24rem] mx-auto my-4'>
             <div className='w-full h-0.5 bg-gradient-to-r  from-[#fff]  dark:from-[#000] !via-[#FF6DFB] to-[#fff] dark:to-[#000] '></div>
             <div className=' flex p-2 bordert border[#CB29BE]  justify-center items-center'>
-              <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
+              <div className="text-center cursor-pointer text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                 By signing up, you agree to our
               </div>
-              <div className='p-2 justify-center items-center gap-1 flex py-3' onClick={() => navigate('/terms')}>
+              <a
+                href='https://trendit3.com/privacy-policy'
+                target='_blank'
+                className='p-2 justify-center items-center gap-1 flex py-3'
+                rel='noreferrer'
+                // onClick={() => navigate('/terms')}
+              >
                 <span className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                   {' '}
                 </span>
                 <span className="text-black dark:text-white text-[12.83px] font-bold font-['Manrope']">
                   Terms and Privacy Policy
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>

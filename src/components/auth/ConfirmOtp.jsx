@@ -56,7 +56,6 @@ export default function ConfirmOtp() {
   }
   const handleResendOtp = async () => {
     try {
-      console.log(token, 'token')
       const res = await resendOtp({
         data: { signup_token: token },
       })
