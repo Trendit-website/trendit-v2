@@ -5,16 +5,21 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
   return (
     <div>
       <div className='self-stretch relative border border-zinc-400 flex-col justify-start items-start flex'>
-        <div className='self-stretch p-6 bg-zinc400 z-20 bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
+        <div className='self-stretch p-6 bg-zinc400 z-20 bg-[#2F2F2F6B] bg-opacity-30 flexcol justifystart justify-between items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch  text-[10px] font-normal font-['Manrope']">
-              Jan 12th 9:27pm
+              {new Date().toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
             </div>
             <div className=" text-3xl font-medium font-['Manrope']">
               {title}
             </div>
             <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-              <div className="text-[#909090] md:w-[50rem] text-[9px] font-normal font-['Manrope'] capitalize tracking-tight">
+              <div className="dark:text-[#909090] capitalize md:w-[60rem] text-[9px] font-normal font-['Manrope'] tracking-tight">
                 {descp}
               </div>
             </div>
@@ -39,8 +44,9 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
               <div className=" text-sm font-bold font-['Manrope']">{price}</div>
             </div>
           </div>
-          <div className='w-[304.97px] origin-top-left absolute right-0 top-0 -z-10 opacity-20 md:z-0 md:opacity-100 justify-start items-start gap-[115.18px] inline-flex'>
-            <Image src={frame} alt='igFrme' className='h-[10.1rem]' />
+          <div className='md:w-[304.97px] origin-top-left absolute -z-10 opacity-20 md:z-0 md:opacity-100 -right-2 top-0 justify-start items-start gap-[115.18px] inline-flex'>
+            {/* <div className='w-[304.97px] origin-top-left absolute right-0 top-0 -z-10 opacity-20 md:z-0 md:opacity-100 justify-start items-start gap-[115.18px] inline-flex'> */}
+            <Image src={frame} alt='igFrme' className='h-[9.1rem]' />
           </div>
         </div>
         <div className='self-stretch p-3 hidden bg-sky-100 justify-start items-start gap-[29px] inlineflex'>

@@ -113,8 +113,8 @@ export default function VerifyEmail() {
                 Welcome to Trendit
               </div>
               <div className="w-[18rem] py-2 text-center  text-black dark:text-zinc-400 text-base font-normal font-['Manrope']">
-                Earn money by connecting businesses to their potential
-                customers.
+                Turn Daily Social Tasks into Paychecks! Get Paid for your
+                Engagements.
               </div>
             </div>
             <div className='self-stretch  flex-col justify-start items-center gap-3 flex'>

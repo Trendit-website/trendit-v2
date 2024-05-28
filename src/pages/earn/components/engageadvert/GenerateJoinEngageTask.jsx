@@ -77,7 +77,7 @@ export default function GenerateJoinEngageTask() {
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
-                <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
+                <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
                     Post adverts on Facebook
                   </div>
@@ -239,7 +239,7 @@ export default function GenerateJoinEngageTask() {
                   </div>
                 </AnimatePresence>
               </div>
-              <div className='px-3 justify-start items-center gap-[11px] flex'>
+              <div className='px-3 justify-start items-center gap-[11px] hidden flx'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -409,7 +409,7 @@ export default function GenerateJoinEngageTask() {
               </div>
             </motion.div>
           )}
-          {fetchTask?.length === 0 && (
+          {selected === 'pending' && fetchTask?.length === 0 && (
             <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
               <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                 <svg

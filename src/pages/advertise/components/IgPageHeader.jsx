@@ -8,7 +8,12 @@ export default function IgPageHeader({ title, frame, descp, price }) {
         <div className='self-stretch bg-transparent z-20 p-4 md:bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch  text-[10px] font-normal font-['Manrope']">
-              Jan 12th 9:27pm
+              {new Date().toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
             </div>
             <div className=" text-3xl font-medium font-['Manrope']">
               {title}

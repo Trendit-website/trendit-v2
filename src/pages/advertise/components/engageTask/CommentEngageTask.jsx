@@ -22,7 +22,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import AudFrame from '../../../../assets/like_icon.svg'
+import AudFrame from '../../../../assets/comment_logo.svg'
 import Loader from '../../../Loader'
 // import { useNavigate } from 'react-router'
 
@@ -140,9 +140,8 @@ export default function CommentEngageTask() {
               <div className='w-full'>
                 <IgPageHeaderEngage
                   frame={AudFrame}
-                  title={`Get People to Like Your Post on different Social Media Platform`}
-                  descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
-people to post your ads on their social media account.`}
+                  title={`Get Genuine People to Comment on Your  Social Media Posts`}
+                  descp={`Get Genuine people to comment your social media post. You can get as many comments as you desire simply by entering the link to your post either on Instagram, Facebook, TikTok,X or any other platform.`}
                   price={`₦40 per Follow`}
                 />
               </div>

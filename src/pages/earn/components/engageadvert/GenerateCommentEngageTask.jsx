@@ -67,37 +67,22 @@ export default function GenerateCommentEngageTask() {
                   fill='none'
                 >
                   <path
-                    d='M10.293 0.589844H36.707C42.3918 0.589844 47 5.19805 47 10.8828V37.2968C47 42.9816 42.3918 47.5898 36.707 47.5898H10.293C4.6082 47.5898 0 42.9816 0 37.2968V10.8828C0 5.19805 4.6082 0.589844 10.293 0.589844Z'
-                    fill='url(#paint0_linear_5698_5048)'
+                    fillRule='evenodd'
+                    clipRule='evenodd'
+                    d='M3.91701 24.0897C3.91701 13.2738 12.6845 4.50635 23.5003 4.50635C34.3162 4.50635 43.0837 13.2738 43.0837 24.0897C43.0837 34.9056 34.3162 43.673 23.5003 43.673C20.6147 43.6769 17.7642 43.0409 15.1539 41.8106L6.26897 43.6319C5.95173 43.6967 5.62337 43.6819 5.31327 43.5887C5.00317 43.4955 4.72101 43.3269 4.49205 43.098C4.26309 42.869 4.09448 42.5869 4.0013 42.2768C3.90812 41.9667 3.89329 41.6383 3.95814 41.3211L5.77939 32.4361C4.54914 29.8259 3.91308 26.9753 3.91701 24.0897ZM14.6878 21.1522C13.9088 21.1522 13.1616 21.4617 12.6107 22.0126C12.0598 22.5634 11.7503 23.3106 11.7503 24.0897V24.1093C11.7503 24.8883 12.0598 25.6355 12.6107 26.1864C13.1616 26.7373 13.9088 27.0468 14.6878 27.0468H14.7074C15.4865 27.0468 16.2337 26.7373 16.7846 26.1864C17.3354 25.6355 17.6449 24.8883 17.6449 24.1093V24.0897C17.6449 23.3106 17.3354 22.5634 16.7846 22.0126C16.2337 21.4617 15.4865 21.1522 14.7074 21.1522H14.6878ZM23.5003 21.1522C22.7213 21.1522 21.9741 21.4617 21.4232 22.0126C20.8723 22.5634 20.5628 23.3106 20.5628 24.0897V24.1093C20.5628 24.8883 20.8723 25.6355 21.4232 26.1864C21.9741 26.7373 22.7213 27.0468 23.5003 27.0468H23.5199C24.299 27.0468 25.0462 26.7373 25.5971 26.1864C26.1479 25.6355 26.4574 24.8883 26.4574 24.1093V24.0897C26.4574 23.3106 26.1479 22.5634 25.5971 22.0126C25.0462 21.4617 24.299 21.1522 23.5199 21.1522H23.5003ZM29.3753 24.0897C29.3753 23.3106 29.6848 22.5634 30.2357 22.0126C30.7866 21.4617 31.5338 21.1522 32.3128 21.1522H32.3324C33.1115 21.1522 33.8587 21.4617 34.4096 22.0126C34.9604 22.5634 35.2699 23.3106 35.2699 24.0897V24.1093C35.2699 24.8883 34.9604 25.6355 34.4096 26.1864C33.8587 26.7373 33.1115 27.0468 32.3324 27.0468H32.3128C31.5338 27.0468 30.7866 26.7373 30.2357 26.1864C29.6848 25.6355 29.3753 24.8883 29.3753 24.1093V24.0897Z'
+                    fill='#36E232'
                   />
-                  <path
-                    d='M15.0624 34.7034L15.0668 34.7048L13.4598 37.4881C12.8732 38.5041 11.5741 38.8522 10.5581 38.2656C9.54227 37.679 9.194 36.3799 9.78058 35.3639L10.9644 33.3136L11.078 33.1167C11.2809 32.8252 11.7816 32.3218 12.7831 32.4165C12.7831 32.4165 15.1399 32.6723 15.3104 33.8972C15.3104 33.8972 15.3336 34.3002 15.0624 34.7034ZM37.8543 27.5946H32.8433C32.502 27.5717 32.3531 27.4498 32.2943 27.3789L32.2906 27.3725L26.9266 18.0815L26.9196 18.0861L26.5979 17.6249C26.0707 16.8186 25.2335 18.8807 25.2335 18.8807C24.2338 21.1786 25.3754 23.7909 25.7732 24.5806L33.2238 37.4854C33.8102 38.5012 35.1094 38.8495 36.1255 38.2627C37.1414 37.6761 37.4896 36.377 36.9029 35.361L35.04 32.1341C35.0038 32.0559 34.941 31.8437 35.3231 31.8428H37.8543C39.0274 31.8428 39.9784 30.8918 39.9784 29.7186C39.9784 28.5454 39.0274 27.5946 37.8543 27.5946ZM28.1212 30.482C28.1212 30.482 28.3887 31.8426 27.3538 31.8426H8.82938C7.65622 31.8426 6.7052 30.8916 6.7052 29.7184C6.7052 28.5453 7.65622 27.5942 8.82938 27.5942H13.5918C14.3607 27.5498 14.5428 27.1059 14.5428 27.1059L14.5472 27.1081L20.7637 16.3407L20.7619 16.3403C20.8751 16.1323 20.7808 15.9357 20.7644 15.9046L18.7113 12.3486C18.1247 11.3328 18.4728 10.0335 19.4888 9.4471C20.5048 8.86052 21.8039 9.20843 22.3905 10.2244L23.3426 11.8737L24.2931 10.2274C24.8797 9.21155 26.1788 8.86327 27.1948 9.45004C28.2108 10.0366 28.5589 11.3355 27.9723 12.3516L19.3218 27.3346C19.2839 27.4259 19.2724 27.5691 19.5538 27.5942H24.7246L24.7257 27.6447C24.7257 27.6447 27.7142 27.6912 28.1212 30.482Z'
-                    fill='white'
-                  />
-                  <defs>
-                    <linearGradient
-                      id='paint0_linear_5698_5048'
-                      x1='2350'
-                      y1='0.589844'
-                      x2='2350'
-                      y2='4700.59'
-                      gradientUnits='userSpaceOnUse'
-                    >
-                      <stop stopColor='#17C9FB' />
-                      <stop offset='1' stopColor='#1A74E8' />
-                    </linearGradient>
-                  </defs>
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
-                <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
+                <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
-                    Post adverts on App Store
+                    Post comment on Several Social Media Pages
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and review more app for Businesses and Organizations
-                    and earn ₦10 per Like/review. The more pages you like, the
-                    more you earn.
+                    Post comment on Several Social Media Pages for Individuals,
+                    Businesses and Organizations and Earn ₦20 per comment. The
+                    more pages you comment, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -232,7 +217,7 @@ export default function GenerateCommentEngageTask() {
                   </div>
                 </AnimatePresence>
               </div>
-              <div className='px-3 justify-start items-center gap-[11px] flex'>
+              <div className='px-3 justify-start items-center gap-[11px] hidden flx'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -402,7 +387,7 @@ export default function GenerateCommentEngageTask() {
               </div>
             </motion.div>
           )}
-          {fetchTask?.length === 0 && (
+          {selected === 'pending' && fetchTask?.length === 0 && (
             <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
               <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                 <svg
