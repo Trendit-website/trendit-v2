@@ -348,7 +348,7 @@ export default function Earn() {
                   <div className="self-stretch md:w-[30rem] text-center text-black dark:text-zinc-400 text-xs font-normal font-['Manrope']">
                     Now that you have activated your account learn on how to
                     earn daily on our adverts task learn on hoe to to engage in
-                    our daily task and earn steadily. Click the button to learn
+                    our daily task and earn steadily. Click the button to learn More
                     now
                   </div>
 

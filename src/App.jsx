@@ -67,6 +67,7 @@ import {
 import API from './services/AxiosInstance'
 import { useContext } from 'react'
 import EarnHistory from './pages/earn_history/EarnHistory'
+import GenerateLikeFollowFBEngageTask from './pages/earn/components/engageadvert/GenerateLike&FollowFBEngageTask'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -198,6 +199,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <GenerateJoinEngageTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='earn-like_follow_fb-task'
+              element={
+                <ProtectedRoute>
+                  <GenerateLikeFollowFBEngageTask />
                 </ProtectedRoute>
               }
             />

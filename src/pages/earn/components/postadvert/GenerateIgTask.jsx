@@ -32,13 +32,13 @@ export default function GenerateIgTask() {
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
-    if (profileDeatils?.social_links?.instagram_verified === 'pending') {
-      toast.error('Verification request has been sent')
-    } else if (
+    if (
       profileDeatils?.social_links?.instagram_verified === 'rejected' ||
       profileDeatils?.social_links?.instagram_verified === 'idle'
     ) {
       onOpenVerify()
+    } else if (profileDeatils?.social_links?.instagram_verified === 'pending') {
+      toast.error('Verification request has been sent')
     } else {
       onOpenVerify()
     }

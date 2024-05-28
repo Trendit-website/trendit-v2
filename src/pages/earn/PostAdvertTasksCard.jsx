@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import { Button } from '@nextui-org/react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
@@ -29,10 +30,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your X account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
-              Post adverts of various businesses and top brands on your Twitter
-              page and earn ₦110 per advert past. The more you post, the more
-              you earn. Note that your Twitter page must have at least 500
-              Active Followers to be eligible for this task.
+              Promote advertisements for different businesses and top brands on
+              your X page and earn ₦110 for each post. The more you share, the
+              more you earn. Ensure that your X account has at least 500 active
+              followers to qualify for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -135,10 +136,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Instagram account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
-              Post adverts of various businesses and top brands on your
-              Instagram Page and earn ₦110 per advert . The more you post, the
-              more you earn. Note that your Instagram account must have at least
-              500 Active Followers to be eligible for this task.
+              Promote advertisements for different businesses and top brands on
+              your Instagram page and earn ₦110 for each post. The more you
+              share, the more you earn. Ensure that your Instagram account has
+              at least 500 active followers to qualify for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -209,10 +210,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Facebook page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Post adverts of various businesses and top brands on your Facebook
-              Page and earn ₦110 per advert past. The more you post, the more
-              you earn. Note that your Facebook account must have at least 500
-              Active Followers to be eligible for this task.
+              Promote advertisements for different businesses and top brands on
+              your Facebook page and earn ₦110 for each post. The more you
+              share, the more you earn. Ensure that your Facebook account has at
+              least 500 active followers to qualify for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -288,10 +289,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your TikTok page
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Post adverts of various businesses and top brands on your Tiktok
-              Page and earn ₦110 per advert past. The more you post, the more
-              you earn. Note that your Tiktok account must have at least 500
-              Active Followers to be eligible for this task.
+              Promote advertisements for different businesses and top brands on
+              your Threads page and earn ₦110 for each post. The more you share,
+              the more you earn. Ensure that your Threads account has at least
+              500 active followers to qualify for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -392,9 +393,8 @@ export default function PostAdvertTasksCard() {
             </div>
             <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
               Post adverts of various businesses and top brands on your WhatsApp
-              status and earn ₦60 per advert past. The more you post, the more
-              you earn. Note that your WhatsApp Status must have at least 500
-              Active Followers to be eligible for this task.
+              status and earn ₦60 per advert past. The more you post,
+              the more you earn.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -471,10 +471,10 @@ export default function PostAdvertTasksCard() {
               Post adverts on your Threads account
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Post adverts of various businesses and top brands on your Threads
-              page and earn ₦110 per advert past. The more you post, the more
-              you earn. Note that your Threads page must have at least 500
-              Active Followers to be eligible for this task.
+              Promote advertisements for different businesses and top brands on
+              your Threads page and earn ₦110 for each post. The more you share,
+              the more you earn. Ensure that your Threads account has at least
+              500 active followers to qualify for this task.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
