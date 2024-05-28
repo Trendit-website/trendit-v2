@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import {  Tab, Tabs, useDisclosure } from '@nextui-org/react'
+import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
@@ -62,29 +62,25 @@ export default function GenerateLikeEngageTask() {
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='47'
-                  height='47'
-                  viewBox='0 0 47 47'
+                  height='48'
+                  viewBox='0 0 47 48'
                   fill='none'
                 >
                   <path
-                    d='M45.9577 7.33069C45.6881 5.91379 45.1624 4.62204 44.4327 3.58408C43.7031 2.54613 42.795 1.79817 41.799 1.4147C38.1524 0 23.4762 0 23.4762 0C23.4762 0 8.7993 0.0428221 5.15274 1.45752C4.15666 1.84102 3.24859 2.58901 2.51895 3.62702C1.7893 4.66502 1.26355 5.95682 0.994051 7.37378C-0.108948 16.5905 -0.536822 30.6346 1.02434 39.4826C1.29387 40.8995 1.81963 42.1913 2.54927 43.2292C3.27891 44.2672 4.18697 45.0151 5.18303 45.3986C8.82959 46.8133 23.5061 46.8133 23.5061 46.8133C23.5061 46.8133 38.1825 46.8133 41.8289 45.3986C42.825 45.0152 43.7331 44.2672 44.4627 43.2293C45.1924 42.1913 45.7182 40.8995 45.9878 39.4826C47.1511 30.2529 47.5096 16.2174 45.9577 7.33069Z'
-                    fill='#FF0000'
-                  />
-                  <path
-                    d='M18.8047 33.4382L30.9797 23.4069L18.8047 13.3755V33.4382Z'
-                    fill='white'
+                    d='M40.6614 25.0861C41.4325 24.0671 41.8594 22.8187 41.8594 21.5198C41.8594 19.4589 40.7073 17.5082 38.853 16.4204C38.3757 16.1404 37.8321 15.9931 37.2787 15.9936H26.2723L26.5477 10.3527C26.6119 8.98949 26.13 7.69515 25.1937 6.70833C24.7341 6.22194 24.1798 5.83495 23.5648 5.57127C22.9498 5.30759 22.2873 5.17284 21.6182 5.17533C19.2314 5.17533 17.1201 6.78177 16.4867 9.08128L12.544 23.3557H12.5303V43.0002H34.2081C34.6304 43.0002 35.0435 42.9176 35.4244 42.7524C37.6092 41.8206 39.0183 39.6864 39.0183 37.318C39.0183 36.7397 38.9356 36.1705 38.7704 35.6198C39.5415 34.6008 39.9684 33.3524 39.9684 32.0534C39.9684 31.4751 39.8857 30.906 39.7205 30.3552C40.4916 29.3363 40.9185 28.0878 40.9185 26.7889C40.9093 26.2106 40.8267 25.6369 40.6614 25.0861ZM5.14062 24.8244V41.5315C5.14062 42.3439 5.79697 43.0002 6.60938 43.0002H9.59277V23.3557H6.60938C5.79697 23.3557 5.14062 24.012 5.14062 24.8244Z'
+                    fill='#1877F2'
                   />
                 </svg>
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
-                <div className='w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
+                <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
-                    Post adverts on Youtube
+                    Like Post on different Social Media Platforms
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Youtube Pages for Businesses and
-                    Organizations and earn ₦10 per Like/Follow. The more pages
-                    you like, the more you earn.
+                    Like Several Social Media Pages for Individuals, Businesses
+                    and Organizations and Earn ₦3.5 per Like. The more pages you
+                    like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -206,7 +202,7 @@ export default function GenerateLikeEngageTask() {
                   </div>
                 </AnimatePresence>
               </div>
-              <div className='px-3 justify-start items-center gap-[11px] flex'>
+              <div className='px-3 justify-start items-center gap-[11px] flx hidden'>
                 <div className='justify-start items-center gap-[7px] flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -376,7 +372,7 @@ export default function GenerateLikeEngageTask() {
               </div>
             </motion.div>
           )}
-          {fetchTask?.length === 0 && (
+          {selected === 'pending' && fetchTask?.length === 0 && (
             <div className='self-stretch h[390px] flex-col justify-center items-center gap-6 flex'>
               <div className='p-2 bg-zinc-400 bg-opacity-20 rounded-[9px] justify-center items-center gap-2 inline-flex'>
                 <svg

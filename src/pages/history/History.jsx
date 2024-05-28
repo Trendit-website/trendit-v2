@@ -196,7 +196,7 @@ export default function History() {
                 </div>
               </AnimatePresence>
             </div>
-            <div className='px-3 justify-start hidden lg:flex lg:flex-row items-center gap-[11px] flx'>
+            <div className='px-3 justify-start !hidden lg:flex lg:flex-row items-center gap-[11px] flx'>
               <div className='justify-start items-center gap-[7px] flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'

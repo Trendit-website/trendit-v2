@@ -22,7 +22,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import AudFrame from '../../../../assets/logos_google-play-icon.svg'
+import AudFrame from '../../../../assets/logos_facebook.svg'
 import Loader from '../../../Loader'
 // import { useNavigate } from 'react-router'
 
@@ -88,11 +88,11 @@ export default function FollowerAndLikeEngageTask() {
           duration: 20000,
         })
         //  navigate('dashboard/advertise-history')
-       const authorizationUrl = res?.data?.authorization_url
-       if (authorizationUrl) {
-         localStorage.setItem('paystack_redirect', window.location.pathname)
-         openInNewTab(authorizationUrl) // Call the function to open in a new tab
-       }
+        const authorizationUrl = res?.data?.authorization_url
+        if (authorizationUrl) {
+          localStorage.setItem('paystack_redirect', window.location.pathname)
+          openInNewTab(authorizationUrl) // Call the function to open in a new tab
+        }
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
@@ -143,10 +143,10 @@ export default function FollowerAndLikeEngageTask() {
               <div className='w-full'>
                 <IgPageHeaderEngage
                   frame={AudFrame}
-                  title={`Get People to Download and Review Your App on Google play `}
-                  descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
-people to post your ads on their social media account.`}
-                  price={`₦5 per Follow`}
+                  title={`Get Genuine People to Like and Follow Your Facebook Business Page`}
+                  descp={`Get real people to like and follow your Facebook business page. you can get any number of people to like and follow your Facebook business
+ page without disclosing your Login details`}
+                  price={`₦20 per Follow`}
                 />
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>

@@ -22,7 +22,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import SpotyFram from '../../../../assets/follow_icon.svg'
+import SpotyFram from '../../../../assets/logos_apple-app-store.svg'
 import Loader from '../../../Loader'
 // import { useNavigate } from 'react-router'
 
@@ -60,6 +60,7 @@ export default function FollowerEngageTask() {
     if (newWindow) newWindow.opener = null
   }
 
+  
   const handlePaymentSuccess = async () => {
     try {
       const data = watch()
@@ -140,8 +141,9 @@ export default function FollowerEngageTask() {
               <div className='w-full'>
                 <IgPageHeaderEngage
                   frame={SpotyFram}
-                  title={`Get Genuine People to Follow Your Social Media  Accounts`}
-                  descp={`Get real people to follow your  social media pages. you can get any numbers of people to follow your social media pages with no need for your login Details, on any social platform like Instagram, Facebook, Tiktok, X and many more.`}
+                  title={`Get People to Download and Review Your App on Apple store`}
+                  descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
+people to post your ads on their social media account.`}
                   price={`₦5 per Like`}
                 />
               </div>

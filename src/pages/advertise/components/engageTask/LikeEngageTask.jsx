@@ -22,7 +22,7 @@ import {
   useCreateAdvertPaymentWallet,
 } from '../../../../api/advertApi'
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
-import AudFrame from '../../../../assets/bfollow_icon.svg'
+import AudFrame from '../../../../assets/like_icon.svg'
 import Loader from '../../../Loader'
 // import AudFrame from '../../../../assets/Vector.svg'
 // import { useNavigate } from 'react-router'
@@ -142,9 +142,8 @@ export default function LikeEngageTask() {
               <div className='w-full'>
                 <IgPageHeaderEngage
                   frame={AudFrame}
-                  title={`Get People to Follow Your Social Media Accounts on Twitter`}
-                  descp={`Get real people to post your ads on their social media account. Get real people to post your ads on their social media account. Get real 
-people to post your ads on their social media account.`}
+                  title={`Get People to Like Your Post on different Social Media Platform`}
+                  descp={`Get Genuine people to like your social media post. You can get as many likes as you desire simply by entering the link to your post either on Instagram, Facebook, Twitter or any platform.`}
                   price={`₦5 per Follow`}
                 />
               </div>
