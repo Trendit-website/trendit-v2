@@ -70,7 +70,7 @@ function PrefrenceFormContent() {
       })
         .then(
           (response) => (
-            toast.success(response.data?.message), setPrefrence('dark')
+            toast.success(response.data?.message), setPrefrence('dark'), localStorage.setItem('appearance', 'dark')
           )
         )
         .catch(
@@ -86,7 +86,7 @@ function PrefrenceFormContent() {
       })
         .then(
           (response) => (
-            toast.success(response.data?.message), setPrefrence('light')
+            toast.success(response.data?.message), setPrefrence('light'), localStorage.setItem('appearance', 'light')
           )
         )
         .catch((error) => toast.error.response?.data?.message ?? error.message)

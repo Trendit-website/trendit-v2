@@ -37,7 +37,7 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => (
-            toast.success(response.data?.message), setPrefrence('dark')
+            toast.success(response.data?.message), setPrefrence('dark'), localStorage.setItem('appearance', 'dark')
           )
         )
         .catch(
@@ -53,7 +53,7 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => (
-            toast.success(response.data?.message), setPrefrence('light')
+            toast.success(response.data?.message), setPrefrence('light'), localStorage.setItem('appearance', 'light')
           )
         )
         .catch((error) => toast.error.response?.data?.message ?? error.message)
@@ -69,7 +69,7 @@ const Navbar = ({ onNotificationClick }) => {
       <div
         className={`right-0 left-0 p-2 shadow-md z-20 sticky top-0 bg-white  dark:bg-neutral-900`}
       >
-        <div className='px-3 py-1 '>
+        <div className='px-3 py-1 ' >
           <div className='flex items-center justify-between'>
             <div
               className={`flex items-center justify-between gap-2  p-2 ${

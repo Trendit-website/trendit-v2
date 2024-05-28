@@ -74,11 +74,20 @@ function App() {
   const setPrefrence = useContext(SetAppearanceContext)
 
   useEffect(() => {
+    localStorage.getItem('appearance') === 'dark' ? 
+    (document.body.classList.add('dark'),
+    
+          document.body.classList.add('text-foreground'),
+          document.body.classList.add('bg-background'))
+    : 
+          (document.body.classList.remove('dark'),
+          document.body.classList.remove('text-foreground'),
+          document.body.classList.remove('bg-background')) 
     API.get('/settings/preferences')
       .then(
         (response) => (
           setPrefrence(response.data.user_preferences.appearance),
-          response.data.user_preferences.appearance === 'dark'
+          response.data.user_preferences.appearance === 'dark' 
             ? (document.body.classList.add('dark'),
               document.body.classList.add('text-foreground'),
               document.body.classList.add('bg-background'))

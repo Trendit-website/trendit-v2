@@ -15,15 +15,17 @@ export default function Logo() {
 
   useEffect(() => {
     if (userPrefrences) {
-      if (userPrefrences === 'light') {
-        document.body.classList.remove('dark')
-        document.body.classList.remove('text-foreground')
+       userPrefrences === 'light' || localStorage.getItem('appearance')  === 'light' ? ( 
+        document.body.classList.remove('dark'),
+        document.body.classList.remove('text-foreground'),
         document.body.classList.remove('bg-background')
-      } else if (userPrefrences === 'dark') {
-        document.body.classList.add('dark')
-        document.body.classList.add('text-foreground')
+      )
+       : (
+        document.body.classList.add('dark'),
+        document.body.classList.add('text-foreground'),
         document.body.classList.add('bg-background')
-      }
+      )
+      
     }
   }, [userPrefrences])
 
@@ -45,7 +47,7 @@ export default function Logo() {
   return (
     <div>
       <div onClick={toggleAppearance}>
-        {userPrefrences === 'dark' ? (
+        {userPrefrences === 'dark' || localStorage.getItem('appearance') === 'dark' ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
         ) : (
           <Image className='w-20 md:w-full ml-3' src={lightLogo} />

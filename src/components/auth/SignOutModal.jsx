@@ -17,6 +17,7 @@ export default function SignOutModal({ isOpen, onClose }) {
         removeAccessToken(null)
         toast.success(res.data.message)
         navigate('/login')
+        // localStorage.removeItem('appearance')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
