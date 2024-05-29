@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 /* eslint-disable react/no-unescaped-entities */
 
 import {
@@ -175,10 +176,7 @@ export default function FollowerEngageTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -353,7 +351,7 @@ export default function FollowerEngageTask() {
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the number of view you want'
+                                placeholder='Enter the number of followers you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
@@ -363,15 +361,15 @@ export default function FollowerEngageTask() {
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink text-[10px] font-normal font-['Manrope']">
-                            This is the number of Download and Review want us to
-                            get for you
+                            This is the number of people you want us to get for
+                            you
                           </div>
                         </div>
                       </div>
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                            The Link to Your social Media Post
+                            The Link to Your social Media Page or profile
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -398,9 +396,10 @@ export default function FollowerEngageTask() {
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink  basis-0  text-[10px] font-normal font-['Manrope']">
-                            Enter the link to the post you want people to like.
-                            ensure the link you paste here is the link to your
-                            post not your page
+                            Enter the link to your social media page or profile
+                            you want people to follow. Ensure this link points
+                            directly to your page or profile and
+                            NOT just a post.
                           </div>
                         </div>
                       </div>
