@@ -6,17 +6,17 @@ export const platforms = [
     label: 'Facebook',
     value: 'facebook',
   },
-  {
-    label: 'WhatsApp',
-    value: 'whatsapp',
-  },
+  // {
+  //   label: 'WhatsApp',
+  //   value: 'whatsapp',
+  // },
   {
     label: 'TikTok',
     value: 'TikTok',
   },
   { label: 'Instagram', value: 'instagram' },
   { label: 'X', value: 'x' },
-  { label: 'Youtube', value: 'youtube' },
+  // { label: 'Youtube', value: 'youtube' },
   { label: 'Thread', value: 'Thread' },
 ]
 export const genders = [

@@ -179,10 +179,7 @@ export default function LikeEngageTask() {
                                     'text-black/90 dark:text-white/90',
                                     'placeholder:text-zinc-400 dark:placeholder:text-white/60',
                                   ],
-                                  popoverContent: [
-                                    'dark:bg-zinc-700',
-                                    'bg-white ',
-                                  ],
+
                                   trigger: [
                                     'bg-zinc-700 bg-opacity-10',
                                     'dark:bg-white dark:bg-opacity-10',
@@ -340,7 +337,7 @@ export default function LikeEngageTask() {
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                            Number of Followers do you want?
+                            Number of Likes do you want?
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -357,7 +354,7 @@ export default function LikeEngageTask() {
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the number of view you want'
+                                placeholder='Enter the  number of Likes you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
@@ -367,8 +364,8 @@ export default function LikeEngageTask() {
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
                           <div className="grow shrink text-[10px] font-normal font-['Manrope']">
-                            This is the number of Download and Review want us to
-                            get for you
+                            This is the number of likes you want us to get for
+                            you
                           </div>
                         </div>
                       </div>

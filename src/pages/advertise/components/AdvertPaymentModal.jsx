@@ -44,9 +44,9 @@ export default function AdvertPaymentModal({
           isOpen={isOpen}
           onClose={onClose}
           hideCloseButton={true}
-          className='rounded-none'
+          className='rounded-none w-[23rem] md:w-[28rem]'
         >
-          <ModalContent className='md:w-[35rem] overflow-visible'>
+          <ModalContent className='  md:w-[28rem] overflow-visible'>
             <div className=' p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
@@ -344,6 +344,7 @@ export default function AdvertPaymentModal({
                         clipRule='evenodd'
                         d='M78.9946 102.583C78.8496 102.052 78.3217 98.8019 77.4089 99.0235C76.7153 99.1918 77.4359 102.051 77.4679 102.428C77.5357 103.215 76.0222 103.189 75.3191 103.083C74.2036 102.914 74.2927 102.261 74.1264 101.247C74.0636 100.863 73.8219 99.1321 73.0228 99.7668C72.4829 100.195 72.869 102.33 72.9136 102.817C73.0693 104.504 73.2526 107.386 74.2557 108.918C74.6556 109.529 75.0159 109.831 75.4359 109.047C75.8609 108.254 74.8985 105.837 74.7303 105.025C75.5244 105.103 77.8101 104.845 78.2878 105.67C78.7247 106.423 78.026 108.574 79.4272 108.747C80.2589 108.852 80.1083 107.889 80.0279 107.149C79.8603 105.596 79.4046 104.083 78.9946 102.583Z'
                         // fill='black'
+                        className='fill-black dark:fill-white'
                       />
                       <path
                         fillRule='evenodd'
