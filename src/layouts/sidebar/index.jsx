@@ -99,7 +99,7 @@ const Sidebar = () => {
       }
 
   return (
-    <div className="relative  bg-white  dark:bg-neutral-900 z-40 font-['Campton']">
+    <div className='relative  bg-white  dark:bg-neutral-900 z-40 font-Manrope'>
       <div
         onClick={() => overlayClicked()}
         className={`lg:hidden fixed inset-0 max-h-screen z-40 cursor-pointer   ${
@@ -154,7 +154,7 @@ const Sidebar = () => {
                 <div className='p-0'>
                   {!sidebarMinimized && route?.title && (
                     <small
-                      className={`mx-[1.2rem]  font-light capitalize text-sm inline-block px-2 mb-2 font-['Campton'] ${
+                      className={`mx-[1.2rem]  font-light capitalize text-sm inline-block px-2 mb-2 font-Manrope ${
                         i === 0 ? 'pt-3' : 'pt-7'
                       }`}
                     >
