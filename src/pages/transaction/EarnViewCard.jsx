@@ -94,7 +94,7 @@ export default function EarnViewCard() {
             <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               {/* {showBalance?.currency_code}:{showBalance?.balance} */}
               <span>{showBalance?.currency_symbol}</span>
-              {showBalance?.balance?.toLocaleString()}
+              {Number(showBalance?.balance).toLocaleString()}
             </div>
           </div>
           <div className='justify-start w-full items-start gap-[19px] inline-flex'>
