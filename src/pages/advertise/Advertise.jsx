@@ -156,7 +156,7 @@ export default function Advertise() {
               variant='light'
               className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
             >
-              History{' '}
+              My orders{' '}
             </Button>
           </div>
         </div>
