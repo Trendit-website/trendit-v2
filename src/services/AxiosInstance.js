@@ -3,8 +3,9 @@ import axios from 'axios'
 // *** API SETUP ***/
 
 const API = axios.create({
+  // baseURL: `https://trendit3-v2-gj9x.onrender.com/api`,
+  // baseURL: `https://trendit3-hd9u.onrender.com/api`,
   baseURL: `https://api-staging.trendit3.com/api`,
-  // baseURL: `https://api.trendit3.com/api`,
 })
 
 API.interceptors.request.use((req) => {
