@@ -56,11 +56,11 @@ export default function TaskCard({
                     </div>
                 </div>
                 <div className="text-xs text-[#D8D8D8] w-4/12 hidden lg:flex lg:flex-col">
-                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary">Click to visit</a></p>
+                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary" rel="noreferrer">Click to visit</a></p>
                     {account_link}
                 </div>
                 <div className="bg-[#FF6B6B] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0">
-                  {payment_status} payment
+                  {payment_status} paymentc c 
                 </div>
           </div>
       </div>

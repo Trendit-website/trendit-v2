@@ -150,7 +150,7 @@ export default function Welcome({ onNotificationClick }) {
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
                 <span>{showBalance?.currency_symbol}</span>
-                {Number(showBalance?.balance).toLocaleString()}
+                {showBalance?.balance?.toLocaleString()}
               </div>
             </div>
             <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>

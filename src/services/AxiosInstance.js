@@ -15,8 +15,8 @@ API.interceptors.request.use((req) => {
   req.headers['signup_token'] = token
   req.headers['access_token'] = access_token
   req.headers['Authorization'] = `Bearer ${access_token}`
-  // req.headers['Content-type'] = 'application/json'
-  // req.headers['Accept'] = 'application/json'
+  req.headers['Content-type'] = 'application/json'
+  req.headers['Accept'] = 'application/json'
   req.headers['CALLBACK-URL'] = window.location.origin + `/dashboard/payment`
   return req
 })

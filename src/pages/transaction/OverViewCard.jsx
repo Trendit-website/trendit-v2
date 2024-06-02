@@ -94,7 +94,7 @@ export default function OverViewCard() {
             </div>
             <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               <span>{showBalance?.currency_symbol}</span>
-              {Number(showBalance?.balance).toLocaleString()}
+              {showBalance?.balance?.toLocaleString()}
             </div>
           </div>
           <div className='justify-start items-center w-full gap-[19px] flex'>
