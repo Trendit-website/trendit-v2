@@ -60,7 +60,7 @@ export default function TaskCard({
                     {account_link}
                 </div>
                 <div className="bg-[#FF6B6B] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0">
-                  {payment_status} paymentc c 
+                  {payment_status} payment
                 </div>
           </div>
       </div>
