@@ -40,7 +40,7 @@ export default function FollowerAndLikeEngageTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 5, posts_count: 1 },
+    defaultValues: { amount: 5, },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -537,7 +537,7 @@ export default function FollowerAndLikeEngageTask() {
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'

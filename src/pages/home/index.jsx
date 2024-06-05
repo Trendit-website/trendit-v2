@@ -40,6 +40,7 @@ export default function Welcome({ onNotificationClick }) {
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
   const { isTablet } = useContext(dashboardContext)
+  console.log(userDetails)
 
   const handOpenSocialModal = () => {
     if (

@@ -59,7 +59,7 @@ export default function CreateThrAdvertTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 140, posts_count: 1, platform: 'Thread' },
+    defaultValues: { amount: 140, platform: 'Thread' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
@@ -745,7 +745,7 @@ export default function CreateThrAdvertTask() {
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'

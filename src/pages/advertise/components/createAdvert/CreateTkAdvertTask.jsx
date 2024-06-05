@@ -58,7 +58,7 @@ export default function CreateTkAdvertTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 140, posts_count: 1, platform: 'TikTok' },
+    defaultValues: { amount: 140, platform: 'TikTok' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
@@ -745,7 +745,7 @@ want to post your advert.`}
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'

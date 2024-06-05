@@ -9,11 +9,13 @@ import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import APIFormData from '../../services/AxiosInstanceFormdata'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
   const birthdayDate = new Date(profileDeatils?.birthday)
 
   // Get the day, month, and year from the birthday date
@@ -93,7 +95,7 @@ export default function GeneralForm() {
         })
       }
     } catch (error) {
-      toast.error(error.response?.data?.message ?? error.message, {
+      toast.error(error.response?.data?.message || error.message, {
         duration: 20000,
       })
     }
@@ -720,9 +722,9 @@ export default function GeneralForm() {
                     <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                       {watch().country === 'Nigeria' && (
                         <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                          <labl className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
+                          <label className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
                             LGA
-                          </labl>
+                          </label>
 
                           <Controller
                             name='local_government'

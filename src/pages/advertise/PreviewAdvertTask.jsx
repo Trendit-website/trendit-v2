@@ -319,7 +319,7 @@ export default function PreviewAdvertTask() {
                       )}
                     </div>
                   </div>
-                  <div className='w-full grid grid-cols-2 items-center justify-between'>
+                  {/* <div className='w-full grid grid-cols-2 items-center justify-between'>
                     <div className='w10/12 w-full flex flex-col gap-y-2'>
                       <p className='text-xs font-semibold'>Completed</p>
                       <Input
@@ -328,7 +328,7 @@ export default function PreviewAdvertTask() {
                         className='w-full w11/12'
                         disabled
                       />
-                    </div>
+                    </div> */}
                     {/* <div className='w-10/12 flex flex-col gap-y-2'>
                       <p className='text-xs font-semibold'>Status</p>
                       {taskPreview?.total_allocated <= 0 ? 
@@ -339,7 +339,7 @@ export default function PreviewAdvertTask() {
                             Running <Icons type='active' />
                          </div> }
                     </div> */}
-                  </div>
+                  {/* </div> */}
                 </div>
               </>
             )}
