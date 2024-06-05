@@ -5,6 +5,8 @@ import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
+import { useState, useContext } from 'react'
+import { AppearanceContext } from '../../providers/AppearanceProvider'
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {
@@ -15,6 +17,8 @@ export default function FundWalletModal({ isOpen, onClose }) {
   } = useForm({})
   const { mutateAsync: fundWallet, isPending } = useFundWallet()
   const { data: showBalance } = useFetchBallance()
+  const [focus, setFocus] = useState(false)
+  const appreance = useContext(AppearanceContext)
 
   const handleInputChange = (event) => {
     const { value } = event.target
@@ -30,6 +34,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
   }
 
   const onSubmit = async (data) => {
+    setFocus(false)
     try {
       const res = await fundWallet({ data })
       console.log(res?.data)
@@ -95,11 +100,12 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               type='text'
                               size='sm'
                               placeholder='amount'
+                              onClick={ () => (setFocus(true))}
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               startContent={
-                                <span>{showBalance?.currency_symbol}</span>
+                                <span className={`${appreance === 'dark' ? (focus ? 'text-white' : 'text-black') : 'text-[#C026D3]'}`}>{showBalance?.currency_symbol}</span>
                               }
                               onChange={handleInputChange}
                               classNames={{
