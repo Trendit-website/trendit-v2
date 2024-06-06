@@ -7,7 +7,8 @@ import { useDisclosure } from "@nextui-org/react";
 import AdvertPaymentModal from "../advertise/components/AdvertPaymentModal";
 import { useCreateAdvert, useCreateAdvertPaymentWallet } from "../../api/advertApi";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppearanceContext } from "../../providers/AppearanceProvider";
 
 export default function TaskCard({
   goal,
@@ -34,6 +35,7 @@ export default function TaskCard({
   const completePayment = () => {
     onOpen()
   }
+  const appreance = useContext(AppearanceContext)
   const [media, setMedia] = useState(null)
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -131,27 +133,27 @@ export default function TaskCard({
       })
     }
   }
-  
+  // ${appreance === 'dark' ? 'bg-[#2F2F2F6B] bg-opacity30' : 'bg-black'}
   return (
     <>
       <div
-        className='w-full cursor-pointer p-3 bg-[#2F2F2F6B] bg-opacity30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
+        className={`w-full cursor-pointer p-3 ${appreance === 'dark' ? '' : 'text-white'} bg-[#2F2F2F6B]  bg-opacity30 rounded-lg flex-col justify-start items-start gap-2 inline-flex`}
       >
             <div className="flex flex-col lg:flex-row items-start justify-between w-11/12 pl-4">
                 <div className="flex items-start gap-x-8">
                       <Icons type={platform} />
                     <div className="flex flex-col gap-y-2 text-sm">
-                        <p className="text-[#909090]">{when}</p>
+                        <p className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>{when}</p>
                         <p className="font-bold text-sm">{goal}</p>
                         <div className="flex items-center gap-x-2">
-                            <Icons type='wallet' /> <span className="text-[#909090]">Pricing: </span> <p className="font-bold">{fee} per like</p>
+                            <Icons type='wallet' /> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold">{fee} per like</p>
                         </div>
                         <div className="flex items-start gap-x-4">
-                          <p className="flex flex-col gap-y-2 text-[#909090]">
+                          <p className={`flex flex-col gap-y-2 ${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>
                               Number of likes
                               <span className="text-white font-bold">{engagements_count}</span>
                           </p>
-                          <p className="flex flex-col gap-y-2 text-[#909090]">
+                          <p className={`flex flex-col gap-y-2`}>
                               Amount Paid
                               <span className="text-white font-bold">{fee_paid}</span>
                           </p>
@@ -168,8 +170,8 @@ export default function TaskCard({
                         </div>
                     </div>
                 </div>
-                <div className="text-xs text-[#D8D8D8] w-4/12 hidden lg:flex lg:flex-col">
-                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary" rel="noreferrer">Click to visit</a></p>
+                <div className={`text-xs w-4/12 hidden lg:flex lg:flex-col ${appreance === 'dark' ? 'text-[#D8D8D8]': 'text-white'}`}>
+                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
                     {account_link}
                 </div>
                 {payment_status === 'complete' ? 
