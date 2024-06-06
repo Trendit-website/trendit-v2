@@ -152,9 +152,9 @@ const UserDropdown = () => {
                   </div>
                 </Link>
               </div>
-              <div className='self-stretch justify-start items-center gap-[7px] inline-flex'>
+              <div className='self-stretch flex justify-start items-center gap-[7px]'>
                 <button
-                  className='flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-fuchsia-600 lg:text-base group'
+                  className='flex items-center gap-3.5 py-4 text-sm font-medium duration-300 ease-in-out hover:text-fuchsia-600 lg:text-base group'
                   onClick={onOpen}
                 >
                   <svg

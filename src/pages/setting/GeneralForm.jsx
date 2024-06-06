@@ -667,7 +667,7 @@ export default function GeneralForm() {
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
                     <div className='px-2 justify-center items-center gap-2 inline-flex'>
                       <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
-                        State
+                        State {profileDeatils.state}
                       </div>
                     </div>
                     <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>

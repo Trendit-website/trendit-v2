@@ -146,7 +146,7 @@ export default function TaskCard({
                         <p className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>{when}</p>
                         <p className="font-bold text-sm">{goal}</p>
                         <div className="flex items-center gap-x-2">
-                            <Icons type='wallet' /> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold">{fee} per like</p>
+                            <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold">{fee} per like</p>
                         </div>
                         <div className="flex items-start gap-x-4">
                           <p className={`flex flex-col gap-y-2 ${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>
