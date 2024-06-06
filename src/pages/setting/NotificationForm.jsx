@@ -79,8 +79,9 @@ const NotificationsFormContents = () => {
 
       for (const change of changedData) {
         const res = await handleNoticePrefencents({ data: change })
-        if (res?.data?.status) {
-          // toast.success(res.data.message)
+        console.log(res)
+        if (res?.data?.status === 'success') {
+          toast.success(res.data.message)
         }
       }
 

@@ -400,9 +400,9 @@ function SecuretyFormContent() {
                       variant='light'
                       type='submit'
                       onClick={handleSubmit(handleUpdatePassword)}
-                      className='md:w-[290px]   cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2'
+                      className='md:w-[290px]   mt-4 text-base cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2'
                     >
-                      {isUpdating ? <Loader /> : 'Edit'}
+                      {isUpdating ? <Loader /> : 'Update-password/confirm'}
                     </Button>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ function SecuretyFormContent() {
                     )}
                   />
                 </div>
-                <div className='self-stretch w-full hover:text-white bg-opacity-10 justify-start items-center gap-2 inline-flex'>
+                {/*<div className='self-stretch w-full hover:text-white bg-opacity-10 justify-start items-center gap-2 inline-flex'>
                   <Controller
                     name='two_fa_method'
                     control={control}
@@ -516,7 +516,7 @@ function SecuretyFormContent() {
                       />
                     )}
                   />
-                </div>
+                </div>*/}
 
                 <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                   <Input
