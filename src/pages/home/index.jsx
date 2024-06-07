@@ -44,16 +44,7 @@ export default function Welcome({ onNotificationClick }) {
   console.log(userDetails)
 
   const handOpenSocialModal = () => {
-    if (
-      userDetails?.social_links?.instagram_verified === 'rejected' ||
-      userDetails?.social_links?.instagram_verified === 'idle'
-    ) {
-      onOpenVerify()
-    } else if (userDetails?.social_links?.instagram_verified === 'pending') {
-      toast.error('Verification request has been sent')
-    } else {
-      onOpenVerify()
-    }
+   onOpenVerify()
   }
 
   return (
