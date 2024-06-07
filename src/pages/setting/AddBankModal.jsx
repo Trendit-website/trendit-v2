@@ -57,6 +57,9 @@ export default function AddBankModal({ isOpen, onClose }) {
       data = { bank_name: bankName, account_no: accountNo }
       if (bankName && accountNo && accountNo?.length === 10) {
         try {
+          if(accountName === undefined)  {
+            setValue('account_name', 'Loading...')
+          }
           const res = await  API.post('/banks/verify/account', {
              "account_no": accountNo,
               "bank_name": bankName.value
