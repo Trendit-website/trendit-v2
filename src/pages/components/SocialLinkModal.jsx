@@ -8,8 +8,9 @@ import toast from 'react-hot-toast'
 import { useVerifySocial } from '../../api/verifySocialApi'
 import Loader from '../Loader'
 import { useQueryClient } from '@tanstack/react-query'
+import Icons from '../../components/Icon'
 
-export default function SocialLinkModal({ isOpen, onClose, type, LogoBand }) {
+export default function SocialLinkModal({ isOpen, onClose, type, icon }) {
   const {
     handleSubmit,
     control,
@@ -62,7 +63,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, LogoBand }) {
               </div>
               <div className='flex-col justify-start items-center gap-3 flex'>
                 <div className='justify-start flex-col items-center gap-2 inline-flex'>
-                  {LogoBand}
+                  <Icons type={icon} />
                   <div className="text-base capitalize font-bold font-['Manrope']">
                     Link Your {type} Account
                   </div>
