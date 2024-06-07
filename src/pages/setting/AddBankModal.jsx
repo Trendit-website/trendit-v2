@@ -14,9 +14,10 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 import API from '../../services/AxiosInstance'
 
-export default function AddBankModal({ isOpen, onClose }) {
+export default function AddBankModal({ isOpen, onClose, setBank }) {
   const { data: userBank } = useBankDetails()
   const { data: fetchBanks, isLoading: fetching } = useFetchBank()
+  const [isLoading, setLoading] = useState(false)
 
   const animatedComponents = makeAnimated()
 
@@ -80,23 +81,29 @@ export default function AddBankModal({ isOpen, onClose }) {
     }
     verifyBankDetails()
   }, [bankName, accountNo, updateVerifyBank, setValue])
-
   const onSubmit = async (data) => {
-    console.log(data)
     const details = {
       "bank_name": data.bank_name.value,
       "account_no": data.account_no,
       "account_name": data.account_name
     }
+    setLoading(true)
     try {
       const res = await API.post('/profile/bank', details)
       if (res?.data?.status) {
         toast.success(res.data.message)
+        setBank({
+          accountName: data.account_name,
+          accountNumber: data.account_no,
+          bankName: data.bank_name.value
+        })
         reset()
         onClose()
+        setLoading(false)
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
+      setLoading(false)
     }
   }
 
@@ -225,7 +232,7 @@ export default function AddBankModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                     <label className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
                       Account Name
-                    </label>
+                    </label>             
                     <Controller
                       name='account_name'
                       control={control}
@@ -291,7 +298,7 @@ export default function AddBankModal({ isOpen, onClose }) {
                       />
                     </svg>
                     <div className="text-center text-white text-sm font-medium font-['Manrope']">
-                      {isPending ? <Loader /> : 'Update'}
+                      {isLoading ? <Loader /> : 'Update'}
                     </div>
                   </Button>
                 </div>
