@@ -446,7 +446,7 @@ want to post your advert.`}
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the number of view you want'
+                                placeholder='Enter the no of views you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />

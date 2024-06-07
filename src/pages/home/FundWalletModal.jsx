@@ -130,7 +130,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                         <small className=" text-zinc-400 text-xs font-normal font-['Manrope']">
                           You can choose your preferred method of payment such
                           as Card payment, Bank transfer or USSD, simply by
-                          clicking on th “Change Payment” button.
+                          clicking on the “Change Payment” button.
                         </small>
                       </div>
                       <div className='self-stretch'>
