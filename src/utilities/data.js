@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 export const platforms = [
   {
-    label: 'Facebook',
+    label: 'FACEBOOK',
     value: 'facebook',
   },
   // {
@@ -11,13 +11,13 @@ export const platforms = [
   //   value: 'whatsapp',
   // },
   {
-    label: 'TikTok',
+    label: 'TIKTOK',
     value: 'TikTok',
   },
-  { label: 'Instagram', value: 'instagram' },
+  { label: 'INSTAGRAM', value: 'instagram' },
   { label: 'X', value: 'x' },
   // { label: 'Youtube', value: 'youtube' },
-  { label: 'Thread', value: 'Thread' },
+  { label: 'THREAD', value: 'Thread' },
 ]
 export const genders = [
   {
