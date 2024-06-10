@@ -7,9 +7,9 @@ import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile, useUserProfile } from '../../api/profileApis'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import toast from 'react-hot-toast'
-import APIFormData from '../../services/AxiosInstanceFormdata'
+import {setProfileContext} from '../../context/Profile'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -50,6 +50,8 @@ export default function GeneralForm() {
   })
 
   const [selectedImage, setSelectedImage] = useState(null)
+  const [updatedImage, setUpdatedImage] = useState(null)
+  const setProfile = useContext(setProfileContext)
 
   useEffect(() => {
     if (profileDeatils?.profile_picture) {
@@ -89,6 +91,7 @@ export default function GeneralForm() {
       formData.append('phone', data.phone)
       const res = await updateProfile(formData)
       if (res.data.status) {
+        setProfile(data)
         setSelectedImage(null)
         toast.success(res.data.message, {
           duration: 20000,
@@ -111,7 +114,7 @@ export default function GeneralForm() {
               <div className='flex-col justify-start items-center gap-6 flex'>
                 <div className='flex-col justify-center items-center gap-2 flex'>
                   <div className='w-[66px] cursor-pointer h-[66px] relative'>
-                    {selectedImage ? (
+                    {selectedImage || updatedImage ? (
                       <div className='mt-4'>
                         <img
                           // src={selectedImage}
@@ -119,8 +122,8 @@ export default function GeneralForm() {
                           // src={URL.createObjectURL(selectedImage)}
                           src={
                             typeof selectedImage === 'object'
-                              ? URL.createObjectURL(selectedImage)
-                              : selectedImage
+                              ? URL.createObjectURL(selectedImage ? selectedImage : updatedImage)
+                              : selectedImage ? selectedImage : updatedImage
                           }
                           alt='Selected'
                           className='w24 h24 w-[66px] h-[66px] -top-4 absolute rounded-[10px]'
@@ -136,7 +139,7 @@ export default function GeneralForm() {
                         id='image-upload'
                         className='absolute  w-full h-full opacity-0 cursor-pointer'
                         {...register('profile_picture')}
-                        onChange={(e) => setSelectedImage(e.target.files[0])}
+                        onChange={(e) => (setSelectedImage(e.target.files[0]), setUpdatedImage(e.target.files[0]))}
                       />
                       <label
                         htmlFor='image-upload'

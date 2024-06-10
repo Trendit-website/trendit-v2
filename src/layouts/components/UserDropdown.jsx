@@ -1,16 +1,18 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Avatar, useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import SignOutModal from '../../components/auth/SignOutModal'
+import { ProfileContext } from '../../context/Profile'
 
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const trigger = useRef(null)
   const dropdown = useRef(null)
+  const profile_ = useContext(ProfileContext)
 
   const { data: profileDeatils } = useGetProfile()
   // const navigate = useNavigate()
@@ -54,7 +56,7 @@ const UserDropdown = () => {
         <span className='rounded-full flex items-center'>
           <Avatar
             className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-            src={profileDeatils?.profile_picture}
+            src={(profile_ ? URL.createObjectURL(profile_?.profile_picture[0]) : '') || profileDeatils?.profile_picture}
             title={profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
           />
         </span>

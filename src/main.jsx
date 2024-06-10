@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import DashboardContext from './context/Dashboard.jsx'
 import QueryProvider from './providers/QueryProvider.jsx'
 import AppearanceProvider from './providers/AppearanceProvider.jsx'
+import ProfileProvider from './context/Profile.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <NextUIProvider>
           <QueryProvider>
             <AppearanceProvider>
-            <App />
+              <ProfileProvider>
+                  <App />
+            </ProfileProvider>
             </AppearanceProvider>
           </QueryProvider>
         </NextUIProvider>
