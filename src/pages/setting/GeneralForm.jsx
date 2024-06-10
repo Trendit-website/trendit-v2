@@ -9,13 +9,12 @@ import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import { useEffect, useState, useContext } from 'react'
 import toast from 'react-hot-toast'
-import {setProfileContext} from '../../context/Profile'
+import {setProfileContext, ProfileContext} from '../../context/Profile'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const { data: profileDeatils } = useGetProfile()
-  console.log(profileDeatils)
   const birthdayDate = new Date(profileDeatils?.birthday)
 
   // Get the day, month, and year from the birthday date
@@ -52,6 +51,7 @@ export default function GeneralForm() {
   const [selectedImage, setSelectedImage] = useState(null)
   const [updatedImage, setUpdatedImage] = useState(null)
   const setProfile = useContext(setProfileContext)
+  const profile = useContext(ProfileContext)
 
   useEffect(() => {
     if (profileDeatils?.profile_picture) {
@@ -81,18 +81,24 @@ export default function GeneralForm() {
       // Append selected image to formData if available
       if (selectedImage && typeof selectedImage === 'object') {
         formData.append('profile_picture', selectedImage)
+        console.log(selectedImage)
+      } else if (profileDeatils?.profile_picture) {
+        formData.append('profile_picture', profileDeatils?.profile_picture)
       }
       // Append other form fields
       formData.append('gender', data.gender)
+      formData.append('firstname', data.firstname)
+      formData.append('lastname', data.lastname)
       formData.append('birthday', selectedDate)
       formData.append('country', data.country)
       formData.append('state', data.state)
       formData.append('local_government', data.local_government)
       formData.append('phone', data.phone)
+      formData.append('username', data.username)
       const res = await updateProfile(formData)
       if (res.data.status) {
         setProfile(data)
-        setSelectedImage(null)
+        // setSelectedImage(null)
         toast.success(res.data.message, {
           duration: 20000,
         })
@@ -192,7 +198,7 @@ export default function GeneralForm() {
                         Full Name
                       </div>
                     </div>
-                    <div className='w-full flex gap-4'>
+                    <div className='w-full flex flex-col gap-y-4 lg:flex lg:flex-row lg:gap-4'>
                       <div className='self-stretch w-full bg-opacity-10 rounded-lg justify-start items-center gap-2 inline-flex'>
                         <Controller
                           name='firstname'
@@ -666,116 +672,116 @@ export default function GeneralForm() {
                     />
                   </div>
                 </div>
-                <div className='self-stretch justify-center items-start gap-3.5 inline-flex'>
-                  <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                      <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
-                        State {profileDeatils.state}
+                <div className='self-stretch flex flex-col justify-center items-start gap-3.5 lg:inline-flex lg:flex-row'>
+                  <div className='grow shrink basis-0 w-full flex-col justify-start items-start gap-[7px] inline-flex'>
+                      <div className='px-2 justify-center items-center gap-2 inline-flex'>
+                        <div className="text-center  text-[12.83px] font-medium font-['Manrope']">
+                          State
+                        </div>
+                      </div>
+                      <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                        <Controller
+                          name='state'
+                          aria-labelledby='state'
+                          control={control}
+                          render={({ field }) => (
+                            <Select
+                              aria-labelledby='state'
+                              isInvalid={!!errors.state}
+                              errorMessage={errors?.state?.message}
+                              isLoading={isStateLoading}
+                              selectedKeys={field.value ? [field.value] : []}
+                              className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                              placeholder='Select state'
+                              classNames={{
+                                listbox: [
+                                  'bg-transparent',
+                                  'text-black/90 dark:text-white/90',
+                                  'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                ],
+                                trigger: [
+                                  'bg-zinc-700 bg-opacity-10',
+                                  'dark:bg-white dark:bg-opacity-10',
+                                  'hover:bg-bg-white hover:bg-opacity-10',
+                                  'dark:hover:bg-default/70',
+                                  'group-data-[focused=true]:bg-default-200/50',
+                                  'dark:group-data-[focused=true]:bg-default/60',
+                                  '!cursor-text',
+                                  'border-2 border-transparent',
+                                  'focus-within:!border-fuchsia-600  ',
+                                ],
+                              }}
+                              {...field}
+                              onChange={(e) => {
+                                field.onChange(e)
+                                setValue('local_government', '')
+                              }}
+                            >
+                              {states?.map((cou) => (
+                                <SelectItem key={cou.name} value={cou.name}>
+                                  {cou.name}
+                                </SelectItem>
+                              ))}
+                            </Select>
+                          )}
+                        />
                       </div>
                     </div>
-                    <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
-                      <Controller
-                        name='state'
-                        aria-labelledby='state'
-                        control={control}
-                        render={({ field }) => (
-                          <Select
-                            aria-labelledby='state'
-                            isInvalid={!!errors.state}
-                            errorMessage={errors?.state?.message}
-                            isLoading={isStateLoading}
-                            selectedKeys={field.value ? [field.value] : []}
-                            className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                            placeholder='Select state'
-                            classNames={{
-                              listbox: [
-                                'bg-transparent',
-                                'text-black/90 dark:text-white/90',
-                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                              ],
-                              trigger: [
-                                'bg-zinc-700 bg-opacity-10',
-                                'dark:bg-white dark:bg-opacity-10',
-                                'hover:bg-bg-white hover:bg-opacity-10',
-                                'dark:hover:bg-default/70',
-                                'group-data-[focused=true]:bg-default-200/50',
-                                'dark:group-data-[focused=true]:bg-default/60',
-                                '!cursor-text',
-                                'border-2 border-transparent',
-                                'focus-within:!border-fuchsia-600  ',
-                              ],
-                            }}
-                            {...field}
-                            onChange={(e) => {
-                              field.onChange(e)
-                              setValue('local_government', '')
-                            }}
-                          >
-                            {states?.map((cou) => (
-                              <SelectItem key={cou.name} value={cou.name}>
-                                {cou.name}
-                              </SelectItem>
-                            ))}
-                          </Select>
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                    <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
-                      {watch().country === 'Nigeria' && (
-                        <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
-                          <label className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
-                            LGA
-                          </label>
+                      <div className='grow shrink w-full basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                        <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                          {watch().country === 'Nigeria' && (
+                            <div className='grow shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
+                              <label className="text-center px-2 text-[12.83px] font-medium font-['Manrope']">
+                                LGA
+                              </label>
 
-                          <Controller
-                            name='local_government'
-                            control={control}
-                            aria-labelledby='local_government'
-                            render={({ field }) => (
-                              <Select
+                              <Controller
+                                name='local_government'
+                                control={control}
                                 aria-labelledby='local_government'
-                                isInvalid={!!errors.local_government}
-                                errorMessage={errors?.local_government?.message}
-                                isLoading={isLgaLoading}
-                                selectedKeys={field.value ? [field.value] : []}
-                                className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                                placeholder='Select lga'
-                                classNames={{
-                                  listbox: [
-                                    'bg-transparent',
-                                    'text-black/90 dark:text-white/90',
-                                    'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                                  ],
+                                render={({ field }) => (
+                                  <Select
+                                    aria-labelledby='local_government'
+                                    isInvalid={!!errors.local_government}
+                                    errorMessage={errors?.local_government?.message}
+                                    isLoading={isLgaLoading}
+                                    selectedKeys={field.value ? [field.value] : []}
+                                    className="grow shrink basis-0 rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                                    placeholder='Select lga'
+                                    classNames={{
+                                      listbox: [
+                                        'bg-transparent',
+                                        'text-black/90 dark:text-white/90',
+                                        'placeholder:text-zinc-400 dark:placeholder:text-white/60',
+                                      ],
 
-                                  trigger: [
-                                    'bg-zinc-700 bg-opacity-10',
-                                    'dark:bg-white dark:bg-opacity-10',
-                                    'hover:bg-bg-white hover:bg-opacity-10',
-                                    'dark:hover:bg-default/70',
-                                    'group-data-[focused=true]:bg-default-200/50',
-                                    'dark:group-data-[focused=true]:bg-default/60',
-                                    '!cursor-text',
-                                    'border-2 border-transparent',
-                                    'focus-within:!border-fuchsia-600  ',
-                                  ],
-                                }}
-                                {...field}
-                              >
-                                {lgas?.map((lga) => (
-                                  <SelectItem key={lga} value={lga}>
-                                    {lga}
-                                  </SelectItem>
-                                ))}
-                              </Select>
-                            )}
-                          />
+                                      trigger: [
+                                        'bg-zinc-700 bg-opacity-10',
+                                        'dark:bg-white dark:bg-opacity-10',
+                                        'hover:bg-bg-white hover:bg-opacity-10',
+                                        'dark:hover:bg-default/70',
+                                        'group-data-[focused=true]:bg-default-200/50',
+                                        'dark:group-data-[focused=true]:bg-default/60',
+                                        '!cursor-text',
+                                        'border-2 border-transparent',
+                                        'focus-within:!border-fuchsia-600  ',
+                                      ],
+                                    }}
+                                    {...field}
+                                  >
+                                    {lgas?.map((lga) => (
+                                      <SelectItem key={lga} value={lga}>
+                                        {lga}
+                                      </SelectItem>
+                                    ))}
+                                  </Select>
+                                )}
+                              />
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
+                      </div>
                   </div>
-                </div>
               </div>
             </div>
             <div className='flex w-full justify-between'>
