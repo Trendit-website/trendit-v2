@@ -70,7 +70,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
                       <div className="grow shrink basis-0 text-md font-semibold font-['Manrope']">
-                        Withdraw Fund
+                        Withdraw
                       </div>
                     </div>
                     <div className=" text-center text-sm font-normal font-['Manrope']">
@@ -79,9 +79,9 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                     </div>
                     <div className='self-stretch justify-start flex-col items-start gap-[19px] flex'>
                       <div className='self-stretch rounded-none  gap-2 flex-col flex'>
-                        <div className='w[275px]'>
-                          <span className="text-sm font-normal font-['Manrope']">
-                            Wallet Balance
+                        <div className='w[275px] flex items-center gap-x-1'>
+                          <span className="text-sm font-normal font-['Manrope'] -mr-0.5">
+                            Wallet Balance: 
                           </span>
 
                           <span className=" text-sm font-semibold font-['Manrope']">
@@ -93,7 +93,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                           Amount
                         </div>
                         <Controller
-                          name='amount'
+                          name='Amount'
                           control={control}
                           render={({ field }) => (
                             <Input

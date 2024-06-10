@@ -56,7 +56,7 @@ const UserDropdown = () => {
         <span className='rounded-full flex items-center'>
           <Avatar
             className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-            src={(profile_ ? URL.createObjectURL(profile_?.profile_picture[0]) : '') || profileDeatils?.profile_picture}
+            src={profile_?.profile_picture?.length === 1 ? URL.createObjectURL(profile_?.profile_picture[0]) : profile_?.profile_picture || profileDeatils?.profile_picture}
             title={profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
           />
         </span>
@@ -64,10 +64,10 @@ const UserDropdown = () => {
           <div className='flex gap-1'>
             <div className='flex-col justify-start  gap-1.5 inline-flex'>
               <div className="text-center  text-[12.83px] font-bold font-['Manrope']">
-                {profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
+                {(profile_ ? profile_?.firstname : profileDeatils?.firstname) + ' ' +  (profile_ ? profile_?.lastname : profileDeatils?.lastname)}
               </div>
               <div className="text-zinc-400 text-sm font-medium font-['Manrope']">
-                @{profileDeatils?.username}
+                @{profile_ ? profile_?.username : profileDeatils?.username}
               </div>
             </div>
 

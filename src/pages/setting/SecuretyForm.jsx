@@ -17,6 +17,7 @@ import { EyeIcon } from 'lucide-react'
 import QrCodeModal from './QrCodeModal'
 import { useGetProfile } from '../../api/profileApis'
 import Loader from '../Loader'
+import API from '../../services/AxiosInstance'
 
 export default function SecuretyForm() {
   const { isLoading } = useGetSecurityPrefrence()
@@ -37,7 +38,6 @@ function SecuretyFormContent() {
   const { data: securityPrefrence } = useGetSecurityPrefrence()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: userDetails } = useGetProfile()
-  console.log(userDetails, 'kkkk')
   const {
     handleSubmit,
     control,
@@ -62,9 +62,9 @@ function SecuretyFormContent() {
   const { mutateAsync: handleSecurityUpdate } = useUpdateSecPrefence()
   const { mutateAsync: handleUpdateUserPassword, isPending: isUpdating } =
     useUpdateUserPassword()
-  const { mutate: deactiveGoogleAuth } = useDeactivateGoogleAuth()
+  // const { mutate: deactiveGoogleAuth } = useDeactivateGoogleAuth()
 
-  console.log(securityPrefrence, 'securityPrefrence')
+  //console.log(securityPrefrence, 'securityPrefrence')
 
   const new_password = watch('new_password')
   const Cnew_password = watch('Cnew_password')
@@ -94,7 +94,7 @@ function SecuretyFormContent() {
   }, [securityPrefrence, setValue])
 
   const onSubmit = async (data) => {
-    // console.log(data, 'data')
+    console.log(data, 'data')
     try {
       const res = await handleSecurityUpdate({
         data,
@@ -109,19 +109,22 @@ function SecuretyFormContent() {
   }
 
   const handelDeactivateGoogleAuth = () => {
-    deactiveGoogleAuth(
-      {},
-      {
-        onSuccess: (data) => {
-          toast.success(data.message || 'Deactivated successfully!')
-          // Additional UI update or query invalidation can go here
-          queryClient.invalidateQueries({ queryKey: ['sec_prefence'] })
-        },
-        onError: (error) => {
-          toast.error(error.response?.data?.message || 'An error occurred')
-        },
-      }
-    )
+    API.get('/settings/deactivate/google-auth-app')
+    .then((response) => toast.success(response.data.message))
+    .catch((error) => toast.error(error.message))
+    // deactiveGoogleAuth(
+    //   {},
+    //   {
+    //     onSuccess: (data) => {
+    //       toast.success(data.message || 'Deactivated successfully!')
+    //       // Additional UI update or query invalidation can go here
+    //       queryClient.invalidateQueries({ queryKey: ['sec_prefence'] })
+    //     },
+    //     onError: (error) => {
+    //       toast.error(error.response?.data?.message || 'An error occurred')
+    //     },
+    //   }
+    // )
   }
 
   return (
@@ -466,80 +469,19 @@ function SecuretyFormContent() {
                       />
                     )}
                   />
-                </div>
-                {/*<div className='self-stretch w-full hover:text-white bg-opacity-10 justify-start items-center gap-2 inline-flex'>
-                  <Controller
-                    name='two_fa_method'
-                    control={control}
-                    render={({ field }) => (
-                      <Input
-                        isReadOnly
-                        isDisabled
-                        endContent={
-                          <Switch
-                            size='sm'
-                            {...field}
-                            checked={field.value === 'Phone'}
-                            onChange={(e) => {
-                              setValue(
-                                'two_fa_method',
-                                e.target.checked ? 'Phone' : ''
-                              )
-                              handleSubmit(onSubmit)() // Trigger form submission after state update
-                            }}
-                            color='default'
-                          />
-                        }
-                        placeholder='Phone'
-                        size='sm'
-                        value='Phone'
-                        classNames={{
-                          input: [
-                            'bg-transparent',
-                            'text-black/90 dark:text-white/90',
-                            'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                          ],
-                          innerWrapper: 'bg-transparent',
-                          inputWrapper: [
-                            'bg-zinc-700 rounded-none bg-opacity-10',
-                            'dark:bg-white dark:bg-opacity-10',
-                            'hover:bg-bg-white hover:bg-opacity-10',
-                            'dark:hover:bg-default/70',
-                            'group-data-[focused=true]:bg-default-200/50',
-                            'dark:group-data-[focused=true]:bg-default/60',
-                            '!cursor-text',
-                            'border-2 border-transparent',
-                            'focus-within:!border-fuchsia-600  ',
-                          ],
-                        }}
-                        className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
-                      />
-                    )}
-                  />
-                </div>*/}
+                </div>                   
 
                 <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
                   <Input
                     readOnly
                     endContent={
-                      userDetails?.two_fa?.method === 'google_auth_app' ? (
-                        <button
+                        <div
                           // variant='light'
-                          // onClick={() => handelDeactivateGoogleAuth()}
-                          onClick={handelDeactivateGoogleAuth}
+                          onClick={() => securityPrefrence?.two_fa_method === 'google_auth_app' ? handelDeactivateGoogleAuth() : onOpen()}
                           className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
                         >
-                          Deactivate
-                        </button>
-                      ) : (
-                        <button
-                          // variant='light'
-                          onClick={onOpen}
-                          className="text-[#FF6DFB] dark:text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
-                        >
-                          Activate
-                        </button>
-                      )
+                          {securityPrefrence?.two_fa_method === 'google_auth_app' ? 'Deactivate' : 'Activate'}
+                        </div>
                     }
                     placeholder='Google Auth App'
                     size='sm'
