@@ -36,10 +36,7 @@ export default function EngagementTasksCard() {
                 Platforms
               </div>
               <div className=" text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                Follow people and pages on selected social media account like
-                Facebook, Instagram, TikTok, and others and earn ₦3.5 per follow
-                the Unlock your earning potential, By performing one task at a
-                time
+                  Follow people and pages on selected social media accounts like Facebook, Instagram, TikTok, and others to earn ₦3.5 per follow. Unlock your earning potential by performing one task at a time
               </div>
               <div className='justify-start items-start gap-2 inline-flex'>
                 <svg
@@ -200,12 +197,10 @@ export default function EngagementTasksCard() {
           <div className='grow shrink basis-0  justify-between items-start flex'>
             <div className='max-w-[555px] flex-col justify-start items-start gap-2 inline-flex'>
               <div className=" text-sm font-semibold font-['Manrope']">
-                Like Post on Different Social Media Platforms
+                Like post on Different Social Media Platforms
               </div>
               <div className=" text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                Like people Post on Social media platform like Instagram,
-                Facebook, TikTok and others to earn ₦ 3.5 per like. Turn your
-                daily routine into rewards!
+              Like posts on social media platforms like Instagram, Facebook, TikTok, and others to earn ₦3.5 per like. Turn your daily routine into rewards!
               </div>
               <div className='justify-start items-start gap-2 inline-flex'>
                 <svg
@@ -378,9 +373,7 @@ export default function EngagementTasksCard() {
                 Like and Follow Facebook Business Pages
               </div>
               <div className=" text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                Like and follow pages for businesses and organisations and earn
-                ₦3.5 per like and follow Unlock your earning potential, By
-                performing one task at a time
+              Like and follow Facebook pages for businesses and organizations to earn ₦3.5 per like and follow. Unlock your earning potential by performing one task at a time.
               </div>
 
               <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
@@ -450,10 +443,7 @@ export default function EngagementTasksCard() {
                 Platforms
               </div>
               <div className=" text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-                Post comment on peoples , businesss or organisation pages or
-                post on Social media platform like X, Instagram, Facebook,
-                TikTok and others to earn ₦ 20 per comment. Hustle more, earn
-                more.
+              Post comments on personal, business, or organization pages and posts on social media platforms like X, Instagram, Facebook, TikTok, and others to earn ₦20 per comment. Hustle more, earn more.
               </div>
               <div className='justify-start items-start gap-2 inline-flex'>
                 <svg

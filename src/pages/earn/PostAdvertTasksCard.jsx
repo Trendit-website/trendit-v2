@@ -64,7 +64,7 @@ export default function PostAdvertTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  if (!profileDeatils?.membership_fee) {
+                  if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_tw-task`)
                   } else {
                     onOpen()

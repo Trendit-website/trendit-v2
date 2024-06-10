@@ -80,7 +80,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
                       <div className="text-sm font-bold font-['Manrope']">
-                        Fund Your Trendit3 Wallet
+                        Fund Your Trendit³ Wallet
                       </div>
                       <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
                         Please enter the amount which you like to fund your
@@ -99,7 +99,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                             <Input
                               type='text'
                               size='sm'
-                              placeholder='amount'
+                              placeholder='Amount'
                               onClick={ () => (setFocus(true))}
                               {...field}
                               errorMessage={errors?.amount?.message}
