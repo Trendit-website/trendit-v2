@@ -24,10 +24,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on X
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get Genuine people with more than 500 followers on their X account
-              to post your advert to their audience to post your ads on their
-              social media account. Expand your audience reach today through
-              Trendit3
+            Get genuine people with over 500 followers on their X account to post your adverts to their audience. Expand your reach today through Trendit³
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -115,11 +112,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on Instagram
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get real people to post your advert on their Instagram account
-              having at least 500 active followers each on their account to post
-              your advert to their followers. This will give your advert massive
-              views within a short period of time. You can indicate any number
-              of people you want to post your advert.
+            Get real people with at least 500 active followers on their Instagram accounts to post your advert. This ensures your advert gets massive views quickly. You can specify how many people you want to share your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -176,10 +169,7 @@ export default function AdvertiseTaskCard() {
               Get people to post your Advert on Facebook
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get Genuine people with more than 500 followers or friends on
-              their Facebook account to post your advert to their audience to
-              post your ads on their social media account. Expand your audience
-              reach today through Trendit3
+            Get genuine people with over 500 followers or friends on their Facebook accounts to post your adverts. Expand your audience reach today through Trendit³.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -240,11 +230,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on TikTok
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get real people to post your adverts on their TikTok account
-              having at least 500 active followers each on their account to post
-              your advert to their followers. This will give your advert massive
-              views within a short period of time. You can indicate any number
-              of people you want to post your advert.
+            Get real users with at least 500 active followers on their TikTok accounts to share your adverts. This boosts your advert's visibility quickly. Specify how many people you want to share your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -318,11 +304,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on WhatsApp
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get real people to post your adverts on their WhatsApp Status
-              having at least 500 active followers each on their account to post
-              your advert to their followers. This will give your advert massive
-              views within a short period of time. You can indicate any number
-              of people you want to post your advert.
+            Get real users with at least 500 active contacts on their WhatsApp Status to share your adverts. This ensures your advert gets significant visibility quickly. You can specify how many people you want to share your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
@@ -384,10 +366,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on Threads
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-              Get Genuine people with more than a 500 followers on their Threads
-              account to post your advert to their audience to post your ads on
-              their social media account. Expand your audience reach today
-              through Trendit3
+            Get genuine users with over 500 followers on their Threads account to share your advert with their audience. Boost your visibility and expand your reach today through Trendit³.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>
