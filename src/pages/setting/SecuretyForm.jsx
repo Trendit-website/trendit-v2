@@ -107,10 +107,10 @@ function SecuretyFormContent() {
       toast.error(error.response?.data?.message ?? error.message)
     }
   }
-
+  const [is2Fa, set2Fa] = useState('')
   const handelDeactivateGoogleAuth = () => {
     API.get('/settings/deactivate/google-auth-app')
-    .then((response) => toast.success(response.data.message))
+    .then((response) => (toast.success(response.data.message), window.location.reload()))
     .catch((error) => toast.error(error.message))
     // deactiveGoogleAuth(
     //   {},
