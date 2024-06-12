@@ -79,11 +79,9 @@ export default function GenerateFollowEngageTask() {
                     Platforms
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    ₦10 per Like/Follow. The more pages you like, the more you
-                    earn. Follow people and pages on selected social media
-                    account like Facebook, Instagram, TikTok, and others and
-                    earn ₦3.5 per follow the Unlock your earning potential, By
-                    performing one task at a time
+                    Follow people and pages on selected social media patforms such as Facebook, Instagram,
+                    TikTok, and others, and earn #3.5 per follow. Unlock your earning potential by performing one task at a time.
+                    The more pages you like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -455,6 +453,10 @@ export default function GenerateFollowEngageTask() {
                 <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
                   Generate task
                 </div>
+              </div>
+              <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Facebook page-like task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
               </div>
             </div>
           )}

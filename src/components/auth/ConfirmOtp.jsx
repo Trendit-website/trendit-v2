@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router'
 import { Controller, useForm } from 'react-hook-form'
 import { useVerifyEmailOtp, useVerifyEmailResendOtp } from '../../api/auth'
 import toast from 'react-hot-toast'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useSignUpToken from '../../hooks/useSignUpToken'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import OtpPinInput from './OtpPinInput'
@@ -25,6 +25,7 @@ export default function ConfirmOtp() {
   // const otp2 = useRef()
   const { token } = useSignUpToken()
   const { setCurrentUser, userData } = useCurrentUser()
+  const [currentMail, setCurrentMail] = useState()
 
   // const handleOtpChange = (index, value) => {
   //   const updatedOtp = [...otp]
@@ -47,6 +48,7 @@ export default function ConfirmOtp() {
       })
       if (res.data.status) {
         setCurrentUser(res.data.user_data)
+        sessionStorage.removeItem('verify-email')
         toast.success(res.data.message)
         navigate('/signup')
       }
@@ -68,6 +70,7 @@ export default function ConfirmOtp() {
   }
 
   useEffect(() => {
+    setCurrentMail(sessionStorage.getItem('verify-email'))
     if (watch().entered_code?.length === 6) onSubmit()
   }, [watch().entered_code])
 
@@ -99,7 +102,7 @@ export default function ConfirmOtp() {
                 Confirm your email
               </div>
               <div className="w-80 mb-4 text-center text-zinc-400 text-base font-normal font-['Manrope']">
-                We have sent an email with a code to {userData?.email}, please
+                We have sent an email with a code to {currentMail ? currentMail : userData?.email}, please
                 enter it below to create your Trendit account.
               </div>
             </div>

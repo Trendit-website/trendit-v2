@@ -79,12 +79,11 @@ export default function GenerateLikeFollowFBEngageTask() {
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
-                    Post adverts on Youtube
+                    Post adverts on Facebook
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Youtube Pages for Businesses and
-                    Organizations and earn ₦10 per Like/Follow. The more pages
-                    you like, the more you earn.
+                    Like and follow Facebook pages for individuals, buisnesses, and organizations, and earn #3.5 per 
+                    like or follow. The more pages you like and follow, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
@@ -425,6 +424,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                 <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
                   Generate task
                 </div>
+              </div>
+              <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Facebook page-like task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
               </div>
             </div>
           )}

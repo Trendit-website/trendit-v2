@@ -3,8 +3,11 @@ import { AiOutlineClose } from "react-icons/ai"
 import Icons from "../../components/Icon"
 import SocialLinkModal from "./SocialLinkModal"
 import { useDisclosure } from "@nextui-org/react"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { AppearanceContext } from '../../providers/AppearanceProvider'
 const SocialLinkOption = ({ isOpen, onClose,}) => {
+    const appearance = useContext(AppearanceContext)
+    console.log(appearance)
     const socials = [
         {
             icon: 'facebook',
@@ -15,15 +18,15 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
             lable: 'Instagram'
         },
         {
-            icon: 'twitter',
+            icon: `${appearance === 'dark' ? 'twitter' : 'x-lite'}`,
             lable: 'X'
         },
         {
-            icon: 'tik-tok',
+            icon: `${appearance === 'dark' ? 'tik-tok' : 'tik-tok-lite'}`,
             lable: 'Tiktok'
         },
         {
-            icon: 'thread',
+            icon: `${appearance === 'dark' ? 'thread' : 'thread-lite'}`,
             lable: 'Thread'
         },
         {
@@ -65,7 +68,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
                         </p>
                         <div className="w-10/12 flex flex-col gap-y-4 pt-6">
                             {socials.map((social, index) => (
-                                <div key={index} className="flex items-center gap-x-4 py-4" onClick={() => openSocialModal(index)}>
+                                <div key={index} className="flex items-center gap-x-4 py-4 cursor-pointer" onClick={() => openSocialModal(index)}>
                                     <Icons type={social.icon} width={20} height={20}/>
                                     <p>Link your {social.lable} account</p>
                                 </div>

@@ -1,13 +1,14 @@
 import { Button, Input } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useRegisterUser } from '../../api/auth'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import useAccessToken from '../../hooks/useAccessToken'
+import API from '../../services/AxiosInstance'
 
 export default function Signup() {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,12 +17,50 @@ export default function Signup() {
     handleSubmit,
     control,
     reset,
+    setError,
     formState: { errors },
   } = useForm()
   const { mutateAsync: handleReg, isPending } = useRegisterUser()
   const { userData } = useCurrentUser()
   const toggleVisibility = () => setIsVisible(!isVisible)
   const { setAccessToken } = useAccessToken()
+  const [userName, setUserName] = useState()
+  const [debouncedValue, setDebouncedValue] = useState()
+  const [isExist, setExist] = useState()
+  
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(userName)    
+  }, 2000)
+  return () => {
+    clearTimeout(handler)
+  };
+  })
+
+  const checkUsername = (name) => {
+    setUserName(name)  
+  }
+  useEffect(() => {
+    if(debouncedValue) {
+      API.post('/check-username', {'username': debouncedValue})
+      .then((response) => setExist(response.data?.message))
+      .catch((error) => setError('username', {
+        type: 'manual',
+        message: error?.response?.data?.message
+      }))
+    }
+  }, [debouncedValue])
+
+  const validatePassword = (value) => {
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    return (
+      hasNumber && hasSpecialChar || 
+      ''
+    );
+  };
+
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
@@ -123,6 +162,7 @@ export default function Signup() {
                       errorMessage={errors?.username?.message}
                       isInvalid={!!errors?.username}
                       required={true}
+                      onChange={(e) => checkUsername(e.target.value)}
                       classNames={{
                         inputWrapper: [
                           'border-2 border-transparent',
@@ -136,6 +176,7 @@ export default function Signup() {
                   )}
                   rules={{ required: true }}
                 />
+                  {isExist ? <p className='text-green-500'>{isExist}</p> : ''}
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Manrope']">
@@ -212,6 +253,7 @@ export default function Signup() {
                       value: 8,
                       message: 'min length is 8',
                     },
+                    validate: validatePassword
                   }}
                 />
 

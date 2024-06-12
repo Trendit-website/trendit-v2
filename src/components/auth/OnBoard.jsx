@@ -256,7 +256,7 @@ export default function OnBoard() {
                             errorMessage={errors?.month?.message}
                             selectedKeys={field.value ? [field.value] : []}
                             className="grow shrink basis-0rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                            placeholder='Mon'
+                            placeholder='Month'
                             classNames={{
                               listbox: [
                                 'bg-transparent',

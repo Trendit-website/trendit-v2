@@ -70,25 +70,25 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon }) {
                 </div>
                 <div className="text-center text-zinc-400 text-sm font-semibold font-['Manrope']">
                   You must obey the following rules in order to successfully
-                  link your {type} account to Trendti3.
+                  link your {type} account to Trendit³.
                 </div>
               </div>
-              <div className='flex-col justify-start items-start gap-6 flex'>
-                <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
+              <ol className='flex-col justify-start items-start gap-2 list-decimal flex'>
+                <li className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   Your account on {type} must have at least 500 Active
                   Followers. Note that Ghost or Bots followers are not allowed
                   and your account on Trendit3 will be banned if you have ghost
                   followers
-                </div>
-                <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
+                </li>
+                <li className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   You Account on {type} must have been opened one year ago.
-                </div>
+                </li>
 
-                <div className=" text-zinc-400 text-sm font-semibold font-['Manrope']">
+                <li className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   You must have posted at least five times on your {type}
                   account within the last one year
-                </div>
-              </div>
+                </li>
+              </ol>
               <div className='w-full px-3 py-6 bg-zinc-400 gap-3 bg-opacity-20 rounded justify-between itemscenter flex flex-col'>
                 <div className=" px-2 text-[12.83px] font-medium font-['Manrope']">
                   Please enter your {type} profile link which you want to use to

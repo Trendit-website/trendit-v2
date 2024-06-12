@@ -8,10 +8,12 @@ import {
 } from '../providers/AppearanceProvider'
 import API from '../services/AxiosInstance'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 export default function Logo() {
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (userPrefrences) {
@@ -46,7 +48,7 @@ export default function Logo() {
 
   return (
     <div>
-      <div onClick={toggleAppearance}>
+      <div onClick={() => localStorage.removeItem('appearance')}>
         {userPrefrences === 'dark' || localStorage.getItem('appearance') === 'dark' ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
         ) : (

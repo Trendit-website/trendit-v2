@@ -52,6 +52,32 @@ export default function GeneralForm() {
   const [updatedImage, setUpdatedImage] = useState(null)
   const setProfile = useContext(setProfileContext)
   const profile = useContext(ProfileContext)
+  const [userName, setUserName] = useState()
+  const [debouncedValue, setDebouncedValue] = useState()
+  const [isExist, setExist] = useState()
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(userName)    
+  }, 2000)
+  return () => {
+    clearTimeout(handler)
+  };
+  })
+
+  const checkUsername = (name) => {
+    setUserName(name)  
+  }
+  useEffect(() => {
+    if(debouncedValue) {
+      API.post('/check-username', {'username': debouncedValue})
+      .then((response) => setExist(response.data?.message))
+      .catch((error) => setError('username', {
+        type: 'manual',
+        message: error?.response?.data?.message
+      }))
+    }
+  }, [debouncedValue])
 
   useEffect(() => {
     if (profileDeatils?.profile_picture) {
@@ -387,6 +413,7 @@ export default function GeneralForm() {
                           {...field}
                           errorMessage={errors?.username?.message}
                           isInvalid={!!errors?.username}
+                          onChange={(e) => checkUsername(e.target.value)}
                           classNames={{
                             input: [
                               'bg-transparent',
@@ -419,6 +446,7 @@ export default function GeneralForm() {
                         />
                       )}
                     />
+                      {isExist ? <p className='text-green-500'>{isExist}</p> : ''}
                   </div>
                 </div>
               </div>
