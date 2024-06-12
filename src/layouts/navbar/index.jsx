@@ -151,7 +151,7 @@ const Navbar = ({ onNotificationClick }) => {
                       />
                     </svg>
                   </div>
-                  {/* <div
+                  <div
                     onClick={onNotificationClick}
                     className='w-6 h-6 relative cursor-pointer'
                   >
@@ -169,7 +169,7 @@ const Navbar = ({ onNotificationClick }) => {
                         strokeLinecap='round'
                       />
                     </svg>
-                  </div> */}
+                  </div>
 
                   <div
                     onClick={onOpen}

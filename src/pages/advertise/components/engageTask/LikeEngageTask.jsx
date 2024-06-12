@@ -354,7 +354,7 @@ export default function LikeEngageTask() {
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the no of Likes you want'
+                                placeholder='Enter the No. of Likes you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />

@@ -37,6 +37,7 @@ export default function VerifyEmail() {
         setSignUpToken(res.data.signup_token)
         toast.success(res.data.message)
         navigate('/confirm-otp')
+        sessionStorage.setItem('verify-email', data?.email)
         reset()
       }
     } catch (error) {

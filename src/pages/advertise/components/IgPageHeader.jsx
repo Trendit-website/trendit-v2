@@ -45,7 +45,7 @@ export default function IgPageHeader({ title, frame, descp, price }) {
               <div className="text-stone-900 text-[9px] font-normal font-['Manrope'] uppercase tracking-tight">
                 134 Likes
               </div> */}
-              <div className="dark:text-[#909090] capitalize md:w-[60rem] text-[9px] font-normal font-['Manrope'] tracking-tight">
+              <div className="dark:text-[#909090] capitalize lg:w-8/12 lg:text-[14px] font-normal font-['Manrope'] tracking-tight">
                 {descp}
               </div>
             </div>

@@ -21,6 +21,7 @@ import { dashboardContext } from '../../context/Dashboard'
 import SocialLinkModal from '../components/SocialLinkModal'
 import SocialLinkOption from '../components/SocialLinkOption'
 import toast from 'react-hot-toast'
+import Loader from '../Loader'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -48,6 +49,8 @@ export default function Welcome({ onNotificationClick }) {
   }
 
   return (
+    <>
+    {userDetails ? 
     <div>
       <div className='p-3  flex-col justify-start items-start gap-3 inline-flex relative'>
         {showUp && (
@@ -466,6 +469,10 @@ export default function Welcome({ onNotificationClick }) {
         onClose={onCloseVerify}/>       
       )}
     </div>
+     : <div>
+      <Loader />
+     </div> }
+    </>
   )
 }
 

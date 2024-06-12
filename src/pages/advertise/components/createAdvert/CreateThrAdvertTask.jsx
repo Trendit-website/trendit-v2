@@ -450,7 +450,7 @@ export default function CreateThrAdvertTask() {
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                            Number of Tiktok Advert Post you want
+                            Number of Thread Advert Post you want
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -467,7 +467,7 @@ export default function CreateThrAdvertTask() {
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the no of views you want'
+                                placeholder='Enter the No. of posts you want'
                                 {...field}
                                 className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
