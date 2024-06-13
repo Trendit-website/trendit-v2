@@ -31,7 +31,7 @@ export default function ResetPassword() {
   const confirm_password = watch('confirm_password')
   const validatePassword = (value) => {
     const hasNumber = /[0-9]/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}_-|<>]/.test(value);
+    const hasSpecialChar = /^[!@#\$%\^\&*\)\(+=._-]+$/.test(value);
     return (
       hasNumber && hasSpecialChar || 
       ''
