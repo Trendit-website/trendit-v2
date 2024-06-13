@@ -304,7 +304,7 @@ export default function AdvertiseTaskCard() {
               Get People to post your advert on WhatsApp
             </div>
             <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
-            Get real users with at least 500 active contacts on their WhatsApp Status to share your adverts. This ensures your advert gets significant visibility quickly. You can specify how many people you want to share your advert.
+            Get real people to post your ads on their WhatsApp Status, ensuring your advert gets significant visibility quickly. You can specify how many people you want to share your advert.
             </div>
             <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
               <div className='justify-start items-center gap-0.5 flex'>

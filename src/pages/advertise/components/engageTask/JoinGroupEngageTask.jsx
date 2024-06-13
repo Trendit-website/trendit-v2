@@ -350,7 +350,8 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.posts_count?.message}
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
-                                placeholder='Enter the number of view you want'
+                                type='number'
+                                placeholder='No. of views'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />

@@ -443,10 +443,11 @@ want to post your advert.`}
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
                                 value={count}
+                                type='number'
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the no of views you want'
+                                placeholder='No. of views'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
