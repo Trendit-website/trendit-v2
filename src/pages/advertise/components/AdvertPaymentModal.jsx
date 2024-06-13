@@ -19,7 +19,8 @@ export default function AdvertPaymentModal({
   const [view, setView] = useState('')
   const { data: walletBalance } = useFetchBallance()
   const navigate = useNavigate()
-  const balanceAfterPayment = walletBalance?.balance - amount
+  const directBalance = parseInt(walletBalance?.balance?.replace(/,/g, '')) 
+  const balanceAfterPayment = directBalance - amount
 
   const handleFinalPayment = async () => {
     try {
@@ -223,7 +224,7 @@ export default function AdvertPaymentModal({
                         Total Pay
                       </div>
                       <div className=" text-3xl font-medium font-['Manrope']">
-                        {walletBalance?.currency_symbol} {''} {amount}
+                        {walletBalance?.currency_symbol} {''} {amount.toLocaleString()}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -231,7 +232,7 @@ export default function AdvertPaymentModal({
                         Amount due to task
                       </div>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
-                        {walletBalance?.currency_symbol} {''} {amount}
+                        {walletBalance?.currency_symbol} {''} {amount.toLocaleString()}
                       </div>
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
@@ -240,7 +241,7 @@ export default function AdvertPaymentModal({
                       </div>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         {walletBalance?.currency_symbol} {''}
-                        {balanceAfterPayment}
+                        {balanceAfterPayment.toLocaleString()}
                       </div>
                     </div>
                   </div>

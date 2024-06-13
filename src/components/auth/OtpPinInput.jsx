@@ -27,6 +27,7 @@ const OtpPinInput = forwardRef(
       }
       if (e.key.match(/^\d$/)) {
         triggerChange(`${value || ''}${e.key}`)
+        console.log(e.key)
       }
     }
 
