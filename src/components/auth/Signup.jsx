@@ -51,7 +51,7 @@ export default function Signup() {
 
   const validatePassword = (value) => {
     const hasNumber = /[0-9]/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}_-|<>]/.test(value);
     return (
       hasNumber && hasSpecialChar || 
       ''
