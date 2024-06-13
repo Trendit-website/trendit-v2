@@ -352,10 +352,11 @@ export default function FollowerAndLikeEngageTask() {
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
                                 value={count}
+                                type='number'
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the No of Followers and Likes  you want'
+                                placeholder='No of followers and likes'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />

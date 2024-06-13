@@ -5,33 +5,29 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    host: '0.0.0.0', // Listen on all addresses, including LAN
-    port: 3000, // Change the port if necessary
-  },
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.jpg', 'android-chrome-192x192.jpg', 'android-chrome-512x512.jpg'],
       manifest: {
-        name: 'Trendit³',
-        short_name: 'Trendit³',
+        name: 'Trendit³ staging',
+        short_name: 'Trendit³ staging',
         description: 'Get paid for your engagements',
         theme_color: '#ffffff',
         icons: [
           {
-            src: 'android-chrome-192x192.jpg',
+            src: 'android-chrome-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'android-chrome-512x512.jpg',
+            src: 'android-chrome-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: 'apple-touch-icon.jpg',
+            src: 'apple-touch-icon.png',
             sizes: '180x180',
             type: 'image/png'
           }

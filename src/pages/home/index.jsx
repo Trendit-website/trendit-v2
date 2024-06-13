@@ -221,7 +221,7 @@ export default function Welcome({ onNotificationClick }) {
             onClick={() => navigate(`/dashboard/advertise`)}
             className='h-full'
           >
-            <Card className=' bg-green-50 cursor-pointer h-full rounded px-4'>
+            <Card className=' bg-green-50 cursor-pointer h-60 rounded px-4'>
               <div className='inline-flex items-center justify-end'>
                 <Button
                   variant='light'
@@ -254,7 +254,7 @@ export default function Welcome({ onNotificationClick }) {
             </Card>
           </div>
           <div onClick={() => navigate(`/dashboard/earn`)} className='h-full'>
-            <Card className='h-full bg-rose-50 cursor-pointer rounded px-4'>
+            <Card className='h-60 bg-rose-50 cursor-pointer rounded px-4'>
               <div className='inline-flex  items-center justify-end'>
                 <Button
                   variant='light'
@@ -274,7 +274,7 @@ export default function Welcome({ onNotificationClick }) {
                   </div>
                 </div>
                 <div
-                  className={` w-20 relative bottom-2 -right-20 md:right-0 md:relative md:top-0${
+                  className={` w-20 relative bottom-0 mt-12 md:mt-0 -right-16 lg:-right-18 md:right-0 md:relative md:top-0${
                     !isTablet ? '' : ' '
                   } md:w-full md:inline-flex`}
                   // className={`w-20 relative  ${
