@@ -52,7 +52,7 @@ const OtpPinInput = forwardRef(
                 key={i}
                 data-index={i}
                 value={value?.[i] || ''}
-                onChange={() => null}
+                // onChange={() => null}
                 onKeyDown={handleKeydown}
                 onPaste={handlePaste}
                 ref={i === 0 ? ref : null}
