@@ -13,11 +13,11 @@ export default function PostAdvertTasksCard() {
   return (
     <>
       <div className='flex flex-col gap-3'>
-        <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='48'
-            height='47'
+            width='32'
+            height='32'
             viewBox='0 0 48 47'
             fill='none'
           >
@@ -27,9 +27,9 @@ export default function PostAdvertTasksCard() {
               className='dark:fill-[#fff] fill-black'
             />
           </svg>
-          <div className='grow shrink basis-0  justify-between items-start flex'>
-            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className=" text-sm font-medium font-['Manrope']">
+          <div className='grow shrink basis-0  justify-between items-start flex w-11/12'>
+            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex lg:w-10/12'>
+              <div className="text-[15px] lg:text-sm font-medium font-['Manrope']">
                 Post adverts on your X account
               </div>
               <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
@@ -38,7 +38,7 @@ export default function PostAdvertTasksCard() {
                 the more you earn. Ensure that your X account has at least 500
                 active followers to qualify for this task.
               </div>
-              <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+              <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -56,8 +56,8 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className=" text-sm font-bold font-['Manrope']">
-                  ₦110 per Page Like and Follow
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
+                  ₦110 per Advert Post
                 </div>
               </div>
             </div>
@@ -86,11 +86,11 @@ export default function PostAdvertTasksCard() {
           </div>
         </div>
 
-        <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='47'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 20 20'
             fill='none'
           >
@@ -134,9 +134,9 @@ export default function PostAdvertTasksCard() {
               </radialGradient>
             </defs>
           </svg>
-          <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
-            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className=" text-sm font-medium font-['Manrope']">
+          <div className='grow shrink basis-0 justify-between items-start flex w-11/12'>
+            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex lg:w-10/12'>
+              <div className="text-[16px] lg:text-sm font-medium font-['Manrope']">
                 Post adverts on your Instagram account
               </div>
               <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
@@ -145,7 +145,7 @@ export default function PostAdvertTasksCard() {
                 share, the more you earn. Ensure that your Instagram account has
                 at least 500 active followers to qualify for this task.
               </div>
-              <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+              <div className='py-1.5 justify-start items-center gap-2 flex lg:inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -163,8 +163,8 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className=" text-sm font-bold font-['Manrope']">
-                  ₦110 per Page Like and Follow
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
+                  ₦110 per Advert Post
                 </div>
               </div>
             </div>
@@ -192,11 +192,11 @@ export default function PostAdvertTasksCard() {
             </div>
           </div>
         </div>
-        <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='47'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 47 48'
             fill='none'
           >
@@ -209,8 +209,8 @@ export default function PostAdvertTasksCard() {
               fill='white'
             />
           </svg>
-          <div className='grow shrink basis-0 justify-between items-start flex'>
-            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
+          <div className='grow shrink basis-0 justify-between items-start flex w-11/12'>
+            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex lg:w-10/12'>
               <div className="  text-sm font-medium font-['Manrope']">
                 Post adverts on your Facebook page
               </div>
@@ -238,8 +238,8 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className=" text-sm font-bold font-['Manrope']">
-                  ₦110 per Page Like and Follow
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
+                  ₦110 per Advert Post
                 </div>
               </div>
             </div>
@@ -267,11 +267,11 @@ export default function PostAdvertTasksCard() {
             </div>
           </div>
         </div>
-        <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex w-full p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='47'
-            height='47'
+            width='32'
+            height='32'
             viewBox='0 0 47 47'
             fill='none'
           >
@@ -289,9 +289,9 @@ export default function PostAdvertTasksCard() {
               fill='#00F2EA'
             />
           </svg>
-          <div className='grow shrink basis-0 justify-between items-start flex'>
-            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className="  text-sm font-medium font-['Manrope']">
+          <div className='grow shrink basis-0 justify-between items-start flex w-11/12'>
+            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex lg:w-10/12'>
+              <div className="text-[15px]  lg:text-sm font-medium font-['Manrope']">
                 Post adverts on your TikTok page
               </div>
               <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
@@ -300,7 +300,7 @@ export default function PostAdvertTasksCard() {
                 share, the more you earn. Ensure that your Threads account has
                 at least 500 active followers to qualify for this task.
               </div>
-              <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+              <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -318,8 +318,8 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className=" text-sm font-bold font-['Manrope']">
-                  ₦110 per Page Like and Follow
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
+                  ₦110 per Advert Post
                 </div>
               </div>
             </div>
@@ -348,11 +348,11 @@ export default function PostAdvertTasksCard() {
           </div>
         </div>
 
-        <div className='self-stretch p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='47'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 47 48'
             fill='none'
           >
@@ -393,9 +393,9 @@ export default function PostAdvertTasksCard() {
               </linearGradient>
             </defs>
           </svg>
-          <div className='grow shrink basis-0 h[99px] justify-between items-start flex'>
-            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className=" text-sm font-medium font-['Manrope']">
+          <div className='grow shrink basis-0 h[99px] justify-between items-start flex w-11/12'>
+            <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex lg:w-10/12'>
+              <div className=" text-[15px] lg:text-sm font-medium font-['Manrope']">
                 Post adverts on your WhatsApp status
               </div>
               <div className="self-stretch text-black dark:text-zinc-300  text-xs font-normal font-['Manrope']">
@@ -403,7 +403,7 @@ export default function PostAdvertTasksCard() {
                 WhatsApp status and earn ₦60 per advert past. The more you post,
                 the more you earn.
               </div>
-              <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+              <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -421,8 +421,8 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className=" text-sm font-bold font-['Manrope']">
-                  ₦60 per Page Like and Follow
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
+                  ₦60 per Advert Post
                 </div>
               </div>
             </div>
@@ -451,11 +451,11 @@ export default function PostAdvertTasksCard() {
           </div>
         </div>
 
-        <div className=' p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex'>
+        <div className='self-stretch lg:p-6 bg-gray-200 dark:bg-zinc-900 rounded-lg justify-start items-start gap-2 inline-flex p-2'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            width='47'
-            height='48'
+            width='32'
+            height='32'
             viewBox='0 0 47 48'
             fill='none'
           >
@@ -473,9 +473,9 @@ export default function PostAdvertTasksCard() {
               className='dark:fill-white fill-black'
             />
           </svg>
-          <div className='grow shrink basis-0 h-[104px] justify-between items-start flex'>
+          <div className='grow shrink basis-0 justify-between items-start flex w-11/12'>
             <div className='max-w-[484px] flex-col justify-start items-start gap-3 inline-flex'>
-              <div className=" text-sm font-semibold font-['Manrope']">
+              <div className=" text-[15px] lg:text-sm font-medium font-['Manrope']">
                 Post adverts on your Threads account
               </div>
               <div className="self-stretch text-black dark:text-zinc-300 text-xs font-normal font-['Manrope']">
@@ -484,7 +484,7 @@ export default function PostAdvertTasksCard() {
                 share, the more you earn. Ensure that your Threads account has
                 at least 500 active followers to qualify for this task.
               </div>
-              <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
+              <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -503,7 +503,7 @@ export default function PostAdvertTasksCard() {
                     Earning:
                   </div>
                 </div>
-                <div className="text-sm font-bold font-['Manrope']">
+                <div className="text-[9px] lg:text-sm font-bold font-['Manrope']">
                   ₦110 per Advert Post
                 </div>
               </div>

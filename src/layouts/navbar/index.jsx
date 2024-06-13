@@ -14,6 +14,7 @@ import {
 } from '../../providers/AppearanceProvider'
 import API from '../../services/AxiosInstance'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 // const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
 const Navbar = ({ onNotificationClick }) => {
@@ -63,6 +64,7 @@ const Navbar = ({ onNotificationClick }) => {
       document.body.classList.remove('bg-background')
     }
   }
+  const navigate = useNavigate()
 
   return (
     <>
@@ -152,7 +154,7 @@ const Navbar = ({ onNotificationClick }) => {
                     </svg>
                   </div>
                   <div
-                    onClick={onNotificationClick}
+                    onClick={() => navigate('/dashboard/settings/?tab=notifications')}
                     className='w-6 h-6 relative cursor-pointer'
                   >
                     <svg

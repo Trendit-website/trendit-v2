@@ -18,37 +18,34 @@ export default function Signup() {
     control,
     reset,
     setError,
+    watch,
     formState: { errors },
   } = useForm()
   const { mutateAsync: handleReg, isPending } = useRegisterUser()
   const { userData } = useCurrentUser()
   const toggleVisibility = () => setIsVisible(!isVisible)
   const { setAccessToken } = useAccessToken()
-  const [userName, setUserName] = useState()
   const [debouncedValue, setDebouncedValue] = useState()
   const [isExist, setExist] = useState()
+  const username = watch('username')
   
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedValue(userName)    
-  }, 2000)
+      setDebouncedValue(username)
+  }, 1000)
   return () => {
     clearTimeout(handler)
   };
   })
-
-  const checkUsername = (name) => {
-    setUserName(name)  
-  }
   useEffect(() => {
     if(debouncedValue) {
       API.post('/check-username', {'username': debouncedValue})
       .then((response) => setExist(response.data?.message))
-      .catch((error) => setError('username', {
+      .catch((error) => (setError('username', {
         type: 'manual',
         message: error?.response?.data?.message
-      }))
+      })))
     }
   }, [debouncedValue])
 
@@ -159,10 +156,9 @@ export default function Signup() {
                   render={({ field }) => (
                     <Input
                       {...field}
-                      errorMessage={errors?.username?.message}
+                      errorMessage={isExist ? (isExist ? <p className='text-green-500'>{isExist}</p> : '') : errors?.username?.message}
                       isInvalid={!!errors?.username}
                       required={true}
-                      onChange={(e) => checkUsername(e.target.value)}
                       classNames={{
                         inputWrapper: [
                           'border-2 border-transparent',
@@ -176,7 +172,7 @@ export default function Signup() {
                   )}
                   rules={{ required: true }}
                 />
-                  {isExist ? <p className='text-green-500'>{isExist}</p> : ''}
+                  {/* {isExist ? <p className='text-green-500'>{isExist}</p> : ''} */}
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Manrope']">
