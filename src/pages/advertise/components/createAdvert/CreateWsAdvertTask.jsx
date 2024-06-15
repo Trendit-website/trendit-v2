@@ -47,6 +47,7 @@ export default function CreateWsAdvertTask() {
     watch,
     register,
     setValue,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: { amount: 80, platform: 'whatsapp' },
@@ -301,6 +302,7 @@ want to post your advert.`}
                                 ))}
                               </Select>
                             )}
+                            rules={{required: true}}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
@@ -320,6 +322,7 @@ want to post your advert.`}
                           <Controller
                             name='target_country'
                             control={control}
+                            rules={{required: true}}
                             aria-labelledby='target_country'
                             render={({ field }) => (
                               <Select
@@ -380,6 +383,7 @@ want to post your advert.`}
                               name='target_state'
                               aria-labelledby='target_state'
                               control={control}
+                              rules={{required: true}}
                               render={({ field }) => (
                                 <Select
                                   aria-labelledby='target_state'
@@ -458,7 +462,24 @@ want to post your advert.`}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, min: 0,
+                              validate: {
+                                invalidInput: (fieldValue) => {
+                                  return (
+                                    fieldValue > 0 || 'invalid input' 
+                                  )
+                                },
+                                isMinimum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum requirement. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
+                                  )
+                                },
+                                isMaximum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount <= 500000 || `Your order total amount of #${(+watch().posts_count * +watch().amount).toLocaleString()} exceeds the maximum allowed amount. Please review your order and adjust the total accordingly.`
+                                  )
+                                }
+                              } }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -478,6 +499,7 @@ want to post your advert.`}
                           <Controller
                             name='gender'
                             control={control}
+                            rules={{required: true}}
                             render={({ field }) => (
                               <Select
                                 {...field}
@@ -538,6 +560,7 @@ want to post your advert.`}
                           <Controller
                             name='religion'
                             control={control}
+                            rules={{required: true}}
                             render={({ field }) => (
                               <Select
                                 aria-labelledby='religion'
@@ -592,7 +615,11 @@ want to post your advert.`}
                         </div>
 
                         <Textarea
-                          {...register('caption')}
+                          {...register('caption', {
+                            required: true
+                          })}
+                          isInvalid={!!errors.caption}
+                          errorMessage={errors?.caption?.message}
                           placeholder='Caption'
                           className="self-stretch grow shrink basis-0 px2 py3.5  bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
                         />
@@ -698,14 +725,22 @@ want to post your advert.`}
                           ))}
                         </div>
                       ) : null}
-                      <div className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
+                      <div onClick={() => setError('media', {
+                            type: 'manual',
+                            message: ''
+                          })} className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
                         <input
                           type='file'
                           multiple
                           id='image-upload'
                           name='media'
                           className='absolute bg-red-800 w-full opacity-0 cursor-pointer'
-                          {...register('media')}
+                          {...register('media', {
+                            required: {
+                              value: true,
+                              message: 'Post cannot be empty'
+                            }
+                          })}
                           onChange={handleChange}
                         />
                         <svg
@@ -723,6 +758,10 @@ want to post your advert.`}
                           />
                         </svg>
                       </div>
+                      {errors.media?.message ? 
+                      <p className='text-red-800 text-sm'>{errors.media?.message}</p>
+                      : ''
+                    }
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>

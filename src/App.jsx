@@ -172,7 +172,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_like-task'
+              path='earn_engage_like-task'
               element={
                 <ProtectedRoute>
                   <GenerateLikeEngageTask />
@@ -180,7 +180,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_comment-task'
+              path='earn_engage_comment-task'
               element={
                 <ProtectedRoute>
                   <GenerateCommentEngageTask />
@@ -188,7 +188,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_follow-task'
+              path='earn_engage_follow-task'
               element={
                 <ProtectedRoute>
                   <GenerateFollowEngageTask />
@@ -212,7 +212,7 @@ function App() {
               }
             />
             <Route
-              path='earn-like_follow_fb-task'
+              path='earn_like_follow_fb-task'
               element={
                 <ProtectedRoute>
                   <GenerateLikeFollowFBEngageTask />

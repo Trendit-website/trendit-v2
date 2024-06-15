@@ -48,6 +48,7 @@ export default function LikeEngageTask() {
     watch().target_country
   )
   // // const navigate = useNavigate()
+  const platform = watch('platform')
 
   const onSubmit = async () => {
     onOpen()
@@ -171,6 +172,8 @@ export default function LikeEngageTask() {
                               <Select
                                 placeholder='Select'
                                 aria-labelledby='platform'
+                                isInvalid={!!errors.platform}
+                                errorMessage={errors?.platform?.message}
                                 size='sm'
                                 selectedKeys={field.value ? [field.value] : []}
                                 classNames={{
@@ -203,6 +206,7 @@ export default function LikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
@@ -258,6 +262,7 @@ export default function LikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
 
@@ -321,6 +326,7 @@ export default function LikeEngageTask() {
                                   ))}
                                 </Select>
                               )}
+                              rules={{ required: true }}
                             />
                           </div>
 
@@ -360,7 +366,25 @@ export default function LikeEngageTask() {
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, min: 0, 
+                              validate: {
+                                invalidInput: (fieldValue) => {
+                                  return (
+                                    fieldValue > 0 || 'invalid input' 
+                                  )
+                                },
+                                isMinimum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum requirement. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
+                                  )
+                                },
+                                isMaximum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount <= 500000 || `Your order total amount of #${(+watch().posts_count * +watch().amount).toLocaleString()} exceeds the maximum allowed amount. Please review your order and adjust the total accordingly.`
+                                  )
+                                }
+                              }
+                             }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -395,7 +419,15 @@ export default function LikeEngageTask() {
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, 
+                              validate: {
+                                isValidLink: (fieldValue) => {
+                                  return (
+                                    fieldValue.startsWith(`https://${platform}.`) || 'Link not valid'
+                                  )
+                                }
+                              }
+                             }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -456,6 +488,7 @@ export default function LikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -517,6 +550,7 @@ export default function LikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>

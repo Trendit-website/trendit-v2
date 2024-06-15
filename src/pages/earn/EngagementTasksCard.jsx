@@ -77,7 +77,7 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn-engage_follow-task`)
+                    navigate(`/dashboard/earn_engage_follow-task`)
                   } else {
                     onOpen()
                     toast.error('Please activate your membership')
@@ -148,7 +148,7 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn-engage_like-task`)
+                    navigate(`/dashboard/earn_engage_like-task`)
                   } else {
                     onOpen()
                     toast.error('Please activate your membership')
@@ -228,7 +228,7 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn-like_follow_fb-task`)
+                    navigate(`/dashboard/earn_like_follow_fb-task`)
                   } else {
                     onOpen()
                     toast.error('Please activate your membership')
@@ -302,7 +302,7 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn-engage_comment-task`)
+                    navigate(`/dashboard/earn_engage_comment-task`)
                   } else {
                     onOpen()
                     toast.error('Please activate your membership')
