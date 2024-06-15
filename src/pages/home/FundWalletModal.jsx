@@ -83,7 +83,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                         Fund Your Trendit³ Wallet
                       </div>
                       <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
-                        Please enter the amount which you like to fund your
+                        Please enter the amount you would like to fund your
                         wallet with
                       </div>
                     </div>
@@ -126,11 +126,25 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               className=" rounded text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
+                          rules={{required: true, 
+                            validate: {
+                              isMin: (fieldValue) => {
+                                return (
+                                  fieldValue.replace(/\D/g, '') >= 500 || 'The minimum funding amount is #500'
+                                )
+                              },
+                              isMax: (fieldValue) => {
+                                return (
+                                      fieldValue.replace(/\D/g, '') <= 500000 || 'The maximum funding amount is #500,000'
+                                )
+                              }
+                            }
+                          }}
                         />
                         <small className=" text-zinc-400 text-xs font-normal font-['Manrope']">
-                          You can choose your preferred method of payment such
-                          as Card payment, Bank transfer or USSD, simply by
-                          clicking on the “Change Payment” button.
+                          You can choose your preferred method of payment, such
+                          as card payment, bank transfer or USSD, simply by
+                          clicking on the payment options.
                         </small>
                       </div>
                       <div className='self-stretch'>

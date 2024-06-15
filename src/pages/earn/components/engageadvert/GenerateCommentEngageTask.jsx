@@ -438,7 +438,7 @@ export default function GenerateCommentEngageTask() {
                 </div>
               </div>
               <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
-                    To receive your next Facebook page-like task, click the Above.
+                    To receive your next social media page-comment task, click the Above.
                     You'll get one task at a time, and you must complete the current task before a new one is generated.
               </div>
             </div>

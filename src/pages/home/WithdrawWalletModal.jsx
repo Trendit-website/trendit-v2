@@ -10,7 +10,8 @@ import {
 } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
 import BankCard from '../setting/BankCard'
-
+import { useContext, useState } from 'react'
+import { AppearanceContext } from '../../providers/AppearanceProvider'
 export default function WithdrawWalletModal({ isOpen, onClose }) {
   const {
     handleSubmit,
@@ -21,6 +22,8 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
   const { mutateAsync: fundWallet, isPending } = useWitdrawFundsh()
   const { data: showBalance } = useFetchBallance()
   const { data: userBank } = useBankDetails()
+  const [focus, setFocus] = useState(false)
+  const appreance = useContext(AppearanceContext)
 
   const handleInputChange = (event) => {
     const { value } = event.target
@@ -31,6 +34,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
   }
 
   const onSubmit = async (data) => {
+    setFocus(false)
     try {
       const res = await fundWallet({ data })
       console.log(res?.data)
@@ -74,7 +78,7 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                       </div>
                     </div>
                     <div className=" text-center text-sm font-normal font-['Manrope']">
-                      Please enter the amount which you like to withdraw from
+                      Please enter the amount you would like to withdraw from
                       your wallet
                     </div>
                     <div className='self-stretch justify-start flex-col items-start gap-[19px] flex'>
@@ -93,18 +97,19 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                           Amount
                         </div>
                         <Controller
-                          name='Amount'
+                          name='amount'
                           control={control}
                           render={({ field }) => (
                             <Input
                               type='text'
                               size='sm'
-                              placeholder='amount'
+                              placeholder='Amount'
+                              onClick={() => setFocus(true)}
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               startContent={
-                                <span>{showBalance?.currency_symbol}</span>
+                                <span className={`${appreance === 'dark' ? (focus ? 'text-white' : 'text-black') : 'text-[#C026D3]'}`}>{showBalance?.currency_symbol}</span>
                               }
                               onChange={handleInputChange}
                               classNames={{
@@ -125,6 +130,20 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                               className=" rounded text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
+                          rules={{required: true, 
+                            validate: {
+                              isMin: (fieldValue) => {
+                                return (
+                                  fieldValue.replace(/\D/g, '') >= 1000 || 'The minimum withdrawal amount is #1,000'
+                                )
+                              },
+                              isMax: (fieldValue) => {
+                                return (
+                                      fieldValue.replace(/\D/g, '') <= 500000 || 'The maximum withdrawal amount is #500,000'
+                                )
+                              }
+                            }  
+                          }}
                         />
                       </div>
                       <div className='self-stretch'>

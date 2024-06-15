@@ -137,16 +137,17 @@ export default function TaskCard({
   return (
     <>
       <div
-        className={`w-full cursor-pointer p-3 ${appreance === 'dark' ? '' : 'text-white'} bg-[#2F2F2F6B]  bg-opacity30 rounded-lg flex-col justify-start items-start gap-2 inline-flex`}
+        className={`w-full cursor-pointer lg:py-8 p-0 ${appreance === 'dark' ? '' : 'text-white'} bg-[#2F2F2F6B]  bg-opacity30 rounded-lg  justify-start items-start gap-2 inline-flex`}
       >
-            <div className="flex flex-col lg:flex-row items-start justify-between w-11/12 pl-4">
-                <div className="flex items-start gap-x-8">
+            <div className="flex inline-flex gap-y-2 w-full p-2 lg:flex lg:flex-row lg:items-start lg:justify-between w-11/12 lg:pl-4">
+                <div className="flex items-start">
                       <Icons type={platform} />
-                    <div className="flex flex-col gap-y-2 text-sm">
+                </div>
+                <div className="flex flex-col gap-y-2 text-sm ml-6 w-11/12 lg:w-5/12">
                         <p className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>{when}</p>
                         <p className="font-bold text-sm">{goal}</p>
                         <div className="flex items-center gap-x-2">
-                            <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold">{fee} per like</p>
+                            <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold text-xs">{fee} per like</p>
                         </div>
                         <div className="flex items-start gap-x-4">
                           <p className={`flex flex-col gap-y-2 ${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>
@@ -158,7 +159,20 @@ export default function TaskCard({
                               <span className="text-white font-bold">{fee_paid}</span>
                           </p>
                         </div>
-                        <div className="flex flex-col mt-4 gap-y-2">
+                        {payment_status === 'complete' ? 
+                        <div className="bg-[#CB29BE] w-6/12 ml-[2px] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:hidden lg:mt-0 lg:ml-0" onClick={onNextPage}>
+                          View & Track Result
+                        </div> 
+                        :
+                        <div className="bg-[#FF6B6B] w-6/12 ml-[2px] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:hidden lg:mt-0 lg:ml-0" onClick={completePayment}>
+                        Complete payment
+                        </div>
+                        }
+                </div>
+                <div className={`text-xs w-4/12 hidden lg:flex lg:flex-col ${appreance === 'dark' ? 'text-[#D8D8D8]': 'text-white'}`}>
+                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
+                    {account_link}
+                    <div className="flex flex-col mt-4 gap-y-2">
                           <p className="text-sm">Status</p>
                           {total_allocated <= 0 ? 
                           <div className={`flex items-center justify-center gap-x-2  ${status === 'pending' ? 'bg-white text-black' : 'bg-[#13BF62] text-white'}  w-8/12 py-2 rounded-lg`}>
@@ -168,18 +182,13 @@ export default function TaskCard({
                            <Icons type='active' /> active
                          </div> }
                         </div>
-                    </div>
-                </div>
-                <div className={`text-xs w-4/12 hidden lg:flex lg:flex-col ${appreance === 'dark' ? 'text-[#D8D8D8]': 'text-white'}`}>
-                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
-                    {account_link}
                 </div>
                 {payment_status === 'complete' ? 
-                <div className="bg-[#CB29BE] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={onNextPage}>
+                <div className="bg-[#CB29BE] hidden lg:flex text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={onNextPage}>
                     View & Track Result
                 </div> 
                 :
-                <div className="bg-[#FF6B6B] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={completePayment}>
+                <div className="bg-[#FF6B6B] hidden lg:flex text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={completePayment}>
                 Complete payment
                 </div>
                 }

@@ -46,14 +46,14 @@ export default function EarnHistory() {
     API.get(`/performed-tasks?status=${status}`)
       .then(
         (response) => (
-          setEachAdvert(response?.data?.all_tasks), setLoading(false)
+          setEachAdvert(response?.data?.all_tasks), setLoading(false), console.log(response)
         )
       )
       .catch((error) => console.error(error))
   }
   const getAdvert = () => {
     API.get('/performed-tasks')
-      .then((response) => setAdvert(response?.data?.performed_tasks))
+      .then((response) => (setAdvert(response?.data?.performed_tasks), console.log(response)))
       .catch((error) => console.error(error))
   }
   useEffect(() => {
@@ -246,8 +246,8 @@ export default function EarnHistory() {
                 }}
               >
                 <div className='grid gap-4'>
-                  {adverts?.length === 0 ? (
-                    <div className='text-center'>No {selectedHistory} Task</div>
+                  {adverts?.length === 0 || (eachAdvert?.length === 0 || !eachAdvert) ? (
+                    <div className='text-center'>No task has been performed yet.</div>
                   ) : (
                     adverts?.map((advert) => (
                       <TaskCard
@@ -287,9 +287,9 @@ export default function EarnHistory() {
                   </div>
                 ) : (
                   <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? (
+                    {eachAdvert?.length === 0 || !eachAdvert ? (
                       <div className='text-center'>
-                        No {selectedHistory} Task
+                       There are no {selectedHistory} performed tasks.
                       </div>
                     ) : (
                       eachAdvert?.map((advert, index) => (
@@ -331,9 +331,9 @@ export default function EarnHistory() {
                   </div>
                 ) : (
                   <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? (
+                    {eachAdvert?.length === 0 || !eachAdvert ? (
                       <div className='text-center'>
-                        No {selectedHistory} Task
+                        There are no {selectedHistory} performed tasks.
                       </div>
                     ) : (
                       eachAdvert?.map((advert, index) => (
@@ -375,9 +375,9 @@ export default function EarnHistory() {
                   </div>
                 ) : (
                   <div className='grid gap-4'>
-                    {eachAdvert?.length === 0 ? (
+                    {eachAdvert?.length === 0 || !eachAdvert ? (
                       <div className='text-center'>
-                        No {selectedHistory} Task
+                       There are no {selectedHistory} performed tasks.
                       </div>
                     ) : (
                       eachAdvert?.map((advert, index) => (

@@ -12,12 +12,12 @@ export const platforms = [
   // },
   {
     label: 'TIKTOK',
-    value: 'TikTok',
+    value: 'tiktok',
   },
   { label: 'INSTAGRAM', value: 'instagram' },
   { label: 'X', value: 'x' },
   // { label: 'Youtube', value: 'youtube' },
-  { label: 'THREAD', value: 'Thread' },
+  { label: 'THREAD', value: 'thread' },
 ]
 export const genders = [
   {
