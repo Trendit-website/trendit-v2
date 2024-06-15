@@ -35,7 +35,7 @@ export default function GenerateTiktokTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.tiktok_verified === 'pending') {
-      toast.error('Verification request has been sent')
+      toast.error('Verification pending')
     } else if (
       profileDeatils?.social_links?.tiktok_verified === 'rejected' ||
       profileDeatils?.social_links?.tiktok_verified === 'idle'

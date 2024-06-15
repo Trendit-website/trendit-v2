@@ -361,10 +361,10 @@ export default function Welcome({ onNotificationClick }) {
                 </Card>
               )}
             {
-            userDetails?.social_links?.instagram_verified === 'idle' &&
-            userDetails?.social_links?.facebook_verified === 'idle' &&
-            userDetails?.social_links?.tiktok_verified === 'idle' &&
-            userDetails?.social_links?.x_verified === 'idle'
+            ((userDetails?.social_links?.instagram_verified === 'idle') || (userDetails?.social_links?.instagram_verified === 'pending')) &&
+            ((userDetails?.social_links?.facebook_verified === 'idle') || (userDetails?.social_links?.facebook_verified === 'pending')) &&
+            ((userDetails?.social_links?.tiktok_verified === 'idle') || (userDetails?.social_links?.tiktok_verified === 'pending')) &&
+            ((userDetails?.social_links?.x_verified  === 'idle') || (userDetails?.social_links?.x_verified  === 'pending'))
             &&
               (linkIg ? (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
