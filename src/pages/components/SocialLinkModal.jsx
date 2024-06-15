@@ -9,15 +9,16 @@ import { useVerifySocial } from '../../api/verifySocialApi'
 import Loader from '../Loader'
 import { useQueryClient } from '@tanstack/react-query'
 import Icons from '../../components/Icon'
+import API from '../../services/AxiosInstance'
 
-export default function SocialLinkModal({ isOpen, onClose, type, icon }) {
+export default function SocialLinkModal({ isOpen, onClose, type, icon, platform }) {
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      type: type,
+      type: platform,
     },
   })
 
@@ -26,7 +27,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon }) {
 
   const onSubmit = async (data) => {
     try {
-      const res = await verifySocial({ ...data })
+      const res = await verifySocial({...data})
       if (res.data.status) {
         toast.success(res.data.message)
         queryClient.invalidateQueries({ queryKey: ['get_profile'] })
@@ -119,6 +120,13 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon }) {
                     )}
                     rules={{
                       required: true,
+                      validate: {
+                        isValidLink: (fieldValue) => {
+                          return (
+                            fieldValue.startsWith(`https://${platform}.`) || 'Link not valid'
+                          )
+                        }
+                      }
                     }}
                   />
                   <Button

@@ -137,7 +137,7 @@ export default function TaskCard({
   return (
     <>
       <div
-        className={`w-full cursor-pointer lg:py-8 p-0 ${appreance === 'dark' ? '' : 'text-white'} bg-[#2F2F2F6B]  bg-opacity30 rounded-lg  justify-start items-start gap-2 inline-flex`}
+        className={`w-full cursor-pointer lg:py-4 p-0 ${appreance === 'dark' ? '' : 'text-white'} bg-[#2F2F2F6B]  bg-opacity30 rounded-lg  justify-start items-start gap-2 inline-flex`}
       >
             <div className="flex inline-flex gap-y-2 w-full p-2 lg:flex lg:flex-row lg:items-start lg:justify-between w-11/12 lg:pl-4">
                 <div className="flex items-start">

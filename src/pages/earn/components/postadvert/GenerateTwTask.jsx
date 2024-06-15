@@ -35,7 +35,7 @@ export default function GenerateTwTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.x_verified === 'pending') {
-      toast.error('Verification request has been sent')
+      toast.success('Verification pending')
     } else if (
       profileDeatils?.social_links?.x_verified === 'rejected' ||
       profileDeatils?.social_links?.x_verified === 'idle'
@@ -102,10 +102,10 @@ export default function GenerateTwTask() {
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className='text-white dark:text-black text-sm font-medium font-Manrope'>
-                    Like an Retweet Post on Twitter Accounts
+                    Like and repost posts on X account
                   </div>
                   <div className='self-stretch dark:text-black text-center text-white text-xs font-normal font-Manrope'>
-                    Like Twitter Pages for Individuals, Businesses and
+                    Like X Pages for Individuals, Businesses and
                     Organizations and earn ₦3.5 per Like. The more pages you
                     like, the more you earn.
                   </div>
@@ -123,12 +123,12 @@ export default function GenerateTwTask() {
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className='text-center  text-base font-bold font-Manrope'>
-                    Link your Twitter Accounts
+                    Link your X account
                   </div>
                   <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
-                    You need to link your Twitter Accounts to Trendit before you
+                    You need to link your X account to Trendit before you
                     can start earning with your Twitter Accounts . Click the
-                    button below to link your  Twitter Accounts now.
+                    button below to link your X account now.
                   </div>
                   <div
                     onClick={handOpenSocialModal}
@@ -147,7 +147,7 @@ export default function GenerateTwTask() {
                       />
                     </svg>
                     <div className='text-center text-[12.83px] font-bold font-Manrope'>
-                      Link Twitter account
+                      Link X account
                     </div>
                   </div>
                 </div>

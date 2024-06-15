@@ -38,7 +38,7 @@ export default function GenerateIgTask() {
     ) {
       onOpenVerify()
     } else if (profileDeatils?.social_links?.instagram_verified === 'pending') {
-      toast.error('Verification request has been sent')
+      toast.error('Verification pending')
     } else {
       onOpenVerify()
     }

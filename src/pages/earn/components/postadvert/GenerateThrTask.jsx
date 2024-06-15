@@ -33,7 +33,7 @@ export default function GenerateThrTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.thread_verified === 'pending') {
-      toast.error('Verification request has been sent')
+      toast.error('Verification pending')
     } else if (
       profileDeatils?.social_links?.thread_verified === 'rejected' ||
       profileDeatils?.social_links?.thread_verified === 'idle'

@@ -33,7 +33,7 @@ export default function GenerateFbTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.facebook_verified === 'pending') {
-      toast.error('Verification request has been sent')
+      toast.error('Verification pending')
     } else if (
       profileDeatils?.social_links?.facebook_verified === 'rejected' ||
       profileDeatils?.social_links?.facebook_verified === 'idle'

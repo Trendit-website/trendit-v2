@@ -7,31 +7,36 @@ import { useState, useContext } from "react"
 import { AppearanceContext } from '../../providers/AppearanceProvider'
 const SocialLinkOption = ({ isOpen, onClose,}) => {
     const appearance = useContext(AppearanceContext)
-    console.log(appearance)
     const socials = [
         {
             icon: 'facebook',
-            lable: 'Facebook'
+            lable: 'Facebook',
+            platform: 'facebook'
         },
         {
             icon: 'instagram',
-            lable: 'Instagram'
+            lable: 'Instagram',
+            platform: 'instagram'
         },
         {
             icon: `${appearance === 'dark' ? 'twitter' : 'x-lite'}`,
-            lable: 'X'
+            lable: 'X',
+            platform: 'x'
         },
         {
             icon: `${appearance === 'dark' ? 'tik-tok' : 'tik-tok-lite'}`,
-            lable: 'Tiktok'
+            lable: 'Tiktok',
+            platform: 'tiktok'
         },
         {
             icon: `${appearance === 'dark' ? 'thread' : 'thread-lite'}`,
-            lable: 'Thread'
+            lable: 'Thread',
+            platform: 'thread'
         },
         {
             icon: 'whatsapp',
-            lable: 'WhatsApp'
+            lable: 'WhatsApp',
+            platform: 'whatsapp'
         },
     ]
     const {
@@ -81,6 +86,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
                  <SocialLinkModal
                     type={isVerify?.lable}
                     icon= {isVerify?.icon}
+                    platform={isVerify?.platform}
                     isOpen={isOpenVerify}
                     onClose={onCloseVerify}
                 />
