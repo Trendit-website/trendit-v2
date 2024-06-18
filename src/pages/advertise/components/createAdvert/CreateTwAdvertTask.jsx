@@ -746,7 +746,7 @@ want to post your advert.`}
                           multiple
                           id='image-upload'
                           name='media'
-                          className='absolute bg-red-800 w-full opacity-0 cursor-pointer'
+                          className='absolute w-full opacity-0 cursor-pointer'
                           {...register('media', {
                             required: {
                               value: true,

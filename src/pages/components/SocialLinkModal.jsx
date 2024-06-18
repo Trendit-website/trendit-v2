@@ -123,7 +123,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
                       validate: {
                         isValidLink: (fieldValue) => {
                           return (
-                            fieldValue.startsWith(`https://${platform}.`) || 'Link not valid'
+                            (fieldValue.startsWith(`https://${platform}.`) || (platform === 'x' ? fieldValue.startsWith('https://twitter.') : '')) || 'Invalid URL for specified platform'
                           )
                         }
                       }

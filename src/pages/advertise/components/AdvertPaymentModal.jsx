@@ -229,7 +229,7 @@ export default function AdvertPaymentModal({
                     </div>
                     <div className='self-stretch justify-between items-center inline-flex'>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
-                        Amount due to task
+                        Amount to be debited
                       </div>
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         {walletBalance?.currency_symbol} {''} {amount.toLocaleString()}

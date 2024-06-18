@@ -40,12 +40,12 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
       console.log(res?.data)
       if (res.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 1000,
         })
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 1000,
       })
     }
   }

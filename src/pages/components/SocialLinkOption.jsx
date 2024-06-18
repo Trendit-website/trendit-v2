@@ -21,7 +21,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
         {
             icon: `${appearance === 'dark' ? 'twitter' : 'x-lite'}`,
             lable: 'X',
-            platform: 'x'
+            platform: 'x' || 'twitter'
         },
         {
             icon: `${appearance === 'dark' ? 'tik-tok' : 'tik-tok-lite'}`,
