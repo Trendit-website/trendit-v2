@@ -13,7 +13,7 @@ export const useGetSocialLinks = () => {
   return useQuery({
     queryKey: ['get_social'],
     queryFn: async () => {
-      const res = await API.post(`/verified_socials`)
+      const res = await API.get(`/verified_socials`)
       return res?.data
     },
   })
