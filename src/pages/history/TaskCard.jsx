@@ -168,6 +168,16 @@ export default function TaskCard({
                         Complete payment
                         </div>
                         }
+                          <div className="flex flex-col mt-4 gap-y-2">
+                          {total_allocated <= 0 ? 
+                          <div className={`flex items-center justify-center gap-x-2  ${status === 'pending' ? 'bg-white text-black' : 'bg-[#13BF62] text-white'} lg:hidden  w-6/12 py-2 rounded-lg`}>
+                            <Icons type={status} /> {status}
+                          </div> :
+                           <div className={`flex items-center justify-center gap-x-2  bg-[#1877F2] text-white'} lg:hidden  w-8/12 py-2 rounded-lg`}>
+                           <Icons type='active' /> active
+                         </div> }
+                        </div>
+                        
                 </div>
                 <div className={`text-xs w-4/12 hidden lg:flex lg:flex-col ${appreance === 'dark' ? 'text-[#D8D8D8]': 'text-white'}`}>
                     <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
