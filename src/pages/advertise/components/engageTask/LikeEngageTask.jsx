@@ -375,7 +375,7 @@ export default function LikeEngageTask() {
                                 },
                                 isMinimum: (fieldValue) => {
                                   return (
-                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum requirement. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
+                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum order. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
                                   )
                                 },
                                 isMaximum: (fieldValue) => {
@@ -423,7 +423,7 @@ export default function LikeEngageTask() {
                               validate: {
                                 isValidLink: (fieldValue) => {
                                   return (
-                                    fieldValue.startsWith(`https://${platform}.`) || 'Link not valid'
+                                    (fieldValue.startsWith(`https://${platform}.`) || (platform === 'facebook' ? fieldValue.startsWith('https://fb.'): '') || (platform === 'x' ? fieldValue.startsWith('https://twitter.') : '')) || 'Link not valid'
                                   )
                                 }
                               }
