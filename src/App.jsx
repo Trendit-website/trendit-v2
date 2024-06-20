@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 import Login from './components/auth/Login'
 import Animation from './utilities/Animation'
@@ -72,6 +72,13 @@ import GenerateLikeFollowFBEngageTask from './pages/earn/components/engageadvert
 function App() {
   const { isDarkMode } = useDarkMode()
   const setPrefrence = useContext(SetAppearanceContext)
+  const location = useLocation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if(location.pathname === '/dashboard') {
+      navigate('/dashboard/home')      
+    }
+  }, [])
 
   useEffect(() => {
     localStorage.getItem('appearance') === 'dark' ? 

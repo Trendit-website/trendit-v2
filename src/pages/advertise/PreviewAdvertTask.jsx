@@ -241,7 +241,7 @@ export default function PreviewAdvertTask() {
                       <p className='text-xs font-semibold'>Location</p>
                       <Input
                         type='text'
-                        value={taskPreview?.location}
+                        value={taskPreview?.target_country}
                         className='w-11/12'
                         disabled
                       />
