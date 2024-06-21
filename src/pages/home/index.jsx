@@ -22,6 +22,7 @@ import SocialLinkModal from '../components/SocialLinkModal'
 import SocialLinkOption from '../components/SocialLinkOption'
 import toast from 'react-hot-toast'
 import Loader from '../Loader'
+import VatModal from './VatModal'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -149,7 +150,7 @@ export default function Welcome({ onNotificationClick }) {
                 {showBalance?.balance?.toLocaleString()}
               </div>
             </div>
-            <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
+            <div className='pb-4 justify-start items-start gap-[19px] z-10 inline-flex'>
               <Button
                 onClick={onOpen}
                 // onClick={() => navigate(`/dashboard/home/fund`)}
@@ -175,7 +176,7 @@ export default function Welcome({ onNotificationClick }) {
               </Button>
 
               <Button
-                onClick={onOpenWithdraw}
+                onClick={() => onOpenWithdraw()}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -196,7 +197,7 @@ export default function Welcome({ onNotificationClick }) {
                 Withdraw
               </Button>
             </div>
-            <div className='absolute right-0'>
+            <div className='absolute z-0 right-0'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='239'
@@ -462,7 +463,7 @@ export default function Welcome({ onNotificationClick }) {
       {/* {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />} */}
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
       {openWithdraw && (
-        <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+        <VatModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
       )}
       {isOpenVerify && (
         <SocialLinkOption isOpen={isOpenVerify}

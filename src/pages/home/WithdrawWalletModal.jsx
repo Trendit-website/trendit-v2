@@ -12,6 +12,8 @@ import { useForm, Controller } from 'react-hook-form'
 import BankCard from '../setting/BankCard'
 import { useContext, useState } from 'react'
 import { AppearanceContext } from '../../providers/AppearanceProvider'
+import VatModal from './VatModal'
+import { useDisclosure } from '@nextui-org/react'
 export default function WithdrawWalletModal({ isOpen, onClose }) {
   const {
     handleSubmit,
