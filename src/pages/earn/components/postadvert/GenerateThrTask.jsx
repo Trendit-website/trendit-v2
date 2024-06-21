@@ -2,7 +2,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
@@ -15,6 +15,7 @@ import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
+import { AppearanceContext } from '../../../../providers/AppearanceProvider'
 
 export default function GenerateThrTask() {
   const [selected, setSelected] = useState()
@@ -123,8 +124,9 @@ export default function GenerateThrTask() {
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.thread_verified === 'pending' ||
-            profileDeatils?.social_links?.thread_verified === 'idle' ? (
+            {profileDeatils?.social_links?.threads_verified === 'pending' ||
+            profileDeatils?.social_links?.threads_verified === 'rejected' ||
+            profileDeatils?.social_links?.threads_verified === 'idle' ? (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
@@ -484,7 +486,9 @@ export default function GenerateThrTask() {
       />
       {isOpenVerify && (
         <SocialLinkModal
-          type='thread'
+          type='Threads'
+          platform='thread'
+          icon={appearance === 'dark' ? 'thread' : 'thread-lite'}
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

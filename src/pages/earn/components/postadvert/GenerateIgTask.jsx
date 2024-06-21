@@ -535,7 +535,7 @@ export default function GenerateIgTask() {
           )}
         </div>
       </div>
-
+      
       <ConfirmTaskModal
         isOpen={isOpen}
         onClose={onClose}
@@ -546,6 +546,8 @@ export default function GenerateIgTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='instagram'
+          platform='instagram'
+          icon='instagram'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

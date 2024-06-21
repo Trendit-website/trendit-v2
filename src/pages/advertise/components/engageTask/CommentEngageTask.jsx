@@ -418,7 +418,7 @@ export default function CommentEngageTask() {
                               validate: {
                                 isValidLink: (fieldValue) => {
                                   return (
-                                    (fieldValue.startsWith(`https://${platform}.`) || (platform === 'facebook' ? fieldValue.startsWith('https://fb.'): '') || (platform === 'x' ? fieldValue.startsWith('https://twitter.') : '')) || 'Link not valid'
+                                    (fieldValue.startsWith(`https://${platform}.`) || (fieldValue.startsWith(`https://www.${platform}.`)) || (platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
                                   )
                                 }
                               }

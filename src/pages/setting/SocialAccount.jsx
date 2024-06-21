@@ -31,7 +31,7 @@ export default function SocialAccount() {
     try {
       const res = await deleteLinks(platform)
       if(res.data) {
-        API.get('verified_socials')
+        API.get('/verified_socials')
         .then((response) => (setAccount(response.data?.socials), setSocialLinks(response.data?.socials),  toast.success(res.data.message)))
         .catch((error) => toast.error(error.response?.data?.message ?? error.message))
       }
@@ -98,7 +98,7 @@ export default function SocialAccount() {
                       <a href={social.link} target='_blank' className='text-white'>{social.link}</a> : (social.state) 
                     }                  
               </div>
-              <p className={`flex items-center self-end font-bold gap-x-2 ${social.state === 'pending' && 'text-yellow-400' || social.state === 'approved' && 'text-green-800' || social.state === 'idle' && 'text-[#FF3D00]'}`}>
+              <p className={`flex items-center self-end font-bold gap-x-2 ${social.state === 'pending' && 'text-yellow-400' || social.state === 'verified' && 'text-green-500' || social.state === 'idle' && 'text-[#FF3D00]'}`}>
                {social.state.charAt(0).toUpperCase()+social.state.slice(1)}
                 {
                   social.state === 'idle' ? '' : 
