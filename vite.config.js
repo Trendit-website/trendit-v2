@@ -14,6 +14,7 @@ export default defineConfig({
         name: 'Trendit³ staging',
         short_name: 'Trendit³ staging',
         description: 'Get paid for your engagements',
+        display: "standalone",
         theme_color: '#ffffff',
         icons: [
           {

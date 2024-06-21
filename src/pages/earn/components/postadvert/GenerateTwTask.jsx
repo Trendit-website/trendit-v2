@@ -21,6 +21,7 @@ export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
+  console.log(fetchTask)
   const {
     isOpen: isOpenVerify,
     onOpen: onOpenVerify,
@@ -472,6 +473,8 @@ export default function GenerateTwTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='x'
+          platform='x'
+          icon='x'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

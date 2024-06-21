@@ -126,12 +126,12 @@ export default function GeneralForm() {
         setProfile(data)
         // setSelectedImage(null)
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
       }
     } catch (error) {
       toast.error(error.response?.data?.message || error.message, {
-        duration: 20000,
+        duration: 500,
       })
     }
   }

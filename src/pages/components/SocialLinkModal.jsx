@@ -5,10 +5,12 @@ import { Button, Modal, ModalContent, Input } from '@nextui-org/react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useForm, Controller } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { useVerifySocial } from '../../api/verifySocialApi'
+import { useVerifySocial, useGetSocialLinks } from '../../api/verifySocialApi'
 import Loader from '../Loader'
 import { useQueryClient } from '@tanstack/react-query'
 import Icons from '../../components/Icon'
+import { useContext } from 'react'
+import { setSocialAcccountContext } from '../../context/SocialAccount'
 import API from '../../services/AxiosInstance'
 
 export default function SocialLinkModal({ isOpen, onClose, type, icon, platform }) {
@@ -21,17 +23,25 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
       type: platform,
     },
   })
-
+  const setAccount = useContext(setSocialAcccountContext)
   const { mutateAsync: verifySocial, isPending } = useVerifySocial()
+  
   const queryClient = useQueryClient()
-
+  const GetVerified = () => {
+    API.get(`/verified_socials`)
+    .then((response) => {
+      setAccount(response.data?.socials)
+    })
+    .catch((error) => console.error(error))
+  }
   const onSubmit = async (data) => {
     try {
       const res = await verifySocial({...data})
       if (res.data.status) {
-        toast.success(res.data.message)
+        toast.success(res.data.message)    
         queryClient.invalidateQueries({ queryKey: ['get_profile'] })
         onClose()
+        GetVerified()
         queryClient.invalidateQueries({ queryKey: ['get_profile'] })
       }
     } catch (error) {
@@ -123,7 +133,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
                       validate: {
                         isValidLink: (fieldValue) => {
                           return (
-                            (fieldValue.startsWith(`https://${platform}.`) || (platform === 'x' ? fieldValue.startsWith('https://twitter.') : '')) || 'Invalid URL for specified platform'
+                            (fieldValue.startsWith(`https://${platform}.`) || (fieldValue.startsWith(`https://www.${platform}.`)) || (platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith('https://www.fb.'): '') || (platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
                           )
                         }
                       }

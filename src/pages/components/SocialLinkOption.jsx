@@ -21,7 +21,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
         {
             icon: `${appearance === 'dark' ? 'twitter' : 'x-lite'}`,
             lable: 'X',
-            platform: 'x' || 'twitter'
+            platform: 'x'
         },
         {
             icon: `${appearance === 'dark' ? 'tik-tok' : 'tik-tok-lite'}`,
@@ -30,14 +30,14 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
         },
         {
             icon: `${appearance === 'dark' ? 'thread' : 'thread-lite'}`,
-            lable: 'Thread',
+            lable: 'Threads',
             platform: 'thread'
         },
-        {
-            icon: 'whatsapp',
-            lable: 'WhatsApp',
-            platform: 'whatsapp'
-        },
+        // {
+        //     icon: 'whatsapp',
+        //     lable: 'WhatsApp',
+        //     platform: 'whatsapp'
+        // },
     ]
     const {
         isOpen: isOpenVerify,

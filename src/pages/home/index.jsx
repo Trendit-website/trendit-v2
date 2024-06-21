@@ -9,7 +9,7 @@ import { ChevronRight } from 'lucide-react'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import selfieImage from '../../assets/selfie.svg'
 import readingImage from '../../assets/reading-side.svg'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import SelectPaymentmodal from '../transaction/components/SelectPaymentmodal'
 import { useDisclosure } from '@nextui-org/react'
 import { useNavigate } from 'react-router-dom'
@@ -22,11 +22,17 @@ import SocialLinkModal from '../components/SocialLinkModal'
 import SocialLinkOption from '../components/SocialLinkOption'
 import toast from 'react-hot-toast'
 import Loader from '../Loader'
+import VatModal from './VatModal'
+import Cookies from 'js-cookie';
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
   const [linkIg, setLinkIg] = useState(true)
-  const [showUp, setShowUp] = useState(true)
+  const [showUp, setShowUp] = useState()
+  const closeShowup = () => {
+    setShowUp(false)
+    Cookies.set('newUser', 'false')
+  }
   const { isOpen, onOpen, onClose } = useDisclosure()
   const {
     isOpen: openWithdraw,
@@ -48,12 +54,18 @@ export default function Welcome({ onNotificationClick }) {
    onOpenVerify()
   }
 
+  useEffect(() => {
+    Cookies.get('newUser') === 'false' ? setShowUp(false) : setShowUp(true)
+    console.log(Cookies.get('newUser'))
+    console.log(showUp)
+  }, [])
+
   return (
     <>
     {userDetails ? 
     <div>
       <div className='p-3  flex-col justify-start items-start gap-3 inline-flex relative'>
-        {showUp && (
+        {showUp ? (
           <div className=' w-full lg:-mt-20 px-[25px] py-[13px] bg-blue-500 justify-start items-start gap-[29px] inline-flex'>
             <div className='grow shrink w-full basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
               <div className='flex justify-between w-full'>
@@ -63,7 +75,7 @@ export default function Welcome({ onNotificationClick }) {
                 <div
                   className='cursor-pointer'
                   onClick={() => {
-                    setShowUp(false)
+                      closeShowup()
                   }}
                 >
                   <svg
@@ -102,7 +114,7 @@ export default function Welcome({ onNotificationClick }) {
                   <div className="text-sky-100 text-sm font-normal font-['Manrope']">
                     Watch tutorial
                   </div>
-                </div> */}
+                </div> :*/}
                 <div
                   onClick={() => navigate('/dashboard/support')}
                   className='justify-start w-full items-center gap-2 flex'
@@ -127,7 +139,7 @@ export default function Welcome({ onNotificationClick }) {
               </div>
             </div>
           </div>
-        )}
+        ) : ''}
         <Card className=' w-full h-[315px] relative bg-cyan-50 rounded'>
           <div className='cursor-pointer justify-end items-center inline-flex'>
             <Button
@@ -149,7 +161,7 @@ export default function Welcome({ onNotificationClick }) {
                 {showBalance?.balance?.toLocaleString()}
               </div>
             </div>
-            <div className='pb-4 justify-start items-start gap-[19px] inline-flex'>
+            <div className='pb-4 justify-start items-start gap-[19px] z-10 inline-flex'>
               <Button
                 onClick={onOpen}
                 // onClick={() => navigate(`/dashboard/home/fund`)}
@@ -175,7 +187,7 @@ export default function Welcome({ onNotificationClick }) {
               </Button>
 
               <Button
-                onClick={onOpenWithdraw}
+                onClick={() => onOpenWithdraw()}
                 startContent={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -196,7 +208,7 @@ export default function Welcome({ onNotificationClick }) {
                 Withdraw
               </Button>
             </div>
-            <div className='absolute right-0'>
+            <div className='absolute z-0 right-0'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='239'
@@ -289,7 +301,7 @@ export default function Welcome({ onNotificationClick }) {
         </div>
         <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-            <div className="text-white text-2xl font-medium font-['Manrope']">
+            <div className="text-white text-2xl font-medium font-['Manrope']"> 
               What’s Up
             </div>
           </div>
@@ -361,11 +373,16 @@ export default function Welcome({ onNotificationClick }) {
                 </Card>
               )}
             {
-            ((userDetails?.social_links?.instagram_verified === 'idle') || (userDetails?.social_links?.instagram_verified === 'pending')) &&
-            ((userDetails?.social_links?.facebook_verified === 'idle') || (userDetails?.social_links?.facebook_verified === 'pending')) &&
-            ((userDetails?.social_links?.tiktok_verified === 'idle') || (userDetails?.social_links?.tiktok_verified === 'pending')) &&
-            ((userDetails?.social_links?.x_verified  === 'idle') || (userDetails?.social_links?.x_verified  === 'pending'))
-            &&
+              userDetails?.social_links?.instagram_verified === 'verified' ||
+              userDetails?.social_links?.facebook_verified === 'verified' ||
+              userDetails?.social_links?.tiktok_verified === 'verified' ||
+              userDetails?.social_links?.threads_verified === 'verified' ||
+              userDetails?.social_links?.x_verified === 'verified' &&
+            // ((userDetails?.social_links?.instagram_verified === 'idle') || (userDetails?.social_links?.instagram_verified === 'pending')) &&
+            // ((userDetails?.social_links?.facebook_verified === 'idle') || (userDetails?.social_links?.facebook_verified === 'pending')) &&
+            // ((userDetails?.social_links?.tiktok_verified === 'idle') || (userDetails?.social_links?.tiktok_verified === 'pending')) &&
+            // ((userDetails?.social_links?.x_verified  === 'idle') || (userDetails?.social_links?.x_verified  === 'pending'))
+            
               (linkIg ? (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
@@ -413,7 +430,7 @@ export default function Welcome({ onNotificationClick }) {
             <div className='py-3 justify-start items-center gap-[7px] flex'>
               <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
                 <a
-                  href='https://trendit3.com/privacy-policy'
+                  href='https://trendit3.com'
                   target='_blank'
                   rel='noreferrer'
                 >
@@ -462,7 +479,7 @@ export default function Welcome({ onNotificationClick }) {
       {/* {isOpen && <SelectPaymentmodal isOpen={isOpen} onClose={onClose} />} */}
       {isOpen && <FundWalletModal isOpen={isOpen} onClose={onClose} />}
       {openWithdraw && (
-        <WithdrawWalletModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
+        <VatModal isOpen={openWithdraw} onClose={onCloseWithdraw} />
       )}
       {isOpenVerify && (
         <SocialLinkOption isOpen={isOpenVerify}

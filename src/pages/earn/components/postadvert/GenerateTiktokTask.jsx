@@ -31,6 +31,7 @@ export default function GenerateTiktokTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
@@ -126,7 +127,7 @@ export default function GenerateTiktokTask() {
               </div>
             </div>
             {profileDeatils?.social_links?.tiktok_verified === 'pending' ||
-            profileDeatils?.social_links?.tiktok_verified === 'pending' ||
+            profileDeatils?.social_links?.tiktok_verified === 'idle' ||
             profileDeatils?.social_links?.tiktok_verified === 'rejected' ? (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
@@ -488,6 +489,8 @@ export default function GenerateTiktokTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='tiktok'
+           platform='tiktok'
+          icon='tik-tok'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

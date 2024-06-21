@@ -64,14 +64,14 @@ export default function TransactionCard() {
               </div>
               <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
                 <div className="self-stretch text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
-                  {history?.transaction_type}
+                  {history?.transaction_type.charAt(0).toUpperCase()+history.transaction_type.slice(1)}
                 </div>
                 {/* <div className="self-stretch dark:text-white text-black text-[8.83px] font-medium font-['Manrope']">
                 Nov 13th 2023 9:21pm
               </div> */}
               </div>
               <div className="grow shrink basis-0 dark:text-white text-black text-[12.83px] font-medium font-['Manrope'] md:pl-12 lg:pl-24 ">
-                {history?.description}
+                {history?.description.charAt(0).toUpperCase()+history.description.slice(1)}
               </div>
               <div className="dark:text-white text-black text-[12.83px] font-medium font-['Manrope']">
                 {history?.amount?.toLocaleString()}

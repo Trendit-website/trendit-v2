@@ -35,6 +35,7 @@ export default function TaskCard({
   const completePayment = () => {
     onOpen()
   }
+  console.log(platform)
   const appreance = useContext(AppearanceContext)
   const [media, setMedia] = useState(null)
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
