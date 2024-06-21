@@ -18,3 +18,11 @@ export const useGetSocialLinks = () => {
     },
   })
 }
+
+export const useGetDeleteLinks = () => {
+  return useMutation({
+    mutationFn: (data) => {
+      return API.delete(`/delete-socials/${data}`,)
+    },
+  })
+}

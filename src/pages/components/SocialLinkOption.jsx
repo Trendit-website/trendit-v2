@@ -33,11 +33,11 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
             lable: 'Thread',
             platform: 'thread'
         },
-        {
-            icon: 'whatsapp',
-            lable: 'WhatsApp',
-            platform: 'whatsapp'
-        },
+        // {
+        //     icon: 'whatsapp',
+        //     lable: 'WhatsApp',
+        //     platform: 'whatsapp'
+        // },
     ]
     const {
         isOpen: isOpenVerify,
