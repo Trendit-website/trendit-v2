@@ -31,7 +31,6 @@ export default function PrefrenceForm() {
 
 function PrefrenceFormContent() {
   const { data: userPrefrence } = useGetUserPrefence()
-  console.log(userPrefrence)
 
   const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
   const { setValue, watch } = useForm({
