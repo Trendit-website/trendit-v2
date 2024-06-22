@@ -14,7 +14,6 @@ import Cookies from 'js-cookie';
 export default function Logo() {
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
-  console.log(userPrefrences)
   const navigate = useNavigate()
 
   // useEffect(() => {

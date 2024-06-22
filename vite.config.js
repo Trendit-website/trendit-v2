@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { VitePWA } from 'vite-plugin-pwa'
-const theme = window.matchMedia('(prefers-color-scheme: light)')
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -15,7 +14,7 @@ export default defineConfig({
         short_name: 'Trendit³ staging',
         description: 'Get paid for your engagements',
         display: "standalone",
-        theme_color: `${theme.matches ? '#ffffff' : '#000000' }`,
+        theme_color: '#ffffff',
         icons: [
           {
             src: 'android-chrome-192x192.png',
