@@ -82,7 +82,6 @@ function App() {
     }
   }, [])
   const theme = window.matchMedia('(prefers-color-scheme: light)')
-  console.log(theme)
   useEffect(() => {
     theme.matches ? useLightPref() : useDarkPref()
   }, [])

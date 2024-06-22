@@ -34,11 +34,12 @@ export default function Logo() {
         toast.error(error.response?.data?.message ?? error.message)
       )
   }
+  const system = window.matchMedia('(prefers-color-scheme: light)')
 
   return (
     <div>
       <div>
-        {userPrefrences === 'dark' || Cookies.get('appearance') === 'dark' ? (
+        {userPrefrences === 'dark' || Cookies.get('appearance') === 'dark' || system.matches === false ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
         ) : (
           <Image className='w-20 md:w-full ml-3' src={lightLogo} />
