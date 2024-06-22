@@ -31,6 +31,7 @@ export default function PrefrenceForm() {
 
 function PrefrenceFormContent() {
   const { data: userPrefrence } = useGetUserPrefence()
+  console.log(userPrefrence)
 
   const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
   const { setValue, watch } = useForm({
@@ -112,14 +113,14 @@ function PrefrenceFormContent() {
               useDarkPref()
               API.post('/settings/preferences', {
                 setting_name: 'appearance',
-                value: 'dark',
+                value: 'system',
               })
                 .then(
                   (response) => {
                     toast.success(response.data?.message)
                     useDarkPref()
-                    setPrefrence('dark')
-                    Cookies.set('appearance', 'dark')
+                    setPrefrence('system')
+                    Cookies.set('appearance', 'system')
                   }
                 )
                 .catch(

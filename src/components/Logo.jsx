@@ -1,7 +1,7 @@
 import { Image } from '@nextui-org/react'
 import logo from '../assets/Logo_Default.svg'
 import lightLogo from '../assets/light_Logo.svg'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {
   AppearanceContext,
   SetAppearanceContext,
@@ -14,32 +14,17 @@ import Cookies from 'js-cookie';
 export default function Logo() {
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
+  console.log(userPrefrences)
   const navigate = useNavigate()
 
   // useEffect(() => {
    
   // }, [userPrefrences])
-
-  const toggleAppearance = () => {
-    const newPreference = userPrefrences === 'dark' ? 'light' : 'dark'
-    API.post('/settings/preferences', {
-      setting_name: 'appearance',
-      value: newPreference,
-    })
-      .then(() => {
-        // toast.success(response.data?.message)
-        setPrefrence(newPreference)
-      })
-      .catch((error) =>
-        toast.error(error.response?.data?.message ?? error.message)
-      )
-  }
   const system = window.matchMedia('(prefers-color-scheme: light)')
-
   return (
     <div>
       <div>
-        {userPrefrences === 'dark' || Cookies.get('appearance') === 'dark' || system.matches === false ? (
+        {userPrefrences === 'dark' || Cookies.get('appearance') === 'dark' || userPrefrences === 'system' ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
         ) : (
           <Image className='w-20 md:w-full ml-3' src={lightLogo} />
