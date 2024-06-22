@@ -52,7 +52,6 @@ export default function Welcome({ onNotificationClick }) {
   const { data: userDetails } = useGetProfile()
   const { isTablet } = useContext(dashboardContext)
   const {data: pref} = useGetUserPrefence()
-  console.log(userDetails)
 
   const handOpenSocialModal = () => {
    onOpenVerify()

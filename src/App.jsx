@@ -70,10 +70,13 @@ import EarnHistory from './pages/earn_history/EarnHistory'
 import GenerateLikeFollowFBEngageTask from './pages/earn/components/engageadvert/GenerateLike&FollowFBEngageTask'
 import Cookies from 'js-cookie';
 import { useDarkPref, useLightPref } from './hooks/usePref'
+import { useGetProfile } from './api/profileApis'
+import { useGetUserPrefence } from './api/settingsApis'
 
 function App() {
   const { isDarkMode } = useDarkMode()
   const setPrefrence = useContext(SetAppearanceContext)
+  const { data: userDetails } = useGetProfile()
   const location = useLocation()
   const navigate = useNavigate()
   useEffect(() => {
@@ -81,9 +84,26 @@ function App() {
       navigate('/dashboard/home')      
     }
   }, [])
-  const theme = window.matchMedia('(prefers-color-scheme: light)')
+  const theme = window.matchMedia('(prefers-color-scheme: light)') 
+  const { data: userPrefrence } = useGetUserPrefence()
   useEffect(() => {
-    theme.matches ? useLightPref() : useDarkPref()
+    API.get('/settings/preferences')
+    .then((respone) => {
+      if(respone.data?.user_preferences?.appearance === 'dark') {
+        useDarkPref()
+        setPrefrence('dark')
+        Cookies.set('appearance', 'dark')
+      } else if(respone.data?.user_preferences?.appearance === 'light') {
+        useLightPref()
+        setPrefrence('light')
+        Cookies.set('appearance', 'light')
+      } else {
+        theme.matches ? (useLightPref(),   setPrefrence('light'),  Cookies.set('appearance', 'light')) : (useDarkPref(), setPrefrence('dark'),  Cookies.set('appearance', 'dark'))
+      }
+    })
+    .catch((error) => {
+      theme.matches ? (useLightPref(),   setPrefrence('light'),  Cookies.set('appearance', 'light')) : (useDarkPref(), setPrefrence('dark'),  Cookies.set('appearance', 'dark'))
+    })
   }, [])
 
   return (
