@@ -39,6 +39,14 @@ export default function Referal() {
       icon: 'thread-lite'
     }
   ]
+  const shareLink = (platform, link) => {
+    platform === 'x-lite' || platform === 'facebook' || platform === 'whatsapp' ? window.open(link, "_blank") :
+    navigator.share({
+      title: 'Trendit³',
+      text: shareText,
+      url: profileDeatils?.referral_link
+    })
+  }
 
   return (
     <>
@@ -59,11 +67,7 @@ export default function Referal() {
               </div>
               {profileDeatils?.membership_fee && (
                 <div className='self-stretch z-10 flex-col justify-start items-center gap-2 flex'>
-                  <div className="self-stretch text-black text-sm font-medium font-['Manrope']" onClick={() => navigator.share({
-                    title: 'Trendit³',
-                    text: shareText,
-                    url: profileDeatils?.referral_link
-                    })}>
+                  <div className="self-stretch text-black text-sm font-medium font-['Manrope']">
                     Share your link
                   </div>
                   <div className='self-stretch justify-start items-start gap-0 flex'>
@@ -77,7 +81,7 @@ export default function Referal() {
                       <div className='flex items-center gap-x-4'>
                         {
                           socials.map((item, index) => (
-                            <div key={index} onClick={() => window.open(item.link, '_blank')}>
+                            <div key={index} onClick={() => shareLink(item.icon, item.link)}>
                                 <Icons type={item.icon}  width={25} height={25}/>
                             </div>
                           ))

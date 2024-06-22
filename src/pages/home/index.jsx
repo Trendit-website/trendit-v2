@@ -24,6 +24,9 @@ import toast from 'react-hot-toast'
 import Loader from '../Loader'
 import VatModal from './VatModal'
 import Cookies from 'js-cookie';
+import { useGetUserPrefence } from '../../api/settingsApis'
+import { useDarkPref, useLightPref } from '../../hooks/usePref'
+import API from '../../services/AxiosInstance'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -48,6 +51,7 @@ export default function Welcome({ onNotificationClick }) {
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
   const { isTablet } = useContext(dashboardContext)
+  const {data: pref} = useGetUserPrefence()
   console.log(userDetails)
 
   const handOpenSocialModal = () => {
@@ -56,8 +60,6 @@ export default function Welcome({ onNotificationClick }) {
 
   useEffect(() => {
     Cookies.get('newUser') === 'false' ? setShowUp(false) : setShowUp(true)
-    console.log(Cookies.get('newUser'))
-    console.log(showUp)
   }, [])
 
   return (
