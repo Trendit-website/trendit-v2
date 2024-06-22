@@ -68,6 +68,8 @@ import API from './services/AxiosInstance'
 import { useContext } from 'react'
 import EarnHistory from './pages/earn_history/EarnHistory'
 import GenerateLikeFollowFBEngageTask from './pages/earn/components/engageadvert/GenerateLike&FollowFBEngageTask'
+import Cookies from 'js-cookie';
+import { useDarkPref, useLightPref } from './hooks/usePref'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -79,47 +81,11 @@ function App() {
       navigate('/dashboard/home')      
     }
   }, [])
-
+  const theme = window.matchMedia('(prefers-color-scheme: light)')
+  console.log(theme)
   useEffect(() => {
-    localStorage.getItem('appearance') === 'dark' ? 
-    (document.body.classList.add('dark'),
-    
-          document.body.classList.add('text-foreground'),
-          document.body.classList.add('bg-background'))
-    : 
-          (document.body.classList.remove('dark'),
-          document.body.classList.remove('text-foreground'),
-          document.body.classList.remove('bg-background')) 
-    API.get('/settings/preferences')
-      .then(
-        (response) => (
-          setPrefrence(response.data.user_preferences.appearance),
-          response.data.user_preferences.appearance === 'dark' 
-            ? (document.body.classList.add('dark'),
-              document.body.classList.add('text-foreground'),
-              document.body.classList.add('bg-background'))
-            : (document.body.classList.remove('dark'),
-              document.body.classList.remove('text-foreground'),
-              document.body.classList.remove('bg-background'))
-        )
-      )
-      .catch((error) => console.error(error))
-
-    // if (isDarkMode) {
-    //   document.body.classList.add('dark')
-    //   document.body.classList.add('text-foreground')
-    //   document.body.classList.add('bg-background')
-    // } else {
-    //   document.body.classList.remove('dark')
-    //   document.body.classList.remove('text-foreground')
-    //   document.body.classList.remove('bg-background')
-    // }
-  }, [isDarkMode])
-
-  useEffect(() => {
-    // Store dark mode preference in local storage
-    // localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
-  }, [isDarkMode])
+    theme.matches ? useLightPref() : useDarkPref()
+  }, [])
 
   return (
     <>
