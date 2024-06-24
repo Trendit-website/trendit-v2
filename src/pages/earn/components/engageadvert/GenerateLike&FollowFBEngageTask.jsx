@@ -25,7 +25,7 @@ export default function GenerateLikeFollowFBEngageTask() {
       <div>
         <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 flex'>
           <div
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/dashboard/earn/?tab=engagement-tasks')}
             className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
           >
             <div className='cursor-pointer'>

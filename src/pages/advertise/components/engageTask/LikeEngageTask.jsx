@@ -117,14 +117,14 @@ export default function LikeEngageTask() {
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
         // navigate('dashboard/advertise-history')
       }

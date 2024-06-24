@@ -90,15 +90,15 @@ export default function SocialAccount() {
           socialLinks ? 
         <div className='flex flex-col gap-y-4 mt-8'>
           {socials.map((social, index) => (
-            <div key={index} className='flex flex-col lg:items-center lg:flex-row justify-between bg-black py-3 px-2'>
+            <div key={index} className='flex flex-col lg:items-center lg:flex-row justify-between bg-zinc-700 py-3 px-2'>
              
               <div className='flex items-center gap-x-4'>
                   <Icons type={social.platformIcon} width={25} height={25}/>                  
                     {social.link != null ? 
-                      <a href={social.link} target='_blank' className='text-white'>{social.link}</a> : (social.state) 
+                      <a href={social.link} target='_blank' className='text-white text-[14px]'>{social.link}</a> : (social.state) 
                     }                  
               </div>
-              <p className={`flex items-center self-end font-bold gap-x-2 ${social.state === 'pending' && 'text-yellow-400' || social.state === 'verified' && 'text-green-500' || social.state === 'idle' && 'text-[#FF3D00]'}`}>
+              <p className={`flex items-center mt-6 justify-between font-bold gap-x-2 ${social.state === 'pending' && 'text-yellow-400' || social.state === 'verified' && 'text-green-500' || social.state === 'idle' && 'text-[#FF3D00]'}`}>
                {social.state.charAt(0).toUpperCase()+social.state.slice(1)}
                 {
                   social.state === 'idle' ? '' : 

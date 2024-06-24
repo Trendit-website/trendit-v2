@@ -9,6 +9,7 @@ import { useCreateAdvert, useCreateAdvertPaymentWallet } from "../../api/advertA
 import toast from "react-hot-toast";
 import { useState, useContext } from "react";
 import { AppearanceContext } from "../../providers/AppearanceProvider";
+import { useGetProfile } from "../../api/profileApis";
 
 export default function TaskCard({
   goal,
@@ -35,8 +36,9 @@ export default function TaskCard({
   const completePayment = () => {
     onOpen()
   }
-  console.log(platform)
+  const amountPaid = Number(fee_paid)
   const appreance = useContext(AppearanceContext)
+  const {data: profile} = useGetProfile()
   const [media, setMedia] = useState(null)
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -66,7 +68,7 @@ export default function TaskCard({
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
         onClose()
 
@@ -93,7 +95,7 @@ export default function TaskCard({
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 20000,
+        duration: 500,
       })
     }
   }
@@ -107,7 +109,7 @@ export default function TaskCard({
         formData.append('media', media)
       }
       // Append other form fields
-      formData.append('task_type', 'advert')
+      formData.append('task_type', task_type)
       formData.append('target_country', target_country)
       formData.append('target_state', target_state)
 
@@ -124,13 +126,13 @@ export default function TaskCard({
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 500,
       })
     }
   }
@@ -142,22 +144,47 @@ export default function TaskCard({
       >
             <div className="flex inline-flex gap-y-2 w-full p-2 lg:flex lg:flex-row lg:items-start lg:justify-between w-11/12 lg:pl-4">
                 <div className="flex items-start">
-                      <Icons type={platform} />
+                      <Icons type={platform} width={32} height={32} />
                 </div>
-                <div className="flex flex-col gap-y-2 text-sm ml-6 w-11/12 lg:w-5/12">
+                <div className="flex flex-col gap-y-2 text-sm ml-6 lg:mr-8 w-11/12 lg:w-5/12">
                         <p className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>{when}</p>
-                        <p className="font-bold text-sm">{goal}</p>
+                        <p className="font-bold text-sm">{ 
+                          goal ? (
+                          goal === 'comment' && `Get Genuine People to Comment on your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post` ||
+                          goal === 'follow and like' && 'Get Genuine People to Follow and Like your Facebook Business Page' ||
+                          goal === 'follow' && `Get Genuine People to Follow your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Page` ||
+                          goal === 'like' && `Get Genuine People to Like your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post`     )
+                          : caption                    
+                          }</p>
                         <div className="flex items-center gap-x-2">
-                            <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> <p className="font-bold text-xs">{fee} per like</p>
+                            <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> 
+                            <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> 
+                              <p className="font-bold text-xs">
+                              {profile?.wallet?.currency_symbol}{fee} per {
+                                     task_type === 'advert' && 'Posts' ||
+                                     task_type === 'engagement' && (
+                                       goal === 'comment' && `Comments` ||
+                                       goal === 'follow and like' && 'Followers and Likes' ||
+                                       goal === 'follow' && `Followers` ||
+                                       goal === 'like' && `Likes`     )
+                                }
+                              </p>
                         </div>
                         <div className="flex items-start gap-x-4">
                           <p className={`flex flex-col gap-y-2 ${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>
-                              Number of likes
-                              <span className="text-white font-bold">{engagements_count}</span>
+                            {
+                              task_type === 'advert' && 'Numbers of Advert Post' ||
+                              task_type === 'engagement' && (
+                                goal === 'comment' && `Number of Comments` ||
+                                goal === 'follow and like' && 'Number of Followers and Likes' ||
+                                goal === 'follow' && `Number of Followers` ||
+                                goal === 'like' && `Number of Likes`     )
+                            }
+                              <span className="text-white font-bold">{engagements_count?.toLocaleString()}</span>
                           </p>
                           <p className={`flex flex-col gap-y-2`}>
                               Amount Paid
-                              <span className="text-white font-bold">{fee_paid}</span>
+                              <span className="text-white font-bold">{profile?.wallet?.currency_symbol}{amountPaid?.toLocaleString()}.00</span>
                           </p>
                         </div>
                         {payment_status === 'complete' ? 

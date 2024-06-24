@@ -31,7 +31,7 @@ export default function ResetPassword() {
   const confirm_password = watch('confirm_password')
   const validatePassword = (value) => {
     const hasNumber = /[0-9]/.test(value);
-    const hasSpecialChar = /^[!@#\$%\^\&*\)\(+=._-]+$/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}_-|<>]/.test(value);
     return (
       hasNumber && hasSpecialChar || 
       ''
@@ -52,6 +52,7 @@ export default function ResetPassword() {
         navigate('/login')
       }
     } catch (error) {
+      console.error(error)
       toast.error(error.response?.data?.message ?? error.message)
     }
   }

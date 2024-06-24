@@ -32,16 +32,16 @@ export default function PrefrenceForm() {
 function PrefrenceFormContent() {
   const { data: userPrefrence } = useGetUserPrefence()
 
-  const { toggle: toggleDarkMode, isDarkMode } = useDarkMode()
-  const { setValue, watch } = useForm({
-    defaultValues: {
-      appearance: userPrefrence?.appearance || 'system',
-    },
-  })
-
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
   const system = window.matchMedia('(prefers-color-scheme: light)')
+  const { setValue, watch } = useForm({
+    defaultValues: {
+      appearance: userPrefrences || userPrefrence?.appearance ||  'system',
+    },
+  })
+
+ 
 
   const handleToggleDarkMode = (prefOption) => {
     // toggleDarkMode()

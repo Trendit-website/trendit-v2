@@ -79,14 +79,14 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('gender', data.gender)
       formData.append('caption', data.caption)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
         //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
