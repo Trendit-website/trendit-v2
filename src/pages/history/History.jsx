@@ -47,7 +47,7 @@ export default function History() {
   }
   const getAdvert = () => {
     API.get('/user/tasks')
-      .then((response) => (setAdvert(response.data.all_tasks)))
+      .then((response) => (setAdvert(response.data.all_tasks), console.log(response)))
       .catch((error) => console.error(error))
   }
   useEffect(() => {

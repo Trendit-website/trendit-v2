@@ -308,6 +308,7 @@ export default function GenerateTwTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
                         />
                       </div>
                     ))}
@@ -330,6 +331,7 @@ export default function GenerateTwTask() {
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
                         />
                       </div>
@@ -353,6 +355,7 @@ export default function GenerateTwTask() {
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
                         />
                       </div>
@@ -376,6 +379,7 @@ export default function GenerateTwTask() {
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
                         />
                       </div>
@@ -399,6 +403,7 @@ export default function GenerateTwTask() {
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
                         />
                       </div>

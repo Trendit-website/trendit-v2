@@ -28,6 +28,7 @@ const Navbar = ({ onNotificationClick }) => {
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
   const {data: pref} = useGetUserPrefence()
+  const system = window.matchMedia('(prefers-color-scheme: light)')
   const setAppearance = () => {
     if(pref.appearance === undefined) {
       useDarkPref()
@@ -49,7 +50,7 @@ const Navbar = ({ onNotificationClick }) => {
             useLightPref()
             }
           )
-    } else if(pref.appearance === 'light') {
+    } else if(userPrefrences === 'light' || pref.appearance === 'light') {
       useDarkPref()
       API.post('/settings/preferences', {
         setting_name: 'appearance',
@@ -69,7 +70,7 @@ const Navbar = ({ onNotificationClick }) => {
             useLightPref()
             }
           )
-    } else if(pref.appearance === 'dark') {
+    } else if(userPrefrences === 'dark' || pref.appearance === 'dark') {
       useLightPref()
       API.post('/settings/preferences', {
         setting_name: 'appearance',
@@ -89,6 +90,49 @@ const Navbar = ({ onNotificationClick }) => {
             useDarkPref()
             }
           )
+    } else if(userPrefrences === 'system' || pref.appearance === 'system') {
+      if(system.matches) {
+        useLightPref()
+        API.post('/settings/preferences', {
+          setting_name: 'appearance',
+          value: 'light',
+        })
+          .then(
+            (response) => {
+              toast.success(response.data?.message)
+              useLightPref()
+              setPrefrence('light')
+              Cookies.set('appearance', 'light')
+            }
+          )
+          .catch(
+            (error) => {
+              toast.error(error.response?.data?.message ?? error.message)
+              console.error(error.response?.data?.message ?? error.message)
+              useDarkPref()
+              }
+            )
+ } else {
+        useDarkPref()
+        API.post('/settings/preferences', {
+          setting_name: 'appearance',
+          value: 'dark',
+        })
+          .then(
+            (response) => {
+              toast.success(response.data?.message)
+              useDarkPref()
+              setPrefrence('dark')
+              Cookies.set('appearance', 'dark')
+            }
+          )
+          .catch(
+            (error) => {
+              toast.error(error.response?.data?.message ?? error.message)
+              useLightPref()
+              }
+            )
+ }
     }
    
   }

@@ -113,7 +113,7 @@ export default function CommentEngageTask() {
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'comment')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
@@ -127,7 +127,7 @@ export default function CommentEngageTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 500,
       })
     }
   }

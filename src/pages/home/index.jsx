@@ -34,7 +34,7 @@ export default function Welcome({ onNotificationClick }) {
   const [showUp, setShowUp] = useState()
   const closeShowup = () => {
     setShowUp(false)
-    Cookies.set('newUser', 'false')
+    Cookies.set('newUser', 'false', {expires: 30})
   }
   const { isOpen, onOpen, onClose } = useDisclosure()
   const {
@@ -51,7 +51,6 @@ export default function Welcome({ onNotificationClick }) {
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
   const { isTablet } = useContext(dashboardContext)
-  const {data: pref} = useGetUserPrefence()
 
   const handOpenSocialModal = () => {
    onOpenVerify()
@@ -374,17 +373,17 @@ export default function Welcome({ onNotificationClick }) {
                 </Card>
               )}
             {
-              userDetails?.social_links?.instagram_verified === 'verified' ||
-              userDetails?.social_links?.facebook_verified === 'verified' ||
-              userDetails?.social_links?.tiktok_verified === 'verified' ||
-              userDetails?.social_links?.threads_verified === 'verified' ||
-              userDetails?.social_links?.x_verified === 'verified' &&
+              userDetails?.social_links?.instagram_verified === 'verified' &&
+              userDetails?.social_links?.facebook_verified === 'verified' &&
+              userDetails?.social_links?.tiktok_verified === 'verified' &&
+              userDetails?.social_links?.threads_verified === 'verified' &&
+              userDetails?.social_links?.x_verified === 'verified' ? '' :
             // ((userDetails?.social_links?.instagram_verified === 'idle') || (userDetails?.social_links?.instagram_verified === 'pending')) &&
             // ((userDetails?.social_links?.facebook_verified === 'idle') || (userDetails?.social_links?.facebook_verified === 'pending')) &&
             // ((userDetails?.social_links?.tiktok_verified === 'idle') || (userDetails?.social_links?.tiktok_verified === 'pending')) &&
             // ((userDetails?.social_links?.x_verified  === 'idle') || (userDetails?.social_links?.x_verified  === 'pending'))
             
-              (linkIg ? (
+              // (linkIg ? (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                     <div className="text-center text-black dark:text-white text-base font-bold font-['Manrope']">
@@ -422,7 +421,8 @@ export default function Welcome({ onNotificationClick }) {
                     </svg>
                   </div>
                 </Card>
-              ) : null)}
+              // ) : null)
+              }
           </div>
         </div>
 

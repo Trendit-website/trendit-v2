@@ -3,16 +3,17 @@ import { ChevronRight } from 'lucide-react'
 import EngagementTasksCard from './EngagementTasksCard'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import PostAdvertTasksCard from './PostAdvertTasksCard'
 import { useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import ActivationPaymentmodal2 from '../transaction/components/ActivationPaymentmodal2'
 import LearnMoreModal from '../transaction/components/LearnMoreModal'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Earn() {
-  const [selected, setSelected] = useState('post advert')
+  const EarningTabs = ['Post Advert', 'Engagement Tasks']
+  const [selected, setSelected] = useState(EarningTabs[0])
   const [showwarning, setShowWarning] = useState(true)
   const [showwVerifiedarning, setShowVerifiedWarning] = useState(true)
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -22,8 +23,22 @@ export default function Earn() {
     onClose: onLearnClose,
   } = useDisclosure()
   const { data: profileDeatils } = useGetProfile()
-  console.log(profileDeatils)
   const navigate = useNavigate()
+  const location = useLocation()
+  const setEarningTab = (tab) => {
+    setSelected(tab)
+    {tab === EarningTabs[0] && (
+      location.search = '?tab=post-advert',
+      navigate('/dashboard/earn/?tab=post-advert')
+    )}
+    {tab === EarningTabs[1] && (
+      location.search = '?tab=engagement-tasks',
+      navigate('/dashboard/earn/?tab=engagement-tasks')
+    )}
+  }
+  useEffect(() => {
+    location.search === '?tab=engagement-tasks' ? setSelected('Engagement Tasks') : ''
+  }), []
 
   return (
     <>
@@ -381,45 +396,21 @@ export default function Earn() {
               <div className='justify-start items-center gap-[11px] flex'>
                 <AnimatePresence mode='wait'>
                   <div className='flex flex-col w-full'>
-                    <Tabs
-                      fullWidth
-                      size='md'
-                      aria-label='Tabs form'
-                      selectedKey={selected}
-                      onSelectionChange={setSelected}
-                      variant='underlined'
-                      classNames={{
-                        tabList: '  bordered  py-2',
-                        cursor: ' bg-fuchsia-400',
-                        selectedKey: 'text-green-400',
-                        tabContent:
-                          'group-data-[selected=true]:text-fuchsia-400 ',
-                      }}
-                      className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
-                      color='secondary'
-                    >
-                      <Tab
-                        key='post advert'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                        title='Post Advert'
-                      ></Tab>
-                      <Tab
-                        key='engagement tasks'
-                        title={
-                          <div>
-                            Engagement Tasks
-                            {/* <Chip
-                              size='sm'
-                              className='text-white'
-                              variant='light'
-                            >
-                              23+
-                            </Chip> */}
-                          </div>
-                        }
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      ></Tab>
-                    </Tabs>
+                  <div className="flex flex-row items-center gap-x-8 text-center text-fuchsia-400 text-xs font-bold font-['Manrope']">
+                    {EarningTabs.map((tab, index) => (
+                      <p
+                        key={index}
+                        onClick={() => setEarningTab(tab)}
+                        className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] pb-2 ${
+                          selected === tab
+                            ? 'border-b-2 border-border border-solid text-[#E879F9] font-bold'
+                            : ''
+                        }`}
+                      >
+                        {tab}
+                      </p>
+                    ))}
+                  </div>
                   </div>
                 </AnimatePresence>
               </div>
@@ -429,11 +420,11 @@ export default function Earn() {
                 variant='light'
                 className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
               >
-                History
+                My tasks
               </Button>
             </div>
           </div>
-          {selected === 'post advert' && (
+          {selected === 'Post Advert' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -446,7 +437,7 @@ export default function Earn() {
               <PostAdvertTasksCard />
             </motion.div>
           )}
-          {selected === 'engagement tasks' && (
+          {selected === 'Engagement Tasks' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}

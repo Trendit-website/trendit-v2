@@ -70,7 +70,7 @@ export default function OverViewCard() {
               </div>
             </div>
             <div className="self-stretch py-10 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
-              {totalTask ? `${totalTask?.length} Adverts` : <Loader />}
+              {totalTask ? `${totalTask?.length} Orders` : <Loader />}
             </div>
           </div>
         </div>
