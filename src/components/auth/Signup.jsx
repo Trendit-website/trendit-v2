@@ -116,7 +116,7 @@ export default function Signup() {
                             '!cursor-text',
                           ],
                         }}
-                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -138,7 +138,7 @@ export default function Signup() {
                           ],
                         }}
                         placeholder='Last Name'
-                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -167,7 +167,7 @@ export default function Signup() {
                         ],
                       }}
                       placeholder='Enter a username'
-                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                     />
                   )}
                   rules={{ required: true }}
@@ -189,7 +189,7 @@ export default function Signup() {
                       isInvalid={!!errors?.password}
                       required={true}
                       placeholder='Enter a password'
-                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       endContent={
                         <button
                           className='focus:outline-none'
@@ -264,7 +264,7 @@ export default function Signup() {
               <Button
                 type='submit'
                 isDisabled={isPending}
-                className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Manrope'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+                className="w-[290px] text-center text-white text-[16.83px] font-medium font-['Manrope'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
                 {isPending ? (
                   <svg
@@ -301,7 +301,7 @@ export default function Signup() {
               <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none '>Go Back</Button>
               </div>
-              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
+              <div className="text-center p-2 md:hidden   text-[16.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>
