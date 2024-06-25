@@ -38,7 +38,7 @@ export default function GenerateIgTask() {
     ) {
       onOpenVerify()
     } else if (profileDeatils?.social_links?.instagram_verified === 'pending') {
-      toast.error('Verification pending')
+      toast.success('Verification pending')
     } else {
       onOpenVerify()
     }
@@ -381,6 +381,10 @@ export default function GenerateIgTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -404,6 +408,10 @@ export default function GenerateIgTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -427,6 +435,10 @@ export default function GenerateIgTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -450,6 +462,10 @@ export default function GenerateIgTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -473,6 +489,10 @@ export default function GenerateIgTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}

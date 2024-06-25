@@ -30,7 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import TwFrame from '../../../../assets/logo_x_icon.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 
 export default function CreateTwAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -40,6 +41,7 @@ export default function CreateTwAdvertTask() {
   const [count, setCount] = useState(1)
   const mediaType = ['Photo', 'Video']
   const [isMediaType, setMediaType] = useState(mediaType[0])
+  const navigate = useNavigate()
   const {
     handleSubmit,
     control,
@@ -249,6 +251,17 @@ export default function CreateTwAdvertTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Twitter'}
                   frame={TwFrame}

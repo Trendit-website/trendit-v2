@@ -30,8 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import TkFrame from '../../../../assets/logos_tiktok-icon.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
-
+import { useNavigate } from 'react-router-dom'
+import Icons from '../../../../components/Icon'
 export default function CreateTkAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState([])
@@ -244,6 +244,7 @@ export default function CreateTkAdvertTask() {
       })
     }
   }
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -251,6 +252,17 @@ export default function CreateTkAdvertTask() {
           <div className='p-3 bg-white px-4 dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' grow flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Tiktok'}
                   frame={TkFrame}

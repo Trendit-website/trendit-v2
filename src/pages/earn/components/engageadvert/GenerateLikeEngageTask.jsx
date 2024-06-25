@@ -274,6 +274,10 @@ export default function GenerateLikeEngageTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -297,6 +301,10 @@ export default function GenerateLikeEngageTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -320,6 +328,10 @@ export default function GenerateLikeEngageTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -343,6 +355,10 @@ export default function GenerateLikeEngageTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -366,6 +382,10 @@ export default function GenerateLikeEngageTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}

@@ -24,6 +24,8 @@ import {
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/like_icon.svg'
 import Loader from '../../../Loader'
+import { useNavigate } from 'react-router-dom'
+import Icons from '../../../../components/Icon'
 // import AudFrame from '../../../../assets/Vector.svg'
 // import { useNavigate } from 'react-router'
 
@@ -47,7 +49,7 @@ export default function LikeEngageTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
   const platform = watch('platform')
 
   const onSubmit = async () => {
@@ -141,11 +143,22 @@ export default function LikeEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=engagement-tasks')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeaderEngage
                   frame={AudFrame}
                   title={`Get People to Like Your Post on different Social Media Platform`}
                   descp={`Get Genuine people to like your social media post. You can get as many likes as you desire simply by entering the link to your post either on Instagram, Facebook, Twitter or any platform.`}
-                  price={`₦5 per Follow`}
+                  price={`₦5 per Like`}
                 />
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>

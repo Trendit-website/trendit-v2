@@ -19,7 +19,7 @@ export default function TaskCard({
   const amount = Number(price)
   return (
     <>
-      {taskId}
+      {/* {taskId} */}
       <div
         onClick={onNextPage}
         // onClick={() => onNextPage(taskId)}
@@ -33,10 +33,10 @@ export default function TaskCard({
                     task_type === 'advert' ?
                     `Post adverts on your ${platform} account` : (
                       goal ? (
-                        goal === 'comment' && `Get Genuine People to Comment on your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post` ||
-                        goal === 'follow and like' && 'Get Genuine People to Follow and Like your Facebook Business Page' ||
-                        goal === 'follow' && `Get Genuine People to Follow your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Page` ||
-                        goal === 'like' && `Get Genuine People to Like your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post`     )
+                        goal === 'comment' && `Comment on ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post` ||
+                        goal === 'follow and like' && 'Follow and Like Facebook Business Page' ||
+                        goal === 'follow' && `Follow ${platform.charAt(0).toUpperCase()+platform.slice(1)} Page` ||
+                        goal === 'like' && `Like ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post`     )
                         : ''
                     )
                   }</h4>

@@ -25,11 +25,13 @@ import {
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import SpotyFram from '../../../../assets/follow_icon.svg'
 import Loader from '../../../Loader'
+import { useNavigate } from 'react-router-dom'
+import Icons from '../../../../components/Icon'
 // import { useNavigate } from 'react-router'
 
 export default function FollowerEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -140,11 +142,22 @@ export default function FollowerEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=engagement-tasks')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeaderEngage
                   frame={SpotyFram}
                   title={`Get Genuine People to Follow Your Social Media  Accounts`}
                   descp={`Get real people to follow your  social media pages. you can get any numbers of people to follow your social media pages with no need for your login Details, on any social platform like Instagram, Facebook, Tiktok, X and many more.`}
-                  price={`₦5 per Like`}
+                  price={`₦5 per Follow`}
                 />
               </div>
               <div className='self-stretch md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>

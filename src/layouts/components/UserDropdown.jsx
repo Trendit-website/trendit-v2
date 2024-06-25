@@ -108,7 +108,7 @@ const UserDropdown = () => {
       >
         <div
           // onClick={() => navigate('/dashboard/settings')}
-          className={dropdownOpen === true ? 'block' : 'hidden'}
+          className={dropdownOpen === true ? 'block lg:hidden' : 'hidden'}
         >
           <svg
             className={`fill-current sm:block absolute  right-4 top-[0.6rem] z-50 rotate-180`}
@@ -125,7 +125,7 @@ const UserDropdown = () => {
           </svg>
         </div>
         <div
-          className={`absolute right-0 mt-[1.2rem] px-3 flex w-60 flex-col rounded-sm border dark:border-transparent z-[555] dark:bg-neutral-900 bg-white shadow-xl ${
+          className={`absolute right-0 mt-[1.2rem] px-3 lg:hidden flex w-60 flex-col rounded-sm border dark:border-transparent z-[555] dark:bg-neutral-900 bg-white shadow-xl ${
             dropdownOpen === true ? 'block' : 'hidden'
           }`}
         >

@@ -261,7 +261,7 @@ export default function PreviewAdvertTask() {
                       <p className='text-xs font-semibold'>Gender</p>
                       <Input
                         type='text'
-                        value={taskPreview?.gender}
+                        value={taskPreview?.gender?.charAt(0).toUpperCase()+taskPreview?.gender.slice(1)}
                         className='w-11/12'
                         disabled
                       />

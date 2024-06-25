@@ -25,11 +25,13 @@ import {
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/logos_facebook.svg'
 import Loader from '../../../Loader'
+import { useNavigate } from 'react-router-dom'
+import Icons from '../../../../components/Icon'
 // import { useNavigate } from 'react-router'
 
 export default function FollowerAndLikeEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -40,7 +42,7 @@ export default function FollowerAndLikeEngageTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 5, },
+    defaultValues: { amount: 20, },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -97,7 +99,7 @@ export default function FollowerAndLikeEngageTask() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 500,
       })
     }
   }
@@ -125,13 +127,13 @@ export default function FollowerAndLikeEngageTask() {
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 500,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 500,
       })
     }
   }
@@ -142,12 +144,23 @@ export default function FollowerAndLikeEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=engagement-tasks')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeaderEngage
                   frame={AudFrame}
                   title={`Get Genuine People to Like and Follow Your Facebook Business Page`}
                   descp={`Get real people to like and follow your Facebook business page. you can get any number of people to like and follow your Facebook business
  page without disclosing your Login details`}
-                  price={`₦20 per Follow`}
+                  price={`₦20 per Follow and Like`}
                 />
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>

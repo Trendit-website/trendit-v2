@@ -11,6 +11,7 @@ import ConfirmTaskModal from '.././ConfirmTaskModal'
 import { usePerformTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
+import Icons from '../../../../components/Icon'
 // import { useGetProfile } from '../../../../api/profileApis'
 
 export default function GenerateWapTask() {
@@ -338,6 +339,10 @@ export default function GenerateWapTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -361,6 +366,10 @@ export default function GenerateWapTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -384,6 +393,10 @@ export default function GenerateWapTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -407,6 +420,10 @@ export default function GenerateWapTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}
@@ -430,6 +447,10 @@ export default function GenerateWapTask() {
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
                     />
                   </div>
                 ))}

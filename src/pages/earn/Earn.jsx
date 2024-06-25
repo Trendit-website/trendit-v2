@@ -367,7 +367,7 @@ export default function Earn() {
                     our daily task and earn steadily. Click the button to learn More
                     now
                   </div>
-                  {profileDeatils.membership_fee ? 
+                  {/* {profileDeatils.membership_fee ? 
                     <a href='https://www.youtube.com/@Trendithq?sub_confirmation=1' target='_blank' className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
                         <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
                             Learn More
@@ -381,7 +381,15 @@ export default function Earn() {
                          Learn More
                        </div>
                      </Button>
-                  }
+                  } */}
+                    <Button
+                       onClick={onLearnOpen}
+                       className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
+                     >
+                       <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
+                         Learn More
+                       </div>
+                     </Button>
                 </div>
               </div>
             )}

@@ -24,12 +24,14 @@ import {
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/comment_logo.svg'
 import Loader from '../../../Loader'
+import Icons from '../../../../components/Icon'
+import { useNavigate } from 'react-router-dom'
 // import { useNavigate } from 'react-router'
 
 export default function CommentEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [count, setCount] = useState(1)
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
   const {
     handleSubmit,
     control,
@@ -138,11 +140,22 @@ export default function CommentEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=engagement-tasks')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeaderEngage
                   frame={AudFrame}
                   title={`Get Genuine People to Comment on Your  Social Media Posts`}
                   descp={`Get Genuine people to comment your social media post. You can get as many comments as you desire simply by entering the link to your post either on Instagram, Facebook, TikTok,X or any other platform.`}
-                  price={`₦40 per Follow`}
+                  price={`₦40 per comments`}
                 />
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
