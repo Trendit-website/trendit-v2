@@ -30,8 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import YoutubeIcon from '../../../../assets/logos_youtube-icon.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
-
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 export default function CreateYtAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState([])
@@ -40,6 +40,7 @@ export default function CreateYtAdvertTask() {
   const [count, setCount] = useState(1)
   const mediaType = ['Photo', 'Video']
   const [isMediaType, setMediaType] = useState(mediaType[0])
+  const navigate = useNavigate()
 
   const {
     handleSubmit,
@@ -232,6 +233,17 @@ export default function CreateYtAdvertTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Youtube'}
                   frame={YoutubeIcon}

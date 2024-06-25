@@ -36,7 +36,7 @@ export default function GenerateTiktokTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.tiktok_verified === 'pending') {
-      toast.error('Verification pending')
+      toast.success('Verification pending')
     } else if (
       profileDeatils?.social_links?.tiktok_verified === 'rejected' ||
       profileDeatils?.social_links?.tiktok_verified === 'idle'
@@ -325,6 +325,10 @@ export default function GenerateTiktokTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -348,7 +352,10 @@ export default function GenerateTiktokTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
-                        />
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}                        />
                       </div>
                     ))}
                   </div>
@@ -371,6 +378,10 @@ export default function GenerateTiktokTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -394,6 +405,10 @@ export default function GenerateTiktokTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -417,6 +432,10 @@ export default function GenerateTiktokTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}

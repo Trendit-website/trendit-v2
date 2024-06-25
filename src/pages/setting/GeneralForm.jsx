@@ -3,7 +3,7 @@ import { Select, SelectItem } from '@nextui-org/select'
 import { genders, days, months, years } from '../../utilities/data'
 import { Button } from '@nextui-org/button'
 import DeleteAccountModal from '../../components/auth/DeleteAccountModal'
-import { useDisclosure } from '@nextui-org/react'
+import { Avatar, useDisclosure } from '@nextui-org/react'
 import { useGetProfile, useUserProfile } from '../../api/profileApis'
 import { Controller, useForm } from 'react-hook-form'
 import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
@@ -148,7 +148,7 @@ export default function GeneralForm() {
                   <div className='w-[66px] cursor-pointer h-[66px] relative'>
                     {selectedImage || updatedImage ? (
                       <div className='mt-4'>
-                        <img
+                        <Avatar
                           // src={selectedImage}
                           name='profile_picture'
                           // src={URL.createObjectURL(selectedImage)}
@@ -158,7 +158,7 @@ export default function GeneralForm() {
                               : selectedImage ? selectedImage : updatedImage
                           }
                           alt='Selected'
-                          className='w24 h24 w-[66px] h-[66px] -top-4 absolute rounded-[10px]'
+                          className='w-[66px] h-[66px] -top-4 absolute rounded-[10px]'
                         />
                       </div>
                     ) : (

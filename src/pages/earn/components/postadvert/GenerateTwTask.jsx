@@ -103,12 +103,10 @@ export default function GenerateTwTask() {
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
                   <div className='text-white dark:text-black text-sm font-medium font-Manrope'>
-                    Like and repost posts on X account
+                    Post Advert on your X account
                   </div>
                   <div className='self-stretch dark:text-black text-center text-white text-xs font-normal font-Manrope'>
-                    Like X Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  Promote advertisements for different businesses and top brands on your X page and earn ₦110 for each post. The more you share, the more you earn. 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
@@ -309,6 +307,9 @@ export default function GenerateTwTask() {
                           caption={task?.task?.caption}
                           price={task?.reward_money}
                           platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -333,6 +334,9 @@ export default function GenerateTwTask() {
                           caption={task?.task?.caption}
                           platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -357,6 +361,9 @@ export default function GenerateTwTask() {
                           caption={task?.task?.caption}
                           platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -381,6 +388,9 @@ export default function GenerateTwTask() {
                           caption={task?.task?.caption}
                           platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -405,6 +415,9 @@ export default function GenerateTwTask() {
                           caption={task?.task?.caption}
                           platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}

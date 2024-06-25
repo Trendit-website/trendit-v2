@@ -179,7 +179,7 @@ export default function EarnAdvertTask() {
                         </div>
                       </div>
                       <div className=' text-sm font-bold font-Manrope'>
-                        ₦10 per Advert post
+                        ₦110 per Advert post
                       </div>
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>

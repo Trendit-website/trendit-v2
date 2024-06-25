@@ -30,7 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import FbFrame from '../../../../assets/logos_facebook.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 
 export default function CreateFbAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -134,7 +135,7 @@ export default function CreateFbAdvertTask() {
   }
   // console.log(previewUrls, 'previe')
   // console.log(imageUrl, 'imageUrl')
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     setValue('target_state', '')
@@ -239,6 +240,17 @@ export default function CreateFbAdvertTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='grow flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Facebook'}
                   frame={FbFrame}

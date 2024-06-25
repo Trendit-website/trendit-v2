@@ -33,7 +33,7 @@ export default function GenerateFbTask() {
 
   const handOpenSocialModal = () => {
     if (profileDeatils?.social_links?.facebook_verified === 'pending') {
-      toast.error('Verification pending')
+      toast.success('Verification pending')
     } else if (
       profileDeatils?.social_links?.facebook_verified === 'rejected' ||
       profileDeatils?.social_links?.facebook_verified === 'idle'
@@ -315,6 +315,10 @@ export default function GenerateFbTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -338,6 +342,10 @@ export default function GenerateFbTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -361,6 +369,10 @@ export default function GenerateFbTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -384,6 +396,10 @@ export default function GenerateFbTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}
@@ -407,6 +423,10 @@ export default function GenerateFbTask() {
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
                         />
                       </div>
                     ))}

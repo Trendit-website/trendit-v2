@@ -31,8 +31,8 @@ import {
 // import Igframe from '../../../../assets/IGFrame131.svg'
 import Igframe from '../../../../assets/IGFrame131.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
-
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 export default function CreateIgAdvertTask() {
    const { isOpen, onOpen, onClose } = useDisclosure()
    const [imageUrl, setImageUrl] = useState([])
@@ -240,6 +240,7 @@ export default function CreateIgAdvertTask() {
       })
     }
   }
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -247,6 +248,17 @@ export default function CreateIgAdvertTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Instagram'}
                   frame={Igframe}

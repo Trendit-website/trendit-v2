@@ -180,7 +180,7 @@ export default function TaskCard({
                                 goal === 'follow' && `Number of Followers` ||
                                 goal === 'like' && `Number of Likes`     )
                             }
-                              <span className="text-white font-bold">{engagements_count?.toLocaleString()}</span>
+                              <span className="text-white font-bold">{engagements_count?.toLocaleString() || posts_count?.toLocaleString()}</span>
                           </p>
                           <p className={`flex flex-col gap-y-2`}>
                               Amount Paid

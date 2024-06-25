@@ -30,8 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import ThrFrame from '../../../../assets/thread_frame.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
-
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 export default function CreateThrAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState([])
@@ -245,6 +245,7 @@ export default function CreateThrAdvertTask() {
       })
     }
   }
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -252,6 +253,17 @@ export default function CreateThrAdvertTask() {
           <div className='p-3 bg-white px-4 dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' grow flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to post your advert on Threads'}
                   frame={ThrFrame}

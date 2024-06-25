@@ -125,7 +125,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
                             '!cursor-text',
                           ],
                         }}
-                        className={`grow shrink basis-0 focus:ring focus:ring-fuchsia-600 focus:border-2 focus:border-fuchsia-600  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']`}
+                        className={`grow shrink basis-0 focus:ring focus:ring-fuchsia-600 focus:border-2 focus:border-fuchsia-600  rounded text-stone-900 text-opacity-50 text-[16.83px] font-normal font-['Manrope']`}
                       />
                     )}
                     rules={{
