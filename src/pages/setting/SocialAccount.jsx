@@ -22,6 +22,7 @@ export default function SocialAccount() {
   const GetVerified = () => {
     API.get(`/users/social-profiles`)
     .then((response) => {
+      console.log(response)
       setSocialLinks(response.data?.social_profiles)
       setAccount(response.data?.social_profiles)
     })
@@ -68,7 +69,7 @@ export default function SocialAccount() {
                     }                  
               </div>
               <p className={`flex items-center mt-6 justify-between font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]'}`}>
-               {social?.status.charAt(0).toUpperCase()+social?.status.slice(1)}
+               {social?.status?.charAt(0).toUpperCase()+social?.status?.slice(1)}
                 {
                   social?.status === 'idle' ? '' : 
                     <span onClick={() => handleDelete(social?.platform)}>

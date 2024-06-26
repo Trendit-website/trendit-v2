@@ -789,7 +789,7 @@ want to post your advert.`}
                     }
                     </div>
                   </div>
-                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
+                  <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col '>
                     <div className=" px-2 text-[12.83px] font-medium font-['Manrope']">
                       Total Pay
                     </div>

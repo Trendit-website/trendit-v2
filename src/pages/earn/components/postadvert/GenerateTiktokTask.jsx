@@ -3,7 +3,7 @@
 import { useNavigate } from 'react-router-dom'
 // import frameImage from '../../../../assets/engageIcon237873.svg'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
@@ -31,15 +31,25 @@ export default function GenerateTiktokTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
-  console.log(profileDeatils)
+  const [active, setActive] = useState()
+  const getSocial = () => {
+    for (const item of profileDeatils?.social_profiles) {
+      item?.platform === 'tiktok' ? setActive(item)
+      : ''     
+    }
+  }
+  useEffect(() => {
+    getSocial()
+  }, [])
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
-    if (profileDeatils?.social_links?.tiktok_verified === 'pending') {
+    if (active?.status === 'pending') {
       toast.success('Verification pending')
     } else if (
-      profileDeatils?.social_links?.tiktok_verified === 'rejected' ||
-      profileDeatils?.social_links?.tiktok_verified === 'idle'
+      active?.status === 'rejected' ||
+      active?.status === 'idle' ||
+      !active?.status
     ) {
       onOpenVerify()
     } else {
@@ -126,9 +136,9 @@ export default function GenerateTiktokTask() {
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.tiktok_verified === 'pending' ||
-            profileDeatils?.social_links?.tiktok_verified === 'idle' ||
-            profileDeatils?.social_links?.tiktok_verified === 'rejected' ? (
+            {
+              active?.status === 'verified' 
+            ? '' : (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center  text-base font-bold font-['Manrope']">
@@ -183,10 +193,10 @@ export default function GenerateTiktokTask() {
                   />
                 </svg>
               </div>
-            ) : null}
+            )}
           </div>
 
-          {profileDeatils?.social_links?.tiktok_verified === 'verified' && (
+          {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>

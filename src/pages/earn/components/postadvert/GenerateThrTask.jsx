@@ -2,7 +2,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
@@ -30,15 +30,26 @@ export default function GenerateThrTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  const [active, setActive] = useState()
+  const getSocial = () => {
+    for (const item of profileDeatils?.social_profiles) {
+      item?.platform === 'threads' ? setActive(item)
+      : ''     
+    }
+  }
+  useEffect(() => {
+    getSocial()
+  }, [])
   const queryClient = useQueryClient()
   const appearance = useContext(AppearanceContext)
 
   const handOpenSocialModal = () => {
-    if (profileDeatils?.social_links?.thread_verified === 'pending') {
+    if (active?.status === 'pending') {
       toast.success('Verification pending')
     } else if (
-      profileDeatils?.social_links?.thread_verified === 'rejected' ||
-      profileDeatils?.social_links?.thread_verified === 'idle'
+      active?.status === 'rejected' ||
+      active?.status === 'idle' ||
+      !active?.status
     ) {
       onOpenVerify()
     } else {
@@ -125,9 +136,9 @@ export default function GenerateThrTask() {
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.threads_verified === 'pending' ||
-            profileDeatils?.social_links?.threads_verified === 'rejected' ||
-            profileDeatils?.social_links?.threads_verified === 'idle' ? (
+            {
+                active?.status === 'verified'
+             ? '' : (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
@@ -182,10 +193,10 @@ export default function GenerateThrTask() {
                   />
                 </svg>
               </div>
-            ) : null}
+            )}
           </div>
 
-          {profileDeatils?.social_links?.thread_verified === 'verified' && (
+          {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
