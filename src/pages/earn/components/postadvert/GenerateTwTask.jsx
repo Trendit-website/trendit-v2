@@ -21,7 +21,6 @@ export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
-  console.log(fetchTask)
   const {
     isOpen: isOpenVerify,
     onOpen: onOpenVerify,

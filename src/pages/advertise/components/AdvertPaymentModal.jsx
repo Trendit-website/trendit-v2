@@ -17,17 +17,21 @@ export default function AdvertPaymentModal({
   isPending,
 }) {
   const [view, setView] = useState('')
+  const [loading, setLoading] = useState()
   const { data: walletBalance } = useFetchBallance()
   const navigate = useNavigate()
   const directBalance = parseInt(walletBalance?.balance?.replace(/,/g, '')) 
   const balanceAfterPayment = directBalance - amount
 
   const handleFinalPayment = async () => {
+    setLoading(true)
     try {
       await onWalletPaymentSuccess()
+      setLoading(false)
       setView('procceed')
     } catch (error) {
       toast.error('Wallet payment failed:', error)
+      setLoading(false)
       console.error('Wallet payment failed:', error)
     }
   }
@@ -276,7 +280,7 @@ export default function AdvertPaymentModal({
                   className='w-[290px] cursor-pointer px-6 py-3.5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex'
                 >
                   <div className="text-center text-white text-[12.83px] font-medium font-['Manrope']">
-                    {isPending ? <Loader /> : 'Proceed'}
+                    {loading ? <Loader /> : 'Proceed'}
                   </div>
                 </Button>
               </div>

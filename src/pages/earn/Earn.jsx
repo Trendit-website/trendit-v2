@@ -426,7 +426,7 @@ export default function Earn() {
                 endContent={<ChevronRight />}
                 onClick={() => navigate(`/dashboard/earn-history`)}
                 variant='light'
-                className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
+                className="text-black dark:text-white justify-start pb-2 items-center flex text-sm font-medium font-['Manrope']"
               >
                 My tasks
               </Button>

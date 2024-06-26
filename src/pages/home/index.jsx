@@ -50,6 +50,7 @@ export default function Welcome({ onNotificationClick }) {
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
+  console.log(userDetails)
   const { isTablet } = useContext(dashboardContext)
 
   const handOpenSocialModal = () => {

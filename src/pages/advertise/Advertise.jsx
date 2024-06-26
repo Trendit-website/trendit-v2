@@ -147,7 +147,7 @@ export default function Advertise() {
               onClick={() => navigate(`/dashboard/advertise-history`)}
               endContent={<ChevronRight />}
               variant='light'
-              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
+              className="text-black dark:text-white justify-start items-center pb-2 flex text-sm font-medium font-['Manrope']"
             >
               My orders{' '}
             </Button>
