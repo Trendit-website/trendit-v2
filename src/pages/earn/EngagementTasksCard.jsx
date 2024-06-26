@@ -35,7 +35,7 @@ export default function EngagementTasksCard() {
             />
           </svg>
 
-          <div className='grow shrink basis-0  justify-between items-start flex'>
+          <div className='grow shrink basis-0  justify-between items-start flex flex-col pb-4 gap-y-4 lg:flex-row'>
             <div className='max-w-[555px] flex-col justify-start items-start gap-2 inline-flex'>
               <div className=" text-sm font-semibold font-['Manrope']">
                 Follow peoples and Business pages on Several Social Media
@@ -107,7 +107,7 @@ export default function EngagementTasksCard() {
             />
           </svg>
 
-          <div className='grow shrink basis-0  justify-between items-start flex'>
+          <div className='grow shrink basis-0  justify-between items-start flex flex-col pb-4 gap-y-4 lg:flex-row'>
             <div className='max-w-[555px] flex-col justify-start items-start gap-2 inline-flex'>
               <div className=" text-sm font-semibold font-['Manrope']">
                 Like post on Different Social Media Platforms
@@ -187,7 +187,7 @@ export default function EngagementTasksCard() {
             />
           </svg>
 
-          <div className='grow shrink basis-0  justify-between items-start flex'>
+          <div className='grow shrink basis-0  justify-between items-start flex flex-col pb-4 gap-y-4 lg:flex-row'>
             <div className='max-w-[555px] flex-col justify-start items-start gap-2 inline-flex'>
               <div className=" text-sm font-semibold font-['Manrope']">
                 Like and Follow Facebook Business Pages
@@ -260,7 +260,7 @@ export default function EngagementTasksCard() {
             />
           </svg>
 
-          <div className='grow shrink basis-0  justify-between items-start flex'>
+          <div className='grow shrink basis-0  justify-between items-start flex flex-col pb-4 gap-y-4 lg:flex-row'>
             <div className='max-w-[555px] flex-col justify-start items-start gap-2 inline-flex'>
               <div className=" text-sm font-semibold font-['Manrope']">
                 Post Comments on Pages and Post on Several Social Media

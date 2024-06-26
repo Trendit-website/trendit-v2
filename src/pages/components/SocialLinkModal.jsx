@@ -20,7 +20,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
     formState: { errors },
   } = useForm({
     defaultValues: {
-      type: platform,
+      platform: platform,
     },
   })
   const setAccount = useContext(setSocialAcccountContext)
@@ -28,9 +28,9 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
   
   const queryClient = useQueryClient()
   const GetVerified = () => {
-    API.get(`/verified_socials`)
+    API.get(`/users/social-profiles`)
     .then((response) => {
-      setAccount(response.data?.socials)
+      setAccount(response.data?.social_profiles)
     })
     .catch((error) => console.error(error))
   }
@@ -63,9 +63,9 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
         className='rounded-none'
         scrollBehavior='outside'
       >
-        <ModalContent className=' overflow-visible'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className=' px-[26px] py-8 rounded flex-col justify-start items-center gap-12 inline-flex'>
+        <ModalContent className='flex flex-col w-11/12 items-center justify-center'>
+          <form onSubmit={handleSubmit(onSubmit)}  className='flex flex-col justify-center items-center'>
+            <div className=' px-[26px] py-8 rounded flex-col w-11/12 justify-start items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
                 className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
@@ -100,7 +100,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
                   account within the last one year
                 </li>
               </ol>
-              <div className='w-full px-3 py-6 bg-zinc-400 gap-3 bg-opacity-20 rounded justify-between itemscenter flex flex-col'>
+              <div className='w-[320px] sm:w-full px-3 py-6 bg-zinc-400 gap-3 bg-opacity-20 rounded justify-between itemscenter flex flex-col'>
                 <div className=" px-2 text-[12.83px] font-medium font-['Manrope']">
                   Please enter your {type} profile link which you want to use to
                   perform this task:

@@ -31,7 +31,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
         {
             icon: `${appearance === 'dark' ? 'thread' : 'thread-lite'}`,
             lable: 'Threads',
-            platform: 'thread'
+            platform: 'threads'
         },
         // {
         //     icon: 'whatsapp',
@@ -62,8 +62,8 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
             className='rounded-none'
             scrollBehavior='outside'
             >
-                <ModalContent  className='overflow-visible'>
-                    <div className="flex flex-col items-center pt-6 pb-12">
+                <ModalContent  className='flex flex-col w-11/12 items-center justify-center'>
+                    <div className="flex flex-col w-10/12 items-center pt-6 pb-12">
                         <div className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px]'  onClick={onClose}>
                             <AiOutlineClose size={20} color='#fff' />
                         </div>
@@ -75,7 +75,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
                             {socials.map((social, index) => (
                                 <div key={index} className="flex items-center gap-x-4 py-4 cursor-pointer" onClick={() => openSocialModal(index)}>
                                     <Icons type={social.icon} width={20} height={20}/>
-                                    <p>Link your {social.lable} account</p>
+                                    <p className="md:text-[14px] text-[12px]">Link your {social.lable} account</p>
                                 </div>
                             ))}
                         </div>

@@ -50,6 +50,7 @@ export default function Welcome({ onNotificationClick }) {
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
+  
   const { isTablet } = useContext(dashboardContext)
 
   const handOpenSocialModal = () => {
@@ -373,16 +374,11 @@ export default function Welcome({ onNotificationClick }) {
                 </Card>
               )}
             {
-              userDetails?.social_links?.instagram_verified === 'verified' &&
-              userDetails?.social_links?.facebook_verified === 'verified' &&
-              userDetails?.social_links?.tiktok_verified === 'verified' &&
-              userDetails?.social_links?.threads_verified === 'verified' &&
-              userDetails?.social_links?.x_verified === 'verified' ? '' :
-            // ((userDetails?.social_links?.instagram_verified === 'idle') || (userDetails?.social_links?.instagram_verified === 'pending')) &&
-            // ((userDetails?.social_links?.facebook_verified === 'idle') || (userDetails?.social_links?.facebook_verified === 'pending')) &&
-            // ((userDetails?.social_links?.tiktok_verified === 'idle') || (userDetails?.social_links?.tiktok_verified === 'pending')) &&
-            // ((userDetails?.social_links?.x_verified  === 'idle') || (userDetails?.social_links?.x_verified  === 'pending'))
-            
+              userDetails?.social_profiles[0]?.status  === 'verified' &&
+              userDetails?.social_profiles[1]?.status  === 'verified' &&
+              userDetails?.social_profiles[2]?.status  === 'verified' &&
+              userDetails?.social_profiles[3]?.status === 'verified' &&
+              userDetails?.social_profiles[4]?.status === 'verified' ? '' :            
               // (linkIg ? (
                 <Card className='self-stretch p-6 bg-gray-300 dark:bg-[#171717] justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>

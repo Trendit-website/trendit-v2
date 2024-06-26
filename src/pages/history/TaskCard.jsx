@@ -208,9 +208,15 @@ export default function TaskCard({
                         
                 </div>
                 <div className={`text-xs w-4/12 hidden lg:flex lg:flex-col ${appreance === 'dark' ? 'text-[#D8D8D8]': 'text-white'}`}>
-                    <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
-                    {account_link}
-                    <div className="flex flex-col mt-4 gap-y-2">
+                {
+                  account_link ? 
+                  <div>
+                  <p className="text-white">Your Link: <a href={account_link} target="_blank" className="text-secondary font-bold" rel="noreferrer">Click to visit</a></p>
+                  {account_link}
+                </div>
+                  : ''
+                }
+                    <div className={`flex flex-col gap-y-2 ${account_link ? 'mt-4' : ''}`}>
                           <p className="text-sm">Status</p>
                           {total_allocated <= 0 ? 
                           <div className={`flex items-center justify-center gap-x-2  ${status === 'pending' ? 'bg-white text-black' : 'bg-[#13BF62] text-white'}  w-8/12 py-2 rounded-lg`}>
