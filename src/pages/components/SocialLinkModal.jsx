@@ -20,7 +20,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
     formState: { errors },
   } = useForm({
     defaultValues: {
-      type: platform,
+      platform: platform,
     },
   })
   const setAccount = useContext(setSocialAcccountContext)
@@ -28,9 +28,9 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
   
   const queryClient = useQueryClient()
   const GetVerified = () => {
-    API.get(`/verified_socials`)
+    API.get(`/users/social-profiles`)
     .then((response) => {
-      setAccount(response.data?.socials)
+      setAccount(response.data?.social_profiles)
     })
     .catch((error) => console.error(error))
   }

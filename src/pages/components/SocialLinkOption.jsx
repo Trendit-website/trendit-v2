@@ -31,7 +31,7 @@ const SocialLinkOption = ({ isOpen, onClose,}) => {
         {
             icon: `${appearance === 'dark' ? 'thread' : 'thread-lite'}`,
             lable: 'Threads',
-            platform: 'thread'
+            platform: 'threads'
         },
         // {
         //     icon: 'whatsapp',

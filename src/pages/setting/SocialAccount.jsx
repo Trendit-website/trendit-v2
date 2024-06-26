@@ -20,9 +20,10 @@ export default function SocialAccount() {
   const setAccount = useContext(setSocialAcccountContext)
   
   const GetVerified = () => {
-    API.get(`/verified_socials`)
+    API.get(`/users/social-profiles`)
     .then((response) => {
-      setSocialLinks(response.data?.socials)
+      setSocialLinks(response.data?.social_profiles)
+      setAccount(response.data?.social_profiles)
     })
     .catch((error) => toast.error(error.response?.data?.message ?? error.message))
   }
@@ -31,47 +32,15 @@ export default function SocialAccount() {
     try {
       const res = await deleteLinks(platform)
       if(res.data) {
-        API.get('/verified_socials')
-        .then((response) => (setAccount(response.data?.socials), setSocialLinks(response.data?.socials),  toast.success(res.data.message)))
+        API.get(`/users/social-profiles`)
+        .then((response) => (setAccount(response.data?.social_profiles), setSocialLinks(response.data?.social_profiles),  toast.success(res.data.message)))
         .catch((error) => toast.error(error.response?.data?.message ?? error.message))
       }
     } catch (error) {
       toast.error(error?.response?.data?.message)      
     }
   }
-
-  const socials =[
-    {
-      state: (socialAccount ? socialAccount?.instagram_verified : '') || socialLinks?.instagram_verified ,
-      link: socialLinks?.instagram_link || (socialAccount ? socialAccount?.instagram_link : ''),
-      platformIcon: 'instagram',
-      platform: 'instagram'
-    },
-    {
-      state: (socialAccount ? socialAccount?.x_verified :'') || socialLinks?.x_verified ,
-      link: socialLinks?.x_link || (socialAccount ? socialAccount?.x_link : ''),
-      platformIcon: 'twitter',
-      platform: 'x'
-    },
-    {
-      state: (socialAccount ? socialAccount?.facebook_verified : '') || socialLinks?.facebook_verified,
-      link: socialLinks?.facebook_link || (socialAccount ? socialAccount?.facebook_link : ''),
-      platformIcon: 'facebook',
-      platform: 'facebook'
-    },
-    {
-      state: (socialAccount ? socialAccount?.tiktok_verified : '') || socialLinks?.tiktok_verified,
-      link: socialLinks?.tiktok_link || (socialAccount ? socialAccount?.tiktok_link : ''),
-      platformIcon: 'tik-tok',
-      platform: 'tiktok'
-    },
-    {
-      state: (socialAccount ? socialAccount?.thread_verified : '') || socialLinks?.threads_verified,
-      link: socialLinks?.threads_link || (socialAccount ? socialAccount?.threads_link : ''),
-      platformIcon: 'thread',
-      platform: 'thread'
-    },
-  ]
+  const socialMedia = socialAccount || socialLinks
 
   useEffect(() => {
     GetVerified()
@@ -87,22 +56,22 @@ export default function SocialAccount() {
           Social Media accounts
         </div>
         {
-          socialLinks ? 
+          socialAccount || socialLinks ? 
         <div className='flex flex-col gap-y-4 mt-8'>
-          {socials.map((social, index) => (
+          {socialMedia?.map((social, index) => (
             <div key={index} className='flex flex-col lg:items-center lg:flex-row justify-between bg-zinc-700 py-3 px-2'>
              
               <div className='flex items-center gap-x-4'>
-                  <Icons type={social.platformIcon} width={25} height={25}/>                  
-                    {social.link != null ? 
-                      <a href={social.link} target='_blank' className='text-white text-[14px]'>{social.link}</a> : (social.state) 
+                  <Icons type={social?.platform} width={25} height={25}/>                  
+                    {social?.link != null ? 
+                      <a href={social?.link} target='_blank' className='text-white text-[14px]'>{social?.link}</a> : (social?.status) 
                     }                  
               </div>
-              <p className={`flex items-center mt-6 justify-between font-bold gap-x-2 ${social.state === 'pending' && 'text-yellow-400' || social.state === 'verified' && 'text-green-500' || social.state === 'idle' && 'text-[#FF3D00]'}`}>
-               {social.state.charAt(0).toUpperCase()+social.state.slice(1)}
+              <p className={`flex items-center mt-6 justify-between font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]'}`}>
+               {social?.status.charAt(0).toUpperCase()+social?.status.slice(1)}
                 {
-                  social.state === 'idle' ? '' : 
-                    <span onClick={() => handleDelete(social.platform, index)}>
+                  social?.status === 'idle' ? '' : 
+                    <span onClick={() => handleDelete(social?.platform)}>
                         <Icons type='delete' />
                     </span>
                  }
