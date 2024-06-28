@@ -62,3 +62,23 @@ export const useCalcelTask = () => {
     },
   })
 }
+export const useGetAdvertTask = (platform) => {
+  return useQuery({
+    queryKey: ['advert_tasks', platform],
+    queryFn:async () => {
+      const res = await API.get(`tasks/advert/${platform}`)
+      return res?.data?.advert_tasks
+    }
+  })
+
+}
+export const useGetEngageTask = () => {
+  return useQuery({
+    queryKey: ['tasks_by_goal'],
+    queryFn:async () => {
+      const res = await API.get(`/tasks/engagement/grouped-by/goal`)
+      return res?.data?.tasks_by_goal
+    }
+  })
+
+}

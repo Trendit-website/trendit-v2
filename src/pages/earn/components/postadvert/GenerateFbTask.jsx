@@ -9,7 +9,7 @@ import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetAdvertTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
@@ -25,6 +25,7 @@ export default function GenerateFbTask() {
     onClose: onCloseVerify,
   } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
+  const { data: advertTask} = useGetAdvertTask('Facebook')
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
@@ -124,7 +125,7 @@ export default function GenerateFbTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
-                      {fetchTask?.length}  Task available
+                      {advertTask?.length}  Task available
                     </div>
                   </div>
                 </div>
