@@ -120,17 +120,17 @@ export default function GenerateTiktokTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
+                  <div className="text-white dark:text-black text-sm font-medium text-center font-['Manrope']">
                     Like an Retweet Post on TikTok Accounts
                   </div>
-                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
+                  <div className="self-stretch dark:text-black text-center text-white text-xs w-11/12 m-auto  font-normal font-['Manrope']">
                     Like TikTok Pages for Individuals, Businesses and
                     Organizations and earn ₦3.5 per Like. The more pages you
                     like, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {fetchTask?.length} Task available
+                      {fetchTask?.length}  Task available
                     </div>
                   </div>
                 </div>
@@ -328,9 +328,9 @@ export default function GenerateTiktokTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -355,9 +355,9 @@ export default function GenerateTiktokTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -381,9 +381,9 @@ export default function GenerateTiktokTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -408,9 +408,9 @@ export default function GenerateTiktokTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -435,9 +435,9 @@ export default function GenerateTiktokTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -474,7 +474,7 @@ export default function GenerateTiktokTask() {
                     <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                       Need quick cash to earn?
                     </div>
-                    <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
+                    <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have

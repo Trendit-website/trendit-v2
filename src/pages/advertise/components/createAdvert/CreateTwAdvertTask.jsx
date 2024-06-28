@@ -58,6 +58,8 @@ export default function CreateTwAdvertTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -175,8 +177,9 @@ export default function CreateTwAdvertTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         onClose()
 
@@ -201,9 +204,10 @@ export default function CreateTwAdvertTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -233,14 +237,16 @@ export default function CreateTwAdvertTask() {
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -821,6 +827,9 @@ want to post your advert.`}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
           isPending={isPending}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

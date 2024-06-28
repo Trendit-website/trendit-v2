@@ -63,6 +63,8 @@ export default function CreateIgAdvertTask() {
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
   const calculatedAmount = +watch().posts_count * +watch().amount
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
    const handleChange = async ({ target }) => {
      const { name } = target
 
@@ -185,8 +187,9 @@ export default function CreateIgAdvertTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -196,9 +199,10 @@ export default function CreateIgAdvertTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -229,14 +233,16 @@ export default function CreateIgAdvertTask() {
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -817,6 +823,9 @@ want to post your advert.`}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
           isPending={isPending}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

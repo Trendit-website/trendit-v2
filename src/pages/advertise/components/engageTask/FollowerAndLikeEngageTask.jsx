@@ -52,6 +52,8 @@ export default function FollowerAndLikeEngageTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
 
   const onSubmit = async () => {
     onOpen()
@@ -87,8 +89,9 @@ export default function FollowerAndLikeEngageTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -98,8 +101,9 @@ export default function FollowerAndLikeEngageTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 500,
+        duration: 2000,
       })
     }
   }
@@ -118,7 +122,7 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
@@ -126,14 +130,16 @@ export default function FollowerAndLikeEngageTask() {
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 500,
+        duration: 2000,
       })
     }
   }
@@ -609,6 +615,9 @@ export default function FollowerAndLikeEngageTask() {
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

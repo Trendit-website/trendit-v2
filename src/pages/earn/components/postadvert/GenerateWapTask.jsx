@@ -332,9 +332,9 @@ export default function GenerateWapTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
@@ -359,9 +359,9 @@ export default function GenerateWapTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
@@ -386,9 +386,9 @@ export default function GenerateWapTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
@@ -413,9 +413,9 @@ export default function GenerateWapTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
@@ -440,9 +440,9 @@ export default function GenerateWapTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
@@ -479,7 +479,7 @@ export default function GenerateWapTask() {
                 <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                   Need quick cash to earn?
                 </div>
-                <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
+                <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
                   Instagram, Twitter or Tiktok, you MUST have atleast 1,000

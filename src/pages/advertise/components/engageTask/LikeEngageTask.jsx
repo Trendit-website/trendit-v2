@@ -51,6 +51,8 @@ export default function LikeEngageTask() {
   )
   const navigate = useNavigate()
   const platform = watch('platform')
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
 
   const onSubmit = async () => {
     onOpen()
@@ -80,7 +82,7 @@ export default function LikeEngageTask() {
       formData.append('gender', data.gender)
       formData.append('caption', data.caption)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
@@ -88,8 +90,9 @@ export default function LikeEngageTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -99,8 +102,9 @@ export default function LikeEngageTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -125,14 +129,16 @@ export default function LikeEngageTask() {
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -606,6 +612,9 @@ export default function LikeEngageTask() {
           isOpen={isOpen}
           onClose={onClose}
           amount={calculatedAmount}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
         />

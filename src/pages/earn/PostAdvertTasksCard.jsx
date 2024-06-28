@@ -223,7 +223,7 @@ export default function PostAdvertTasksCard() {
               </div>
               <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
-                <Icons type='whatsapp' width={17} height={17} />
+                <Icons type='wallet' width={17} height={17} />
                   <div className="dark:opacity-50 text-black dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                     Earning:
                   </div>
@@ -273,7 +273,7 @@ export default function PostAdvertTasksCard() {
               </div>
               <div className='py-1.5 justify-start items-center gap-2 inline-flex w-full'>
                 <div className='justify-start items-center gap-0.5 flex'>
-                <Icons type='threads' width={17} height={17} />
+                <Icons type='wallet' width={17} height={17} />
                   <div className="dark:opacity-50 text-black dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                     Earning:
                   </div>

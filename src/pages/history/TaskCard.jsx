@@ -37,6 +37,8 @@ export default function TaskCard({
     onOpen()
   }
   const amountPaid = Number(fee_paid)
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
   const appreance = useContext(AppearanceContext)
   const {data: profile} = useGetProfile()
   const [media, setMedia] = useState(null)
@@ -67,8 +69,9 @@ export default function TaskCard({
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         onClose()
 
@@ -93,10 +96,12 @@ export default function TaskCard({
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 500,
+        duration: 2000,
       })
+      console.error(error)
     }
   }
 
@@ -125,14 +130,16 @@ export default function TaskCard({
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 500,
+        duration: 2000,
       })
     }
   }
@@ -154,7 +161,7 @@ export default function TaskCard({
                           goal === 'follow and like' && 'Get Genuine People to Follow and Like your Facebook Business Page' ||
                           goal === 'follow' && `Get Genuine People to Follow your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Page` ||
                           goal === 'like' && `Get Genuine People to Like your ${platform.charAt(0).toUpperCase()+platform.slice(1)} Post`     )
-                          : caption                    
+                          : `Get people to post your advert on ${platform.charAt(0).toUpperCase()+platform.slice(1)}`                 
                           }</p>
                         <div className="flex items-center gap-x-2">
                             <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> 
@@ -242,9 +249,12 @@ export default function TaskCard({
         <AdvertPaymentModal
           isOpen={isOpen}
           onClose={onClose}
-          amount={fee_paid}
+          amount={amountPaid}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
           // isPending={isPending}
         />
       )}
