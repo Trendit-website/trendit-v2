@@ -405,7 +405,7 @@ function SecuretyFormContent() {
                       onClick={handleSubmit(handleUpdatePassword)}
                       className='md:w-[290px]   mt-4 text-base cursor-pointer px-6 py-6 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2'
                     >
-                      {isUpdating ? <Loader /> : 'Update-password/confirm'}
+                      {isUpdating ? <Loader /> : 'Update-password'}
                     </Button>
                   </div>
                 </div>

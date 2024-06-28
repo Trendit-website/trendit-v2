@@ -8,7 +8,7 @@ export default function IgGeneratedTask({ status ,caption, price, platform, task
   return (     
         <div 
         onClick={() => navigate(`/dashboard/earn-advert-task-preview/${task_id}`)}
-          className='md:w-[320px] 2xl:w-[360px]  p-3 bg-[#2F2F2F] bg-opacity-30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
+          className='md:w-[320px] 2xl:w-[360px] w-full  p-3 bg-[#2F2F2F] bg-opacity-30 rounded-lg flex-col justify-start items-start gap-2 inline-flex'
         >
           <div className='justify-start items-center gap-3 inline-flex'>
             <div className='h-5 justify-start items-start gap-2 flex'>

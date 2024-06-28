@@ -90,6 +90,7 @@ export default function GeneralForm() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().country
   )
+
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
 
   const onSubmit = async (data) => {
@@ -126,12 +127,12 @@ export default function GeneralForm() {
         setProfile(data)
         // setSelectedImage(null)
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
       }
     } catch (error) {
       toast.error(error.response?.data?.message || error.message, {
-        duration: 500,
+        duration: 2000,
       })
     }
   }

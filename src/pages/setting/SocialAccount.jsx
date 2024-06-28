@@ -60,15 +60,15 @@ export default function SocialAccount() {
           socialAccount || socialLinks ? 
         <div className='flex flex-col gap-y-4 mt-8'>
           {socialMedia?.map((social, index) => (
-            <div key={index} className='flex flex-col lg:items-center lg:flex-row justify-between bg-zinc-700 py-3 px-2'>
+            <div key={index} className='flex items-center lg:items-center lg:flex-row justify-between bg-zinc-700 py-3 px-2'>
              
               <div className='flex items-center gap-x-4'>
                   <Icons type={social?.platform} width={25} height={25}/>                  
                     {social?.link != null ? 
-                      <a href={social?.link} target='_blank' className='text-white text-[14px]'>{social?.link}</a> : (social?.status) 
+                      <a href={social?.link} target='_blank' className='text-white text-[12px] md:text-[14px]'>{social?.link}</a> : (social?.status) 
                     }                  
               </div>
-              <p className={`flex items-center mt-6 justify-between font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]'}`}>
+              <p className={`flex items-center justify-between text-[12px] md:text-[14px] font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]'}`}>
                {social?.status?.charAt(0).toUpperCase()+social?.status?.slice(1)}
                 {
                   social?.status === 'idle' ? '' : 

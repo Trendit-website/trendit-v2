@@ -124,7 +124,7 @@ export default function GenerateFbTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
-                      {fetchTask?.length} Task available
+                      {fetchTask?.length}  Task available
                     </div>
                   </div>
                 </div>
@@ -136,10 +136,10 @@ export default function GenerateFbTask() {
             (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className='text-center dark:text-white text-stone-900 text-base font-bold font-Manrope'>
+                  <div className='text-center dark:text-white text-stone-900 text-base text-center font-bold font-Manrope'>
                     Link your Facebook Account
                   </div>
-                  <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
+                  <div className='self-stretch dark:text-gray-400 text-stone-900 w-11/12 m-auto text-xs font-normal font-Manrope'>
                     You need to link your Facebook Account to Trendit before you
                     can start earning with your Facebook Account. Click the
                     button below to link your Facebook account now.
@@ -320,9 +320,9 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -347,9 +347,9 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -374,9 +374,9 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -401,9 +401,9 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -428,9 +428,9 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
@@ -467,7 +467,7 @@ export default function GenerateFbTask() {
                     <div className='text-black dark:text-white text-sm font-bold font-Manrope'>
                       Need quick cash to earn?
                     </div>
-                    <div className='self-stretch w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-Manrope'>
+                    <div className='self-stretch w-[320px] md:w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-Manrope'>
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have

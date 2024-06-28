@@ -136,6 +136,8 @@ export default function CreateFbAdvertTask() {
   // console.log(previewUrls, 'previe')
   // console.log(imageUrl, 'imageUrl')
   const navigate = useNavigate()
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
 
   useEffect(() => {
     setValue('target_state', '')
@@ -178,8 +180,9 @@ export default function CreateFbAdvertTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -190,8 +193,9 @@ export default function CreateFbAdvertTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -221,15 +225,17 @@ export default function CreateFbAdvertTask() {
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -809,6 +815,9 @@ want to post your advert.`}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
           // isPending={walletPending}
           isPending={isPending}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

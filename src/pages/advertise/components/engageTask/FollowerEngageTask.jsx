@@ -50,6 +50,8 @@ export default function FollowerEngageTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
   const platform = watch('platform')
 
   const onSubmit = async () => {
@@ -86,8 +88,9 @@ export default function FollowerEngageTask() {
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 500,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -97,8 +100,9 @@ export default function FollowerEngageTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -117,21 +121,23 @@ export default function FollowerEngageTask() {
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'follow')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -604,6 +610,9 @@ export default function FollowerEngageTask() {
           isOpen={isOpen}
           onClose={onClose}
           amount={calculatedAmount}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
         />

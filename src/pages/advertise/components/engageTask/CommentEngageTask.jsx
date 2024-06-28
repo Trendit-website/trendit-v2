@@ -47,6 +47,8 @@ export default function CommentEngageTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
   const platform = watch('platform')
   const onSubmit = async () => {
     onOpen()
@@ -75,7 +77,7 @@ export default function CommentEngageTask() {
       formData.append('gender', data.gender)
       formData.append('caption', data.caption)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'comment')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
 
@@ -84,8 +86,9 @@ export default function CommentEngageTask() {
       const res = await createAdvert(formData)
       console.log(res, 'res')
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -95,8 +98,9 @@ export default function CommentEngageTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -122,14 +126,16 @@ export default function CommentEngageTask() {
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 500,
+        duration: 2000,
       })
     }
   }
@@ -600,6 +606,9 @@ export default function CommentEngageTask() {
           isOpen={isOpen}
           onClose={onClose}
           amount={calculatedAmount}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
         />
