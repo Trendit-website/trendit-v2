@@ -8,7 +8,7 @@ import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetEngageTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 
@@ -18,6 +18,7 @@ export default function GenerateLikeFollowFBEngageTask() {
   const { data: fetchTask } = usePerformTask(selected)
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
+  const { data: EngageTask } = useGetEngageTask()
 
   const navigate = useNavigate()
   return (
@@ -87,7 +88,7 @@ export default function GenerateLikeFollowFBEngageTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {fetchTask?.length} Task available
+                    {EngageTask?.like?.total} Task available
                     </div>
                   </div>
                 </div>

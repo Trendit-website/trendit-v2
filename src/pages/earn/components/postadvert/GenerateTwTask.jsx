@@ -9,7 +9,7 @@ import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetAdvertTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
@@ -57,6 +57,7 @@ export default function GenerateTwTask() {
     }
     queryClient.invalidateQueries({ queryKey: ['get_profile'] })
   }
+  const { data: advertTask} = useGetAdvertTask('X')
 
   return (
     <>
@@ -120,7 +121,7 @@ export default function GenerateTwTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
-                      {fetchTask?.length} Task available
+                      {advertTask?.length} Task available
                     </div>
                   </div>
                 </div>
