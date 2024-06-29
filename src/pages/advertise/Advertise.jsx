@@ -105,10 +105,10 @@ export default function Advertise() {
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
             <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
-              Earn on Trendit just got easier
+              Earn on Trendit³ just got easier
             </div>
             <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Manrope']">
-              Get people with atleast 1000 active followers to repost your
+              Get people with atleast 500 active followers to repost your
               adverts and perform certain social tasks for you on their social
               media accounts. Select the type of task you want people to perform
               below:

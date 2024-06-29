@@ -61,7 +61,7 @@ export default function LearnMoreModal({ isOpen, onClose }) {
                 Do you know you can earn daily income by performing social media
                 task such as likes, follows, comments, subscribe, share, retweet
                 and others. that is one of the so many benefit of becoming a
-                member of Trendit
+                member of Trendit³
               </div>
               <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                 When you activate your account with a one-time membership fee of

@@ -53,7 +53,7 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
           <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
             <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
               You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
-              like and followed the page. Your Trendit account will be suspended
+              like and followed the page. Your Trendit³ account will be suspended
               once you UNLIKE or UNFOLLOW the Facebook Page.
             </div>
             <svg

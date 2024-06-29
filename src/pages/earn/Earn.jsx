@@ -49,9 +49,9 @@ export default function Earn() {
               <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                   <div className="grow shrink basis-0 text-orange-600 text-xs font-normal font-['Manrope']">
-                    You must NOT UNLIKE or UNFOLLOW the Facebook page after you
-                    have like and followed the page. Your Trendit account will
-                    be suspended once you UNLIKE or UNFOLLOW the Facebook Page.
+                    You must NOT UNLIKE or UNFOLLOW the page after you
+                    have like and followed the page. Your Trendit³ account will
+                    be suspended once you UNLIKE or UNFOLLOW the Page.
                   </div>
                   <div
                     className='cursor-pointer'
@@ -168,7 +168,7 @@ export default function Earn() {
 
                 <div className=' flex-col justify-start items-center gap-3 flex'>
                   <div className="text-blck dark:text-white text-sm font-bold font-['Manrope']">
-                    Earn on Trendit just got easier
+                    Earn on Trendit³ just got easier
                   </div>
                   <div className="self-stretch md:w-[30rem] text-center text-black dark:text-zinc-400 text-xs font-normal font-['Manrope']">
                     Earn steady income by posting advertisements for

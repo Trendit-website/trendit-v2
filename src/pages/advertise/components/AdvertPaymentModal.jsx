@@ -141,7 +141,7 @@ export default function AdvertPaymentModal({
                   <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                       <div className="self-stretch text-sm font-medium font-['Manrope']">
-                        Pay from your Trendit Wallet
+                        Pay from your Trendit³ Wallet
                       </div>
                       <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
                         Wallet Balance: {walletBalance?.currency_symbol}{' '}
@@ -164,54 +164,6 @@ export default function AdvertPaymentModal({
                     />
                   </svg>
                 </div>
-                {/* <div
-                 
-                  className='self-stretch p-6 cursor-pointer dark:bg-[#1A1A1A] bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-start gap-2 inline-flex'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                  >
-                    <path
-                      d='M8.99984 6.99996V17M6.99984 6.99996H13.4998C14.8805 6.99996 15.9998 8.11925 15.9998 9.49996C15.9998 10.8807 14.8805 12 13.4998 12H8.99984H14.4998C15.8805 12 16.9998 13.1192 16.9998 14.5C16.9998 15.8807 15.8805 17 14.4998 17H6.99984M12 7V5M12 19V17M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12Z'
-                      stroke='#FF6DFB'
-                      strokeWidth='2'
-                      strokeLinecap='round'
-                    />
-                  </svg>
-                  <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
-                    <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
-                      <div className="self-stretch text-sm font-medium font-['Manrope']">
-                        Pay with Flutter wave
-                      </div>
-                      <div className="self-stretch text-zinc-400 text-xs font-normal font-['Manrope']">
-                        Get real people to post your ads on their social media
-                        account.{' '}
-                      </div>
-                    </div>
-                  </div>
-                  {isPending ? (
-                    <Loader />
-                  ) : (
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='24'
-                      height='24'
-                      viewBox='0 0 24 24'
-                      fill='none'
-                    >
-                      <path
-                        d='M5 12H18M13 6L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L13 18'
-                        stroke='#FF6DFB'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                      />
-                    </svg>
-                  )}
-                </div> */}
               </div>
             </div>
           </ModalContent>
@@ -261,10 +213,10 @@ export default function AdvertPaymentModal({
                   <div className='self-stretch hidden p-3 bg-sky-100 justify-start items-start gap-[29px] inlineflex'>
                     <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                       <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
-                        You must NOT UNLIKE or UNFOLLOW the Facebook page after
-                        you have like and followed the page. Your Trendit
+                        You must NOT UNLIKE or UNFOLLOW the page after
+                        you have like and followed the page. Your Trendit³
                         account will be suspended once you UNLIKE or UNFOLLOW
-                        the Facebook Page.
+                        the Page.
                       </div>
                       <svg
                         xmlns='http://www.w3.org/2000/svg'
@@ -434,7 +386,7 @@ export default function AdvertPaymentModal({
               </div>
             </ModalContent>
           )}
-            {successView === 'initialized' && (
+          {successView === 'initialized' && (
             <ModalContent className='md:w-[35rem] overflow-visible '>
               <div className='p-12 rounded flex-col justify-start items-start gap-12 inline-flex'>
                 <div

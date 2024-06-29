@@ -16,6 +16,8 @@ import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
 import { AppearanceContext } from '../../../../providers/AppearanceProvider'
+import { SocialAccountContext } from '../../../../context/SocialAccount'
+import Icons from '../../../../components/Icon'
 
 export default function GenerateThrTask() {
   const [selected, setSelected] = useState()
@@ -31,15 +33,24 @@ export default function GenerateThrTask() {
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
   const [active, setActive] = useState()
+  const socialAccount = useContext(SocialAccountContext)
+ 
   const getSocial = () => {
-    for (const item of profileDeatils?.social_profiles) {
-      item?.platform === 'threads' ? setActive(item)
-      : ''     
+    if(socialAccount) {
+      for (const item of socialAccount) {
+        item?.platform === 'threads' ? setActive(item)
+        : ''     
+      }
+    } else {
+      for (const item of profileDeatils?.social_profiles) {
+        item?.platform === 'threads' ? setActive(item)
+        : ''     
+      }
     }
   }
   useEffect(() => {
     getSocial()
-  }, [])
+  }, [socialAccount, active])
   const queryClient = useQueryClient()
   const appearance = useContext(AppearanceContext)
 
@@ -125,17 +136,42 @@ export default function GenerateThrTask() {
                     Post adverts on Thread
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white w-11/12 m-auto text-xs font-normal font-['Manrope']">
-                    Like Thread Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  Promote advertisements for different businesses and top brands on your Threads page and earn ₦110 for each post. The more you share, the more you earn. 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {advertTask?.length} Task available
+                    {
+                        advertTask?.length ? `${advertTask?.length} Task available` : 'No task available'
+                      }
                     </div>
                   </div>
                 </div>
               </div>
+              {
+                active ? 
+                <div className='w-full pl-4 md:pl-16 flex flex-col gap-y-4'>
+                <h2 className='text-white dark:text-zinc-700 font-bold text-[14px] sm:text-xl'>Your X Profile Account</h2>
+                <div className='flex items-center gap-x-2'>
+                    <div className='bg-zinc-700 flex items-center justify-between text-white bg-opacity-50 py-4 w-11/12 md:w-8/12 px-4 rounded'>
+                        {active?.link}
+                        <div className={`${active?.status === 'verified' && 'bg-green-700' || active?.status === 'pending' && 'bg-yellow-400' || active?.status === 'idle' && 'bg-[#FF3D00]' || !active && 'bg-[#FF3D00]'} sm:hidden py-[6px] px-[6px] text-center rounded-full font-semibold`}>
+                          <Icons type={active?.status === 'verified' ? 'approved' : 'pending'} />
+                        </div>
+                    </div>
+                    <div className={`${active?.status === 'verified' && 'bg-green-700' || active?.status === 'pending' && 'bg-yellow-400' || active?.status === 'idle' && 'bg-[#FF3D00]' || !active && 'bg-[#FF3D00]'} hidden sm:flex items-center gap-x-2 text-white text-center py-4 px-10 rounded font-semibold text-[14px]`}>
+                      <Icons type={active?.status === 'verified' ? 'approved' : 'pending'} />
+                      {active?.status}
+                    </div>
+                </div>
+                {
+                  active?.status === 'verified' ? 
+                  <p className='text-blue-300 font-bold text-[14px] w-11/12 mb-6'>
+                  Your Threads task must be done from the above Threads profile which has been linked to your Trendit³ account
+                  </p> :
+                  ''
+                }
+            </div> : ''
+              }
             </div>
             {
                 active?.status === 'verified'
@@ -480,11 +516,11 @@ export default function GenerateThrTask() {
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
-                      atleast 1,000 Followers on your social media account.
+                      atleast 500 Followers on your social media account.
                     </div>
                   </div>
                   <div
-                    onClick={onOpen}
+                    onClick={() => advertTask?.length !== 0 ? onOpen() : toast.error('No task is available')}
                     className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <svg
@@ -504,6 +540,10 @@ export default function GenerateThrTask() {
                       Generate task
                     </div>
                   </div>
+                  <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Threads advert task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>
                 </div>
               )}
             </>
@@ -520,7 +560,7 @@ export default function GenerateThrTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='Threads'
-          platform='thread'
+          platform='threads'
           icon={appearance === 'dark' ? 'thread' : 'thread-lite'}
           LogoBand={
             <svg
