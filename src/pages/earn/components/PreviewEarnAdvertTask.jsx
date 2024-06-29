@@ -81,7 +81,7 @@ export default function PreviewEarnAdvertTask() {
                     You must NOT UNLIKE or UNFOLLOW the{' '}
                     {fetchTaskPreview?.task?.platform?.toUpperCase()}
                     {''} page after you have like and followed the page. Your
-                    Trendit account will be suspended once you UNLIKE or
+                    Trendit³ account will be suspended once you UNLIKE or
                     UNFOLLOW the {fetchTaskPreview?.task?.platform?.toUpperCase()}
                     {''}
                     Page.
@@ -93,7 +93,7 @@ export default function PreviewEarnAdvertTask() {
                     You must NOT DELETE the{' '}
                     {fetchTaskPreview?.task?.platform?.toUpperCase()}
                     {''} advert post after posting. Your
-                    Trendit account will be suspended once you DELETE the {fetchTaskPreview?.task?.platform?.toUpperCase()} Post.
+                    Trendit³ account will be suspended once you DELETE the {fetchTaskPreview?.task?.platform?.toUpperCase()} Post.
                   </div>
                   }
                     <Icons type='caution' />
@@ -254,7 +254,7 @@ export default function PreviewEarnAdvertTask() {
                             {fetchTaskPreview?.task?.platform}
                           </span>{' '}
                           page after you have post the avdert on your account
-                          Your Trendit account will be suspended once you Delete
+                          Your Trendit³ account will be suspended once you Delete
                           the advert on your{' '}
                           <span className='uppercase'>
                             {fetchTaskPreview?.task?.platform}

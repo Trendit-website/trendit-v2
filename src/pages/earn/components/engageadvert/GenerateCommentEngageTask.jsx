@@ -11,6 +11,7 @@ import ConfirmTaskModal from '../ConfirmTaskModal'
 import { usePerformTask, useGetEngageTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
+import toast from 'react-hot-toast'
 
 export default function GenerateCommentEngageTask() {
   const [selected, setSelected] = useState()
@@ -87,7 +88,9 @@ export default function GenerateCommentEngageTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {EngageTask?.comment?.total} Task available
+                      {
+                        EngageTask?.comment ?  `${EngageTask?.comment?.total} Task available` : 'No task available'
+                      }                    
                     </div>
                   </div>
                 </div>
@@ -373,12 +376,12 @@ export default function GenerateCommentEngageTask() {
                 <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
-                  Instagram, Twitter or Tiktok, you MUST have atleast 1,000
+                  Instagram, Twitter or Tiktok, you MUST have atleast 500
                   Followers on your social media account.
                 </div>
               </div>
               <div
-                onClick={onOpen}
+                onClick={() => EngageTask?.comment ? onOpen() : toast.error('No task is avaialble')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg

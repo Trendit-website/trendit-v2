@@ -208,7 +208,7 @@ export default function EarnAdvertTask() {
                     <div className='grow shrink basis-0 text-blue-600 text-xs font-normal font-Manrope'>
                       You must NOT UNLIKE or UNFOLLOW the {task?.task?.platform}{' '}
                       page after you have like and followed the page. Your
-                      Trendit account will be suspended once you UNLIKE or
+                      Trendit³ account will be suspended once you UNLIKE or
                       UNFOLLOW the {task?.task?.platform}
                       Page.
                     </div>
@@ -367,7 +367,7 @@ export default function EarnAdvertTask() {
                               {task?.task?.platform}
                             </span>{' '}
                             page after you have post the avdert on your account
-                            Your Trendit account will be suspended once you
+                            Your Trendit³ account will be suspended once you
                             Delete the advert on your{' '}
                             <span className='uppercase'>
                               {task?.task?.platform}

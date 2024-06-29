@@ -11,6 +11,7 @@ import ConfirmTaskModal from '../ConfirmTaskModal'
 import { usePerformTask, useGetEngageTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
+import toast from 'react-hot-toast'
 
 export default function GenerateLikeEngageTask() {
   const [selected, setSelected] = useState()
@@ -85,59 +86,14 @@ export default function GenerateLikeEngageTask() {
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                    {EngageTask?.Like?.total} Task available
+                    {
+                        EngageTask?.Like ?  `${EngageTask?.Like?.total} Task available` : 'No task available'
+                      }                    
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
-              <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
-                  Link your Youtube Account
-                </div>
-                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Youtube Account to Trendit before you
-                  can start earning with your youtube Account. Click the button
-                  below to link your Youtube account now.
-                </div>
-                <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='20'
-                    height='20'
-                    viewBox='0 0 20 20'
-                    fill='none'
-                  >
-                    <path
-                      d='M19.5564 3.11944C19.4417 2.51651 19.218 1.96683 18.9075 1.52514C18.597 1.08346 18.2106 0.765179 17.7868 0.602C16.235 0 9.98986 0 9.98986 0C9.98986 0 3.74436 0.0182222 2.19263 0.620222C1.76877 0.783411 1.38236 1.10171 1.07187 1.54341C0.761386 1.98512 0.537662 2.53482 0.42298 3.13778C-0.0463818 7.05978 -0.228456 13.036 0.435868 16.8011C0.550562 17.4041 0.774291 17.9537 1.08478 18.3954C1.39526 18.8371 1.78167 19.1554 2.20552 19.3186C3.75725 19.9206 10.0026 19.9206 10.0026 19.9206C10.0026 19.9206 16.2479 19.9206 17.7995 19.3186C18.2234 19.1554 18.6098 18.8371 18.9203 18.3954C19.2308 17.9538 19.4545 17.4041 19.5692 16.8011C20.0643 12.8736 20.2168 6.901 19.5564 3.11944Z'
-                      fill='#FF0000'
-                    />
-                    <path
-                      d='M8.00195 14.229L13.1828 9.96032L8.00195 5.69165V14.229Z'
-                      fill='white'
-                    />
-                  </svg>
-                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
-                    Link Youtube account
-                  </div>
-                </div>
-              </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <path
-                  d='M18 6L6 18M18 18L6 6.00001'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  className='dark:stroke-white stroke-[#1E1E1E] '
-                />
-              </svg>
-            </div> */}
           </div>
 
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
@@ -418,12 +374,12 @@ export default function GenerateLikeEngageTask() {
                 <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
-                  Instagram, Twitter or Tiktok, you MUST have atleast 1,000
+                  Instagram, Twitter or Tiktok, you MUST have atleast 500
                   Followers on your social media account.
                 </div>
               </div>
-              <div
-                onClick={onOpen}
+                   <div
+                onClick={() => EngageTask?.Like ? onOpen() : toast.error('No task is available')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg
@@ -442,11 +398,12 @@ export default function GenerateLikeEngageTask() {
                 <div className="text-center dark:text-black text-white text-[12.83px] font-medium font-['Manrope']">
                   Generate task
                 </div>
-              </div>
-              <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
-                    To receive your next social media page-like task, Click Generate task.
-                    You'll get one task at a time, and you must complete the current task before a new one is generated.
-              </div>
+                  </div>
+                    <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                          To receive your next social media page-like task, Click Generate task.
+                          You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>           
+             
             </div>
           )}
         </div>

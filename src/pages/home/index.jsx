@@ -467,7 +467,7 @@ export default function Welcome({ onNotificationClick }) {
           </div>
           <div className='py-3 justify-start items-center gap-[7px] inline-flex'>
             <div className="text-center text-black dark:text-zinc-300 text-sm font-medium font-['Manrope']">
-              © {new Date().getFullYear()} Trendit Media ltd.
+              © {new Date().getFullYear()} TRENDIT MEDIA LTD.
             </div>
           </div>
         </div>

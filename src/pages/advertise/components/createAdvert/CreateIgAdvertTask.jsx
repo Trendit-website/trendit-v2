@@ -268,7 +268,7 @@ export default function CreateIgAdvertTask() {
                 <IgPageHeader
                   title={'Get People to Post Your Advert on Instagram'}
                   frame={Igframe}
-                  descp={`Get real people to post your advert on their Instagram account having atleast 1000 active followers each on their account to post your
+                  descp={`Get real people to post your advert on their Instagram account having atleast 500 active followers each on their account to post your
 advert to their followers. This will give your advert massive views within a short period of time. You can indicate any number of people you 
 want to post your advert.`}
                   price={`₦140 per Advert Post`}

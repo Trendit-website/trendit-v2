@@ -17,9 +17,9 @@ const Terms = () => {
                 <h2 className="text-white font-bold text-2xl text-center mb-6">Terms of services</h2>
                 <div className="text-white flex flex-col gap-y-2 text-base" id="accepting-the-terms">
                     <p className="w-10/12 leading-6">
-                        Trendit3 respects the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and 
+                    Trendit³ respects the privacy of our users. This Privacy Policy describes how we collect, use, disclose, and 
                         secure your information when you use our mobile application and website.
-                        With Trendit3, you can easily advertise your products and services and also earn daily income by reposting adverts on your social media accounts
+                        With Trendit³, you can easily advertise your products and services and also earn daily income by reposting adverts on your social media accounts
                     </p>
                     <InformationCollect />
                     <How />

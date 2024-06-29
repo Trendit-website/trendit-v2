@@ -12,6 +12,7 @@ import { usePerformTask, useGetAdvertTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import Icons from '../../../../components/Icon'
+import toast from 'react-hot-toast'
 // import { useGetProfile } from '../../../../api/profileApis'
 
 export default function GenerateWapTask() {
@@ -114,93 +115,18 @@ export default function GenerateWapTask() {
                     Post adverts on Whatsapp
                   </div>
                   <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like Thread Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  Promote advertisements for different businesses and top brands on your Whatsapp status and earn ₦110 for each post. The more you share, the more you earn. 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {advertTask?.length} Task available
+                    {
+                        advertTask?.length ? `${advertTask?.length} Task available` : 'No task available'
+                      }
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
-              <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
-                  Link your whatsapp Account
-                </div>
-                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                  You need to link your Facebook Account to Hawkit before you
-                  can start earning with your Facebook Account. Click the button
-                  below to link your Facebook account now.
-                </div>
-                <div className='p-2 dark:bg-stone-900 bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'>
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='20'
-                    height='20'
-                    viewBox='0 0 47 47'
-                    fill='none'
-                  >
-                    <path
-                      d='M1.00869 23.2187C1.00759 27.1677 2.0472 31.0235 4.02401 34.422L0.819641 46.034L12.7928 42.9181C16.1044 44.7074 19.8148 45.645 23.5854 45.6452H23.5953C36.0425 45.6452 46.1749 35.5925 46.1802 23.2364C46.1826 17.249 43.8354 11.6188 39.5709 7.38302C35.3071 3.14755 29.6364 0.813768 23.5944 0.811035C11.1456 0.811035 1.01402 10.8632 1.00888 23.2187'
-                      fill='url(#paint0_linear_4836_69560)'
-                    />
-                    <path
-                      d='M0.202377 23.2114C0.201092 27.3024 1.27796 31.2962 3.32525 34.8164L0.00598145 46.8446L12.4084 43.6171C15.8257 45.4663 19.6732 46.4413 23.5883 46.4427H23.5984C36.4922 46.4427 46.9885 36.0284 46.994 23.23C46.9963 17.0275 44.5646 11.1949 40.1477 6.80735C35.7303 2.42032 29.8568 0.00255039 23.5984 0C10.7024 0 0.207516 10.4129 0.202377 23.2114ZM7.5885 34.2102L7.12541 33.4806C5.17871 30.4085 4.15121 26.8583 4.15268 23.2129C4.15672 12.5751 12.8796 3.92031 23.6057 3.92031C28.8001 3.9225 33.6817 5.9322 37.3534 9.57853C41.0249 13.2252 43.0452 18.0728 43.0439 23.2286C43.0392 33.8664 34.3161 42.5222 23.5984 42.5222H23.5907C20.1009 42.5204 16.6783 41.5903 13.6935 39.8325L12.9831 39.4144L5.62326 41.3296L7.5885 34.2102Z'
-                      fill='url(#paint1_linear_4836_69560)'
-                    />
-                    <path
-                      d='M17.7509 13.5077C17.313 12.5416 16.8521 12.5221 16.4356 12.5052C16.0946 12.4906 15.7047 12.4917 15.3153 12.4917C14.9254 12.4917 14.292 12.6373 13.7566 13.2175C13.2206 13.7982 11.7104 15.2017 11.7104 18.0561C11.7104 20.9107 13.8052 23.6693 14.0972 24.0568C14.3896 24.4436 18.1413 30.4887 24.0831 32.8143C29.0213 34.7469 30.0262 34.3626 31.0979 34.2656C32.1698 34.1691 34.5567 32.8626 35.0436 31.5078C35.531 30.1532 35.531 28.992 35.3849 28.7493C35.2387 28.5076 34.8489 28.3624 34.2643 28.0724C33.6795 27.7822 30.8055 26.3786 30.2698 26.1849C29.7338 25.9915 29.3441 25.8949 28.9543 26.4759C28.5644 27.0559 27.445 28.3624 27.1038 28.7493C26.7629 29.1372 26.4217 29.1855 25.8373 28.8953C25.2523 28.6042 23.3697 27.9922 21.1361 26.0159C19.3983 24.478 18.225 22.5789 17.884 21.9979C17.543 21.4179 17.8475 21.1035 18.1406 20.8144C18.4033 20.5544 18.7254 20.1369 19.018 19.7982C19.3094 19.4594 19.4067 19.2176 19.6016 18.8307C19.7967 18.4434 19.6991 18.1046 19.5532 17.8144C19.4067 17.5242 18.2707 14.6548 17.7509 13.5077Z'
-                      fill='white'
-                    />
-                    <defs>
-                      <linearGradient
-                        id='paint0_linear_4836_69560'
-                        x1='2268.85'
-                        y1='4523.1'
-                        x2='2268.85'
-                        y2='0.811035'
-                        gradientUnits='userSpaceOnUse'
-                      >
-                        <stop stopColor='#1FAF38' />
-                        <stop offset='1' stopColor='#60D669' />
-                      </linearGradient>
-                      <linearGradient
-                        id='paint1_linear_4836_69560'
-                        x1='2349.41'
-                        y1='4684.46'
-                        x2='2349.41'
-                        y2='0'
-                        gradientUnits='userSpaceOnUse'
-                      >
-                        <stop stopColor='#F9F9F9' />
-                        <stop offset='1' stopColor='white' />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
-                    Link Whatsapp account
-                  </div>
-                </div>
-              </div>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <path
-                  d='M18 6L6 18M18 18L6 6.00001'
-                  strokeWidth='2'
-                  strokeLinecap='round'
-                  className='dark:stroke-white stroke-[#1E1E1E] '
-                />
-              </svg>
-            </div> */}
           </div>
 
           <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
@@ -482,13 +408,11 @@ export default function GenerateWapTask() {
                 </div>
                 <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                   Earn steady income by posting adverts of businesses and top
-                  brands on your social media page. To post adverts on Facebook,
-                  Instagram, Twitter or Tiktok, you MUST have atleast 1,000
-                  Followers on your social media account.
+                  brands on your Whatsapp status.
                 </div>
               </div>
               <div
-                onClick={onOpen}
+                onClick={() => advertTask?.length !== 0 ? onOpen() : toast.error('No task is available')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg
@@ -508,6 +432,10 @@ export default function GenerateWapTask() {
                   Generate task
                 </div>
               </div>
+              <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Whatsapp advert task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>
             </div>
           )}
         </div>

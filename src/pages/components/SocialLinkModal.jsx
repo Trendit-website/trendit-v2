@@ -24,6 +24,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
     },
   })
   const setAccount = useContext(setSocialAcccountContext)
+  console.log(platform)
   const { mutateAsync: verifySocial, isPending } = useVerifySocial()
   
   const queryClient = useQueryClient()
@@ -88,7 +89,7 @@ export default function SocialLinkModal({ isOpen, onClose, type, icon, platform 
                 <li className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   Your account on {type} must have at least 500 Active
                   Followers. Note that Ghost or Bots followers are not allowed
-                  and your account on Trendit3 will be banned if you have ghost
+                  and your account on Trendit³ will be banned if you have ghost
                   followers
                 </li>
                 <li className=" text-zinc-400 text-sm font-normal font-['Manrope']">
