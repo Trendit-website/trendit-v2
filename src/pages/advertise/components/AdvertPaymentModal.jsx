@@ -252,7 +252,7 @@ export default function AdvertPaymentModal({
                       <div className="text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
                         Wallet balance after this payment
                       </div>
-                      <div className={`${paymentError ? 'text-red-500' : 'text-zinc-400'} text-[12.83px] font-normal font-['Manrope']`}>
+                      <div className={`${paymentError === 'Error creating new Task: Insufficient balance.' ? 'text-red-500' : 'text-zinc-400'} text-[12.83px] font-normal font-['Manrope']`}>
                         {walletBalance?.currency_symbol} {''}
                         {balanceAfterPayment.toLocaleString()}
                       </div>
