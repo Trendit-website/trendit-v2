@@ -5,11 +5,14 @@ import OverViewCard from './OverViewCard'
 import TransactionCard from './TransactionCard'
 import EarnViewCard from './EarnViewCard'
 import OrdersViewCard from './OrdersViewCard'
+import { useFetchTransactionHistory, useFetchTransactionHistoryEarned, useFetchTransactionHistoryOrder } from '../../api/walletApi'
 
 export default function Transactions() {
   const [selected, setSelected] = useState('overview')
   const [selectedHistory, setSelectedHistory] = useState('all')
-
+  const { data: transactionHistory } = useFetchTransactionHistory()
+  const { data: transactionHistoryOrder } = useFetchTransactionHistoryOrder()
+  const { data: transactionHistoryEarned } = useFetchTransactionHistoryEarned()
   return (
     <div>
       <div className='w-full p-3 flex-col min-h-screen justify-start items-start gap-3 inline-flex'>
@@ -196,17 +199,20 @@ export default function Transactions() {
               </div>
             </div>
           </div>
-          <div className='self-stretch px-3 justify-between items-start inline-flex'>
-            <div className="w-[145px]  dark:text-opacity-50 text-xs font-medium font-['Manrope']">
+          {/* <div className='w-full  inline-flex items-center justify-between px-4 '>
+            <div className="dark:text-opacity-50 w-[150px] bg-red-500 text-xs font-medium font-['Manrope']">
               Type
             </div>
-            <div className="w-[860px] hidden md:grid  dark:text-opacity-50 text-xs font-medium font-['Manrope']">
+            <div className="hidden md:grid  dark:text-opacity-50  bg-green-500 text-xs font-medium font-['Manrope']">
               Description
             </div>
-            <div className=" dark:text-opacity-50 text-xs font-medium font-['Manrope']">
+            <div className="hidden md:grid  dark:text-opacity-50 text-xs w-3/12 bg-blue-500 font-medium font-['Manrope']">
+              Status
+            </div>
+            <div className="dark:text-opacity-50 text-xs font-medium w-3/12 bg-yellow-500 font-['Manrope']">
               Amount
             </div>
-          </div>
+          </div> */}
           <div className='w-full'>
             {selectedHistory === 'all' && (
               <motion.div
@@ -218,7 +224,7 @@ export default function Transactions() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <TransactionCard />
+                <TransactionCard transactionHistory={transactionHistory}/>
               </motion.div>
             )}
             {selectedHistory === 'earned history' && (
@@ -231,7 +237,7 @@ export default function Transactions() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <TransactionCard />
+                <TransactionCard transactionHistory={transactionHistoryEarned}/>
               </motion.div>
             )}
             {selectedHistory === 'orders history' && (
@@ -244,7 +250,7 @@ export default function Transactions() {
                   scale: { duration: 0.4 },
                 }}
               >
-                <TransactionCard />
+                <TransactionCard transactionHistory={transactionHistoryOrder}/>
               </motion.div>
             )}
           </div>

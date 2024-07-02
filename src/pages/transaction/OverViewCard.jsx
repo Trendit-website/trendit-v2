@@ -29,7 +29,7 @@ export default function OverViewCard() {
         <div className='self-stretch  flex-col justify-start items-start gap-4 flex'>
           <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
             <div className='self-stretch justify-center items-start gap-3 inline-flex'>
-              <div className='grow shrink basis-0 justify-start items-center gap-2 flex'>
+              {/* <div className='grow shrink basis-0 justify-start items-center gap-2 flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -46,8 +46,8 @@ export default function OverViewCard() {
                 <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-sm font-medium font-['Manrope']">
                   Jan 1 - Jan 27, 2023
                 </div>
-              </div>
-              <div
+              </div> */}
+              {/* <div
                 onClick={onOpenTrans}
                 className='justify-start cursor-pointer hidden items-center gap-2 md:flex'
               >
@@ -90,7 +90,7 @@ export default function OverViewCard() {
                     strokeLinejoin='round'
                   />
                 </svg>
-              </div>
+              </div> */}
             </div>
             <div className="self-stretch mx-auto md:mx-0 text-[#FF6DFB] dark:text-fuchsia-200 text-[40px] font-normal font-['Manrope']">
               <span>{showBalance?.currency_symbol}</span>

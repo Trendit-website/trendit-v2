@@ -47,9 +47,9 @@ export default function PreviewEarnAdvertTask() {
                   <div className="capitalize text-3xl font-medium font-['Manrope']">
                     {
                       fetchTaskPreview?.task?.task_type === 'advert' ? `Post Advert on your ${fetchTaskPreview?.task?.platform} Page` :                       
-                          (fetchTaskPreview?.task?.goal === 'comment' && `Comment on ${fetchTaskPreview?.task?.platform} Post`)
-                          (fetchTaskPreview?.task?.goal === 'follow and like' && `Follow and Like ${fetchTaskPreview?.task?.platform} Page`)
-                          (fetchTaskPreview?.task?.goal === 'follow' && `Follow ${fetchTaskPreview?.tassk?.platform} Page`)
+                          (fetchTaskPreview?.task?.goal === 'comment' && `Comment on ${fetchTaskPreview?.task?.platform} Post`) ||
+                          (fetchTaskPreview?.task?.goal === 'follow and like' && `Follow and Like ${fetchTaskPreview?.task?.platform} Page`) ||
+                          (fetchTaskPreview?.task?.goal === 'follow' && `Follow ${fetchTaskPreview?.task?.platform} Page`) ||
                           (fetchTaskPreview?.task?.goal === 'like' && `Like ${fetchTaskPreview?.task?.platform} Post`)                      
                     }
                   </div>
@@ -160,59 +160,35 @@ export default function PreviewEarnAdvertTask() {
                     }
                     {
                       fetchTaskPreview?.task?.task_type === 'advert' && 
-                      <div className='self-stretch flex flex-col gap-y-2'>
-                      <span className=" text-xs font-semibold font-['Manrope']">
-                        Please follow the step-by-step instructions below to do
-                        your task:
-                        <br />
-                      </span>
-                      <span className=" text-xs font-normal font-['Manrope']">
-                      Step 1: Open the Task Link above on your{' '}
-                        {fetchTaskPreview?.task?.platform} {''} Mobile App or
-                        browser
-                        <br />
-                      </span>
-                      <span className=" text-xs font-normal font-['Manrope']">
-                          Step 2: Create a post, copy the information below on the description of the advert which you are meant to post on your page.
-                        <br />
-                      </span>
-                      <span className=" text-xs font-normal font-['Manrope']">
-                          Step 3: Add the image or video provided for the advert.  Make sure it's high-quality and visually appealing and post it on your page.
-                        <br />
-                      </span>
-                      <span className=" text-xs font-normal font-['Manrope']">
-                          Step 4: Take a screenshot of the page that shows you have performed this 
-                          task on your page and upload the screenshot under the Proof of Work Form below.
-                           You are also required to enter your {fetchTaskPreview?.task?.platform} Username or Name which you used to perform the tas
-                      </span>
-                    </div>
-                    }
-                    {fetchTaskPreview?.task?.caption && 
-                    <Snippet
-                      // variant='solid'
-                      symbol=''
-                      copyIcon={
-                        <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                       width='18'
-                       height='18'
-                      viewBox='0 0 18 18'
-                      fill='none'
-                      onClick={() => navigator.clipboard.writeText(fetchTaskPreview?.task?.caption)}
-                       >
-                       <path d='M12.6 13.5C13.4401 13.5 13.8601 13.5 14.181 13.3365C14.4632 13.1927 14.6927 12.9632 14.8365 12.681C15 12.3601 15 11.9401 15 11.1V3.9C15 3.05992 15 2.63988 14.8365 2.31901C14.6927 2.03677 14.4632 1.8073 14.181 1.66349C13.8601 1.5 13.4401 1.5 12.6 1.5H8.4C7.55992 1.5 7.13988 1.5 6.81901 1.66349C6.53677 1.8073 6.3073 2.03677 6.16349 2.31901C6 2.63988 6 3.05992 6 3.9M5.4 16.5H9.6C10.4401 16.5 10.8601 16.5 11.181 16.3365C11.4632 16.1927 11.6927 15.9632 11.8365 15.681C12 15.3601 12 14.9401 12 14.1V6.9C12 6.05992 12 5.63988 11.8365 5.31901C11.6927 5.03677 11.4632 4.8073 11.181 4.66349C10.8601 4.5 10.4401 4.5 9.6 4.5H5.4C4.55992 4.5 4.13988 4.5 3.81901 4.66349C3.53677 4.8073 3.3073 5.03677 3.16349 5.31901C3 5.63988 3 6.05992 3 6.9V14.1C3 14.9401 3 15.3601 3.16349 15.681C3.3073 15.9632 3.53677 16.1927 3.81901 16.3365C4.13988 16.5 4.55992 16.5 5.4 16.5Z'
-                       stroke='#CB29BE'
-                        />
-                       </svg>
-                      }
-                      className='self-stretch rounded-none h-[60px] p-2 bg-white bg-opacity-10  items-center gap-1 '
-                    >
-                      <div className="grow shrink basis-0 text-white dark:text-zinc-400 text-[10px] font-normal font-['Manrope']">
-                        {fetchTaskPreview?.task?.caption}
+                      <div className='flex flex-col gap-y-6 py-10 items-center -mt-10 lg:w-full w-11/12'>
+                      <div className='text-[12px] font-semibold flex flex-col gap-y-6 px-4'>
+                          Please follow the step-by-step instructions below to do your task:
+                            <p>
+                              Step 1: Open {fetchTaskPreview?.task?.platform} on your Mobile App or browser
+                            </p>
+                            <p>
+                              Step 2: Create a post, copy the information below on the description of the advert which you are meant to post on your page.
+                            </p>
+                            <p>
+                              Step 3: 
+                              Add the image or video provided for the advert.  Make sure it's high-quality and visually appealing and post it on your page
+                            </p>
+                            <p>
+                              Step 4: After you have created the new post, then you will comeback to this page and upload the proof of work, which is the link to your profile on {fetchTaskPreview?.task?.platform} and the link to the {fetchTaskPreview?.task?.platformn} post which you have created
+                            </p>
                       </div>
-                    </Snippet>
+                      <span className='self-start px-4'>Advert text</span>
+                      <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                        <div className='text-[10px] w-9/12'>
+                          {fetchTaskPreview?.task?.caption}
+                        </div>
+                          <p className='flex items-center gap-x-2 text-[12px] text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTaskPreview?.task?.caption), toast.success('Caption copied'))}>
+                            <Icons type='copy' stroke='#FF6DFB'/>
+                            Copy text
+                          </p>
+                      </div>
+                      </div>
                     }
-
                     {fetchTaskPreview?.task?.account_link && (
                       <Link
                         isExternal
@@ -231,7 +207,7 @@ export default function PreviewEarnAdvertTask() {
                       </Link>
                     )}
 
-                    {fetchTaskPreview?.task?.media_path && (
+                    {/* {fetchTaskPreview?.task?.media_path && (
                       <div className='w-[243px] items-center inline-flex flex-col py-2 relative opacity-50 bg-neutral-800 w-full overflow-x-scroll'>
                         {
                           fetchTaskPreview?.task?.media_path?.map((image, index) => (
@@ -244,7 +220,7 @@ export default function PreviewEarnAdvertTask() {
                           ))
                         }
                       </div>
-                    )}
+                    )} */}
 
                     <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
                       <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
@@ -277,28 +253,47 @@ export default function PreviewEarnAdvertTask() {
                     </div>
                   </div>
                 </div>
-                <div className=' flex-col justify-start items-center gap-8 flex'>
-                  <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
-                    <Image
-                      className='w40 w-full h-40'
-                      src={fetchTaskPreview?.proof_screenshot_path}
-                      alt='Image'
-                    />
-                  </div>
-                </div>
-                <div className='flex flex-col gap-y-4'>
+                {
+                  fetchTaskPreview?.task?.task_type === 'engagement' && 
+                  <div className=' flex-col justify-start items-center gap-8 flex'>
+                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
+                      <Image
+                        className='w40 w-full h-40'
+                        src={fetchTaskPreview?.proof_screenshot_path}
+                        alt='Image'
+                      />
+                    </div>
+                    {
+                      fetchTaskPreview?.account_name && (
+                    <div className='flex flex-col gap-y-4'>
                     <p className='text-[12px] font-semibold'>
                         The username on your {fetchTaskPreview?.task?.platform} account that performed this task
                     </p>
-                    {
-                      fetchTaskPreview?.account_link && (
+                   
                       <div className='bg-zinc-700 py-2 pl-2 text-[#B1B1B1] font-semibold text-[12px]'>
                         {fetchTaskPreview?.account_name}
-                    </div>
-                      )
-                    }
-            
+                    </div>        
                 </div>
+                )    }
+                </div>
+                }
+                {
+                  fetchTaskPreview?.task?.task_type === 'advert' && 
+                              <div className='w-full flex flex-col gap-y-4'>
+                                <div className='text-[12px] flex flex-col gap-y-2 font-bold w-full'>
+                                    The link to your {fetchTaskPreview?.task?.platform} profile
+                                   <div className='bg-zinc-700 py-4 pl-4 rounded'>
+                                      https://x.com/Corehunter007
+                                   </div>
+                                </div>  
+                                <div className='text-[12px] flex flex-col font-bold gap-y-2 w-full'>
+                                    The link to the advert post which you created on {fetchTaskPreview?.task?.platform}
+                                    <div className='bg-zinc-700 py-4 pl-4 rounded'>
+                                      https://x.com/Corehunter007
+                                    </div>
+                                </div>    
+                              </div>
+                }
               </div>
             </div>
           </>

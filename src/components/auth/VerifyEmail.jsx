@@ -65,7 +65,7 @@ export default function VerifyEmail() {
     // Retrieve the trxref from the URL
     if (access_error) {
       toast.error(access_error, {
-        duration: 20000,
+        duration: 2000,
       })
     }
     if (access_token) {
@@ -140,7 +140,10 @@ export default function VerifyEmail() {
                     }}
                   />
                 )}
-                rules={{ required: true }}
+                rules={{ required: true, pattern: {
+                  value: /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/,
+                  message: "Invalid email",
+                } }}
               />
               {/* <Controller
                 name='referrer_code'

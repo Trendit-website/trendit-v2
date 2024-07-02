@@ -36,6 +36,7 @@ export default function TaskCard({
   const completePayment = () => {
     onOpen()
   }
+  const [payLoading, setPayLoading] = useState(false)
   const amountPaid = Number(fee_paid)
   const [successView, setSuccessView] = useState()
   const [paymentError, setPaymentError] = useState()
@@ -45,6 +46,7 @@ export default function TaskCard({
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
   const handlePaymentSuccess = async () => {
+    setPayLoading(true)
     try {
       // const data = watch()
       const formData = new FormData()
@@ -58,7 +60,7 @@ export default function TaskCard({
       formData.append('target_state', target_state)
 
       formData.append('platform', platform)
-      formData.append('amount', fee_paid)
+      formData.append('amount', amountPaid)
       formData.append('engagements_count', engagements_count)
       formData.append('posts_count', posts_count)
       formData.append('gender', gender)
@@ -66,10 +68,10 @@ export default function TaskCard({
       formData.append('religion', religion)
       formData.append('goal', goal)
       formData.append('account_link', account_link)
-
       const res = await createAdvert(formData)
       if (res?.data.status) {
         setSuccessView('initialized')
+        setPayLoading(false)
         toast.success(res.data.message, {
           duration: 2000,
         })
@@ -97,6 +99,7 @@ export default function TaskCard({
       }
     } catch (error) {
       setPaymentError(error.response?.data?.message ?? error.message)
+      setPayLoading(false)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
         duration: 2000,
@@ -194,22 +197,23 @@ export default function TaskCard({
                               <span className="text-white font-bold">{profile?.wallet?.currency_symbol}{amountPaid?.toLocaleString()}.00</span>
                           </p>
                         </div>
-                        {payment_status === 'complete' ? 
+                        
+                        {status !== 'declined' ? payment_status === 'complete' ? 
                         <div className="bg-[#CB29BE] w-6/12 ml-[2px] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:hidden lg:mt-0 lg:ml-0" onClick={onNextPage}>
                           View & Track Result
                         </div> 
                         :
                         <div className="bg-[#FF6B6B] w-6/12 ml-[2px] text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:hidden lg:mt-0 lg:ml-0" onClick={completePayment}>
                         Complete payment
-                        </div>
+                        </div> : ''
                         }
                           <div className="flex flex-col mt-4 gap-y-2">
                           {total_allocated <= 0 ? 
-                          <div className={`flex items-center justify-center gap-x-2  ${status === 'pending' ? 'bg-white text-black' : 'bg-[#13BF62] text-white'} lg:hidden  w-6/12 py-2 rounded-lg`}>
-                            <Icons type={status} /> {status}
+                          <div className={`flex items-center justify-center gap-x-2  ${(status === 'pending' && 'bg-white text-black') || (status === 'declined' && 'bg-red-500') || (status === 'approved' && 'bg-[#13BF62] text-white')} lg:hidden  w-6/12 py-2 rounded-lg`}>
+                            <Icons type={status} /> {status.charAt(0).toUpperCase()+status?.slice(1)}
                           </div> :
-                           <div className={`flex items-center justify-center gap-x-2  bg-[#1877F2] text-white'} lg:hidden  w-8/12 py-2 rounded-lg`}>
-                           <Icons type='active' /> active
+                           <div className={`flex items-center justify-center gap-x-2  bg-[#1877F2] text-white'} lg:hidden  w-6/12 py-2 rounded-lg`}>
+                           <Icons type='active' /> Active
                          </div> }
                         </div>
                         
@@ -226,22 +230,23 @@ export default function TaskCard({
                     <div className={`flex flex-col gap-y-2 ${account_link ? 'mt-4' : ''}`}>
                           <p className="text-sm">Status</p>
                           {total_allocated <= 0 ? 
-                          <div className={`flex items-center justify-center gap-x-2  ${status === 'pending' ? 'bg-white text-black' : 'bg-[#13BF62] text-white'}  w-8/12 py-2 rounded-lg`}>
-                            <Icons type={status} /> {status}
+                          <div className={`flex items-center justify-center gap-x-2  ${(status === 'pending' && 'bg-white text-black') || (status === 'declined' && 'bg-red-500') || (status === 'approved' && 'bg-[#13BF62] text-white')} w-6/12 py-2 rounded-lg`}>
+                            <Icons type={status} /> {status.charAt(0).toUpperCase()+status?.slice(1)}
                           </div> :
-                           <div className={`flex items-center justify-center gap-x-2  bg-[#1877F2] text-white'}  w-8/12 py-2 rounded-lg`}>
-                           <Icons type='active' /> active
-                         </div> }
-                        </div>
+                           <div className={`flex items-center justify-center gap-x-2  bg-[#1877F2] text-white'}  w-5/12 py-2 rounded-lg`}>
+                           <Icons type='active' /> Active
+                         </div> 
+                         }
+                    </div>
                 </div>
-                {payment_status === 'complete' ? 
+                {status !== 'declined' ? payment_status === 'complete' ? 
                 <div className="bg-[#CB29BE] hidden lg:flex text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={onNextPage}>
                     View & Track Result
                 </div> 
                 :
                 <div className="bg-[#FF6B6B] hidden lg:flex text-white text-xs text-center py-2 px-4 rounded-lg font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0" onClick={completePayment}>
                 Complete payment
-                </div>
+                </div> :''
                 }
           </div>
       </div>
@@ -250,6 +255,7 @@ export default function TaskCard({
           isOpen={isOpen}
           onClose={onClose}
           amount={amountPaid}
+          isLoading={payLoading}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
           successView={successView}

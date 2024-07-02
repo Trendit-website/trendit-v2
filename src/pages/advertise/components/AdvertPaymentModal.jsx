@@ -17,6 +17,7 @@ export default function AdvertPaymentModal({
   paymentError,
   setPaymentError,
   isPending,
+  isLoading,
   successView
 }) {
   const [view, setView] = useState('')
@@ -78,8 +79,8 @@ export default function AdvertPaymentModal({
                 <div
                   onClick={onSuccess}
                   className='self-stretch cursor-pointer p-6 dark:bg-[#1A1A1A] bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-start gap-2 inline-flex'
-                >
-                  <svg
+                >    
+                    <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
                     height='24'
@@ -93,6 +94,7 @@ export default function AdvertPaymentModal({
                       strokeLinecap='round'
                     />
                   </svg>
+               
                   <div className='grow shrink basis-0 justify-start items-start gap-2 flex'>
                     <div className='grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex'>
                       <div className="self-stretch text-sm font-medium font-['Manrope']">
@@ -105,7 +107,9 @@ export default function AdvertPaymentModal({
                       </div>
                     </div>
                   </div>
-                  <svg
+                  {
+                    isLoading ? <Loader /> : 
+                    <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
                     height='24'
@@ -119,6 +123,7 @@ export default function AdvertPaymentModal({
                       strokeLinecap='round'
                     />
                   </svg>
+                  }
                 </div>
                 <div
                   onClick={() => {
@@ -172,7 +177,7 @@ export default function AdvertPaymentModal({
             <ModalContent className='md:w-[35rem] overflow-visible'>
               <div className='p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
                 <div
-                  onClick={onClose}
+                  onClick={() => (onClose(), handleHome())}
                   className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
                 >
                   <AiOutlineClose size={20} color='#fff' />
@@ -390,7 +395,7 @@ export default function AdvertPaymentModal({
             <ModalContent className='md:w-[35rem] overflow-visible '>
               <div className='p-12 rounded flex-col justify-start items-start gap-12 inline-flex'>
                 <div
-                  onClick={onClose}
+                  onClick={() => (onClose(), handleHome())}
                   className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
                 >
                   <AiOutlineClose size={20} color='#fff' />

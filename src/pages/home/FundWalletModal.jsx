@@ -41,7 +41,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
       if (res.data.status) {
         const authorizationUrl = res?.data?.authorization_url
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         onClose()
         if (authorizationUrl) {
@@ -51,7 +51,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -103,7 +103,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                               onClick={ () => (setFocus(true))}
                               {...field}
                               errorMessage={errors?.amount?.message}
-                              isInvalid={!!errors?.amount}
+                              // isInvalid={!!errors?.amount}
                               startContent={
                                 <span className={`${appreance === 'dark' ? (focus ? 'text-white' : 'text-black') : 'text-[#C026D3]'}`}>{showBalance?.currency_symbol}</span>
                               }
@@ -123,7 +123,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded text-[12.83px] font-normal font-['Manrope']"
+                              className={`rounded text-[12.83px] font-normal font-['Manrope']`}
                             />
                           )}
                           rules={{required: true, 

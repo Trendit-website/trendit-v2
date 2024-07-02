@@ -66,7 +66,10 @@ export default function FollowerEngageTask() {
     if (newWindow) newWindow.opener = null
   }
 
+  const [payLoading, setPayLoading] = useState(false)
+
   const handlePaymentSuccess = async () => {
+    setPayLoading(true)
     try {
       const data = watch()
       const formData = new FormData()
@@ -89,6 +92,7 @@ export default function FollowerEngageTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         setSuccessView('initialized')
+        setPayLoading(false)
         toast.success(res.data.message, {
           duration: 2000,
         })
@@ -101,6 +105,7 @@ export default function FollowerEngageTask() {
       }
     } catch (error) {
       setPaymentError(error.response?.data?.message ?? error.message)
+      setPayLoading(false)
       toast.error(error.response?.data?.message ?? error.message, {
         duration: 2000,
       })
@@ -609,6 +614,7 @@ export default function FollowerEngageTask() {
         <AdvertPaymentModal
           isOpen={isOpen}
           onClose={onClose}
+          isLoading={payLoading}
           amount={calculatedAmount}
           successView={successView}
           paymentError={paymentError}

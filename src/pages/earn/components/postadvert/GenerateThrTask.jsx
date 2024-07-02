@@ -147,35 +147,30 @@ export default function GenerateThrTask() {
                   </div>
                 </div>
               </div>
-              {
-                active ? 
-                <div className='w-full pl-4 md:pl-16 flex flex-col gap-y-4'>
-                <h2 className='text-white dark:text-zinc-700 font-bold text-[14px] sm:text-xl'>Your X Profile Account</h2>
-                <div className='flex items-center gap-x-2'>
-                    <div className='bg-zinc-700 flex items-center justify-between text-white bg-opacity-50 py-4 w-11/12 md:w-8/12 px-4 rounded'>
-                        {active?.link}
-                        <div className={`${active?.status === 'verified' && 'bg-green-700' || active?.status === 'pending' && 'bg-yellow-400' || active?.status === 'idle' && 'bg-[#FF3D00]' || !active && 'bg-[#FF3D00]'} sm:hidden py-[6px] px-[6px] text-center rounded-full font-semibold`}>
-                          <Icons type={active?.status === 'verified' ? 'approved' : 'pending'} />
-                        </div>
-                    </div>
-                    <div className={`${active?.status === 'verified' && 'bg-green-700' || active?.status === 'pending' && 'bg-yellow-400' || active?.status === 'idle' && 'bg-[#FF3D00]' || !active && 'bg-[#FF3D00]'} hidden sm:flex items-center gap-x-2 text-white text-center py-4 px-10 rounded font-semibold text-[14px]`}>
-                      <Icons type={active?.status === 'verified' ? 'approved' : 'pending'} />
-                      {active?.status}
-                    </div>
-                </div>
-                {
-                  active?.status === 'verified' ? 
-                  <p className='text-blue-300 font-bold text-[14px] w-11/12 mb-6'>
-                  Your Threads task must be done from the above Threads profile which has been linked to your Trendit³ account
-                  </p> :
-                  ''
-                }
-            </div> : ''
-              }
             </div>
             {
                 active?.status === 'verified'
-             ? '' : (
+             ?
+             (
+              <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
+              <h2 className='text-zinc-700 dark:text-white font-bold text-[16px]'>Your Threads Profile Account</h2>
+              {
+                active?.status === 'verified' ? 
+                <p className='text-blue-300 dark:text-white font-semibold text-[12px] w-11/12'>
+                Your Threads task must be done from the below Threads profile which has been linked to your Trendit³ account
+                </p> : ''
+               }
+              <div className='flex items-center gap-x-2'>
+                  <div className='bg-zinc-700 dark:bg-white flex items-center justify-between text-black bg-opacity-50 py-2 w-11/12 md:w-12/12 px-4 rounded'>
+                      {active?.link}
+                      <div className={`${active?.status === 'verified' && 'text-green-800' || active?.status === 'pending' && 'text-yellow-700' || active?.status === 'idle' && 'text[#FF3D00]' || active?.status === 'rejected' && 'text-[#FF3D00]'} py-[6px] px-[6px] text-center rounded-full font-semibold`}>
+                        {active?.status.charAt(0).toUpperCase()+active?.status?.slice(1)}
+                      </div>
+                  </div>
+              </div>
+              </div> 
+             )
+             : (
               <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
