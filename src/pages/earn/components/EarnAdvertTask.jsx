@@ -3,6 +3,7 @@
 
 import { useNavigate } from 'react-router-dom'
 import { Button, Image, Input, Link, Snippet } from '@nextui-org/react'
+import Icons from '../../../components/Icon'
 import Igframe from '../../../assets/IGFrame131.svg'
 import {
   useCalcelTask,
@@ -31,6 +32,7 @@ export default function EarnAdvertTask() {
 
     watch,
     register,
+    formState: {errors}
   } = useForm({})
   console.log(fetchTask, 'Task')
   useEffect(() => {
@@ -52,6 +54,15 @@ export default function EarnAdvertTask() {
 
     fetchImages()
   }, [])
+
+  const downloadAdvertImage = (url, filename) => {
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename,
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
 
   const handleChange = async ({ target }) => {
     const { name } = target
@@ -82,6 +93,8 @@ export default function EarnAdvertTask() {
         formData.append(`reward_money`, task?.reward_money)
         formData.append(`task_id_key`, task?.task?.task_key)
       })
+      formData.append('account_name', data?.profile)
+      formData.append('post_link', data?.link)
       // Append other form fields
       console.log(data, 'formmm data')
       const res = await submitPerformTask(formData)
@@ -95,6 +108,7 @@ export default function EarnAdvertTask() {
         navigate(-1)
       }
     } catch (error) {
+      console.error(error)
       toast.error(error.response?.data?.message ?? error.message, {
         duration: 1000,
       })
@@ -150,14 +164,21 @@ export default function EarnAdvertTask() {
 
           {fetchTask?.map((task, index) => (
             <>
-              <div className='self-stretch relative border border-white flex-col justify-start items-start flex'>
+              <div className='self-stretch relative pb-10 border border-white flex-col justify-start items-start flex'>
                 <div className='self-stretch  p-6 bg-opacity-40  rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
                   <div className='flex-col justify-start items-start gap-1.5 flex'>
                     <div className='self-stretch text-zinc-400 text-[10px] font-normal font-Manrope'>
-                      Jan 12th 9:27pm
+                      {task?.task?.date_created}
                     </div>
                     <div className='capitalize text-3xl font-medium font-Manrope'>
-                      Like and follow {task?.task?.platform} page
+                      {
+                        task?.task?.task_type === 'advert' ? 
+                        `Post advert on your ${task?.task?.platform} Page` : 
+                        (task?.task?.goal === 'comment' && `Comment on ${task?.task?.platform} Post`) ||
+                        (task?.task?.goal === 'follow and like' && `Follow and Like ${task?.task?.platform} Page`) ||
+                        (task?.task?.goal === 'follow' && `Follow ${task?.task?.platform} Page`) ||
+                        (task?.task?.goal === 'like' && `Like ${task?.task?.platform} Post`)  
+                      }
                     </div>
                     <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
                       <div className='justify-start items-center gap-0.5 flex'>
@@ -184,15 +205,8 @@ export default function EarnAdvertTask() {
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>
                       <div className='text-[#FFA2A2] text-[9px] font-normal font-Manrope uppercase tracking-tight'>
-                        Note: That you must have at Least 1000 followers to be
+                        Note: That you must have at Least 500 followers to be
                         able to Generate this task
-                      </div>
-                      {/* <div className="text-stone-900 text-[9px] font-normal font-Manrope uppercase tracking-tight">
-                    134 Likes
-                  </div>
-                  <div className="text-stone-900 text-[9px] font-normal font-Manrope uppercase tracking-tight">
-                    453 Comments
-                  </div> */}
                     </div>
                   </div>
                   <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
@@ -206,11 +220,14 @@ export default function EarnAdvertTask() {
                 <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                     <div className='grow shrink basis-0 text-blue-600 text-xs font-normal font-Manrope'>
-                      You must NOT UNLIKE or UNFOLLOW the {task?.task?.platform}{' '}
-                      page after you have like and followed the page. Your
+                      {
+                        task?.task?.task_type === 'advert' ? 
+                        'You must not delete the post after posting. Your Trendit³ account will be suspended once you delete the post' : 
+                      ` You must NOT UNLIKE, UNFOLLOW or DELETE comment on the ${task?.task?.platform}{' '}
+                      page or post after you have liked and followed the page or commented on the post. Your
                       Trendit³ account will be suspended once you UNLIKE or
-                      UNFOLLOW the {task?.task?.platform}
-                      Page.
+                      UNFOLLOW the ${task?.task?.platform} Page `
+                      }
                     </div>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -228,290 +245,285 @@ export default function EarnAdvertTask() {
                     </svg>
                   </div>
                 </div>
-              </div>
-              <div className='w-full'>
-                <Timer onDone={() => onCancel(task?.key)} />
-              </div>
-              <div key={index} className='grid gap-3 md:gap-6 md:grid-cols-2'>
-                <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
-                  <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
-                    <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                      <div className='grow shrink basis-0 text-center text-2xl font-medium font-Manrope'>
-                        Task
-                      </div>
-                    </div>
-                  </div>
-                  <div className=' flex-col justify-start items-center gap-8 flex'>
-                    <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
-                      <div className='self-stretch'>
-                        <span className=' text-xs font-semibold font-Manrope'>
-                          Please follow the step-by-step instructions below to
-                          do your task:
-                          <br />
-                          Step 1: 
-                        </span>
-                        <span className=' text-xs font-normal font-Manrope'>
-                          Open the Task Link above on your Instagran Mobile App
-                          or browser
-                          <br />
-                        </span>
-                        <span className=' text-xs font-semibold font-Manrope'>
-                          Step 2: 
-                        </span>
-                        <span className=' text-xs font-normal font-Manrope'>
-                          The link will direct you to a Instagram Page which you
-                          are meant to like and follow.
-                          <br />
-                        </span>
-                        <span className=' text-xs font-semibold font-Manrope'>
-                          Step 3: 
-                        </span>
-                        <span className=' text-xs font-normal font-Manrope'>
-                          Click on the Like or Follow button on the Instagram
-                          Page to start liking or following the page. You MUST
-                          NOT Unfollow the account after you have followed the
-                          account.
-                          <br />
-                        </span>
-                        <span className=' text-xs font-semibold font-Manrope'>
-                          Step 4: 
-                        </span>
-                        <span className=' text-xs font-normal font-Manrope'>
-                          Create a screenshot of the page that shows you have
-                          liked or followed the page and upload the screenshot
-                          under the Proof of Work Form below. You are also
-                          required to enter your Instagram Username or Name
-                          which you used to perform the task
-                        </span>
-                      </div>
-
-                      <Snippet
-                        // variant='solid'
-                        symbol=''
-                        copyIcon={
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='17'
-                            height='16'
-                            viewBox='0 0 17 16'
-                            fill='none'
-                          >
-                            <path
-                              d='M14.25 5.33333C14.25 5.60948 14.4739 5.83333 14.75 5.83333C15.0261 5.83333 15.25 5.60948 15.25 5.33333H14.25ZM11.4167 1.5C11.1405 1.5 10.9167 1.72386 10.9167 2C10.9167 2.27614 11.1405 2.5 11.4167 2.5V1.5ZM8.39645 7.64645C8.20118 7.84171 8.20118 8.15829 8.39645 8.35355C8.59171 8.54882 8.90829 8.54882 9.10355 8.35355L8.39645 7.64645ZM14.7137 2.182L14.2682 2.40899L14.2682 2.409L14.7137 2.182ZM14.568 2.03633L14.341 2.48183V2.48184L14.568 2.03633ZM8.75 3.83333C9.02614 3.83333 9.25 3.60948 9.25 3.33333C9.25 3.05719 9.02614 2.83333 8.75 2.83333V3.83333ZM13.9167 8C13.9167 7.72386 13.6928 7.5 13.4167 7.5C13.1405 7.5 12.9167 7.72386 12.9167 8H13.9167ZM4.20603 13.7094L4.43302 13.2638L4.20603 13.7094ZM3.04065 12.544L2.59515 12.771L3.04065 12.544ZM11.9606 13.7094L11.7336 13.2638L11.9606 13.7094ZM13.126 12.544L12.6805 12.317L13.126 12.544ZM3.04065 4.78936L2.59515 4.56236H2.59515L3.04065 4.78936ZM4.20603 3.62398L3.97903 3.17848L3.97903 3.17848L4.20603 3.62398ZM15.25 5.33333V2.53333H14.25V5.33333H15.25ZM14.2167 1.5H11.4167V2.5H14.2167V1.5ZM14.2988 1.74408L8.39645 7.64645L9.10355 8.35355L15.0059 2.45118L14.2988 1.74408ZM15.25 2.53333C15.25 2.44824 15.2504 2.35435 15.2438 2.27368C15.2367 2.18718 15.2192 2.07289 15.1592 1.95501L14.2682 2.409C14.2444 2.36242 14.2451 2.33045 14.2471 2.35512C14.2481 2.36715 14.249 2.38617 14.2495 2.41757C14.25 2.44895 14.25 2.48552 14.25 2.53333H15.25ZM14.2167 2.5C14.2645 2.5 14.3011 2.100001 14.3324 2.100051C14.3638 2.501 14.3829 2.5019 14.3949 2.50288C14.4195 2.5049 14.3876 2.50557 14.341 2.48183L14.795 1.59083C14.6771 1.53076 14.5628 1.51327 14.4763 1.5062C14.3956 1.49961 14.3018 1.5 14.2167 1.5V2.5ZM15.1592 1.95501C15.1192 1.87661 15.0674 1.80553 15.0059 1.74408L14.2988 2.45118C14.2865 2.4389 14.2762 2.42468 14.2682 2.40899L15.1592 1.95501ZM15.0059 1.74408C14.9445 1.68263 14.8734 1.63077 14.795 1.59083L14.341 2.48184C14.3253 2.47385 14.3111 2.46347 14.2988 2.45118L15.0059 1.74408ZM9.15 13.5H7.01667V14.5H9.15V13.5ZM3.25 9.73333V7.6H2.25V9.73333H3.25ZM7.01667 3.83333H8.75V2.83333H7.01667V3.83333ZM12.9167 8V9.73333H13.9167V8H12.9167ZM7.01667 13.5C6.26168 13.5 5.72551 13.4996 5.30592 13.4653C4.89217 13.4315 4.636 13.3673 4.43302 13.2638L3.97903 14.1549C4.34648 14.3421 4.7489 14.4232 5.22449 14.462C5.69425 14.10004 6.27818 14.5 7.01667 14.5V13.5ZM2.25 9.73333C2.25 10.4718 2.24961 11.0558 2.28799 11.5255C2.32685 12.0011 2.40792 12.4035 2.59515 12.771L3.48615 12.317C3.38273 12.114 3.31848 11.8578 3.28467 11.4441C3.25039 11.0245 3.25 10.4883 3.25 9.73333H2.25ZM4.43302 13.2638C4.02534 13.0561 3.69388 12.7247 3.48615 12.317L2.59515 12.771C2.89875 13.3668 3.38318 13.8513 3.97903 14.1549L4.43302 13.2638ZM9.15 14.5C9.88849 14.5 10.4724 14.10004 10.9422 14.462C11.4178 14.4232 11.8202 14.3421 12.1876 14.1549L11.7336 13.2638C11.5307 13.3673 11.2745 13.4315 10.8607 13.4653C10.4412 13.4996 9.90499 13.5 9.15 13.5V14.5ZM12.9167 9.73333C12.9167 10.4883 12.9163 11.0245 12.882 11.4441C12.8482 11.8578 12.7839 12.114 12.6805 12.317L13.5715 12.771C13.7587 12.4035 13.8398 12.0011 13.8787 11.5255C13.9171 11.0558 13.9167 10.4718 13.9167 9.73333H12.9167ZM12.1876 14.1549C12.7835 13.8513 13.2679 13.3668 13.5715 12.771L12.6805 12.317C12.4728 12.7247 12.1413 13.0561 11.7336 13.2638L12.1876 14.1549ZM3.25 7.6C3.25 6.84501 3.25039 6.30884 3.28467 5.88925C3.31848 5.4755 3.38273 5.21934 3.48615 5.01635L2.59515 4.56236C2.40792 4.92981 2.32685 5.33223 2.28799 5.80782C2.24961 6.27758 2.25 6.86151 2.25 7.6H3.25ZM7.01667 2.83333C6.27818 2.83333 5.69425 2.83294 5.22449 2.87133C4.7489 2.91018 4.34648 2.99125 3.97903 3.17848L4.43302 4.06949C4.636 3.96606 4.89217 3.90181 5.30592 3.868C5.72551 3.83372 6.26168 3.83333 7.01667 3.83333V2.83333ZM3.48615 5.01635C3.69388 4.60867 4.02534 4.27721 4.43302 4.06949L3.97903 3.17848C3.38318 3.48208 2.89875 3.96652 2.59515 4.56236L3.48615 5.01635Z'
-                              fill='#FF6DFB'
-                            />
-                          </svg>
-                        }
-                        className='self-stretch rounded-none h-[60px] p-2 bg-white bg-opacity-10  items-center gap-1 '
-                      >
-                        <div className='grow shrink basis-0 text-white dark:text-zinc-400 text-[10px] font-normal font-Manrope'>
-                          {task?.task?.caption}
-                        </div>
-                      </Snippet>
-
-                      {/* <div className='justify-start items-center gap-2 flex'>
-                        <div className='w-4 h-4 relative' />
-                        <div className="text-fuchsia-400 text-sm font-medium font-Manrope">
-                          Copy text{' '}
-                        </div>
-                      </div> */}
-                      {task?.task?.media_path && (
-                        <div className='w-[243px] items-center inline-flex flex-col py-2 relative opacity-50 bg-neutral-800'>
-                          <Image
-                            className='w-40 h-40'
-                            src={task?.task?.media_path}
-                            alt='Image'
-                          />
-                          <Button
-                            variant='ghost'
-                            className='p-2 mt-3 bg-fuchsia-400'
-                          >
-                            <DownloadImageButton object={task} />
-                          </Button>
-                        </div>
-                      )}
-
-                      {task?.task?.account_link && (
-                        <Link
-                          isExternal
-                          href={task?.task?.account_link}
-                          className='self-stretch h-9 p-2 bg-white justify-center items-center gap-1 inline-flex'
-                        >
-                          <div className='grow shrink basis-0  text-black text-[12.83px] font-normal font-Manrope'>
-                            {task?.task?.account_link}
+                </div>
+                <div className='w-full'>
+                  <Timer onDone={() => onCancel(task?.key)} />
+                </div>
+                <div key={index} className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
+                      {
+                        task?.task?.task_type === 'advert' ? 
+                        <div className='bg-zinc-800 bg-opacity-40 sm:h-[678px] flex flex-col gap-y-6 py-10 items-center lg:w-6/12 w-11/12'>
+                          <h1 className='text-[24px]'>Task</h1>
+                          <div className='text-[12px] font-semibold flex flex-col gap-y-6 px-4'>
+                              Please follow the step-by-step instructions below to do your task:
+                                <p>
+                                  Step 1: Open {task?.task?.platform} on your Mobile App or browser
+                                </p>
+                                <p>
+                                  Step 2: Create a post, copy the information below on the description of the advert which you are meant to post on your page.
+                                </p>
+                                <p>
+                                  Step 3: 
+                                  Add the image or video provided for the advert.  Make sure it's high-quality and visually appealing and post it on your page
+                                </p>
+                                <p>
+                                  Step 4: After you have created the new post, then you will comeback to this page and upload the proof of work, which is the link to your profile on {task?.task?.platform} and the link to the {task?.task?.platformn} post which you have created
+                                </p>
                           </div>
-                          <div className='justify-start items-center gap-2 flex'>
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              width='17'
-                              height='16'
-                              viewBox='0 0 17 16'
-                              fill='none'
-                            >
-                              <path
-                                d='M14.25 5.33333C14.25 5.60948 14.4739 5.83333 14.75 5.83333C15.0261 5.83333 15.25 5.60948 15.25 5.33333H14.25ZM11.4167 1.5C11.1405 1.5 10.9167 1.72386 10.9167 2C10.9167 2.27614 11.1405 2.5 11.4167 2.5V1.5ZM8.39645 7.64645C8.20118 7.84171 8.20118 8.15829 8.39645 8.35355C8.59171 8.54882 8.90829 8.54882 9.10355 8.35355L8.39645 7.64645ZM14.7137 2.182L14.2682 2.40899L14.2682 2.409L14.7137 2.182ZM14.568 2.03633L14.341 2.48183V2.48184L14.568 2.03633ZM8.75 3.83333C9.02614 3.83333 9.25 3.60948 9.25 3.33333C9.25 3.05719 9.02614 2.83333 8.75 2.83333V3.83333ZM13.9167 8C13.9167 7.72386 13.6928 7.5 13.4167 7.5C13.1405 7.5 12.9167 7.72386 12.9167 8H13.9167ZM4.20603 13.7094L4.43302 13.2638L4.20603 13.7094ZM3.04065 12.544L2.59515 12.771L3.04065 12.544ZM11.9606 13.7094L11.7336 13.2638L11.9606 13.7094ZM13.126 12.544L12.6805 12.317L13.126 12.544ZM3.04065 4.78936L2.59515 4.56236H2.59515L3.04065 4.78936ZM4.20603 3.62398L3.97903 3.17848L3.97903 3.17848L4.20603 3.62398ZM15.25 5.33333V2.53333H14.25V5.33333H15.25ZM14.2167 1.5H11.4167V2.5H14.2167V1.5ZM14.2988 1.74408L8.39645 7.64645L9.10355 8.35355L15.0059 2.45118L14.2988 1.74408ZM15.25 2.53333C15.25 2.44824 15.2504 2.35435 15.2438 2.27368C15.2367 2.18718 15.2192 2.07289 15.1592 1.95501L14.2682 2.409C14.2444 2.36242 14.2451 2.33045 14.2471 2.35512C14.2481 2.36715 14.249 2.38617 14.2495 2.41757C14.25 2.44895 14.25 2.48552 14.25 2.53333H15.25ZM14.2167 2.5C14.2645 2.5 14.3011 2.100001 14.3324 2.100051C14.3638 2.501 14.3829 2.5019 14.3949 2.50288C14.4195 2.5049 14.3876 2.50557 14.341 2.48183L14.795 1.59083C14.6771 1.53076 14.5628 1.51327 14.4763 1.5062C14.3956 1.49961 14.3018 1.5 14.2167 1.5V2.5ZM15.1592 1.95501C15.1192 1.87661 15.0674 1.80553 15.0059 1.74408L14.2988 2.45118C14.2865 2.4389 14.2762 2.42468 14.2682 2.40899L15.1592 1.95501ZM15.0059 1.74408C14.9445 1.68263 14.8734 1.63077 14.795 1.59083L14.341 2.48184C14.3253 2.47385 14.3111 2.46347 14.2988 2.45118L15.0059 1.74408ZM9.15 13.5H7.01667V14.5H9.15V13.5ZM3.25 9.73333V7.6H2.25V9.73333H3.25ZM7.01667 3.83333H8.75V2.83333H7.01667V3.83333ZM12.9167 8V9.73333H13.9167V8H12.9167ZM7.01667 13.5C6.26168 13.5 5.72551 13.4996 5.30592 13.4653C4.89217 13.4315 4.636 13.3673 4.43302 13.2638L3.97903 14.1549C4.34648 14.3421 4.7489 14.4232 5.22449 14.462C5.69425 14.10004 6.27818 14.5 7.01667 14.5V13.5ZM2.25 9.73333C2.25 10.4718 2.24961 11.0558 2.28799 11.5255C2.32685 12.0011 2.40792 12.4035 2.59515 12.771L3.48615 12.317C3.38273 12.114 3.31848 11.8578 3.28467 11.4441C3.25039 11.0245 3.25 10.4883 3.25 9.73333H2.25ZM4.43302 13.2638C4.02534 13.0561 3.69388 12.7247 3.48615 12.317L2.59515 12.771C2.89875 13.3668 3.38318 13.8513 3.97903 14.1549L4.43302 13.2638ZM9.15 14.5C9.88849 14.5 10.4724 14.10004 10.9422 14.462C11.4178 14.4232 11.8202 14.3421 12.1876 14.1549L11.7336 13.2638C11.5307 13.3673 11.2745 13.4315 10.8607 13.4653C10.4412 13.4996 9.90499 13.5 9.15 13.5V14.5ZM12.9167 9.73333C12.9167 10.4883 12.9163 11.0245 12.882 11.4441C12.8482 11.8578 12.7839 12.114 12.6805 12.317L13.5715 12.771C13.7587 12.4035 13.8398 12.0011 13.8787 11.5255C13.9171 11.0558 13.9167 10.4718 13.9167 9.73333H12.9167ZM12.1876 14.1549C12.7835 13.8513 13.2679 13.3668 13.5715 12.771L12.6805 12.317C12.4728 12.7247 12.1413 13.0561 11.7336 13.2638L12.1876 14.1549ZM3.25 7.6C3.25 6.84501 3.25039 6.30884 3.28467 5.88925C3.31848 5.4755 3.38273 5.21934 3.48615 5.01635L2.59515 4.56236C2.40792 4.92981 2.32685 5.33223 2.28799 5.80782C2.24961 6.27758 2.25 6.86151 2.25 7.6H3.25ZM7.01667 2.83333C6.27818 2.83333 5.69425 2.83294 5.22449 2.87133C4.7489 2.91018 4.34648 2.99125 3.97903 3.17848L4.43302 4.06949C4.636 3.96606 4.89217 3.90181 5.30592 3.868C5.72551 3.83372 6.26168 3.83333 7.01667 3.83333V2.83333ZM3.48615 5.01635C3.69388 4.60867 4.02534 4.27721 4.43302 4.06949L3.97903 3.17848C3.38318 3.48208 2.89875 3.96652 2.59515 4.56236L3.48615 5.01635Z'
-                                fill='#CB29BE'
-                              />
-                            </svg>
-                            <div className='text-fuchsia-600 text-sm font-medium font-Manrope'>
-                              Visit Link
+                          <div className='flex flex-col text-[12px] gap-y-4 px-4'>
+                              <h2 className='font-bold'>Advert Image/Video</h2>
+                              <p className='text-[#B1B1B1] w-11/12'>
+                                  Download the advert image or videos using the download button below and also copy the advert test as seen below and upload it to your Instagram Page
+                              </p>
+                              <div className='bg-[#FF6DFB] w-[136px] rounded-lg text-center py-2 px-4' onClick={() => downloadAdvertImage(task?.task?.media_path, 'advert-file.png')}>
+                                Download Advert
+                              </div>
+                          </div>
+                          <span className='self-start px-4'>Advert text</span>
+                          <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                            <div className='text-[10px] w-9/12'>
+                              {task?.task?.caption}
+                            </div>
+                              <p className='flex items-center gap-x-2 text-[12px] text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(task?.task?.caption), toast.success('Caption copied'))}>
+                                <Icons type='copy' stroke='#FF6DFB'/>
+                                Copy text
+                              </p>
+                          </div>
+                        </div>
+                        : 
+                        <div className='bg-zinc-800 bg-opacity-40 sm:h-[478px] flex flex-col gap-y-6 py-10 items-center lg:w-6/12 w-11/12'>
+                            <h1 className='text-[24px]'>Task</h1>
+                            <div className='text-[12px] font-semibold flex flex-col gap-y-6 px-4'>
+                                Please follow the step-by-step instructions below to do your task:
+                                  <p>
+                                    Step 1: Open the Task Link below on your {task?.task?.platform} Mobile App or browser
+                                  </p>
+                                  <p>
+                                    Step 2: The link will direct you to a {task?.task?.platform} Page or Post which you are meant to 
+                                    {task?.task?.goal === 'comment' && 'comment'}
+                                    {task?.task?.goal === 'like' && 'like'}
+                                    {task?.task?.goal === 'follow' && 'follow'}
+                                    {task?.task?.goal === 'follow and like' && 'like andd follow'}
+                                  </p>
+                                  <p>
+                                    Step 3: 
+                                    {task?.task?.goal !== 'comment' ?
+                                    `
+                                      Click on the Like or Follow button on the ${task?.task?.platform} Page to like or follow the page. You MUST NOT Unfollow the account after you have followed the account.
+                                    ` : 
+                                    `Click on the comment icon or button to comment on the ${task?.task?.platform} post. You mut not delete the comment after you have commented on the post`
+                                    }
+                                  </p>
+                                  <p>
+                                    Step 4:
+                                    {
+                                      task?.task?.goal !== 'comment' ? 
+                                      `Create a screenshot of the page that shows you have liked or followed the page and upload the screenshot under the Proof of Work Form. You are also required to enter your ${task?.task?.platform} Username or Name which you used to perform the task` :
+                                      `Create a screenshot of the post that shows you have commented on the post and upload the screenshot under the Proof of Work Form below. You are also required to enter your ${task?.tak?.platform} Username or Name which you used to perform the task`
+                                    }
+                                  </p>
+                            </div>
+                            <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                                {task?.task?.account_link}
+                                <a href={task?.task?.account_link} className='flex items-center gap-x-2 text-[14px] text-[#FF6DFB]' target='_blank'>
+                                  <Icons type='visit-link' />
+                                  Visit link
+                                </a>
+                            </div>
+                        </div>
+                      }
+                      {
+                        task?.task?.task_type === 'advert' ? 
+                          <div className='bg-zinc-800 bg-opacity-40 sm:h-[678px] px-4 flex flex-col gap-y-6 py-10 items-center lg:w-5/12 w-11/12'>
+                                <h1 className='text-[24px]'>Upload Proof</h1>   
+                                <div className='text-[12px] flex flex-col gap-y-2 w-full'>
+                                    Enter the link to your {task?.task?.platform} profile
+                                    <Input errorMessage={errors?.link?.message} placeholder='Enter the link' {...register('link', {
+                                      required: true,
+                                      validate: {
+                                        isValidLink: (fieldValue) => {
+                                          return (
+                                            (fieldValue.startsWith(`https://${task?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${task?.task?.platform}.`)) || (task?.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (task?.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
+                                          )
+                                        }
+                                      }
+                                    })}/>
+                                </div>  
+                                <div className='text-[12px] flex flex-col gap-y-2 w-full'>
+                                    Enter the link to the advert post which you created on {task?.task?.platform}
+                                    <Input errorMessage={errors?.profile?.message} placeholder='Enter the link' {...register('profile', {
+                                      required: true,
+                                      validate: {
+                                        isValidLink: (fieldValue) => {
+                                          return (
+                                            (fieldValue.startsWith(`https://${task?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${task?.task?.platform}.`)) || (task?.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (task?.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
+                                          )
+                                        }
+                                      }
+                                    })}/>
+                                </div>       
+                                <Button
+                                type='submit'
+                                isDisabled={isPending}
+                                className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                                   >
+                                      <div className='text-center text-black text-[12.83px] font-medium font-Manrope'>
+                                        {isPending ? (
+                                          <svg
+                                            className='animate-spin h-5 w-5 text-current'
+                                            fill='none'
+                                            viewBox='0 0 24 24'
+                                            xmlns='http://www.w3.org/2000/svg'
+                                          >
+                                            <circle
+                                              className='opacity-25'
+                                              cx='12'
+                                              cy='12'
+                                              r='10'
+                                              stroke='currentColor'
+                                              strokeWidth='4'
+                                            />
+                                            <path
+                                              className='opacity-75'
+                                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                                              fill='currentColor'
+                                            />
+                                          </svg>
+                                        ) : (
+                                          'Mark as Done'
+                                        )}
+                                      </div>
+                                  </Button>             
+                          </div>
+                         : 
+                        <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg sm:h-[478px] flex-col justify-start sm:w-11/12 lg:w-5/12 items-center gap-10 inline-flex'>
+                        <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
+                          <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
+                            <div className='grow shrink basis-0 text-center text-white text-2xl font-medium font-Manrope'>
+                              Upload proof
                             </div>
                           </div>
-                        </Link>
-                      )}
-                      <div className='self-stretch p-3 bg-rose-100 justify-start items-start gap-[29px] inline-flex'>
-                        <div className='grow shrink basis-0 h-[50px] justify-start items-center gap-2.5 flex'>
-                          <div className='grow shrink basis-0 text-orange-600 text-xs font-normal font-Manrope'>
-                            You must NOT DELETE THE ADVERT POST on the{' '}
-                            <span className='uppercase'>
-                              {task?.task?.platform}
-                            </span>{' '}
-                            page after you have post the avdert on your account
-                            Your Trendit³ account will be suspended once you
-                            Delete the advert on your{' '}
-                            <span className='uppercase'>
-                              {task?.task?.platform}
-                            </span>{' '}
-                            {''}
-                            Page.
-                          </div>
-                          <div className='w-5 h-5 relative' />
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        <div className=' flex-col justify-start items-center -mt-6 gap-8 flex'>
+                          <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
+                            <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
+                              <input
+                                type='file'
+                                id='image-upload'
+                                name='media'
+                                className='absolute hidden w-full opacity-0 cursor-pointer'
+                                {...register('screenshot')}
+                                onChange={handleChange}
+                              />
+                              <label
+                                htmlFor='image-upload'
+                                className='text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-Manrope'
+                              >
+                                <svg
+                                  xmlns='http://www.w3.org/2000/svg'
+                                  width='24'
+                                  height='24'
+                                  viewBox='0 0 24 24'
+                                  fill='none'
+                                >
+                                  <path
+                                    d='M12 4V20M20 12L4 12'
+                                    stroke='white'
+                                    strokeWidth='2'
+                                    strokeLinecap='round'
+                                  />
+                                </svg>
+                              </label>
+                            </div>
+                            {media && (
+                              <Image
+                                src={URL.createObjectURL(media)}
+                                alt='Preview'
+                                className='w-full h-full object-cover'
+                              />
+                            )}
+                          </div>
 
-                <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg flex-col justify-start items-center gap-10 inline-flex'>
-                  <div className='self-stretch py-6 flex-col justify-start items-center gap-3 flex'>
-                    <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
-                      <div className='grow shrink basis-0 text-center text-white text-2xl font-medium font-Manrope'>
-                        Upload proof
-                      </div>
+                          <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
+                            <div
+                              className={`${
+                                task?.task?.platform === 'whatsapp'
+                                  ? 'hidden'
+                                  : 'grid'
+                              }  self-stretch flex-col justify-start items-start gap-3 flex`}
+                            >
+                              <div className='self-stretch text-xs font-semibold font-Manrope'>
+                                Please enter the name on your {task?.task?.platform} account that
+                                performed this task
+                              </div>
+                              <Input
+                                placeholder='Corehunter007'
+                                size='sm'
+                                className='grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
+                              />
+                            </div>
+                            <div className='self-stretch justify-between items-center inline-flex'>
+                              <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-1000 border-opacity-25 justify-center items-center gap-1 flex'>
+                                <label
+                                  htmlFor='image-upload'
+                                  className='text-center  cursor-pointer text-[10px] font-medium font-Manrope'
+                                >
+                                  Upload Proof
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      }                 
+                </div>
+                {
+                  task?.task?.task_type === 'advert' ? '' :
+                  <div className='self-stretch h-[43px]  justify-between px-4 items-end gap-2 flex'>
+                  <Button
+                    type='submit'
+                    isDisabled={loading}
+                    onClick={() => onCancel(task?.key)}
+                    className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                  >
+                    <div className='text-center text-white text-[12.83px] font-medium font-Manrope'>
+                      {loading ? <Loader /> : 'Cancel'}
                     </div>
-                  </div>
-                  <div className=' flex-col justify-start items-center gap-8 flex'>
-                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
-                      <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
-                        <input
-                          type='file'
-                          // accept='image/*'
-                          id='image-upload'
-                          name='media'
-                          className='absolute hidden w-full opacity-0 cursor-pointer'
-                          {...register('screenshot')}
-                          onChange={handleChange}
-                        />
-                        <label
-                          htmlFor='image-upload'
-                          className='text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-Manrope'
+                  </Button>
+                  <Button
+                    type='submit'
+                    isDisabled={isPending}
+                    className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                  >
+                    <div className='text-center text-black text-[12.83px] font-medium font-Manrope'>
+                      {isPending ? (
+                        <svg
+                          className='animate-spin h-5 w-5 text-current'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          xmlns='http://www.w3.org/2000/svg'
                         >
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            width='24'
-                            height='24'
-                            viewBox='0 0 24 24'
-                            fill='none'
-                          >
-                            <path
-                              d='M12 4V20M20 12L4 12'
-                              stroke='white'
-                              strokeWidth='2'
-                              strokeLinecap='round'
-                            />
-                          </svg>
-                        </label>
-                      </div>
-                      {media && (
-                        <Image
-                          src={URL.createObjectURL(media)}
-                          alt='Preview'
-                          className='w-full h-full object-cover'
-                        />
+                          <circle
+                            className='opacity-25'
+                            cx='12'
+                            cy='12'
+                            r='10'
+                            stroke='currentColor'
+                            strokeWidth='4'
+                          />
+                          <path
+                            className='opacity-75'
+                            d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                            fill='currentColor'
+                          />
+                        </svg>
+                      ) : (
+                        'Mark as Done'
                       )}
                     </div>
-
-                    <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
-                      <div
-                        className={`${
-                          task?.task?.platform === 'whatsapp'
-                            ? 'hidden'
-                            : 'grid'
-                        }  self-stretch flex-col justify-start items-start gap-3 flex`}
-                      >
-                        <div className='self-stretch text-xs font-semibold font-Manrope'>
-                          Please enter the name on your Facebook account that
-                          performed this task
-                        </div>
-                        <Input
-                          placeholder='Corehunter007'
-                          size='sm'
-                          className='grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
-                        />
-                      </div>
-                      <div className='self-stretch justify-between items-center inline-flex'>
-                        <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-1000 border-opacity-25 justify-center items-center gap-1 flex'>
-                          <label
-                            htmlFor='image-upload'
-                            className='text-center  cursor-pointer text-[10px] font-medium font-Manrope'
-                          >
-                            Upload Proof
-                          </label>
-                        </div>
-                        {/* <div className='p-2 justify-center items-center gap-1 flex'>
-                          <div className='w-[18px] h-[18px] relative' />
-                          <div className="text-center text-fuchsia-200 text-[12.83px] font-bold font-Manrope">
-                            Save
-                          </div>
-                        </div> */}
-                      </div>
-                    </div>
-                  </div>
+                  </Button>
                 </div>
-              </div>
-              <div className='self-stretch h-[43px]  justify-between items-end gap-2 flex'>
-                <Button
-                  type='submit'
-                  isDisabled={loading}
-                  onClick={() => onCancel(task?.key)}
-                  className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                >
-                  <div className='text-center text-white text-[12.83px] font-medium font-Manrope'>
-                    {loading ? <Loader /> : 'Cancel'}
-                  </div>
-                </Button>
-                <Button
-                  type='submit'
-                  isDisabled={isPending}
-                  className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                >
-                  <div className='text-center text-black text-[12.83px] font-medium font-Manrope'>
-                    {isPending ? (
-                      <svg
-                        className='animate-spin h-5 w-5 text-current'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
-                      >
-                        <circle
-                          className='opacity-25'
-                          cx='12'
-                          cy='12'
-                          r='10'
-                          stroke='currentColor'
-                          strokeWidth='4'
-                        />
-                        <path
-                          className='opacity-75'
-                          d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                          fill='currentColor'
-                        />
-                      </svg>
-                    ) : (
-                      'Mark as Done'
-                    )}
-                  </div>
-                </Button>
+                }
               </div>
             </>
           ))}

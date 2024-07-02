@@ -66,8 +66,10 @@ export default function FollowerAndLikeEngageTask() {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
+  const [payLoading, setPayLoading] = useState(false)
 
   const handlePaymentSuccess = async () => {
+    setPayLoading(true)
     try {
       const data = watch()
       const formData = new FormData()
@@ -90,6 +92,7 @@ export default function FollowerAndLikeEngageTask() {
       const res = await createAdvert(formData)
       if (res?.data.status) {
         setSuccessView('initialized')
+        setPayLoading(false)
         toast.success(res.data.message, {
           duration: 2000,
         })
@@ -102,6 +105,7 @@ export default function FollowerAndLikeEngageTask() {
       }
     } catch (error) {
       setPaymentError(error.response?.data?.message ?? error.message)
+      setPayLoading(false)
       toast.error(error.response?.data?.message ?? error.message, {
         duration: 2000,
       })
@@ -612,6 +616,7 @@ export default function FollowerAndLikeEngageTask() {
         <AdvertPaymentModal
           isOpen={isOpen}
           onClose={onClose}
+          isLoading={payLoading}
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}

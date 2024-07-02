@@ -1,11 +1,10 @@
 import { useFetchTransactionHistory } from '../../api/walletApi'
 
-export default function TransactionCard() {
-  const { data: transactionHistory } = useFetchTransactionHistory()
+export default function TransactionCard({transactionHistory}) {
   return (
     <div>
       {}
-
+      
       {transactionHistory?.length === 0 ? (
         <div className="text-[12.83px] font-medium font-['Manrope']">
           No transaction
@@ -13,7 +12,7 @@ export default function TransactionCard() {
       ) : (
         transactionHistory?.map((history, key) => (
           <div key={key} className=''>
-            <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5  bg-opacity-10 borde borderstone-900 justify-start items-center gap-6 inline-flex'>
+            <div className='w-full self-stretch p-3 bg-[#B1B1B1] my-0.5  bg-opacity-10 borde borderstone-900 justify-start items-center gap-4 sm:gap-6 inline-flex'>
               <div className='p-1.5 bg-[#B1B1B1] dark:bg-white dark:bg-opacity-10 rounded-md justify-center items-center gap-1.5 flex'>
                 {history?.transaction_type === 'payment' ? (
                   <svg
@@ -63,17 +62,17 @@ export default function TransactionCard() {
                 )}
               </div>
               <div className='flex-col justify-center items-start gap-1.5 inline-flex'>
-                <div className="self-stretch text-black dark:text-white text-[12.83px] font-medium font-['Manrope']">
+                <div className="self-stretch text-black dark:text-white text-[8px] sm:text-[12.83px] font-medium font-['Manrope']">
                   {history?.transaction_type.charAt(0).toUpperCase()+history.transaction_type.slice(1)}
                 </div>
-                {/* <div className="self-stretch dark:text-white text-black text-[8.83px] font-medium font-['Manrope']">
-                Nov 13th 2023 9:21pm
-              </div> */}
               </div>
-              <div className="grow shrink basis-0 dark:text-white text-black text-[12.83px] font-medium font-['Manrope'] md:pl-12 lg:pl-24 ">
+              <div className="grow shrink basis-0 dark:text-white text-black text-[8px] sm:text-[12.83px] font-medium font-['Manrope'] md:pl-12 lg:pl-24 ">
                 {history?.description.charAt(0).toUpperCase()+history.description.slice(1)}
               </div>
-              <div className="dark:text-white text-black text-[12.83px] font-medium font-['Manrope']">
+              <div className="grow shrink basis-0 dark:text-white text-black text-[8px] sm:text-[12.83px] font-medium font-['Manrope'] md:pl-12 lg:pl-24 ">
+                {history?.status.charAt(0).toUpperCase()+history.status.slice(1)}
+              </div>
+              <div className="dark:text-white text-black sm:text-[12.83px] text-[8px] font-medium font-['Manrope']">
                 {history?.amount?.toLocaleString()}
               </div>
             </div>
