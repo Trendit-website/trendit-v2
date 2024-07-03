@@ -7,6 +7,7 @@ import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
 import { useState, useContext } from 'react'
 import { AppearanceContext } from '../../providers/AppearanceProvider'
+import { useEffect, useRef } from 'react';
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {
@@ -33,28 +34,35 @@ export default function FundWalletModal({ isOpen, onClose }) {
     if (newWindow) newWindow.opener = null
   }
 
+  const [authUrl, setAuthUrl] = useState()
+  const linkRef = useRef(null);
+
   const onSubmit = async (data) => {
     setFocus(false)
-    try {
-      const res = await fundWallet({ data })
-      console.log(res?.data)
-      if (res.data.status) {
-        const authorizationUrl = res?.data?.authorization_url
+    fundWallet({ data })
+    .then((res) => {
+      if(res.data) {
+        setAuthUrl(res.data?.authorization_url)
         toast.success(res.data.message, {
           duration: 2000,
-        })
-        onClose()
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          openInNewTab(authorizationUrl) // Call the function to open in a new tab
-        }
+      })     
+      const authorizationUrl = res?.data?.authorization_url 
+      if (authorizationUrl) {
+         localStorage.setItem('paystack_redirect', window.location.pathname)
       }
-    } catch (error) {
+      }
+    })
+    .catch((error) => {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 2000,
+      duration: 2000,
       })
-    }
+    })
   }
+  useEffect(() => {
+    if(authUrl) {
+      linkRef.current.click()
+    }
+  }, authUrl)
   return (
     <>
       <div>
@@ -178,6 +186,15 @@ export default function FundWalletModal({ isOpen, onClose }) {
                             'Fund Wallet'
                           )}
                         </Button>
+                        <a
+                          href={localStorage.getItem('authUrl')}
+                          ref={linkRef}
+                          style={{ display: 'none' }} // Hide the link visually
+                          target="_self"
+                          rel="noopener noreferrer"
+                        >
+                          Open Link
+                        </a>
                       </div>
                     </div>
                   </div>
