@@ -86,6 +86,7 @@ export default function GeneralForm() {
   }, [profileDeatils])
 
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
+  const country = countries?.slice(1)
 
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().country
@@ -692,7 +693,7 @@ export default function GeneralForm() {
                             setValue('local_government', '')
                           }}
                         >
-                          {countries?.map((cou) => (
+                          {country?.map((cou) => (
                             <SelectItem key={cou.name} value={cou.name}>
                               {cou.name}
                             </SelectItem>
