@@ -8,6 +8,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { useState, useContext } from 'react'
 import { AppearanceContext } from '../../providers/AppearanceProvider'
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {
@@ -36,6 +37,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
 
   const [authUrl, setAuthUrl] = useState()
   const linkRef = useRef(null);
+  const naviagte = useNavigate()
 
   const onSubmit = async (data) => {
     setFocus(false)
@@ -49,6 +51,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
       const authorizationUrl = res?.data?.authorization_url 
       if (authorizationUrl) {
          localStorage.setItem('paystack_redirect', window.location.pathname)
+         window.location.href = authorizationUrl
       }
       }
     })
@@ -58,11 +61,11 @@ export default function FundWalletModal({ isOpen, onClose }) {
       })
     })
   }
-  useEffect(() => {
-    if(authUrl) {
-      linkRef.current.click()
-    }
-  }, authUrl)
+  // useEffect(() => {
+  //   if(authUrl) {
+  //     linkRef.current.click()
+  //   }
+  // }, authUrl)
   return (
     <>
       <div>
