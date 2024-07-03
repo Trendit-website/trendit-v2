@@ -29,7 +29,7 @@ export default function FundWalletModal({ isOpen, onClose }) {
   }
 
   const openInNewTab = (url) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    const newWindow = window.open(url, '_self', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
 
