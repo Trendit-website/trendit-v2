@@ -68,35 +68,36 @@ export default function TaskCard({
       formData.append('religion', religion)
       formData.append('goal', goal)
       formData.append('account_link', account_link)
-      const res = await createAdvert(formData)
-      if (res?.data.status) {
-        setSuccessView('initialized')
-        setPayLoading(false)
-        toast.success(res.data.message, {
-          duration: 2000,
+      const authorizationUrl = authorization_url
+      if (authorizationUrl) {
+        localStorage.setItem('paystack_redirect', window.location.pathname)
+        const newTab = window.open(authorizationUrl) // Open the URL in a new tab
+        newTab.opener = window
+        window.addEventListener('message', (event) => {
+          console.log('Received message in original tab:', event.data)
+          if (event.data === 'closeOriginalTab') {
+            console.log('Closing original tab...')
+            window.close()
+            // newTab.close()
+          }
         })
-        onClose()
-
-        // if (authorizationUrl) {
-        //   localStorage.setItem('paystack_redirect', window.location.pathname)
-        //   openInNewTab(authorizationUrl) // Call the function to open in a new tab
-
-        // }
-        const authorizationUrl = authorization_url
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          const newTab = window.open(authorizationUrl) // Open the URL in a new tab
-          newTab.opener = window
-          window.addEventListener('message', (event) => {
-            console.log('Received message in original tab:', event.data)
-            if (event.data === 'closeOriginalTab') {
-              console.log('Closing original tab...')
-              window.close()
-              // newTab.close()
-            }
-          })
-        }
       }
+      // const res = await createAdvert(formData)
+      // if (res?.data.status) {
+      //   setSuccessView('initialized')
+      //   setPayLoading(false)
+      //   toast.success(res.data.message, {
+      //     duration: 2000,
+      //   })
+      //   onClose()
+
+      //   // if (authorization_url) {
+      //   //   localStorage.setItem('paystack_redirect', window.location.pathname)
+      //   //   openInNewTab(authorization_url) // Call the function to open in a new tab
+
+      //   // }
+       
+      // }
     } catch (error) {
       setPaymentError(error.response?.data?.message ?? error.message)
       setPayLoading(false)
@@ -122,7 +123,7 @@ export default function TaskCard({
       formData.append('target_state', target_state)
 
       formData.append('platform', platform)
-      formData.append('amount', fee_paid)
+      formData.append('amount', amountPaid)
       formData.append('engagements_count', engagements_count)
       formData.append('posts_count', posts_count)
       formData.append('gender', gender)
