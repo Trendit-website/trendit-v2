@@ -370,6 +370,10 @@ export default function GenerateTiktokTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -396,7 +400,11 @@ export default function GenerateTiktokTask() {
                           platform={task?.task?.platform}
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
-                          goal={task?.task?.goal}                        />
+                          goal={task?.task?.goal}      
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}                  />
                       </div>
                     ))}
                   </div>
@@ -423,6 +431,10 @@ export default function GenerateTiktokTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -450,6 +462,10 @@ export default function GenerateTiktokTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -477,6 +493,10 @@ export default function GenerateTiktokTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}

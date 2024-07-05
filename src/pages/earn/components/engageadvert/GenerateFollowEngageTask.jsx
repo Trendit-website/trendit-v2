@@ -233,6 +233,13 @@ export default function GenerateFollowEngageTask() {
                       caption={task?.task?.caption}
                       price={task?.reward_money}
                       platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -257,6 +264,13 @@ export default function GenerateFollowEngageTask() {
                       caption={task?.task?.caption}
                       price={task?.reward_money}
                       platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -281,6 +295,13 @@ export default function GenerateFollowEngageTask() {
                       caption={task?.task?.caption}
                       price={task?.reward_money}
                       platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -305,6 +326,13 @@ export default function GenerateFollowEngageTask() {
                       caption={task?.task?.caption}
                       price={task?.reward_money}
                       platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -329,6 +357,13 @@ export default function GenerateFollowEngageTask() {
                       caption={task?.task?.caption}
                       price={task?.reward_money}
                       platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}

@@ -18,11 +18,13 @@ import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
 import Icons from '../../../../components/Icon'
 import { SocialAccountContext } from '../../../../context/SocialAccount'
+import { format } from 'date-fns'
 
 export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: fetchTask } = usePerformTask(selected)
+  console.log(fetchTask)
   const {
     isOpen: isOpenVerify,
     onOpen: onOpenVerify,
@@ -354,6 +356,10 @@ export default function GenerateTwTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -381,6 +387,10 @@ export default function GenerateTwTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -408,6 +418,10 @@ export default function GenerateTwTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -435,6 +449,10 @@ export default function GenerateTwTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -462,6 +480,10 @@ export default function GenerateTwTask() {
                           task_id={task?.key}
                           task_type={task?.task?.task_type}
                           goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}

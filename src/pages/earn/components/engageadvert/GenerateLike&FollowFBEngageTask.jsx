@@ -285,6 +285,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                       task_id={task?.key}
                       task_type={task?.task?.task_type}
                       goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -312,6 +316,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                       task_id={task?.key}
                       task_type={task?.task?.task_type}
                       goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -339,6 +347,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                       task_id={task?.key}
                       task_type={task?.task?.task_type}
                       goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -366,6 +378,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                       task_id={task?.key}
                       task_type={task?.task?.task_type}
                       goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -393,6 +409,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                       task_id={task?.key}
                       task_type={task?.task?.task_type}
                       goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}

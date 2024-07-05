@@ -3,7 +3,7 @@
 import Icons from "../../../components/Icon";
 import { useNavigate } from "react-router-dom";
 
-export default function IgGeneratedTask({ status ,caption, price, platform, task_id, task_type, goal}) {
+export default function IgGeneratedTask({ status ,caption, when, price, platform, task_id, task_type, goal}) {
   const navigate = useNavigate()
   return (     
         <div 
@@ -38,17 +38,17 @@ export default function IgGeneratedTask({ status ,caption, price, platform, task
                 )
               }
             </div>
-            <div className="self-stretch text-[#B1B1B1] text-[10px] font-normal font-['Manrope']">
-              Jan 12th 9:27pm
+            <div className="self-stretch text-black dark:text-[#B1B1B1] text-[10px] font-normal font-['Manrope']">
+              {when}
             </div>
             <div className='py-[4.50px] justify-start items-center gap-1.5 inline-flex'>
               <div className='justify-start items-center gap-[1.50px] flex'>
                    <Icons type='wallet' />
-                <div className="opacity-50 text-[#B1B1B1] text-[10.50px] font-medium font-['Manrope']">
+                <div className="opacity-50 text-black dark:text-[#B1B1B1] text-[10.50px] font-medium font-['Manrope']">
                   Earning:
                 </div>
               </div>
-              <div className="text-[#B1B1B1] text-[10.50px] font-bold font-['Manrope']">
+              <div className="text-black dark:text-[#B1B1B1] text-[10.50px] font-bold font-['Manrope']">
                 ₦{price} per Page Like and Follow
               </div>
             </div>
