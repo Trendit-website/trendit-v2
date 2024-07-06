@@ -27,7 +27,7 @@ export default function GenerateTiktokTask() {
     onOpen: onOpenVerify,
     onClose: onCloseVerify,
   } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'tiktok')
 
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
@@ -148,7 +148,7 @@ export default function GenerateTiktokTask() {
               </div>
             </div>
             {
-              active?.status === 'verified' 
+              active?.status  
             ? 
             (
               <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
@@ -170,7 +170,12 @@ export default function GenerateTiktokTask() {
               </div> 
              )
             : (
-              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+             ''
+            )}
+          </div>
+            {
+              active?.status !== 'verified' && (
+                <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className="text-center  text-base font-bold font-['Manrope']">
                     Link your TikTok Accounts
@@ -224,9 +229,8 @@ export default function GenerateTiktokTask() {
                   />
                 </svg>
               </div>
-            )}
-          </div>
-
+              )
+            }
           {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>

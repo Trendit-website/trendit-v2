@@ -68,7 +68,7 @@ export default function SocialAccount() {
                       <a href={social?.link} target='_blank' className='text-black dark:text-white text-[12px] md:text-[14px]'>{social?.link?.length > 30 ? social?.link?.substring(0, 30) + '(...)' : social?.link  }</a> : (social?.status) 
                     }                  
               </div>
-              <p className={`flex items-center justify-between text-[12px] md:text-[14px] font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]'}`}>
+              <p className={`flex items-center justify-between text-[12px] md:text-[14px] font-bold gap-x-2 ${social?.status === 'pending' && 'text-yellow-400' || social?.status === 'verified' && 'text-green-500' || social?.status === 'idle' && 'text-[#FF3D00]' || social?.status === 'rejected' && 'text-[#FF3D00]'}`}>
                {social?.status?.charAt(0).toUpperCase()+social?.status?.slice(1)}
                 {
                   social?.status === 'idle' ? '' : 

@@ -23,7 +23,7 @@ import { format } from 'date-fns'
 export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'x')
   console.log(fetchTask)
   const {
     isOpen: isOpenVerify,
@@ -40,7 +40,7 @@ export default function GenerateTwTask() {
   const getSocial = () => {
     if(socialAccount) {
         for (const item of socialAccount) {
-      item?.platform === 'x' ? setActive(item)
+      item?.platform === 'x' ? (setActive(item))
       : ''     
     }
     } else {
@@ -143,7 +143,7 @@ export default function GenerateTwTask() {
               </div>
             </div>
             {
-                active?.status === 'verified' ? 
+                active?.status  ? 
                 (
                   <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
                   <h2 className='text-zinc-700 dark:text-white font-bold text-[16px]'>Your X Profile Account</h2>
@@ -165,7 +165,11 @@ export default function GenerateTwTask() {
                  )
                 : 
             (
-              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+              ''
+            ) }
+            {
+              active?.status !== 'verified' && (
+                <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className='text-center  text-base font-bold font-Manrope'>
                     Link your X account
@@ -211,7 +215,9 @@ export default function GenerateTwTask() {
                   />
                 </svg>
               </div>
-            ) }
+              )
+            }
+            
           </div>
           {active?.status === 'verified' && (
             <>
