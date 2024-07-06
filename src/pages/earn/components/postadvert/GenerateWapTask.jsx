@@ -18,7 +18,7 @@ import toast from 'react-hot-toast'
 export default function GenerateWapTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'Whatsapp')
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()

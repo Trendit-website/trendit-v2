@@ -10,11 +10,11 @@ export const useGenerateTask = () => {
   })
 }
 
-export const usePerformTask = (status) => {
+export const usePerformTask = (status, platform) => {
   return useQuery({
-    queryKey: ['perform_task', status],
+    queryKey: ['perform_task', status, platform],
     queryFn: async () => {
-      const res = await API.get(`/performed-tasks?status=${status}`)
+      const res = await API.get(`/performed-tasks?status=${status}&platform=${platform}`)
       return res?.data?.performed_tasks
     },
   })

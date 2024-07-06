@@ -40,12 +40,26 @@ export default function Signup() {
   })
   useEffect(() => {
     if(debouncedValue) {
-      API.post('/check-username', {'username': debouncedValue})
-      .then((response) => setExist(response.data?.message))
-      .catch((error) => (setError('username', {
-        type: 'manual',
-        message: error?.response?.data?.message
-      })))
+      if(/[a-zA-Z]/.test(debouncedValue) && /[0-9]/.test(debouncedValue)) {
+        API.post('/check-username', {'username': debouncedValue})
+        .then((response) => setExist(response.data?.message))
+        .catch((error) => (setError('username', {
+          type: 'manual',
+          message: error?.response?.data?.message
+        })))
+      } else if(/[a-zA-Z]/.test(debouncedValue)) {
+        API.post('/check-username', {'username': debouncedValue})
+        .then((response) => setExist(response.data?.message))
+        .catch((error) => (setError('username', {
+          type: 'manual',
+          message: error?.response?.data?.message
+        })))
+      } else {
+        setError('username', {
+          type: 'manual',
+          message: 'Numeric username is not allowed'
+        })
+      }
     }
   }, [debouncedValue])
 
@@ -57,7 +71,17 @@ export default function Signup() {
       ''
     );
   };
-
+  const validateUsername = (value) => {
+    const containsLetters = /[a-zA-Z]/.test(value);
+    const containsNumbers = /[0-9]/.test(value);
+    if(containsLetters) {
+      return true
+    }
+    if(containsLetters && containsNumbers) {
+      return true
+    }
+    return 'Username cannot be Numeric'
+  }
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
@@ -170,7 +194,9 @@ export default function Signup() {
                       className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                     />
                   )}
-                  rules={{ required: true }}
+                  rules={{ required: true, 
+                    validate: validateUsername
+                  }}
                 />
                   {/* {isExist ? <p className='text-green-500'>{isExist}</p> : ''} */}
               </div>
