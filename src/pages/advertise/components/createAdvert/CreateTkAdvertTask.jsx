@@ -188,6 +188,7 @@ export default function CreateTkAdvertTask() {
       formData.append('religion', data.religion)
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
+      formData.append('reward_money', '110')
       // console.log(data, 'form')
       const res = await createAdvert(formData)
       if (res?.data.status) {
@@ -232,6 +233,7 @@ export default function CreateTkAdvertTask() {
       formData.append('religion', data.religion)
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
+      formData.append('reward_money', '110')
 
       console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)

@@ -83,6 +83,7 @@ export default function CommentEngageTask() {
       formData.append('goal', 'comment')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '20')
 
       // Update the amount state
 
@@ -127,6 +128,7 @@ export default function CommentEngageTask() {
       formData.append('goal', 'comment')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '20')
 
       const res = await createAdvertWithWallet(formData)
       console.log(res, 'res')
