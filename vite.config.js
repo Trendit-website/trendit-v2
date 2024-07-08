@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'android-chrome-192x192.png', 'android-chrome-512x512.png'],
       manifest: {
-        name: 'Trendit³ staging',
-        short_name: 'Trendit³ staging',
+        name: 'Trendit³',
+        short_name: 'Trendit³',
         description: 'Get paid for your engagements',
         display: "standalone",
         theme_color: '#ffffff',
