@@ -31,8 +31,9 @@ export default function ConfirmTaskModal({
         onClose()
       } else if (res.status === 200) {
         toast.success(res.data.message)
+        console.log(res)
         onClose()
-        navigate(`/dashboard/earn-advert-task`)
+        navigate(`/dashboard/earn-advert-task/${res.data?.generated_task?.key}`)
       } else {
         onClose()
       }
@@ -68,7 +69,7 @@ export default function ConfirmTaskModal({
                 <div className="w-[253px] text-center dark:text-[#B0B0B0] text-black text-xs font-normal font-['Manrope']">
                   {description
                     ? description
-                    : ` Are you sure you want to generate your next ${goal} task now.
+                    : ` Are you sure you want to generate your next ${goal || platform} task now.
                   You have 1 hour to perform this task. Please confirm only if
                   you are ready to perform the task.`}
                 </div>

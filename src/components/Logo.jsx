@@ -1,53 +1,29 @@
 import { Image } from '@nextui-org/react'
 import logo from '../assets/Logo_Default.svg'
 import lightLogo from '../assets/light_Logo.svg'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import {
   AppearanceContext,
   SetAppearanceContext,
 } from '../providers/AppearanceProvider'
 import API from '../services/AxiosInstance'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie';
 
 export default function Logo() {
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
+  const navigate = useNavigate()
 
-  useEffect(() => {
-    if (userPrefrences) {
-       userPrefrences === 'light' || localStorage.getItem('appearance')  === 'light' ? ( 
-        document.body.classList.remove('dark'),
-        document.body.classList.remove('text-foreground'),
-        document.body.classList.remove('bg-background')
-      )
-       : (
-        document.body.classList.add('dark'),
-        document.body.classList.add('text-foreground'),
-        document.body.classList.add('bg-background')
-      )
-      
-    }
-  }, [userPrefrences])
-
-  const toggleAppearance = () => {
-    const newPreference = userPrefrences === 'dark' ? 'light' : 'dark'
-    API.post('/settings/preferences', {
-      setting_name: 'appearance',
-      value: newPreference,
-    })
-      .then(() => {
-        // toast.success(response.data?.message)
-        setPrefrence(newPreference)
-      })
-      .catch((error) =>
-        toast.error(error.response?.data?.message ?? error.message)
-      )
-  }
-
+  // useEffect(() => {
+   
+  // }, [userPrefrences])
+  const system = window.matchMedia('(prefers-color-scheme: light)')
   return (
     <div>
-      <div onClick={toggleAppearance}>
-        {userPrefrences === 'dark' || localStorage.getItem('appearance') === 'dark' ? (
+      <div>
+        {userPrefrences === 'dark' || Cookies.get('appearance') === 'dark' || userPrefrences === 'system' ? (
           <Image className='w-20 md:w-full ml-3' src={logo} />
         ) : (
           <Image className='w-20 md:w-full ml-3' src={lightLogo} />

@@ -77,3 +77,21 @@ export const useFetchTransactionHistory = () => {
     },
   })
 }
+export const useFetchTransactionHistoryEarned = () => {
+  return useQuery({
+    queryKey: ['transaction_type=earned'],
+    queryFn: async () => {
+      const res = await API.get(`/transactions?transaction_type=earned`)
+      return res?.data?.transactions_history
+    },
+  })
+}
+export const useFetchTransactionHistoryOrder = () => {
+  return useQuery({
+    queryKey: ['transaction_type=orders'],
+    queryFn: async () => {
+      const res = await API.get(`/transactions?transaction_type=orders`)
+      return res?.data?.transactions_history
+    },
+  })
+}

@@ -2,19 +2,21 @@
 
 import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
-import { useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetAdvertTask} from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
+import Icons from '../../../../components/Icon'
+import { SocialAccountContext } from '../../../../context/SocialAccount'
 
 export default function GenerateIgTask() {
   const [selected, setSelected] = useState()
@@ -25,25 +27,45 @@ export default function GenerateIgTask() {
     onOpen: onOpenVerify,
     onClose: onCloseVerify,
   } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'instagram')
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const { data: profileDeatils } = useGetProfile()
+  const [active, setActive] = useState()
+  const socialAccount = useContext(SocialAccountContext)
+  const getSocial = () => {
+    if(socialAccount) {
+      for (const item of socialAccount) {
+        item?.platform === 'instagram' ? setActive(item)
+        : ''     
+      }
+    } else {
+      for (const item of profileDeatils?.social_profiles) {
+        item?.platform === 'instagram' ? setActive(item)
+        : ''     
+      }
+    }
+  }
+  useEffect(() => {
+    getSocial()
+  }, [socialAccount, active])
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
     if (
-      profileDeatils?.social_links?.instagram_verified === 'rejected' ||
-      profileDeatils?.social_links?.instagram_verified === 'idle'
+      active?.status === 'rejected' ||
+      active?.status === 'idle' ||
+      !active?.status
     ) {
       onOpenVerify()
-    } else if (profileDeatils?.social_links?.instagram_verified === 'pending') {
-      toast.error('Verification request has been sent')
+    } else if (active?.status === 'pending') {
+      toast.success('Verification pending')
     } else {
       onOpenVerify()
     }
     queryClient.invalidateQueries({ queryKey: ['get_profile'] })
   }
+  const { data: advertTask} = useGetAdvertTask('Instagram')
 
   const navigate = useNavigate()
   return (
@@ -75,7 +97,7 @@ export default function GenerateIgTask() {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start flex'>
-            <div className='self-stretch h-[347px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
+            <div className='self-stretch h-[447px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
               <div
                 style={{
                   backgroundImage: `url(${frameImage})`,
@@ -135,96 +157,122 @@ export default function GenerateIgTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="dark:text-black text-white text-sm font-medium font-['Manrope']">
+                  <div className="dark:text-black text-white text-sm text-center font-medium font-['Manrope']">
                     Post adverts on Instagram
                   </div>
-                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like Instagram Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  <div className="self-stretch dark:text-black text-center text-white w-11/12 m-auto text-xs font-normal font-['Manrope']">
+                  Promote advertisements for different businesses and top brands on your Instagam page and earn ₦110 for each post. The more you share, the more you earn. 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      {fetchTask?.length}Task available
+                    {
+                        advertTask?.length ? `${advertTask?.length} Task available` : 'No task available'
+                      }
                     </div>
+                  </div>
+                </div>
+              </div>            
+            </div>
+            {
+              active?.status ? 
+             (
+              <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
+              <h2 className='text-zinc-700 dark:text-white font-bold text-[16px]'>Your Instagram Profile Account</h2>
+              {
+                active?.status === 'verified' ? 
+                <p className='text-blue-300 dark:text-white font-semibold text-[12px] w-11/12'>
+                Your Instagram task must be done from the below Instagram profile which has been linked to your Trendit³ account
+                </p> : ''
+               }
+              <div className='flex items-center gap-x-2'>
+                  <div className='bg-zinc-700 dark:bg-white flex items-center justify-between text-black bg-opacity-50 py-2 w-11/12 md:w-12/12 px-4 rounded'>
+                      {active?.link?.length > 30 ? active?.link?.substring(0, 30) + '(...)' : active?.link}
+                      <div className={`${active?.status === 'verified' && 'text-green-800' || active?.status === 'pending' && 'text-yellow-700' || active?.status === 'idle' && 'text[#FF3D00]' || active?.status === 'rejected' && 'text-[#FF3D00]'} py-[6px] px-[6px] text-center rounded-full font-semibold`}>
+                        {active?.status.charAt(0).toUpperCase()+active?.status?.slice(1)}
+                      </div>
+                  </div>
+              </div>
+              </div> 
+             )
+             :
+              (
+                ''
+              )
+            }
+          </div>
+          {
+            active?.status !== 'verified' && (
+              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+              <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
+                <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
+                  Link your Instagram Account
+                </div>
+                <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
+                  You need to link your Instagram Accounts to Trendit before
+                  you can start earning with your Instagram Accounts . Click
+                  the button below to link your Instagram Accounts now.
+                </div>
+                <div
+                  onClick={handOpenSocialModal}
+                  className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
+                >
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='20'
+                    height='20'
+                    viewBox='0 0 20 20'
+                    fill='none'
+                  >
+                    <path
+                      d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
+                      fill='url(#paint0_radial_3736_28371)'
+                    />
+                    <path
+                      d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
+                      fill='url(#paint1_radial_3736_28371)'
+                    />
+                    <path
+                      d='M10.0007 2.1875C7.87898 2.1875 7.61266 2.1968 6.77938 2.23469C5.94766 2.27281 5.37992 2.40445 4.8832 2.59766C4.3693 2.79719 3.93344 3.06414 3.49922 3.49852C3.06461 3.93281 2.79766 4.36867 2.5975 4.88234C2.40375 5.37922 2.27195 5.94719 2.23453 6.77852C2.19727 7.61188 2.1875 7.87828 2.1875 10.0001C2.1875 12.1219 2.19688 12.3873 2.23469 13.2206C2.27297 14.0523 2.40461 14.6201 2.59766 15.1168C2.79734 15.6307 3.0643 16.0666 3.49867 16.5008C3.93281 16.9354 4.36867 17.203 4.88219 17.4025C5.3793 17.5957 5.94711 17.7273 6.77867 17.7655C7.61203 17.8034 7.87813 17.8127 9.99977 17.8127C12.1217 17.8127 12.3872 17.8034 13.2205 17.7655C14.0522 17.7273 14.6205 17.5957 15.1177 17.4025C15.6313 17.203 16.0666 16.9354 16.5006 16.5008C16.9352 16.0666 17.2021 15.6307 17.4023 15.117C17.5944 14.6201 17.7262 14.0522 17.7653 13.2208C17.8027 12.3875 17.8125 12.1219 17.8125 10.0001C17.8125 7.87828 17.8027 7.61203 17.7653 6.77867C17.7262 5.94695 17.5944 5.3793 17.4023 4.88258C17.2021 4.36867 16.9352 3.93281 16.5006 3.49852C16.0661 3.06398 15.6315 2.79703 15.1172 2.59773C14.6191 2.40445 14.0511 2.27273 13.2194 2.23469C12.386 2.1968 12.1207 2.1875 9.99828 2.1875H10.0007ZM9.29984 3.59539C9.50789 3.59508 9.74 3.59539 10.0007 3.59539C12.0867 3.59539 12.3339 3.60289 13.1577 3.64031C13.9194 3.67516 14.3328 3.80242 14.6082 3.90938C14.9728 4.05094 15.2327 4.22023 15.506 4.49375C15.7795 4.76719 15.9487 5.02758 16.0906 5.39219C16.1976 5.66719 16.325 6.08063 16.3597 6.84234C16.3971 7.66594 16.4052 7.91328 16.4052 9.99828C16.4052 12.0833 16.3971 12.3307 16.3597 13.1542C16.3248 13.9159 16.1976 14.3294 16.0906 14.6045C15.9491 14.9691 15.7795 15.2287 15.506 15.502C15.2326 15.7754 14.973 15.9446 14.6082 16.0863C14.3331 16.1937 13.9194 16.3206 13.1577 16.3555C12.3341 16.3929 12.0867 16.401 10.0007 16.401C7.91461 16.401 7.66734 16.3929 6.84383 16.3555C6.08211 16.3203 5.66867 16.193 5.39305 16.0861C5.02852 15.9445 4.76805 15.7752 4.49461 15.5018C4.22117 15.2284 4.05195 14.9686 3.91 14.6038C3.80305 14.3287 3.67562 13.9153 3.64094 13.1536C3.60352 12.33 3.59602 12.0827 3.59602 9.99633C3.59602 7.91008 3.60352 7.66398 3.64094 6.84039C3.67578 6.07867 3.80305 5.66523 3.91 5.38984C4.05164 5.02523 4.22117 4.76484 4.49469 4.49141C4.76813 4.21797 5.02852 4.04867 5.39312 3.9068C5.66852 3.79938 6.08211 3.67242 6.84383 3.63742C7.56453 3.60484 7.84383 3.59508 9.29984 3.59344V3.59539ZM14.171 4.89258C13.6534 4.89258 13.2335 5.31211 13.2335 5.82977C13.2335 6.34734 13.6534 6.76727 14.171 6.76727C14.6886 6.76727 15.1085 6.34734 15.1085 5.82977C15.1085 5.31219 14.6886 4.89227 14.171 4.89227V4.89258ZM10.0007 5.98797C7.78508 5.98797 5.98867 7.78438 5.98867 10.0001C5.98867 12.2158 7.78508 14.0113 10.0007 14.0113C12.2164 14.0113 14.0122 12.2158 14.0122 10.0001C14.0122 7.78445 12.2163 5.98797 10.0005 5.98797H10.0007ZM10.0007 7.39586C11.4389 7.39586 12.6049 8.56172 12.6049 10.0001C12.6049 11.4383 11.4389 12.6043 10.0007 12.6043C8.56242 12.6043 7.39656 11.4383 7.39656 10.0001C7.39656 8.56172 8.56242 7.39586 10.0007 7.39586Z'
+                      fill='white'
+                    />
+                    <defs>
+                      <radialGradient
+                        id='paint0_radial_3736_28371'
+                        cx='0'
+                        cy='0'
+                        r='1'
+                        gradientUnits='userSpaceOnUse'
+                        gradientTransform='translate(5.3125 21.5404) rotate(-90) scale(19.8215 18.4355)'
+                      >
+                        <stop stopColor='#FFDD55' />
+                        <stop offset='0.1' stopColor='#FFDD55' />
+                        <stop offset='0.5' stopColor='#FF543E' />
+                        <stop offset='1' stopColor='#C837AB' />
+                      </radialGradient>
+                      <radialGradient
+                        id='paint1_radial_3736_28371'
+                        cx='0'
+                        cy='0'
+                        r='1'
+                        gradientUnits='userSpaceOnUse'
+                        gradientTransform='translate(-3.35008 1.4407) rotate(78.681) scale(8.86031 36.5225)'
+                      >
+                        <stop stopColor='#3771C8' />
+                        <stop offset='0.128' stopColor='#3771C8' />
+                        <stop
+                          offset='1'
+                          stopColor='#6600FF'
+                          stopOpacity='0'
+                        />
+                      </radialGradient>
+                    </defs>
+                  </svg>
+                  <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
+                    Link Instagram account
                   </div>
                 </div>
               </div>
-            </div>
-            {profileDeatils?.social_links?.instagram_verified === 'pending' ||
-            profileDeatils?.social_links?.instagram_verified === 'idle' ||
-            profileDeatils?.social_links?.instagram_verified === 'rejected' ? (
-              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
-                <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className="text-center dark:text-white text-stone-900 text-base font-bold font-['Manrope']">
-                    Link your Instagram Account
-                  </div>
-                  <div className="self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-['Manrope']">
-                    You need to link your Instagram Accounts to Trendit before
-                    you can start earning with your Instagram Accounts . Click
-                    the button below to link your Instagram Accounts now.
-                  </div>
-                  <div
-                    onClick={handOpenSocialModal}
-                    className='p-2 dark:bg-stone-900 cursor-pointer bg-white border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
-                  >
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='20'
-                      height='20'
-                      viewBox='0 0 20 20'
-                      fill='none'
-                    >
-                      <path
-                        d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
-                        fill='url(#paint0_radial_3736_28371)'
-                      />
-                      <path
-                        d='M15.3125 0H4.6875C2.09867 0 0 2.09867 0 4.6875V15.3125C0 17.9013 2.09867 20 4.6875 20H15.3125C17.9013 20 20 17.9013 20 15.3125V4.6875C20 2.09867 17.9013 0 15.3125 0Z'
-                        fill='url(#paint1_radial_3736_28371)'
-                      />
-                      <path
-                        d='M10.0007 2.1875C7.87898 2.1875 7.61266 2.1968 6.77938 2.23469C5.94766 2.27281 5.37992 2.40445 4.8832 2.59766C4.3693 2.79719 3.93344 3.06414 3.49922 3.49852C3.06461 3.93281 2.79766 4.36867 2.5975 4.88234C2.40375 5.37922 2.27195 5.94719 2.23453 6.77852C2.19727 7.61188 2.1875 7.87828 2.1875 10.0001C2.1875 12.1219 2.19688 12.3873 2.23469 13.2206C2.27297 14.0523 2.40461 14.6201 2.59766 15.1168C2.79734 15.6307 3.0643 16.0666 3.49867 16.5008C3.93281 16.9354 4.36867 17.203 4.88219 17.4025C5.3793 17.5957 5.94711 17.7273 6.77867 17.7655C7.61203 17.8034 7.87813 17.8127 9.99977 17.8127C12.1217 17.8127 12.3872 17.8034 13.2205 17.7655C14.0522 17.7273 14.6205 17.5957 15.1177 17.4025C15.6313 17.203 16.0666 16.9354 16.5006 16.5008C16.9352 16.0666 17.2021 15.6307 17.4023 15.117C17.5944 14.6201 17.7262 14.0522 17.7653 13.2208C17.8027 12.3875 17.8125 12.1219 17.8125 10.0001C17.8125 7.87828 17.8027 7.61203 17.7653 6.77867C17.7262 5.94695 17.5944 5.3793 17.4023 4.88258C17.2021 4.36867 16.9352 3.93281 16.5006 3.49852C16.0661 3.06398 15.6315 2.79703 15.1172 2.59773C14.6191 2.40445 14.0511 2.27273 13.2194 2.23469C12.386 2.1968 12.1207 2.1875 9.99828 2.1875H10.0007ZM9.29984 3.59539C9.50789 3.59508 9.74 3.59539 10.0007 3.59539C12.0867 3.59539 12.3339 3.60289 13.1577 3.64031C13.9194 3.67516 14.3328 3.80242 14.6082 3.90938C14.9728 4.05094 15.2327 4.22023 15.506 4.49375C15.7795 4.76719 15.9487 5.02758 16.0906 5.39219C16.1976 5.66719 16.325 6.08063 16.3597 6.84234C16.3971 7.66594 16.4052 7.91328 16.4052 9.99828C16.4052 12.0833 16.3971 12.3307 16.3597 13.1542C16.3248 13.9159 16.1976 14.3294 16.0906 14.6045C15.9491 14.9691 15.7795 15.2287 15.506 15.502C15.2326 15.7754 14.973 15.9446 14.6082 16.0863C14.3331 16.1937 13.9194 16.3206 13.1577 16.3555C12.3341 16.3929 12.0867 16.401 10.0007 16.401C7.91461 16.401 7.66734 16.3929 6.84383 16.3555C6.08211 16.3203 5.66867 16.193 5.39305 16.0861C5.02852 15.9445 4.76805 15.7752 4.49461 15.5018C4.22117 15.2284 4.05195 14.9686 3.91 14.6038C3.80305 14.3287 3.67562 13.9153 3.64094 13.1536C3.60352 12.33 3.59602 12.0827 3.59602 9.99633C3.59602 7.91008 3.60352 7.66398 3.64094 6.84039C3.67578 6.07867 3.80305 5.66523 3.91 5.38984C4.05164 5.02523 4.22117 4.76484 4.49469 4.49141C4.76813 4.21797 5.02852 4.04867 5.39312 3.9068C5.66852 3.79938 6.08211 3.67242 6.84383 3.63742C7.56453 3.60484 7.84383 3.59508 9.29984 3.59344V3.59539ZM14.171 4.89258C13.6534 4.89258 13.2335 5.31211 13.2335 5.82977C13.2335 6.34734 13.6534 6.76727 14.171 6.76727C14.6886 6.76727 15.1085 6.34734 15.1085 5.82977C15.1085 5.31219 14.6886 4.89227 14.171 4.89227V4.89258ZM10.0007 5.98797C7.78508 5.98797 5.98867 7.78438 5.98867 10.0001C5.98867 12.2158 7.78508 14.0113 10.0007 14.0113C12.2164 14.0113 14.0122 12.2158 14.0122 10.0001C14.0122 7.78445 12.2163 5.98797 10.0005 5.98797H10.0007ZM10.0007 7.39586C11.4389 7.39586 12.6049 8.56172 12.6049 10.0001C12.6049 11.4383 11.4389 12.6043 10.0007 12.6043C8.56242 12.6043 7.39656 11.4383 7.39656 10.0001C7.39656 8.56172 8.56242 7.39586 10.0007 7.39586Z'
-                        fill='white'
-                      />
-                      <defs>
-                        <radialGradient
-                          id='paint0_radial_3736_28371'
-                          cx='0'
-                          cy='0'
-                          r='1'
-                          gradientUnits='userSpaceOnUse'
-                          gradientTransform='translate(5.3125 21.5404) rotate(-90) scale(19.8215 18.4355)'
-                        >
-                          <stop stopColor='#FFDD55' />
-                          <stop offset='0.1' stopColor='#FFDD55' />
-                          <stop offset='0.5' stopColor='#FF543E' />
-                          <stop offset='1' stopColor='#C837AB' />
-                        </radialGradient>
-                        <radialGradient
-                          id='paint1_radial_3736_28371'
-                          cx='0'
-                          cy='0'
-                          r='1'
-                          gradientUnits='userSpaceOnUse'
-                          gradientTransform='translate(-3.35008 1.4407) rotate(78.681) scale(8.86031 36.5225)'
-                        >
-                          <stop stopColor='#3771C8' />
-                          <stop offset='0.128' stopColor='#3771C8' />
-                          <stop
-                            offset='1'
-                            stopColor='#6600FF'
-                            stopOpacity='0'
-                          />
-                        </radialGradient>
-                      </defs>
-                    </svg>
-                    <div className="text-center dark:text-white text-stone-900 text-[12.83px] font-bold font-['Manrope']">
-                      Link Instagram account
-                    </div>
-                  </div>
-                </div>
-                <svg
+              <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='24'
                   height='24'
@@ -237,12 +285,11 @@ export default function GenerateIgTask() {
                     strokeLinecap='round'
                     className='dark:stroke-white stroke-[#B1B1B1] '
                   />
-                </svg>
-              </div>
-            ) : null}
-          </div>
-
-          {profileDeatils?.social_links?.instagram_verified === 'verified' && (
+              </svg>
+            </div>
+            )
+          }
+          {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
@@ -374,13 +421,21 @@ export default function GenerateIgTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -397,13 +452,21 @@ export default function GenerateIgTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -420,13 +483,21 @@ export default function GenerateIgTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -443,13 +514,21 @@ export default function GenerateIgTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -466,13 +545,21 @@ export default function GenerateIgTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -501,15 +588,15 @@ export default function GenerateIgTask() {
                     <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
                       Need quick cash to earn?
                     </div>
-                    <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
+                    <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
-                      atleast 1,000 Followers on your social media account.
+                      atleast 500 Followers on your social media account.
                     </div>
                   </div>
                   <div
-                    onClick={onOpen}
+                    onClick={() => advertTask?.length !== 0 ? onOpen() : toast.error('No task is available')}
                     className='w-[290px] dark:bg-white px-6 cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <svg
@@ -529,13 +616,17 @@ export default function GenerateIgTask() {
                       Generate task
                     </div>
                   </div>
+                  <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Instagram advert task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>
                 </div>
               )}
             </>
           )}
         </div>
       </div>
-
+      
       <ConfirmTaskModal
         isOpen={isOpen}
         onClose={onClose}
@@ -546,6 +637,8 @@ export default function GenerateIgTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='instagram'
+          platform='instagram'
+          icon='instagram'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

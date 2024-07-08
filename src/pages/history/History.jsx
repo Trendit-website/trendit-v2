@@ -26,14 +26,6 @@ export default function History() {
       key: 'pending',
       title: 'Pending',
     },
-    {
-      key: 'approved',
-      title: 'Completed',
-    },
-    {
-      key: 'declined',
-      title: 'Archived',
-    },
   ]
   const [selectedHistory, setSelectedHistory] = useState(historyTabs[0].key)
   const [adverts, setAdvert] = useState()
@@ -55,7 +47,7 @@ export default function History() {
   }
   const getAdvert = () => {
     API.get('/user/tasks')
-      .then((response) => setAdvert(response.data.all_tasks))
+      .then((response) => (setAdvert(response.data.all_tasks), console.log(response)))
       .catch((error) => console.error(error))
   }
   useEffect(() => {
@@ -189,7 +181,7 @@ export default function History() {
                             : ''
                         }`}
                       >
-                        {tab.title}
+                        {tab.title} orders
                       </p>
                     ))}
                   </div>
@@ -255,20 +247,12 @@ export default function History() {
                   ) : (
                     adverts?.map((advert, index) => (
                       <TaskCard
-                        key={index}
-                        goal={advert?.caption || advert?.goal}
-                        platform={advert?.platform}
-                        task_type={advert?.task_type}
-                        when={format(
-                          new Date(advert.date_created),
-                          'yyyy-MM-dd HH:mm:ss'
-                        )}
-                        status={advert?.status}
-                        // onNextPage={() =>
-                        //   advert.status === 'pending'
-                        //     ? handleRoute(advert?.task_key)
-                        //     : ''
-                        // }
+                      key={index}
+                      {...advert}
+                      when={format(
+                        new Date(advert.date_created),
+                        'yyyy-MM-dd HH:mm:ss'
+                      )}
                         onNextPage={() => handleRoute(advert?.task_key)}
                       />
                     ))
@@ -302,13 +286,11 @@ export default function History() {
                       eachAdvert?.map((advert, index) => (
                         <TaskCard
                           key={index}
-                          goal={advert?.goal || advert?.caption}
-                          platform={advert?.platform}
+                          {...advert}
                           when={format(
                             new Date(advert.date_created),
                             'yyyy-MM-dd HH:mm:ss'
                           )}
-                          status={advert?.status}
                           onNextPage={() =>
                             advert.status === 'pending'
                               ? handleRoute(advert?.task_key)

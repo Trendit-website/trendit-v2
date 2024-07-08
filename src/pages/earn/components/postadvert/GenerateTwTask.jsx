@@ -3,24 +3,28 @@
 import { useNavigate } from 'react-router-dom'
 // import frameImage from '../../../../assets/engageIcon237873.svg'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetAdvertTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
+import Icons from '../../../../components/Icon'
+import { SocialAccountContext } from '../../../../context/SocialAccount'
+import { format } from 'date-fns'
 
 export default function GenerateTwTask() {
   const [selected, setSelected] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'x')
+  console.log(fetchTask)
   const {
     isOpen: isOpenVerify,
     onOpen: onOpenVerify,
@@ -31,14 +35,34 @@ export default function GenerateTwTask() {
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  const [active, setActive] = useState()
+  const socialAccount = useContext(SocialAccountContext)
+  const getSocial = () => {
+    if(socialAccount) {
+        for (const item of socialAccount) {
+      item?.platform === 'x' ? (setActive(item))
+      : ''     
+    }
+    } else {
+       for (const item of profileDeatils?.social_profiles) {
+        item?.platform === 'x' ? setActive(item)
+        : ''     
+      }
+    }
+   
+  }
+  useEffect(() => {
+    getSocial()
+  }, [socialAccount, active])
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
-    if (profileDeatils?.social_links?.x_verified === 'pending') {
-      toast.error('Verification request has been sent')
+    if (active?.status === 'pending') {
+      toast.success('Verification pending')
     } else if (
-      profileDeatils?.social_links?.x_verified === 'rejected' ||
-      profileDeatils?.social_links?.x_verified === 'idle'
+      active?.status === 'rejected' ||
+      active?.status === 'idle' ||
+      !active?.status
     ) {
       onOpenVerify()
     } else {
@@ -46,6 +70,7 @@ export default function GenerateTwTask() {
     }
     queryClient.invalidateQueries({ queryKey: ['get_profile'] })
   }
+  const { data: advertTask} = useGetAdvertTask('X')
 
   return (
     <>
@@ -76,7 +101,7 @@ export default function GenerateTwTask() {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start flex'>
-            <div className='self-stretch h-[347px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
+            <div className='self-stretch h-[447px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
               <div
                 style={{
                   backgroundImage: `url(${frameImage})`,
@@ -101,34 +126,58 @@ export default function GenerateTwTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className='text-white dark:text-black text-sm font-medium font-Manrope'>
-                    Like an Retweet Post on Twitter Accounts
+                  <div className='text-white dark:text-black text-sm text-center font-medium font-Manrope'>
+                    Post Advert on your X account
                   </div>
-                  <div className='self-stretch dark:text-black text-center text-white text-xs font-normal font-Manrope'>
-                    Like Twitter Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  <div className='self-stretch dark:text-black text-center text-white w-11/12 m-auto text-xs font-normal font-Manrope'>                 
+                  Promote advertisements for different businesses and top brands on your X page and earn ₦110 for each post. The more you share, the more you earn.                 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
-                      {fetchTask?.length} Task available
+                      {
+                        advertTask?.length ? `${advertTask?.length} Task available` : 'No task available'
+                      }
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.x_verified === 'pending' ||
-            profileDeatils?.social_links?.x_verified === 'idle' ||
-            profileDeatils?.social_links?.x_verified === 'rejected' ? (
-              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+            {
+                active?.status  ? 
+                (
+                  <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
+                  <h2 className='text-zinc-700 dark:text-white font-bold text-[16px]'>Your X Profile Account</h2>
+                  {
+                    active?.status === 'verified' ? 
+                    <p className='text-blue-300 dark:text-white font-semibold text-[12px] w-11/12'>
+                    Your X task must be done from the below X profile which has been linked to your Trendit³ account
+                    </p> : ''
+                   }
+                  <div className='flex items-center gap-x-2'>
+                      <div className='bg-zinc-700 dark:bg-white flex items-center justify-between text-black bg-opacity-50 py-2 w-11/12 md:w-12/12 px-4 rounded'>
+                          {active?.link?.length > 30 ? active?.link?.substring(0, 30) + '(...)': active?.link}
+                          <div className={`${active?.status === 'verified' && 'text-green-800' || active?.status === 'pending' && 'text-yellow-700' || active?.status === 'idle' && 'text[#FF3D00]' || active?.status === 'rejected' && 'text-[#FF3D00]'} py-[6px] px-[6px] text-center rounded-full font-semibold`}>
+                            {active?.status.charAt(0).toUpperCase()+active?.status?.slice(1)}
+                          </div>
+                      </div>
+                  </div>
+                  </div> 
+                 )
+                : 
+            (
+              ''
+            ) }
+            {
+              active?.status !== 'verified' && (
+                <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className='text-center  text-base font-bold font-Manrope'>
-                    Link your Twitter Accounts
+                    Link your X account
                   </div>
                   <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
-                    You need to link your Twitter Accounts to Trendit before you
+                    You need to link your X account to Trendit before you
                     can start earning with your Twitter Accounts . Click the
-                    button below to link your  Twitter Accounts now.
+                    button below to link your X account now.
                   </div>
                   <div
                     onClick={handOpenSocialModal}
@@ -147,7 +196,7 @@ export default function GenerateTwTask() {
                       />
                     </svg>
                     <div className='text-center text-[12.83px] font-bold font-Manrope'>
-                      Link Twitter account
+                      Link X account
                     </div>
                   </div>
                 </div>
@@ -166,9 +215,11 @@ export default function GenerateTwTask() {
                   />
                 </svg>
               </div>
-            ) : null}
+              )
+            }
+            
           </div>
-          {profileDeatils?.social_links?.x_verified === 'verified' && (
+          {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb border-stone500 items-center flex'>
@@ -300,13 +351,21 @@ export default function GenerateTwTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -323,13 +382,21 @@ export default function GenerateTwTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -346,13 +413,21 @@ export default function GenerateTwTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -369,13 +444,21 @@ export default function GenerateTwTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -392,13 +475,21 @@ export default function GenerateTwTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
+                          platform={task?.task?.platform}
                           price={task?.reward_money}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -427,15 +518,15 @@ export default function GenerateTwTask() {
                     <div className='text-black dark:text-white text-sm font-bold font-Manrope'>
                       Need quick cash to earn?
                     </div>
-                    <div className='self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-Manrope'>
+                    <div className='self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-Manrope'>
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
-                      atleast 1,000 Followers on your social media account.
+                      atleast 500 Followers on your social media account.
                     </div>
                   </div>
                   <div
-                    onClick={onOpen}
+                    onClick={() => advertTask?.length !== 0 ? onOpen() : toast.error('No task is available')}
                     className='w-[290px] px-6 cursor-pointer py-3.5 dark:bg-white bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <svg
@@ -455,6 +546,10 @@ export default function GenerateTwTask() {
                       Generate task
                     </div>
                   </div>
+                  <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next X advert task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>
                 </div>
               )}
             </>
@@ -472,6 +567,8 @@ export default function GenerateTwTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='x'
+          platform='x'
+          icon='x'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

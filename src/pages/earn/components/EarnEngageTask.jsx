@@ -96,7 +96,7 @@ export default function EarnEngageTask() {
             <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
               <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
                 You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
-                like and followed the page. Your Trendit account will be
+                like and followed the page. Your Trendit³ account will be
                 suspended once you UNLIKE or UNFOLLOW the Facebook Page.
               </div>
               <svg

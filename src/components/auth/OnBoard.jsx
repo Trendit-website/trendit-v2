@@ -79,13 +79,13 @@ export default function OnBoard() {
       const res = await updateProfile(formData)
       if (res.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         onOpen()
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -256,7 +256,7 @@ export default function OnBoard() {
                             errorMessage={errors?.month?.message}
                             selectedKeys={field.value ? [field.value] : []}
                             className="grow shrink basis-0rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                            placeholder='Mon'
+                            placeholder='Month'
                             classNames={{
                               listbox: [
                                 'bg-transparent',
@@ -344,7 +344,7 @@ export default function OnBoard() {
                       control={control}
                       render={({ field }) => (
                         <Input
-                          type='tel'
+                          type='number'
                           size='sm'
                           // pattern='^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$'
                           placeholder='phone'

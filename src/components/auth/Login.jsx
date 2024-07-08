@@ -159,7 +159,7 @@ export default function Login() {
                         '!cursor-text',
                       ],
                     }}
-                    className={`grow shrink basis-0 focus:ring focus:ring-fuchsia-600 focus:border-2 focus:border-fuchsia-600  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']`}
+                    className={`grow shrink basis-0 focus:ring focus:ring-fuchsia-600 focus:border-2 focus:border-fuchsia-600  rounded text-stone-900 text-opacity-50 text-[16.83px] font-normal font-['Manrope']`}
                   />
                 )}
                 rules={{
@@ -182,7 +182,7 @@ export default function Login() {
                     isInvalid={!!errors?.password}
                     required={true}
                     placeholder='Password'
-                    className={` grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']`}
+                    className={` grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[16.83px] font-normal font-['Manrope']`}
                     endContent={
                       <button
                         className='focus:outline-none'
@@ -252,7 +252,7 @@ export default function Login() {
               <Button
                 type='submit'
                 isDisabled={isPending}
-                className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
+                className="w-[290px] px-6 py-3.5  bg-fuchsia-600 rounded-[100px] text-center text-white text-[16.83px] font-medium font-['Manrope']"
               >
                 {isPending ? <Loader /> : 'Continue'}
               </Button>
@@ -295,7 +295,7 @@ export default function Login() {
                 <Button
                   onClick={handleGgLogin}
                   isDisabled={loadingAuth}
-                  className="p-2 bg-[#B0B0B0] rounded dark:bg-white text-center  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
+                  className="p-2 bg-[#B0B0B0] rounded dark:bg-white text-center  text-black dark:text-zinc-400 text-[16.83px] font-bold font-['Manrope'] bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex"
                 >
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -378,7 +378,7 @@ export default function Login() {
           </div>
 
           <div className=' w-[18rem] flex justify-center mx-auto  items-center mt-24'>
-            <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
+            <div className="text-center text-zinc-400 text-[16.83px] font-normal font-['Manrope']">
               You don’t have an account?
             </div>
             <div className='p-2 justify-center items-center gap-1 flex'>

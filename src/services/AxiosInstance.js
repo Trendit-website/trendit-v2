@@ -5,7 +5,7 @@ import axios from 'axios'
 const API = axios.create({
   // baseURL: `https://trendit3-v2-gj9x.onrender.com/api`,
   // baseURL: `https://trendit3-hd9u.onrender.com/api`,
-  baseURL: `https://api.trendit3.com/api`,
+  baseURL: `https://api-staging.trendit3.com/api`,
 })
 
 API.interceptors.request.use((req) => {
@@ -15,8 +15,8 @@ API.interceptors.request.use((req) => {
   req.headers['signup_token'] = token
   req.headers['access_token'] = access_token
   req.headers['Authorization'] = `Bearer ${access_token}`
-  // req.headers['Content-type'] = 'application/json'
-  // req.headers['Accept'] = 'application/json'
+  req.headers['Content-type'] = 'application/json'
+  req.headers['Accept'] = 'application/json'
   req.headers['CALLBACK-URL'] = window.location.origin + `/dashboard/payment`
   return req
 })

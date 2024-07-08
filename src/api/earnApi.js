@@ -10,11 +10,11 @@ export const useGenerateTask = () => {
   })
 }
 
-export const usePerformTask = (status) => {
+export const usePerformTask = (status, platform) => {
   return useQuery({
-    queryKey: ['perform_task', status],
+    queryKey: ['perform_task', status, platform],
     queryFn: async () => {
-      const res = await API.get(`/performed-tasks?status=${status}`)
+      const res = await API.get(`/performed-tasks?status=${status}&platform=${platform}`)
       return res?.data?.performed_tasks
     },
   })
@@ -61,4 +61,24 @@ export const useCalcelTask = () => {
       return API.put(`/performed-tasks/cancel/${id}`)
     },
   })
+}
+export const useGetAdvertTask = (platform) => {
+  return useQuery({
+    queryKey: ['advert_tasks', platform],
+    queryFn:async () => {
+      const res = await API.get(`tasks/advert/${platform}`)
+      return res?.data?.advert_tasks
+    }
+  })
+
+}
+export const useGetEngageTask = () => {
+  return useQuery({
+    queryKey: ['tasks_by_goal'],
+    queryFn:async () => {
+      const res = await API.get(`/tasks/engagement/grouped-by/goal`)
+      return res?.data?.tasks_by_goal
+    }
+  })
+
 }

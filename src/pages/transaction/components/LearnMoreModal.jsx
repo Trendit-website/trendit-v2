@@ -26,7 +26,7 @@ export default function LearnMoreModal({ isOpen, onClose }) {
               <AiOutlineClose size={20} color='#fff' />
             </div>
             <div className='flex-col justify-start items-center gap-3 flex'>
-              <div className='justify-start items-center gap-2 inline-flex'>
+              {/* <div className='justify-start items-center gap-2 inline-flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='16'
@@ -51,7 +51,7 @@ export default function LearnMoreModal({ isOpen, onClose }) {
                 <div className="text-base font-bold font-['Manrope']">
                   Become A memeber Today
                 </div>
-              </div>
+              </div> */}
               <div className="text-center text-zinc-400 text-sm font-semibold font-['Manrope']">
                 Turn your social media accounts into a daily source of income
               </div>
@@ -61,28 +61,30 @@ export default function LearnMoreModal({ isOpen, onClose }) {
                 Do you know you can earn daily income by performing social media
                 task such as likes, follows, comments, subscribe, share, retweet
                 and others. that is one of the so many benefit of becoming a
-                member of Trendit
+                member of Trendit³
               </div>
               <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                 When you activate your account with a one-time membership fee of
                 N1000, you get an access to enjoy the benefits listed below:
               </div>
               <div className=''>
-                <span className="text-zinc-400 text-sm font-semibold font-['Manrope']">
+                <span className="text-zinc-400 text-sm font-semibold font-['Manrope'] mb-4">
                   {' '}
                   Earn on Your Terms:
                   <br />
                 </span>
-                <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
+                <ul className='list-disc flex flex-col gap-y-2'>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']"> 
                   Short & Simple Tasks: Unlike time-consuming gigs, our tasks
                   are quick and easy to complete – perfect for fitting into your
                   busy schedule. Like posts, follow accounts, share content –
                   it's that simple!
-                  <br />
-                   Earn real money for your completed tasks. Redeem your
+                  </li>
+                  <li className="text-zinc-400 text-sm font-normal font-['Manrope']">Earn real money for your completed tasks. Redeem your
                   earnings through convenient payment methods.
+                  </li>
                   <br />
-                </span>
+                </ul>
                 <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   <br />
                 </span>
@@ -91,19 +93,22 @@ export default function LearnMoreModal({ isOpen, onClose }) {
                   Boost Your Social Media Presence:
                   <br />
                 </span>
-                <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
+                <ul className='list-disc flex flex-col gap-y-2'>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Expand your social circle and explore engaging content by
                   following recommended accounts.
-                  <br />
+                </li>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Increase Brand Awareness: By completing tasks like liking
                   posts, you can subtly promote your own social media profiles
                   or favorite brands.
-                  <br />
+                </li>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Stay Current with Trends: Engaging with the latest viral
                   content keeps you in the loop and helps you build a more
                   relevant online presence.
-                  <br />
-                </span>
+                </li>
+                </ul>
                 <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   <br />
                 </span>
@@ -112,17 +117,21 @@ export default function LearnMoreModal({ isOpen, onClose }) {
                   More than Just Earnings:
                   <br />
                 </span>
-                <span className="text-zinc-400 text-sm font-normal font-['Manrope']">
+                <ul className='list-disc flex flex-col gap-y-2'>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Interactive Community: Connect with other app users, share
                   experiences, and learn from each other.
-                  <br />
+                </li>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Safe & Secure Environment: We prioritize user safety and
                   security. All tasks comply with social media platform
                   guidelines.
-                  <br />
+                </li>
+                <li className="text-zinc-400 text-sm font-normal font-['Manrope']">
                   Fun & Rewarding: Make money while enjoying the social media
                   experience – it's a win-win!
-                </span>
+                </li>
+                </ul>
               </div>
               <div className=" text-zinc-400 text-sm font-semibold font-['Manrope']">
                 Ready to start earning and take control of your social media

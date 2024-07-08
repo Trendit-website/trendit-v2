@@ -2,15 +2,32 @@ import { Button } from '@nextui-org/button'
 import { ChevronRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // import { Chip } from '@nextui-org/chip'
 import AdvertiseTaskCard from './AdvertiseTaskCard'
 import EngagementTaskCard from './EngagementTaskCard'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Advertise() {
-  const [selected, setSelected] = useState('advert task')
+  const AdvertTabs = ['Advert Task', 'Engagement Tasks']
+  const [selected, setSelected] = useState(AdvertTabs[0])
   const navigate = useNavigate()
+  const location = useLocation()
+  const setEarningTab = (tab) => {
+    setSelected(tab)
+    {tab === AdvertTabs[0] && (
+      location.search = '?tab=advert-task',
+      navigate('/dashboard/advertise/?tab=advert-task')
+    )}
+    {tab === AdvertTabs[1] && (
+      location.search = '?tab=engagement-tasks',
+      navigate('/dashboard/advertise/?tab=engagement-tasks')
+    )}
+  }
+
+  useEffect(() => {
+    location.search === '?tab=engagement-tasks' ? setSelected('Engagement Tasks') : ''
+  }), []
 
   return (
     <div>
@@ -88,10 +105,10 @@ export default function Advertise() {
           </div>
           <div className=' flex-col justify-start items-center gap-3 flex'>
             <div className="text-black dark:text-white text-sm font-bold font-['Manrope']">
-              Earn on Trendit just got easier
+              Earn on Trendit³ just got easier
             </div>
             <div className="self-stretch md:w-[30rem] text-center text-zinc-400 text-xs font-normal font-['Manrope']">
-              Get people with atleast 1000 active followers to repost your
+              Get people with atleast 500 active followers to repost your
               adverts and perform certain social tasks for you on their social
               media accounts. Select the type of task you want people to perform
               below:
@@ -108,45 +125,21 @@ export default function Advertise() {
             <div className='justify-start items-center gap-[11px] flex'>
               <AnimatePresence mode='wait'>
                 <div className='flex flex-col w-full'>
-                  <Tabs
-                    fullWidth
-                    size='md'
-                    aria-label='Tabs form'
-                    selectedKey={selected}
-                    onSelectionChange={setSelected}
-                    variant='underlined'
-                    classNames={{
-                      tabList: '  bordered  py-2',
-                      cursor: ' bg-fuchsia-400',
-                      selectedKey: 'text-green-400',
-                      tabContent:
-                        'group-data-[selected=true]:text-fuchsia-400 ',
-                    }}
-                    className="text-center text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
-                    color='secondary'
-                  >
-                    <Tab
-                      key='advert task'
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      title='Advert Task'
-                    ></Tab>
-                    <Tab
-                      key='engagement tasks'
-                      title={
-                        <div>
-                          Engagement Tasks
-                          {/* <Chip
-                            size='sm'
-                            className='text-white'
-                            variant='light'
-                          >
-                            23+
-                          </Chip> */}
-                        </div>
-                      }
-                      className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                    ></Tab>
-                  </Tabs>
+                <div className="flex flex-row items-center gap-x-8 text-center text-fuchsia-400 text-xs font-bold font-['Manrope']">
+                {AdvertTabs.map((tab, index) => (
+                      <p
+                        key={index}
+                        onClick={() => setEarningTab(tab)}
+                        className={`text-zinc-400 text-[12.83px] font-bold font-['Manrope'] pb-2 ${
+                          selected === tab
+                            ? 'border-b-2 border-border border-solid text-[#E879F9] font-bold'
+                            : ''
+                        }`}
+                      >
+                        {tab}
+                      </p>
+                    ))}
+                </div>
                 </div>
               </AnimatePresence>
             </div>
@@ -154,13 +147,13 @@ export default function Advertise() {
               onClick={() => navigate(`/dashboard/advertise-history`)}
               endContent={<ChevronRight />}
               variant='light'
-              className="text-black dark:text-white justify-start items-center flex text-sm font-medium font-['Manrope']"
+              className="text-black dark:text-white justify-start items-center pb-2 flex text-sm font-medium font-['Manrope']"
             >
-              History{' '}
+              My orders{' '}
             </Button>
           </div>
         </div>
-        {selected === 'advert task' && (
+        {selected === 'Advert Task' && (
           <motion.div
             initial={{ x: 100 }}
             animate={{ x: 0 }}
@@ -173,7 +166,7 @@ export default function Advertise() {
             <AdvertiseTaskCard />
           </motion.div>
         )}
-        {selected === 'engagement tasks' && (
+        {selected === 'Engagement Tasks' && (
           <motion.div
             initial={{ x: 100 }}
             animate={{ x: 0 }}

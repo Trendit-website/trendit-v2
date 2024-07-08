@@ -1,11 +1,11 @@
-import { Button } from '@nextui-org/react'
+import { Button, Input } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Controller, useForm } from 'react-hook-form'
 import { useVerifyEmailOtp, useVerifyEmailResendOtp } from '../../api/auth'
 import toast from 'react-hot-toast'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useSignUpToken from '../../hooks/useSignUpToken'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import OtpPinInput from './OtpPinInput'
@@ -13,6 +13,7 @@ import OtpPinInput from './OtpPinInput'
 export default function ConfirmOtp() {
   const {
     handleSubmit,
+    register,
     control,
     watch,
     formState: { errors },
@@ -25,6 +26,7 @@ export default function ConfirmOtp() {
   // const otp2 = useRef()
   const { token } = useSignUpToken()
   const { setCurrentUser, userData } = useCurrentUser()
+  const [currentMail, setCurrentMail] = useState()
 
   // const handleOtpChange = (index, value) => {
   //   const updatedOtp = [...otp]
@@ -41,20 +43,25 @@ export default function ConfirmOtp() {
     try {
       // const code = otp2.current.join('')
       // const entered_code = parseInt(code)
-      const entered_code = parseInt(watch().entered_code)
+      const otp = watch('otp')
+      const entered_code = Number(otp)
+      // const entered_code = parseInt(watch().entered_code)
       const res = await verifyUserEmail({
         data: { entered_code, signup_token: token },
       })
       if (res.data.status) {
         setCurrentUser(res.data.user_data)
+        sessionStorage.removeItem('verify-email')
         toast.success(res.data.message)
         navigate('/signup')
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
+      console.error(error)
     }
   }
   const handleResendOtp = async () => {
+    toast.success('Requesting for new OTP')
     try {
       const res = await resendOtp({
         data: { signup_token: token },
@@ -68,8 +75,9 @@ export default function ConfirmOtp() {
   }
 
   useEffect(() => {
-    if (watch().entered_code?.length === 6) onSubmit()
-  }, [watch().entered_code])
+    setCurrentMail(sessionStorage.getItem('verify-email'))
+    if (watch().otp?.length === 6) onSubmit()
+  }, [watch().otp])
 
   return (
     <div>
@@ -99,54 +107,26 @@ export default function ConfirmOtp() {
                 Confirm your email
               </div>
               <div className="w-80 mb-4 text-center text-zinc-400 text-base font-normal font-['Manrope']">
-                We have sent an email with a code to {userData?.email}, please
+                We have sent an email with a code to {currentMail ? currentMail : userData?.email}, please
                 enter it below to create your Trendit account.
               </div>
             </div>
             <div className=' w-[80%] md:w-full mx-auto  flex-col justify-start items-center gap-3.5 flex'>
               <div className='self-stretch justify-center items-center gap-3.5 flex'>
-                {/* <Controller
-                  control={control}
-                  name='entered_code'
-                  rules={{
-                    required: 'OTP is required',
+                  <Input type='number' errorMessage={errors?.otp?.message} {...register('otp', {
+                    required: {
+                      value: true,
+                      message: 'OTP is required'
+                    },
                     minLength: {
                       value: 6,
                       message: 'OTP should have only 6 characters',
                     },
-                  }}
-                  render={({ field }) => (
-                    <OtpPinInput
-                      native
-                      length={6}
-                      ref={field.ref}
-                      value={field.value}
-                      onChange={field.onChange}
-                      error={errors?.entered_code?.message}
-                    />
-                  )}
-                /> */}
-                <Controller
-                  control={control}
-                  name='entered_code' // Ensure this matches the field name
-                  rules={{
-                    required: 'OTP is required',
-                    minLength: {
+                    maxLength: {
                       value: 6,
                       message: 'OTP should have only 6 characters',
-                    },
-                  }}
-                  render={({ field }) => (
-                    <OtpPinInput
-                      native
-                      length={6}
-                      ref={field.ref}
-                      value={field.value}
-                      onChange={field.onChange}
-                      error={errors?.entered_code?.message}
-                    />
-                  )}
-                />
+                    }
+                  })} placeholder='Enter OTP'/>
               </div>
               <div className='justify-start items-center inline-flex my-12'>
                 <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">

@@ -10,7 +10,7 @@ export default {
     './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    fontFamily: { Manrope: ['Manrope', 'sans-serif'] },
+    fontFamily: { Manrope: ['Manrope', 'sans-serif'], RedHat: ["Red Hat Display", 'sans-serif'] },
     extend: {},
   },
   darkMode: 'class',

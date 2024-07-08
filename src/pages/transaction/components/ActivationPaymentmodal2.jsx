@@ -54,10 +54,10 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
       >
         <ModalContent className=' overflow-visible'>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className=' px-[26px] py-8 rounded flex-col justify-start items-center gap-12 inline-flex'>
+            <div className=' py-8 rounded flex-col justify-start items-center gap-12 inline-flex'>
               <div
                 onClick={onClose}
-                className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 -right-2 md:-right-4 cursor-pointer rounded-[100px] '
+                className='p-2 bg-fuchsia-400 top-[-20px] absolute z-40 right-1 md:-right-4 cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
               </div>
@@ -88,16 +88,16 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                     Become A memeber Today
                   </div>
                 </div>
-                <div className="text-center text-zinc-400 text-sm font-semibold font-['Manrope']">
+                <div className="text-center w-9/12 text-zinc-400 text-sm font-semibold font-['Manrope']">
                   Turn your social media accounts into a daily source of income
                 </div>
               </div>
-              <div className='flex-col justify-start items-start gap-6 flex'>
+              <div className='flex-col justify-start w-11/12 items-start gap-6 flex'>
                 <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   Do you know you can earn daily income by performing social
                   media task such as likes, follows, comments, subscribe, share,
                   retweet and others. that is one of the so many benefit of
-                  becoming a member of Trendit
+                  becoming a member of Trendit³
                 </div>
                 <div className=" text-zinc-400 text-sm font-normal font-['Manrope']">
                   When you activate your account with a one-time membership fee

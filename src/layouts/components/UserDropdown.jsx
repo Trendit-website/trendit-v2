@@ -1,16 +1,18 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Avatar, useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import SignOutModal from '../../components/auth/SignOutModal'
+import { ProfileContext } from '../../context/Profile'
 
 const UserDropdown = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const trigger = useRef(null)
   const dropdown = useRef(null)
+  const profile_ = useContext(ProfileContext)
 
   const { data: profileDeatils } = useGetProfile()
   // const navigate = useNavigate()
@@ -54,7 +56,7 @@ const UserDropdown = () => {
         <span className='rounded-full flex items-center'>
           <Avatar
             className='w-[42px] h-[42px] rounded-md border border-fuchsia-600'
-            src={profileDeatils?.profile_picture}
+            src={profile_?.profile_picture?.length === 1 ? URL.createObjectURL(profile_?.profile_picture[0]) : profile_?.profile_picture || profileDeatils?.profile_picture}
             title={profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
           />
         </span>
@@ -62,10 +64,10 @@ const UserDropdown = () => {
           <div className='flex gap-1'>
             <div className='flex-col justify-start  gap-1.5 inline-flex'>
               <div className="text-center  text-[12.83px] font-bold font-['Manrope']">
-                {profileDeatils?.firstname + ' ' + profileDeatils?.lastname}
+                {(profile_ ? profile_?.firstname : profileDeatils?.firstname) + ' ' +  (profile_ ? profile_?.lastname : profileDeatils?.lastname)}
               </div>
               <div className="text-zinc-400 text-sm font-medium font-['Manrope']">
-                @{profileDeatils?.username}
+                @{profile_ ? profile_?.username : profileDeatils?.username}
               </div>
             </div>
 
@@ -106,7 +108,7 @@ const UserDropdown = () => {
       >
         <div
           // onClick={() => navigate('/dashboard/settings')}
-          className={dropdownOpen === true ? 'block' : 'hidden'}
+          className={dropdownOpen === true ? 'block lg:hidden' : 'hidden'}
         >
           <svg
             className={`fill-current sm:block absolute  right-4 top-[0.6rem] z-50 rotate-180`}
@@ -123,7 +125,7 @@ const UserDropdown = () => {
           </svg>
         </div>
         <div
-          className={`absolute right-0 mt-[1.2rem] px-3 flex w-60 flex-col rounded-sm border dark:border-transparent z-[555] dark:bg-neutral-900 bg-white shadow-xl ${
+          className={`absolute right-0 mt-[1.2rem] px-3 lg:hidden flex w-60 flex-col rounded-sm border dark:border-transparent z-[555] dark:bg-neutral-900 bg-white shadow-xl ${
             dropdownOpen === true ? 'block' : 'hidden'
           }`}
         >
@@ -152,9 +154,9 @@ const UserDropdown = () => {
                   </div>
                 </Link>
               </div>
-              <div className='self-stretch justify-start items-center gap-[7px] inline-flex'>
+              <div className='self-stretch flex justify-start items-center gap-[7px]'>
                 <button
-                  className='flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-fuchsia-600 lg:text-base group'
+                  className='flex items-center gap-3.5 py-4 text-sm font-medium duration-300 ease-in-out hover:text-fuchsia-600 lg:text-base group'
                   onClick={onOpen}
                 >
                   <svg

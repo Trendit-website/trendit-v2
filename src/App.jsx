@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import './App.css'
 import Login from './components/auth/Login'
 import Animation from './utilities/Animation'
@@ -68,51 +68,43 @@ import API from './services/AxiosInstance'
 import { useContext } from 'react'
 import EarnHistory from './pages/earn_history/EarnHistory'
 import GenerateLikeFollowFBEngageTask from './pages/earn/components/engageadvert/GenerateLike&FollowFBEngageTask'
+import Cookies from 'js-cookie';
+import { useDarkPref, useLightPref } from './hooks/usePref'
+import { useGetProfile } from './api/profileApis'
+import { useGetUserPrefence } from './api/settingsApis'
 
 function App() {
   const { isDarkMode } = useDarkMode()
   const setPrefrence = useContext(SetAppearanceContext)
-
+  const { data: userDetails } = useGetProfile()
+  const location = useLocation()
+  const navigate = useNavigate()
   useEffect(() => {
-    localStorage.getItem('appearance') === 'dark' ? 
-    (document.body.classList.add('dark'),
-    
-          document.body.classList.add('text-foreground'),
-          document.body.classList.add('bg-background'))
-    : 
-          (document.body.classList.remove('dark'),
-          document.body.classList.remove('text-foreground'),
-          document.body.classList.remove('bg-background')) 
+    if(location.pathname === '/dashboard') {
+      navigate('/dashboard/home')      
+    }
+  }, [])
+  const theme = window.matchMedia('(prefers-color-scheme: light)') 
+  const { data: userPrefrence } = useGetUserPrefence()
+  useEffect(() => {
     API.get('/settings/preferences')
-      .then(
-        (response) => (
-          setPrefrence(response.data.user_preferences.appearance),
-          response.data.user_preferences.appearance === 'dark' 
-            ? (document.body.classList.add('dark'),
-              document.body.classList.add('text-foreground'),
-              document.body.classList.add('bg-background'))
-            : (document.body.classList.remove('dark'),
-              document.body.classList.remove('text-foreground'),
-              document.body.classList.remove('bg-background'))
-        )
-      )
-      .catch((error) => console.error(error))
-
-    // if (isDarkMode) {
-    //   document.body.classList.add('dark')
-    //   document.body.classList.add('text-foreground')
-    //   document.body.classList.add('bg-background')
-    // } else {
-    //   document.body.classList.remove('dark')
-    //   document.body.classList.remove('text-foreground')
-    //   document.body.classList.remove('bg-background')
-    // }
-  }, [isDarkMode])
-
-  useEffect(() => {
-    // Store dark mode preference in local storage
-    // localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
-  }, [isDarkMode])
+    .then((respone) => {
+      if(respone.data?.user_preferences?.appearance === 'dark') {
+        useDarkPref()
+        setPrefrence('dark')
+        Cookies.set('appearance', 'dark')
+      } else if(respone.data?.user_preferences?.appearance === 'light') {
+        useLightPref()
+        setPrefrence('light')
+        Cookies.set('appearance', 'light')
+      } else {
+        theme.matches ? (useLightPref(),   setPrefrence('light'),  Cookies.set('appearance', 'light')) : (useDarkPref(), setPrefrence('dark'),  Cookies.set('appearance', 'dark'))
+      }
+    })
+    .catch((error) => {
+      theme.matches ? (useLightPref(),   setPrefrence('light'),  Cookies.set('appearance', 'light')) : (useDarkPref(), setPrefrence('dark'),  Cookies.set('appearance', 'dark'))
+    })
+  }, [])
 
   return (
     <>
@@ -172,7 +164,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_like-task'
+              path='earn_engage_like-task'
               element={
                 <ProtectedRoute>
                   <GenerateLikeEngageTask />
@@ -180,7 +172,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_comment-task'
+              path='earn_engage_comment-task'
               element={
                 <ProtectedRoute>
                   <GenerateCommentEngageTask />
@@ -188,7 +180,7 @@ function App() {
               }
             />
             <Route
-              path='earn-engage_follow-task'
+              path='earn_engage_follow-task'
               element={
                 <ProtectedRoute>
                   <GenerateFollowEngageTask />
@@ -212,7 +204,7 @@ function App() {
               }
             />
             <Route
-              path='earn-like_follow_fb-task'
+              path='earn_like_follow_fb-task'
               element={
                 <ProtectedRoute>
                   <GenerateLikeFollowFBEngageTask />
@@ -284,7 +276,7 @@ function App() {
               }
             />
             <Route
-              path='earn-advert-task'
+              path='earn-advert-task/:taskId'
               element={
                 <ProtectedRoute>
                   <EarnAdvertTask />

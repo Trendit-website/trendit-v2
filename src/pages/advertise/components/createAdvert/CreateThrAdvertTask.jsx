@@ -30,8 +30,8 @@ import {
 } from '../../../../api/advertApi'
 import ThrFrame from '../../../../assets/thread_frame.svg'
 import Loader from '../../../Loader'
-// import { useNavigate } from 'react-router'
-
+import { useNavigate } from 'react-router'
+import Icons from '../../../../components/Icon'
 export default function CreateThrAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [imageUrl, setImageUrl] = useState([])
@@ -57,15 +57,18 @@ export default function CreateThrAdvertTask() {
     watch,
     register,
     setValue,
+    setError,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 140, posts_count: 1, platform: 'Thread' },
+    defaultValues: { amount: 140, platform: 'Thread' },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
 
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
   const { mutateAsync: createAdvertWithWallet } = useCreateAdvertPaymentWallet()
@@ -186,11 +189,13 @@ export default function CreateThrAdvertTask() {
       formData.append('religion', data.religion)
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
+      formData.append('reward_money', '110')
       // console.log(data, 'form')
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -200,8 +205,9 @@ export default function CreateThrAdvertTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -228,22 +234,26 @@ export default function CreateThrAdvertTask() {
       formData.append('religion', data.religion)
       formData.append('goal', data.phone)
       formData.append('account_link', data.phone)
+      formData.append('reward_money', '110')
 
       console.log(data, 'data')
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         // navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
         position: 'top-right',
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
+  const navigate = useNavigate()
   return (
     <>
       <div>
@@ -251,6 +261,17 @@ export default function CreateThrAdvertTask() {
           <div className='p-3 bg-white px-4 dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className=' grow flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=advert-task')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeader
                   title={'Get People to post your advert on Threads'}
                   frame={ThrFrame}
@@ -315,6 +336,7 @@ export default function CreateThrAdvertTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{required: true}}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
@@ -334,6 +356,7 @@ export default function CreateThrAdvertTask() {
                           <Controller
                             name='target_country'
                             control={control}
+                            rules={{required: true}}
                             aria-labelledby='target_country'
                             render={({ field }) => (
                               <Select
@@ -394,6 +417,7 @@ export default function CreateThrAdvertTask() {
                               name='target_state'
                               aria-labelledby='target_state'
                               control={control}
+                              rules={{required: true}}
                               render={({ field }) => (
                                 <Select
                                   aria-labelledby='target_state'
@@ -450,7 +474,7 @@ export default function CreateThrAdvertTask() {
                       <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                         <div className='px-2 justify-center items-center gap-2 inline-flex'>
                           <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                            Number of Tiktok Advert Post you want
+                            Number of Thread Advert Post you want
                           </div>
                         </div>
                         <div className='self-stretch w-full bg-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -464,15 +488,33 @@ export default function CreateThrAdvertTask() {
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
                                 value={count}
+                                type='number'
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the number of view you want'
+                                placeholder='No. of posts'
                                 {...field}
                                 className="grow shrink basis-0  rounded  text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, min: 0,
+                              validate: {
+                                invalidInput: (fieldValue) => {
+                                  return (
+                                    fieldValue > 0 || 'invalid input' 
+                                  )
+                                },
+                                isMinimum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum order. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
+                                  )
+                                },
+                                isMaximum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount <= 500000 || `Your order total amount of #${(+watch().posts_count * +watch().amount).toLocaleString()} exceeds the maximum allowed amount. Please review your order and adjust the total accordingly.`
+                                  )
+                                }
+                              } }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -492,6 +534,7 @@ export default function CreateThrAdvertTask() {
                           <Controller
                             name='gender'
                             control={control}
+                            rules={{required: true}}
                             render={({ field }) => (
                               <Select
                                 {...field}
@@ -552,6 +595,7 @@ export default function CreateThrAdvertTask() {
                           <Controller
                             name='religion'
                             control={control}
+                            rules={{required: true}}
                             render={({ field }) => (
                               <Select
                                 aria-labelledby='religion'
@@ -606,7 +650,11 @@ export default function CreateThrAdvertTask() {
                         </div>
 
                         <Textarea
-                          {...register('caption')}
+                          {...register('caption', {
+                            required: true
+                          })}
+                          isInvalid={!!errors.caption}
+                          errorMessage={errors?.caption?.message}
                           placeholder='Caption'
                           className="self-stretch grow shrink basis-0   bg-opacity-30 rounded justify-start items-start gap-2 inline-flex text-[12.83px] font-normal font-['Manrope']"
                         />
@@ -712,14 +760,22 @@ export default function CreateThrAdvertTask() {
                           ))}
                         </div>
                       ) : null}
-                      <div className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
+                      <div onClick={() => setError('media', {
+                            type: 'manual',
+                            message: ''
+                          })} className='w-[243px] h-[148.59px] opacity-40 dark:bg-white bg-stone-900 justify-center items-center inline-flex'>
                         <input
                           type='file'
                           multiple
                           id='image-upload'
                           name='media'
                           className='absolute bg-red-800 w-full opacity-0 cursor-pointer'
-                          {...register('media')}
+                          {...register('media', {
+                            required: {
+                              value: true,
+                              message: 'Post cannot be empty'
+                            }
+                          })}
                           onChange={handleChange}
                         />
                         <svg
@@ -737,6 +793,10 @@ export default function CreateThrAdvertTask() {
                           />
                         </svg>
                       </div>
+                      {errors.media?.message ? 
+                      <p className='text-red-800 text-sm'>{errors.media?.message}</p>
+                      : ''
+                    }
                     </div>
                   </div>
                   <div className='w-full px-3 py-6 bg-zinc-400 bg-opacity-30 rounded justify-between itemscenter flex flex-col'>
@@ -745,7 +805,7 @@ export default function CreateThrAdvertTask() {
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'
@@ -771,6 +831,9 @@ export default function CreateThrAdvertTask() {
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
           isPending={isPending}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

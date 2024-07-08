@@ -39,7 +39,7 @@ export default function JoinGroupEngageTask() {
     watch,
     setValue,
     formState: { errors },
-  } = useForm({ defaultValues: { amount: 120, posts_count: 1 } })
+  } = useForm({ defaultValues: { amount: 120, } })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
@@ -350,7 +350,8 @@ people to post your ads on their social media account.`}
                                 errorMessage={errors?.posts_count?.message}
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
-                                placeholder='Enter the number of view you want'
+                                type='number'
+                                placeholder='No. of views'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
@@ -527,7 +528,7 @@ people to post your ads on their social media account.`}
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'

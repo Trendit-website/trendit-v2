@@ -12,10 +12,12 @@ import { AiOutlineClose } from 'react-icons/ai'
 import Loader from '../Loader'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
+import API from '../../services/AxiosInstance'
 
-export default function AddBankModal({ isOpen, onClose }) {
+export default function AddBankModal({ isOpen, onClose, setBank }) {
   const { data: userBank } = useBankDetails()
   const { data: fetchBanks, isLoading: fetching } = useFetchBank()
+  const [isLoading, setLoading] = useState(false)
 
   const animatedComponents = makeAnimated()
 
@@ -49,39 +51,59 @@ export default function AddBankModal({ isOpen, onClose }) {
 
   const bankName = watch('bank_name')
   const accountNo = watch('account_no')
+  const accountName = watch('account_name')
 
   useEffect(() => {
     const verifyBankDetails = async (data) => {
       data = { bank_name: bankName, account_no: accountNo }
       if (bankName && accountNo && accountNo?.length === 10) {
         try {
-          const res = await updateVerifyBank(data)
-
+          if(accountName === undefined)  {
+            setValue('account_name', 'Loading...')
+          }
+          const res = await  API.post('/banks/verify/account', {
+             "account_no": accountNo,
+              "bank_name": bankName.value
+          })
           if (res?.data?.account_info) {
             setValue('account_name', res.data?.account_info?.account_name)
+            toast.success(res?.data?.message)
           }
         } catch (error) {
+          if(accountName === '') {
           toast.error(
             'Verification failed: ' +
               (error.response?.data?.message || error.message)
           )
         }
+        }
       }
     }
-
     verifyBankDetails()
   }, [bankName, accountNo, updateVerifyBank, setValue])
-
   const onSubmit = async (data) => {
+    const details = {
+      "bank_name": data.bank_name.value,
+      "account_no": data.account_no,
+      "account_name": data.account_name
+    }
+    setLoading(true)
     try {
-      const res = await updateUserPrefence(data)
+      const res = await API.post('/profile/bank', details)
       if (res?.data?.status) {
         toast.success(res.data.message)
+        setBank({
+          accountName: data.account_name,
+          accountNumber: data.account_no,
+          bankName: data.bank_name.value
+        })
         reset()
         onClose()
+        setLoading(false)
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
+      setLoading(false)
     }
   }
 
@@ -168,33 +190,6 @@ export default function AddBankModal({ isOpen, onClose }) {
                             classNamePrefix='react-select'
                             className='mb-2 py-0 self-stretch w-full font-Manrope'
                           />
-                          {/* 
-                          <Select
-                            
-                            className="grow shrink basis-0 rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                            placeholder='Select Bank'
-                            classNames={{
-                              listbox: [
-                                'bg-transparent',
-                                'text-black/90 dark:text-white/90',
-                                'placeholder:text-zinc-400 dark:placeholder:text-white/60',
-                              ],
-                              trigger: [
-                                'bg-zinc-700 bg-opacity-10',
-                                'dark:bg-white dark:bg-opacity-10',
-                                'hover:bg-bg-white hover:bg-opacity-10',
-                                'dark:hover:bg-default/70',
-                                'group-data-[focused=true]:bg-default-200/50',
-                                'dark:group-data-[focused=true]:bg-default/60',
-                                '!cursor-text',
-                                'border-2 border-transparent',
-                                'focus-within:!border-fuchsia-600',
-                                '!cursor-text',
-                              ],
-                            }}
-                          >
-                           
-                          </Select> */}
                         </>
                       )}
                     />
@@ -237,7 +232,7 @@ export default function AddBankModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[7px] flex'>
                     <label className="text-center px-2  text-[12.83px] font-medium font-['Manrope']">
                       Account Name
-                    </label>
+                    </label>             
                     <Controller
                       name='account_name'
                       control={control}
@@ -303,7 +298,7 @@ export default function AddBankModal({ isOpen, onClose }) {
                       />
                     </svg>
                     <div className="text-center text-white text-sm font-medium font-['Manrope']">
-                      {isPending ? <Loader /> : 'Update'}
+                      {isLoading ? <Loader /> : 'Update'}
                     </div>
                   </Button>
                 </div>

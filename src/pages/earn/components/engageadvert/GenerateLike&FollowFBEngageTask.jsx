@@ -8,9 +8,10 @@ import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '../IgGeneratedTask'
 import ConfirmTaskModal from '../ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetEngageTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
+import toast from 'react-hot-toast'
 
 export default function GenerateLikeFollowFBEngageTask() {
   const [selected, setSelected] = useState()
@@ -18,6 +19,7 @@ export default function GenerateLikeFollowFBEngageTask() {
   const { data: fetchTask } = usePerformTask(selected)
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
+  const { data: EngageTask } = useGetEngageTask()
 
   const navigate = useNavigate()
   return (
@@ -25,7 +27,7 @@ export default function GenerateLikeFollowFBEngageTask() {
       <div>
         <div className='w-full min-h-screen p-3 flex-col justify-start items-start gap-3 flex'>
           <div
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/dashboard/earn/?tab=engagement-tasks')}
             className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
           >
             <div className='cursor-pointer'>
@@ -78,17 +80,18 @@ export default function GenerateLikeFollowFBEngageTask() {
               </div>
               <div className='justify-center items-start gap-2 inline-flex'>
                 <div className='max-w-[484px] flex-col justify-start items-center gap-3 inline-flex'>
-                  <div className="text-white dark:text-black text-sm font-medium font-['Manrope']">
-                    Post adverts on Youtube
+                  <div className="text-white dark:text-black text-sm text-center font-medium font-['Manrope']">
+                    Post adverts on Facebook
                   </div>
-                  <div className="self-stretch dark:text-black text-center text-white text-xs font-normal font-['Manrope']">
-                    Like and Follow Youtube Pages for Businesses and
-                    Organizations and earn ₦10 per Like/Follow. The more pages
-                    you like, the more you earn.
+                  <div className="self-stretch dark:text-black text-center text-white  w-11/12 m-auto text-xs font-normal font-['Manrope']">
+                    Like and follow Facebook pages for individuals, buisnesses, and organizations, and earn #3.5 per 
+                    like or follow. The more pages you like and follow, the more you earn.
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
-                      0 Task available
+                    {
+                        EngageTask?.[`follow and like`] ?  `${EngageTask?.[`follow and like`]?.total} Task available` : 'No task available'
+                      }
                     </div>
                   </div>
                 </div>
@@ -271,13 +274,21 @@ export default function GenerateLikeFollowFBEngageTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -294,13 +305,21 @@ export default function GenerateLikeFollowFBEngageTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -317,13 +336,21 @@ export default function GenerateLikeFollowFBEngageTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -340,13 +367,21 @@ export default function GenerateLikeFollowFBEngageTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -363,13 +398,21 @@ export default function GenerateLikeFollowFBEngageTask() {
                 scale: { duration: 0.4 },
               }}
             >
-              <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+              <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                 {fetchTask?.map((task, index) => (
-                  <div key={index} className=''>
+                  <div key={index} className='w-full'>
                     <IgGeneratedTask
                       status={task?.status}
                       caption={task?.task?.caption}
                       price={task?.reward_money}
+                      platform={task?.task?.platform}
+                      task_id={task?.key}
+                      task_type={task?.task?.task_type}
+                      goal={task?.task?.goal}
+                      when={format(
+                        new Date(task?.task?.date_created),
+                         'yyyy-MM-dd HH:mm:ss'
+                      )}
                     />
                   </div>
                 ))}
@@ -398,15 +441,15 @@ export default function GenerateLikeFollowFBEngageTask() {
                 <div className=" text-sm font-bold font-['Manrope']">
                   Need quick cash to earn?
                 </div>
-                <div className="self-stretch dark:text-[#B1B1B1] w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
+                <div className="self-stretch dark:text-[#B1B1B1] w-[320px] md:w-[30rem] text-center text-black text-xs font-normal font-['Manrope']">
                   Earn steady income by posting adverts of businesses and top
                   brands on your social media page. To post adverts on Facebook,
-                  Instagram, Twitter or Tiktok, you MUST have atleast 1,000
+                  Instagram, Twitter or Tiktok, you MUST have atleast 500
                   Followers on your social media account.
                 </div>
               </div>
               <div
-                onClick={onOpen}
+                onClick={() => EngageTask?.[`follow and like`] ? onOpen() : toast.error('No task is available')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg
@@ -426,6 +469,10 @@ export default function GenerateLikeFollowFBEngageTask() {
                   Generate task
                 </div>
               </div>
+              <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Facebook page like and follow task, Click Generate task.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+              </div>
             </div>
           )}
         </div>
@@ -435,7 +482,7 @@ export default function GenerateLikeFollowFBEngageTask() {
         isOpen={isOpen}
         onClose={onClose}
         task_type='engagement'
-        goal='like_follow_fb'
+        goal='follow and like'
         title='Generate Like Task?'
       />
     </>

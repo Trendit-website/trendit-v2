@@ -3,18 +3,20 @@
 import { useNavigate } from 'react-router-dom'
 import frameImageLight from '../../../../assets/engageIcon237873.svg'
 import frameImageDark from '../../../../assets/FrameHeaderDark.svg'
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs, useDisclosure } from '@nextui-org/react'
 import PostAdvertTasksCard from '../../PostAdvertTasksCard'
 import IgGeneratedTask from '.././IgGeneratedTask'
 import ConfirmTaskModal from '.././ConfirmTaskModal'
-import { usePerformTask } from '../../../../api/earnApi'
+import { usePerformTask, useGetAdvertTask } from '../../../../api/earnApi'
 import { useDarkMode } from 'usehooks-ts'
 import { useGetProfile } from '../../../../api/profileApis'
 import SocialLinkModal from '../../../components/SocialLinkModal'
 import toast from 'react-hot-toast'
 import { useQueryClient } from '@tanstack/react-query'
+import Icons from '../../../../components/Icon'
+import { SocialAccountContext } from '../../../../context/SocialAccount'
 
 export default function GenerateFbTask() {
   const [selected, setSelected] = useState()
@@ -24,19 +26,44 @@ export default function GenerateFbTask() {
     onOpen: onOpenVerify,
     onClose: onCloseVerify,
   } = useDisclosure()
-  const { data: fetchTask } = usePerformTask(selected)
+  const { data: fetchTask } = usePerformTask(selected, 'facebook')
+  const { data: advertTask} = useGetAdvertTask('Facebook')
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  const [active, setActive] = useState()
+  const socialAccount = useContext(SocialAccountContext)
+  const getSocial = () => {
+    if(socialAccount) {
+      for (const item of socialAccount) {
+        item?.platform === 'facebook' ? (
+          setActive(item)
+        )
+        : ''     
+      }
+    } else {
+      for (const item of profileDeatils?.social_profiles) {
+        item?.platform === 'facebook' ? (
+          setActive(item)
+        )
+        : ''     
+      }
+     
+    }
+  }
+  useEffect(() => {
+    getSocial()
+  }, [socialAccount, active])
   const queryClient = useQueryClient()
 
   const handOpenSocialModal = () => {
-    if (profileDeatils?.social_links?.facebook_verified === 'pending') {
-      toast.error('Verification request has been sent')
+    if (active?.status === 'pending') {
+      toast.success('Verification pending')
     } else if (
-      profileDeatils?.social_links?.facebook_verified === 'rejected' ||
-      profileDeatils?.social_links?.facebook_verified === 'idle'
+      active?.status === 'rejected' ||
+      active?.status === 'idle' ||
+      !active?.status
     ) {
       onOpenVerify()
     } else {
@@ -74,7 +101,7 @@ export default function GenerateFbTask() {
             </div>
           </div>
           <div className='self-stretch flex-col justify-start items-start flex'>
-            <div className='self-stretch h-[347px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
+            <div className='self-stretch h-[447px] pb-6 dark:bg-white bg-stone-900 border border-stone-900 flex-col justify-center items-center gap-6 flex'>
               <div
                 style={{
                   backgroundImage: `url(${frameImage})`,
@@ -107,27 +134,51 @@ export default function GenerateFbTask() {
                     Post adverts on Facebook
                   </div>
                   <div className='self-stretch text-center  dark:text-black text-white text-xs font-normal font-Manrope'>
-                    Like Facebook Pages for Individuals, Businesses and
-                    Organizations and earn ₦3.5 per Like. The more pages you
-                    like, the more you earn.
+                  Promote advertisements for different businesses and top brands on your Facebook page and earn ₦110 for each post. The more you share, the more you earn. 
                   </div>
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className='text-center text-blue-600 text-[12.83px] font-normal font-Manrope'>
-                      {fetchTask?.length} Task available
+                    {
+                        advertTask?.length ? `${advertTask?.length} Task available` : 'No task available'
+                      }
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {profileDeatils?.social_links?.facebook_verified === 'pending' ||
-            profileDeatils?.social_links?.facebook_verified === 'idle' ||
-            profileDeatils?.social_links?.facebook_verified ? (
-              <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+            {
+                active?.status ? 
+            (
+                <div className='w-full pl-4 md:pl-8 mt-6 flex flex-col gap-y-2'>
+                <h2 className='text-zinc-700 dark:text-white font-bold text-[16px]'>Your Facebok Profile Account</h2>
+                {
+                  active?.status === 'verified' ? 
+                  <p className='text-blue-300 dark:text-white font-semibold text-[12px] w-11/12'>
+                  Your Facebook task must be done from the below Facebook profile which has been linked to your Trendit³ account
+                  </p> : ''
+                 }
+                <div className='flex items-center gap-x-2'>
+                    <div className='bg-zinc-700 dark:bg-white flex items-center justify-between text-black bg-opacity-50 py-2 w-11/12 md:w-12/12 pl-2 sm:px-4 rounded'>
+                        {active?.link?.length > 30 ? active?.link?.substring(0, 30) + '(...)' : active?.link}
+                        <div className={`${active?.status === 'verified' && 'text-green-800' || active?.status === 'pending' && 'text-yellow-700' || active?.status === 'idle' && 'text[#FF3D00]' || active?.status === 'rejected' && 'text-[#FF3D00]'} py-[6px] px-[6px] text-center rounded-full font-semibold`}>
+                          {active?.status.charAt(0).toUpperCase()+active?.status?.slice(1)}
+                        </div>
+                    </div>
+                </div>
+                </div> 
+            )
+            :
+            (
+              ''
+            )}
+            {
+              active?.status !== 'verified' && (
+                <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
-                  <div className='text-center dark:text-white text-stone-900 text-base font-bold font-Manrope'>
+                  <div className='text-center dark:text-white text-stone-900 text-base text-center font-bold font-Manrope'>
                     Link your Facebook Account
                   </div>
-                  <div className='self-stretch dark:text-gray-400 text-stone-900 text-xs font-normal font-Manrope'>
+                  <div className='self-stretch dark:text-gray-400 text-stone-900 w-11/12 m-auto text-xs font-normal font-Manrope'>
                     You need to link your Facebook Account to Trendit before you
                     can start earning with your Facebook Account. Click the
                     button below to link your Facebook account now.
@@ -172,9 +223,10 @@ export default function GenerateFbTask() {
                   />
                 </svg>
               </div>
-            ) : null}
+              )
+            }
           </div>
-          {profileDeatils?.social_links?.facebook_verified === 'verified' && (
+          {active?.status === 'verified' && (
             <>
               <div className='self-stretch flex-col justify-start items-start gap-3 flex '>
                 <div className=' justify-between w-full borderb borderstone-500 items-center flex'>
@@ -308,13 +360,21 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -331,13 +391,21 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -354,13 +422,21 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -377,13 +453,21 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -400,13 +484,21 @@ export default function GenerateFbTask() {
                     scale: { duration: 0.4 },
                   }}
                 >
-                  <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                  <div className='grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-4'>
                     {fetchTask?.map((task, index) => (
-                      <div key={index} className=''>
+                      <div key={index} className='w-full'>
                         <IgGeneratedTask
                           status={task?.status}
                           caption={task?.task?.caption}
                           price={task?.reward_money}
+                          platform={task?.task?.platform}
+                          task_id={task?.key}
+                          task_type={task?.task?.task_type}
+                          goal={task?.task?.goal}
+                          when={format(
+                            new Date(task?.task?.date_created),
+                             'yyyy-MM-dd HH:mm:ss'
+                          )}
                         />
                       </div>
                     ))}
@@ -435,15 +527,15 @@ export default function GenerateFbTask() {
                     <div className='text-black dark:text-white text-sm font-bold font-Manrope'>
                       Need quick cash to earn?
                     </div>
-                    <div className='self-stretch w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-Manrope'>
+                    <div className='self-stretch w-[320px] md:w-[30rem] text-center text-black dark:text-[#B1B1B1] text-xs font-normal font-Manrope'>
                       Earn steady income by posting adverts of businesses and
                       top brands on your social media page. To post adverts on
                       Facebook, Instagram, Twitter or Tiktok, you MUST have
-                      atleast 1,000 Followers on your social media account.
+                      atleast 500 Followers on your social media account.
                     </div>
                   </div>
                   <div
-                    onClick={onOpen}
+                    onClick={() => advertTask?.length !== 0 ? onOpen() : toast.error('No task is available')}
                     className='w-[290px] px-6 cursor-pointer py-3.5 dark:bg-white bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <svg
@@ -463,6 +555,10 @@ export default function GenerateFbTask() {
                       Generate task
                     </div>
                   </div>
+                  <div className="dark:text-[#B1B1B1] text-center w-8/12 self-center text-center text-black text-xs font-normal font-['Manrope']">
+                    To receive your next Facebook advert task, click the Above.
+                    You'll get one task at a time, and you must complete the current task before a new one is generated.
+                    </div>
                 </div>
               )}
             </>
@@ -481,6 +577,8 @@ export default function GenerateFbTask() {
       {isOpenVerify && (
         <SocialLinkModal
           type='facebook'
+          platform='facebook'
+          icon='facebook'
           LogoBand={
             <svg
               xmlns='http://www.w3.org/2000/svg'

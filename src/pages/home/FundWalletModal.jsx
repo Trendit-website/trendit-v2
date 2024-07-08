@@ -5,6 +5,10 @@ import { AiOutlineClose } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import { useFetchBallance, useFundWallet } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
+import { useState, useContext } from 'react'
+import { AppearanceContext } from '../../providers/AppearanceProvider'
+import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 export default function FundWalletModal({ isOpen, onClose }) {
   const {
@@ -15,6 +19,8 @@ export default function FundWalletModal({ isOpen, onClose }) {
   } = useForm({})
   const { mutateAsync: fundWallet, isPending } = useFundWallet()
   const { data: showBalance } = useFetchBallance()
+  const [focus, setFocus] = useState(false)
+  const appreance = useContext(AppearanceContext)
 
   const handleInputChange = (event) => {
     const { value } = event.target
@@ -25,31 +31,41 @@ export default function FundWalletModal({ isOpen, onClose }) {
   }
 
   const openInNewTab = (url) => {
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    const newWindow = window.open(url, '_self', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
 
+  const [authUrl, setAuthUrl] = useState()
+  const linkRef = useRef(null);
+  const naviagte = useNavigate()
+
   const onSubmit = async (data) => {
-    try {
-      const res = await fundWallet({ data })
-      console.log(res?.data)
-      if (res.data.status) {
-        const authorizationUrl = res?.data?.authorization_url
+    setFocus(false)
+    fundWallet({ data })
+    .then((res) => {
+      if(res.data) {
+        setAuthUrl(res.data?.authorization_url)
         toast.success(res.data.message, {
-          duration: 20000,
-        })
-        onClose()
-        if (authorizationUrl) {
-          localStorage.setItem('paystack_redirect', window.location.pathname)
-          openInNewTab(authorizationUrl) // Call the function to open in a new tab
-        }
+          duration: 2000,
+      })     
+      const authorizationUrl = res?.data?.authorization_url 
+      if (authorizationUrl) {
+         localStorage.setItem('paystack_redirect', window.location.pathname)
+         window.location.href = authorizationUrl
       }
-    } catch (error) {
+      }
+    })
+    .catch((error) => {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+      duration: 2000,
       })
-    }
+    })
   }
+  // useEffect(() => {
+  //   if(authUrl) {
+  //     linkRef.current.click()
+  //   }
+  // }, authUrl)
   return (
     <>
       <div>
@@ -75,10 +91,10 @@ export default function FundWalletModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
                       <div className="text-sm font-bold font-['Manrope']">
-                        Fund Your Trendit3 Wallet
+                        Fund Your Trendit³ Wallet
                       </div>
                       <div className=" text-center text-zinc-400 text-xs font-normal font-['Manrope']">
-                        Please enter the amount which you like to fund your
+                        Please enter the amount you would like to fund your
                         wallet with
                       </div>
                     </div>
@@ -94,12 +110,13 @@ export default function FundWalletModal({ isOpen, onClose }) {
                             <Input
                               type='text'
                               size='sm'
-                              placeholder='amount'
+                              placeholder='Amount'
+                              onClick={ () => (setFocus(true))}
                               {...field}
                               errorMessage={errors?.amount?.message}
-                              isInvalid={!!errors?.amount}
+                              // isInvalid={!!errors?.amount}
                               startContent={
-                                <span>{showBalance?.currency_symbol}</span>
+                                <span className={`${appreance === 'dark' ? (focus ? 'text-white' : 'text-black') : 'text-[#C026D3]'}`}>{showBalance?.currency_symbol}</span>
                               }
                               onChange={handleInputChange}
                               classNames={{
@@ -117,14 +134,28 @@ export default function FundWalletModal({ isOpen, onClose }) {
                                   'focus-within:!border-fuchsia-600  ',
                                 ],
                               }}
-                              className=" rounded text-[12.83px] font-normal font-['Manrope']"
+                              className={`rounded text-[12.83px] font-normal font-['Manrope']`}
                             />
                           )}
+                          rules={{required: true, 
+                            validate: {
+                              isMin: (fieldValue) => {
+                                return (
+                                  fieldValue.replace(/\D/g, '') >= 500 || 'The minimum funding amount is #500'
+                                )
+                              },
+                              isMax: (fieldValue) => {
+                                return (
+                                      fieldValue.replace(/\D/g, '') <= 500000 || 'The maximum funding amount is #500,000'
+                                )
+                              }
+                            }
+                          }}
                         />
                         <small className=" text-zinc-400 text-xs font-normal font-['Manrope']">
-                          You can choose your preferred method of payment such
-                          as Card payment, Bank transfer or USSD, simply by
-                          clicking on th “Change Payment” button.
+                          You can choose your preferred method of payment, such
+                          as card payment, bank transfer or USSD, simply by
+                          clicking on the payment options.
                         </small>
                       </div>
                       <div className='self-stretch'>
@@ -158,6 +189,15 @@ export default function FundWalletModal({ isOpen, onClose }) {
                             'Fund Wallet'
                           )}
                         </Button>
+                        <a
+                          href={localStorage.getItem('authUrl')}
+                          ref={linkRef}
+                          style={{ display: 'none' }} // Hide the link visually
+                          target="_self"
+                          rel="noopener noreferrer"
+                        >
+                          Open Link
+                        </a>
                       </div>
                     </div>
                   </div>

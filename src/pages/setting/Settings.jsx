@@ -1,15 +1,48 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Tab, Tabs } from '@nextui-org/tabs'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import GeneralForm from './GeneralForm'
 import SecuretyForm from './SecuretyForm'
 import NotificationForm from './NotificationForm'
 import BankDetailsForm from './BankDetailsForm'
 import PrefrenceForm from './PrefrenceForm'
 import SocialAccount from './SocialAccount'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function Settings() {
-  const [selected, setSelected] = useState('generalform')
+  const settingsTab = ['General', 'Security', 'Notifications', 'Bank Details', 'Social Account', 'Preferences']
+  const [selected, setSelected] = useState(settingsTab[0])
+  const location = useLocation()
+  const navigate = useNavigate()
+  const setTab = () => {
+    {selected === 'General' && (
+      location.search = '?tab=general',
+      navigate('/dashboard/settings/?tab=general')
+    )}
+    {selected === 'Security' && (
+      location.search = '?tab=security',
+      navigate('/dashboard/settings/?tab=security')
+    )}
+    {selected === 'Notifications' && (
+      location.search = '?tab=notifications',
+      navigate('/dashboard/settings/?tab=notifications')
+    )}
+    {selected === 'Bank Details' && (
+      location.search = '?tab=bank-details',
+      navigate('/dashboard/settings/?tab=bank-details')
+    )}
+    {selected === 'Social Account' && (
+      location.search = '?tab=social-account',
+      navigate('/dashboard/settings/?tab=social-account')
+    )}
+    {selected === 'Preferences' && (
+      location.search = '?tab=preferences',
+      navigate('/dashboard/settings/?tab=preferences')
+    )}
+  }
+  useEffect(() => {
+    location.search === '?tab=notifications' ? setSelected('Notifications') : ''
+  }, [])
 
   return (
     <div>
@@ -30,6 +63,7 @@ export default function Settings() {
                     aria-label='Tabs form'
                     selectedKey={selected}
                     onSelectionChange={setSelected}
+                    onClick={() => setTab()}
                     variant='underlined'
                     classNames={{
                       tabList: '  bordered py-2',
@@ -41,32 +75,33 @@ export default function Settings() {
                     color='secondary'
                   >
                     <Tab
-                      key='generalform'
+                      key='General'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='General'
                     ></Tab>
                     <Tab
-                      key='security'
+                      key='Security'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Security'
                     ></Tab>
                     <Tab
-                      key='notifications'
+                      key='Notifications'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                       title='Notifications'
-                    ></Tab>
+                    >
+                    </Tab>
                     <Tab
-                      key='bank details'
+                      key='Bank Details'
                       title='Bank details'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                     <Tab
-                      key='social account'
+                      key='Social Account'
                       title='Social Account'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
                     <Tab
-                      key='preferences'
+                      key='Preferences'
                       title='Preferences'
                       className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
                     ></Tab>
@@ -94,7 +129,7 @@ export default function Settings() {
             </div> */}
           </div>
 
-          {selected === 'generalform' && (
+          {selected === 'General' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -107,7 +142,7 @@ export default function Settings() {
               <GeneralForm />
             </motion.div>
           )}
-          {selected === 'security' && (
+          {selected === 'Security' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -120,7 +155,7 @@ export default function Settings() {
               <SecuretyForm />
             </motion.div>
           )}
-          {selected === 'notifications' && (
+          {selected === 'Notifications' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -133,7 +168,7 @@ export default function Settings() {
               <NotificationForm />
             </motion.div>
           )}
-          {selected === 'social account' && (
+          {selected === 'Social Account' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -146,7 +181,7 @@ export default function Settings() {
               <SocialAccount />
             </motion.div>
           )}
-          {selected === 'bank details' && (
+          {selected === 'Bank Details' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}
@@ -159,7 +194,7 @@ export default function Settings() {
               <BankDetailsForm />
             </motion.div>
           )}
-          {selected === 'preferences' && (
+          {selected === 'Preferences' && (
             <motion.div
               initial={{ x: 100 }}
               animate={{ x: 0 }}

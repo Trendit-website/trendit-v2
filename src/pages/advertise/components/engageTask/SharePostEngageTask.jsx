@@ -37,7 +37,7 @@ export default function SharePostEngageTask() {
     watch,
     setValue,
     formState: { errors },
-  } = useForm({ defaultValues: { amount: 100, posts_count: 1 } })
+  } = useForm({ defaultValues: { amount: 100, } })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
   const { mutateAsync: createAdvert, isPending } = useCreateAdvert()
@@ -533,7 +533,7 @@ export default function SharePostEngageTask() {
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'

@@ -5,7 +5,7 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
   return (
     <div>
       <div className='self-stretch relative border border-zinc-400 flex-col justify-start items-start flex'>
-        <div className='self-stretch p-6 bg-zinc400 z-20 bg-[#2F2F2F6B] bg-opacity-30 flexcol justifystart justify-between items-start gap-2 flex'>
+        <div className='self-stretch p-6 bg-zinc400 z-20 bg-[#2F2F2F6B] overflow-y-hidden bg-opacity-30 flexcol justifystart justify-between items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch  text-[10px] font-normal font-['Manrope']">
               {new Date().toLocaleDateString('en-US', {
@@ -15,11 +15,11 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
                 day: 'numeric',
               })}
             </div>
-            <div className=" text-3xl font-medium font-['Manrope']">
+            <div className=" text-2xl w-8/12 font-medium font-['Manrope']">
               {title}
             </div>
             <div className='self-stretch justify-start items-start gap-3 inline-flex'>
-              <div className="dark:text-[#909090] capitalize md:w-[60rem] text-[9px] font-normal font-['Manrope'] tracking-tight">
+              <div className="dark:text-[#909090] capitalize lg:w-9/12 lg:text-[12px] font-normal font-['Manrope'] tracking-tight">
                 {descp}
               </div>
             </div>
@@ -44,16 +44,16 @@ export default function IgPageHeaderEngage({ title, frame, descp, price }) {
               <div className=" text-sm font-bold font-['Manrope']">{price}</div>
             </div>
           </div>
-          <div className='md:w-[304.97px] origin-top-left absolute -z-10 opacity-20 md:z-0 md:opacity-100 -right-2 top-0 justify-start items-start gap-[115.18px] inline-flex'>
+          <div className='md:w-[304.97px] h-full overflow-hidden origin-top-left absolute -z-10 opacity-20 md:z-0 md:opacity-100 -right-2 top-0 justify-start items-start lg:justify-end lg:mr-4 gap-[115.18px] inline-flex'>
             {/* <div className='w-[304.97px] origin-top-left absolute right-0 top-0 -z-10 opacity-20 md:z-0 md:opacity-100 justify-start items-start gap-[115.18px] inline-flex'> */}
-            <Image src={frame} alt='igFrme' className='h-[9.1rem]' />
+            <Image src={frame} alt='igFrme' className='h-[15.1rem]' />
           </div>
         </div>
         <div className='self-stretch p-3 hidden bg-sky-100 justify-start items-start gap-[29px] inlineflex'>
           <div className='grow shrink basis-0 h-5 justify-start items-center gap-2.5 flex'>
             <div className="grow shrink basis-0 text-blue-600 text-xs font-normal font-['Manrope']">
               You must NOT UNLIKE or UNFOLLOW the Facebook page after you have
-              like and followed the page. Your Trendit account will be suspended
+              like and followed the page. Your Trendit³ account will be suspended
               once you UNLIKE or UNFOLLOW the Facebook Page.
             </div>
             <svg

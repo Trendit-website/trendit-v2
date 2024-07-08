@@ -8,7 +8,7 @@ import {
   SelectItem,
   useDisclosure,
 } from '@nextui-org/react'
-import { genders, platforms } from '../../../../utilities/data'
+import { genders, fbplatforms } from '../../../../utilities/data'
 import AdvertPaymentModal from '../AdvertPaymentModal'
 import { Controller, useForm } from 'react-hook-form'
 import {
@@ -25,11 +25,13 @@ import {
 import IgPageHeaderEngage from '../IgPageHeaderEngage'
 import AudFrame from '../../../../assets/logos_facebook.svg'
 import Loader from '../../../Loader'
+import { useNavigate } from 'react-router-dom'
+import Icons from '../../../../components/Icon'
 // import { useNavigate } from 'react-router'
 
 export default function FollowerAndLikeEngageTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  // // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [count, setCount] = useState(1)
 
@@ -40,7 +42,7 @@ export default function FollowerAndLikeEngageTask() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: { amount: 5, posts_count: 1 },
+    defaultValues: { amount: 20, },
   })
   const { data: countries, isLoading: isCountryLoading } = useGetCountry()
   const { data: religions, isLoading: isReligionLoading } = useGetReligion()
@@ -50,6 +52,8 @@ export default function FollowerAndLikeEngageTask() {
   const { data: states, isLoading: isStateLoading } = useGetState(
     watch().target_country
   )
+  const [successView, setSuccessView] = useState()
+  const [paymentError, setPaymentError] = useState()
 
   const onSubmit = async () => {
     onOpen()
@@ -62,8 +66,10 @@ export default function FollowerAndLikeEngageTask() {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
+  const [payLoading, setPayLoading] = useState(false)
 
   const handlePaymentSuccess = async () => {
+    setPayLoading(true)
     try {
       const data = watch()
       const formData = new FormData()
@@ -79,14 +85,17 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('gender', data.gender)
       formData.append('caption', data.caption)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
+        setSuccessView('initialized')
+        setPayLoading(false)
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
         const authorizationUrl = res?.data?.authorization_url
@@ -96,8 +105,10 @@ export default function FollowerAndLikeEngageTask() {
         }
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
+      setPayLoading(false)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -116,22 +127,25 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('posts_count', data.posts_count)
       formData.append('gender', data.gender)
       formData.append('religion', data.religion)
-      formData.append('goal', 'join group')
+      formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       // Update the amount state
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
+        setSuccessView('procceed')
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 2000,
         })
         //  navigate('dashboard/advertise-history')
       }
     } catch (error) {
+      setPaymentError(error.response?.data?.message ?? error.message)
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 2000,
       })
     }
   }
@@ -142,12 +156,23 @@ export default function FollowerAndLikeEngageTask() {
           <div className='p-3 bg-white dark:bg-zinc-900 flex-col justify-start items-start gap-3 inline-flex'>
             <div className='self-stretch grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
               <div className='w-full'>
+              <div
+                    onClick={() => navigate('/dashboard/advertise/?tab=engagement-tasks')}
+                    className='justify-start cursor-pointer items-center gap-[7px] inline-flex'
+                  >
+                    <div className='cursor-pointer'>
+                      <Icons type='arrow-back' />
+                    </div>
+                    <div className="text-center text-fuchsia-400 text-sm font-medium font-['Manrope']">
+                      Go back
+                    </div>
+              </div>
                 <IgPageHeaderEngage
                   frame={AudFrame}
                   title={`Get Genuine People to Like and Follow Your Facebook Business Page`}
                   descp={`Get real people to like and follow your Facebook business page. you can get any number of people to like and follow your Facebook business
  page without disclosing your Login details`}
-                  price={`₦20 per Follow`}
+                  price={`₦20 per Follow and Like`}
                 />
               </div>
               <div className='self-stretch  md:mt-8 grow shrink basis-0 flex-col justify-start items-start gap-4 flex'>
@@ -172,6 +197,8 @@ export default function FollowerAndLikeEngageTask() {
                               <Select
                                 placeholder='Select'
                                 aria-labelledby='platform'
+                                isInvalid={!!errors.platform}
+                                errorMessage={errors?.platform?.message}
                                 size='sm'
                                 selectedKeys={field.value ? [field.value] : []}
                                 classNames={{
@@ -194,7 +221,7 @@ export default function FollowerAndLikeEngageTask() {
                                 className="grow shrink rounded basis-0 text-black dark:text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                                 {...field}
                               >
-                                {platforms.map((platform) => (
+                                {fbplatforms.map((platform) => (
                                   <SelectItem
                                     key={platform.value}
                                     value={platform.value}
@@ -204,6 +231,7 @@ export default function FollowerAndLikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='justify-center items-center gap-2 inline-flex'>
@@ -259,6 +287,7 @@ export default function FollowerAndLikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
 
@@ -322,6 +351,7 @@ export default function FollowerAndLikeEngageTask() {
                                   ))}
                                 </Select>
                               )}
+                              rules={{ required: true }}
                             />
                           </div>
 
@@ -352,15 +382,34 @@ export default function FollowerAndLikeEngageTask() {
                                 isInvalid={!!errors?.posts_count}
                                 required={true}
                                 value={count}
+                                type='number'
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder=' Number of Followers and Likes  you want'
+                                placeholder='No of followers and likes'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, min: 0, 
+                              validate: {
+                                invalidInput: (fieldValue) => {
+                                  return (
+                                    fieldValue > 0 || 'invalid input' 
+                                  )
+                                },
+                                isMinimum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount >= 1000 || `The total amount of #${+watch().posts_count * +watch().amount} is below our minimum order. Please note that the minimum order amount is #1,000. Kindly adjust your orer accordingly.`
+                                  )
+                                },
+                                isMaximum: (fieldValue) => {
+                                  return (
+                                    fieldValue * +watch().amount <= 500000 || `Your order total amount of #${(+watch().posts_count * +watch().amount).toLocaleString()} exceeds the maximum allowed amount. Please review your order and adjust the total accordingly.`
+                                  )
+                                }
+                              }
+                             }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -390,12 +439,20 @@ export default function FollowerAndLikeEngageTask() {
                                 onChange={(e) => {
                                   setCount(e.target.value)
                                 }}
-                                placeholder='Enter the number of view you want'
+                                placeholder='Enter your link'
                                 {...field}
                                 className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
                               />
                             )}
-                            rules={{ required: true }}
+                            rules={{ required: true, 
+                              validate: {
+                                isValidLink: (fieldValue) => {
+                                  return (
+                                    (fieldValue.startsWith(`https://facebook.`) || fieldValue.startsWith('https://fb.')) || fieldValue.startsWith('https://www.facebook.') || fieldValue.startsWith('https://www.fb.') || 'Link not valid'
+                                  )
+                                }
+                              }
+                             }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -457,6 +514,7 @@ export default function FollowerAndLikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -518,6 +576,7 @@ export default function FollowerAndLikeEngageTask() {
                                 ))}
                               </Select>
                             )}
+                            rules={{ required: true }}
                           />
                         </div>
                         <div className='self-stretch justify-center items-center gap-2 inline-flex'>
@@ -537,7 +596,7 @@ export default function FollowerAndLikeEngageTask() {
                     </div>
                     <div className='self-stretch px-2 md:justify-between items-center gap-2 inline-flex'>
                       <div className="w-40 text-3xl font-medium font-['Manrope']">
-                        ₦{calculatedAmount?.toLocaleString()}
+                      {calculatedAmount > 0 ? ` ₦${calculatedAmount?.toLocaleString()}` : '0'}
                       </div>
                       <Button
                         type='submit'
@@ -559,9 +618,13 @@ export default function FollowerAndLikeEngageTask() {
         <AdvertPaymentModal
           isOpen={isOpen}
           onClose={onClose}
+          isLoading={payLoading}
           amount={calculatedAmount}
           onSuccess={handlePaymentSuccess}
           onWalletPaymentSuccess={handlePaymentTenditSuccess}
+          successView={successView}
+          paymentError={paymentError}
+          setPaymentError={setPaymentError}
         />
       )}
     </>

@@ -10,7 +10,10 @@ import {
 } from '../../api/walletApi'
 import { useForm, Controller } from 'react-hook-form'
 import BankCard from '../setting/BankCard'
-
+import { useContext, useState } from 'react'
+import { AppearanceContext } from '../../providers/AppearanceProvider'
+import VatModal from './VatModal'
+import { useDisclosure } from '@nextui-org/react'
 export default function WithdrawWalletModal({ isOpen, onClose }) {
   const {
     handleSubmit,
@@ -21,6 +24,8 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
   const { mutateAsync: fundWallet, isPending } = useWitdrawFundsh()
   const { data: showBalance } = useFetchBallance()
   const { data: userBank } = useBankDetails()
+  const [focus, setFocus] = useState(false)
+  const appreance = useContext(AppearanceContext)
 
   const handleInputChange = (event) => {
     const { value } = event.target
@@ -31,17 +36,18 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
   }
 
   const onSubmit = async (data) => {
+    setFocus(false)
     try {
       const res = await fundWallet({ data })
       console.log(res?.data)
       if (res.data.status) {
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 1000,
         })
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 1000,
       })
     }
   }
@@ -70,18 +76,18 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                   <div className='self-stretch  flex-col justify-start items-start gap-[18px] flex'>
                     <div className='self-stretch flex-col justify-start items-center gap-3 flex'>
                       <div className="grow shrink basis-0 text-md font-semibold font-['Manrope']">
-                        Withdraw Fund
+                        Withdraw
                       </div>
                     </div>
                     <div className=" text-center text-sm font-normal font-['Manrope']">
-                      Please enter the amount which you like to withdraw from
+                      Please enter the amount you would like to withdraw from
                       your wallet
                     </div>
                     <div className='self-stretch justify-start flex-col items-start gap-[19px] flex'>
                       <div className='self-stretch rounded-none  gap-2 flex-col flex'>
-                        <div className='w[275px]'>
-                          <span className="text-sm font-normal font-['Manrope']">
-                            Wallet Balance
+                        <div className='w[275px] flex items-center gap-x-1'>
+                          <span className="text-sm font-normal font-['Manrope'] -mr-0.5">
+                            Wallet Balance: 
                           </span>
 
                           <span className=" text-sm font-semibold font-['Manrope']">
@@ -99,12 +105,13 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                             <Input
                               type='text'
                               size='sm'
-                              placeholder='amount'
+                              placeholder='Amount'
+                              onClick={() => setFocus(true)}
                               {...field}
                               errorMessage={errors?.amount?.message}
                               isInvalid={!!errors?.amount}
                               startContent={
-                                <span>{showBalance?.currency_symbol}</span>
+                                <span className={`${appreance === 'dark' ? (focus ? 'text-white' : 'text-black') : 'text-[#C026D3]'}`}>{showBalance?.currency_symbol}</span>
                               }
                               onChange={handleInputChange}
                               classNames={{
@@ -125,6 +132,20 @@ export default function WithdrawWalletModal({ isOpen, onClose }) {
                               className=" rounded text-[12.83px] font-normal font-['Manrope']"
                             />
                           )}
+                          rules={{required: true, 
+                            validate: {
+                              isMin: (fieldValue) => {
+                                return (
+                                  fieldValue.replace(/\D/g, '') >= 1000 || 'The minimum withdrawal amount is #1,000'
+                                )
+                              },
+                              isMax: (fieldValue) => {
+                                return (
+                                      fieldValue.replace(/\D/g, '') <= 500000 || 'The maximum withdrawal amount is #500,000'
+                                )
+                              }
+                            }  
+                          }}
                         />
                       </div>
                       <div className='self-stretch'>

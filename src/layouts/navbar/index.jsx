@@ -12,57 +12,131 @@ import {
   AppearanceContext,
   SetAppearanceContext,
 } from '../../providers/AppearanceProvider'
+import Cookies from 'js-cookie';
+import { useDarkPref, useLightPref } from '../../hooks/usePref'
 import API from '../../services/AxiosInstance'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import { useGetUserPrefence } from '../../api/settingsApis'
 
 // const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
 const Navbar = ({ onNotificationClick }) => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
-  // minimized sidebar was omitted for now!
-
+ 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const userPrefrences = useContext(AppearanceContext)
   const setPrefrence = useContext(SetAppearanceContext)
-  // const userPrefrence = useGetUserPrefence()
-  // console.log(userPrefrence.data?.appearance)
+  const {data: pref} = useGetUserPrefence()
+  const system = window.matchMedia('(prefers-color-scheme: light)')
   const setAppearance = () => {
-    if (userPrefrences === 'light') {
-      document.body.classList.add('dark')
-      document.body.classList.add('text-foreground')
-      document.body.classList.add('bg-background')
+    if(pref.appearance === undefined) {
+      useDarkPref()
       API.post('/settings/preferences', {
         setting_name: 'appearance',
         value: 'dark',
       })
         .then(
-          (response) => (
-            toast.success(response.data?.message), setPrefrence('dark'), localStorage.setItem('appearance', 'dark')
-          )
+          (response) => {
+            toast.success(response.data?.message)
+            useDarkPref()
+            setPrefrence('dark')
+            Cookies.set('appearance', 'dark')
+          }
         )
         .catch(
-          (error) => toast.errorerror.response?.data?.message ?? error.message
+          (error) => {
+            toast.error(error.response?.data?.message ?? error.message)
+            useLightPref()
+            }
+          )
+    } else if(userPrefrences === 'light' || pref.appearance === 'light') {
+      useDarkPref()
+      API.post('/settings/preferences', {
+        setting_name: 'appearance',
+        value: 'dark',
+      })
+        .then(
+          (response) => {
+            toast.success(response.data?.message)
+            useDarkPref()
+            setPrefrence('dark')
+            Cookies.set('appearance', 'dark')
+          }
         )
-    } else if (userPrefrences === 'dark') {
-      document.body.classList.remove('dark')
-      document.body.classList.remove('text-foreground')
-      document.body.classList.remove('bg-background')
+        .catch(
+          (error) => {
+            toast.error(error.response?.data?.message ?? error.message)
+            useLightPref()
+            }
+          )
+    } else if(userPrefrences === 'dark' || pref.appearance === 'dark') {
+      useLightPref()
       API.post('/settings/preferences', {
         setting_name: 'appearance',
         value: 'light',
       })
         .then(
-          (response) => (
-            toast.success(response.data?.message), setPrefrence('light'), localStorage.setItem('appearance', 'light')
-          )
+          (response) => {
+            toast.success(response.data?.message)
+            useLightPref()
+            setPrefrence('light')
+            Cookies.set('appearance', 'light')
+          }
         )
-        .catch((error) => toast.error.response?.data?.message ?? error.message)
-    } else if (userPrefrences === undefined) {
-      document.body.classList.remove('dark')
-      document.body.classList.remove('text-foreground')
-      document.body.classList.remove('bg-background')
+        .catch(
+          (error) => {
+            toast.error(error.response?.data?.message ?? error.message)
+            useDarkPref()
+            }
+          )
+    } else if(userPrefrences === 'system' || pref.appearance === 'system') {
+      if(system.matches) {
+        useLightPref()
+        API.post('/settings/preferences', {
+          setting_name: 'appearance',
+          value: 'light',
+        })
+          .then(
+            (response) => {
+              toast.success(response.data?.message)
+              useLightPref()
+              setPrefrence('light')
+              Cookies.set('appearance', 'light')
+            }
+          )
+          .catch(
+            (error) => {
+              toast.error(error.response?.data?.message ?? error.message)
+              console.error(error.response?.data?.message ?? error.message)
+              useDarkPref()
+              }
+            )
+ } else {
+        useDarkPref()
+        API.post('/settings/preferences', {
+          setting_name: 'appearance',
+          value: 'dark',
+        })
+          .then(
+            (response) => {
+              toast.success(response.data?.message)
+              useDarkPref()
+              setPrefrence('dark')
+              Cookies.set('appearance', 'dark')
+            }
+          )
+          .catch(
+            (error) => {
+              toast.error(error.response?.data?.message ?? error.message)
+              useLightPref()
+              }
+            )
+ }
     }
+   
   }
+  const navigate = useNavigate()
 
   return (
     <>
@@ -151,8 +225,8 @@ const Navbar = ({ onNotificationClick }) => {
                       />
                     </svg>
                   </div>
-                  {/* <div
-                    onClick={onNotificationClick}
+                  <div
+                    onClick={() => navigate('/dashboard/settings/?tab=notifications')}
                     className='w-6 h-6 relative cursor-pointer'
                   >
                     <svg
@@ -169,7 +243,7 @@ const Navbar = ({ onNotificationClick }) => {
                         strokeLinecap='round'
                       />
                     </svg>
-                  </div> */}
+                  </div>
 
                   <div
                     onClick={onOpen}

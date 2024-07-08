@@ -30,7 +30,7 @@ export default function FundWallet() {
       if (res.data.status) {
         const authorizationUrl = res?.data?.authorization_url
         toast.success(res.data.message, {
-          duration: 20000,
+          duration: 1000,
         })
         if (authorizationUrl) {
           localStorage.setItem('paystack_redirect', window.location.pathname)
@@ -39,7 +39,7 @@ export default function FundWallet() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message, {
-        duration: 20000,
+        duration: 1000,
       })
     }
   }

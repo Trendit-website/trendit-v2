@@ -39,7 +39,6 @@ export const useGetTotalAdvertTask = () => {
     queryKey: ['get_total_advert'],
     queryFn: async () => {
       const res = await API.get(`/user/tasks`)
-      console.log(res?.data)
       return res?.data?.all_tasks
     },
   })

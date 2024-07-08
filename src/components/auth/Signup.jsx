@@ -1,13 +1,14 @@
 import { Button, Input } from '@nextui-org/react'
 import Logo from '../Logo'
 import { ChevronRight, EyeIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Controller, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import { useRegisterUser } from '../../api/auth'
 import useCurrentUser from '../../hooks/useCurrentUser'
 import useAccessToken from '../../hooks/useAccessToken'
+import API from '../../services/AxiosInstance'
 
 export default function Signup() {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,12 +17,71 @@ export default function Signup() {
     handleSubmit,
     control,
     reset,
+    setError,
+    watch,
     formState: { errors },
   } = useForm()
   const { mutateAsync: handleReg, isPending } = useRegisterUser()
   const { userData } = useCurrentUser()
   const toggleVisibility = () => setIsVisible(!isVisible)
   const { setAccessToken } = useAccessToken()
+  const [debouncedValue, setDebouncedValue] = useState()
+  const [isExist, setExist] = useState()
+  const username = watch('username')
+  
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(username)
+  }, 1000)
+  return () => {
+    clearTimeout(handler)
+  };
+  })
+  useEffect(() => {
+    if(debouncedValue) {
+      if(/[a-zA-Z]/.test(debouncedValue) && /[0-9]/.test(debouncedValue)) {
+        API.post('/check-username', {'username': debouncedValue})
+        .then((response) => setExist(response.data?.message))
+        .catch((error) => (setError('username', {
+          type: 'manual',
+          message: error?.response?.data?.message
+        })))
+      } else if(/[a-zA-Z]/.test(debouncedValue)) {
+        API.post('/check-username', {'username': debouncedValue})
+        .then((response) => setExist(response.data?.message))
+        .catch((error) => (setError('username', {
+          type: 'manual',
+          message: error?.response?.data?.message
+        })))
+      } else {
+        setError('username', {
+          type: 'manual',
+          message: 'Numeric username is not allowed'
+        })
+      }
+    }
+  }, [debouncedValue])
+
+  const validatePassword = (value) => {
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}_-|<>]/.test(value);
+    return (
+      hasNumber && hasSpecialChar || 
+      ''
+    );
+  };
+  const validateUsername = (value) => {
+    const containsLetters = /[a-zA-Z]/.test(value);
+    const containsNumbers = /[0-9]/.test(value);
+    if(containsLetters) {
+      return true
+    }
+    if(containsLetters && containsNumbers) {
+      return true
+    }
+    return 'Username cannot be Numeric'
+  }
 
   const onSubmit = async (data, e) => {
     e.preventDefault()
@@ -80,7 +140,7 @@ export default function Signup() {
                             '!cursor-text',
                           ],
                         }}
-                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                        className="grow shrink basis-0 text-stone-900  rounded-none text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -102,7 +162,7 @@ export default function Signup() {
                           ],
                         }}
                         placeholder='Last Name'
-                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                        className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       />
                     )}
                     rules={{ required: true }}
@@ -120,7 +180,7 @@ export default function Signup() {
                   render={({ field }) => (
                     <Input
                       {...field}
-                      errorMessage={errors?.username?.message}
+                      errorMessage={isExist ? (isExist ? <p className='text-green-500'>{isExist}</p> : '') : errors?.username?.message}
                       isInvalid={!!errors?.username}
                       required={true}
                       classNames={{
@@ -131,11 +191,14 @@ export default function Signup() {
                         ],
                       }}
                       placeholder='Enter a username'
-                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                      className="grow shrink basis-0 text-stone-900  rounded text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                     />
                   )}
-                  rules={{ required: true }}
+                  rules={{ required: true, 
+                    validate: validateUsername
+                  }}
                 />
+                  {/* {isExist ? <p className='text-green-500'>{isExist}</p> : ''} */}
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                 <label className="text-center px-2 inline-flex text-[12.83px] font-medium font-['Manrope']">
@@ -152,7 +215,7 @@ export default function Signup() {
                       isInvalid={!!errors?.password}
                       required={true}
                       placeholder='Enter a password'
-                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
+                      className="grow shrink basis-0   rounded text-stone-900 text-opacity-50 text-[16.83px] font-normal font-['Manrope']"
                       endContent={
                         <button
                           className='focus:outline-none'
@@ -212,6 +275,7 @@ export default function Signup() {
                       value: 8,
                       message: 'min length is 8',
                     },
+                    validate: validatePassword
                   }}
                 />
 
@@ -226,7 +290,7 @@ export default function Signup() {
               <Button
                 type='submit'
                 isDisabled={isPending}
-                className="w-[290px] text-center text-white text-[12.83px] font-medium font-['Manrope'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
+                className="w-[290px] text-center text-white text-[16.83px] font-medium font-['Manrope'] px-6 py-5 bg-fuchsia-600 rounded-[100px] justify-center items-center gap-2 inline-flex"
               >
                 {isPending ? (
                   <svg
@@ -263,7 +327,7 @@ export default function Signup() {
               <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none '>Go Back</Button>
               </div>
-              <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
+              <div className="text-center p-2 md:hidden   text-[16.83px] font-bold font-['Manrope']">
                 <Button variant='flat bg-none  '>
                   <ChevronRight />
                 </Button>
