@@ -276,7 +276,7 @@ function App() {
               }
             />
             <Route
-              path='earn-advert-task'
+              path='earn-advert-task/:taskId'
               element={
                 <ProtectedRoute>
                   <EarnAdvertTask />

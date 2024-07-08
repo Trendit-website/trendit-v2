@@ -9,6 +9,7 @@ import {
   useCalcelTask,
   usePerformTask,
   useSubmitPerformTask,
+  usePreviewPerformTask
 } from '../../../api/earnApi'
 import DownloadImageButton from '../../../components/DownloadButton'
 import { useEffect, useState } from 'react'
@@ -18,9 +19,12 @@ import Timer from './Timer'
 import { useQueryClient } from '@tanstack/react-query'
 import trLogo from '../../../assets/tr-lg.svg'
 import Loader from '../../Loader'
+import { useParams } from 'react-router-dom'
 
 export default function EarnAdvertTask() {
-  const { data: fetchTask } = usePerformTask('pending')
+  const param = useParams()
+  const taskId = param.taskId
+  const { data: fetchTask } = usePreviewPerformTask(taskId)
   const [imageUrls, setImageUrls] = useState([])
   const [media, setMedia] = useState(null)
   const { mutateAsync: submitPerformTask, isPending } = useSubmitPerformTask()
@@ -88,11 +92,11 @@ export default function EarnAdvertTask() {
       if (media) {
         formData.append('screenshot', media)
       }
-      fetchTask?.forEach((task) => {
+      // fetchTask?.forEach((task) => {
         // Append reward_money and task_id_key for each task
-        formData.append(`reward_money`, task?.reward_money)
-        formData.append(`task_id_key`, task?.task?.task_key)
-      })
+        formData.append(`reward_money`, fetchTask?.reward_money)
+        formData.append(`task_id_key`, fetchTask?.task?.task_key)
+      // })
       formData.append('account_name', data?.profile)
       formData.append('post_link', data?.link)
       // Append other form fields
@@ -105,7 +109,7 @@ export default function EarnAdvertTask() {
           duration: 1000,
         })
         // navigate('/dashboard/earn-advert_fb-task')
-        navigate(-1)
+        navigate('/dashboard/earn-history')
       }
     } catch (error) {
       console.error(error)
@@ -162,22 +166,22 @@ export default function EarnAdvertTask() {
             </div>
           </div>
 
-          {fetchTask?.map((task, index) => (
+          
             <>
               <div className='self-stretch relative pb-10 border border-white flex-col justify-start items-start flex'>
                 <div className='self-stretch  p-6 bg-opacity-40  rounded-tl-lg rounded-tr-lg flex-col justify-start items-start gap-2 flex'>
                   <div className='flex-col justify-start items-start gap-1.5 flex'>
                     <div className='self-stretch text-zinc-400 text-[10px] font-normal font-Manrope'>
-                      {task?.task?.date_created}
+                      {fetchTask?.task?.date_created}
                     </div>
                     <div className='capitalize text-3xl font-medium font-Manrope'>
                       {
-                        task?.task?.task_type === 'advert' ? 
-                        `Post advert on your ${task?.task?.platform} Page` : 
-                        (task?.task?.goal === 'comment' && `Comment on ${task?.task?.platform} Post`) ||
-                        (task?.task?.goal === 'follow and like' && `Follow and Like ${task?.task?.platform} Page`) ||
-                        (task?.task?.goal === 'follow' && `Follow ${task?.task?.platform} Page`) ||
-                        (task?.task?.goal === 'like' && `Like ${task?.task?.platform} Post`)  
+                        fetchTask?.task?.task_type === 'advert' ? 
+                        `Post advert on your ${fetchTask?.task?.platform} Page` : 
+                        (fetchTask?.task?.goal === 'comment' && `Comment on ${fetchTask?.task?.platform} Post`) ||
+                        (fetchTask?.task?.goal === 'follow and like' && `Follow and Like ${fetchTask?.task?.platform} Page`) ||
+                        (fetchTask?.task?.goal === 'follow' && `Follow ${fetchTask?.task?.platform} Page`) ||
+                        (fetchTask?.task?.goal === 'like' && `Like ${fetchTask?.task?.platform} Post`)  
                       }
                     </div>
                     <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
@@ -221,12 +225,12 @@ export default function EarnAdvertTask() {
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
                     <div className='grow shrink basis-0 text-blue-600 text-xs font-normal font-Manrope'>
                       {
-                        task?.task?.task_type === 'advert' ? 
+                        fetchTask?.task?.task_type === 'advert' ? 
                         'You must not delete the post after posting. Your Trendit³ account will be suspended once you delete the post' : 
-                      ` You must NOT UNLIKE, UNFOLLOW or DELETE comment on the ${task?.task?.platform}{' '}
+                      ` You must NOT UNLIKE, UNFOLLOW or DELETE comment on the ${fetchTask?.task?.platform}{' '}
                       page or post after you have liked and followed the page or commented on the post. Your
                       Trendit³ account will be suspended once you UNLIKE or
-                      UNFOLLOW the ${task?.task?.platform} Page `
+                      UNFOLLOW the ${fetchTask?.task?.platform} Page `
                       }
                     </div>
                     <svg
@@ -247,17 +251,17 @@ export default function EarnAdvertTask() {
                 </div>
                 </div>
                 <div className='w-full'>
-                  <Timer onDone={() => onCancel(task?.key)} />
+                  <Timer onDone={() => onCancel(fetchTask?.key)} />
                 </div>
-                <div key={index} className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
+                <div className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
                       {
-                        task?.task?.task_type === 'advert' ? 
+                        fetchTask?.task?.task_type === 'advert' ? 
                         <div className='bg-zinc-800 bg-opacity-40 sm:h-[678px] flex flex-col gap-y-6 py-10 items-center lg:w-6/12 w-11/12'>
                           <h1 className='text-[24px]'>Task</h1>
                           <div className='text-[12px] font-semibold flex flex-col gap-y-6 px-4'>
                               Please follow the step-by-step instructions below to do your task:
                                 <p>
-                                  Step 1: Open {task?.task?.platform} on your Mobile App or browser
+                                  Step 1: Open {fetchTask?.task?.platform} on your Mobile App or browser
                                 </p>
                                 <p>
                                   Step 2: Create a post, copy the information below on the description of the advert which you are meant to post on your page.
@@ -267,7 +271,7 @@ export default function EarnAdvertTask() {
                                   Add the image or video provided for the advert.  Make sure it's high-quality and visually appealing and post it on your page
                                 </p>
                                 <p>
-                                  Step 4: After you have created the new post, then you will comeback to this page and upload the proof of work, which is the link to your profile on {task?.task?.platform} and the link to the {task?.task?.platformn} post which you have created
+                                  Step 4: After you have created the new post, then you will comeback to this page and upload the proof of work, which is the link to your profile on {fetchTask?.task?.platform} and the link to the {fetchTask?.task?.platformn} post which you have created
                                 </p>
                           </div>
                           <div className='flex flex-col text-[12px] gap-y-4 px-4'>
@@ -275,16 +279,16 @@ export default function EarnAdvertTask() {
                               <p className='text-[#B1B1B1] w-11/12'>
                                   Download the advert image or videos using the download button below and also copy the advert test as seen below and upload it to your Instagram Page
                               </p>
-                              <div className='bg-[#FF6DFB] w-[136px] rounded-lg text-center py-2 px-4' onClick={() => downloadAdvertImage(task?.task?.media_path, 'advert-file.png')}>
+                              <div className='bg-[#FF6DFB] w-[136px] rounded-lg text-center py-2 px-4' onClick={() => fetchTask?.task?.media_path ? downloadAdvertImage(fetchTask?.task?.media_path, 'advert-file.png') : toast.error('No media path provided')}>
                                 Download Advert
                               </div>
                           </div>
                           <span className='self-start px-4'>Advert text</span>
                           <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
                             <div className='text-[10px] w-9/12'>
-                              {task?.task?.caption}
+                              {fetchTask?.task?.caption}
                             </div>
-                              <p className='flex items-center gap-x-2 text-[12px] text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(task?.task?.caption), toast.success('Caption copied'))}>
+                              <p className='flex items-center gap-x-2 text-[12px] text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
                                 <Icons type='copy' stroke='#FF6DFB'/>
                                 Copy text
                               </p>
@@ -296,36 +300,36 @@ export default function EarnAdvertTask() {
                             <div className='text-[12px] font-semibold flex flex-col gap-y-6 px-4'>
                                 Please follow the step-by-step instructions below to do your task:
                                   <p>
-                                    Step 1: Open the Task Link below on your {task?.task?.platform} Mobile App or browser
+                                    Step 1: Open the Task Link below on your {fetchTask?.task?.platform} Mobile App or browser
                                   </p>
                                   <p>
-                                    Step 2: The link will direct you to a {task?.task?.platform} Page or Post which you are meant to 
-                                    {task?.task?.goal === 'comment' && 'comment'}
-                                    {task?.task?.goal === 'like' && 'like'}
-                                    {task?.task?.goal === 'follow' && 'follow'}
-                                    {task?.task?.goal === 'follow and like' && 'like andd follow'}
+                                    Step 2: The link will direct you to a {fetchTask?.task?.platform} Page or Post which you are meant to 
+                                    {fetchTask?.task?.goal === 'comment' && 'comment'}
+                                    {fetchTask?.task?.goal === 'like' && 'like'}
+                                    {fetchTask?.task?.goal === 'follow' && 'follow'}
+                                    {fetchTask?.task?.goal === 'follow and like' && 'like andd follow'}
                                   </p>
                                   <p>
                                     Step 3: 
-                                    {task?.task?.goal !== 'comment' ?
+                                    {fetchTask?.task?.goal !== 'comment' ?
                                     `
-                                      Click on the Like or Follow button on the ${task?.task?.platform} Page to like or follow the page. You MUST NOT Unfollow the account after you have followed the account.
+                                      Click on the Like or Follow button on the ${fetchTask?.task?.platform} Page to like or follow the page. You MUST NOT Unfollow the account after you have followed the account.
                                     ` : 
-                                    `Click on the comment icon or button to comment on the ${task?.task?.platform} post. You mut not delete the comment after you have commented on the post`
+                                    `Click on the comment icon or button to comment on the ${fetchTask?.task?.platform} post. You mut not delete the comment after you have commented on the post`
                                     }
                                   </p>
                                   <p>
                                     Step 4:
                                     {
-                                      task?.task?.goal !== 'comment' ? 
-                                      `Create a screenshot of the page that shows you have liked or followed the page and upload the screenshot under the Proof of Work Form. You are also required to enter your ${task?.task?.platform} Username or Name which you used to perform the task` :
-                                      `Create a screenshot of the post that shows you have commented on the post and upload the screenshot under the Proof of Work Form below. You are also required to enter your ${task?.tak?.platform} Username or Name which you used to perform the task`
+                                      fetchTask?.task?.goal !== 'comment' ? 
+                                      `Create a screenshot of the page that shows you have liked or followed the page and upload the screenshot under the Proof of Work Form. You are also required to enter your ${fetchTask?.task?.platform} Username or Name which you used to perform the task` :
+                                      `Create a screenshot of the post that shows you have commented on the post and upload the screenshot under the Proof of Work Form below. You are also required to enter your ${fetchTask?.tak?.platform} Username or Name which you used to perform the task`
                                     }
                                   </p>
                             </div>
                             <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
-                                {task?.task?.account_link}
-                                <a href={task?.task?.account_link} className='flex items-center gap-x-2 text-[14px] text-[#FF6DFB]' target='_blank'>
+                                {fetchTask?.task?.account_link}
+                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[14px] text-[#FF6DFB]' target='_blank'>
                                   <Icons type='visit-link' />
                                   Visit link
                                 </a>
@@ -333,35 +337,78 @@ export default function EarnAdvertTask() {
                         </div>
                       }
                       {
-                        task?.task?.task_type === 'advert' ? 
+                        fetchTask?.task?.task_type === 'advert' ? 
                           <div className='bg-zinc-800 bg-opacity-40 sm:h-[678px] px-4 flex flex-col gap-y-6 py-10 items-center lg:w-5/12 w-11/12'>
-                                <h1 className='text-[24px]'>Upload Proof</h1>   
-                                <div className='text-[12px] flex flex-col gap-y-2 w-full'>
-                                    Enter the link to your {task?.task?.platform} profile
+                                <h1 className='text-[24px]'>Upload Proof</h1>  
+                                {fetchTask?.task?.platform === 'whatsapp' ? 
+                                    <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex mt-14 mb-14'>
+                                    <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
+                                      <input
+                                        type='file'
+                                        id='image-upload'
+                                        name='media'
+                                        className='absolute hidden w-full opacity-0 cursor-pointer'
+                                        {...register('screenshot')}
+                                        onChange={handleChange}
+                                      />
+                                      <label
+                                        htmlFor='image-upload'
+                                        className='text-center cursor-pointer text-zinc-400 text-[10px] font-normal font-Manrope'
+                                      >
+                                        <svg
+                                          xmlns='http://www.w3.org/2000/svg'
+                                          width='24'
+                                          height='24'
+                                          viewBox='0 0 24 24'
+                                          fill='none'
+                                        >
+                                          <path
+                                            d='M12 4V20M20 12L4 12'
+                                            stroke='white'
+                                            strokeWidth='2'
+                                            strokeLinecap='round'
+                                          />
+                                        </svg>
+                                      </label>
+                                    </div>
+                                    {media && (
+                                      <Image
+                                        src={URL.createObjectURL(media)}
+                                        alt='Preview'
+                                        className='w-full h-full object-cover'
+                                      />
+                                    )}
+                                  </div>                                
+                                :
+                                <>
+                                 <div className='text-[12px] flex flex-col gap-y-2 w-full'>
+                                    Enter the link to your {fetchTask?.task?.platform} profile
                                     <Input errorMessage={errors?.link?.message} placeholder='Enter the link' {...register('link', {
                                       required: true,
                                       validate: {
                                         isValidLink: (fieldValue) => {
                                           return (
-                                            (fieldValue.startsWith(`https://${task?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${task?.task?.platform}.`)) || (task?.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (task?.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
+                                            (fieldValue.startsWith(`https://${fetchTask?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${fetchTask?.task?.platform}.`)) || (fetchTask?.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (fetchTask.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
                                           )
                                         }
                                       }
                                     })}/>
                                 </div>  
                                 <div className='text-[12px] flex flex-col gap-y-2 w-full'>
-                                    Enter the link to the advert post which you created on {task?.task?.platform}
+                                    Enter the link to the advert post which you created on {fetchTask?.task?.platform}
                                     <Input errorMessage={errors?.profile?.message} placeholder='Enter the link' {...register('profile', {
                                       required: true,
                                       validate: {
                                         isValidLink: (fieldValue) => {
                                           return (
-                                            (fieldValue.startsWith(`https://${task?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${task?.task?.platform}.`)) || (task?.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (task?.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
+                                            (fieldValue.startsWith(`https://${fetchTask?.task?.platform}.`) || (fieldValue.startsWith(`https://www.${fetchTask?.task?.platform}.`)) || (fetchTask.task?.platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) : '') || (fetchTask?.task?.platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
                                           )
                                         }
                                       }
                                     })}/>
-                                </div>       
+                                </div>   
+                                </>  
+                              }     
                                 <Button
                                 type='submit'
                                 isDisabled={isPending}
@@ -393,7 +440,7 @@ export default function EarnAdvertTask() {
                                           'Mark as Done'
                                         )}
                                       </div>
-                                  </Button>             
+                                </Button>             
                           </div>
                          : 
                         <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg sm:h-[478px] flex-col justify-start sm:w-11/12 lg:w-5/12 items-center gap-10 inline-flex'>
@@ -447,13 +494,13 @@ export default function EarnAdvertTask() {
                           <div className='self-stretch flex-col justify-start items-start gap-3 flex'>
                             <div
                               className={`${
-                                task?.task?.platform === 'whatsapp'
+                                fetchTask?.task?.platform === 'whatsapp'
                                   ? 'hidden'
                                   : 'grid'
                               }  self-stretch flex-col justify-start items-start gap-3 flex`}
                             >
-                              <div className='self-stretch text-xs font-semibold font-Manrope'>
-                                Please enter the name on your {task?.task?.platform} account that
+                              <div className='self-stretch text-xs font-semibold font-Manrope mt-10'>
+                                Please enter the name on your {fetchTask?.task?.platform} account that
                                 performed this task
                               </div>
                               <Input
@@ -478,12 +525,12 @@ export default function EarnAdvertTask() {
                       }                 
                 </div>
                 {
-                  task?.task?.task_type === 'advert' ? '' :
+                  fetchTask?.task?.task_type === 'advert' ? '' :
                   <div className='self-stretch h-[43px]  justify-between px-4 items-end gap-2 flex'>
                   <Button
                     type='submit'
                     isDisabled={loading}
-                    onClick={() => onCancel(task?.key)}
+                    onClick={() => onCancel(fetchTask?.key)}
                     className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <div className='text-center text-white text-[12.83px] font-medium font-Manrope'>
@@ -526,7 +573,6 @@ export default function EarnAdvertTask() {
                 }
               </div>
             </>
-          ))}
           <div className='self-stretch p-3 justify-end items-end inline-flex'>
             <div className='justify-start items-center gap-[7px] flex'>
               <svg
