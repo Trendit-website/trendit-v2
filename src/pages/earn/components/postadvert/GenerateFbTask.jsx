@@ -159,7 +159,7 @@ export default function GenerateFbTask() {
                  }
                 <div className='flex items-center gap-x-2'>
                     <div className='bg-zinc-700 dark:bg-white flex items-center justify-between text-black bg-opacity-50 py-2 w-11/12 md:w-12/12 pl-2 sm:px-4 rounded'>
-                        {active?.link}
+                        {active?.link?.length > 30 ? active?.link?.substring(0, 30) + '(...)' : active?.link}
                         <div className={`${active?.status === 'verified' && 'text-green-800' || active?.status === 'pending' && 'text-yellow-700' || active?.status === 'idle' && 'text[#FF3D00]' || active?.status === 'rejected' && 'text-[#FF3D00]'} py-[6px] px-[6px] text-center rounded-full font-semibold`}>
                           {active?.status.charAt(0).toUpperCase()+active?.status?.slice(1)}
                         </div>

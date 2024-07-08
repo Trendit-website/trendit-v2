@@ -171,13 +171,16 @@ export default function TaskCard({
                             <Icons type='wallet' fill={appreance === 'dark' ? '#B1B1B1' : 'white'}/> 
                             <span className={`${appreance === 'dark' ? 'text-[#909090]': 'text-white'}`}>Pricing: </span> 
                               <p className="font-bold text-xs">
-                              {profile?.wallet?.currency_symbol}{fee} per {
-                                     task_type === 'advert' && 'Posts' ||
+                              {profile?.wallet?.currency_symbol} {
+                                     task_type === 'advert' && (
+                                      platform === 'whatsapp' ? '80 per Posts' :
+                                      '140 per Posts'
+                                     ) ||
                                      task_type === 'engagement' && (
-                                       goal === 'comment' && `Comments` ||
-                                       goal === 'follow and like' && 'Followers and Likes' ||
-                                       goal === 'follow' && `Followers` ||
-                                       goal === 'like' && `Likes`     )
+                                       goal === 'comment' && `40 per Comments` ||
+                                       goal === 'follow and like' && '20 per Followers and Likes' ||
+                                       goal === 'follow' && `5 per Followers` ||
+                                       goal === 'like' && `5 per Likes`     )
                                 }
                               </p>
                         </div>

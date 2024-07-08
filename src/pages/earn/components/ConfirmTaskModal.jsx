@@ -31,8 +31,9 @@ export default function ConfirmTaskModal({
         onClose()
       } else if (res.status === 200) {
         toast.success(res.data.message)
+        console.log(res)
         onClose()
-        navigate(`/dashboard/earn-advert-task`)
+        navigate(`/dashboard/earn-advert-task/${res.data?.generated_task?.key}`)
       } else {
         onClose()
       }

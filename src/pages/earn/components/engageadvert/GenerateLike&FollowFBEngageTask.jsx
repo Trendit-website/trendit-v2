@@ -90,7 +90,7 @@ export default function GenerateLikeFollowFBEngageTask() {
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
                     {
-                        EngageTask?.like ?  `${EngageTask?.like?.total} Task available` : 'No task available'
+                        EngageTask?.[`follow and like`] ?  `${EngageTask?.[`follow and like`]?.total} Task available` : 'No task available'
                       }
                     </div>
                   </div>
@@ -449,7 +449,7 @@ export default function GenerateLikeFollowFBEngageTask() {
                 </div>
               </div>
               <div
-                onClick={() => EngageTask?.like ? onOpen() : toast.error('No task is available')}
+                onClick={() => EngageTask?.[`follow and like`] ? onOpen() : toast.error('No task is available')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg
@@ -482,7 +482,7 @@ export default function GenerateLikeFollowFBEngageTask() {
         isOpen={isOpen}
         onClose={onClose}
         task_type='engagement'
-        goal='like_follow_fb'
+        goal='follow and like'
         title='Generate Like Task?'
       />
     </>

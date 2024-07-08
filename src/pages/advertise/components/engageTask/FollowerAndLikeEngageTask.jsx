@@ -88,6 +88,7 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       const res = await createAdvert(formData)
       if (res?.data.status) {
@@ -129,6 +130,7 @@ export default function FollowerAndLikeEngageTask() {
       formData.append('goal', 'follow and like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       // Update the amount state
 

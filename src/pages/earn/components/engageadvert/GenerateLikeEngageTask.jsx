@@ -20,6 +20,7 @@ export default function GenerateLikeEngageTask() {
   const { isDarkMode } = useDarkMode()
   const frameImage = isDarkMode ? frameImageDark : frameImageLight
   const { data: EngageTask } = useGetEngageTask()
+  console.log(EngageTask)
 
   const navigate = useNavigate()
   return (
@@ -87,7 +88,7 @@ export default function GenerateLikeEngageTask() {
                   <div className='p-1 dark:bg-[#3793FF21] bg-white rounded justify-start items-start gap-3 inline-flex'>
                     <div className="text-center text-blue-600 text-[12.83px] font-normal font-['Manrope']">
                     {
-                        EngageTask?.Like ?  `${EngageTask?.Like?.total} Task available` : 'No task available'
+                        EngageTask?.like ?  `${EngageTask?.like?.total} Task available` : 'No task available'
                       }                    
                     </div>
                   </div>
@@ -399,7 +400,7 @@ export default function GenerateLikeEngageTask() {
                 </div>
               </div>
                    <div
-                onClick={() => EngageTask?.Like ? onOpen() : toast.error('No task is available')}
+                onClick={() => EngageTask?.like ? onOpen() : toast.error('No task is available')}
                 className='w-[290px] px-6 dark:bg-white cursor-pointer py-3.5 bg-fuchsia-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
               >
                 <svg

@@ -88,6 +88,7 @@ export default function LikeEngageTask() {
       formData.append('goal', 'like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       // Update the amount state
 
@@ -131,6 +132,7 @@ export default function LikeEngageTask() {
       formData.append('goal', 'like')
       formData.append('account_link', data.account_link)
       formData.append('target_state', data.target_state)
+      formData.append('reward_money', '3.5')
 
       const res = await createAdvertWithWallet(formData)
       if (res?.data.status) {
