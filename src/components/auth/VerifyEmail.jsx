@@ -72,7 +72,7 @@ export default function VerifyEmail() {
       try {
         // Use the retrieved trxref to call verifyPayment
         setAccessToken(access_token)
-        navigate('/dashboard')
+        navigate('/dashboard/home')
 
         // You can perform further actions after successful verification
       } catch (error) {
