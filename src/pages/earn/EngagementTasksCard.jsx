@@ -76,12 +76,13 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn_engage_follow-task`)
-                  } else {
-                    onOpen()
-                    toast.error('Please activate your membership')
-                  }
+                  navigate(`/dashboard/earn_engage_follow-task`)
+                  // if (profileDeatils?.membership_fee) {
+                  //   navigate(`/dashboard/earn_engage_follow-task`)
+                  // } else {
+                  //   onOpen()
+                  //   toast.error('Please activate your membership')
+                  // }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -147,12 +148,13 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn_engage_like-task`)
-                  } else {
-                    onOpen()
-                    toast.error('Please activate your membership')
-                  }
+                  navigate(`/dashboard/earn_engage_like-task`)
+                  // if (profileDeatils?.membership_fee) {
+                  //   navigate(`/dashboard/earn_engage_like-task`)
+                  // } else {
+                  //   onOpen()
+                  //   toast.error('Please activate your membership')
+                  // }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -227,12 +229,13 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn_like_follow_fb-task`)
-                  } else {
-                    onOpen()
-                    toast.error('Please activate your membership')
-                  }
+                  navigate(`/dashboard/earn_like_follow_fb-task`)
+                  // if (profileDeatils?.membership_fee) {
+                  //   navigate(`/dashboard/earn_like_follow_fb-task`)
+                  // } else {
+                  //   onOpen()
+                  //   toast.error('Please activate your membership')
+                  // }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -301,12 +304,13 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  if (profileDeatils?.membership_fee) {
-                    navigate(`/dashboard/earn_engage_comment-task`)
-                  } else {
-                    onOpen()
-                    toast.error('Please activate your membership')
-                  }
+                  navigate(`/dashboard/earn_engage_comment-task`)
+                  // if (profileDeatils?.membership_fee) {
+                  //   navigate(`/dashboard/earn_engage_comment-task`)
+                  // } else {
+                  //   onOpen()
+                  //   toast.error('Please activate your membership')
+                  // }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >

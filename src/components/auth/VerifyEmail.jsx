@@ -89,23 +89,12 @@ export default function VerifyEmail() {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className=' min-h-screen md:h-[1024px] py-6 relative'>
-          <div className='hidden xl:block left-0 top-0 absolute'>
-            <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-10 ' />
-            <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-10' />
+          <div className='hidden xl:block left-0 top-0 absolute z-0'>
+            <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-0 top-0 absolute opacity-30 md:opacity-10 bg-violet-500 rounded-full blur-3xl z-0 ' />
+            <div className='w-40 h-40 md:w-unit-8xl md:h-unit-8xl left-[13rem] md:left-[942.84px] top-[30rem] md:top-[427.55px] absolute opacity-20 md:opacity-10 bg-fuchsia-600 rounded-full blur-3xl z-0' />
           </div>
           <div className='w-[96%]  md:w-[90%] mx-auto max-h-[6rem] flex justify-between items-center'>
             <Logo />
-
-            {/* <div className="text-center p-2 hidden  md:flex  text-[12.83px] font-bold font-['Manrope']">
-              <Button onClick={() => navigate(-1)} variant='flat bg-none '>
-                Go Back
-              </Button>
-            </div>
-            <div className="text-center p-2 md:hidden   text-[12.83px] font-bold font-['Manrope']">
-              <Button variant='flat bg-none  '>
-                <ChevronRight />
-              </Button>
-            </div> */}
           </div>
 
           <div className=' w-[20rem] my-8 md:w-[23rem] mx-auto  flex-col  items-center gap-6 '>
@@ -145,26 +134,6 @@ export default function VerifyEmail() {
                   message: "Invalid email",
                 } }}
               />
-              {/* <Controller
-                name='referrer_code'
-                control={control}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    size='sm'
-                    classNames={{
-                      inputWrapper: [
-                        'border-2 border-transparent',
-                        'focus-within:!border-fuchsia-600  ',
-                        '!cursor-text',
-                      ],
-                    }}
-                    placeholder='Referral code/username (Optional)'
-                    className="grow shrink basis-0  rounded text-stone-900 text-opacity-50 text-[12.83px] font-normal font-['Manrope']"
-                  />
-                )}
-              /> */}
-
               <Button
                 type='submit'
                 className="w-[290px] px-6 py-3.5 bg-fuchsia-600 rounded-[100px] text-center text-white text-[12.83px] font-medium font-['Manrope']"
@@ -238,53 +207,11 @@ export default function VerifyEmail() {
                   </svg>
                   {loadingAuth ? <Loader /> : 'Sign up with Google'}
                 </Button>
-                {/* <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='21'
-                    height='20'
-                    viewBox='0 0 21 20'
-                    fill='none'
-                  >
-                    <path
-                      d='M20.5 10C20.5 4.47719 16.0228 0 10.5 0C4.97719 0 0.5 4.47719 0.5 10C0.5 14.9912 4.15687 19.1284 8.9375 19.8785V12.8906H6.39844V10H8.9375V7.79687C8.9375 5.29062 10.4305 3.90625 12.7147 3.90625C13.8088 3.90625 14.9531 4.10156 14.9531 4.10156V6.5625H13.6922C12.4499 6.5625 12.0625 7.33336 12.0625 8.12422V10H14.8359L14.3926 12.8906H12.0625V19.8785C16.8431 19.1284 20.5 14.9913 20.5 10Z'
-                      fill='#1877F2'
-                    />
-                    <path
-                      d='M14.3926 12.8906L14.8359 10H12.0625V8.12422C12.0625 7.33328 12.4499 6.5625 13.6922 6.5625H14.9531V4.10156C14.9531 4.10156 13.8088 3.90625 12.7146 3.90625C10.4305 3.90625 8.9375 5.29063 8.9375 7.79688V10H6.39844V12.8906H8.9375V19.8785C9.45439 19.9595 9.9768 20.0001 10.5 20C11.0232 20.0002 11.5456 19.9595 12.0625 19.8785V12.8906H14.3926Z'
-                      fill='white'
-                    />
-                  </svg>
-                  Facebook
-                </Button>
-                <Button className="p-2 rounded-none text-center bg-[#B0B0B0] dark:bg-white bg-opacity-10 border border-violet-500 border-opacity-25 justify-center items-center gap-1 flex  text-black dark:text-zinc-400 text-[12.83px] font-bold font-['Manrope']">
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='18'
-                    height='20'
-                    viewBox='0 0 18 20'
-                    fill='none'
-                  >
-                    <path
-                      d='M13.0847 7.20142C14.3729 8.12177 15.9509 8.66328 17.6553 8.66328V5.38535C17.3327 5.38542 17.011 5.35177 16.6954 5.28494V7.86515C14.9912 7.86515 13.4134 7.3237 12.1249 6.40342V13.0928C12.1249 16.4392 9.41073 19.1518 6.06287 19.1518C4.8137 19.1518 3.65259 18.7743 2.68811 18.1269C3.78894 19.252 5.32411 19.9498 7.02246 19.9498C10.3706 19.9498 13.0849 17.2373 13.0849 13.8907V7.20142H13.0847ZM14.2689 3.89439C13.6105 3.17556 13.1782 2.24659 13.0847 1.21956V0.797974H12.1751C12.4041 2.10328 13.1851 3.21846 14.2689 3.89439ZM4.80563 15.5591C4.43783 15.0771 4.23901 14.4874 4.2399 13.8811C4.2399 12.3507 5.48135 11.1097 7.01301 11.1097C7.2984 11.1096 7.58212 11.1534 7.85418 11.2396V7.88832C7.53625 7.8448 7.21542 7.82625 6.89473 7.83308V10.4415C6.62254 10.3552 6.33868 10.3114 6.05314 10.3117C4.52156 10.3117 3.28018 11.5525 3.28018 13.0832C3.28018 14.1656 3.90066 15.1026 4.80563 15.5591Z'
-                      fill='#FF004F'
-                    />
-                    <path
-                      d='M12.1249 6.40335C13.4134 7.32363 14.9911 7.86508 16.6954 7.86508V5.28487C15.7441 5.08232 14.9019 4.58549 14.2687 3.89439C13.1849 3.21839 12.4041 2.10322 12.1751 0.797974H9.78591V13.8906C9.78047 15.4169 8.54115 16.6528 7.01281 16.6528C6.11226 16.6528 5.31212 16.2238 4.80543 15.559C3.9006 15.1026 3.28005 14.1655 3.28005 13.0833C3.28005 11.5527 4.52143 10.3118 6.05302 10.3118C6.34647 10.3118 6.62929 10.3574 6.8946 10.4416V7.83315C3.6055 7.90108 0.960327 10.5871 0.960327 13.8907C0.960327 15.5398 1.61902 17.0347 2.68812 18.1271C3.6526 18.7743 4.81364 19.1519 6.06288 19.1519C9.41081 19.1519 12.1249 16.4391 12.1249 13.0928L12.1249 6.40335Z'
-                      fill='black'
-                    />
-                    <path
-                      d='M16.6954 5.28483V4.58731C15.8376 4.58861 14.9967 4.34849 14.2688 3.89441C14.9131 4.59939 15.7615 5.08554 16.6954 5.28497M12.1751 0.797931C12.1533 0.673214 12.1365 0.547663 12.1249 0.421586V0H8.82599V13.0928C8.82075 14.619 7.58144 15.8548 6.05302 15.8548C5.61973 15.8555 5.19236 15.7542 4.80544 15.5592C5.31213 16.2238 6.11227 16.6528 7.01282 16.6528C8.54109 16.6528 9.78054 15.417 9.78592 13.8907V0.798L12.1751 0.797931ZM6.89482 7.8331V7.09041C6.61916 7.05273 6.34125 7.03389 6.06302 7.034C2.71475 7.034 0.000610352 9.74669 0.000610352 13.0928C0.000610352 15.1906 1.0673 17.0394 2.68827 18.127C1.61916 17.0347 0.960472 15.5397 0.960472 13.8906C0.960472 10.5872 3.60558 7.90103 6.89482 7.8331Z'
-                      fill='#00F2EA'
-                    />
-                  </svg>
-                  Titkok
-                </Button> */}
               </div>
             </div>
           </div>
 
-          <div className=' w-[18rem] flex justify-center mx-auto  items-center mt-24'>
+          <div className=' w-[18rem] flex justify-center mx-auto  items-center mt-24 z-10'>
             <div className="text-center text-zinc-400 text-[12.83px] font-normal font-['Manrope']">
               Already have an account?
             </div>
@@ -292,8 +219,9 @@ export default function VerifyEmail() {
               <div
                 onClick={() => {
                   navigate('/login')
+                  console.log(10)
                 }}
-                className="text-center cursor-pointer text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
+                className="text-center cursor-pointer z-20 text-[#FF6DFB] dark:text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']"
               >
                 Sign in
               </div>

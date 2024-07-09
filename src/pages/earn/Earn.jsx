@@ -76,7 +76,7 @@ export default function Earn() {
               </div>
             )}
 
-            {!profileDeatils?.membership_fee && (
+            {/* {!profileDeatils?.membership_fee && (
               <div className=' justify-center flex-col space-y-8 items-center inline-flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -195,9 +195,6 @@ export default function Earn() {
                         strokeLinecap='round'
                       />
                     </svg>
-                    {/* <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
-                      Pay N1,000 for activation
-                    </div> */}
                     <div className="text-center text-white dark:text-fuchsia-400 text-[12.83px] font-bold font-['Manrope']">
                       Become A Member
                     </div>
@@ -237,8 +234,8 @@ export default function Earn() {
                   </div>
                 </div>
               </div>
-            )}
-            {profileDeatils?.membership_fee && (
+            )} */}
+            {/* {profileDeatils?.membership_fee && ( */}
               <div className=' justify-center flex-col space-y-8 items-center inline-flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -356,7 +353,6 @@ export default function Earn() {
                     className='fill-black dark:fill-white'
                   />
                 </svg>
-
                 <div className=' flex-col justify-start items-center gap-3 flex'>
                   <div className="text-blck dark:text-white text-sm font-bold font-['Manrope']">
                     Engage in Our Daily task to Earn Steady Income
@@ -367,21 +363,6 @@ export default function Earn() {
                     our daily task and earn steadily. Click the button to learn More
                     now
                   </div>
-                  {/* {profileDeatils.membership_fee ? 
-                    <a href='https://www.youtube.com/@Trendithq?sub_confirmation=1' target='_blank' className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'>
-                        <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
-                            Learn More
-                        </div>
-                    </a> :
-                       <Button
-                       onClick={onLearnOpen}
-                       className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
-                     >
-                       <div className="text-center text-white dark:text-black text-[12.83px] font-medium font-['Manrope']">
-                         Learn More
-                       </div>
-                     </Button>
-                  } */}
                     <Button
                        onClick={onLearnOpen}
                        className=' w-80 px-6 py-3.5 bg-[#FF6DFB] dark:bg-white rounded-[100px] justify-center items-center gap-2 inline-flex'
@@ -392,7 +373,7 @@ export default function Earn() {
                      </Button>
                 </div>
               </div>
-            )}
+            {/* )} */}
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-white text-2xl font-medium font-['Manrope']">
