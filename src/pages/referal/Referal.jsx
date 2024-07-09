@@ -65,7 +65,7 @@ export default function Referal() {
               <div className="md:max-w-[471px] md:pt-16 z-10 text-black text-4xl md:text-7xl font-extrabold font-['Manrope'] leading-[54.72px]">
                 Invite and Get N500
               </div>
-              {profileDeatils?.membership_fee && (
+              {/* {profileDeatils?.membership_fee && ( */}
                 <div className='self-stretch z-10 flex-col justify-start items-center gap-2 flex'>
                   <div className="self-stretch text-black text-sm font-medium font-['Manrope']">
                     Share your link
@@ -90,8 +90,8 @@ export default function Referal() {
                     </div>
                   </div>
                 </div>
-              )}
-              {!profileDeatils?.membership_fee && (
+               {/* )} */}
+              {/* {!profileDeatils?.membership_fee && (
                 <div className='self-stretch '>
                   <div className="text-black my-2 text-sm font-bold font-['Manrope']">
                     Pay for membership to activate your referral link
@@ -122,7 +122,7 @@ export default function Referal() {
                     Membership fee: ₦1000 for Activation
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
           <div className='self-stretch h-96 flex-col justify-start items-start gap-4 flex'>
