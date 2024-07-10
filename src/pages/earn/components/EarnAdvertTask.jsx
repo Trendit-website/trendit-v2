@@ -276,7 +276,7 @@ export default function EarnAdvertTask() {
                           </div>
                           <div className='flex flex-col text-[12px] gap-y-4 px-4'>
                               <h2 className='font-bold'>Advert Image/Video</h2>
-                              <p className='text-[#B1B1B1] w-11/12'>
+                              <p className='text-black dark:text-[#B1B1B1] w-11/12'>
                                   Download the advert image or videos using the download button below and also copy the advert test as seen below and upload it to your Instagram Page
                               </p>
                               <div className='bg-[#FF6DFB] w-[136px] rounded-lg text-center py-2 px-4' onClick={() => fetchTask?.task?.media_path ? downloadAdvertImage(fetchTask?.task?.media_path, 'advert-file.png') : toast.error('No media path provided')}>
@@ -285,10 +285,10 @@ export default function EarnAdvertTask() {
                           </div>
                           <span className='self-start px-4'>Advert text</span>
                           <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
-                            <div className='text-[10px] w-9/12'>
+                            <div className='text-[10px] text-black dark:text-[#B1B1B1] font-semibold w-9/12'>
                               {fetchTask?.task?.caption}
                             </div>
-                              <p className='flex items-center gap-x-2 text-[12px] text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
+                              <p className='flex items-center gap-x-2 text-[12px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
                                 <Icons type='copy' stroke='#FF6DFB'/>
                                 Copy text
                               </p>
