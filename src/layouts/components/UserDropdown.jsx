@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useEffect, useRef, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
-
 import { Avatar, useDisclosure } from '@nextui-org/react'
 import { useGetProfile } from '../../api/profileApis'
 import SignOutModal from '../../components/auth/SignOutModal'

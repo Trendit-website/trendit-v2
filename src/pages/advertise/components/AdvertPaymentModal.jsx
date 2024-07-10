@@ -76,7 +76,13 @@ export default function AdvertPaymentModal({
                 </div>
               </div>
               <div className='self-stretch flex-col justify-start items-start gap-4 flex'>
-                <div
+                {
+                  isLoading ? 
+                  <div  className="w-full flex items-center justify-center">
+                    <Loader /> 
+                  </div>
+                  :
+                  <div
                   onClick={onSuccess}
                   className='self-stretch cursor-pointer p-6 dark:bg-[#1A1A1A] bg-zinc-400 bg-opacity-30 rounded-lg justify-start items-start gap-2 inline-flex'
                 >    
@@ -107,8 +113,6 @@ export default function AdvertPaymentModal({
                       </div>
                     </div>
                   </div>
-                  {
-                    isLoading ? <Loader /> : 
                     <svg
                     xmlns='http://www.w3.org/2000/svg'
                     width='24'
@@ -123,8 +127,9 @@ export default function AdvertPaymentModal({
                       strokeLinecap='round'
                     />
                   </svg>
-                  }
-                </div>
+                </div> 
+                }
+               
                 <div
                   onClick={() => {
                     setView('confirmPayment')
