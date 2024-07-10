@@ -178,7 +178,7 @@ export default function PreviewEarnAdvertTask() {
                             </p>
                       </div>
                       <span className='self-start px-4'>Advert text</span>
-                      <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                      <div className='flex items-center justify-between text-black dark:text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
                         <div className='text-[10px] w-9/12'>
                           {fetchTaskPreview?.task?.caption}
                         </div>
@@ -270,7 +270,7 @@ export default function PreviewEarnAdvertTask() {
                         The username on your {fetchTaskPreview?.task?.platform} account that performed this task
                     </p>
                    
-                      <div className='bg-zinc-700 py-2 pl-2 text-[#B1B1B1] font-semibold text-[12px]'>
+                      <div className='bg-zinc-700 py-2 pl-2 text-black dark:text-[#B1B1B1] font-semibold text-[12px]'>
                         {fetchTaskPreview?.account_name}
                     </div>        
                 </div>
@@ -280,16 +280,16 @@ export default function PreviewEarnAdvertTask() {
                 {
                   fetchTaskPreview?.task?.task_type === 'advert' && 
                               <div className='w-full flex flex-col gap-y-4'>
-                                <div className='text-[12px] flex flex-col gap-y-2 font-bold w-full'>
+                                <div className='text-[12px] flex flex-col gap-y-2 font-normal w-full'>
                                     The link to your {fetchTaskPreview?.task?.platform} profile
                                    <div className='bg-zinc-700 py-4 pl-4 rounded'>
-                                      https://x.com/Corehunter007
+                                      {fetchTaskPreview?.account_name}
                                    </div>
                                 </div>  
-                                <div className='text-[12px] flex flex-col font-bold gap-y-2 w-full'>
+                                <div className='text-[12px] flex flex-col font-normal gap-y-2 w-full'>
                                     The link to the advert post which you created on {fetchTaskPreview?.task?.platform}
                                     <div className='bg-zinc-700 py-4 pl-4 rounded'>
-                                      https://x.com/Corehunter007
+                                      {fetchTaskPreview?.post_link}
                                     </div>
                                 </div>    
                               </div>
