@@ -48,7 +48,7 @@ export default function VerifyEmail() {
     try {
       const res = await handleGoogleLogin()
       if (res?.data?.status) {
-        window.location.href(res?.data?.authorization_url)
+        window.location.href = res?.data?.authorization_url
         setSignUpToken(res?.data?.access_token)
         toast.success(res.data.message)
         // navigate('/dashboard')
