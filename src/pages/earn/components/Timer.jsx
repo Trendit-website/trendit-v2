@@ -1,32 +1,43 @@
-/* eslint-disable react/prop-types */
-import { useEffect } from 'react'
-import { useCountdown } from 'usehooks-ts'
+import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import Loader from '../../Loader';
 
-export default function Timer({ onDone }) {
-  const [count, { startCountdown, stopCountdown }] = useCountdown({
-    countStart: 3600, // 1 hour in seconds
-    intervalMs: 1000,
-  })
-  const hours = Math.floor(count / 3600)
-  const minutes = Math.floor((count % 3600) / 60)
-  const seconds = count % 60
-  useEffect(() => {
-    startCountdown() // Start the countdown when component mounts
-    return () => {
-      stopCountdown() // Stop the countdown when component unmounts
-    }
-  }, [])
+const Timer = ({ onDone, started_at }) => {
+    const [timeRemaining, setTimeRemaining] = useState(); // 1 hour in seconds
 
-  useEffect(() => {
-    if (count === 0 && onDone) {
-      onDone()
-    }
-  }, [count])
-  return (
-    <div>
-      <div className='w-full px-3 py-6 bg-red-300 rounded-lg flex-col justify-start items-center gap-3 inline-flex'>
-        <svg
-          className={`countdown-icon ${count > 0 ? 'shake-animation' : ''}`}
+    useEffect(() => {
+      if(started_at) {
+      const [hours, minutes, seconds] = format(new Date(started_at), 'HH:mm:ss').split(':').map(Number);
+      const currentDate = new Date();
+      const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+      const endTime = started_date + 60 * 60 * 1000;
+      const updateCountdown = () => {
+        const now = Date.now();
+        const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+        setTimeRemaining(timeLeft)
+        if (timeLeft <= 0) {
+            clearInterval(intervalId);
+            onDone()
+         }
+        };
+        const intervalId = setInterval(updateCountdown, 1000);
+        updateCountdown();
+        return () => clearInterval(intervalId);
+      }
+      
+    }, [started_at]);
+
+    const formatTime = (seconds) => {
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    return (
+      <div>
+       <div className='w-full px-3 py-6 bg-red-300 rounded-lg flex-col justify-start items-center gap-3 inline-flex'>
+         <svg
+           className={`countdown-icon ${timeRemaining > 0 ? 'shake-animation' : ''}`}
           xmlns='http://www.w3.org/2000/svg'
           width='17'
           height='17'
@@ -40,11 +51,15 @@ export default function Timer({ onDone }) {
           />
         </svg>
         <div className="self-stretch text-center text-black text-xs font-semibold font-['Manrope']">
-          {`${hours.toString().padStart(2, '0')}:${minutes
-            .toString()
-            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
+            {timeRemaining ? formatTime(timeRemaining) : 
+            <div className='w-full items-center justify-center flex'>
+              <Loader />
+            </div>
+            }
         </div>
       </div>
     </div>
-  )
-}
+    );
+};
+
+export default Timer;

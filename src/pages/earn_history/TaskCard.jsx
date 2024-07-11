@@ -43,13 +43,13 @@ export default function TaskCard({
                   <p className="text-[12px] font-normal text-[#D8D8D8] w-10/12">
                       {
                         task_type === 'advert' ?
-                        `Promote advertisements for different businesses and top brands on your ${platform.charAt(0).toUpperCase()+platform.slice(1)} page and earn ₦110 for each post.`
+                        `Promote advertisements for different businesses and top brands on your ${platform.charAt(0).toUpperCase()+platform.slice(1)} page and earn ${platform === 'whatsapp' ? `${profile?.wallet?.currency_symbol}80` : `${profile?.wallet?.currency_symbol}110`} for each post.`
                         :  (
                           goal ? (
-                            goal === 'comment' && `Post comment on peoples , businesses or organization pages or post on Social media platform like X, Instagram, Facebook, TikTok and others to earn ₦ 20 per comment.` ||
+                            goal === 'comment' && `Post comment on peoples , businesses or organization pages or post on Social media platform like X, Instagram, Facebook, TikTok and others to earn ${profile?.wallet?.currency_symbol} 20 per comment.` ||
                             goal === 'follow and like' && 'Follow and Like your Peoples Facebook Business Page' ||
-                            goal === 'follow' && `Follow people and pages on selected social media account like Facebook, Instagram, TikTok, and others and earn ₦3.5 per follow` ||
-                            goal === 'like' && `Like peoples post on selected social media account like Facebook, Instagram, TikTok, and others and earn ₦3.5 per like`     )
+                            goal === 'follow' && `Follow people and pages on selected social media account like Facebook, Instagram, TikTok, and others and earn ${profile?.wallet?.currency_symbol}3.5 per follow` ||
+                            goal === 'like' && `Like peoples post on selected social media account like Facebook, Instagram, TikTok, and others and earn ${profile?.wallet?.currency_symbol}3.5 per like`     )
                             : ''
                         )
                       }
@@ -58,13 +58,19 @@ export default function TaskCard({
                   <div className="flex items-center">
                   <Icons type='wallet' /> 
                     <p className="font-bold text-[14px]">
-                        <span className="text-[14px] text-gray-500 font-normal">Earning:</span>  {profile?.wallet?.currency_symbol} {amount.toLocaleString()}.00 per {
-                            task_type === 'advert' && 'Advert Post' ||
+                        <span className="text-[14px] text-gray-500 font-normal">Earning:</span>  
+                         {
+                            task_type === 'advert' && 
+                            (
+                                platform === 'whatsapp' ? `${profile?.wallet?.currency_symbol} 80 per Advert post` :
+                                `${profile?.wallet?.currency_symbol} 110 per Advert post`                                 
+                            )                            
+                            ||
                             task_type === 'engagement' && (
-                              goal === 'comment' && `Comments` ||
-                              goal === 'follow and like' && 'Follows and Likes' ||
-                              goal === 'follow' && `Follows` ||
-                              goal === 'like' && `Likes`     )
+                              goal === 'comment' && `${profile?.wallet?.currency_symbol}20 per Comments` ||
+                              goal === 'follow and like' && `${profile?.wallet?.currency_symbol}3.5 per Follows and Likes` ||
+                              goal === 'follow' && `${profile?.wallet?.currency_symbol}3.5 per Follows` ||
+                              goal === 'like' && `${profile?.wallet?.currency_symbol}3.5 per Likes`     )
                         } 
                     </p>
                   </div>

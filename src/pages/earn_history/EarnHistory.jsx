@@ -43,6 +43,8 @@ export default function EarnHistory() {
   const [adverts, setAdvert] = useState()
   const [eachAdvert, setEachAdvert] = useState()
   const [isLoading, setLoading] = useState(false)
+  const date = new Date()
+  const currentDate = format(date, 'yyyy-MM-dd')
 
   const selectTab = (status) => {
     setSelectedHistory(status)
@@ -66,8 +68,8 @@ export default function EarnHistory() {
   }, [])
   const navigate = useNavigate()
 
-  const handleRoute = (taskId) => {
-    navigate(`/dashboard/earn-advert-task-preview/${taskId}`)
+  const handleRoute = (taskId, route) => {
+    navigate(`/${route}/${taskId}`)
   }
   return (
     <div>
@@ -239,7 +241,22 @@ export default function EarnHistory() {
                           'yyyy-MM-dd HH:mm:ss'
                         )}
                         status={advert?.status}
-                        onNextPage={() => handleRoute(advert?.key)}
+                        onNextPage={() => {
+                          const [hours, minutes, seconds] = format(new Date(advert?.started_at), 'HH:mm:ss').split(':').map(Number);
+                          const currentDate = new Date();
+                          const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+                          const endTime = started_date + 60 * 60 * 1000;
+                          const updateCountdown = () => {
+                            const now = Date.now();
+                            const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+                            if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled') {
+                              handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
+                             } else {
+                              handleRoute(advert?.key, 'dashboard/earn-advert-task')
+                             }
+                            };
+                            updateCountdown();  
+                        }}
                         price={advert?.task?.fee}
                         // taskId={advert?.key}
                       />
@@ -282,7 +299,22 @@ export default function EarnHistory() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() => handleRoute(advert?.key)}
+                          onNextPage={() => {
+                            const [hours, minutes, seconds] = format(new Date(advert?.started_at), 'HH:mm:ss').split(':').map(Number);
+                            const currentDate = new Date();
+                            const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+                            const endTime = started_date + 60 * 60 * 1000;
+                            const updateCountdown = () => {
+                              const now = Date.now();
+                              const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+                              if (timeLeft <= 0) {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
+                               } else {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task')
+                               }
+                              };
+                              updateCountdown();  
+                          }}
                           price={advert?.task?.fee}
                           taskId={advert?.key}
                         />
@@ -326,7 +358,22 @@ export default function EarnHistory() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() => handleRoute(advert?.key)}
+                          onNextPage={() => {
+                            const [hours, minutes, seconds] = format(new Date(advert?.started_at), 'HH:mm:ss').split(':').map(Number);
+                            const currentDate = new Date();
+                            const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+                            const endTime = started_date + 60 * 60 * 1000;
+                            const updateCountdown = () => {
+                              const now = Date.now();
+                              const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+                              if (timeLeft <= 0) {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
+                               } else {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task')
+                               }
+                              };
+                              updateCountdown();  
+                          }}
                           price={advert?.task?.fee}
                           taskId={advert?.key}
                         />
@@ -370,7 +417,22 @@ export default function EarnHistory() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() => handleRoute(advert?.key)}
+                          onNextPage={() => {
+                            const [hours, minutes, seconds] = format(new Date(advert?.started_at), 'HH:mm:ss').split(':').map(Number);
+                            const currentDate = new Date();
+                            const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+                            const endTime = started_date + 60 * 60 * 1000;
+                            const updateCountdown = () => {
+                              const now = Date.now();
+                              const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+                              if (timeLeft <= 0) {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
+                               } else {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task')
+                               }
+                              };
+                              updateCountdown();  
+                          }}
                           price={advert?.task?.fee}
                           taskId={advert?.key}
                         />
@@ -414,7 +476,22 @@ export default function EarnHistory() {
                             'yyyy-MM-dd HH:mm:ss'
                           )}
                           status={advert?.status}
-                          onNextPage={() => handleRoute(advert?.key)}
+                          onNextPage={() => {
+                            const [hours, minutes, seconds] = format(new Date(advert?.started_at), 'HH:mm:ss').split(':').map(Number);
+                            const currentDate = new Date();
+                            const started_date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), hours, minutes, seconds).getTime();
+                            const endTime = started_date + 60 * 60 * 1000;
+                            const updateCountdown = () => {
+                              const now = Date.now();
+                              const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
+                              if (timeLeft <= 0) {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
+                               } else {
+                                handleRoute(advert?.key, 'dashboard/earn-advert-task')
+                               }
+                              };
+                              updateCountdown();  
+                          }}
                           price={advert?.task?.fee}
                           taskId={advert?.key}
                         />

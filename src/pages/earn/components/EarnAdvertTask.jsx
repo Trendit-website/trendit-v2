@@ -255,7 +255,7 @@ export default function EarnAdvertTask() {
                 </div>
                 </div>
                 <div className='w-full'>
-                  <Timer onDone={() => onCancel(fetchTask?.key)} />
+                  <Timer onDone={() => onCancel(fetchTask?.key)} started_at={fetchTask?.started_at}  />
                 </div>
                 <div className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
                       {
