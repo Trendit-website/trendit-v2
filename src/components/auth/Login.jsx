@@ -73,7 +73,7 @@ export default function Login() {
     try {
       const res = await handleGoogleLogin()
       if (res?.data?.status) {
-        window.open(res?.data?.authorization_url)
+        window.location.href(res?.data?.authorization_url)
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
       }
