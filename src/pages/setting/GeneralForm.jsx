@@ -10,6 +10,7 @@ import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import { useEffect, useState, useContext } from 'react'
 import toast from 'react-hot-toast'
 import {setProfileContext, ProfileContext} from '../../context/Profile'
+import API from '../../services/AxiosInstance'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -403,8 +404,7 @@ export default function GeneralForm() {
                       Username
                     </div>
                   </div>
-
-                  <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-start gap-2 flex flex-col'>
                     <Controller
                       name='username'
                       control={control}
@@ -416,7 +416,7 @@ export default function GeneralForm() {
                           {...field}
                           errorMessage={errors?.username?.message}
                           isInvalid={!!errors?.username}
-                          onChange={(e) => checkUsername(e.target.value)}
+                          onChange={(e) => (checkUsername(e.target.value), setValue("username", e.target.value))}
                           classNames={{
                             input: [
                               'bg-transparent',
@@ -436,15 +436,6 @@ export default function GeneralForm() {
                               'focus-within:!border-fuchsia-600  ',
                             ],
                           }}
-                          endContent={
-                            <Button
-                              variant='light'
-                              type='submit'
-                              className="text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
-                            >
-                              Edit
-                            </Button>
-                          }
                           className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}

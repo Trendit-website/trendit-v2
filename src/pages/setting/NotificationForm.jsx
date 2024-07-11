@@ -73,7 +73,7 @@ const NotificationsFormContents = () => {
       }, [])
 
       if (changedData.length === 0) {
-        toast.error('No changes detected')
+        // toast.error('No changes detected')
         return
       }
 
@@ -81,13 +81,13 @@ const NotificationsFormContents = () => {
         const res = await handleNoticePrefencents({ data: change })
         console.log(res)
         if (res?.data?.status === 'success') {
-          toast.success(res.data.message)
+          // toast.success(res.data.message)
         }
       }
 
       queryClient.invalidateQueries({ queryKey: ['notice_preference'] })
     } catch (error) {
-      toast.error(error.response?.data?.message ?? error.message)
+      // toast.error(error.response?.data?.message ?? error.message)
     }
   }
 
