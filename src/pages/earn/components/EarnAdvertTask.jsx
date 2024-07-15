@@ -292,9 +292,9 @@ export default function EarnAdvertTask() {
                             <div className='text-[10px] text-black dark:text-[#B1B1B1] font-semibold w-9/12'>
                               {fetchTask?.task?.caption}
                             </div>
-                              <p className='flex items-center gap-x-2 text-[12px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
+                              <p className='flex items-center gap-x-2 text-[10px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
                                 <Icons type='copy' stroke='#FF6DFB'/>
-                                Copy text
+                                <span className='sm:flex hidden'>Copy text</span>
                               </p>
                           </div>
                         </div>
@@ -332,10 +332,12 @@ export default function EarnAdvertTask() {
                                   </p>
                             </div>
                             <div className='flex items-center justify-between text-black dark:text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
-                                {fetchTask?.task?.account_link}
-                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[14px] text-[#FF6DFB]' target='_blank'>
+                                <div className='w-9/12 text-[10px]'>
+                                  {fetchTask?.task?.account_link}
+                                </div>
+                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[10px] text-[#FF6DFB]' target='_blank'>
                                   <Icons type='visit-link' />
-                                  Visit link
+                                  <span className='sm:flex hidden'>Visit link</span>
                                 </a>
                             </div>
                         </div>
@@ -424,7 +426,7 @@ export default function EarnAdvertTask() {
                           </div>
                         </div>
                         <div className=' flex-col justify-start items-center -mt-6 gap-8 flex'>
-                          <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
+                          <div className='w-[243px] opacity-50 bg-neutral-800 justify-center items-center inline-flex overflow-scroll'>
                             <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
                               <input
                                 type='file'
@@ -458,7 +460,7 @@ export default function EarnAdvertTask() {
                               <Image
                                 src={URL.createObjectURL(media)}
                                 alt='Preview'
-                                className='w-full h-full object-cover'
+                                className='w-full h-40 object-cover'
                               />
                             )}
                           </div>
@@ -471,12 +473,12 @@ export default function EarnAdvertTask() {
                                   : 'grid'
                               }  self-stretch flex-col justify-start items-start gap-3 flex`}
                             >
-                              <div className='self-stretch text-xs font-semibold font-Manrope mt-10'>
+                              <div className='self-stretch sm:text-left text-center text-xs font-semibold font-Manrope mt-10'>
                                 Please enter the name on your {fetchTask?.task?.platform} account that
                                 performed this task
                               </div>
                               <Input
-                                placeholder='Corehunter007'
+                                placeholder='Enter your username'
                                 size='sm'
                                 className='grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
                               />

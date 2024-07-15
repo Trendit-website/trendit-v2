@@ -27,7 +27,7 @@ export default function EarnHistory() {
       title: 'Pending',
     },
     {
-      key: 'in-review',
+      key: 'in_review',
       title: 'In-review',
     },
     {
@@ -35,7 +35,7 @@ export default function EarnHistory() {
       title: 'Failed',
     },
     {
-      key: 'approved',
+      key: 'completed',
       title: 'Completed',
     },
   ]
@@ -249,7 +249,7 @@ export default function EarnHistory() {
                           const updateCountdown = () => {
                             const now = Date.now();
                             const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                            if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled') {
+                            if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
                               handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                              } else {
                               handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -307,7 +307,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0) {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled'  || advert?.status === 'rejected') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -324,7 +324,7 @@ export default function EarnHistory() {
                 )}
               </motion.div>
             )}
-             {selectedHistory === 'in-review' && (
+             {selectedHistory === 'in_review' && (
               <motion.div
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
@@ -366,7 +366,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0) {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -383,7 +383,7 @@ export default function EarnHistory() {
                 )}
               </motion.div>
             )}
-            {selectedHistory === 'approved' && (
+            {selectedHistory === 'completed' && (
               <motion.div
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
@@ -425,7 +425,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0) {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -484,7 +484,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0) {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')

@@ -35,7 +35,7 @@ const Timer = ({ onDone, started_at }) => {
 
     return (
       <div>
-       <div className='w-full px-3 py-6 bg-red-300 rounded-lg flex-col justify-start items-center gap-3 inline-flex'>
+       <div className='w-full px-3 sm:py-6 py-2 bg-red-300 rounded-lg flex-col justify-start items-center gap-3 inline-flex'>
          <svg
            className={`countdown-icon ${timeRemaining > 0 ? 'shake-animation' : ''}`}
           xmlns='http://www.w3.org/2000/svg'

@@ -74,13 +74,13 @@ export default function TaskCard({
                         } 
                     </p>
                   </div>
-                  <div className={`${status === 'pending' && 'bg-[#323232]' || status === 'appproved' && 'bg-[#4CAF50]' || status === 'in-review' && 'bg-[#FFFFFF]' || status === 'cancelled' && 'bg-[#FF3D00]'} lg:hidden flex items-center justify-center text-white text-xs text-center py-2 px-2 rounded font-semibold w-4/12 mt-2`} onClick={onNextPage}>
+                  <div className={`${status === 'pending' && 'bg-[#323232]' || status === 'completed' && 'bg-[#4CAF50]' || status === 'in_review' && 'bg-[#323232]' || status === 'cancelled' && 'bg-[#FF3D00]'|| status === 'rejected' && 'bg-[#FF3D00]'} lg:hidden flex items-center justify-center text-white text-xs text-center py-2 px-2 rounded font-semibold w-4/12 mt-2`} onClick={onNextPage}>
                       {status.charAt(0).toUpperCase()+status.slice(1)}
                   </div> 
               </div>
          </div>
          <div>
-            <div className={`${status === 'pending' && 'bg-[#323232]' || status === 'appproved' && 'bg-[#4CAF50]' || status === 'in-review' && 'bg-[#FFFFFF]' || status === 'cancelled' && 'bg-[#FF3D00]'} hidden lg:flex text-white text-xs text-center py-2 px-4 rounded font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0`} onClick={onNextPage}>
+            <div className={`${status === 'pending' && 'bg-[#323232]' || status === 'completed' && 'bg-[#4CAF50]' || status === 'in_review' && 'bg-[#323232]' || status === 'cancelled' && 'bg-[#FF3D00]'|| status === 'rejected' && 'bg-[#FF3D00]'} hidden lg:flex text-white text-xs text-center py-2 px-4 rounded font-semibold mt-4 ml-20 lg:mt-0 lg:ml-0`} onClick={onNextPage}>
                 {status.charAt(0).toUpperCase()+status.slice(1)}
             </div> 
          </div>

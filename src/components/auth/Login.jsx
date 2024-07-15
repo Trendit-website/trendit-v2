@@ -96,7 +96,7 @@ export default function Login() {
       try {
         // Use the retrieved trxref to call verifyPayment
         setAccessToken(access_token)
-        navigate('/dashboard/home')
+        navigate('/dashboard/settings')
 
         // You can perform further actions after successful verification
       } catch (error) {
