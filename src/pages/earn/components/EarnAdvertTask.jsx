@@ -473,7 +473,7 @@ export default function EarnAdvertTask() {
                                   : 'grid'
                               }  self-stretch flex-col justify-start items-start gap-3 flex`}
                             >
-                              <div className='self-stretch sm:text-left text-center text-xs font-semibold font-Manrope mt-10'>
+                              <div className='self-stretch text-left text-xs font-semibold font-Manrope mt-10'>
                                 Please enter the name on your {fetchTask?.task?.platform} account that
                                 performed this task
                               </div>

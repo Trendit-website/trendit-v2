@@ -18,6 +18,7 @@ export default function Signup() {
     control,
     reset,
     setError,
+    setValue,
     watch,
     formState: { errors },
   } = useForm()
@@ -81,6 +82,12 @@ export default function Signup() {
       return true
     }
     return 'Username cannot be Numeric'
+  }
+  const maxUserName = 16
+  const checkUsername = (name) => {
+    if(name.length <= maxUserName) {
+      setValue("username", name)
+    }
   }
 
   const onSubmit = async (data, e) => {
@@ -183,6 +190,7 @@ export default function Signup() {
                       errorMessage={isExist ? (isExist ? <p className='text-green-500'>{isExist}</p> : '') : errors?.username?.message}
                       isInvalid={!!errors?.username}
                       required={true}
+                      onChange={(e) => (checkUsername(e.target.value))}
                       classNames={{
                         inputWrapper: [
                           'border-2 border-transparent',
@@ -195,7 +203,8 @@ export default function Signup() {
                     />
                   )}
                   rules={{ required: true, 
-                    validate: validateUsername
+                    validate: validateUsername,
+                    maxLength: 16
                   }}
                 />
                   {/* {isExist ? <p className='text-green-500'>{isExist}</p> : ''} */}

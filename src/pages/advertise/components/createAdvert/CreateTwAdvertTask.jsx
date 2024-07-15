@@ -731,22 +731,24 @@ want to post your advert.`}
                         ))}
                       </div>
                       <div className='md:w-[559px] h-6 text-[10px] font-normal font-Manrope'>
-                        Upload a Photo of the Advert You want people to post on
+                        Upload a {isMediaType} of the Advert You want people to post on
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
                       </div>
 
                       {imageUrl ? (
-                        <div className='flex flex-row items-center gap-x-4'>
+                        <div className='flex flex-row w-full overflow-x-scroll items-center gap-x-4'>
                           {previewUrls?.map((url, index) => (
                             <div key={index} className='relative group'>
-                              {isMediaType === 'Photo' ? (
+                              {isMediaType === 'Photo' ? 
+                              (
                                 <Image src={url} className='w-24' alt='' />
                               ) : (
                                 <video width='240' height='180' controls>
                                   <source src={url} type='video/mp4' />
                                 </video>
-                              )}
+                              )
+                              }
                               <button
                                 type='button'
                                 className='absolute top-0 z-20 right-0 h-6 w-6 bg-red-500 text-white py-0 rounded-full opacity-0 group-hover:opacity-100'

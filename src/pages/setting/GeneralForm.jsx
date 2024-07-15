@@ -14,6 +14,7 @@ import API from '../../services/AxiosInstance'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const gender = genders.slice(1)
 
   const { data: profileDeatils } = useGetProfile()
   const birthdayDate = new Date(profileDeatils?.birthday)
@@ -65,9 +66,12 @@ export default function GeneralForm() {
     clearTimeout(handler)
   };
   })
-
+  const maxUserName = 16
   const checkUsername = (name) => {
-    setUserName(name)  
+    if(name.length <= maxUserName) {
+      setUserName(name)
+      setValue("username", name)
+    }
   }
   useEffect(() => {
     if(debouncedValue) {
@@ -350,7 +354,7 @@ export default function GeneralForm() {
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
                     <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                      Phone
+                      Phone Number
                     </div>
                   </div>
                   <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -416,7 +420,7 @@ export default function GeneralForm() {
                           {...field}
                           errorMessage={errors?.username?.message}
                           isInvalid={!!errors?.username}
-                          onChange={(e) => (checkUsername(e.target.value), setValue("username", e.target.value))}
+                          onChange={(e) => (checkUsername(e.target.value))}
                           classNames={{
                             input: [
                               'bg-transparent',
@@ -439,6 +443,7 @@ export default function GeneralForm() {
                           className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
+                      rules={{maxLength: 16}}
                     />
                       {isExist ? <p className='text-green-500'>{isExist}</p> : ''}
                   </div>
@@ -485,7 +490,7 @@ export default function GeneralForm() {
                           {...field}
                           className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         >
-                          {genders.map((gender) => (
+                          {gender.map((gender) => (
                             <SelectItem key={gender.value} value={gender.value}>
                               {gender.label}
                             </SelectItem>

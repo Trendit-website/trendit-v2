@@ -23,6 +23,7 @@ export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
+  const gender = genders.slice(1)
 
   const {
     handleSubmit,
@@ -187,7 +188,7 @@ export default function OnBoard() {
                           ],
                         }}
                       >
-                        {genders?.slice(1)?.map((gender) => (
+                        {gender?.slice(1)?.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
                             {gender.label}
                           </SelectItem>
