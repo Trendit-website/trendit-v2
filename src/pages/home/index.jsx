@@ -155,7 +155,7 @@ export default function Welcome({ onNotificationClick }) {
           <div className='h[121px] left[281px] py-16 top[97px] absolut flex-col justify-start items-center gap-[18px] inline-flex'>
             <div className='flex-col justify-start items-center gap-3 flex'>
               <div className="text-center text-black text-sm font-medium font-['Manrope']">
-                Wallet bal:
+                Wallet balance:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
                 <span>{showBalance?.currency_symbol}</span>
