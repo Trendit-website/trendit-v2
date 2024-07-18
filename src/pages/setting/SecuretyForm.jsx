@@ -68,6 +68,14 @@ function SecuretyFormContent() {
 
   const new_password = watch('new_password')
   const Cnew_password = watch('Cnew_password')
+  const validatePassword = (value) => {
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}_|<>-]/g.test(value);
+   if(hasSpecialChar && hasNumber) {
+    return true
+   }
+   return 'Passowrd must contain as least on special character'    
+  };
 
   const handleUpdatePassword = async (data) => {
     try {
@@ -310,6 +318,14 @@ function SecuretyFormContent() {
                           className="grow shrink hover:text-white basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
+                      rules={{
+                        required: true,
+                        minLength: {
+                          value: 8,
+                          message: 'min length is 8',
+                        },
+                        validate: validatePassword
+                      }}
                       // rules={{
                       //   required: true,
                       // }}

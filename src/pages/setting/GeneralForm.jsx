@@ -11,6 +11,7 @@ import { useEffect, useState, useContext } from 'react'
 import toast from 'react-hot-toast'
 import {setProfileContext, ProfileContext} from '../../context/Profile'
 import API from '../../services/AxiosInstance'
+import { format } from 'date-fns'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -32,6 +33,7 @@ export default function GeneralForm() {
     setValue,
     register,
     formState: { errors },
+    setError
   } = useForm({
     defaultValues: {
       firstname: profileDeatils?.firstname,
@@ -99,6 +101,22 @@ export default function GeneralForm() {
   const state = states?.slice(1)
 
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
+  const validateDate = () => {
+    const day = watch('day')
+    const month = watch('month')
+    const year = watch('year')
+    const date = new Date()
+    const dayDate = format(new Date(date), 'dd')
+    const monthDate = format(new Date(date), 'MM')
+    const yearDate = format(new Date(date), 'yyyy') 
+    const selectedDate = new Date(year, month, day).getTime()
+    const presentDate = new Date(yearDate, monthDate, dayDate).getTime()
+    if(selectedDate > presentDate) {
+      setError('day', 'Invalid date selection')
+      setError('month', 'Invalid date selection')   
+      setError('year', 'Invalid date selection')   
+    }
+  }
 
   const onSubmit = async (data) => {
     const day = watch('day')
@@ -549,6 +567,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                       <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -595,6 +616,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                       <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -638,6 +662,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                     </div>
