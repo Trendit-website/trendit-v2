@@ -24,7 +24,7 @@ export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
-  const gender = genders.slice(1)
+  const gender = genders.slice(0)
 
   const {
     handleSubmit,
