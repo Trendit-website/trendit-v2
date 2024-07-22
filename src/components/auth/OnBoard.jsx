@@ -72,6 +72,7 @@ export default function OnBoard() {
   }
 
   const onSubmit = async (data) => {
+    if(data) {
     const day = watch('day')
     const month = watch('month')
     const year = watch('year')
@@ -107,6 +108,8 @@ export default function OnBoard() {
         duration: 2000,
       })
     }
+  }
+
   }
 
   return (

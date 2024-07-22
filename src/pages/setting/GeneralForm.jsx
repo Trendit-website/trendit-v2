@@ -18,6 +18,7 @@ export default function GeneralForm() {
   const gender = genders.slice(1)
 
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
   const birthdayDate = new Date(profileDeatils?.birthday)
 
   // Get the day, month, and year from the birthday date
