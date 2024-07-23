@@ -31,9 +31,9 @@ export default function ForgetPassword() {
         setResetToken(res?.data?.reset_token)
         toast.success(res.data.message)
         onOpen()
-        setTimeout(() => {
-          navigate('/reset_password')
-        }, 3000)
+        // setTimeout(() => {
+        //   navigate('/reset_password')
+        // }, 3000)
       }
     } catch (error) {
       toast.error(error.response?.data?.message ?? error.message)
