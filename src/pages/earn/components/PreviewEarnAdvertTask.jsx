@@ -61,7 +61,15 @@ export default function PreviewEarnAdvertTask() {
                       </div>
                     </div>
                     <div className=" text-sm font-bold font-['Manrope']">
-                      ₦{fetchTaskPreview?.reward_money} {''} per Advert post
+                      {
+                        fetchTaskPreview?.task?.task_type === 'advert' ? 
+                        fetchTaskPreview?.task?.platform === 'whatsapp' ? '#60 per Advert post' :
+                        ` ₦110 per Advert post` : 
+                        (fetchTaskPreview?.task?.goal === 'comment' && ` ₦20 per comment`) ||
+                        (fetchTaskPreview?.task?.goal === 'follow and like' && ` ₦3.5 per follow and like`) ||
+                        (fetchTaskPreview?.task?.goal === 'follow' && `₦3.5 per follow`) ||
+                        (fetchTaskPreview?.task?.goal === 'like' && `₦3.5 per like`)  
+                      }
                     </div>
                   </div>
                 </div>

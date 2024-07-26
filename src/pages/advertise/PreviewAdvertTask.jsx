@@ -20,7 +20,7 @@ export default function PreviewAdvertTask() {
   const navigate = useNavigate(false)
   const [loading, isLoading] = useState()
   const taskId = param.taskId
-  // const { data: fetchTaskPreview } = usePreviewTask(taskId)
+  // const { data: taskPreview } = usePreviewTask(taskId)
   const [taskPreview, setPreview] = useState()
   const { mutateAsync: approveTask, isPending } = useApprovePerferedTask()
   const { mutateAsync: rejectTassk, isPendingErro } = useApprovePerferedTask()
@@ -135,7 +135,13 @@ export default function PreviewAdvertTask() {
                           : 'Loading...'}
                       </div>
                       <div className="capitalize text-3xl font-medium font-['Manrope']">
-                        Like and follow {taskPreview?.platform} page
+                      {
+                      taskPreview?.task_type === 'advert' ? `Post Advert on your ${taskPreview?.platform} Page` :                       
+                          (taskPreview?.goal === 'comment' && `Comment on ${taskPreview?.platform} Post`) ||
+                          (taskPreview?.goal === 'follow and like' && `Follow and Like ${taskPreview?.platform} Page`) ||
+                          (taskPreview?.goal === 'follow' && `Follow ${taskPreview?.platform} Page`) ||
+                          (taskPreview?.goal === 'like' && `Like ${taskPreview?.platform} Post`)                      
+                    }
                       </div>
                       <div className='py-1.5 justify-start items-center gap-2 inline-flex'>
                         <div className='justify-start items-center gap-0.5 flex'>
@@ -157,7 +163,15 @@ export default function PreviewAdvertTask() {
                           </div>
                         </div>
                         <div className=" text-xs font-bold font-['Manrope']">
-                          ₦{taskPreview?.fee} {''} per Advert post
+                        {
+                        taskPreview?.task_type === 'advert' ? 
+                        taskPreview?.platform === 'whatsapp' ? '#80 per Advert post' :
+                        ` ₦140 per Advert post` : 
+                        (taskPreview?.goal === 'comment' && ` ₦40 per comment`) ||
+                        (taskPreview?.goal === 'follow and like' && ` ₦5 per follow and like`) ||
+                        (taskPreview?.goal === 'follow' && `₦5 per follow`) ||
+                        (taskPreview?.goal === 'like' && `₦5 per like`)  
+                      }
                         </div>
                       </div>
                     </div>
@@ -232,7 +246,7 @@ export default function PreviewAdvertTask() {
                       </p>
                       <Input
                         type='text'
-                        value={taskPreview?.engagements_count}
+                        value={taskPreview?.engagements_count || taskPreview?.posts_count}
                         className='w-11/12'
                         disabled
                       />

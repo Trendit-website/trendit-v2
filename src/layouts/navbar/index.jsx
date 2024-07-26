@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 
 import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
@@ -18,9 +18,10 @@ import API from '../../services/AxiosInstance'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { useGetUserPrefence } from '../../api/settingsApis'
+import DropdownNotification from '../components/DropdownNotification'
 
 // const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
-const Navbar = ({ onNotificationClick }) => {
+const Navbar = () => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
  
@@ -38,7 +39,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -46,7 +46,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -58,7 +57,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -66,7 +64,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -78,7 +75,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useLightPref()
             setPrefrence('light')
             Cookies.set('appearance', 'light')
@@ -86,7 +82,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useDarkPref()
             }
           )
@@ -99,7 +94,6 @@ const Navbar = ({ onNotificationClick }) => {
         })
           .then(
             (response) => {
-              toast.success(response.data?.message)
               useLightPref()
               setPrefrence('light')
               Cookies.set('appearance', 'light')
@@ -107,7 +101,6 @@ const Navbar = ({ onNotificationClick }) => {
           )
           .catch(
             (error) => {
-              toast.error(error.response?.data?.message ?? error.message)
               console.error(error.response?.data?.message ?? error.message)
               useDarkPref()
               }
@@ -120,7 +113,6 @@ const Navbar = ({ onNotificationClick }) => {
         })
           .then(
             (response) => {
-              toast.success(response.data?.message)
               useDarkPref()
               setPrefrence('dark')
               Cookies.set('appearance', 'dark')
@@ -128,7 +120,6 @@ const Navbar = ({ onNotificationClick }) => {
           )
           .catch(
             (error) => {
-              toast.error(error.response?.data?.message ?? error.message)
               useLightPref()
               }
             )
@@ -137,6 +128,7 @@ const Navbar = ({ onNotificationClick }) => {
    
   }
   const navigate = useNavigate()
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <>
@@ -226,8 +218,7 @@ const Navbar = ({ onNotificationClick }) => {
                     </svg>
                   </div>
                   <div
-                    onClick={() => navigate('/dashboard/settings/?tab=notifications')}
-                    className='w-6 h-6 relative cursor-pointer'
+                    className='w-6 h-6 cursor-pointer'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -235,6 +226,7 @@ const Navbar = ({ onNotificationClick }) => {
                       height='24'
                       viewBox='0 0 24 24'
                       fill='none'
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       <path
                         d='M9.00007 22H15.0001M5.00007 9C5.00007 5.13401 8.13408 2 12.0001 2C15.8661 2 19.0001 5.13401 19.0001 9V11.5778C19.0001 13.1572 19.4676 14.7013 20.3437 16.0154L20.8333 16.7498C20.9173 16.8758 20.8585 17.0472 20.7148 17.0951C15.058 18.9807 8.94216 18.9807 3.28532 17.0951C3.14166 17.0472 3.08286 16.8758 3.16685 16.7498L3.65647 16.0154C4.53257 14.7013 5.00007 13.1572 5.00007 11.5778V9Z'
@@ -243,8 +235,10 @@ const Navbar = ({ onNotificationClick }) => {
                         strokeLinecap='round'
                       />
                     </svg>
+                    {
+                      dropdownOpen ?   <DropdownNotification /> : ''
+                    }
                   </div>
-
                   <div
                     onClick={onOpen}
                     className='justify-start w-full items-center gap-[7px] cursor-pointer flex'
@@ -279,6 +273,24 @@ const Navbar = ({ onNotificationClick }) => {
                   <Search className=' text-gray-400' size={20} />
                 </button>
               </div>
+              <div
+                    className='w-6 h-6 cursor-pointer'
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M9.00007 22H15.0001M5.00007 9C5.00007 5.13401 8.13408 2 12.0001 2C15.8661 2 19.0001 5.13401 19.0001 9V11.5778C19.0001 13.1572 19.4676 14.7013 20.3437 16.0154L20.8333 16.7498C20.9173 16.8758 20.8585 17.0472 20.7148 17.0951C15.058 18.9807 8.94216 18.9807 3.28532 17.0951C3.14166 17.0472 3.08286 16.8758 3.16685 16.7498L3.65647 16.0154C4.53257 14.7013 5.00007 13.1572 5.00007 11.5778V9Z'
+                        stroke='#B1B1B1'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+                  </div>
               <div className=''>
                 <UserDropdown />
               </div>

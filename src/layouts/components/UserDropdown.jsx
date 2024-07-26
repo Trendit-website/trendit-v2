@@ -181,7 +181,7 @@ const UserDropdown = () => {
                         strokeLinecap='round'
                       />
                     </svg>
-                  </div>
+      </div>
       <Link
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}

@@ -208,7 +208,15 @@ export default function EarnAdvertTask() {
                         </div>
                       </div>
                       <div className=' text-sm font-bold font-Manrope'>
-                        ₦110 per Advert post
+                      {
+                        fetchTask?.task?.task_type === 'advert' ? 
+                        fetchTask?.task?.platform === 'whatsapp' ? '#60 per Advert post' :
+                        ` ₦110 per Advert post` : 
+                        (fetchTask?.task?.goal === 'comment' && ` ₦20 per comment`) ||
+                        (fetchTask?.task?.goal === 'follow and like' && ` ₦3.5 per follow and like`) ||
+                        (fetchTask?.task?.goal === 'follow' && `₦3.5 per follow`) ||
+                        (fetchTask?.task?.goal === 'like' && `₦3.5 per like`)  
+                      }                       
                       </div>
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>

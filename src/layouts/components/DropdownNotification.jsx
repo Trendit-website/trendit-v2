@@ -1,78 +1,29 @@
-
-
-
-import { useEffect, useRef, useState } from 'react';
-import {  BsBellFill,  } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const DropdownNotification = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const trigger = useRef(null);
-  const dropdown = useRef(null);
-
-  useEffect(() => {
-    const clickHandler = ({ target }) => {
-      if (!dropdown.current) return;
-      if (
-        !dropdownOpen ||
-        dropdown.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
-      setDropdownOpen(false);
-    };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
-  });
-
-  // close if the esc key is pressed
-  useEffect(() => {
-    const keyHandler = ({ keyCode }) => {
-      if (!dropdownOpen || keyCode !== 27) return;
-      setDropdownOpen(false);
-    };
-    document.addEventListener('keydown', keyHandler);
-    return () => document.removeEventListener('keydown', keyHandler);
-  });
-
+  const notfications = ['Activities', 'Messages', 'Notifications']
+  const [notificationType, setNotificationType] = useState(notfications[0])
   return (
-    <div className="relative text-gray-600">
-      <Link
-        ref={trigger}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
-        to="#"
-        className=" relative"
-      >
-        <div className='p-1 flex items-center rounded-lg cursor-pointer'>
-        <BsBellFill color='grey'
-                     size={25} className='font-medium text-gray-100' />
-      <div className=' absolute h-4 w-6 rounded-full bg-btnColor flex items-center justify-center -right-2 top-[0.4rem] border border-gray-100'>
-        <span className='flex items-center justify-center text-xs font-bold text-white'>2</span>
-      </div>
-        </div>
-
-      </Link>
-
+    <div className="text-[#FFFFFF]">
       <div
-        ref={dropdown}
-        onFocus={() => setDropdownOpen(true)}
-        onBlur={() => setDropdownOpen(false)}
-        className={`absolute md:-right-27 right-0 z-[555]  mt-2.5 flex h-96 max-h-90 w-[19rem] flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark sm:right-0 sm:w-80 ${
-          dropdownOpen === true ? 'block' : 'hidden'
-        }`}
+        className={`sm:absolute z-[555]  mt-2.5 flex h-96 max-h-90 sm:w-5/12 flex-col rounded-sm bg-white shadow-default dark:bg-black sm:right-0 absolute`}
       >
-        <div className="px-4 py-3">
-          <h5 className="text-sm font-medium text-bodydark2">Notification</h5>
+        <div className="px-4 py-4 text-[12px] font-bold flex items-center justify-between">
+          {
+            notfications.map((item, index) => (
+              <p key={index} onClick={() => setNotificationType(item)} className={`${notificationType === item ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2`}>{item}</p>
+            ))
+          }
         </div>
 
         <ul className="flex h-auto flex-col overflow-y-auto px-2">
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -85,7 +36,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -101,10 +52,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -117,7 +68,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -133,10 +84,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2  dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -149,7 +100,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2  dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -165,10 +116,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -181,7 +132,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -197,10 +148,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -213,7 +164,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -229,10 +180,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -245,7 +196,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -261,10 +212,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -277,7 +228,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -293,10 +244,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -309,7 +260,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -325,10 +276,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -341,7 +292,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -357,10 +308,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -373,7 +324,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">
@@ -389,10 +340,10 @@ const DropdownNotification = () => {
    
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
-              <p className="text-sm dark:text-gray-700">
+              <p className="text-sm dark:text-[#FFFFFF]">
                 <span className="">
                   Edit your information in a swipe
                 </span>{' '}
@@ -405,7 +356,7 @@ const DropdownNotification = () => {
           </li>
           <li>
             <Link
-              className="flex flex-col gap-2.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
+              className="flex flex-col gap-2.5 px-4.5 py-3 hover:bg-gray-2 dark:hover:bg-meta-4"
               to="#"
             >
               <p className="text-sm">

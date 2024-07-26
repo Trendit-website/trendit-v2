@@ -64,12 +64,12 @@ export default function ConfirmTaskModal({
               </div>
               <div className='flex-col justify-center items-center gap-3 flex'>
                 <div className="dark:text-white capitalize text-stone-900 text-sm font-bold font-['Manrope']">
-                  {title ? title : `Generate Next ${platform} Task?`}
+                  {title ? title : `Generate Next ${platform?.charAt(0).toUpperCase()+platform?.slice(1)} Task?`}
                 </div>
                 <div className="w-[253px] text-center dark:text-[#B0B0B0] text-black text-xs font-normal font-['Manrope']">
                   {description
                     ? description
-                    : ` Are you sure you want to generate your next ${goal || platform} task now.
+                    : ` Are you sure you want to generate your next ${goal?.charAt(0).toUpperCase()+goal?.slice(1) || platform?.charAt(0).toUpperCase()+platform?.slice(1)} task now.
                   You have 1 hour to perform this task. Please confirm only if
                   you are ready to perform the task.`}
                 </div>
