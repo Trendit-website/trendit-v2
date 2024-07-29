@@ -6,7 +6,7 @@ export const useGetNotification = () => {
     queryKey: ['notifications'],
     queryFn: async () => {
       const res = await API.post(`/notifications`)
-      return res?.data?.user_notification
+      return res?.data?.notifications
     },
   })
 }

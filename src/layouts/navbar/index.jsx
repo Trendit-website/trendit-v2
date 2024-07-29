@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
@@ -19,6 +19,7 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { useGetUserPrefence } from '../../api/settingsApis'
 import DropdownNotification from '../components/DropdownNotification'
+import { useGetNotification } from '../../api/notificationApi'
 
 // const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
 const Navbar = () => {
@@ -129,6 +130,17 @@ const Navbar = () => {
   }
   const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { data: notification} = useGetNotification()
+  const [unread, setUnread] = useState(0)
+  useEffect(() => {
+      if(notification) {
+          for(const item of notification) {
+              if(item?.read === false) {
+                  setUnread((prevRead) => prevRead + 1)
+              }
+          }
+      }
+  }, [notification])
 
   return (
     <>
@@ -195,7 +207,7 @@ const Navbar = () => {
             `}
               >
                 <div
-                  className={`w[181px] h-6 justify-start items-center gap-6 inline-flex`}
+                  className={`w[181px] h-6 justify-start items-center gap-6 lg:inline-flex hidden`}
                 >
                   <div
                     onClick={() => setAppearance()}
@@ -239,6 +251,7 @@ const Navbar = () => {
                       dropdownOpen ?   <DropdownNotification /> : ''
                     }
                   </div>
+                  <span className="relative -mt-6 font-bold text-[8px] -ml-6">{unread}</span>
                   <div
                     onClick={onOpen}
                     className='justify-start w-full items-center gap-[7px] cursor-pointer flex'
@@ -266,7 +279,7 @@ const Navbar = () => {
             {/* <div className='flex items-center justify-between md:gap-8  gap-3 pr-4'>
             <UserDropdown className='font-medium text-gray-600' />
           </div> */}
-            <div className='flex items-center gap-2 lg:hidden'>
+            <div className='flex items-center lg:hidden'>
               <div className='hidden fle lg:hidden  h-full  '>
                 <button className='pl3  py-1 pt-[0.5rem] outline-none rounded'>
                   {' '}
@@ -274,7 +287,28 @@ const Navbar = () => {
                 </button>
               </div>
               <div
-                    className='w-6 h-6 cursor-pointer'
+                    onClick={() => setAppearance()}
+                    className='w-6 h-6 relative cursor-pointer hidden sm:flex'
+                  >
+                    {/* <MdModeNight /> */}
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M11.9999 2V4M19.071 4.92893L17.6568 6.34315M21.9999 12H19.9999M19.071 19.0711L17.6568 17.6569M11.9999 20V22M6.34307 17.6569L4.92885 19.0711M4 12.0001H2M6.34303 6.34322L4.92882 4.92901M15.9999 12C15.9999 14.2091 14.2091 16 11.9999 16C9.79078 16 7.99992 14.2091 7.99992 12C7.99992 9.79086 9.79078 8 11.9999 8C14.2091 8 15.9999 9.79086 15.9999 12Z'
+                        stroke='#B1B1B1'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+              </div>
+              <div
+                    className='w-6 h-6 cursor-pointer flex flex-row'
+                    onClick={() => navigate('notification')}
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -290,7 +324,9 @@ const Navbar = () => {
                         strokeLinecap='round'
                       />
                     </svg>
-                  </div>
+                    
+              </div>
+              <span className="relative -mt-6 font-bold text-[8px] mr-4">{unread}</span>
               <div className=''>
                 <UserDropdown />
               </div>
