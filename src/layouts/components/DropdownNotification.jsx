@@ -16,6 +16,7 @@ const DropdownNotification = () => {
           }
       }
   }, [notification])
+
   return (
     <div className="text-[#FFFFFF]">
       <div
@@ -25,7 +26,7 @@ const DropdownNotification = () => {
           {
             notfications.map((item, index) => (
               <p key={index} onClick={() => setNotificationType(item)} className={`${notificationType === item ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2`}>
-                {item} <span className="absolute text-[8px]">{notificationType === item ? unread : ''}</span></p>
+                {item} <span className="absolute text-[8px] text-black dark:text-white">{notificationType === item ? unread : ''}</span></p>
             ))
           }
         </div>

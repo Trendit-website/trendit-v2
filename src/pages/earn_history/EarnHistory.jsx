@@ -249,7 +249,7 @@ export default function EarnHistory() {
                           const updateCountdown = () => {
                             const now = Date.now();
                             const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                            if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
+                            if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected' || advert?.status === 'in_review') {
                               handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                              } else {
                               handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -307,7 +307,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled'  || advert?.status === 'rejected') {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled'  || advert?.status === 'rejected' || advert?.status === 'in_review') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -366,7 +366,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected' || advert?.status === 'in_review') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -425,7 +425,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected' || advert?.status === 'in_review') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
@@ -484,7 +484,7 @@ export default function EarnHistory() {
                             const updateCountdown = () => {
                               const now = Date.now();
                               const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000))
-                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected') {
+                              if (timeLeft <= 0 || advert?.status === 'completed' || advert?.status === 'cancelled' || advert?.status === 'rejected' || advert?.status === 'in_review') {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task-preview')
                                } else {
                                 handleRoute(advert?.key, 'dashboard/earn-advert-task')
