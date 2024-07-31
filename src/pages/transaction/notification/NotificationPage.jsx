@@ -103,9 +103,9 @@ const NotificationPage = () => {
         <div className="sm:hidden">
             <div className="flex items-center justify-around px-2">
                 {notifications.map((item, index) => (
-                   <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2 cursor-pointer`}>
+                   <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-black dark:text-white'} pb-2 cursor-pointer`}>
                     {item.label} 
-                    <span className="absolute text-[8px]">
+                    <span className="absolute text-[10px]">
                     { showUnread ? 
                       item.param === 'notification' && unread.notification?.unReadNotification ||
                       item.param === 'message' && unread.message?.unReadMessage ||
@@ -124,7 +124,7 @@ const NotificationPage = () => {
                         </div>
                         : 
                         notificationData?.map((item, index) => (
-                        <li key={index} className={`flex flex-col gap-2.5 pl-2 w-[9/12] py-4 ${item?.read === false ? 'bg-[#2F2F2F]' : ''} hover:bg-gray-2 dark:hover:bg-meta-4`}>
+                        <li key={index} className={`flex flex-col gap-2.5 pl-2 w-[9/12] py-4 text-white ${item?.read === false ? 'bg-[#2F2F2F]' : ''} hover:bg-gray-2 dark:hover:bg-meta-4`}>
                             <p className="text-[14px] font-semibold font-RedHat dark:text-[#FFFFFF]">
                                 {item?.body}
                             </p>            

@@ -44,6 +44,7 @@ const DropdownNotification = () => {
     .then((response) => {
       setNotificationData(response.data?.notifications)
       setLoading(false)
+      console.log(response)
     })
     .catch((error) => console.error(error))
     .finally(() => setLoading(false))
@@ -109,8 +110,8 @@ const DropdownNotification = () => {
         <div className="px-4 py-4 text-[12px] font-bold flex items-center justify-between">
           {
             notifications.map((item, index) => (
-              <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2`}>
-                {item.label} <span className="absolute text-[8px] text-black dark:text-white">
+              <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-black dark:text-white'} pb-2`}>
+                {item.label} <span className="absolute text-[10px] text-black dark:text-white">
                     { showUnread ? 
                       item.param === 'notification' && unread.notification?.unReadNotification ||
                       item.param === 'message' && unread.message?.unReadMessage ||
