@@ -28,7 +28,8 @@ export default function EarnAdvertTask() {
   const [imageUrls, setImageUrls] = useState([])
   const [media, setMedia] = useState(null)
   const { mutateAsync: submitPerformTask, isPending } = useSubmitPerformTask()
-  const { mutateAsync: calcelTask, isPending: loading } = useCalcelTask()
+  const { mutateAsync: calcelTask } = useCalcelTask()
+  const [cancelLoading, setCancelLoading] = useState(false)
 
   const queryClient = useQueryClient()
   const {
@@ -120,18 +121,21 @@ export default function EarnAdvertTask() {
   }
 
   const onCancel = async (id) => {
+    setCancelLoading(true)
     try {
       const res = await calcelTask(id)
       if (res?.data.status) {
-        queryClient.invalidateQueries(['perform_task', 'pending'])
+        queryClient.invalidateQueries(['perform_task', 'loading'])
+        setCancelLoading(false)
         toast.success(res.data.message, {
           duration: 1000,
         })
-        navigate(-1)
+        navigate('/dashboard/earn-history')
         // navigate('/dashboard/earn-advert_fb-task')
       }
     } catch (error) {
       console.log(error)
+      setCancelLoading(false)
       toast.error(error.response?.data?.message ?? error.message, {
         duration: 1000,
       })
@@ -204,7 +208,15 @@ export default function EarnAdvertTask() {
                         </div>
                       </div>
                       <div className=' text-sm font-bold font-Manrope'>
-                        ₦110 per Advert post
+                      {
+                        fetchTask?.task?.task_type === 'advert' ? 
+                        fetchTask?.task?.platform === 'whatsapp' ? '#60 per Advert post' :
+                        ` ₦110 per Advert post` : 
+                        (fetchTask?.task?.goal === 'comment' && ` ₦20 per comment`) ||
+                        (fetchTask?.task?.goal === 'follow and like' && ` ₦3.5 per follow and like`) ||
+                        (fetchTask?.task?.goal === 'follow' && `₦3.5 per follow`) ||
+                        (fetchTask?.task?.goal === 'like' && `₦3.5 per like`)  
+                      }                       
                       </div>
                     </div>
                     <div className='self-stretch justify-start items-start gap-3 inline-flex'>
@@ -251,7 +263,7 @@ export default function EarnAdvertTask() {
                 </div>
                 </div>
                 <div className='w-full'>
-                  <Timer onDone={() => onCancel(fetchTask?.key)} />
+                  <Timer onDone={() => onCancel(fetchTask?.key)} started_at={fetchTask?.started_at}  />
                 </div>
                 <div className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
                       {
@@ -277,7 +289,7 @@ export default function EarnAdvertTask() {
                           <div className='flex flex-col text-[12px] gap-y-4 px-4'>
                               <h2 className='font-bold'>Advert Image/Video</h2>
                               <p className='text-black dark:text-[#B1B1B1] w-11/12'>
-                                  Download the advert image or videos using the download button below and also copy the advert test as seen below and upload it to your Instagram Page
+                                  Download the advert image or videos using the download button below and also copy the advert test as seen below and upload it to your {fetchTask?.task?.platform?.charAt(0).toUpperCase()+fetchTask?.task?.platform?.slice(1)} Page
                               </p>
                               <div className='bg-[#FF6DFB] w-[136px] rounded-lg text-center py-2 px-4' onClick={() => fetchTask?.task?.media_path ? downloadAdvertImage(fetchTask?.task?.media_path, 'advert-file.png') : toast.error('No media path provided')}>
                                 Download Advert
@@ -288,9 +300,9 @@ export default function EarnAdvertTask() {
                             <div className='text-[10px] text-black dark:text-[#B1B1B1] font-semibold w-9/12'>
                               {fetchTask?.task?.caption}
                             </div>
-                              <p className='flex items-center gap-x-2 text-[12px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
+                              <p className='flex items-center gap-x-2 text-[10px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
                                 <Icons type='copy' stroke='#FF6DFB'/>
-                                Copy text
+                                <span className='sm:flex hidden'>Copy text</span>
                               </p>
                           </div>
                         </div>
@@ -327,11 +339,13 @@ export default function EarnAdvertTask() {
                                     }
                                   </p>
                             </div>
-                            <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
-                                {fetchTask?.task?.account_link}
-                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[14px] text-[#FF6DFB]' target='_blank'>
+                            <div className='flex items-center justify-between text-black dark:text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                                <div className='w-9/12 text-[10px]'>
+                                  {fetchTask?.task?.account_link}
+                                </div>
+                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[10px] text-[#FF6DFB]' target='_blank'>
                                   <Icons type='visit-link' />
-                                  Visit link
+                                  <span className='sm:flex hidden'>Visit link</span>
                                 </a>
                             </div>
                         </div>
@@ -378,11 +392,11 @@ export default function EarnAdvertTask() {
                                         className='w-full h-full object-cover'
                                       />
                                     )}
-                                  </div>                                
+                                    </div>                                
                                 :
                                 <>
-                                 <div className='text-[12px] flex flex-col gap-y-2 w-full'>
-                                    Enter the link to your {fetchTask?.task?.platform} profile
+                                 <div className='text-[12px] flex flex-col gap-y-2 w-full font-bold'>
+                                    Enter the link to your {fetchTask?.task?.platform?.charAt(0).toUpperCase()+fetchTask?.task?.platform?.slice(1)} profile
                                     <Input errorMessage={errors?.link?.message} placeholder='Enter the link' {...register('link', {
                                       required: true,
                                       validate: {
@@ -394,8 +408,8 @@ export default function EarnAdvertTask() {
                                       }
                                     })}/>
                                 </div>  
-                                <div className='text-[12px] flex flex-col gap-y-2 w-full'>
-                                    Enter the link to the advert post which you created on {fetchTask?.task?.platform}
+                                <div className='text-[12px] flex flex-col gap-y-2 w-full font-bold'>
+                                    Enter the link to the advert post which you created on {fetchTask?.task?.platform?.charAt(0).toUpperCase()+fetchTask?.task?.platform?.slice(1)}
                                     <Input errorMessage={errors?.profile?.message} placeholder='Enter the link' {...register('profile', {
                                       required: true,
                                       validate: {
@@ -408,39 +422,7 @@ export default function EarnAdvertTask() {
                                     })}/>
                                 </div>   
                                 </>  
-                              }     
-                                <Button
-                                type='submit'
-                                isDisabled={isPending}
-                                className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
-                                   >
-                                      <div className='text-center text-black text-[12.83px] font-medium font-Manrope'>
-                                        {isPending ? (
-                                          <svg
-                                            className='animate-spin h-5 w-5 text-current'
-                                            fill='none'
-                                            viewBox='0 0 24 24'
-                                            xmlns='http://www.w3.org/2000/svg'
-                                          >
-                                            <circle
-                                              className='opacity-25'
-                                              cx='12'
-                                              cy='12'
-                                              r='10'
-                                              stroke='currentColor'
-                                              strokeWidth='4'
-                                            />
-                                            <path
-                                              className='opacity-75'
-                                              d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
-                                              fill='currentColor'
-                                            />
-                                          </svg>
-                                        ) : (
-                                          'Mark as Done'
-                                        )}
-                                      </div>
-                                </Button>             
+                              }          
                           </div>
                          : 
                         <div className=' p-3 bg-zinc-800 bg-opacity-40 rounded-lg sm:h-[478px] flex-col justify-start sm:w-11/12 lg:w-5/12 items-center gap-10 inline-flex'>
@@ -452,7 +434,7 @@ export default function EarnAdvertTask() {
                           </div>
                         </div>
                         <div className=' flex-col justify-start items-center -mt-6 gap-8 flex'>
-                          <div className='w-[243px] h-40 opacity-50 bg-neutral-800 justify-center items-center inline-flex'>
+                          <div className='w-[243px] opacity-50 bg-neutral-800 justify-center items-center inline-flex overflow-scroll'>
                             <div className='px-2 py-1 absolute left-50 z-30  w-12 bg-zinc-400 bg-opacity-30 border border-fuchsia-400 justify-center items-center gap-1 flex'>
                               <input
                                 type='file'
@@ -486,7 +468,7 @@ export default function EarnAdvertTask() {
                               <Image
                                 src={URL.createObjectURL(media)}
                                 alt='Preview'
-                                className='w-full h-full object-cover'
+                                className='w-full h-40 object-cover'
                               />
                             )}
                           </div>
@@ -499,25 +481,25 @@ export default function EarnAdvertTask() {
                                   : 'grid'
                               }  self-stretch flex-col justify-start items-start gap-3 flex`}
                             >
-                              <div className='self-stretch text-xs font-semibold font-Manrope mt-10'>
+                              <div className='self-stretch text-left text-xs font-semibold font-Manrope mt-10'>
                                 Please enter the name on your {fetchTask?.task?.platform} account that
                                 performed this task
                               </div>
                               <Input
-                                placeholder='Corehunter007'
+                                placeholder='Enter your username'
                                 size='sm'
                                 className='grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
                               />
                             </div>
                             <div className='self-stretch justify-between items-center inline-flex'>
-                              <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-1000 border-opacity-25 justify-center items-center gap-1 flex'>
+                              {/* <div className='p-2 bg-fuchsia-400 bg-opacity-10 rounded-md border border-violet-1000 border-opacity-25 justify-center items-center gap-1 flex'>
                                 <label
                                   htmlFor='image-upload'
                                   className='text-center  cursor-pointer text-[10px] font-medium font-Manrope'
                                 >
                                   Upload Proof
                                 </label>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </div>
@@ -525,16 +507,61 @@ export default function EarnAdvertTask() {
                       }                 
                 </div>
                 {
-                  fetchTask?.task?.task_type === 'advert' ? '' :
+                  fetchTask?.task?.task_type === 'advert' ? 
+                  <div className='flex items-center gap-x-4 w-full justify-between px-4'> 
+                  <Button
+                      type='submit'
+                      isDisabled={cancelLoading}
+                      onClick={(e) =>(e.preventDefault(), onCancel(fetchTask?.key))}
+                      className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                    >
+                    <div className='text-center text-white text-[12.83px] font-medium font-Manrope'>
+                      {cancelLoading ? <Loader /> : 'Cancel'}
+                    </div>
+                  </Button>  
+                  <Button
+                  type='submit'
+                  isDisabled={isPending}
+                  className='md:w-[290px] px-6 py-3.5 bg-emerald-200 rounded-[100px] justify-center items-center gap-2 inline-flex'
+                     >
+                        <div className='text-center text-black text-[12.83px] font-medium font-Manrope'>
+                          {isPending ? (
+                            <svg
+                              className='animate-spin h-5 w-5 text-current'
+                              fill='none'
+                              viewBox='0 0 24 24'
+                              xmlns='http://www.w3.org/2000/svg'
+                            >
+                              <circle
+                                className='opacity-25'
+                                cx='12'
+                                cy='12'
+                                r='10'
+                                stroke='currentColor'
+                                strokeWidth='4'
+                              />
+                              <path
+                                className='opacity-75'
+                                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+                                fill='currentColor'
+                              />
+                            </svg>
+                          ) : (
+                            'Mark as Done'
+                          )}
+                        </div>
+                  </Button>   
+                </div>  
+                  :
                   <div className='self-stretch h-[43px]  justify-between px-4 items-end gap-2 flex'>
                   <Button
                     type='submit'
-                    isDisabled={loading}
-                    onClick={() => onCancel(fetchTask?.key)}
+                    isDisabled={cancelLoading}
+                    onClick={(e) => (e.preventDefault(), onCancel(fetchTask?.key))}
                     className='md:w-[290px] px-6 opacity-80 py-3.5 bg-red-400 rounded-[100px] justify-center items-center gap-2 inline-flex'
                   >
                     <div className='text-center text-white text-[12.83px] font-medium font-Manrope'>
-                      {loading ? <Loader /> : 'Cancel'}
+                      {cancelLoading ? <Loader /> : 'Cancel'}
                     </div>
                   </Button>
                   <Button

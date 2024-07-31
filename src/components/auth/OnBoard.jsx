@@ -18,11 +18,13 @@ import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import toast from 'react-hot-toast'
 import { useUserProfile } from '../../api/profileApis'
 import useCurrentUser from '../../hooks/useCurrentUser'
+import { format } from 'date-fns'
 
 export default function OnBoard() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
+  const gender = genders.slice(0)
 
   const {
     handleSubmit,
@@ -31,6 +33,7 @@ export default function OnBoard() {
     setValue,
     register,
     formState: { errors },
+    setError
   } = useForm({})
   const { userData } = useCurrentUser()
 
@@ -51,8 +54,25 @@ export default function OnBoard() {
     setValue('local_government', '')
   }, [watch().state, setValue])
 
+  const validateDate = () => {
+    const day = watch('day')
+    const month = watch('month')
+    const year = watch('year')
+    const date = new Date()
+    const dayDate = format(new Date(date), 'dd')
+    const monthDate = format(new Date(date), 'MM')
+    const yearDate = format(new Date(date), 'yyyy') 
+    const selectedDate = new Date(year, month, day).getTime()
+    const presentDate = new Date(yearDate, monthDate, dayDate).getTime()
+    if(selectedDate > presentDate) {
+      setError('day', 'Invalid date selection')
+      setError('month', 'Invalid date selection')   
+      setError('year', 'Invalid date selection')   
+    }
+  }
+
   const onSubmit = async (data) => {
-    onOpen()
+    if(data) {
     const day = watch('day')
     const month = watch('month')
     const year = watch('year')
@@ -88,6 +108,8 @@ export default function OnBoard() {
         duration: 2000,
       })
     }
+  }
+
   }
 
   return (
@@ -187,7 +209,7 @@ export default function OnBoard() {
                           ],
                         }}
                       >
-                        {genders?.slice(1)?.map((gender) => (
+                        {gender?.slice(1)?.map((gender) => (
                           <SelectItem key={gender.value} value={gender.value}>
                             {gender.label}
                           </SelectItem>
@@ -242,6 +264,9 @@ export default function OnBoard() {
                             ))}
                           </Select>
                         )}
+                        rules={{
+                          validate:  validateDate
+                        }}
                       />
                     </div>
                     <div className='grow shrink w-32 md:w-28 basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
@@ -285,6 +310,9 @@ export default function OnBoard() {
                             ))}
                           </Select>
                         )}
+                        rules={{
+                          validate:  validateDate
+                        }}
                       />
                     </div>
                     <div className='grow md:w-32 shrink basis-0 flex-col justify-start items-start gap-[7px] inline-flex'>
@@ -328,6 +356,9 @@ export default function OnBoard() {
                             ))}
                           </Select>
                         )}
+                        rules={{
+                          validate: validateDate
+                        }}
                       />
                     </div>
                   </div>

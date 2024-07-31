@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 import { MdMenu } from 'react-icons/md'
 import { dashboardContext } from '../../context/Dashboard'
@@ -18,9 +18,11 @@ import API from '../../services/AxiosInstance'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { useGetUserPrefence } from '../../api/settingsApis'
+import DropdownNotification from '../components/DropdownNotification'
+import { useGetNotification } from '../../api/notificationApi'
 
 // const Navbar = ({ onNotificationClick, isOpen, showRightSidebar }) => {
-const Navbar = ({ onNotificationClick }) => {
+const Navbar = () => {
   const { toggleSideBar, sidebarOpen, sidebarMinimized } =
     useContext(dashboardContext)
  
@@ -38,7 +40,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -46,7 +47,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -58,7 +58,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -66,7 +65,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -78,7 +76,6 @@ const Navbar = ({ onNotificationClick }) => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useLightPref()
             setPrefrence('light')
             Cookies.set('appearance', 'light')
@@ -86,7 +83,6 @@ const Navbar = ({ onNotificationClick }) => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useDarkPref()
             }
           )
@@ -99,7 +95,6 @@ const Navbar = ({ onNotificationClick }) => {
         })
           .then(
             (response) => {
-              toast.success(response.data?.message)
               useLightPref()
               setPrefrence('light')
               Cookies.set('appearance', 'light')
@@ -107,7 +102,6 @@ const Navbar = ({ onNotificationClick }) => {
           )
           .catch(
             (error) => {
-              toast.error(error.response?.data?.message ?? error.message)
               console.error(error.response?.data?.message ?? error.message)
               useDarkPref()
               }
@@ -120,7 +114,6 @@ const Navbar = ({ onNotificationClick }) => {
         })
           .then(
             (response) => {
-              toast.success(response.data?.message)
               useDarkPref()
               setPrefrence('dark')
               Cookies.set('appearance', 'dark')
@@ -128,7 +121,6 @@ const Navbar = ({ onNotificationClick }) => {
           )
           .catch(
             (error) => {
-              toast.error(error.response?.data?.message ?? error.message)
               useLightPref()
               }
             )
@@ -137,6 +129,18 @@ const Navbar = ({ onNotificationClick }) => {
    
   }
   const navigate = useNavigate()
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const { data: notification} = useGetNotification()
+  const [unread, setUnread] = useState(0)
+  useEffect(() => {
+      if(notification) {
+          for(const item of notification) {
+              if(item?.read === false) {
+                  setUnread((prevRead) => prevRead + 1)
+              }
+          }
+      }
+  }, [notification])
 
   return (
     <>
@@ -203,7 +207,7 @@ const Navbar = ({ onNotificationClick }) => {
             `}
               >
                 <div
-                  className={`w[181px] h-6 justify-start items-center gap-6 inline-flex`}
+                  className={`w[181px] h-6 justify-start items-center gap-6 lg:inline-flex hidden`}
                 >
                   <div
                     onClick={() => setAppearance()}
@@ -226,8 +230,7 @@ const Navbar = ({ onNotificationClick }) => {
                     </svg>
                   </div>
                   <div
-                    onClick={() => navigate('/dashboard/settings/?tab=notifications')}
-                    className='w-6 h-6 relative cursor-pointer'
+                    className='w-6 h-6 cursor-pointer'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
@@ -235,6 +238,7 @@ const Navbar = ({ onNotificationClick }) => {
                       height='24'
                       viewBox='0 0 24 24'
                       fill='none'
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       <path
                         d='M9.00007 22H15.0001M5.00007 9C5.00007 5.13401 8.13408 2 12.0001 2C15.8661 2 19.0001 5.13401 19.0001 9V11.5778C19.0001 13.1572 19.4676 14.7013 20.3437 16.0154L20.8333 16.7498C20.9173 16.8758 20.8585 17.0472 20.7148 17.0951C15.058 18.9807 8.94216 18.9807 3.28532 17.0951C3.14166 17.0472 3.08286 16.8758 3.16685 16.7498L3.65647 16.0154C4.53257 14.7013 5.00007 13.1572 5.00007 11.5778V9Z'
@@ -243,8 +247,11 @@ const Navbar = ({ onNotificationClick }) => {
                         strokeLinecap='round'
                       />
                     </svg>
+                    {
+                      dropdownOpen ?   <DropdownNotification /> : ''
+                    }
                   </div>
-
+                  <span className="relative -mt-6 font-bold text-[8px] -ml-6 text-black dark:text-white">{unread}</span>
                   <div
                     onClick={onOpen}
                     className='justify-start w-full items-center gap-[7px] cursor-pointer flex'
@@ -272,13 +279,52 @@ const Navbar = ({ onNotificationClick }) => {
             {/* <div className='flex items-center justify-between md:gap-8  gap-3 pr-4'>
             <UserDropdown className='font-medium text-gray-600' />
           </div> */}
-            <div className='flex items-center gap-2 lg:hidden'>
+            <div className='flex items-center lg:hidden'>
               <div className='hidden fle lg:hidden  h-full  '>
                 <button className='pl3  py-1 pt-[0.5rem] outline-none rounded'>
                   {' '}
                   <Search className=' text-gray-400' size={20} />
                 </button>
               </div>
+              {/* <div
+                    onClick={() => setAppearance()}
+                    className='w-6 h-6 relative cursor-pointer hidden sm:flex'
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M11.9999 2V4M19.071 4.92893L17.6568 6.34315M21.9999 12H19.9999M19.071 19.0711L17.6568 17.6569M11.9999 20V22M6.34307 17.6569L4.92885 19.0711M4 12.0001H2M6.34303 6.34322L4.92882 4.92901M15.9999 12C15.9999 14.2091 14.2091 16 11.9999 16C9.79078 16 7.99992 14.2091 7.99992 12C7.99992 9.79086 9.79078 8 11.9999 8C14.2091 8 15.9999 9.79086 15.9999 12Z'
+                        stroke='#B1B1B1'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>
+              </div> */}
+              <div
+                    className='w-6 h-6 cursor-pointer flex flex-row'
+                    onClick={() => navigate('notification')}
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M9.00007 22H15.0001M5.00007 9C5.00007 5.13401 8.13408 2 12.0001 2C15.8661 2 19.0001 5.13401 19.0001 9V11.5778C19.0001 13.1572 19.4676 14.7013 20.3437 16.0154L20.8333 16.7498C20.9173 16.8758 20.8585 17.0472 20.7148 17.0951C15.058 18.9807 8.94216 18.9807 3.28532 17.0951C3.14166 17.0472 3.08286 16.8758 3.16685 16.7498L3.65647 16.0154C4.53257 14.7013 5.00007 13.1572 5.00007 11.5778V9Z'
+                        stroke='#B1B1B1'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                      />
+                    </svg>                    
+              </div>
+              <span className="relative -mt-6 font-bold text-[8px] mr-4 text-black dark:text-white">{unread}</span>
               <div className=''>
                 <UserDropdown />
               </div>

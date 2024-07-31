@@ -10,81 +10,6 @@ export default function Payment() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const newPage = localStorage.getItem('paystack_redirect')
-  // Inside the component handling the page opened by the authorization URL
-
-  // useEffect(() => {
-  //   const verifyPaymentOnLoad = async () => {
-  //     // Retrieve the trxref from the URL
-
-  //     const tx_ref = searchParams.get('tx_ref')
-  //     const transaction_id = searchParams.get('transaction_id')
-  //     if (tx_ref && transaction_id) {
-  //       try {
-  //         // Use the retrieved trxref to call verifyPayment
-  //         const res = await verifyPayment({
-  //           reference: tx_ref,
-  //           transaction_id: transaction_id,
-  //         })
-  //         if (
-  //           res?.data?.status &&
-  //           res?.data?.payment_type === 'task-creation'
-  //         ) {
-  //           navigate(`/dashboard/advertise-history`)
-  //           window.close()
-  //         } else if (res?.data?.status) {
-  //           navigate(`${newPage}`)
-  //           window.close()
-  //         }
-  //         // You can perform further actions after successful verification
-  //       } catch (error) {
-  //         console.error('Error verifying payment:', error)
-  //         // Handle error if verification fails
-  //       }
-  //     } else {
-  //       console.error('trxref not found in URL.')
-  //       // Handle case when trxref is not found in the URL
-  //     }
-  //   }
-
-  //   // Call verifyPaymentOnLoad when the component mounts
-  //   verifyPaymentOnLoad()
-  // }, []) // Empty dependency array ensures the effect runs only once when the component mounts
-
-  // useEffect(() => {
-  //   const verifyPaymentOnLoad = async () => {
-  //     const tx_ref = searchParams.get('tx_ref')
-  //     const transaction_id = searchParams.get('transaction_id')
-  //     if (tx_ref && transaction_id) {
-  //       try {
-  //         const res = await verifyPayment({
-  //           reference: tx_ref,
-  //           transaction_id: transaction_id,
-  //         })
-  //         if (
-  //           res?.data?.status &&
-  //           res?.data?.payment_type === 'task-creation'
-  //         ) {
-  //           if (window.opener) {
-  //             window.opener.postMessage('closeTab', '*')
-  //           }
-  //           navigate(`/dashboard/advertise-history`)
-  //         } else if (res?.data?.status) {
-  //           if (window.opener) {
-  //             window.opener.postMessage('closeTab', '*')
-  //           }
-  //           navigate(`${newPage}`)
-  //         }
-  //       } catch (error) {
-  //         console.error('Error verifying payment:', error)
-  //       }
-  //     } else {
-  //       console.error('trxref not found in URL.')
-  //     }
-  //   }
-
-  //   verifyPaymentOnLoad()
-  // }, []) // Empty dependency array ensures the effect runs only once when the component mounts
-
   useEffect(() => {
     const verifyPaymentOnLoad = async () => {
       const tx_ref = searchParams.get('tx_ref')
@@ -113,7 +38,7 @@ export default function Payment() {
           console.error('Error verifying payment:', error)
         }
       } else {
-        console.error('trxref not found in URL.')
+        navigate(`${newPage}`)
       }
     }
 

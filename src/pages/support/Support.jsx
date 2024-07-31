@@ -105,7 +105,7 @@ We actively monitor and analyze engagement activities to detect any fraudulent b
     {
       id: 15,
       ques: `What is social media engagement?`,
-      answ: `Social media engagement refers to the interactions and interactions that occur between users and content on social media platforms. It encompasses actions such as likes, comments, shares, retweets, mentions, and reactions. Essentially, it measures how actively users participate with content on social media platforms. Higher engagement indicates that users find the content interesting, valuable, or entertaining, and it often leads to increased visibility, reach, and impact of the content.`,
+      answ: `Social media engagement refers to the interactions that occur between users and content on social media platforms. It encompasses actions such as likes, comments, shares, retweets, mentions, and reactions. Essentially, it measures how actively users participate with content on social media platforms. Higher engagement indicates that users find the content interesting, valuable, or entertaining, and it often leads to increased visibility, reach, and impact of the content.`,
     },
     {
       id: 16,
@@ -118,29 +118,9 @@ We actively monitor and analyze engagement activities to detect any fraudulent b
       answ: `Trendit³ maintains high-quality engagement and genuine interactions by implementing strict quality control measures, anti-fraud measures, task guidelines, and monitoring and reporting mechanisms.`,
     },
     {
-      id: 18,
-      ques: `Can I choose a specific task I want earners to perform on my social media accounts?`,
-      answ: `Yes, as a user of Trendit³, you have the flexibility to specify the tasks you want earners to perform on your social media accounts, such as liking posts, following accounts, or streaming music.`,
-    },
-    {
       id: 19,
       ques: `Are there limits to the number of tasks I can assign to earners?`,
       answ: `No, there is no limit. Once you have a sufficient balance to post the tasks, you can assign as many tasks as you want to earners.`,
-    },
-    {
-      id: 20,
-      ques: `No, there is no limit. Once you have a sufficient balance to post the tasks, you can assign as many tasks as you want to earners.`,
-      answ: `Boosted Social Proof: A higher number of likes on your social media posts can enhance your credibility and attract more organic engagement. It signals to others that your content is popular and worth engaging with, increasing the likelihood of others liking, sharing, or commenting on your posts.
-Increased Visibility: Posts with more likes tend to receive better visibility on social media platforms. Algorithms often prioritize content with higher engagement, which means your posts may appear more frequently in users' feeds, reaching a wider audience and potentially attracting new followers or customers.
-Enhanced Brand Image: Social media likes contribute to a positive brand image. When users see that your content is well-liked, they may perceive your brand as reputable, trustworthy, and worth engaging with. This positive perception can influence their decision to follow your account, visit your website, or purchase your products/services.
-Improved Engagement Rate: Higher engagement rates, including likes, can lead to increased interaction with your content. As more users like your posts, they are more likely to engage further by leaving comments, sharing your content, or clicking on your links. This creates a cycle of engagement that can strengthen your online presence and build a loyal following.
-Competitive Advantage: In a competitive social media landscape, having a significant number of likes can set you apart from competitors. It can help your content stand out in users' feeds, making it more memorable and encouraging them to interact with your brand over others.
-Increased Conversion Rates: Social media likes can contribute to higher conversion rates for your business. When users see that your content is popular and well-received, they may be more inclined to take action, such as making a purchase, signing up for your newsletter, or visiting your website.
-Time and Effort Savings: Buying social media likes can save you time and effort compared to trying to grow your audience organically. Instead of spending months or years building your following from scratch, purchasing likes allows you to quickly establish social proof and attract attention to your content.
-Promotional Opportunities: Brands and influencers with a large number of likes may attract sponsorship opportunities, collaborations, and partnerships. Companies often look for accounts with high engagement rates to promote their products or services, providing you with additional revenue streams and exposure.
- 
-Overall, buying social media likes can be a strategic investment in your social media marketing efforts, helping you to increase visibility, credibility, and engagement with your target audience. However, it's essential to balance purchased likes with authentic, high-quality content and genuine audience engagement for long-term success.
-`,
     },
   ]
 
@@ -263,51 +243,6 @@ Overall, buying social media likes can be a strategic investment in your social 
                 }}
                 className="text-center text-zinc-400 text-sm font-medium font-['Manrope']"
               />
-            </div>
-            <div className='self-stretch dark:border-b dark:border-stone-900 justify-between items-center inline-flex'>
-              <div className='justify-start items-center gap-[11px] flex'>
-                <AnimatePresence mode='wait'>
-                  <div className='flex flex-col w-full'>
-                    <Tabs
-                      fullWidth
-                      size='md'
-                      aria-label='Tabs form'
-                      selectedKey={selected}
-                      onSelectionChange={setSelected}
-                      variant='underlined'
-                      classNames={{
-                        tabList: '  bordered py-2',
-                        cursor: ' bg-fuchsia-400',
-                        tabContent:
-                          'group-data-[selected=true]:text-fuchsia-400 ',
-                      }}
-                      className="text-center text-fuchsia-400 text-xs font-bold font-['Manrope']"
-                      color='secondary'
-                    >
-                      <Tab
-                        key='all'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                        title='All'
-                      ></Tab>
-                      <Tab
-                        key='earning'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                        title='Earning'
-                      ></Tab>
-                      <Tab
-                        key='advertising'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                        title='Advertising'
-                      ></Tab>
-                      <Tab
-                        key='orders'
-                        title='Orders'
-                        className=" text-zinc-400 text-[12.83px] font-bold font-['Manrope']"
-                      ></Tab>
-                    </Tabs>
-                  </div>
-                </AnimatePresence>
-              </div>
             </div>
 
             <div className='w-full'>

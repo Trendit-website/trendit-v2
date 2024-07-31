@@ -18,6 +18,7 @@ export default function Signup() {
     control,
     reset,
     setError,
+    setValue,
     watch,
     formState: { errors },
   } = useForm()
@@ -65,11 +66,11 @@ export default function Signup() {
 
   const validatePassword = (value) => {
     const hasNumber = /[0-9]/.test(value);
-    const hasSpecialChar = /[!@#$%^&*(),.?":{}_-|<>]/.test(value);
-    return (
-      hasNumber && hasSpecialChar || 
-      ''
-    );
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}_|<>-]/g.test(value);
+   if(hasSpecialChar && hasNumber) {
+    return true
+   }
+   return 'Passowrd must contain as least on special character'    
   };
   const validateUsername = (value) => {
     const containsLetters = /[a-zA-Z]/.test(value);
@@ -81,6 +82,12 @@ export default function Signup() {
       return true
     }
     return 'Username cannot be Numeric'
+  }
+  const maxUserName = 16
+  const checkUsername = (name) => {
+    if(name.length <= maxUserName) {
+      setValue("username", name)
+    }
   }
 
   const onSubmit = async (data, e) => {
@@ -183,6 +190,7 @@ export default function Signup() {
                       errorMessage={isExist ? (isExist ? <p className='text-green-500'>{isExist}</p> : '') : errors?.username?.message}
                       isInvalid={!!errors?.username}
                       required={true}
+                      onChange={(e) => (checkUsername(e.target.value))}
                       classNames={{
                         inputWrapper: [
                           'border-2 border-transparent',
@@ -195,7 +203,8 @@ export default function Signup() {
                     />
                   )}
                   rules={{ required: true, 
-                    validate: validateUsername
+                    validate: validateUsername,
+                    maxLength: 16
                   }}
                 />
                   {/* {isExist ? <p className='text-green-500'>{isExist}</p> : ''} */}
@@ -282,9 +291,9 @@ export default function Signup() {
                 <p
                   className={`${
                     errors?.password ? 'text-red-500' : 'text-zinc-400'
-                  } text-center  text-[10px] font-normal font-['Manrope']`}
+                  } text-left  text-[10px] font-normal font-['Manrope']`}
                 >
-                  (Min. 8 characters with a letter and a number)
+                  (Min. 8 characters with a letter, special character and a number) <br />
                 </p>
               </div>
               <Button

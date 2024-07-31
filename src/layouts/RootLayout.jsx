@@ -7,6 +7,7 @@ import Sidebar from './sidebar'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 // import RightSidebar from './components/rightSidebar/RightSideBar'
 import { AnimatePresence, motion } from 'framer-motion'
+import DropdownNotification from './components/DropdownNotification'
 
 function RootLayout() {
   const { sidebarOpen, sidebarMinimized, isTablet } =
@@ -19,8 +20,8 @@ function RootLayout() {
   }
 
   return (
-    <div className='dark:text-gray-100  dark:bg-neutral-900 duration-200 ease-in-out  overflow-hidden'>
-      <div className='flex w-full '>
+    <div className='dark:text-gray-100  dark:bg-neutral-900 duration-200 ease-in-out'>
+      <div className='flex w-full'>
         <Sidebar />
         <motion.div
           layout
@@ -32,7 +33,7 @@ function RootLayout() {
               : !sidebarMinimized && !sidebarOpen && 'lg:ml-0'
           }`}
         >
-          <Navbar onNotificationClick={toggleRightSidebar} />
+          <Navbar />
 
           <main
             className={`py-4 flex-1 z-1 mx-auto w-full overflow-hidden
@@ -40,14 +41,19 @@ function RootLayout() {
                             sidebarOpen && !isTablet
                               ? ' w-[100%] lg:w-[100%] '
                               : ' max-w-[100%] sm:w-[72%] md:w-[100%] lg:w-[10%] '
-                          }
-                        
+                          }                        
                         `}
           >
             <Outlet />
           </main>
         </motion.div>
-        {/* <AnimatePresence mode='wait'>
+      </div>
+    </div>
+  )
+}
+
+export default RootLayout
+   {/* <AnimatePresence mode='wait'>
           {showRightSidebar && (
             <motion.div
               transition={{
@@ -63,9 +69,3 @@ function RootLayout() {
             </motion.div>
           )}
         </AnimatePresence> */}
-      </div>
-    </div>
-  )
-}
-
-export default RootLayout

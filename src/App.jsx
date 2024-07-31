@@ -72,6 +72,7 @@ import Cookies from 'js-cookie';
 import { useDarkPref, useLightPref } from './hooks/usePref'
 import { useGetProfile } from './api/profileApis'
 import { useGetUserPrefence } from './api/settingsApis'
+import NotificationPage from './pages/transaction/notification/NotificationPage'
 
 function App() {
   const { isDarkMode } = useDarkMode()
@@ -160,6 +161,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <GenerateEngagementTask />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path='notification'
+              element={
+                <ProtectedRoute>
+                  <NotificationPage />
                 </ProtectedRoute>
               }
             />

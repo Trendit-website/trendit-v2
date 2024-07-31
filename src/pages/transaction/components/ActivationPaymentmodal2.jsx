@@ -85,7 +85,7 @@ export default function ActivationPaymentmodal2({ isOpen, onClose }) {
                     </defs>
                   </svg>
                   <div className="text-base font-bold font-['Manrope']">
-                    Become A memeber Today
+                    Become A member Today
                   </div>
                 </div>
                 <div className="text-center w-9/12 text-zinc-400 text-sm font-semibold font-['Manrope']">

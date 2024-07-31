@@ -35,12 +35,10 @@ import Icons from '../../../../components/Icon'
 
 export default function CreateTwAdvertTask() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [imageUrl, setImageUrl] = useState([])
   const [previewUrls, setPreviewUrls] = useState([])
   const [media, setMedia] = useState(null)
+  const [mediaFiles, setMediaFiles] = useState([]);
   const [count, setCount] = useState(1)
-  const mediaType = ['Photo', 'Video']
-  const [isMediaType, setMediaType] = useState(mediaType[0])
   const navigate = useNavigate()
   const {
     handleSubmit,
@@ -85,7 +83,7 @@ export default function CreateTwAdvertTask() {
         return toast.error(
           `Invalid file type! Please select an image or video.`,
           {
-            duration: 5000,
+            duration: 2000,
           }
         )
       }
@@ -94,7 +92,7 @@ export default function CreateTwAdvertTask() {
         return toast.error(
           `File size exceeds the limit (20MB). Please choose a smaller file.`,
           {
-            duration: 5000,
+            duration: 2000,
           }
         )
       }
@@ -102,37 +100,49 @@ export default function CreateTwAdvertTask() {
       // If the file is valid, set the image URL, log the file, and set the image state
       // setImageUrl(URL.createObjectURL(file))
       setMedia(file)
-      console.log(media, 'media')
-      const files = Array.from(target.files)
-      const newPreviewUrls = files.map((file) => URL.createObjectURL(file))
-      setImageUrl((prevSelectedMedia) => [...prevSelectedMedia, ...files])
-      setPreviewUrls((prevPreviewUrls) => [
-        ...prevPreviewUrls,
-        ...newPreviewUrls,
-      ])
-
-      console.log(media, 'media')
-      console.log(imageUrl, 'imageUrl')
-
-      if (file.type.startsWith('video/')) {
-        try {
-          const videoThumbnail = await generateVideoThumbnail(file)
-          setImageUrl(videoThumbnail)
-          console.log(videoThumbnail, 'videoThumbnail')
-
-          // Use videoThumbnail to display the video thumbnail
-        } catch (error) {
-          console.error('Error generating video thumbnail:', error)
-        }
-      }
+      const files = Array.from(target.files).map((file) => ({
+        file,
+        url: URL.createObjectURL(file),
+      }));
+      setMediaFiles((prevFiles) => [...prevFiles, ...files]);
+    }
+  }
+  const renderPreview = (media, index) => {
+    const fileType = media.file.type.split('/')[0];
+    if (fileType === 'image')  {
+      return (
+        <div key={index} className='relative group'> 
+        <Image src={media?.url}  className='w-24' alt='' />                      
+        <button
+            type='button'
+            className='absolute top-0 z-20 right-0 h-6 w-6 bg-red-500 text-white py-0 rounded-full opacity-100 '
+            onClick={() => handleDelete(index)}>
+              X
+        </button>
+        </div>
+      )
+     
+    }
+    if (fileType === 'video') {
+      return (
+        <div key={index} className='relative group'> 
+        <video width='240' height='180' controls>
+          <source src={media?.url} type='video/mp4'/>
+        </video>                      
+        <button
+            type='button'
+            className='absolute top-0 z-20 right-0 h-6 w-6 bg-red-500 text-white py-0 rounded-full opacity-100 '
+            onClick={() => handleDelete(index)}>
+              X
+        </button>
+        </div>
+      )
+     
     }
   }
 
   const handleDelete = (index) => {
-    setPreviewUrls((prevPreviewUrls) =>
-      prevPreviewUrls.filter((_, i) => i !== index)
-    )
-    setImageUrl((prevImageUrl) => prevImageUrl.filter((_, i) => i !== index))
+    setMediaFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   }
   // const navigate = useNavigate()
 
@@ -670,23 +680,13 @@ want to post your advert.`}
 
                     <div className='self-stretch  flex-col justify-start items-start gap-3 flex'>
                       <div className='px-2 justify-center items-center gap-2 inline-flex'>
-                        <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                          Choose one of the Advert Media Upload Below:
-                        </div>
                       </div>
                       <div className='justify-start items-center gap-[11px] inline-flex'>
-                        {mediaType.map((media, index) => (
                           <p
-                            onClick={() => setMediaType(media)}
-                            key={index}
-                            className={` flex flex-row items-center gap-x-2 px-2 py-1 bg-zinc-400 bg-opacity-30 w-28 ${
-                              isMediaType === media
-                                ? 'border border-fuchsia-400 text-fuchsia-400'
-                                : ''
-                            }`}
+                            
+                            className={` flex flex-row items-center gap-x-2 px-2 py-1 bg-zinc-400 bg-opacity-30 w-28`}
                           >
-                            {media === 'Photo' && (
-                              <svg
+                            <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 width='20'
                                 height='20'
@@ -696,68 +696,22 @@ want to post your advert.`}
                                 <path
                                   d='M2.50466 6.66667C2.5 7.01051 2.5 7.39635 2.5 7.83333V12.1667C2.5 14.0335 2.5 14.9669 2.86331 15.68C3.18289 16.3072 3.69282 16.8171 4.32003 17.1367C5.03307 17.5 5.96649 17.5 7.83333 17.5H12.1667C12.6037 17.5 12.9895 17.5 13.3333 17.4953M2.50466 6.66667C2.51991 5.54158 2.58504 4.86616 2.86331 4.32003C3.18289 3.69282 3.69282 3.18289 4.32003 2.86331C5.03307 2.5 5.96649 2.5 7.83333 2.5H12.1667C14.0335 2.5 14.9669 2.5 15.68 2.86331C16.3072 3.18289 16.8171 3.69282 17.1367 4.32003C17.5 5.03307 17.5 5.96649 17.5 7.83333V12.1667C17.5 13.4282 17.5 14.2635 17.3879 14.8925M2.50466 6.66667L6.67133 10.8333M13.3333 17.4953C14.4584 17.4801 15.1338 17.415 15.68 17.1367C16.3072 16.8171 16.8171 16.3072 17.1367 15.68C17.2545 15.4488 17.3341 15.1944 17.3879 14.8925M13.3333 17.4953L6.67133 10.8333M6.67133 10.8333L7.73726 9.7674C8.52929 8.97537 8.92531 8.57935 9.38197 8.43097C9.78365 8.30046 10.2163 8.30046 10.618 8.43097C11.0747 8.57935 11.4707 8.97537 12.2627 9.7674L17.3879 14.8925M14.175 5.83333H14.1583'
                                   // stroke='#FF6DFB'
-                                  stroke={
-                                    isMediaType === 'Photo'
-                                      ? '#FF6DFB'
-                                      : '#B1B1B1'
-                                  }
+                                  stroke={'#FF6DFB'}
                                   strokeWidth='2'
                                   strokeLinecap='round'
                                 />
                               </svg>
-                            )}
-                            {media === 'Video' && (
-                              <svg
-                                xmlns='http://www.w3.org/2000/svg'
-                                width='20'
-                                height='20'
-                                viewBox='0 0 20 20'
-                                fill='none'
-                              >
-                                <path
-                                  d='M15.0001 6.66683L17.298 6.09236C17.8239 5.96087 18.3334 6.35867 18.3334 6.90081V13.0995C18.3334 13.6417 17.8239 14.0395 17.298 13.908L15.0001 13.3335M7.00008 16.6668H9.66675C11.5336 16.6668 12.467 16.6668 13.1801 16.3035C13.8073 15.9839 14.3172 15.474 14.6368 14.8468C15.0001 14.1338 15.0001 13.2003 15.0001 11.3335V8.66683C15.0001 6.79999 15.0001 5.86657 14.6368 5.15353C14.3172 4.52632 13.8073 4.01639 13.1801 3.69681C12.467 3.3335 11.5336 3.3335 9.66675 3.3335H7.00008C5.13324 3.3335 4.19982 3.3335 3.48678 3.69681C2.85957 4.01639 2.34964 4.52632 2.03006 5.15353C1.66675 5.86657 1.66675 6.79999 1.66675 8.66683V11.3335C1.66675 13.2003 1.66675 14.1338 2.03006 14.8468C2.34964 15.474 2.85957 15.9839 3.48678 16.3035C4.19982 16.6668 5.13324 16.6668 7.00008 16.6668Z'
-                                  stroke={
-                                    isMediaType === 'Video'
-                                      ? '#FF6DFB'
-                                      : '#B1B1B1'
-                                  }
-                                  strokeWidth='2'
-                                  strokeLinecap='round'
-                                />
-                              </svg>
-                            )}
-                            {media}
+                              Media                         
                           </p>
-                        ))}
                       </div>
                       <div className='md:w-[559px] h-6 text-[10px] font-normal font-Manrope'>
-                        Upload a Photo of the Advert You want people to post on
+                        Upload a Photo / Video of the Advert You want people to post on
                         their social media post accounts like Whatsapp,
                         Facebook, Instagram, Twitter etc
                       </div>
-
-                      {imageUrl ? (
-                        <div className='flex flex-row items-center gap-x-4'>
-                          {previewUrls?.map((url, index) => (
-                            <div key={index} className='relative group'>
-                              {isMediaType === 'Photo' ? (
-                                <Image src={url} className='w-24' alt='' />
-                              ) : (
-                                <video width='240' height='180' controls>
-                                  <source src={url} type='video/mp4' />
-                                </video>
-                              )}
-                              <button
-                                type='button'
-                                className='absolute top-0 z-20 right-0 h-6 w-6 bg-red-500 text-white py-0 rounded-full opacity-0 group-hover:opacity-100'
-                                onClick={() => handleDelete(index)}
-                              >
-                                X
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      ) : null}
+                        <div className='flex flex-row w-full overflow-x-scroll items-center gap-x-4'>
+                            {mediaFiles.map((media, index) => renderPreview(media, index))}
+                        </div>                    
                       <div   onClick={() => setError('media', {
                             type: 'manual',
                             message: ''

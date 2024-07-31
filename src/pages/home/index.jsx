@@ -26,7 +26,9 @@ import VatModal from './VatModal'
 import Cookies from 'js-cookie';
 import { useGetUserPrefence } from '../../api/settingsApis'
 import { useDarkPref, useLightPref } from '../../hooks/usePref'
+import { usePerformTaskStatus } from '../../api/earnApi'
 import API from '../../services/AxiosInstance'
+import Icons from '../../components/Icon'
 
 export default function Welcome({ onNotificationClick }) {
   const [profile, setProfile] = useState(true)
@@ -50,12 +52,15 @@ export default function Welcome({ onNotificationClick }) {
   const navigate = useNavigate()
   const { data: showBalance } = useFetchBallance()
   const { data: userDetails } = useGetProfile()
+  const { data: performed_tasks} = usePerformTaskStatus('pending')
   
   const { isTablet } = useContext(dashboardContext)
 
   const handOpenSocialModal = () => {
    onOpenVerify()
   }
+
+
 
   useEffect(() => {
     Cookies.get('newUser') === 'false' ? setShowUp(false) : setShowUp(true)
@@ -155,7 +160,7 @@ export default function Welcome({ onNotificationClick }) {
           <div className='h[121px] left[281px] py-16 top[97px] absolut flex-col justify-start items-center gap-[18px] inline-flex'>
             <div className='flex-col justify-start items-center gap-3 flex'>
               <div className="text-center text-black text-sm font-medium font-['Manrope']">
-                Wallet bal:
+                Wallet balance:
               </div>
               <div className="text-center text-black text-[40px] font-normal font-['Manrope']">
                 <span>{showBalance?.currency_symbol}</span>
@@ -421,6 +426,24 @@ export default function Welcome({ onNotificationClick }) {
               }
           </div>
         </div>
+        {
+          performed_tasks?.length >= 1 ?
+          <div className='bg-[#3793FF] py-4 px-4 flex flex-col gap-y-4'>
+            <div className='flex items-center justify-between'>
+              <p className='font-[700] text-[16px]'>
+                Complete your pending Task 
+              </p>
+            </div>
+              <div>
+                This is to remind you to ensure timely completion of your current task  before the time frame given for the task elapse and only completion of a task guarantee payment. To complete your pending task click on the button below.
+              </div>
+              <div onClick={() => navigate('/dashboard/earn-history')} className='flex items-center bg-white w-[131px] h-[36px] p-[8px] gap-x-2 text-black font-[700] text-[12px]'>
+                 <Icons type='complete-task' />
+                 Complete Task
+              </div>
+          </div> : ''
+        }
+        
 
         <div className='mx-auto text-center md:mt-40 h-20 pb-3 flex-col justify-start items-center inline-flex'>
           <div className='self-stretch px-6 justify-center items-start gap-6 inline-flex'>

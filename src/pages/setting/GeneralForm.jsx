@@ -10,11 +10,15 @@ import { useGetCountry, useGetLga, useGetState } from '../../api/locationApis'
 import { useEffect, useState, useContext } from 'react'
 import toast from 'react-hot-toast'
 import {setProfileContext, ProfileContext} from '../../context/Profile'
+import API from '../../services/AxiosInstance'
+import { format } from 'date-fns'
 
 export default function GeneralForm() {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const gender = genders.slice(1)
 
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
   const birthdayDate = new Date(profileDeatils?.birthday)
 
   // Get the day, month, and year from the birthday date
@@ -30,6 +34,7 @@ export default function GeneralForm() {
     setValue,
     register,
     formState: { errors },
+    setError
   } = useForm({
     defaultValues: {
       firstname: profileDeatils?.firstname,
@@ -64,9 +69,12 @@ export default function GeneralForm() {
     clearTimeout(handler)
   };
   })
-
+  const maxUserName = 16
   const checkUsername = (name) => {
-    setUserName(name)  
+    if(name.length <= maxUserName) {
+      setUserName(name)
+      setValue("username", name)
+    }
   }
   useEffect(() => {
     if(debouncedValue) {
@@ -94,6 +102,22 @@ export default function GeneralForm() {
   const state = states?.slice(1)
 
   const { data: lgas, isLoading: isLgaLoading } = useGetLga(watch().state)
+  const validateDate = () => {
+    const day = watch('day')
+    const month = watch('month')
+    const year = watch('year')
+    const date = new Date()
+    const dayDate = format(new Date(date), 'dd')
+    const monthDate = format(new Date(date), 'MM')
+    const yearDate = format(new Date(date), 'yyyy') 
+    const selectedDate = new Date(year, month, day).getTime()
+    const presentDate = new Date(yearDate, monthDate, dayDate).getTime()
+    if(selectedDate > presentDate) {
+      setError('day', 'Invalid date selection')
+      setError('month', 'Invalid date selection')   
+      setError('year', 'Invalid date selection')   
+    }
+  }
 
   const onSubmit = async (data) => {
     const day = watch('day')
@@ -349,7 +373,7 @@ export default function GeneralForm() {
                 <div className='self-stretch flex-col justify-start items-start gap-[7px] flex'>
                   <div className='px-2 justify-center items-center gap-2 inline-flex'>
                     <div className="text-center text-[12.83px] font-medium font-['Manrope']">
-                      Phone
+                      Phone Number
                     </div>
                   </div>
                   <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -403,8 +427,7 @@ export default function GeneralForm() {
                       Username
                     </div>
                   </div>
-
-                  <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
+                  <div className='self-stretch w-full hover:text-white bg-opacity-10 rounded justify-start items-start gap-2 flex flex-col'>
                     <Controller
                       name='username'
                       control={control}
@@ -416,7 +439,7 @@ export default function GeneralForm() {
                           {...field}
                           errorMessage={errors?.username?.message}
                           isInvalid={!!errors?.username}
-                          onChange={(e) => checkUsername(e.target.value)}
+                          onChange={(e) => (checkUsername(e.target.value))}
                           classNames={{
                             input: [
                               'bg-transparent',
@@ -436,18 +459,10 @@ export default function GeneralForm() {
                               'focus-within:!border-fuchsia-600  ',
                             ],
                           }}
-                          endContent={
-                            <Button
-                              variant='light'
-                              type='submit'
-                              className="text-fuchsia-200 text-[12.83px] font-normal font-['Manrope']"
-                            >
-                              Edit
-                            </Button>
-                          }
                           className=" rounded  text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         />
                       )}
+                      rules={{maxLength: 16}}
                     />
                       {isExist ? <p className='text-green-500'>{isExist}</p> : ''}
                   </div>
@@ -494,7 +509,7 @@ export default function GeneralForm() {
                           {...field}
                           className="grow shrink basis-0 text-zinc-400 text-[12.83px] font-normal font-['Manrope']"
                         >
-                          {genders.map((gender) => (
+                          {gender.map((gender) => (
                             <SelectItem key={gender.value} value={gender.value}>
                               {gender.label}
                             </SelectItem>
@@ -553,6 +568,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                       <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -599,6 +617,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                       <div className='self-stretch w-full bg-opacity-10 rounded justify-start items-center gap-2 inline-flex'>
@@ -642,6 +663,9 @@ export default function GeneralForm() {
                               ))}
                             </Select>
                           )}
+                          rules={{
+                            validate: validateDate
+                          }}
                         />
                       </div>
                     </div>

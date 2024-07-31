@@ -73,7 +73,7 @@ export default function Login() {
     try {
       const res = await handleGoogleLogin()
       if (res?.data?.status) {
-        window.open(res?.data?.authorization_url)
+        window.location.href = res?.data?.authorization_url
         setAccessToken(res?.data?.access_token)
         toast.success(res.data.message)
       }
@@ -96,7 +96,7 @@ export default function Login() {
       try {
         // Use the retrieved trxref to call verifyPayment
         setAccessToken(access_token)
-        navigate('/dashboard/home')
+        navigate('/dashboard/settings')
 
         // You can perform further actions after successful verification
       } catch (error) {

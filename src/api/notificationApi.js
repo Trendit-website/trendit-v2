@@ -6,7 +6,16 @@ export const useGetNotification = () => {
     queryKey: ['notifications'],
     queryFn: async () => {
       const res = await API.post(`/notifications`)
-      return res?.data?.user_notification
+      return res?.data?.notifications
+    },
+  })
+}
+export const useGetNotificatioByType = (type) => {
+  return useQuery({
+    queryKey: ['notifications', type],
+    queryFn: async () => {
+      const res = await API.get(`/notifications?type=${type}`)
+      return res?.data?.notifications
     },
   })
 }

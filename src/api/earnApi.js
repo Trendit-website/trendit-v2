@@ -19,6 +19,15 @@ export const usePerformTask = (status, platform) => {
     },
   })
 }
+export const usePerformTaskStatus = (status) => {
+  return useQuery({
+    queryKey: ['perform_task', status],
+    queryFn: async () => {
+      const res = await API.get(`/performed-tasks?status=${status}`)
+      return res?.data?.performed_tasks
+    },
+  })
+}
 export const usePreviewPerformTask = (key) => {
   return useQuery({
     queryKey: ['perform_task', key],

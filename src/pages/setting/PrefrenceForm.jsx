@@ -54,7 +54,7 @@ function PrefrenceFormContent() {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
+            // toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -62,7 +62,7 @@ function PrefrenceFormContent() {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
+            // toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
