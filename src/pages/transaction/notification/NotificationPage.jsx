@@ -1,33 +1,129 @@
 import { useEffect, useState } from "react"
-import { useGetNotification } from "../../../api/notificationApi"
+import Loader from "../../Loader"
 import { format } from "date-fns"
+import API from "../../../services/AxiosInstance"
 const NotificationPage = () => {
-    const notfications = ['Notifications' ,'Activities', 'Messages']
-    const [notificationType, setNotificationType] = useState(notfications[0])
-    const { data: notification} = useGetNotification()
-    const [unread, setUnread] = useState(0)
-    useEffect(() => {
-        if(notification) {
-            for(const item of notification) {
-                if(item?.read === false) {
-                    setUnread((prevRead) => prevRead + 1)
-                }
+    const notifications = [
+        {
+          label: 'Notifications',
+          param: 'notification'
+        },
+        {
+          label: 'Activities',
+          param: 'activity'
+        },
+        {
+          label: 'Messages',
+          param: 'message'
+        },
+      ]
+    const [notificationType, setNotificationType] = useState(notifications[0])
+    const [isLoading, setLoading] = useState(false)
+    const [notificationData, setNotificationData] = useState()
+    const [showUnread, setShowUnread] = useState(false)
+    const [unread, setUnread] = useState(
+     {
+       message: {
+          type: 'message',
+          unReadMessage: 0
+        },
+        activity:  {
+          type: 'activity',
+          unReadActivity: 0,
+        },
+        notification: {
+          type: 'notification',
+          unReadNotification: 0
+        }   
+      }  
+    )
+    const FilterNotification = (type) => {
+        setLoading(true)
+        API.get(`/notifications?type=${type}`)
+        .then((response) => {
+          setNotificationData(response.data?.notifications)
+          setLoading(false)
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false))
+      }
+      const filterUnread = (type) => {
+        API.get(`/notifications?type=${type}`)
+        .then((response) => {
+          for(const item of response.data?.notifications) {
+            if(item?.type === 'notification' && item?.read === false) {
+              setUnread((prevRead) =>( 
+                {
+                  ...prevRead,
+                  notification: {
+                    unReadNotification: prevRead.notification?.unReadNotification + 1
+                  }
+                }                        
+              ))
+            } else if(item?.type === 'message' && item?.read === false) {
+              setUnread((prevRead) =>( 
+                {
+                  ...prevRead,
+                  message: {
+                    unReadMessage: prevRead.message?.unReadMessage + 1
+                  }
+                }                        
+              ))
             }
-        }
-    }, [notification])
+            else if(item?.type === 'activity' && item?.read === false) {
+              setUnread((prevRead) =>( 
+                {
+                  ...prevRead,
+                  activity: {
+                    unReadActivity: prevRead.activity?.unReadActivity + 1
+                  }
+                }                        
+              ))
+            }        
+          }
+        })
+      }
+      useEffect(() => {
+        FilterNotification(notifications[0].param)
+        filterUnread(notifications[0].param)
+      }, [])
+      useEffect(() => {
+        filterUnread(notifications[2].param)
+      }, [])
+      useEffect(() => {
+        filterUnread(notifications[1].param)
+      }, [])
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setShowUnread(true);
+        }, 3000)
+        return () => clearTimeout(timer)
+      }, [])
     return (
         <div className="sm:hidden">
             <div className="flex items-center justify-around px-2">
-                {notfications.map((item, index) => (
-                   <p key={index} onClick={() => setNotificationType(item)} className={`${notificationType === item ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2 cursor-pointer`}>
-                    {item} <span className="absolute text-[8px]">{notificationType === item ? unread : ''}</span>
+                {notifications.map((item, index) => (
+                   <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2 cursor-pointer`}>
+                    {item.label} 
+                    <span className="absolute text-[8px]">
+                    { showUnread ? 
+                      item.param === 'notification' && unread.notification?.unReadNotification / 2 ||
+                      item.param === 'message' && unread.message?.unReadMessage / 2 ||
+                      item.param === 'activity' && unread.activity?.unReadActivity /2 : ''
+                    }
+                    </span>
                     </p>
                 ))}
             </div>
             <div>
                 <ul className="flex h-auto flex-col gap-y-2 overflow-y-auto px-2 mt-4">
                     {
-                        notification?.map((item, index) => (
+                    isLoading ? 
+                        <div className='w-full flex justify-center'>
+                           <Loader /> 
+                        </div>
+                        : 
+                        notificationData?.map((item, index) => (
                         <li key={index} className={`flex flex-col gap-2.5 pl-2 w-[9/12] py-4 ${item?.read === false ? 'bg-[#2F2F2F]' : ''} hover:bg-gray-2 dark:hover:bg-meta-4`}>
                             <p className="text-[14px] font-semibold font-RedHat dark:text-[#FFFFFF]">
                                 {item?.body}
