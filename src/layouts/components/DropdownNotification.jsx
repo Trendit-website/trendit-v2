@@ -38,13 +38,28 @@ const DropdownNotification = () => {
       }   
     }  
   )
+  const ReadNotification = (id) => {
+    API.patch(`/notifications/${id}`, {
+      is_read: true
+    })
+    .then((response) => {
+      setNotificationData(response.data?.notifications)
+    })
+    .catch((error) => console.error(error))
+  }
   const FilterNotification = (type) => {
     setLoading(true)
     API.get(`/notifications?type=${type}`)
     .then((response) => {
       setNotificationData(response.data?.notifications)
       setLoading(false)
-      console.log(response)
+      for (const item of response.data?.notifications) {
+        if(item?.read === false) {
+          const readTime = setTimeout(() => {
+          ReadNotification(item?.id)
+        }, 5000)           
+        }
+      }
     })
     .catch((error) => console.error(error))
     .finally(() => setLoading(false))
