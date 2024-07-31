@@ -27,7 +27,6 @@ const UserDropdown = () => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -35,7 +34,6 @@ const UserDropdown = () => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -47,7 +45,6 @@ const UserDropdown = () => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useDarkPref()
             setPrefrence('dark')
             Cookies.set('appearance', 'dark')
@@ -55,7 +52,6 @@ const UserDropdown = () => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useLightPref()
             }
           )
@@ -67,7 +63,6 @@ const UserDropdown = () => {
       })
         .then(
           (response) => {
-            toast.success(response.data?.message)
             useLightPref()
             setPrefrence('light')
             Cookies.set('appearance', 'light')
@@ -75,7 +70,6 @@ const UserDropdown = () => {
         )
         .catch(
           (error) => {
-            toast.error(error.response?.data?.message ?? error.message)
             useDarkPref()
             }
           )
@@ -88,7 +82,6 @@ const UserDropdown = () => {
         })
           .then(
             (response) => {
-              toast.success(response.data?.message)
               useLightPref()
               setPrefrence('light')
               Cookies.set('appearance', 'light')
@@ -96,8 +89,6 @@ const UserDropdown = () => {
           )
           .catch(
             (error) => {
-              toast.error(error.response?.data?.message ?? error.message)
-              console.error(error.response?.data?.message ?? error.message)
               useDarkPref()
               }
             )

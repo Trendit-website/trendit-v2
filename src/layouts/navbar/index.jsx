@@ -286,11 +286,10 @@ const Navbar = () => {
                   <Search className=' text-gray-400' size={20} />
                 </button>
               </div>
-              <div
+              {/* <div
                     onClick={() => setAppearance()}
                     className='w-6 h-6 relative cursor-pointer hidden sm:flex'
                   >
-                    {/* <MdModeNight /> */}
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='24'
@@ -305,7 +304,7 @@ const Navbar = () => {
                         strokeLinecap='round'
                       />
                     </svg>
-              </div>
+              </div> */}
               <div
                     className='w-6 h-6 cursor-pointer flex flex-row'
                     onClick={() => navigate('notification')}

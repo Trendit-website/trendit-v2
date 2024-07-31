@@ -129,11 +129,11 @@ const DropdownNotification = () => {
                 <Loader /> 
              </div>
              :  notificationData?.map((item, index) => (
-                          <li key={index} className={`flex flex-col gap-2.5 pl-2 py-4 ${item?.read === false ? 'bg-[#2F2F2F]' : ''} hover:bg-gray-2 dark:hover:bg-meta-4`}>
+                          <li key={index} className={`flex flex-col gap-2.5 pl-2 py-4 text-black ${item?.read === false ? 'dark:bg-[#2F2F2F] dark:text-white bg-[#FF6DFB] bg-opacity-20' : ''} hover:bg-gray-2 dark:hover:bg-meta-4`}>
                             <p className="text-[14px] w-11/12 font-semibold font-RedHat dark:text-[#FFFFFF]">
                                 {item?.body}
                             </p>            
-                            <p className="text-xs">{format(new Date(item?.updated_at), 'dd-MM-yyyy')}</p>                     
+                            <p className="text-xs dark:text-[#FFFFFF]">{format(new Date(item?.updated_at), 'dd-MM-yyyy')}</p>                     
                         </li>
                         ))
                     }   
