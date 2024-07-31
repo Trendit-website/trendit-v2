@@ -107,9 +107,9 @@ const NotificationPage = () => {
                     {item.label} 
                     <span className="absolute text-[8px]">
                     { showUnread ? 
-                      item.param === 'notification' && unread.notification?.unReadNotification / 2 ||
-                      item.param === 'message' && unread.message?.unReadMessage / 2 ||
-                      item.param === 'activity' && unread.activity?.unReadActivity /2 : ''
+                      item.param === 'notification' && unread.notification?.unReadNotification ||
+                      item.param === 'message' && unread.message?.unReadMessage ||
+                      item.param === 'activity' && unread.activity?.unReadActivity : ''
                     }
                     </span>
                     </p>

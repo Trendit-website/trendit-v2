@@ -112,9 +112,9 @@ const DropdownNotification = () => {
               <p key={index} onClick={() => (FilterNotification(item.param), setNotificationType(item))} className={`${notificationType.label === item.label ? 'text-secondary border-b-[1px] border-solid border-[#FF6DFB] ' : 'text-white'} pb-2`}>
                 {item.label} <span className="absolute text-[8px] text-black dark:text-white">
                     { showUnread ? 
-                      item.param === 'notification' && unread.notification?.unReadNotification / 2 ||
-                      item.param === 'message' && unread.message?.unReadMessage / 2 ||
-                      item.param === 'activity' && unread.activity?.unReadActivity /2 : ''
+                      item.param === 'notification' && unread.notification?.unReadNotification ||
+                      item.param === 'message' && unread.message?.unReadMessage ||
+                      item.param === 'activity' && unread.activity?.unReadActivity : ''
                     }
                   </span></p>
             ))
