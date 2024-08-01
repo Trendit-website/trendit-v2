@@ -251,7 +251,7 @@ const Navbar = () => {
                       dropdownOpen ?   <DropdownNotification /> : ''
                     }
                   </div>
-                  <span className="relative -mt-6 font-bold text-[8px] -ml-6 text-black dark:text-white">{unread}</span>
+                  <span className="relative -mt-6 font-bold text-[10px] -ml-6 text-black dark:text-white">{unread}</span>
                   <div
                     onClick={onOpen}
                     className='justify-start w-full items-center gap-[7px] cursor-pointer flex'
@@ -324,7 +324,7 @@ const Navbar = () => {
                       />
                     </svg>                    
               </div>
-              <span className="relative -mt-6 font-bold text-[8px] mr-4 text-black dark:text-white">{unread}</span>
+              <span className="relative -mt-6 font-bold text-[10px] mr-4 text-black dark:text-white">{unread}</span>
               <div className=''>
                 <UserDropdown />
               </div>
