@@ -43,12 +43,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_tw-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_tw-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_tw-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -94,12 +94,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_ig-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_ig-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_ig-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -141,12 +141,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_fb-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_fb-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_fb-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -191,12 +191,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_tiktok-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_tiktok-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_tiktok-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -241,12 +241,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_whatsapp-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_whatsapp-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_whatsapp-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -292,12 +292,12 @@ export default function PostAdvertTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn-advert_thr-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn-advert_thr-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn-advert_thr-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
