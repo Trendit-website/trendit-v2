@@ -9,6 +9,7 @@ import Icons from '../../components/Icon'
 export default function PostAdvertTasksCard() {
   const navigate = useNavigate()
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
@@ -42,7 +43,6 @@ export default function PostAdvertTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_tw-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_tw-task`)
                   } else {
@@ -93,7 +93,6 @@ export default function PostAdvertTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_ig-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_ig-task`)
                   } else {
@@ -140,7 +139,6 @@ export default function PostAdvertTasksCard() {
             <div className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_fb-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_fb-task`)
                   } else {
@@ -190,7 +188,6 @@ export default function PostAdvertTasksCard() {
             <div className=' cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_tiktok-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_tiktok-task`)
                   } else {
@@ -240,7 +237,6 @@ export default function PostAdvertTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_whatsapp-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_whatsapp-task`)
                   } else {
@@ -291,7 +287,6 @@ export default function PostAdvertTasksCard() {
             <div className='w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn-advert_thr-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn-advert_thr-task`)
                   } else {

@@ -76,7 +76,6 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn_engage_follow-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn_engage_follow-task`)
                   } else {
@@ -148,7 +147,6 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn_engage_like-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn_engage_like-task`)
                   } else {
@@ -229,7 +227,6 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn_like_follow_fb-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn_like_follow_fb-task`)
                   } else {
@@ -304,7 +301,6 @@ export default function EngagementTasksCard() {
             <div className='cursor-pointer w-[109px] flex-col justify-start items-start inline-flex'>
               <Button
                 onClick={() => {
-                  navigate(`/dashboard/earn_engage_comment-task`)
                   if (profileDeatils?.membership_fee) {
                     navigate(`/dashboard/earn_engage_comment-task`)
                   } else {
