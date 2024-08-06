@@ -10,6 +10,8 @@ import toast from 'react-hot-toast'
 
 export default function Referal() {
   const { data: profileDeatils } = useGetProfile()
+  console.log(profileDeatils)
+  console.log(profileDeatils?.referral_link)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { data: referralHistory } = useFetchReferral()
   const shareText = `Earn Daily Income by Posting Ads and Completing Simple Social Tasks for Individuals, Businesses, and Brands on Your Social Media Account Join now`
