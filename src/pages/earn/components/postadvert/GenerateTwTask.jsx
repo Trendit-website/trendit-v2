@@ -169,7 +169,7 @@ export default function GenerateTwTask() {
             ) }
             {
               active?.status !== 'verified' && (
-                <div className='self-stretch p-6 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
+                <div className='self-stretch p-6 w-9/12 m-auto mt-4 dark:bg-black bg-zinc-400 bg-opacity-30 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 flex-col justify-start items-start gap-2.5 inline-flex'>
                   <div className='text-center  text-base font-bold font-Manrope'>
                     Link your X account

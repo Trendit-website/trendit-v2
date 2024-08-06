@@ -225,13 +225,13 @@ export default function EarnAdvertTask() {
                         able to Generate this task
                     </div>
                   </div>
-                  <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
+                  {/* <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
                     <Image
                       src={trLogo}
                       alt='igFrme'
                       className='h- md:h-[10.1rem]'
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
                   <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>
@@ -262,7 +262,7 @@ export default function EarnAdvertTask() {
                   </div>
                 </div>
                 </div>
-                <div className='w-full'>
+                <div className='w-full m-auto'>
                   <Timer onDone={() => onCancel(fetchTask?.key)} started_at={fetchTask?.started_at}  />
                 </div>
                 <div className='w-full flex flex-col gap-y-4 lg:flex-row items-center justify-around mb-10'>
@@ -296,13 +296,13 @@ export default function EarnAdvertTask() {
                               </div>
                           </div>
                           <span className='self-start px-4'>Advert text</span>
-                          <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                          <div className='flex items-center justify-between text-[#B1B1B1] bg-[#FFFFFF] dark:bg-opacity-10 py-4 px-4 w-full'>
                             <div className='text-[10px] text-black dark:text-[#B1B1B1] font-semibold w-9/12'>
                               {fetchTask?.task?.caption}
                             </div>
                               <p className='flex items-center gap-x-2 text-[10px] font-bold text-[#FF6DFB]' onClick={() => (navigator.clipboard.writeText(fetchTask?.task?.caption), toast.success('Caption copied'))}>
                                 <Icons type='copy' stroke='#FF6DFB'/>
-                                <span className='sm:flex hidden'>Copy text</span>
+                                <span className='sm:flex hidden font-bold'>Copy text</span>
                               </p>
                           </div>
                         </div>
@@ -339,13 +339,13 @@ export default function EarnAdvertTask() {
                                     }
                                   </p>
                             </div>
-                            <div className='flex items-center justify-between text-black dark:text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full bg-opacity-10'>
+                            <div className='flex items-center justify-between text-black dark:text-[#B1B1B1] bg-[#FFFFFF] py-4 px-4 w-full dark:bg-opacity-10'>
                                 <div className='w-9/12 text-[10px]'>
                                   {fetchTask?.task?.account_link}
                                 </div>
-                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[10px] text-[#FF6DFB]' target='_blank'>
+                                <a href={fetchTask?.task?.account_link} className='flex items-center gap-x-2 text-[10px] font-bold text-[#FF6DFB]' target='_blank'>
                                   <Icons type='visit-link' />
-                                  <span className='sm:flex hidden'>Visit link</span>
+                                  <span className='sm:flex hidden font-bold'>Visit link</span>
                                 </a>
                             </div>
                         </div>
