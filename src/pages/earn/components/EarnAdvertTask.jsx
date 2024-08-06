@@ -39,7 +39,6 @@ export default function EarnAdvertTask() {
     register,
     formState: {errors}
   } = useForm({})
-  console.log(fetchTask, 'Task')
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -98,10 +97,9 @@ export default function EarnAdvertTask() {
         formData.append(`reward_money`, fetchTask?.reward_money)
         formData.append(`task_id_key`, fetchTask?.task?.task_key)
       // })
-      formData.append('account_name', data?.profile)
-      formData.append('post_link', data?.link)
+      data?.profile ?  formData.append('account_name', data?.profile) : ''
+      data?.link ?  formData.append('post_link', data?.link) : ''
       // Append other form fields
-      console.log(data, 'formmm data')
       const res = await submitPerformTask(formData)
       console.log(res, 'form ress')
       if (res?.data.status) {
@@ -397,7 +395,7 @@ export default function EarnAdvertTask() {
                                 <>
                                  <div className='text-[12px] flex flex-col gap-y-2 w-full font-bold'>
                                     Enter the link to your {fetchTask?.task?.platform?.charAt(0).toUpperCase()+fetchTask?.task?.platform?.slice(1)} profile
-                                    <Input errorMessage={errors?.link?.message} placeholder='Enter the link' {...register('link', {
+                                    <Input className='text-white' errorMessage={errors?.link?.message} placeholder='Enter the link' {...register('link', {
                                       required: true,
                                       validate: {
                                         isValidLink: (fieldValue) => {
@@ -410,7 +408,7 @@ export default function EarnAdvertTask() {
                                 </div>  
                                 <div className='text-[12px] flex flex-col gap-y-2 w-full font-bold'>
                                     Enter the link to the advert post which you created on {fetchTask?.task?.platform?.charAt(0).toUpperCase()+fetchTask?.task?.platform?.slice(1)}
-                                    <Input errorMessage={errors?.profile?.message} placeholder='Enter the link' {...register('profile', {
+                                    <Input className='text-white' errorMessage={errors?.profile?.message} placeholder='Enter the link' {...register('profile', {
                                       required: true,
                                       validate: {
                                         isValidLink: (fieldValue) => {
@@ -488,7 +486,10 @@ export default function EarnAdvertTask() {
                               <Input
                                 placeholder='Enter your username'
                                 size='sm'
-                                className='grow self-stretch rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
+                                className='grow self-stretch text-white rounded-none gap-1 inline-flex shrink basis-0 text-black text-[12.83px] font-normal font-Manrope'
+                                {...register('profile', {
+                                  required: true,
+                                })}
                               />
                             </div>
                             <div className='self-stretch justify-between items-center inline-flex'>

@@ -55,7 +55,6 @@ export default function PreviewAdvertTask() {
   }, [])
 
   const handleApproveTask = async () => {
-    console.log('lll')
     try {
       const res = await approveTask({
         performed_task_id_key: taskId,
@@ -72,7 +71,6 @@ export default function PreviewAdvertTask() {
   }
 
   const handleReject = async () => {
-    console.log('llooo')
     try {
       const res = await rejectTassk({
         performed_task_id_key: taskId,

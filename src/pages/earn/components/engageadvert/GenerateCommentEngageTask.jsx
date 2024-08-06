@@ -435,7 +435,7 @@ export default function GenerateCommentEngageTask() {
         onClose={onClose}
         task_type='engagement'
         goal='comment'
-        title='Generate Comment Task?'
+        title='Generate Comment Task'
       />
     </>
   )

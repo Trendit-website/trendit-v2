@@ -47,7 +47,6 @@ export default function AdvertPaymentModal({
     }
   }
   const handleHome = async () => {
-    onClose()
     navigate(`/dashboard/advertise-history`)
   }
   return (
@@ -65,7 +64,7 @@ export default function AdvertPaymentModal({
           <ModalContent className='  md:w-[28rem] overflow-visible'>
             <div className=' p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
               <div
-                onClick={() => (handleHome())}
+                onClick={() => (onClose())}
                 className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
               >
                 <AiOutlineClose size={20} color='#fff' />
@@ -182,7 +181,7 @@ export default function AdvertPaymentModal({
             <ModalContent className='md:w-[35rem] overflow-visible'>
               <div className='p-12 rounded flex-col justify-center items-center gap-12 inline-flex'>
                 <div
-                  onClick={() => (onClose(), handleHome())}
+                  onClick={() => (onClose())}
                   className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
                 >
                   <AiOutlineClose size={20} color='#fff' />
@@ -400,7 +399,7 @@ export default function AdvertPaymentModal({
             <ModalContent className='md:w-[35rem] overflow-visible '>
               <div className='p-12 rounded flex-col justify-start items-start gap-12 inline-flex'>
                 <div
-                  onClick={() => (onClose(), handleHome())}
+                  onClick={() => (handleHome())}
                   className='p-2 bg-fuchsia-400 top-[-20px] -right-4 absolute z-40 cursor-pointer rounded-[100px] '
                 >
                   <AiOutlineClose size={20} color='#fff' />
