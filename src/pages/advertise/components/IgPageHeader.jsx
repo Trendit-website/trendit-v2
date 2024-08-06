@@ -5,7 +5,7 @@ export default function IgPageHeader({ title, frame, descp, price }) {
   return (
     <div>
       <div className='self-stretch relative border overflow-clip border-zinc-400 flex-col justify-start items-start flex'>
-        <div className='self-stretch bg-transparent z-20 p-4 md:bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
+        <div className='self-stretch bg-transparent z-0 p-4 md:bg-[#2F2F2F6B] bg-opacity-30 flex-col justify-start items-start gap-2 flex'>
           <div className='flex-col justify-start items-start gap-1.5 flex'>
             <div className="self-stretch  text-[10px] font-normal font-['Manrope']">
               {new Date().toLocaleDateString('en-US', {

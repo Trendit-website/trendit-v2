@@ -76,7 +76,7 @@ export default function Earn() {
               </div>
             )}
 
-            {/* {!profileDeatils?.membership_fee && (
+            {!profileDeatils?.membership_fee && (
               <div className=' justify-center flex-col space-y-8 items-center inline-flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -234,8 +234,8 @@ export default function Earn() {
                   </div>
                 </div>
               </div>
-            )} */}
-            {/* {profileDeatils?.membership_fee && ( */}
+            )}
+            {profileDeatils?.membership_fee && (
               <div className=' justify-center flex-col space-y-8 items-center inline-flex'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -373,7 +373,7 @@ export default function Earn() {
                      </Button>
                 </div>
               </div>
-            {/* )} */}
+             )} 
           </div>
           <div className='self-stretch py-3 justify-start items-start gap-2 inline-flex'>
             <div className="text-white text-2xl font-medium font-['Manrope']">

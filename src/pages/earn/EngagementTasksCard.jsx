@@ -77,12 +77,12 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn_engage_follow-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn_engage_follow-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn_engage_follow-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -149,12 +149,12 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn_engage_like-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn_engage_like-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn_engage_like-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -230,12 +230,12 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn_like_follow_fb-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn_like_follow_fb-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn_like_follow_fb-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
@@ -305,12 +305,12 @@ export default function EngagementTasksCard() {
               <Button
                 onClick={() => {
                   navigate(`/dashboard/earn_engage_comment-task`)
-                  // if (profileDeatils?.membership_fee) {
-                  //   navigate(`/dashboard/earn_engage_comment-task`)
-                  // } else {
-                  //   onOpen()
-                  //   toast.error('Please activate your membership')
-                  // }
+                  if (profileDeatils?.membership_fee) {
+                    navigate(`/dashboard/earn_engage_comment-task`)
+                  } else {
+                    onOpen()
+                    toast.error('Please activate your membership')
+                  }
                 }}
                 className='self-stretch p-2 bg-fuchsia-400 rounded-none rounded-t-md border border-violet-500 border-opacity-25 justify-center items-center gap-1 inline-flex'
               >
