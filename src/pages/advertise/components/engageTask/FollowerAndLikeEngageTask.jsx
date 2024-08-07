@@ -448,7 +448,7 @@ export default function FollowerAndLikeEngageTask() {
                               validate: {
                                 isValidLink: (fieldValue) => {
                                   return (
-                                    (fieldValue.startsWith(`https://facebook.`) || fieldValue.startsWith('https://fb.')) || fieldValue.startsWith('https://www.facebook.') || fieldValue.startsWith('https://www.fb.') || 'Link not valid'
+                                    (fieldValue.startsWith(`https://facebook.`) || fieldValue.startsWith('https://fb.')) || fieldValue.startsWith('https://www.facebook.') || fieldValue.startsWith('https://www.fb.') || fieldValue.startsWith('https://web.facebook.') || fieldValue.startsWith('https://web.fb.') || fieldValue.startsWith('https://www.web.facebook.') || fieldValue.startsWith('https://www.web.fb.') || 'Link not valid'
                                   )
                                 }
                               }
