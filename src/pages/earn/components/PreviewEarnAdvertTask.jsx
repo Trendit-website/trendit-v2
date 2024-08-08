@@ -73,13 +73,13 @@ export default function PreviewEarnAdvertTask() {
                     </div>
                   </div>
                 </div>
-                <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
+                {/* <div className='w-40 hidden md:w-[304.97px] origin-top-left  absolute right-0 top-0 justify-start items-start gap-[115.18px] md:inline-flex'>
                   <Image
                     src={trLogo}
                     alt='igFrme'
                     className='h- md:h-[10.1rem]'
                   />
-                </div>
+                </div> */}
               </div>
               <div className='self-stretch p-3 bg-sky-100 justify-start items-start gap-[29px] inline-flex'>
                 <div className='grow shrink basis-0 justify-start items-center gap-2.5 flex'>

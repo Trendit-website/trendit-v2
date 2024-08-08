@@ -7,6 +7,7 @@ import { defaultMenu } from './routes'
 
 import { NavLink, useLocation } from 'react-router-dom'
 import { dashboardContext } from '../../context/Dashboard'
+import { useNavigate } from 'react-router-dom'
 // import { PiArrowsLeftRightBold } from "react-icons/pi";
 
 import SubMenuSidebar from '../submenuSidebar'
@@ -26,6 +27,7 @@ const Sidebar = () => {
     // minimizeSidebar, // removed for now
     // setShowminimizedsubMenu,
   } = useContext(dashboardContext)
+  const navigate = useNavigate()
 
   const sidebarRef = useRef()
   const { pathname } = useLocation()
@@ -143,7 +145,9 @@ const Sidebar = () => {
                   }`}
                   // onClick={routeToHome}
                 >
+                  <div onClick={() => navigate('/dashboard/home')}>
                   <Logo />
+                  </div>
                 </div>
               </div>
             </div>

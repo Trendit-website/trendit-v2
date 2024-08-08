@@ -446,9 +446,12 @@ export default function FollowerEngageTask() {
                               validate: {
                                 isValidLink: (fieldValue) => {
                                   return (
-                                    (fieldValue.startsWith(`https://${platform}.`) || (fieldValue.startsWith(`https://www.${platform}.`)) || (platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) || fieldValue.startsWith('https://web.facebook.') || fieldValue.startsWith('https://web.fb.') || fieldValue.startsWith('https://www.web.facebook.') || fieldValue.startsWith('https://www.web.fb.') : '') || (platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
-                                  )
-                                }
+                                    (
+                                      fieldValue.startsWith(`https://${platform}.`) || (fieldValue.startsWith(`https://www.${platform}.`))
+                                     || (platform === 'tiktok' ? fieldValue.startsWith('https://tiktok.') || fieldValue.startsWith(`https://www.tiktok.`) || fieldValue.startsWith(`https://www.vt.tiktok.`)|| fieldValue.startsWith(`https://vt.tiktok.`) : ''))
+                                     || (platform === 'facebook' ? fieldValue.startsWith('https://fb.') || fieldValue.startsWith(`https://www.facebook.`) || fieldValue.startsWith(`https://www.fb.`) || fieldValue.startsWith('https://web.facebook.') || fieldValue.startsWith('https://web.fb.') || fieldValue.startsWith('https://www.web.facebook.') || fieldValue.startsWith('https://www.web.fb.') : '')
+                                     || (platform === 'x' ? fieldValue.startsWith('https://twitter.') || fieldValue.startsWith(`https://www.twitter.`) || fieldValue.startsWith(`https://www.x.`) : '')) || 'Link not valid'
+                                 }
                               }
                              }}
                           />
